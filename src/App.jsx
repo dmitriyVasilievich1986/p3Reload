@@ -1,35 +1,139 @@
-import { useState } from 'react'
-import reactLogo from './assets/react.svg'
-import viteLogo from '/vite.svg'
-import './App.css'
+import { monthNames } from "Constants/monthsNames";
+import React from "react";
+import "./App.css";
+import { calendar, initialCalculataion } from "./constants/calendar";
+import { events } from "./constants/events";
+import { stats } from "./constants/stats";
 
-function App() {
-  const [count, setCount] = useState(0)
-
+function DailyEvent(props) {
+  if (props.event.special) return props.event.label();
+  const availableEvents = Object.values(events).filter((e) =>
+    e.available({ currentDate: props.date, currentTime: props.time })
+  );
   return (
-    <>
-      <div>
-        <a href="https://vitejs.dev" target="_blank">
-          <img src={viteLogo} className="logo" alt="Vite logo" />
-        </a>
-        <a href="https://react.dev" target="_blank">
-          <img src={reactLogo} className="logo react" alt="React logo" />
-        </a>
-      </div>
-      <h1>Vite + React</h1>
-      <div className="card">
-        <button onClick={() => setCount((count) => count + 1)}>
-          count is {count}
-        </button>
-        <p>
-          Edit <code>src/App.jsx</code> and save to test HMR
-        </p>
-      </div>
-      <p className="read-the-docs">
-        Click on the Vite and React logos to learn more
-      </p>
-    </>
-  )
+    <select value={props.event.name} onChange={props.changeHandler}>
+      {availableEvents.map((e) => (
+        <option key={e.name} value={e.name}>
+          {e.name}
+        </option>
+      ))}
+    </select>
+  );
 }
 
-export default App
+function HeroStats(props) {
+  const getLevel = (statName) => {
+    const currentName = stats[statName].getLevel(props.stats[statName]).name;
+    const previousName = props.previousDay
+      ? stats[statName].getLevel(props.previousDay.stats[statName]).name
+      : stats[statName].levels[0].name;
+    return previousName === currentName
+      ? currentName
+      : `${previousName} -> ${currentName}`;
+  };
+
+  return (
+    <div>
+      <div>
+        Academics: {getLevel(stats.Academics.name)}(
+        {props.stats[stats.Academics.name]} pts.)
+      </div>
+      <div>
+        Charm: {getLevel(stats.Charm.name)}({props.stats[stats.Charm.name]}{" "}
+        pts.)
+      </div>
+      <div>
+        Courage: {getLevel(stats.Courage.name)}(
+        {props.stats[stats.Courage.name]} pts.)
+      </div>
+    </div>
+  );
+}
+
+function Calendar(props) {
+  const changeHandler = (name, time) => {
+    const newEvent = events[name];
+    props.setCalendarArray((prev) => {
+      const newCalendar = prev.map((c) => {
+        if (c.date.getTime() === props.date.getTime())
+          c.activities[time] = newEvent;
+        if (
+          c.date.getTime() > props.date.getTime() &&
+          !c.activities[time].special
+        )
+          c.activities[time] = events.empty;
+        return c;
+      });
+      return initialCalculataion(newCalendar);
+    });
+  };
+
+  return (
+    <div>
+      <div
+        style={{
+          width: "500px",
+          borderRadius: "10px",
+          border: "1px solid black",
+        }}
+      >
+        <h1>
+          {monthNames[props.date.getMonth()]} {props.date.getDate()}
+        </h1>
+        <DailyEvent
+          changeHandler={(e) => changeHandler(e.target.value, "morning")}
+          event={props.activities.morning}
+          date={props.date}
+          time="morning"
+        />
+        <DailyEvent
+          changeHandler={(e) => changeHandler(e.target.value, "day")}
+          event={props.activities.day}
+          date={props.date}
+          time="day"
+        />
+        <DailyEvent
+          changeHandler={(e) => changeHandler(e.target.value, "evening")}
+          event={props.activities.evening}
+          date={props.date}
+          time="evening"
+        />
+      </div>
+      <HeroStats stats={props.stats} previousDay={props.previousDay} />
+    </div>
+  );
+}
+
+function App() {
+  const [calendarArray, setCalendarArray] = React.useState(null);
+
+  React.useEffect(() => {
+    setCalendarArray(initialCalculataion(calendar));
+  }, []);
+
+  if (calendarArray === null) return null;
+  return (
+    <React.Fragment>
+      <div style={{ width: "100vw", overflow: "scroll" }}>
+        <div
+          style={{
+            width: "fit-content",
+            display: "flex",
+            gap: "10px",
+          }}
+        >
+          {calendarArray.map((c, i) => (
+            <Calendar
+              key={i}
+              {...c}
+              previousDay={calendarArray?.[i - 1]}
+              setCalendarArray={setCalendarArray}
+            />
+          ))}
+        </div>
+      </div>
+    </React.Fragment>
+  );
+}
+
+export default App;
