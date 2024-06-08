@@ -17,27 +17,7 @@ export function Choice({ label, correct = false }) {
 
 export function ChoicesEvent({ label, children, head = null }) {
   return (
-    <div
-      style={{
-        border: "1px solid black",
-        borderRadius: "5px",
-        margin: "0 5px",
-        padding: "0 5px 15px 5px",
-      }}
-    >
-      {head && (
-        <div
-          style={{
-            position: "relative",
-            top: "-10px",
-            backgroundColor: "white",
-            width: "fit-content",
-            left: "10px",
-          }}
-        >
-          {head}
-        </div>
-      )}
+    <div>
       <h4>{label}</h4>
       <div
         style={{
@@ -55,6 +35,18 @@ export function SpecialEvent({ label }) {
   return <h2>{label}</h2>;
 }
 
+export function StatRaise(props) {
+  return (
+    <React.Fragment>
+      <h4 style={{ textAlign: "center" }}>{props.label}</h4>
+      <div>Stats: {props.stats}</div>
+      {props.place && <div>Place: {props.place}</div>}
+      {props.price && <div>Price: {props.price}</div>}
+      {props.gain && <div>Gain: {props.gain}</div>}
+    </React.Fragment>
+  );
+}
+
 const initialUpgrade = {
   upgrade: function ({ currentStats }) {
     return { stats: currentStats };
@@ -67,6 +59,7 @@ export const events = {
     name: "doNothing",
     category: "empty",
     available: ({ currentTime }) => currentTime !== "morning",
+    label: () => <SpecialEvent label="Free time" />,
   },
   special: {
     ...initialUpgrade,
@@ -79,6 +72,7 @@ export const events = {
     name: "schoolQuestion",
     category: "special",
     available: () => false,
+    label: () => <SpecialEvent label="Do nothing" />,
     upgrade: function ({ currentStats }) {
       return {
         stats: {
@@ -91,6 +85,14 @@ export const events = {
   cinemaTheaterAcademics: {
     name: "cinema",
     category: "stats",
+    label: () => (
+      <StatRaise
+        label="Cinema('Unresolved Mysteries')"
+        place="Port Island Station"
+        stats="Academics +4"
+        price="¥5,000"
+      />
+    ),
     available: ({ currentDate, currentTime }) => {
       return (
         ["day", "evening"].includes(currentTime) &&
@@ -109,6 +111,14 @@ export const events = {
   cinemaTheaterCharm: {
     name: "cinema",
     category: "stats",
+    label: () => (
+      <StatRaise
+        label="Cinema('Thy Name')"
+        place="Port Island Station"
+        stats="Charm +4"
+        price="¥5,000"
+      />
+    ),
     available: ({ currentDate, currentTime }) => {
       return (
         [daysNames.tuesday, daysNames.friday].includes(currentDate.getDay()) &&
@@ -127,6 +137,14 @@ export const events = {
   cinemaTheaterCourage: {
     name: "cinema",
     category: "stats",
+    label: () => (
+      <StatRaise
+        label="Cinema('The Way of the Godson')"
+        place="Port Island Station"
+        stats="Courage +4"
+        price="¥5,000"
+      />
+    ),
     available: ({ currentDate, currentTime }) => {
       return (
         currentDate.getDay() === daysNames.thursday &&
@@ -145,6 +163,14 @@ export const events = {
   hagakureRamen: {
     name: "Hagakure Ramen(Pork Ramen)",
     category: "stats",
+    label: () => (
+      <StatRaise
+        label="Hagakure Ramen(Pork Ramen)"
+        place="Iwatodai Strip Mall"
+        stats="Charm +3"
+        price="¥900"
+      />
+    ),
     available: ({ currentDate, currentTime }) => {
       return (
         currentDate.getDay() !== daysNames.sunday &&
@@ -155,7 +181,7 @@ export const events = {
       return {
         stats: {
           ...currentStats,
-          [stats.Courage.name]: currentStats[stats.Courage.name] + 3,
+          [stats.Charm.name]: currentStats[stats.Charm.name] + 3,
         },
       };
     },
@@ -163,6 +189,14 @@ export const events = {
   hagakureRamenSpecial: {
     name: "Hagakure Ramen(Special Hagakure Bowl)",
     category: "stats",
+    label: () => (
+      <StatRaise
+        label="Hagakure Ramen(Special Hagakure Bowl)"
+        place="Iwatodai Strip Mall"
+        stats="Charm +4"
+        price="¥1,200"
+      />
+    ),
     available: ({ currentDate, currentTime, currentStats }) => {
       const days = [daysNames.tuesday, daysNames.wednesday, daysNames.friday];
       return (
@@ -175,7 +209,7 @@ export const events = {
       return {
         stats: {
           ...currentStats,
-          [stats.Courage.name]: currentStats[stats.Courage.name] + 4,
+          [stats.Charm.name]: currentStats[stats.Charm.name] + 4,
         },
       };
     },
@@ -183,6 +217,14 @@ export const events = {
   chagallCafe: {
     name: "Chagall Cafe(Pheromone Coffee)",
     category: "stats",
+    label: () => (
+      <StatRaise
+        label="Chagall Cafe(Pheromone Coffee)"
+        place="Paulownia Mall"
+        stats="Charm +2"
+        price="¥500"
+      />
+    ),
     available: ({ currentDate, currentTime }) => {
       const days = [daysNames.monday, daysNames.tuesday, daysNames.wednesday];
       return (
@@ -194,7 +236,7 @@ export const events = {
       return {
         stats: {
           ...currentStats,
-          [stats.Courage.name]: currentStats[stats.Courage.name] + 2,
+          [stats.Charm.name]: currentStats[stats.Charm.name] + 2,
         },
       };
     },
@@ -202,6 +244,14 @@ export const events = {
   chagallCafe: {
     name: "Chagall Cafe(Part-Time Work)",
     category: "stats",
+    label: () => (
+      <StatRaise
+        label="Chagall Cafe(Part-Time Work)"
+        stats="Courage +1 | Charm +1"
+        place="Paulownia Mall"
+        gain="¥2,500"
+      />
+    ),
     available: ({ currentDate, currentTime }) => {
       const days = [daysNames.monday, daysNames.tuesday, daysNames.wednesday];
       return currentTime === "evening" && days.includes(currentDate.getDay());
@@ -219,6 +269,14 @@ export const events = {
   gameParadeCharm: {
     name: "Game Parade(Play High School of Youth)",
     category: "stats",
+    label: () => (
+      <StatRaise
+        label="Game Parade(Play High School of Youth)"
+        place="Paulownia Mall"
+        stats="Charm +4"
+        price="¥3,000"
+      />
+    ),
     available: ({ currentDate, currentTime }) => {
       const days = [daysNames.monday, daysNames.thursday];
       return (
@@ -238,6 +296,14 @@ export const events = {
   mangaStarNetCafe: {
     name: "Manga Star Net Cafe",
     category: "stats",
+    label: () => (
+      <StatRaise
+        label="Manga Star Net Cafe"
+        place="Iwatodai Strip Mall"
+        stats="Charm +4"
+        price="¥1,200"
+      />
+    ),
     available: ({ currentDate, currentTime }) => {
       const days = [daysNames.monday, daysNames.thursday];
       return (
@@ -257,6 +323,14 @@ export const events = {
   beBlueV: {
     name: "Be Blue V(Work part-time)",
     category: "stats",
+    label: () => (
+      <StatRaise
+        label="Be Blue V(Work part-time)"
+        stats="Charm +1 | Academics +1"
+        place="Paulownia Mall"
+        gain="¥3,500"
+      />
+    ),
     available: ({ currentDate, currentTime }) => {
       const days = [
         daysNames.monday,
@@ -271,7 +345,8 @@ export const events = {
       return {
         stats: {
           ...currentStats,
-          [stats.Charm.name]: currentStats[stats.Charm.name] + 4,
+          [stats.Academics.name]: currentStats[stats.Academics.name] + 1,
+          [stats.Charm.name]: currentStats[stats.Charm.name] + 1,
         },
       };
     },
@@ -279,6 +354,14 @@ export const events = {
   Mandragora: {
     name: "Mandragora(Sing solo karaoke)",
     category: "stats",
+    label: () => (
+      <StatRaise
+        label="Mandragora(Sing solo karaoke)"
+        place="Paulownia Mall"
+        stats="Courage +2"
+        price="¥800"
+      />
+    ),
     available: ({ currentDate, currentTime }) => {
       return (
         ["day", "evening"].includes(currentTime) &&
@@ -297,6 +380,14 @@ export const events = {
   gameParadeCourage: {
     name: "Game Parade(Play House of the Deceased)",
     category: "stats",
+    label: () => (
+      <StatRaise
+        label="Game Parade(Play House of the Deceased)"
+        place="Paulownia Mall"
+        stats="Courage +4"
+        price="¥3,000"
+      />
+    ),
     available: ({ currentDate, currentTime }) => {
       const days = [daysNames.tuesday, daysNames.friday];
       return currentTime === "day" && days.includes(currentDate.getDay());
@@ -311,8 +402,15 @@ export const events = {
     },
   },
   drinkMedicine: {
-    name: "Drink Mr. Edogawa’s medicine",
+    name: "Drink Mr. Edogawa's medicine",
     category: "special",
+    label: () => (
+      <StatRaise
+        label="Drink Mr. Edogawa's medicine"
+        place="Nurse's Office"
+        stats="Courage +2"
+      />
+    ),
     available: ({ currentDate, currentTime }) => {
       const days = [daysNames.tuesday, daysNames.friday];
       return currentTime === "day" && days.includes(currentDate.getDay());
@@ -329,6 +427,7 @@ export const events = {
   sleepDuringClass: {
     name: "Sleep During Class",
     category: "stats",
+    label: () => <StatRaise label="Sleep During Class" stats="Courage +2" />,
     available: ({ currentDate, currentTime }) => {
       return currentTime === "morning";
     },
@@ -344,6 +443,7 @@ export const events = {
   stayAwakeInClass: {
     name: "Stay Awake in Class",
     category: "stats",
+    label: () => <StatRaise label="Stay Awake in Class" stats="Academics +2" />,
     available: ({ currentDate, currentTime }) => {
       return currentTime === "morning";
     },
@@ -359,6 +459,13 @@ export const events = {
   studyAtHome: {
     name: "studyAtHome",
     category: "stats",
+    label: () => (
+      <StatRaise
+        label="Studying In Your Room"
+        place="Your Room"
+        stats="Academics +2"
+      />
+    ),
     available: ({ currentDate, currentTime }) => {
       return currentTime === "evening";
     },
@@ -366,7 +473,7 @@ export const events = {
       return {
         stats: {
           ...currentStats,
-          [stats.Academics.name]: currentStats[stats.Academics.name] + 10,
+          [stats.Academics.name]: currentStats[stats.Academics.name] + 2,
         },
       };
     },
