@@ -1,17 +1,23 @@
 import { events, ChoicesEvent, Choice } from "./events";
+import { socialLinks } from "./socialLinks";
 import { stats } from "./stats";
 import React from "react";
 
-const startStats = {
+const initialStats = {
   [stats.Academics.name]: 0,
   [stats.Charm.name]: 0,
   [stats.Courage.name]: 0,
 };
 
+const initialLinks = {
+  [socialLinks.Magician.name]: { level: 0, points: 0 },
+};
+
 export const calendar = [
   {
     date: new Date(2009, 3, 8),
-    stats: startStats,
+    stats: initialStats,
+    links: initialLinks,
     activities: {
       morning: {
         ...events.schoolQuestionCharm,
@@ -34,7 +40,8 @@ export const calendar = [
   },
   {
     date: new Date(2009, 3, 9),
-    stats: startStats,
+    stats: initialStats,
+    links: initialLinks,
     activities: {
       morning: events.special,
       day: events.special,
@@ -43,11 +50,12 @@ export const calendar = [
   },
   {
     date: new Date(2009, 3, 10),
-    stats: startStats,
+    stats: initialStats,
+    links: initialLinks,
     activities: {
       morning: events.special,
-      day: events.special,
-      evening: events.special,
+      day: events.doNothing,
+      evening: events.doNothing,
     },
   },
 ];
@@ -57,20 +65,37 @@ export function initialCalculataion(calendar) {
     const previousDay = calendar.find(
       (d) => d.date.getTime() === c.date.getTime() - 86400000
     );
-    let currentStats = previousDay?.stats || { ...startStats };
-    if (c.activities.morning !== null)
-      currentStats = c.activities.morning.upgrade({
+    let currentStats = previousDay?.stats || { ...initialStats };
+    let currentLinks = previousDay?.links || { ...initialLinks };
+    let response = null;
+
+    if (c.activities.morning !== null) {
+      response = c.activities.morning.upgrade({
         currentStats: currentStats,
-      }).stats;
-    if (c.activities.day !== null)
-      currentStats = c.activities.day.upgrade({
+        currentLinks: currentLinks,
+      });
+      currentStats = response.stats;
+      currentLinks = response.links;
+    }
+    if (c.activities.day !== null) {
+      response = c.activities.day.upgrade({
         currentStats: currentStats,
-      }).stats;
-    if (c.activities.evening !== null)
-      currentStats = c.activities.evening.upgrade({
+        currentLinks: currentLinks,
+      });
+      currentStats = response.stats;
+      currentLinks = response.links;
+    }
+    if (c.activities.evening !== null) {
+      response = c.activities.evening.upgrade({
         currentStats: currentStats,
-      }).stats;
+        currentLinks: currentLinks,
+      });
+      currentStats = response.stats;
+      currentLinks = response.links;
+    }
+
     c.stats = currentStats;
+    c.links = currentLinks;
   });
 
   return calendar;

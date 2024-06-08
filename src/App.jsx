@@ -4,6 +4,7 @@ import "./App.css";
 import { calendar, initialCalculataion } from "./constants/calendar";
 import { events } from "./constants/events";
 import { stats } from "./constants/stats";
+import { socialLinks } from "./constants/socialLinks";
 
 function outsideClickWrapper(props) {
   React.useEffect(() => {
@@ -32,6 +33,24 @@ function DailyEvent(props) {
         currentTime: props.time,
       }) && events[e].category !== "special"
   );
+
+  const LinkElement = () => {
+    if (props.event.category !== "links") return null;
+    if (
+      !props.previousDay?.links ||
+      props.previousDay.links[props.event.name].level === 0
+    )
+      return <h3>Create bond</h3>;
+    if (
+      props.previousDay.links[props.event.name].level ===
+      props.links[props.event.name].level
+    )
+      return <h3>Spending time</h3>;
+    return socialLinks[props.event.name].levels[
+      props.links[props.event.name].level - 1
+    ].element();
+  };
+
   return (
     <div
       style={{
@@ -88,6 +107,7 @@ function DailyEvent(props) {
         }}
       >
         <div>{props.event.label()}</div>
+        <LinkElement />
       </div>
     </div>
   );
@@ -118,6 +138,24 @@ function HeroStats(props) {
         Courage: {getLevel(stats.Courage.name)}(
         {props.stats[stats.Courage.name]} pts.)
       </div>
+    </div>
+  );
+}
+
+function SocialLinks(props) {
+  const getLevel = (name) => {
+    if (props.links[name].level === 0) return "not established";
+    if (props.links[name].level === socialLinks[name].levels.length)
+      return "max level";
+    return `${props.links[name].level} (${props.links[name].points} pts.)`;
+  };
+  return (
+    <div>
+      {Object.keys(props.links).map((l) => (
+        <div key={l}>
+          {l}: {getLevel(l)}
+        </div>
+      ))}
     </div>
   );
 }
@@ -156,14 +194,18 @@ function Calendar(props) {
         <DailyEvent
           changeHandler={(e) => changeHandler(e, "morning")}
           event={props.activities.morning}
+          previousDay={props.previousDay}
           stats={props.stats}
+          links={props.links}
           date={props.date}
           label="at school"
           time="morning"
         />
         <DailyEvent
           changeHandler={(e) => changeHandler(e, "day")}
+          previousDay={props.previousDay}
           event={props.activities.day}
+          links={props.links}
           stats={props.stats}
           date={props.date}
           time="day"
@@ -172,6 +214,8 @@ function Calendar(props) {
         <DailyEvent
           changeHandler={(e) => changeHandler(e, "evening")}
           event={props.activities.evening}
+          previousDay={props.previousDay}
+          links={props.links}
           stats={props.stats}
           date={props.date}
           time="evening"
@@ -179,6 +223,7 @@ function Calendar(props) {
         />
       </div>
       <HeroStats stats={props.stats} previousDay={props.previousDay} />
+      <SocialLinks links={props.links} previousDay={props.previousDay} />
     </div>
   );
 }

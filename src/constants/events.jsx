@@ -1,3 +1,4 @@
+import { socialLinks } from "./socialLinks";
 import { daysNames } from "./monthsNames";
 import { stats } from "./stats";
 import React from "react";
@@ -48,8 +49,8 @@ export function StatRaise(props) {
 }
 
 const initialUpgrade = {
-  upgrade: function ({ currentStats }) {
-    return { stats: currentStats };
+  upgrade: function ({ currentStats, currentLinks }) {
+    return { stats: currentStats, links: currentLinks };
   },
 };
 
@@ -73,8 +74,9 @@ export const events = {
     category: "special",
     available: () => false,
     label: () => <SpecialEvent label="Do nothing" />,
-    upgrade: function ({ currentStats }) {
+    upgrade: function ({ currentStats, currentLinks }) {
       return {
+        links: { ...currentLinks },
         stats: {
           ...currentStats,
           [stats.Charm.name]: currentStats[stats.Charm.name] + 2,
@@ -99,8 +101,9 @@ export const events = {
         [daysNames.wednesday, daysNames.saturday].includes(currentDate.getDay())
       );
     },
-    upgrade: function ({ currentStats }) {
+    upgrade: function ({ currentStats, currentLinks }) {
       return {
+        links: { ...currentLinks },
         stats: {
           ...currentStats,
           [stats.Academics.name]: currentStats[stats.Academics.name] + 4,
@@ -125,8 +128,9 @@ export const events = {
         ["day", "evening"].includes(currentTime)
       );
     },
-    upgrade: function ({ currentStats }) {
+    upgrade: function ({ currentStats, currentLinks }) {
       return {
+        links: { ...currentLinks },
         stats: {
           ...currentStats,
           [stats.Charm.name]: currentStats[stats.Charm.name] + 4,
@@ -151,8 +155,9 @@ export const events = {
         ["day", "evening"].includes(currentTime)
       );
     },
-    upgrade: function ({ currentStats }) {
+    upgrade: function ({ currentStats, currentLinks }) {
       return {
+        links: { ...currentLinks },
         stats: {
           ...currentStats,
           [stats.Courage.name]: currentStats[stats.Courage.name] + 4,
@@ -177,8 +182,9 @@ export const events = {
         ["day", "evening"].includes(currentTime)
       );
     },
-    upgrade: function ({ currentStats }) {
+    upgrade: function ({ currentStats, currentLinks }) {
       return {
+        links: { ...currentLinks },
         stats: {
           ...currentStats,
           [stats.Charm.name]: currentStats[stats.Charm.name] + 3,
@@ -205,8 +211,9 @@ export const events = {
         days.includes(currentDate.getDay())
       );
     },
-    upgrade: function ({ currentStats }) {
+    upgrade: function ({ currentStats, currentLinks }) {
       return {
+        links: { ...currentLinks },
         stats: {
           ...currentStats,
           [stats.Charm.name]: currentStats[stats.Charm.name] + 4,
@@ -214,7 +221,7 @@ export const events = {
       };
     },
   },
-  chagallCafe: {
+  chagallCafeCharm: {
     name: "Chagall Cafe(Pheromone Coffee)",
     category: "stats",
     label: () => (
@@ -232,8 +239,9 @@ export const events = {
         (currentTime === "evening" && days.includes(currentDate.getDay()))
       );
     },
-    upgrade: function ({ currentStats }) {
+    upgrade: function ({ currentStats, currentLinks }) {
       return {
+        links: { ...currentLinks },
         stats: {
           ...currentStats,
           [stats.Charm.name]: currentStats[stats.Charm.name] + 2,
@@ -241,7 +249,7 @@ export const events = {
       };
     },
   },
-  chagallCafe: {
+  chagallCafePartTimeWork: {
     name: "Chagall Cafe(Part-Time Work)",
     category: "stats",
     label: () => (
@@ -256,8 +264,9 @@ export const events = {
       const days = [daysNames.monday, daysNames.tuesday, daysNames.wednesday];
       return currentTime === "evening" && days.includes(currentDate.getDay());
     },
-    upgrade: function ({ currentStats }) {
+    upgrade: function ({ currentStats, currentLinks }) {
       return {
+        links: { ...currentLinks },
         stats: {
           ...currentStats,
           [stats.Courage.name]: currentStats[stats.Courage.name] + 1,
@@ -284,8 +293,9 @@ export const events = {
         days.includes(currentDate.getDay())
       );
     },
-    upgrade: function ({ currentStats }) {
+    upgrade: function ({ currentStats, currentLinks }) {
       return {
+        links: { ...currentLinks },
         stats: {
           ...currentStats,
           [stats.Charm.name]: currentStats[stats.Charm.name] + 4,
@@ -311,8 +321,9 @@ export const events = {
         days.includes(currentDate.getDay())
       );
     },
-    upgrade: function ({ currentStats }) {
+    upgrade: function ({ currentStats, currentLinks }) {
       return {
+        links: { ...currentLinks },
         stats: {
           ...currentStats,
           [stats.Charm.name]: currentStats[stats.Charm.name] + 4,
@@ -341,8 +352,9 @@ export const events = {
       ];
       return currentTime === "day" && days.includes(currentDate.getDay());
     },
-    upgrade: function ({ currentStats }) {
+    upgrade: function ({ currentStats, currentLinks }) {
       return {
+        links: { ...currentLinks },
         stats: {
           ...currentStats,
           [stats.Academics.name]: currentStats[stats.Academics.name] + 1,
@@ -368,8 +380,9 @@ export const events = {
         currentDate.getDay() !== daysNames.sunday
       );
     },
-    upgrade: function ({ currentStats }) {
+    upgrade: function ({ currentStats, currentLinks }) {
       return {
+        links: { ...currentLinks },
         stats: {
           ...currentStats,
           [stats.Courage.name]: currentStats[stats.Courage.name] + 2,
@@ -392,8 +405,9 @@ export const events = {
       const days = [daysNames.tuesday, daysNames.friday];
       return currentTime === "day" && days.includes(currentDate.getDay());
     },
-    upgrade: function ({ currentStats }) {
+    upgrade: function ({ currentStats, currentLinks }) {
       return {
+        links: { ...currentLinks },
         stats: {
           ...currentStats,
           [stats.Courage.name]: currentStats[stats.Courage.name] + 4,
@@ -415,8 +429,9 @@ export const events = {
       const days = [daysNames.tuesday, daysNames.friday];
       return currentTime === "day" && days.includes(currentDate.getDay());
     },
-    upgrade: function ({ currentStats }) {
+    upgrade: function ({ currentStats, currentLinks }) {
       return {
+        links: { ...currentLinks },
         stats: {
           ...currentStats,
           [stats.Courage.name]: currentStats[stats.Courage.name] + 2,
@@ -431,8 +446,9 @@ export const events = {
     available: ({ currentDate, currentTime }) => {
       return currentTime === "morning";
     },
-    upgrade: function ({ currentStats }) {
+    upgrade: function ({ currentStats, currentLinks }) {
       return {
+        links: { ...currentLinks },
         stats: {
           ...currentStats,
           [stats.Courage.name]: currentStats[stats.Courage.name] + 2,
@@ -447,8 +463,9 @@ export const events = {
     available: ({ currentDate, currentTime }) => {
       return currentTime === "morning";
     },
-    upgrade: function ({ currentStats }) {
+    upgrade: function ({ currentStats, currentLinks }) {
       return {
+        links: { ...currentLinks },
         stats: {
           ...currentStats,
           [stats.Academics.name]: currentStats[stats.Academics.name] + 2,
@@ -469,8 +486,66 @@ export const events = {
     available: ({ currentDate, currentTime }) => {
       return currentTime === "evening";
     },
-    upgrade: function ({ currentStats }) {
+    upgrade: function ({ currentStats, currentLinks }) {
       return {
+        links: { ...currentLinks },
+        stats: {
+          ...currentStats,
+          [stats.Academics.name]: currentStats[stats.Academics.name] + 2,
+        },
+      };
+    },
+  },
+  Magician: {
+    name: "Magician",
+    category: "links",
+    label: () => <h3 style={{ textAlign: "center" }}>Magician</h3>,
+    available: ({ currentDate, currentTime }) => {
+      const days = [daysNames.tuesday, daysNames.thursday, daysNames.friday];
+      return (
+        currentDate.getTime() >= new Date(2009, 3, 22).getTime() &&
+        currentTime === "day" &&
+        days.includes(currentDate.getDay())
+      );
+    },
+    upgrade: function ({ currentStats, currentLinks }) {
+      const newLinks = socialLinks.Magician.calculate(
+        currentLinks[socialLinks.Magician.name]
+      );
+      return {
+        links: {
+          ...currentLinks,
+          ...newLinks,
+        },
+        stats: {
+          ...currentStats,
+          [stats.Academics.name]: currentStats[stats.Academics.name] + 2,
+        },
+      };
+    },
+  },
+  MagicianWithPersona: {
+    name: "Magician",
+    category: "links",
+    label: () => <h3 style={{ textAlign: "center" }}>Magician(w Persona)</h3>,
+    available: ({ currentDate, currentTime }) => {
+      const days = [daysNames.tuesday, daysNames.thursday, daysNames.friday];
+      return (
+        currentDate.getTime() >= new Date(2009, 3, 22).getTime() &&
+        currentTime === "day" &&
+        days.includes(currentDate.getDay())
+      );
+    },
+    upgrade: function ({ currentStats, currentLinks }) {
+      const newLinks = socialLinks.Magician.calculate({
+        ...currentLinks[socialLinks.Magician.name],
+        multiplier: 1.51,
+      });
+      return {
+        links: {
+          ...currentLinks,
+          ...newLinks,
+        },
         stats: {
           ...currentStats,
           [stats.Academics.name]: currentStats[stats.Academics.name] + 2,
