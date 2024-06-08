@@ -1,4 +1,4 @@
-import { monthNames } from "Constants/monthsNames";
+import { monthNames, daysNamesIndex } from "Constants/monthsNames";
 import React from "react";
 import "./App.css";
 import { calendar, initialCalculataion } from "./constants/calendar";
@@ -6,9 +6,14 @@ import { events } from "./constants/events";
 import { stats } from "./constants/stats";
 
 function DailyEvent(props) {
-  if (props.event.special) return props.event.label();
-  const availableEvents = Object.values(events).filter((e) =>
-    e.available({ currentDate: props.date, currentTime: props.time })
+  if (props.event.category === "special") return props.event.label();
+  const availableEvents = Object.keys(events).filter(
+    (e) =>
+      events[e].available({
+        currentStats: props.stats,
+        currentDate: props.date,
+        currentTime: props.time,
+      }) && events[e].category !== "special"
   );
   return (
     <select
@@ -62,7 +67,7 @@ function Calendar(props) {
           c.activities[time] = newEvent;
         if (
           c.date.getTime() > props.date.getTime() &&
-          !c.activities[time].special
+          c.activities[time].category !== "special"
         )
           c.activities[time] = events.empty;
         return c;
@@ -81,23 +86,27 @@ function Calendar(props) {
         }}
       >
         <h1>
-          {monthNames[props.date.getMonth()]} {props.date.getDate()}
+          {monthNames[props.date.getMonth()]} {props.date.getDate()} (
+          {daysNamesIndex[props.date.getDay()]})
         </h1>
         <DailyEvent
           changeHandler={(e) => changeHandler(e.target.value, "morning")}
           event={props.activities.morning}
+          stats={props.stats}
           date={props.date}
           time="morning"
         />
         <DailyEvent
           changeHandler={(e) => changeHandler(e.target.value, "day")}
           event={props.activities.day}
+          stats={props.stats}
           date={props.date}
           time="day"
         />
         <DailyEvent
           changeHandler={(e) => changeHandler(e.target.value, "evening")}
           event={props.activities.evening}
+          stats={props.stats}
           date={props.date}
           time="evening"
         />

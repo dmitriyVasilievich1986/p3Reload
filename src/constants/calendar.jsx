@@ -14,22 +14,22 @@ export const calendar = [
     stats: startStats,
     activities: {
       morning: {
-        ...events.schoolQuestionAcademics,
+        ...events.schoolQuestionCharm,
         label: () => (
           <ChoicesEvent
-            head="School question"
+            head="At school"
             label={
               'Among these phrases, "a rain of flower", "mystical mirage" and "vivid carp streamers" which one symbolizes summer?'
             }
           >
             <Choice label="a rain of flower" />
             <Choice label="mystical mirage" />
-            <Choice label="vivid carp streamers" correct />
+            <Choice label="vivid carp streamers +2" correct />
           </ChoicesEvent>
         ),
       },
-      day: events.empty,
-      evening: events.empty,
+      day: events.doNothing,
+      evening: events.doNothing,
     },
   },
   {
@@ -38,7 +38,7 @@ export const calendar = [
     activities: {
       morning: events.special,
       day: events.special,
-      evening: events.empty,
+      evening: events.doNothing,
     },
   },
   {
