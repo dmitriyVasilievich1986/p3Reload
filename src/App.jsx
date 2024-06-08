@@ -11,10 +11,13 @@ function DailyEvent(props) {
     e.available({ currentDate: props.date, currentTime: props.time })
   );
   return (
-    <select value={props.event.name} onChange={props.changeHandler}>
+    <select
+      value={Object.keys(events).find((e) => e.name === props.event.name)}
+      onChange={props.changeHandler}
+    >
       {availableEvents.map((e) => (
-        <option key={e.name} value={e.name}>
-          {e.name}
+        <option key={e} value={e}>
+          {events[e].name}
         </option>
       ))}
     </select>
