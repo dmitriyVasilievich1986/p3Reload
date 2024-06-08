@@ -44,7 +44,7 @@ export function ChoicesEvent({ label, children, head = null }) {
           justifyContent: "center",
         }}
       >
-        <div style={{ width: "150px" }}>{children}</div>
+        <div style={{ width: "250px" }}>{children}</div>
       </div>
     </div>
   );
