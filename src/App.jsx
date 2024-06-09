@@ -28,7 +28,9 @@ function DailyEvent(props) {
   const availableEvents = Object.keys(events).filter(
     (e) =>
       events[e].available({
+        previousDay: props.previousDay,
         currentStats: props.stats,
+        currentLinks: props.links,
         currentDate: props.date,
         currentTime: props.time,
       }) && events[e].category !== "special"
@@ -46,7 +48,10 @@ function DailyEvent(props) {
       props.links[props.event.name].level
     )
       return <h3>Spending time</h3>;
-    return socialLinks[props.event.name].levels[
+    const romanceFork = props.links[props.event.name]?.romance
+      ? "levelsRomance"
+      : "levels";
+    return socialLinks[props.event.name][romanceFork][
       props.links[props.event.name].level - 1
     ].element();
   };

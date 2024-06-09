@@ -11,6 +11,7 @@ const initialStats = {
 
 const initialLinks = {
   [socialLinks.Magician.name]: { level: 0, points: 0 },
+  [socialLinks.Priestess.name]: { level: 0, points: 0, romance: false },
 };
 
 export const calendar = [

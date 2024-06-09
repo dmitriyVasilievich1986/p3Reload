@@ -517,10 +517,7 @@ export const events = {
           ...currentLinks,
           ...newLinks,
         },
-        stats: {
-          ...currentStats,
-          [stats.Academics.name]: currentStats[stats.Academics.name] + 2,
-        },
+        stats: { ...currentStats },
       };
     },
   },
@@ -546,10 +543,54 @@ export const events = {
           ...currentLinks,
           ...newLinks,
         },
-        stats: {
-          ...currentStats,
-          [stats.Academics.name]: currentStats[stats.Academics.name] + 2,
+        stats: { ...currentStats },
+      };
+    },
+  },
+  Priestess: {
+    name: "Priestess",
+    category: "links",
+    label: () => <h3 style={{ textAlign: "center" }}>Priestess</h3>,
+    available: ({ currentDate, currentTime, currentLinks, previousDay }) => {
+      const isFork =
+        previousDay?.links &&
+        previousDay.links[socialLinks.Priestess.name].level === 6;
+      return !currentLinks[socialLinks.Priestess.name].romance || isFork;
+    },
+    upgrade: function ({ currentStats, currentLinks }) {
+      const newLinks = socialLinks.Priestess.calculate(
+        currentLinks[socialLinks.Priestess.name]
+      );
+      return {
+        links: {
+          ...currentLinks,
+          ...newLinks,
         },
+        stats: { ...currentStats },
+      };
+    },
+  },
+  PriestessRomance: {
+    name: "Priestess",
+    category: "links",
+    label: () => <h3 style={{ textAlign: "center" }}>Priestess</h3>,
+    available: ({ currentDate, currentTime, currentLinks, previousDay }) => {
+      const isFork =
+        previousDay?.links &&
+        previousDay.links[socialLinks.Priestess.name].level === 6;
+      return currentLinks[socialLinks.Priestess.name].romance || isFork;
+    },
+    upgrade: function ({ currentStats, currentLinks }) {
+      const newLinks = socialLinks.Priestess.calculate({
+        ...currentLinks[socialLinks.Priestess.name],
+        romance: true,
+      });
+      return {
+        links: {
+          ...currentLinks,
+          ...newLinks,
+        },
+        stats: { ...currentStats },
       };
     },
   },
