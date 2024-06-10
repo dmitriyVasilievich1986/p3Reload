@@ -326,7 +326,8 @@ export const socialLinks = {
     name: "Priestess",
     calculate: function ({ level, points, romance = false, multiplier = 1 }) {
       const name = romance ? "levelsRomance" : "levels";
-      const isNewlevel = true;
+      const isNewlevel =
+        level < this[name].length && points >= this[name][level].points;
       return {
         Priestess: {
           level: isNewlevel ? level + 1 : level,
@@ -337,19 +338,6 @@ export const socialLinks = {
         },
       };
     },
-    // calculate: function ({ level, points, romance = false, multiplier = 1 }) {
-    //   const name = romance ? "levelsRomance" : "levels";
-    //   const isNewlevel =
-    //     level < this[name].length && points >= this[name][level].points;
-    //   return {
-    //     Magician: {
-    //       level: isNewlevel ? level + 1 : level,
-    //       points: isNewlevel
-    //         ? this[name][level].maxPoints * multiplier
-    //         : points + 10 * multiplier,
-    //     },
-    //   };
-    // },
     levels: [
       ...priestessLevels,
       {
@@ -511,6 +499,152 @@ export const socialLinks = {
             <ChoicesEvent label="So... what do you think?">
               <Choice label="I love them!" correct />
               <Choice label="Your skills are impressive." ok />
+            </ChoicesEvent>
+          </div>
+        ),
+      },
+    ],
+  },
+  Emperor: {
+    name: "Emperor",
+    calculate: function ({ level, points, multiplier = 1 }) {
+      const isNewlevel =
+        level < this.levels.length && points >= this.levels[level].points;
+      return {
+        Emperor: {
+          level: isNewlevel ? level + 1 : level,
+          points: isNewlevel
+            ? this.levels[level].maxPoints * multiplier
+            : points + 10 * multiplier,
+        },
+      };
+    },
+    levels: [
+      {
+        points: 0,
+        maxPoints: 0,
+        element: () => null,
+      },
+      {
+        points: 0,
+        maxPoints: 15,
+        element: () => (
+          <div>
+            <ChoicesEvent label="Some students feel the school uniform should be abolished, and they’re recruiting supporters…">
+              <Choice label="They've got a point." />
+              <Choice label="Sounds like nonsense." correct />
+            </ChoicesEvent>
+          </div>
+        ),
+      },
+      {
+        points: 0,
+        maxPoints: 15,
+        element: () => (
+          <div>
+            <ChoicesEvent label="What!? You can't decide something like that without talking to the president first.">
+              <Choice label="What happened?" ok />
+              <Choice label="No need to fight." correct />
+            </ChoicesEvent>
+          </div>
+        ),
+      },
+      {
+        points: 0,
+        maxPoints: 15,
+        element: () => (
+          <div>
+            <ChoicesEvent label="This guy looks like he's about to hit Odagiri!">
+              <Choice label="Knock it off!" />
+              <Choice label="..........." />
+            </ChoicesEvent>
+            <ChoicesEvent label="What is it? Do you need something from me?">
+              <Choice label="You went a little overboard." />
+              <Choice label="Looks like you're hard at work." correct />
+            </ChoicesEvent>
+          </div>
+        ),
+      },
+      {
+        points: 15,
+        maxPoints: 15,
+        element: () => (
+          <div>
+            <ChoicesEvent label="...Bunch of neanderthals">
+              <Choice label="They're the worst." correct />
+              <Choice label="You shouldn't accuse everyone." />
+            </ChoicesEvent>
+          </div>
+        ),
+      },
+      {
+        points: 15,
+        maxPoints: 15,
+        element: () => (
+          <div>
+            <ChoicesEvent label="It's nice not having those hyenas around.">
+              <Choice label="You're not going home yet?" />
+              <Choice label="It's nice?" />
+            </ChoicesEvent>
+            <ChoicesEvent label="So as you can see, we can't exactly hold a meeting right now. You can leave if you want.">
+              <Choice label="But I just got here…" correct />
+              <Choice label="I think I'll stick around." correct />
+            </ChoicesEvent>
+          </div>
+        ),
+      },
+      {
+        points: 15,
+        maxPoints: 15,
+        element: () => (
+          <div>
+            <ChoicesEvent label="About the smoker’s punishment, I mean.">
+              <Choice label="It seems reasonable." />
+              <Choice label="It seems too harsh." correct />
+            </ChoicesEvent>
+          </div>
+        ),
+      },
+      {
+        points: 15,
+        maxPoints: 15,
+        element: () => (
+          <div>
+            <ChoicesEvent label="Um, did Odagiri-san do something?">
+              <Choice label="What do you mean?" />
+              <Choice label="Why? Is something wrong?" />
+            </ChoicesEvent>
+            <ChoicesEvent label="...So, you heard all that.">
+              <Choice label="It wasn’t me." correct />
+              <Choice label="You came to my defense?" ok />
+            </ChoicesEvent>
+          </div>
+        ),
+      },
+      {
+        points: 22,
+        maxPoints: 15,
+        element: () => (
+          <div>
+            <ChoicesEvent label="I rambled on about rules and fairness, but all I really proved was that I was desperate for power.">
+              <Choice label="Don’t blame yourself." correct />
+              <Choice label="Good thing you noticed." />
+            </ChoicesEvent>
+          </div>
+        ),
+      },
+      {
+        points: 22,
+        maxPoints: 15,
+        element: () => (
+          <div>
+            <ChoicesEvent label="So, how did I do? What'd everyone think?">
+              <Choice label="Not too shabby." correct />
+              <Choice label="You were great." ok />
+            </ChoicesEvent>
+            <ChoicesEvent label="That's why you should be the one to have it.">
+              <Choice label="I'll cherish it." correct />
+              <Choice label="I guess I’ll take it." correct />
             </ChoicesEvent>
           </div>
         ),
