@@ -158,6 +158,11 @@ function SocialLinks(props) {
     <div>
       {Object.keys(props.links).map((l) => (
         <div key={l}>
+          <input
+            type="checkbox"
+            checked={props.arcanes.includes(l)}
+            onChange={() => props.changeHandler(l)}
+          />
           {l}: {getLevel(l)}
         </div>
       ))}
@@ -172,11 +177,55 @@ function Calendar(props) {
       const newCalendar = prev.map((c) => {
         if (c.date.getTime() === props.date.getTime())
           c.activities[time] = newEvent;
-        if (
-          c.date.getTime() > props.date.getTime() &&
-          c.activities[time].category !== "special"
-        )
-          c.activities[time] = events.doNothing;
+        if (c.date.getTime() > props.date.getTime())
+          c.activities = {
+            morning:
+              c.activities.morning.category === "special"
+                ? c.activities.morning
+                : events.doNothing,
+            day:
+              c.activities.day.category === "special"
+                ? c.activities.day
+                : events.doNothing,
+            evening:
+              c.activities.evening.category === "special"
+                ? c.activities.evening
+                : events.doNothing,
+          };
+        return c;
+      });
+      return initialCalculataion(newCalendar);
+    });
+  };
+
+  const changeArcaneHandler = (name) => {
+    props.setCalendarArray((prev) => {
+      const newCalendar = prev.map((c) => {
+        if (c.date.getTime() === props.date.getTime())
+          return {
+            ...c,
+            arcanes: c.arcanes.includes(name)
+              ? c.arcanes.filter((a) => a !== name)
+              : [...c.arcanes, name],
+          };
+        if (c.date.getTime() > props.date.getTime())
+          return {
+            ...c,
+            activities: {
+              morning:
+                c.activities.morning.category === "special"
+                  ? c.activities.morning
+                  : events.doNothing,
+              day:
+                c.activities.day.category === "special"
+                  ? c.activities.day
+                  : events.doNothing,
+              evening:
+                c.activities.evening.category === "special"
+                  ? c.activities.evening
+                  : events.doNothing,
+            },
+          };
         return c;
       });
       return initialCalculataion(newCalendar);
@@ -228,7 +277,12 @@ function Calendar(props) {
         />
       </div>
       <HeroStats stats={props.stats} previousDay={props.previousDay} />
-      <SocialLinks links={props.links} previousDay={props.previousDay} />
+      <SocialLinks
+        links={props.links}
+        previousDay={props.previousDay}
+        arcanes={props.arcanes}
+        changeHandler={changeArcaneHandler}
+      />
     </div>
   );
 }

@@ -10,8 +10,13 @@ const initialStats = {
 };
 
 const initialLinks = {
-  [socialLinks.Magician.name]: { level: 0, points: 0 },
-  [socialLinks.Priestess.name]: { level: 0, points: 0, romance: false },
+  [socialLinks.Magician.name]: { level: 0, points: 0, multiplier: 1 },
+  [socialLinks.Priestess.name]: {
+    level: 0,
+    points: 0,
+    multiplier: 1,
+    romance: false,
+  },
 };
 
 export const calendar = [
@@ -19,6 +24,7 @@ export const calendar = [
     date: new Date(2009, 3, 8),
     stats: initialStats,
     links: initialLinks,
+    arcanes: [],
     activities: {
       morning: {
         ...events.schoolQuestionCharm,
@@ -43,6 +49,7 @@ export const calendar = [
     date: new Date(2009, 3, 9),
     stats: initialStats,
     links: initialLinks,
+    arcanes: [],
     activities: {
       morning: events.special,
       day: events.special,
@@ -53,6 +60,7 @@ export const calendar = [
     date: new Date(2009, 3, 10),
     stats: initialStats,
     links: initialLinks,
+    arcanes: [],
     activities: {
       morning: events.special,
       day: events.doNothing,
@@ -74,6 +82,7 @@ export function initialCalculataion(calendar) {
       response = c.activities.morning.upgrade({
         currentStats: currentStats,
         currentLinks: currentLinks,
+        arcanes: c.arcanes,
       });
       currentStats = response.stats;
       currentLinks = response.links;
@@ -82,6 +91,7 @@ export function initialCalculataion(calendar) {
       response = c.activities.day.upgrade({
         currentStats: currentStats,
         currentLinks: currentLinks,
+        arcanes: c.arcanes,
       });
       currentStats = response.stats;
       currentLinks = response.links;
@@ -90,6 +100,7 @@ export function initialCalculataion(calendar) {
       response = c.activities.evening.upgrade({
         currentStats: currentStats,
         currentLinks: currentLinks,
+        arcanes: c.arcanes,
       });
       currentStats = response.stats;
       currentLinks = response.links;

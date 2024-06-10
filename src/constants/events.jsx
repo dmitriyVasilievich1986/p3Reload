@@ -508,35 +508,11 @@ export const events = {
         days.includes(currentDate.getDay())
       );
     },
-    upgrade: function ({ currentStats, currentLinks }) {
-      const newLinks = socialLinks.Magician.calculate(
-        currentLinks[socialLinks.Magician.name]
-      );
-      return {
-        links: {
-          ...currentLinks,
-          ...newLinks,
-        },
-        stats: { ...currentStats },
-      };
-    },
-  },
-  MagicianWithPersona: {
-    name: "Magician",
-    category: "links",
-    label: () => <h3 style={{ textAlign: "center" }}>Magician(w Persona)</h3>,
-    available: ({ currentDate, currentTime }) => {
-      const days = [daysNames.tuesday, daysNames.thursday, daysNames.friday];
-      return (
-        currentDate.getTime() >= new Date(2009, 3, 22).getTime() &&
-        currentTime === "day" &&
-        days.includes(currentDate.getDay())
-      );
-    },
-    upgrade: function ({ currentStats, currentLinks }) {
+    upgrade: function ({ currentStats, currentLinks, arcanes }) {
+      const multiplier = arcanes.includes(socialLinks.Magician.name) ? 1.51 : 1;
       const newLinks = socialLinks.Magician.calculate({
         ...currentLinks[socialLinks.Magician.name],
-        multiplier: 1.51,
+        multiplier,
       });
       return {
         links: {
@@ -557,10 +533,14 @@ export const events = {
         previousDay.links[socialLinks.Priestess.name].level === 6;
       return !currentLinks[socialLinks.Priestess.name].romance || isFork;
     },
-    upgrade: function ({ currentStats, currentLinks }) {
-      const newLinks = socialLinks.Priestess.calculate(
-        currentLinks[socialLinks.Priestess.name]
-      );
+    upgrade: function ({ currentStats, currentLinks, arcanes }) {
+      const multiplier = arcanes.includes(socialLinks.Priestess.name)
+        ? 1.51
+        : 1;
+      const newLinks = socialLinks.Priestess.calculate({
+        ...currentLinks[socialLinks.Priestess.name],
+        multiplier,
+      });
       return {
         links: {
           ...currentLinks,
@@ -580,10 +560,14 @@ export const events = {
         previousDay.links[socialLinks.Priestess.name].level === 6;
       return currentLinks[socialLinks.Priestess.name].romance || isFork;
     },
-    upgrade: function ({ currentStats, currentLinks }) {
+    upgrade: function ({ currentStats, currentLinks, arcanes }) {
+      const multiplier = arcanes.includes(socialLinks.Priestess.name)
+        ? 1.51
+        : 1;
       const newLinks = socialLinks.Priestess.calculate({
         ...currentLinks[socialLinks.Priestess.name],
         romance: true,
+        multiplier,
       });
       return {
         links: {
