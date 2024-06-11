@@ -651,6 +651,222 @@ export const socialLinks = {
       },
     ],
   },
+  Hierophant: {
+    name: "Hierophant",
+    calculate: function ({ level, points, multiplier = 1 }) {
+      const isNewlevel =
+        level < this.levels.length && points >= this.levels[level].points;
+      return {
+        Hierophant: {
+          level: isNewlevel ? level + 1 : level,
+          points: isNewlevel
+            ? this.levels[level].maxPoints * multiplier
+            : points + 10 * multiplier,
+        },
+      };
+    },
+    levels: [
+      {
+        points: 0,
+        maxPoints: 0,
+        element: () => null,
+      },
+      {
+        points: 0,
+        maxPoints: 20,
+        element: () => (
+          <div>
+            <ChoicesEvent label="What was your name again?">
+              <Choice label="Tell him your name." ok />
+              <Choice label="..." />
+            </ChoicesEvent>
+            <ChoicesEvent label="Someone gave them to me, but I have more than enough. Go ahead and take it, Makoto-chan.">
+              <Choice label="Thank you." correct />
+              <Choice label="I'm okay, thanks." />
+            </ChoicesEvent>
+            <ChoicesEvent label="We have so many, my wife and I would take forever to finish them all.">
+              <Choice label="I'd like that." />
+              <Choice label="No, thank you." />
+            </ChoicesEvent>
+            <ChoicesEvent label="He should be here helping customers... Sorry about that, Makoto-chan.">
+              <Choice label="Boy?" />
+              <Choice label="No need to apologize." />
+            </ChoicesEvent>
+            <ChoicesEvent label="Oh, my dear, he's...">
+              <Choice label="He's what?" />
+              <Choice label="What's this about?" />
+            </ChoicesEvent>
+          </div>
+        ),
+      },
+      {
+        points: 0,
+        maxPoints: 20,
+        element: () => (
+          <div>
+            <ChoicesEvent label="I don't see it anywhere...">
+              <Choice label="Looking for something?" ok />
+              <Choice label="Cleaning the store?" />
+            </ChoicesEvent>
+            <ChoicesEvent label="I'm looking for my glasses-Er, not my glasses - my wallet! I can't seem to find it.">
+              <Choice label="Best of luck." />
+              <Choice label="Can I help?" correct />
+            </ChoicesEvent>
+            <ChoicesEvent label="I am one as well! I am a student at Gekkoukan!">
+              <Choice label="Nice to meet you." />
+              <Choice label="...Who are you?" />
+            </ChoicesEvent>
+            <ChoicesEvent label="But you can call me 'Bebe'! It's quite nice to meet you!">
+              <Choice label="Nice to meet you." />
+              <Choice label="......" />
+            </ChoicesEvent>
+            <ChoicesEvent label="Why must you get into a car...? Do you want me to end up all alone!?">
+              <Choice label="What's this about a car?" />
+              <Choice label="All alone?" />
+            </ChoicesEvent>
+            <ChoicesEvent label="On his way home from work, he got into an accident... He was hit by a dump truck driver who was drunk on the job...">
+              <Choice label="I'm sorry to hear that." />
+              <Choice label="That's terrible luck." />
+            </ChoicesEvent>
+          </div>
+        ),
+      },
+      {
+        points: 20,
+        maxPoints: 20,
+        element: () => (
+          <div>
+            <ChoicesEvent label="My wife just headed out to Gekkoukan.">
+              <Choice label="I should go too." correct />
+              <Choice label="I'll wait here." ok />
+            </ChoicesEvent>
+            <ChoicesEvent label="The... The... The tree...">
+              <Choice label="Ask what happened" />
+              <Choice label="Remain silent" />
+            </ChoicesEvent>
+            <ChoicesEvent label="">
+              <Choice label="Do you know anything about this, Makoto-chan?" />
+              <Choice label="No, I don't." />
+              <Choice label="I'm worried." ok />
+            </ChoicesEvent>
+          </div>
+        ),
+      },
+      {
+        points: 20,
+        maxPoints: 10,
+        element: () => (
+          <div>
+            <ChoicesEvent label="We've been feeling a bit guilty for troubling you about the persimmon tree...">
+              <Choice label="I wouldn't worry about it." ok />
+              <Choice label="What tree?" />
+            </ChoicesEvent>
+            <ChoicesEvent label="Why now? Why do they want to cut it down now...?">
+              <Choice label="Cheer up." ok />
+              <Choice label="It'll be okay." ok />
+            </ChoicesEvent>
+          </div>
+        ),
+      },
+      {
+        points: 20,
+        maxPoints: 15,
+        element: () => (
+          <div>
+            <ChoicesEvent label="If we lose that tree... it would be like losing our son all over again...">
+              <Choice label="You're overthinking it." />
+              <Choice label="Please don't fight." correct />
+            </ChoicesEvent>
+            <ChoicesEvent label="Unfortunately, that just reminded my dear the pain we felt the day our son died...">
+              <Choice label="Cheer up." />
+              <Choice label="I'm sure it'll be okay." />
+            </ChoicesEvent>
+          </div>
+        ),
+      },
+      {
+        points: 20,
+        maxPoints: 15,
+        element: () => (
+          <div>
+            <ChoicesEvent label="Ah...">
+              <Choice label="What happened?" ok />
+              <Choice label="Are you fighting again?" />
+            </ChoicesEvent>
+            <ChoicesEvent label="They say the tree is a memorial to their former teacher... They don't want it to be cut down.">
+              <Choice label="The tree? A memorial?" />
+              <Choice label="That's great." ok />
+            </ChoicesEvent>
+            <ChoicesEvent label="You must be the one who called on them for this, right, Makoto-chan?">
+              <Choice label="No." ok />
+              <Choice label="That's right." ok />
+              <Choice label="What are you talking about?" ok />
+            </ChoicesEvent>
+          </div>
+        ),
+      },
+      {
+        points: 20,
+        maxPoints: 20,
+        element: () => (
+          <div>
+            <ChoicesEvent label="Who do you think it was? Here's a hint: 'signature.'">
+              <Choice label="A petitioner?" />
+              <Choice label="A fan of yours?" ok />
+            </ChoicesEvent>
+            <ChoicesEvent label="He's already gathered a number of signatures from students who were in our son's class.">
+              <Choice label="That's great." />
+              <Choice label="That's amazing." />
+            </ChoicesEvent>
+            <ChoicesEvent label="I have to tell my son the good news!">
+              <Choice label="Sure, let's go." correct />
+              <Choice label="Right now?" />
+            </ChoicesEvent>
+          </div>
+        ),
+      },
+      {
+        points: 5,
+        maxPoints: 20,
+        element: () => (
+          <div>
+            <ChoicesEvent label="What? is that surprising? I'm actually quite the net surfer, you know!">
+              <Choice label="What does the letter say?" ok />
+              <Choice label="Why a letter?" ok />
+            </ChoicesEvent>
+            <ChoicesEvent label="Are you curious about the letter? Excited, perhaps? Even exhilerated?">
+              <Choice label="Excited." />
+              <Choice label="Exhilerated." />
+            </ChoicesEvent>
+          </div>
+        ),
+      },
+      {
+        points: 30,
+        maxPoints: 15,
+        element: () => (
+          <div>
+            <ChoicesEvent label="Bunkichi is sleep talking. Looks like he's taking a nap.">
+              <Choice label="Take a closer look." />
+              <Choice label="Leave him alone." />
+            </ChoicesEvent>
+            <ChoicesEvent label="It's the middle of the day, but I feel awfully sleepy.">
+              <Choice label="What matter?" />
+              <Choice label="Why are you relieved?" />
+            </ChoicesEvent>
+            <ChoicesEvent label="We asked them to go ahead and cut the persimmon tree down.">
+              <Choice label="But.. why?" correct />
+              <Choice label="Oh well." />
+            </ChoicesEvent>
+            <ChoicesEvent label="He was a teacher after all.">
+              <Choice label="That's true." />
+              <Choice label="Are you really sure?" />
+            </ChoicesEvent>
+          </div>
+        ),
+      },
+    ],
+  },
 };
 
 const a = {

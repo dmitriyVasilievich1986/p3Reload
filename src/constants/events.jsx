@@ -600,4 +600,28 @@ export const events = {
       };
     },
   },
+  Hierophant: {
+    name: "Hierophant",
+    category: "links",
+    label: () => <h3 style={{ textAlign: "center" }}>Hierophant</h3>,
+    available: () => {
+      return true;
+    },
+    upgrade: function ({ currentStats, currentLinks, arcanes }) {
+      const multiplier = arcanes.includes(socialLinks.Hierophant.name)
+        ? 1.51
+        : 1;
+      const newLinks = socialLinks.Hierophant.calculate({
+        ...currentLinks[socialLinks.Hierophant.name],
+        multiplier,
+      });
+      return {
+        links: {
+          ...currentLinks,
+          ...newLinks,
+        },
+        stats: { ...currentStats },
+      };
+    },
+  },
 };
