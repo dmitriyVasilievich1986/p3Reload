@@ -714,4 +714,28 @@ export const events = {
       };
     },
   },
+  Temperance: {
+    name: "Temperance",
+    category: "links",
+    label: () => <h3 style={{ textAlign: "center" }}>Temperance</h3>,
+    available: () => {
+      return true;
+    },
+    upgrade: function ({ currentStats, currentLinks, arcanes }) {
+      const multiplier = arcanes.includes(socialLinks.Temperance.name)
+        ? 1.51
+        : 1;
+      const newLinks = socialLinks.Temperance.calculate({
+        ...currentLinks[socialLinks.Temperance.name],
+        multiplier,
+      });
+      return {
+        links: {
+          ...currentLinks,
+          ...newLinks,
+        },
+        stats: { ...currentStats },
+      };
+    },
+  },
 };

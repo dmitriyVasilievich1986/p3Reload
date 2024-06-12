@@ -1555,6 +1555,171 @@ export const socialLinks = {
       },
     ],
   },
+  Temperance: {
+    name: "Temperance",
+    calculate: function ({ level, points, multiplier = 1 }) {
+      const isNewlevel =
+        level < this.levels.length && points >= this.levels[level].points;
+      return {
+        Temperance: {
+          level: isNewlevel ? level + 1 : level,
+          points: isNewlevel
+            ? this.levels[level].maxPoints * multiplier
+            : points + 10 * multiplier,
+        },
+      };
+    },
+    levels: [
+      {
+        points: 0,
+        maxPoints: 0,
+        element: () => null,
+      },
+      {
+        points: 0,
+        maxPoints: 20,
+        element: () => (
+          <div>
+            <ChoicesEvent label="It will be my first time going, Will you maybe, how do you say, show me the ropes?">
+              <Choice label="Sure, let's go." ok />
+              <Choice label="You like sweets?" />
+              <Choice label="There's nothing to show." correct />
+            </ChoicesEvent>
+            <ChoicesEvent label="I love the culture of Nihon! Japan sugoi-amazing!">
+              <Choice label="I totally agree." correct />
+              <Choice label="What about your country?" />
+              <Choice label="It's not that great.	" />
+            </ChoicesEvent>
+          </div>
+        ),
+      },
+      {
+        points: 0,
+        maxPoints: 20,
+        element: () => (
+          <div>
+            <ChoicesEvent label="You have gotten much better at this, Makoto-dono! Subarashii-wonderful!">
+              <Choice label="I can do better." />
+              <Choice label="Thanks." ok />
+            </ChoicesEvent>
+            <ChoicesEvent label="I would like to make something Japanese, but what?">
+              <Choice label="What do you like?" />
+              <Choice label="Why not western clothes?" />
+              <Choice label="How about a kimono?" correct />
+            </ChoicesEvent>
+          </div>
+        ),
+      },
+      {
+        points: 15,
+        maxPoints: 15,
+        element: () => (
+          <div>
+            <ChoicesEvent label="......">
+              <Choice label="How come you're not working?" />
+              <Choice label="Should we stop for today?" />
+              <Choice label="Are you alright?" correct />
+            </ChoicesEvent>
+            <ChoicesEvent label="She was taken by the angels!">
+              <Choice label="What happened?" />
+              <Choice label="Calm down." />
+              <Choice label="That's terrible..." />
+            </ChoicesEvent>
+          </div>
+        ),
+      },
+      {
+        points: 15,
+        maxPoints: 10,
+        element: () => (
+          <div>
+            <ChoicesEvent label="Could we go somewhere to eat after this?">
+              <Choice label="Sure." ok />
+              <Choice label="Why?" />
+            </ChoicesEvent>
+            <ChoicesEvent label="I might never come back to Japan again!">
+              <Choice label="You have to accept it." />
+              <Choice label="Just stay in Japan!" ok />
+            </ChoicesEvent>
+          </div>
+        ),
+      },
+      {
+        points: 15,
+        maxPoints: 25,
+        element: () => (
+          <div>
+            <ChoicesEvent label="I have barely sewn anything at all.">
+              <Choice label="What's wrong?" />
+              <Choice label="Why not take a break?" ok />
+            </ChoicesEvent>
+            <ChoicesEvent label="Will you go to Azuki Arai with moi?">
+              <Choice label="Let's do it." ok />
+              <Choice label="Just one minute." />
+            </ChoicesEvent>
+            <ChoicesEvent label="I want to stay here in Japan even if I have to eat dirt!">
+              <Choice label="I have your back!" correct />
+              <Choice label="What will you do?" />
+            </ChoicesEvent>
+          </div>
+        ),
+      },
+      {
+        points: 15,
+        maxPoints: 15,
+        element: () => (
+          <div>
+            <ChoicesEvent label="I will show him a kimono! When he sees it, he will understand the beauty of Nihon!">
+              <Choice label="Will that be enough?" />
+              <Choice label="That's a great idea." correct />
+            </ChoicesEvent>
+          </div>
+        ),
+      },
+      {
+        points: 10,
+        maxPoints: 15,
+        element: () => (
+          <div>
+            <ChoicesEvent label="When my uncle sees this, I know he'll agree with me about how great Nihon is!">
+              <Choice label="When will it be done?" />
+              <Choice label="He'll definitely agree!" correct />
+              <Choice label="Less talk, more work." />
+            </ChoicesEvent>
+          </div>
+        ),
+      },
+      {
+        points: 22,
+        maxPoints: 15,
+        element: () => (
+          <div>
+            <ChoicesEvent label="And thanks to all your help, the kimono is almost finished! I feel so blessed.">
+              <Choice label="Congrats!" ok />
+              <Choice label="Aren't you homesick?" correct />
+              <Choice label="Don't forget, you owe me." />
+            </ChoicesEvent>
+          </div>
+        ),
+      },
+      {
+        points: 22,
+        maxPoints: 30,
+        element: () => (
+          <div>
+            <ChoicesEvent label="At last, it is fini!">
+              <Choice label="How does it look?" correct />
+              <Choice label="Great Work!" correct />
+            </ChoicesEvent>
+            <ChoicesEvent label="They are the times I spend with you, my tomodachi.">
+              <Choice label="I'll be waiting for you." correct />
+              <Choice label="Good luck out there." correct />
+            </ChoicesEvent>
+          </div>
+        ),
+      },
+    ],
+  },
 };
 
 const a = {

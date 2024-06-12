@@ -17,6 +17,7 @@ const initialLinks = {
   [socialLinks.Hermit.name]: { level: 0, points: 0, multiplier: 1 },
   [socialLinks.Fortune.name]: { level: 0, points: 0, multiplier: 1 },
   [socialLinks.HangedMan.name]: { level: 0, points: 0, multiplier: 1 },
+  [socialLinks.Temperance.name]: { level: 0, points: 0, multiplier: 1 },
   [socialLinks.Priestess.name]: {
     level: 0,
     points: 0,
