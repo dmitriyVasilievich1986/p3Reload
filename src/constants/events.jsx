@@ -668,4 +668,26 @@ export const events = {
       };
     },
   },
+  Fortune: {
+    name: "Fortune",
+    category: "links",
+    label: () => <h3 style={{ textAlign: "center" }}>Fortune</h3>,
+    available: () => {
+      return true;
+    },
+    upgrade: function ({ currentStats, currentLinks, arcanes }) {
+      const multiplier = arcanes.includes(socialLinks.Fortune.name) ? 1.51 : 1;
+      const newLinks = socialLinks.Fortune.calculate({
+        ...currentLinks[socialLinks.Fortune.name],
+        multiplier,
+      });
+      return {
+        links: {
+          ...currentLinks,
+          ...newLinks,
+        },
+        stats: { ...currentStats },
+      };
+    },
+  },
 };

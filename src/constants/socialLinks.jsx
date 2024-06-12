@@ -1205,6 +1205,184 @@ export const socialLinks = {
       },
     ],
   },
+  Fortune: {
+    name: "Fortune",
+    calculate: function ({ level, points, multiplier = 1 }) {
+      const isNewlevel =
+        level < this.levels.length && points >= this.levels[level].points;
+      return {
+        Fortune: {
+          level: isNewlevel ? level + 1 : level,
+          points: isNewlevel
+            ? this.levels[level].maxPoints * multiplier
+            : points + 10 * multiplier,
+        },
+      };
+    },
+    levels: [
+      {
+        points: 0,
+        maxPoints: 0,
+        element: () => null,
+      },
+      {
+        points: 0,
+        maxPoints: 0,
+        element: () => (
+          <div>
+            <ChoicesEvent label="...!">
+              <Choice label="What's wrong?" />
+              <Choice label="Do you need some rest?" />
+            </ChoicesEvent>
+            <ChoicesEvent label="Yamagishi-san won't be going anywhere for a while.">
+              <Choice label="“Strikes again”?" />
+              <Choice label="Is that a problem?" />
+            </ChoicesEvent>
+          </div>
+        ),
+      },
+      {
+        points: 0,
+        maxPoints: 15,
+        element: () => (
+          <div>
+            <ChoicesEvent label="It really helped apply the paint to the canvas, so I'm sure that's the only reason the judges even noticed.">
+              <Choice label="You've got talent!" correct />
+              <Choice label="You got lucky." />
+            </ChoicesEvent>
+            <ChoicesEvent label="I recommend adding more shellfish to your diet, like oyster and abalone. They're packed with iron and easy to cook.">
+              <Choice label="Good work, Doc Junior." />
+              <Choice label="Will he be okay?" />
+            </ChoicesEvent>
+          </div>
+        ),
+      },
+      {
+        points: 15,
+        maxPoints: 20,
+        element: () => (
+          <div>
+            <ChoicesEvent label="Did you... hear everything?">
+              <Choice label="You're quitting art club?" ok />
+              <Choice label="You're pulling out of the contest?" ok />
+            </ChoicesEvent>
+            <ChoicesEvent label="I have my own dreams too, you know! Ugh, I can't stand it anymore!">
+              <Choice label="Complaining to me won't help you." correct />
+              <Choice label="So you're just gonna take it?" ok />
+            </ChoicesEvent>
+          </div>
+        ),
+      },
+      {
+        points: 15,
+        maxPoints: 15,
+        element: () => (
+          <div>
+            <ChoicesEvent label="Wait. Then... that means...">
+              <Choice label="You should tell your dad." correct />
+              <Choice label="Now you don't have to quit." ok />
+            </ChoicesEvent>
+          </div>
+        ),
+      },
+      {
+        points: 15,
+        maxPoints: 15,
+        element: () => (
+          <div>
+            <ChoicesEvent label="Everyone is working so hard...">
+              <Choice label="So are you." />
+              <Choice label="What's the matter?" />
+            </ChoicesEvent>
+            <ChoicesEvent label="I just don't know what to think.">
+              <Choice label="Will you study abroad?" />
+              <Choice label="It's your choice now." correct />
+            </ChoicesEvent>
+          </div>
+        ),
+      },
+      {
+        points: 15,
+        maxPoints: 15,
+        element: () => (
+          <div>
+            <ChoicesEvent label="It's like he's suddenly trying to be more understanding. It's weird.">
+              <Choice label="Do you want to be a doctor?" correct />
+              <Choice label="Don't you like art club?" />
+            </ChoicesEvent>
+          </div>
+        ),
+      },
+      {
+        points: 15,
+        maxPoints: 15,
+        element: () => (
+          <div>
+            <ChoicesEvent label="Can you remember my name?">
+              <Choice label="It's okay, I'm fine." correct />
+              <Choice label="Of course. It's Keisuke." />
+              <Choice label="......" />
+            </ChoicesEvent>
+            <ChoicesEvent label="A-Anyway, do you remember what happened?">
+              <Choice label="I do." />
+              <Choice label="I don't." />
+            </ChoicesEvent>
+            <ChoicesEvent label="I'm not a doctor.">
+              <Choice label="Do you think you want to be one?" />
+              <Choice label="Don't beat yourself up for it." />
+            </ChoicesEvent>
+          </div>
+        ),
+      },
+      {
+        points: 22,
+        maxPoints: 15,
+        element: () => (
+          <div>
+            <ChoicesEvent label="Tell the others I said goodbye!">
+              <Choice label="You can't go!" correct />
+              <Choice label="Good luck!" />
+            </ChoicesEvent>
+            <ChoicesEvent label="Ma'am, are you all right!? That cough...">
+              <Choice label="What happened?" />
+              <Choice label="...You should just go." />
+            </ChoicesEvent>
+            <ChoicesEvent label="My train's about to leave... Wh-What should I do...?">
+              <Choice label="Leave this to me!" />
+              <Choice label="You can't abandon your trip!" />
+            </ChoicesEvent>
+            <ChoicesEvent label="How should I help him?">
+              <Choice label="Better leave him alone." />
+              <Choice label="I should talk to him." />
+              <Choice label="I'll try patting his upper back." />
+            </ChoicesEvent>
+            <ChoicesEvent label="What should I do next?">
+              <Choice label="Better leave him alone." />
+              <Choice label="I could rub his back." />
+              <Choice label="I'll lay him on his back." />
+            </ChoicesEvent>
+          </div>
+        ),
+      },
+      {
+        points: 22,
+        maxPoints: 30,
+        element: () => (
+          <div>
+            <ChoicesEvent label="That's why I want you to have it.">
+              <Choice label="I understand." correct />
+              <Choice label="Why?" correct />
+              <Choice label="Stop relying on others." correct />
+            </ChoicesEvent>
+            <ChoicesEvent label="I-I'm not coming off as arrogant, am I?">
+              <Choice label="No, not really." correct />
+              <Choice label="Yeah." correct />
+            </ChoicesEvent>
+          </div>
+        ),
+      },
+    ],
+  },
 };
 
 const a = {
