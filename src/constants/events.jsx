@@ -646,4 +646,26 @@ export const events = {
       };
     },
   },
+  Hermit: {
+    name: "Hermit",
+    category: "links",
+    label: () => <h3 style={{ textAlign: "center" }}>Hermit</h3>,
+    available: () => {
+      return true;
+    },
+    upgrade: function ({ currentStats, currentLinks, arcanes }) {
+      const multiplier = arcanes.includes(socialLinks.Hermit.name) ? 1.51 : 1;
+      const newLinks = socialLinks.Hermit.calculate({
+        ...currentLinks[socialLinks.Hermit.name],
+        multiplier,
+      });
+      return {
+        links: {
+          ...currentLinks,
+          ...newLinks,
+        },
+        stats: { ...currentStats },
+      };
+    },
+  },
 };

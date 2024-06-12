@@ -1032,6 +1032,179 @@ export const socialLinks = {
       },
     ],
   },
+  Hermit: {
+    name: "Hermit",
+    calculate: function ({ level, points, multiplier = 1 }) {
+      const isNewlevel =
+        level < this.levels.length && points >= this.levels[level].points;
+      return {
+        Hermit: {
+          level: isNewlevel ? level + 1 : level,
+          points: isNewlevel
+            ? this.levels[level].maxPoints * multiplier
+            : points + 10 * multiplier,
+        },
+      };
+    },
+    levels: [
+      {
+        points: 0,
+        maxPoints: 0,
+        element: () => null,
+      },
+      {
+        points: 0,
+        maxPoints: 20,
+        element: () => (
+          <div>
+            <ChoicesEvent label="u remember me rite? =/">
+              <Choice label="Of course." correct />
+              <Choice label="...Have we met?" />
+            </ChoicesEvent>
+            <ChoicesEvent label="hmmm… what kinda people r we, playing inside on such a beautiful day?">
+              <Choice label="Don't you like video games?" />
+              <Choice label="Sunshine is overrated." correct />
+              <Choice label="Guess we're loners." />
+            </ChoicesEvent>
+          </div>
+        ),
+      },
+      {
+        points: 0,
+        maxPoints: 20,
+        element: () => (
+          <div>
+            <ChoicesEvent label="so ummmmm…… i'm drunk! xD">
+              <Choice label="Oh really?! o_O" correct />
+              <Choice label="Are you an adult?" />
+            </ChoicesEvent>
+            <ChoicesEvent label="but lately i cant get motivated to get ne work done @ work. =/">
+              <Choice label="You don't like your job?" correct />
+              <Choice label="Are you burned out?" />
+            </ChoicesEvent>
+          </div>
+        ),
+      },
+      {
+        points: 20,
+        maxPoints: 15,
+        element: () => (
+          <div>
+            <ChoicesEvent label="Its like all she cares about is marrying me to some dude >=/ whys it her problem?">
+              <Choice label="Don't wanna get married?" />
+              <Choice label="You'll need a boyfriend first." />
+              <Choice label="Let's plan our wedding, then." correct />
+            </ChoicesEvent>
+          </div>
+        ),
+      },
+      {
+        points: 20,
+        maxPoints: 30,
+        element: () => (
+          <div>
+            <ChoicesEvent label="Mr. E is such a stupid eh so bee!! t(-_-t)">
+              <Choice label="Who's Mr. E?" />
+              <Choice label="Are you drunk again?" />
+              <Choice label="Do you mean S.O.B.?" correct />
+            </ChoicesEvent>
+            <ChoicesEvent label="…oh noes! u can't figure out what my job is can u? O_o?">
+              <Choice label="A drunken master?" />
+              <Choice label="Maya's a reporter, right?" />
+              <Choice label="Are you a teacher?" correct />
+            </ChoicesEvent>
+          </div>
+        ),
+      },
+      {
+        points: 20,
+        maxPoints: 15,
+        element: () => (
+          <div>
+            <ChoicesEvent label="actually, i only went cuz i was so pissed at that bastard! >=/">
+              <Choice label="Calm down." />
+              <Choice label="What bastard?" correct />
+            </ChoicesEvent>
+          </div>
+        ),
+      },
+      {
+        points: 20,
+        maxPoints: 20,
+        element: () => (
+          <div>
+            <ChoicesEvent label="…do men only want younger women? be honest ・_・">
+              <Choice label="What are you talking about?" />
+              <Choice label="Age isn't the point." ok />
+              <Choice label="Well, yeah." />
+            </ChoicesEvent>
+            <ChoicesEvent label="she even stuffs her bra!! lol">
+              <Choice label="She, um… what?" ok />
+              <Choice label="Calm down." />
+            </ChoicesEvent>
+          </div>
+        ),
+      },
+      {
+        points: 20,
+        maxPoints: 20,
+        element: () => (
+          <div>
+            <ChoicesEvent label="oh noes… now i'm starting to get sweaty =/">
+              <Choice label="Are you talking to yourself?" />
+              <Choice label="Hurry up and tell me." correct />
+            </ChoicesEvent>
+            <ChoicesEvent label="that's kinda crazy even for me >_>;">
+              <Choice label="What is he like?" ok />
+              <Choice label="Are you gonna ask him out?" />
+            </ChoicesEvent>
+          </div>
+        ),
+      },
+      {
+        points: 20,
+        maxPoints: 10,
+        element: () => (
+          <div>
+            <ChoicesEvent label="it said their canceling innocent sin. …think its for real?!">
+              <Choice label="Not much we can do." />
+              <Choice label="No way!" ok />
+              <Choice label="Whatever, I guess." />
+            </ChoicesEvent>
+            <ChoicesEvent label="tatsuya... do u think we'll still be able to see each other? T_T">
+              <Choice label="I think so." />
+              <Choice label="No, this is the end." />
+              <Choice label="Don't worry about that." />
+            </ChoicesEvent>
+            <ChoicesEvent label="maya's not goin quietly! >=/ i'll beat them to the punch!">
+              <Choice label="What are you planning?" ok />
+              <Choice label="This won't change anything." />
+            </ChoicesEvent>
+          </div>
+        ),
+      },
+      {
+        points: 20,
+        maxPoints: 25,
+        element: () => (
+          <div>
+            <ChoicesEvent label="…i should apologize">
+              <Choice label="About what?" />
+              <Choice label="Oh, no worries." correct />
+            </ChoicesEvent>
+            <ChoicesEvent label="i dun think i will...">
+              <Choice label="Now they'll end it for sure." />
+              <Choice label="Is that why you're sorry?" />
+            </ChoicesEvent>
+            <ChoicesEvent label="im thinkin bout quittin the MMO today. i… dun think i'll c u again T_T">
+              <Choice label="This is sudden..." />
+              <Choice label="I'll miss you." correct />
+            </ChoicesEvent>
+          </div>
+        ),
+      },
+    ],
+  },
 };
 
 const a = {
