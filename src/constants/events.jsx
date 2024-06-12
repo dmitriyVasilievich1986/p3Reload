@@ -738,4 +738,26 @@ export const events = {
       };
     },
   },
+  Devil: {
+    name: "Devil",
+    category: "links",
+    label: () => <h3 style={{ textAlign: "center" }}>Devil</h3>,
+    available: () => {
+      return true;
+    },
+    upgrade: function ({ currentStats, currentLinks, arcanes }) {
+      const multiplier = arcanes.includes(socialLinks.Devil.name) ? 1.51 : 1;
+      const newLinks = socialLinks.Devil.calculate({
+        ...currentLinks[socialLinks.Devil.name],
+        multiplier,
+      });
+      return {
+        links: {
+          ...currentLinks,
+          ...newLinks,
+        },
+        stats: { ...currentStats },
+      };
+    },
+  },
 };

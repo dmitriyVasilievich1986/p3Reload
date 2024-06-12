@@ -1720,6 +1720,109 @@ export const socialLinks = {
       },
     ],
   },
+  Devil: {
+    name: "Devil",
+    calculate: function ({ level, points, multiplier = 1 }) {
+      const isNewlevel =
+        level < this.levels.length && points >= this.levels[level].points;
+      return {
+        Devil: {
+          level: isNewlevel ? level + 1 : level,
+          points: isNewlevel
+            ? this.levels[level].maxPoints * multiplier
+            : points + 10 * multiplier,
+        },
+      };
+    },
+    levels: [
+      {
+        points: 0,
+        maxPoints: 0,
+        element: () => null,
+      },
+      {
+        points: 0,
+        maxPoints: 0,
+        element: () => (
+          <div>
+            <h4>Any</h4>
+          </div>
+        ),
+      },
+      {
+        points: 0,
+        maxPoints: 0,
+        element: () => (
+          <div>
+            <h4>Any</h4>
+          </div>
+        ),
+      },
+      {
+        points: 0,
+        maxPoints: 0,
+        element: () => (
+          <div>
+            <h4>Any</h4>
+          </div>
+        ),
+      },
+      {
+        points: 0,
+        maxPoints: 0,
+        element: () => (
+          <div>
+            <h4>Any</h4>
+          </div>
+        ),
+      },
+      {
+        points: 0,
+        maxPoints: 0,
+        element: () => (
+          <div>
+            <h4>Any</h4>
+          </div>
+        ),
+      },
+      {
+        points: 0,
+        maxPoints: 0,
+        element: () => (
+          <div>
+            <h4>Any</h4>
+          </div>
+        ),
+      },
+      {
+        points: 0,
+        maxPoints: 0,
+        element: () => (
+          <div>
+            <h4>Any</h4>
+          </div>
+        ),
+      },
+      {
+        points: 0,
+        maxPoints: 0,
+        element: () => (
+          <div>
+            <h4>Any</h4>
+          </div>
+        ),
+      },
+      {
+        points: 0,
+        maxPoints: 0,
+        element: () => (
+          <div>
+            <h4>Any</h4>
+          </div>
+        ),
+      },
+    ],
+  },
 };
 
 const a = {
