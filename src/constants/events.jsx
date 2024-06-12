@@ -690,4 +690,28 @@ export const events = {
       };
     },
   },
+  HangedMan: {
+    name: "HangedMan",
+    category: "links",
+    label: () => <h3 style={{ textAlign: "center" }}>Hanged Man</h3>,
+    available: () => {
+      return true;
+    },
+    upgrade: function ({ currentStats, currentLinks, arcanes }) {
+      const multiplier = arcanes.includes(socialLinks.HangedMan.name)
+        ? 1.51
+        : 1;
+      const newLinks = socialLinks.HangedMan.calculate({
+        ...currentLinks[socialLinks.HangedMan.name],
+        multiplier,
+      });
+      return {
+        links: {
+          ...currentLinks,
+          ...newLinks,
+        },
+        stats: { ...currentStats },
+      };
+    },
+  },
 };

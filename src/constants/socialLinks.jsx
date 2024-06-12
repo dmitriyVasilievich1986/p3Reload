@@ -1383,6 +1383,178 @@ export const socialLinks = {
       },
     ],
   },
+  HangedMan: {
+    name: "HangedMan",
+    calculate: function ({ level, points, multiplier = 1 }) {
+      const isNewlevel =
+        level < this.levels.length && points >= this.levels[level].points;
+      return {
+        HangedMan: {
+          level: isNewlevel ? level + 1 : level,
+          points: isNewlevel
+            ? this.levels[level].maxPoints * multiplier
+            : points + 10 * multiplier,
+        },
+      };
+    },
+    levels: [
+      {
+        points: 0,
+        maxPoints: 0,
+        element: () => null,
+      },
+      {
+        points: 0,
+        maxPoints: 15,
+        element: () => (
+          <div>
+            <ChoicesEvent label="My tummy's grumbling! Can we go to Wilduck?">
+              <Choice label="Sure, let's go." correct />
+              <Choice label="Let's keep playing." />
+            </ChoicesEvent>
+            <ChoicesEvent label="Why would they get a divorce?">
+              <Choice label="They fell out of love." />
+              <Choice label="It's probably your fault." />
+              <Choice label="I don't know." />
+            </ChoicesEvent>
+            <ChoicesEvent label="...She's sobbing loudly. What should I do?">
+              <Choice label="Calm her down" />
+              <Choice label="Wait for her to finish." />
+            </ChoicesEvent>
+          </div>
+        ),
+      },
+      {
+        points: 0,
+        maxPoints: 15,
+        element: () => (
+          <div>
+            <ChoicesEvent label="...And who are you?">
+              <Choice label="I'm Maiko's friend." />
+              <Choice label="Just a random passerby." />
+            </ChoicesEvent>
+            <ChoicesEvent label="Do you think he'll come home and see me?">
+              <Choice label="He'll probably forget." />
+              <Choice label="I really can't say." />
+              <Choice label="Don't worry, he'll be there." correct />
+            </ChoicesEvent>
+          </div>
+        ),
+      },
+      {
+        points: 20,
+        maxPoints: 15,
+        element: () => (
+          <div>
+            <ChoicesEvent label="They really do care about me!">
+              <Choice label="That's great news!" correct />
+              <Choice label="Of course they care." correct />
+              <Choice label="Nah, they don't care." />
+            </ChoicesEvent>
+          </div>
+        ),
+      },
+      {
+        points: 20,
+        maxPoints: 20,
+        element: () => (
+          <div>
+            <ChoicesEvent label="He's so mean. It's not fair!">
+              <Choice label="That's awful." correct />
+              <Choice label="Why would he do that?" />
+            </ChoicesEvent>
+            <ChoicesEvent label="Do they just wish I would disappear?">
+              <Choice label="It's possible." />
+              <Choice label="They would never?" ok />
+            </ChoicesEvent>
+          </div>
+        ),
+      },
+      {
+        points: 20,
+        maxPoints: 20,
+        element: () => (
+          <div>
+            <ChoicesEvent label="I made up my mind! I have to run away from home!">
+              <Choice label="Don't do it." />
+              <Choice label="Calm down." ok />
+              <Choice label="It's up to you." />
+            </ChoicesEvent>
+            <ChoicesEvent label="I'll need lots of snacks, right? And my...insurance card?">
+              <Choice label="That should be enough." correct />
+              <Choice label="It'll take more than that." />
+            </ChoicesEvent>
+          </div>
+        ),
+      },
+      {
+        points: 30,
+        maxPoints: 0,
+        element: () => (
+          <div>
+            <ChoicesEvent label="She's never done anything like this before!">
+              <Choice label="We should look for her." />
+              <Choice label="It's probably your fault." />
+              <Choice label="Just leave her alone." />
+            </ChoicesEvent>
+            <ChoicesEvent label="If you have any idea where she is, I'm begging you to tell us.">
+              <Choice label="Maybe the music store." />
+              <Choice label="Maybe the takoyaki stand." />
+            </ChoicesEvent>
+          </div>
+        ),
+      },
+      {
+        points: 15,
+        maxPoints: 35,
+        element: () => (
+          <div>
+            <ChoicesEvent label="What do you wanna get?">
+              <Choice label="Hamburgers." ok />
+              <Choice label="Japanese food." />
+            </ChoicesEvent>
+            <ChoicesEvent label="It was sad, but I listened to the whole thing. Did I do good?">
+              <Choice label="You're a good girl." correct />
+              <Choice label="Not really." />
+            </ChoicesEvent>
+            <ChoicesEvent label="Who do you think I should pick?">
+              <Choice label="Your dad." correct />
+              <Choice label="Your mom." />
+              <Choice label="You decide." />
+            </ChoicesEvent>
+          </div>
+        ),
+      },
+      {
+        points: 30,
+        maxPoints: 15,
+        element: () => (
+          <div>
+            <ChoicesEvent label="Even if I'm gone... we'll still be friends right?">
+              <Choice label="Friends forever." correct />
+              <Choice label="I might forget about you." />
+            </ChoicesEvent>
+          </div>
+        ),
+      },
+      {
+        points: 15,
+        maxPoints: 15,
+        element: () => (
+          <div>
+            <ChoicesEvent label="Do you think I'll have a family of my own one day?">
+              <Choice label="I'm sure you will." correct />
+              <Choice label="No idea." />
+            </ChoicesEvent>
+            <ChoicesEvent label="Can we get married?">
+              <Choice label="Sure." correct />
+              <Choice label="I'll think about it." />
+            </ChoicesEvent>
+          </div>
+        ),
+      },
+    ],
+  },
 };
 
 const a = {
