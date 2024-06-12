@@ -760,4 +760,26 @@ export const events = {
       };
     },
   },
+  Sun: {
+    name: "Sun",
+    category: "links",
+    label: () => <h3 style={{ textAlign: "center" }}>Sun</h3>,
+    available: () => {
+      return true;
+    },
+    upgrade: function ({ currentStats, currentLinks, arcanes }) {
+      const multiplier = arcanes.includes(socialLinks.Sun.name) ? 1.51 : 1;
+      const newLinks = socialLinks.Sun.calculate({
+        ...currentLinks[socialLinks.Sun.name],
+        multiplier,
+      });
+      return {
+        links: {
+          ...currentLinks,
+          ...newLinks,
+        },
+        stats: { ...currentStats },
+      };
+    },
+  },
 };
