@@ -782,4 +782,26 @@ export const events = {
       };
     },
   },
+  Tower: {
+    name: "Tower",
+    category: "links",
+    label: () => <h3 style={{ textAlign: "center" }}>Tower</h3>,
+    available: () => {
+      return true;
+    },
+    upgrade: function ({ currentStats, currentLinks, arcanes }) {
+      const multiplier = arcanes.includes(socialLinks.Tower.name) ? 1.51 : 1;
+      const newLinks = socialLinks.Tower.calculate({
+        ...currentLinks[socialLinks.Tower.name],
+        multiplier,
+      });
+      return {
+        links: {
+          ...currentLinks,
+          ...newLinks,
+        },
+        stats: { ...currentStats },
+      };
+    },
+  },
 };

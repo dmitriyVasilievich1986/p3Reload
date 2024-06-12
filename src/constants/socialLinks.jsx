@@ -1926,6 +1926,170 @@ export const socialLinks = {
       },
     ],
   },
+  Tower: {
+    name: "Tower",
+    calculate: function ({ level, points, multiplier = 1 }) {
+      const isNewlevel =
+        level < this.levels.length && points >= this.levels[level].points;
+      return {
+        Tower: {
+          level: isNewlevel ? level + 1 : level,
+          points: isNewlevel
+            ? this.levels[level].maxPoints * multiplier
+            : points + 10 * multiplier,
+        },
+      };
+    },
+    levels: [
+      {
+        points: 0,
+        maxPoints: 0,
+        element: () => null,
+      },
+      {
+        points: 0,
+        maxPoints: 20,
+        element: () => (
+          <div>
+            <ChoicesEvent label="What'cha doin' here today, kid?">
+              <Choice label="I came to see you, old man." />
+              <Choice label="None of your business." correct />
+            </ChoicesEvent>
+            <ChoicesEvent label="You don't have to revere me, but at least show some proper respect.">
+              <Choice label="How should I address you?" ok />
+              <Choice label="Show respect?" />
+            </ChoicesEvent>
+          </div>
+        ),
+      },
+      {
+        points: 0,
+        maxPoints: 15,
+        element: () => (
+          <div>
+            <ChoicesEvent label="How come you're always alone when I see ya? Don'tcha got any friends?">
+              <Choice label="I can't say I don't." />
+              <Choice label="I don't have any friends." correct />
+            </ChoicesEvent>
+          </div>
+        ),
+      },
+      {
+        points: 25,
+        maxPoints: 15,
+        element: () => (
+          <div>
+            <ChoicesEvent label="You should cut it. No, better yet, shave it all off... Give the bald look a try.">
+              <Choice label="Yeah, that might look cool." correct />
+              <Choice label="Yeah, I dunno..." />
+            </ChoicesEvent>
+          </div>
+        ),
+      },
+      {
+        points: 25,
+        maxPoints: 20,
+        element: () => (
+          <div>
+            <ChoicesEvent label="High school kids don't have much money, do they? At least, I never gave much to my son.">
+              <Choice label="I have enough." ok />
+              <Choice label="I am not NOT struggling..." />
+            </ChoicesEvent>
+            <ChoicesEvent label='...And I mean something you can buy with money. Not some crap like "love" or "a sense of humor".'>
+              <Choice label="Yes." ok />
+              <Choice label="No." correct />
+            </ChoicesEvent>
+          </div>
+        ),
+      },
+      {
+        points: 25,
+        maxPoints: 20,
+        element: () => (
+          <div>
+            <ChoicesEvent label="Ugh... I'm in bad shape...">
+              <Choice label="Are you okay?" />
+              <Choice label="You should go home." correct />
+            </ChoicesEvent>
+            <ChoicesEvent label="It's times like these... ah... when it's hardest to be alone...">
+              <Choice label="You live by yourself?" />
+              <Choice label="Do you have any coworkers?" ok />
+            </ChoicesEvent>
+          </div>
+        ),
+      },
+      {
+        points: 30,
+        maxPoints: 15,
+        element: () => (
+          <div>
+            <ChoicesEvent label="...Hey! There's a microphone over there. Bring it over, kid! I'll perform a live sutra reading.">
+              <Choice label="Really?" />
+              <Choice label="You probably shouldn't..." correct />
+            </ChoicesEvent>
+          </div>
+        ),
+      },
+      {
+        points: 30,
+        maxPoints: 35,
+        element: () => (
+          <div>
+            <ChoicesEvent label="Didn't dad tell you not to do that, huh?">
+              <Choice label="Dad?" correct />
+              <Choice label="It's my first time hearing it." ok />
+              <Choice label="......" />
+            </ChoicesEvent>
+            <ChoicesEvent label="Where the hell were ya wanderin' around? Iss late!">
+              <Choice label="I was with a friend." ok />
+              <Choice label="I was studying." />
+              <Choice label="None of your business." ok />
+            </ChoicesEvent>
+            <ChoicesEvent label="I wonder if they felt the same way I did, when I was waiting for you earlier...">
+              <Choice label="Who's 'they'?" />
+              <Choice label="What're you talking about?" />
+            </ChoicesEvent>
+            <ChoicesEvent label="…Now when I go home, I don't know what to do with myself, so I just come here and drink every night.">
+              <Choice label="Do you miss your family?" />
+              <Choice label="Are you running away?" ok />
+            </ChoicesEvent>
+          </div>
+        ),
+      },
+      {
+        points: 40,
+        maxPoints: 15,
+        element: () => (
+          <div>
+            <ChoicesEvent label="I'm workin' memorial service after memorial service 24/7, as if my little temple was some kinda convenience store...">
+              <Choice label="Why not take a break?" ok />
+              <Choice label="Poor men know no leisure." ok />
+            </ChoicesEvent>
+            <ChoicesEvent label="I've been drinkin' too much lately… Makin' a fool of myself like I did the other day.">
+              <Choice label="Hang in there." ok />
+              <Choice label="Time to retire?" ok />
+            </ChoicesEvent>
+            <ChoicesEvent label="Whaddya think?">
+              <Choice label="What's this about?" ok />
+              <Choice label="I don't really care." ok />
+            </ChoicesEvent>
+          </div>
+        ),
+      },
+      {
+        points: 40,
+        maxPoints: 15,
+        element: () => (
+          <div>
+            <ChoicesEvent label="…Well? How's that sound?">
+              <Choice label="That's awesome!" correct />
+              <Choice label="It's missing something." />
+            </ChoicesEvent>
+          </div>
+        ),
+      },
+    ],
+  },
 };
 
 const a = {

@@ -20,6 +20,7 @@ const initialLinks = {
   [socialLinks.Temperance.name]: { level: 0, points: 0, multiplier: 1 },
   [socialLinks.Devil.name]: { level: 0, points: 0, multiplier: 1 },
   [socialLinks.Sun.name]: { level: 0, points: 0, multiplier: 1 },
+  [socialLinks.Tower.name]: { level: 0, points: 0, multiplier: 1 },
   [socialLinks.Priestess.name]: {
     level: 0,
     points: 0,
