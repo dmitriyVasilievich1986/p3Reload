@@ -867,6 +867,171 @@ export const socialLinks = {
       },
     ],
   },
+  Chariot: {
+    name: "Chariot",
+    calculate: function ({ level, points, multiplier = 1 }) {
+      const isNewlevel =
+        level < this.levels.length && points >= this.levels[level].points;
+      return {
+        Chariot: {
+          level: isNewlevel ? level + 1 : level,
+          points: isNewlevel
+            ? this.levels[level].maxPoints * multiplier
+            : points + 10 * multiplier,
+        },
+      };
+    },
+    levels: [
+      {
+        points: 0,
+        maxPoints: 0,
+        element: () => null,
+      },
+      {
+        points: 0,
+        maxPoints: 5,
+        element: () => (
+          <div>
+            <ChoicesEvent label="M-My side is killing me...">
+              <Choice label="Don't overdo it." />
+              <Choice label="Toughen up!" ok />
+            </ChoicesEvent>
+            <ChoicesEvent label="You don't even look tired... Uh, what kind of training regimen do you have?">
+              <Choice label="Just a normal routine." />
+              <Choice label="A very special routine." />
+            </ChoicesEvent>
+          </div>
+        ),
+      },
+      {
+        points: 0,
+        maxPoints: 10,
+        element: () => (
+          <div>
+            <ChoicesEvent label="Um... My anemia's just acting up...">
+              <Choice label="Sorry, that sounds awful." />
+              <Choice label="Are you going to be okay?" ok />
+            </ChoicesEvent>
+            <ChoicesEvent label="Even if I put medicine on it, or massage it, the pain won't go away.">
+              <Choice label="Will it heal?" correct />
+              <Choice label="Take the day off." />
+            </ChoicesEvent>
+          </div>
+        ),
+      },
+      {
+        points: 15,
+        maxPoints: 15,
+        element: () => (
+          <div>
+            <ChoicesEvent label="Wh-What's up...? I was just gonna sneak into practice...">
+              <Choice label="Where have you been?" />
+              <Choice label="Did you ditch?" />
+            </ChoicesEvent>
+            <ChoicesEvent label="She made the appointment without telling me, so... there was nothing I could do!">
+              <Choice label="How did it go?" />
+              <Choice label="That really sucks." correct />
+            </ChoicesEvent>
+          </div>
+        ),
+      },
+      {
+        points: 15,
+        maxPoints: 20,
+        element: () => (
+          <div>
+            <ChoicesEvent label="Man... I keep running into you at the weirdest times.">
+              <Choice label="Back from the hospital?" ok />
+              <Choice label="You ditched?" />
+            </ChoicesEvent>
+            <ChoicesEvent label="You gotta be kidding... Why can't I... stand up!?">
+              <Choice label="Take my shoulder!" correct />
+              <Choice label="I'll carry you!" ok />
+              <Choice label="I'll go get help!" />
+            </ChoicesEvent>
+          </div>
+        ),
+      },
+      {
+        points: 15,
+        maxPoints: 15,
+        element: () => (
+          <div>
+            <ChoicesEvent label="I want to win so I have to practice.">
+              <Choice label="There's nothing you can do." />
+              <Choice label="Show some guts, man!" ok />
+            </ChoicesEvent>
+            <ChoicesEvent label="I promised I'd win at next year's meet and become the number one athlete in Japan.">
+              <Choice label="You promised?" />
+              <Choice label="Why go so far?" ok />
+            </ChoicesEvent>
+            <ChoicesEvent label="That's why I have to win this meet-so I can make it to nationals!">
+              <Choice label="Do you think you can win?" />
+              <Choice label="What about your knee?" />
+            </ChoicesEvent>
+          </div>
+        ),
+      },
+      {
+        points: 15,
+        maxPoints: 20,
+        element: () => (
+          <div>
+            <ChoicesEvent label="I know you didn't say anything. I just think he can tell something's up.">
+              <Choice label="How's your knee?" ok />
+              <Choice label="Can you fake it?" />
+            </ChoicesEvent>
+            <ChoicesEvent label="Otherwise, I won't be able to keep my promise to my nephew!">
+              <Choice label="You need to get tougher." correct />
+              <Choice label="You can't win like this." />
+              <Choice label="You need to take a break." />
+            </ChoicesEvent>
+          </div>
+        ),
+      },
+      {
+        points: 22,
+        maxPoints: 5,
+        element: () => (
+          <div>
+            <ChoicesEvent label="You must know what's going on.">
+              <Choice label="I don't know anything." ok />
+              <Choice label="......" ok />
+            </ChoicesEvent>
+          </div>
+        ),
+      },
+      {
+        points: 22,
+        maxPoints: 15,
+        element: () => (
+          <div>
+            <ChoicesEvent label="I'm sure you love lugging all this dead weight around, huh?">
+              <Choice label="I don't mind at all." correct />
+              <Choice label="No, not exactly." />
+              <Choice label="It's fine-I'm tough as hell." ok />
+            </ChoicesEvent>
+          </div>
+        ),
+      },
+      {
+        points: 22,
+        maxPoints: 20,
+        element: () => (
+          <div>
+            <ChoicesEvent label="I need to talk to you...">
+              <Choice label="Right now?" />
+              <Choice label="What about?" />
+            </ChoicesEvent>
+            <ChoicesEvent label="...I've made up my mind. I'm going to have surgery to fix my knee...">
+              <Choice label="What about the big meet?" />
+              <Choice label="What about your promise?" correct />
+            </ChoicesEvent>
+          </div>
+        ),
+      },
+    ],
+  },
 };
 
 const a = {

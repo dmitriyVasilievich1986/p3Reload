@@ -13,6 +13,7 @@ const initialLinks = {
   [socialLinks.Magician.name]: { level: 0, points: 0, multiplier: 1 },
   [socialLinks.Emperor.name]: { level: 0, points: 0, multiplier: 1 },
   [socialLinks.Hierophant.name]: { level: 0, points: 0, multiplier: 1 },
+  [socialLinks.Chariot.name]: { level: 0, points: 0, multiplier: 1 },
   [socialLinks.Priestess.name]: {
     level: 0,
     points: 0,

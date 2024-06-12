@@ -624,4 +624,26 @@ export const events = {
       };
     },
   },
+  Chariot: {
+    name: "Chariot",
+    category: "links",
+    label: () => <h3 style={{ textAlign: "center" }}>Chariot</h3>,
+    available: () => {
+      return true;
+    },
+    upgrade: function ({ currentStats, currentLinks, arcanes }) {
+      const multiplier = arcanes.includes(socialLinks.Chariot.name) ? 1.51 : 1;
+      const newLinks = socialLinks.Chariot.calculate({
+        ...currentLinks[socialLinks.Chariot.name],
+        multiplier,
+      });
+      return {
+        links: {
+          ...currentLinks,
+          ...newLinks,
+        },
+        stats: { ...currentStats },
+      };
+    },
+  },
 };
