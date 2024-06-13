@@ -143,6 +143,130 @@ const priestessLevels = [
   },
 ];
 
+const empressLevels = [
+  {
+    points: 0,
+    maxPoints: 0,
+    element: () => null,
+  },
+  {
+    points: 0,
+    maxPoints: 5,
+    element: () => (
+      <div>
+        <ChoicesEvent label="It's smaller than I expected.">
+          <Choice label="Is this your first time?" ok />
+          <Choice label="Do you know how to eat it?" ok />
+        </ChoicesEvent>
+      </div>
+    ),
+  },
+  {
+    points: 0,
+    maxPoints: 30,
+    element: () => (
+      <div>
+        <ChoicesEvent label="Sometimes my own ignorance astounds me...">
+          <Choice label="Want me to treat you?" />
+          <Choice label="Why not give it a try?" ok />
+        </ChoicesEvent>
+        <ChoicesEvent label="Maybe he's just maturing…">
+          <Choice label="Are you sad?" />
+          <Choice label="Are you happy?" correct />
+        </ChoicesEvent>
+        <ChoicesEvent label="It's the most peculiar feeling">
+          <Choice label="Maybe you're in love." ok />
+          <Choice label="Maybe you're anxious." ok />
+          <Choice label="Maybe you're sad." />
+        </ChoicesEvent>
+        <ChoicesEvent label="Sorry for subjecting you to my thoughtless ramblings… Just forget I said anything.">
+          <Choice label="I'm rooting for you." />
+          <Choice label="I heard nothing." ok />
+        </ChoicesEvent>
+      </div>
+    ),
+  },
+  {
+    points: 22,
+    maxPoints: 20,
+    element: () => (
+      <div>
+        <ChoicesEvent label="In just a short while, we'll be looking back on these days with nostalgia.">
+          <Choice label="What's next for you?" />
+          <Choice label="Did something happen?" ok />
+        </ChoicesEvent>
+        <ChoicesEvent label="What does marriage mean to you?">
+          <Choice label="It's all for love" correct />
+          <Choice label="It's a social agreement." />
+          <Choice label="It's about compromise." />
+        </ChoicesEvent>
+        <ChoicesEvent label="Am I... wrong about this?">
+          <Choice label="Do you have a boyfriend?" />
+          <Choice label="That's a tough one." />
+        </ChoicesEvent>
+      </div>
+    ),
+  },
+  {
+    points: 22,
+    maxPoints: 45,
+    element: () => (
+      <div>
+        <ChoicesEvent label="It seems a lot of thought goes into the design and construction of a movie theather.">
+          <Choice label="...Said the rich girl." />
+          <Choice label="Glad you enjoyed it." correct />
+        </ChoicesEvent>
+        <ChoicesEvent label="She's likely more suited to riding a motorcycle than I am as well.">
+          <Choice label="A motorcycle?" correct />
+          <Choice label="You're not suited?" />
+        </ChoicesEvent>
+        <ChoicesEvent label="I don't regret it. Even now, I spend my time tuning it whenever I can.">
+          <Choice label="What a high-class biker." />
+          <Choice label="Let’s go for a ride." correct />
+        </ChoicesEvent>
+      </div>
+    ),
+  },
+  {
+    points: 22,
+    maxPoints: 25,
+    element: () => (
+      <div>
+        <ChoicesEvent label="......">
+          <Choice label="Looking for something specific?" ok />
+          <Choice label="Need some help?" ok />
+          <Choice label="Borrowing a book?" />
+        </ChoicesEvent>
+        <ChoicesEvent label="...Even if I have to make sacrifices to do it.">
+          <Choice label="Did something happen?" />
+          <Choice label="That doesn't sound good." />
+        </ChoicesEvent>
+        <ChoicesEvent label="This is the best solution for everyone involved...">
+          <Choice label="Is it really?" />
+          <Choice label="I didn't know..." ok />
+        </ChoicesEvent>
+        <ChoicesEvent label="So... I won't run from my fate.">
+          <Choice label="Are you sure about this?" ok />
+          <Choice label="That's admirable." />
+          <Choice label="I'll do something about it." correct />
+        </ChoicesEvent>
+      </div>
+    ),
+  },
+  {
+    points: 22,
+    maxPoints: 15,
+    element: () => (
+      <div>
+        <ChoicesEvent label="Or, is that too selfish a request?">
+          <Choice label="I don't mind at all." correct />
+          <Choice label="Is that all you need?" />
+        </ChoicesEvent>
+      </div>
+    ),
+  },
+];
+
 export const socialLinks = {
   Magician: {
     name: "Magician",
@@ -2418,6 +2542,157 @@ export const socialLinks = {
             <ChoicesEvent label="But if I keep this up, I'll never be able to replace my brother, will I?">
               <Choice label="Just be yourself." correct />
               <Choice label="You're irreplaceable." ok />
+            </ChoicesEvent>
+          </div>
+        ),
+      },
+    ],
+  },
+  Empress: {
+    name: "Empress",
+    calculate: function ({ level, points, multiplier = 1 }) {
+      const isNewlevel =
+        level < this.levels.length && points >= this.levels[level].points;
+      return {
+        Empress: {
+          level: isNewlevel ? level + 1 : level,
+          points: isNewlevel
+            ? this.levels[level].maxPoints * multiplier
+            : points + 10 * multiplier,
+        },
+      };
+    },
+    levels: [
+      ...empressLevels,
+      {
+        points: 22,
+        maxPoints: 15,
+        element: () => (
+          <div>
+            <ChoicesEvent label="Somewhere far away, where no one knows who you are?">
+              <Choice label="Yes." />
+              <Choice label="No." />
+            </ChoicesEvent>
+            <ChoicesEvent label="Talking to you has become something of an outlet for me. Heh, I'm sure you're sick of it by now.">
+              <Choice label="Vent all you want." ok />
+              <Choice label="This isn't like you." ok />
+            </ChoicesEvent>
+            <ChoicesEvent label="Ah... Keep in mind, this is a what-if scenario.">
+              <Choice label="That's up to you." />
+              <Choice label="It's not meant to be." fork />
+            </ChoicesEvent>
+            <ChoicesEvent label="How dare you say that!?">
+              <Choice label="Calm down, Mitsuru" />
+              <Choice label="Don't insult her father!" correct />
+            </ChoicesEvent>
+            <ChoicesEvent label="Please excuse me.">
+              <Choice label="Don't give in." correct />
+              <Choice label="You're sure about this?" ok />
+            </ChoicesEvent>
+          </div>
+        ),
+      },
+      {
+        points: 22,
+        maxPoints: 15,
+        element: () => (
+          <div>
+            <ChoicesEvent label="I am so sorry about what happened last time.">
+              <Choice label="What happened?" />
+              <Choice label="Don't worry about it." />
+              <Choice label="It made me happy." correct />
+            </ChoicesEvent>
+            <ChoicesEvent label="I just didn't think I'd end up shouting them in public like that.">
+              <Choice label="Talk about bold." />
+              <Choice label="Your feelings?" />
+            </ChoicesEvent>
+            <ChoicesEvent label="...I feel like I'm going to die of embarassment.">
+              <Choice label="I love you too." correct />
+              <Choice label="I'm sorry but..." />
+            </ChoicesEvent>
+            <ChoicesEvent label="I've been thinking about this for a while now, but the way you address me...">
+              <Choice label="Mitsuru?" />
+              <Choice label="What about it?" />
+            </ChoicesEvent>
+          </div>
+        ),
+      },
+      {
+        points: 22,
+        maxPoints: 15,
+        element: () => (
+          <div>
+            <ChoicesEvent label="The battery and tire pressue look good... And I've already changed the oil, so that's fine.">
+              <Choice label="Impressive." />
+              <Choice label="Looks like fun." ok />
+            </ChoicesEvent>
+          </div>
+        ),
+      },
+    ],
+    levelsRomance: [
+      ...empressLevels,
+      {
+        points: 22,
+        maxPoints: 15,
+        element: () => (
+          <div>
+            <ChoicesEvent label="Somewhere far away, where no one knows who you are?">
+              <Choice label="Yes." />
+              <Choice label="No." />
+            </ChoicesEvent>
+            <ChoicesEvent label="Talking to you has become something of an outlet for me. Heh, I'm sure you're sick of it by now.">
+              <Choice label="Vent all you want." ok />
+              <Choice label="This isn't like you." ok />
+            </ChoicesEvent>
+            <ChoicesEvent label="Ah... Keep in mind, this is a what-if scenario.">
+              <Choice label="That's up to you." fork />
+              <Choice label="It's not meant to be." />
+            </ChoicesEvent>
+            <ChoicesEvent label="How dare you say that!?">
+              <Choice label="Calm down, Mitsuru" />
+              <Choice label="Don't insult her father!" correct />
+            </ChoicesEvent>
+            <ChoicesEvent label="Please excuse me.">
+              <Choice label="Don't give in." correct />
+              <Choice label="You're sure about this?" ok />
+            </ChoicesEvent>
+          </div>
+        ),
+      },
+      {
+        points: 22,
+        maxPoints: 15,
+        element: () => (
+          <div>
+            <ChoicesEvent label="I am so sorry about what happened last time.">
+              <Choice label="What happened?" />
+              <Choice label="Don't worry about it." />
+              <Choice label="It made me happy." correct />
+            </ChoicesEvent>
+            <ChoicesEvent label="I just didn't think I'd end up shouting them in public like that.">
+              <Choice label="Talk about bold." />
+              <Choice label="Your feelings?" />
+            </ChoicesEvent>
+            <ChoicesEvent label="...I feel like I'm going to die of embarassment.">
+              <Choice label="I love you too." correct />
+              <Choice label="I'm sorry but..." />
+            </ChoicesEvent>
+            <ChoicesEvent label="I've been thinking about this for a while now, but the way you address me...">
+              <Choice label="Mitsuru?" />
+              <Choice label="What about it?" />
+            </ChoicesEvent>
+          </div>
+        ),
+      },
+      {
+        points: 22,
+        maxPoints: 15,
+        element: () => (
+          <div>
+            <ChoicesEvent label="I'll be looking forward to it.">
+              <Choice label="I'll give it a try." correct />
+              <Choice label="I'm fine with the back." ok />
             </ChoicesEvent>
           </div>
         ),

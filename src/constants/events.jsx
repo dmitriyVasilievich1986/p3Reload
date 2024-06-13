@@ -848,4 +848,55 @@ export const events = {
       };
     },
   },
+  Empress: {
+    name: "Empress",
+    category: "links",
+    label: () => <h3 style={{ textAlign: "center" }}>Empress</h3>,
+    available: ({ currentDate, currentTime, currentLinks, previousDay }) => {
+      const isFork =
+        previousDay?.links &&
+        previousDay.links[socialLinks.Empress.name].level === 6;
+      return !currentLinks[socialLinks.Empress.name].romance || isFork;
+    },
+    upgrade: function ({ currentStats, currentLinks, arcanes }) {
+      const multiplier = arcanes.includes(socialLinks.Empress.name) ? 1.51 : 1;
+      const newLinks = socialLinks.Empress.calculate({
+        ...currentLinks[socialLinks.Empress.name],
+        multiplier,
+      });
+      return {
+        links: {
+          ...currentLinks,
+          ...newLinks,
+        },
+        stats: { ...currentStats },
+      };
+    },
+  },
+  EmpressRomance: {
+    name: "Empress",
+    category: "links",
+    label: () => <h3 style={{ textAlign: "center" }}>Empress</h3>,
+    available: ({ currentDate, currentTime, currentLinks, previousDay }) => {
+      const isFork =
+        previousDay?.links &&
+        previousDay.links[socialLinks.Empress.name].level === 6;
+      return currentLinks[socialLinks.Empress.name].romance || isFork;
+    },
+    upgrade: function ({ currentStats, currentLinks, arcanes }) {
+      const multiplier = arcanes.includes(socialLinks.Empress.name) ? 1.51 : 1;
+      const newLinks = socialLinks.Empress.calculate({
+        ...currentLinks[socialLinks.Empress.name],
+        romance: true,
+        multiplier,
+      });
+      return {
+        links: {
+          ...currentLinks,
+          ...newLinks,
+        },
+        stats: { ...currentStats },
+      };
+    },
+  },
 };
