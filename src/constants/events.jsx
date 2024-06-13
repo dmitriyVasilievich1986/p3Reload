@@ -804,4 +804,26 @@ export const events = {
       };
     },
   },
+  Star: {
+    name: "Star",
+    category: "links",
+    label: () => <h3 style={{ textAlign: "center" }}>Star</h3>,
+    available: () => {
+      return true;
+    },
+    upgrade: function ({ currentStats, currentLinks, arcanes }) {
+      const multiplier = arcanes.includes(socialLinks.Star.name) ? 1.51 : 1;
+      const newLinks = socialLinks.Star.calculate({
+        ...currentLinks[socialLinks.Star.name],
+        multiplier,
+      });
+      return {
+        links: {
+          ...currentLinks,
+          ...newLinks,
+        },
+        stats: { ...currentStats },
+      };
+    },
+  },
 };
