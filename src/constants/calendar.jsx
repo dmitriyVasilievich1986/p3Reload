@@ -41,6 +41,12 @@ const initialLinks = {
     multiplier: 1,
     romance: false,
   },
+  [socialLinks.Justice.name]: {
+    level: 0,
+    points: 0,
+    multiplier: 1,
+    romance: false,
+  },
 };
 
 export const calendar = [

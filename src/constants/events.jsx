@@ -950,4 +950,55 @@ export const events = {
       };
     },
   },
+  Justice: {
+    name: "Justice",
+    category: "links",
+    label: () => <h3 style={{ textAlign: "center" }}>Justice</h3>,
+    available: ({ currentDate, currentTime, currentLinks, previousDay }) => {
+      const isFork =
+        previousDay?.links &&
+        previousDay.links[socialLinks.Justice.name].level === 6;
+      return !currentLinks[socialLinks.Justice.name].romance || isFork;
+    },
+    upgrade: function ({ currentStats, currentLinks, arcanes }) {
+      const multiplier = arcanes.includes(socialLinks.Justice.name) ? 1.51 : 1;
+      const newLinks = socialLinks.Justice.calculate({
+        ...currentLinks[socialLinks.Justice.name],
+        multiplier,
+      });
+      return {
+        links: {
+          ...currentLinks,
+          ...newLinks,
+        },
+        stats: { ...currentStats },
+      };
+    },
+  },
+  JusticeRomance: {
+    name: "Justice",
+    category: "links",
+    label: () => <h3 style={{ textAlign: "center" }}>Justice</h3>,
+    available: ({ currentDate, currentTime, currentLinks, previousDay }) => {
+      const isFork =
+        previousDay?.links &&
+        previousDay.links[socialLinks.Justice.name].level === 6;
+      return currentLinks[socialLinks.Justice.name].romance || isFork;
+    },
+    upgrade: function ({ currentStats, currentLinks, arcanes }) {
+      const multiplier = arcanes.includes(socialLinks.Justice.name) ? 1.51 : 1;
+      const newLinks = socialLinks.Justice.calculate({
+        ...currentLinks[socialLinks.Justice.name],
+        romance: true,
+        multiplier,
+      });
+      return {
+        links: {
+          ...currentLinks,
+          ...newLinks,
+        },
+        stats: { ...currentStats },
+      };
+    },
+  },
 };
