@@ -458,6 +458,136 @@ const strengthLevels = [
   },
 ];
 
+const aeonLevels = [
+  {
+    points: 0,
+    maxPoints: 0,
+    element: () => null,
+  },
+  {
+    points: 0,
+    maxPoints: 15,
+    element: () => (
+      <div>
+        <ChoicesEvent label="What about you, Makoto-san? Do you... like it here?">
+          <Choice label="I like it here." correct />
+          <Choice label="Not really." />
+          <Choice label="I don't care." />
+        </ChoicesEvent>
+      </div>
+    ),
+  },
+  {
+    points: 0,
+    maxPoints: 5,
+    element: () => (
+      <div>
+        <ChoicesEvent label="How can we make them understand...?">
+          <Choice label="Just try explaining." />
+          <Choice label="I don't think we can." />
+        </ChoicesEvent>
+        <ChoicesEvent label="......">
+          <Choice label="Maybe so." />
+          <Choice label="That's not true." ok />
+        </ChoicesEvent>
+      </div>
+    ),
+  },
+  {
+    points: 0,
+    maxPoints: 15,
+    element: () => (
+      <div>
+        <ChoicesEvent label="A white, spotted cat... Did you see one, Makoto-san?">
+          <Choice label="I might have..." ok />
+          <Choice label="No, I haven't." />
+        </ChoicesEvent>
+        <ChoicesEvent label="Goodness, really!? Where might this have been?">
+          <Choice label="Near the station" />
+          <Choice label="Near the strip mall." />
+          <Choice label="I don't remember." />
+        </ChoicesEvent>
+        <ChoicesEvent label="Being separated from a loved one can be very distressing after all...">
+          <Choice label="All right." correct />
+          <Choice label="What a pain..." />
+        </ChoicesEvent>
+        <ChoicesEvent label="And I was the one who insisted we search... I'm sorry.">
+          <Choice label="Don't let it get to you." />
+          <Choice label="We should head back for today." />
+          <Choice label="Let's keep looking." />
+        </ChoicesEvent>
+      </div>
+    ),
+  },
+  {
+    points: 0,
+    maxPoints: 15,
+    element: () => (
+      <div>
+        <ChoicesEvent label="It seems that 'living' is something that can't be done alone...">
+          <Choice label="You may be right." correct />
+          <Choice label="That's not true." />
+          <Choice label="I don't know." />
+        </ChoicesEvent>
+      </div>
+    ),
+  },
+  {
+    points: 0,
+    maxPoints: 0,
+    element: () => (
+      <div>
+        <ChoicesEvent label="Did I do something wrong?">
+          <Choice label="You didn't call him Joe." />
+          <Choice label="No, you didn't" />
+          <Choice label="He thought I was your boyfriend." />
+        </ChoicesEvent>
+      </div>
+    ),
+  },
+  {
+    points: 0,
+    maxPoints: 0,
+    element: () => (
+      <div>
+        <ChoicesEvent label="Was Mii-chan-san happy?">
+          <Choice label="I think she was happy." />
+          <Choice label="Who knows?" />
+        </ChoicesEvent>
+        <ChoicesEvent label="Was Mii-chan-san... grateful to have been born...?">
+          <Choice label="I'm sure she was happy." />
+          <Choice label="I'm not sure." />
+        </ChoicesEvent>
+        <ChoicesEvent label="For what purpose... was Mii-chan-san born...?">
+          <Choice label="No one can say." />
+          <Choice label="I don't know." />
+        </ChoicesEvent>
+      </div>
+    ),
+  },
+  {
+    points: 0,
+    maxPoints: 15,
+    element: () => (
+      <div>
+        <ChoicesEvent label="I was just curious.">
+          <Choice label="Sometimes." ok />
+          <Choice label="I'm doing it now." correct />
+          <Choice label="No." />
+        </ChoicesEvent>
+        <ChoicesEvent label="......">
+          <Choice label="I don't mind you being here." />
+          <Choice label="What brought this on?" />
+        </ChoicesEvent>
+        <ChoicesEvent label="Why are you so important to me, Makoto-san?">
+          <Choice label="It's love." />
+          <Choice label="Because we're friends" />
+        </ChoicesEvent>
+      </div>
+    ),
+  },
+];
+
 export const socialLinks = {
   Magician: {
     name: "Magician",
@@ -3541,16 +3671,89 @@ export const socialLinks = {
       },
     ],
   },
-};
-
-const a = {
-  points: 15,
-  maxPoints: 15,
-  element: () => (
-    <div>
-      <ChoicesEvent label="">
-        <Choice label="" />
-      </ChoicesEvent>
-    </div>
-  ),
+  Aeon: {
+    name: "Aeon",
+    calculate: function ({ level, points, multiplier = 1 }) {
+      const isNewlevel =
+        level < this.levels.length && points >= this.levels[level].points;
+      return {
+        Aeon: {
+          level: isNewlevel ? level + 1 : level,
+          points: isNewlevel
+            ? this.levels[level].maxPoints * multiplier
+            : points + 10 * multiplier,
+        },
+      };
+    },
+    levels: [
+      ...aeonLevels,
+      {
+        points: 0,
+        maxPoints: 15,
+        element: () => (
+          <div>
+            <ChoicesEvent label="January 31st...">
+              <Choice label="You're right." correct />
+              <Choice label="I hadn't noticed..." />
+            </ChoicesEvent>
+            <ChoicesEvent label="I love you so much... that I feel like I'm going to break down somehow...">
+              <Choice label="I love you, too." fork />
+              <Choice label="Sorry, but I can't..." />
+            </ChoicesEvent>
+          </div>
+        ),
+      },
+      {
+        points: 30,
+        maxPoints: 0,
+        element: () => (
+          <div>
+            <ChoicesEvent label="There's something only I can say, because I am unable to die.">
+              <Choice label="What is it?" />
+              <Choice label="I don't get it." />
+            </ChoicesEvent>
+            <ChoicesEvent label="Aigis is gazing at you intently...">
+              <Choice label="Nod silently" />
+              <Choice label="Hold her hand gently" />
+            </ChoicesEvent>
+          </div>
+        ),
+      },
+    ],
+    levelsRomance: [
+      ...aeonLevels,
+      {
+        points: 0,
+        maxPoints: 15,
+        element: () => (
+          <div>
+            <ChoicesEvent label="January 31st...">
+              <Choice label="You're right." correct />
+              <Choice label="I hadn't noticed..." />
+            </ChoicesEvent>
+            <ChoicesEvent label="I love you so much... that I feel like I'm going to break down somehow...">
+              <Choice label="I love you, too." fork />
+              <Choice label="Sorry, but I can't..." />
+            </ChoicesEvent>
+          </div>
+        ),
+      },
+      {
+        points: 30,
+        maxPoints: 0,
+        element: () => (
+          <div>
+            <ChoicesEvent label="There's something only I can say, because I am unable to die.">
+              <Choice label="What is it?" />
+              <Choice label="I don't get it." />
+            </ChoicesEvent>
+            <ChoicesEvent label="Aigis is gazing at you intently...">
+              <Choice label="Nod silently" />
+              <Choice label="Hold her hand gently" />
+            </ChoicesEvent>
+          </div>
+        ),
+      },
+    ],
+  },
 };

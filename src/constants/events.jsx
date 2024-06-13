@@ -1052,4 +1052,55 @@ export const events = {
       };
     },
   },
+  Aeon: {
+    name: "Aeon",
+    category: "links",
+    label: () => <h3 style={{ textAlign: "center" }}>Aeon</h3>,
+    available: ({ currentDate, currentTime, currentLinks, previousDay }) => {
+      const isFork =
+        previousDay?.links &&
+        previousDay.links[socialLinks.Aeon.name].level === 6;
+      return !currentLinks[socialLinks.Aeon.name].romance || isFork;
+    },
+    upgrade: function ({ currentStats, currentLinks, arcanes }) {
+      const multiplier = arcanes.includes(socialLinks.Aeon.name) ? 1.51 : 1;
+      const newLinks = socialLinks.Aeon.calculate({
+        ...currentLinks[socialLinks.Aeon.name],
+        multiplier,
+      });
+      return {
+        links: {
+          ...currentLinks,
+          ...newLinks,
+        },
+        stats: { ...currentStats },
+      };
+    },
+  },
+  AeonRomance: {
+    name: "Aeon",
+    category: "links",
+    label: () => <h3 style={{ textAlign: "center" }}>Aeon</h3>,
+    available: ({ currentDate, currentTime, currentLinks, previousDay }) => {
+      const isFork =
+        previousDay?.links &&
+        previousDay.links[socialLinks.Aeon.name].level === 6;
+      return currentLinks[socialLinks.Aeon.name].romance || isFork;
+    },
+    upgrade: function ({ currentStats, currentLinks, arcanes }) {
+      const multiplier = arcanes.includes(socialLinks.Aeon.name) ? 1.51 : 1;
+      const newLinks = socialLinks.Aeon.calculate({
+        ...currentLinks[socialLinks.Aeon.name],
+        romance: true,
+        multiplier,
+      });
+      return {
+        links: {
+          ...currentLinks,
+          ...newLinks,
+        },
+        stats: { ...currentStats },
+      };
+    },
+  },
 };
