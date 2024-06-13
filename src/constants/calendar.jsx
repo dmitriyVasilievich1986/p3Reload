@@ -61,7 +61,7 @@ const initialLinks = {
   },
 };
 
-export const calendar = [
+const april = [
   {
     date: new Date(2009, 3, 8),
     stats: initialStats,
@@ -79,12 +79,12 @@ export const calendar = [
           >
             <Choice label="a rain of flower" />
             <Choice label="mystical mirage" />
-            <Choice label="vivid carp streamers +2" correct />
+            <Choice label="vivid carp streamers" correct />
           </ChoicesEvent>
         ),
       },
-      day: events.doNothing,
-      evening: events.doNothing,
+      day: events.special,
+      evening: events.special,
     },
   },
   {
@@ -93,9 +93,9 @@ export const calendar = [
     links: initialLinks,
     arcanes: [],
     activities: {
-      morning: events.special,
+      morning: events.stayAwakeInClass,
       day: events.special,
-      evening: events.doNothing,
+      evening: events.special,
     },
   },
   {
@@ -105,11 +105,257 @@ export const calendar = [
     arcanes: [],
     activities: {
       morning: events.special,
-      day: events.doNothing,
-      evening: events.doNothing,
+      day: events.special,
+      evening: events.special,
+    },
+  },
+  {
+    date: new Date(2009, 3, 11),
+    stats: initialStats,
+    links: initialLinks,
+    arcanes: [],
+    activities: {
+      morning: events.special,
+      day: events.special,
+      evening: events.special,
+    },
+  },
+  {
+    date: new Date(2009, 3, 12),
+    stats: initialStats,
+    links: initialLinks,
+    arcanes: [],
+    activities: {
+      morning: events.special,
+      day: events.special,
+      evening: events.special,
+    },
+  },
+  {
+    date: new Date(2009, 3, 13),
+    stats: initialStats,
+    links: initialLinks,
+    arcanes: [],
+    activities: {
+      morning: events.special,
+      day: events.special,
+      evening: events.special,
+    },
+  },
+  {
+    date: new Date(2009, 3, 14),
+    stats: initialStats,
+    links: initialLinks,
+    arcanes: [],
+    activities: {
+      morning: events.special,
+      day: events.special,
+      evening: events.special,
+    },
+  },
+  {
+    date: new Date(2009, 3, 15),
+    stats: initialStats,
+    links: initialLinks,
+    arcanes: [],
+    activities: {
+      morning: events.special,
+      day: events.special,
+      evening: events.special,
+    },
+  },
+  {
+    date: new Date(2009, 3, 16),
+    stats: initialStats,
+    links: initialLinks,
+    arcanes: [],
+    activities: {
+      morning: events.special,
+      day: events.special,
+      evening: events.special,
+    },
+  },
+  {
+    date: new Date(2009, 3, 17),
+    stats: initialStats,
+    links: initialLinks,
+    arcanes: [],
+    activities: {
+      morning: events.special,
+      day: events.special,
+      evening: events.special,
+    },
+  },
+  {
+    date: new Date(2009, 3, 18),
+    stats: initialStats,
+    links: initialLinks,
+    arcanes: [],
+    activities: {
+      morning: {
+        ...events.schoolQuestionCharm,
+        label: () => (
+          <ChoicesEvent
+            head="At school"
+            label={
+              "The places where people dumped their waste in the Jomon Period - What are they called nowadays?"
+            }
+          >
+            <Choice label="Middens" correct />
+          </ChoicesEvent>
+        ),
+      },
+      day: events.special,
+      evening: events.special,
+    },
+  },
+  {
+    date: new Date(2009, 3, 19),
+    stats: initialStats,
+    links: initialLinks,
+    arcanes: [],
+    activities: {
+      morning: events.special,
+      day: events.special,
+      evening: events.special,
+    },
+  },
+  {
+    date: new Date(2009, 3, 20),
+    stats: initialStats,
+    links: initialLinks,
+    arcanes: [],
+    activities: {
+      morning: events.special,
+      day: events.special,
+      evening: events.special,
+    },
+  },
+  {
+    date: new Date(2009, 3, 21),
+    stats: initialStats,
+    links: initialLinks,
+    arcanes: [],
+    activities: {
+      morning: events.stayAwakeInClass,
+      day: events.gameParadeCourage,
+      evening: events.gameParadeCourage,
+    },
+  },
+  {
+    date: new Date(2009, 3, 22),
+    stats: initialStats,
+    links: initialLinks,
+    arcanes: [],
+    activities: {
+      morning: events.special,
+      day: events.Magician,
+      evening: events.special,
+    },
+  },
+  {
+    date: new Date(2009, 3, 23),
+    stats: initialStats,
+    links: initialLinks,
+    arcanes: [],
+    activities: {
+      morning: events.special,
+      day: events.Chariot,
+      evening: events.gameParadeCharm,
+    },
+  },
+  {
+    date: new Date(2009, 3, 24),
+    stats: initialStats,
+    links: initialLinks,
+    arcanes: [],
+    activities: {
+      morning: events.special,
+      day: events.Magician,
+      evening: events.gameParadeCourage,
+    },
+  },
+  {
+    date: new Date(2009, 3, 25),
+    stats: initialStats,
+    links: initialLinks,
+    arcanes: [],
+    activities: {
+      morning: events.special,
+      day: events.Hierophant,
+      evening: events.special,
+    },
+  },
+  {
+    date: new Date(2009, 3, 26),
+    stats: initialStats,
+    links: initialLinks,
+    arcanes: [],
+    activities: {
+      morning: events.special,
+      day: events.Hierophant,
+      evening: events.special,
+    },
+  },
+  {
+    date: new Date(2009, 3, 27),
+    stats: initialStats,
+    links: initialLinks,
+    arcanes: [],
+    activities: {
+      morning: {
+        ...events.schoolQuestionCharm,
+        label: () => (
+          <ChoicesEvent
+            head="At school"
+            label={
+              "Do you know which one's not an algebraic spiral or whatever?"
+            }
+          >
+            <Choice label="A." correct />
+          </ChoicesEvent>
+        ),
+      },
+      day: events.Emperor,
+      evening: events.gameParadeCharm,
+    },
+  },
+  {
+    date: new Date(2009, 3, 28),
+    stats: initialStats,
+    links: initialLinks,
+    arcanes: [],
+    activities: {
+      morning: events.special,
+      day: events.Chariot,
+      evening: events.gameParadeCourage,
+    },
+  },
+  {
+    date: new Date(2009, 3, 29),
+    stats: initialStats,
+    links: initialLinks,
+    arcanes: [],
+    activities: {
+      morning: events.special,
+      day: events.Hermit,
+      evening: events.special,
+    },
+  },
+  {
+    date: new Date(2009, 3, 30),
+    stats: initialStats,
+    links: initialLinks,
+    arcanes: [],
+    activities: {
+      morning: events.stayAwakeInClass,
+      day: events.Magician,
+      evening: events.gameParadeCharm,
     },
   },
 ];
+
+export const calendar = [...april];
 
 export function initialCalculataion(calendar) {
   Object.values(calendar).map((c) => {
