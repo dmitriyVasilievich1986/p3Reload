@@ -1001,4 +1001,55 @@ export const events = {
       };
     },
   },
+  Strength: {
+    name: "Strength",
+    category: "links",
+    label: () => <h3 style={{ textAlign: "center" }}>Strength</h3>,
+    available: ({ currentDate, currentTime, currentLinks, previousDay }) => {
+      const isFork =
+        previousDay?.links &&
+        previousDay.links[socialLinks.Strength.name].level === 6;
+      return !currentLinks[socialLinks.Strength.name].romance || isFork;
+    },
+    upgrade: function ({ currentStats, currentLinks, arcanes }) {
+      const multiplier = arcanes.includes(socialLinks.Strength.name) ? 1.51 : 1;
+      const newLinks = socialLinks.Strength.calculate({
+        ...currentLinks[socialLinks.Strength.name],
+        multiplier,
+      });
+      return {
+        links: {
+          ...currentLinks,
+          ...newLinks,
+        },
+        stats: { ...currentStats },
+      };
+    },
+  },
+  StrengthRomance: {
+    name: "Strength",
+    category: "links",
+    label: () => <h3 style={{ textAlign: "center" }}>Strength</h3>,
+    available: ({ currentDate, currentTime, currentLinks, previousDay }) => {
+      const isFork =
+        previousDay?.links &&
+        previousDay.links[socialLinks.Strength.name].level === 6;
+      return currentLinks[socialLinks.Strength.name].romance || isFork;
+    },
+    upgrade: function ({ currentStats, currentLinks, arcanes }) {
+      const multiplier = arcanes.includes(socialLinks.Strength.name) ? 1.51 : 1;
+      const newLinks = socialLinks.Strength.calculate({
+        ...currentLinks[socialLinks.Strength.name],
+        romance: true,
+        multiplier,
+      });
+      return {
+        links: {
+          ...currentLinks,
+          ...newLinks,
+        },
+        stats: { ...currentStats },
+      };
+    },
+  },
 };

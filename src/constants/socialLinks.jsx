@@ -392,6 +392,72 @@ const justiceLevels = [
   },
 ];
 
+const strengthLevels = [
+  {
+    points: 0,
+    maxPoints: 0,
+    element: () => null,
+  },
+  {
+    points: 0,
+    maxPoints: 35,
+    element: () => (
+      <div>
+        <ChoicesEvent label="Also, I wasn't really in the mental state to do this alone today.">
+          <Choice label="What happened?" ok />
+          <Choice label="You did good." />
+        </ChoicesEvent>
+        <ChoicesEvent label="And before I knew it, I'd dozed off. I ended up handing a blank paper.">
+          <Choice label="That's bad." />
+          <Choice label="It wasn't your fault." ok />
+        </ChoicesEvent>
+        <ChoicesEvent label="But come on, it's way too early to worry about the future, isn't it? We're still just teenagers!">
+          <Choice label="That's true." correct />
+          <Choice label="I don't think so." />
+          <Choice label="You haven't thought about it?" />
+        </ChoicesEvent>
+      </div>
+    ),
+  },
+  {
+    points: 0,
+    maxPoints: 10,
+    element: () => (
+      <div>
+        <ChoicesEvent label="Going that far would've been crossing the line.">
+          <Choice label="Does this happen often?" />
+          <Choice label="Do you know who did it?" />
+        </ChoicesEvent>
+        <ChoicesEvent label="Sorry you got dragged into that.">
+          <Choice label="Friend of yours?" />
+          <Choice label="Don't worry about it." ok />
+        </ChoicesEvent>
+        <ChoicesEvent label="They called you my boyfriend. That must have made you feel awkward, huh?">
+          <Choice label="I'm honored." fork />
+          <Choice label="I don't mind." />
+          <Choice label="It might be a problem." />
+        </ChoicesEvent>
+      </div>
+    ),
+  },
+  {
+    points: 5,
+    maxPoints: 15,
+    element: () => (
+      <div>
+        <ChoicesEvent label="Makoto-kun, what do you think I should do?">
+          <Choice label="Why not give it a go?" />
+          <Choice label="That's for you to decide." />
+        </ChoicesEvent>
+        <ChoicesEvent label="I mean, why not right? Please? Honestly, I don't think I can handle it on my own...">
+          <Choice label="Sure thing." ok />
+          <Choice label="It's kind of a hassle." />
+        </ChoicesEvent>
+      </div>
+    ),
+  },
+];
+
 export const socialLinks = {
   Magician: {
     name: "Magician",
@@ -3194,6 +3260,281 @@ export const socialLinks = {
             <ChoicesEvent label="I-I don't have to spell it out, do I!?">
               <Choice label="It's getting late..." />
               <Choice label="Lock your doors." />
+            </ChoicesEvent>
+          </div>
+        ),
+      },
+    ],
+  },
+  Strength: {
+    name: "Strength",
+    calculate: function ({ level, points, multiplier = 1 }) {
+      const isNewlevel =
+        level < this.levels.length && points >= this.levels[level].points;
+      return {
+        Strength: {
+          level: isNewlevel ? level + 1 : level,
+          points: isNewlevel
+            ? this.levels[level].maxPoints * multiplier
+            : points + 10 * multiplier,
+        },
+      };
+    },
+    levels: [
+      ...strengthLevels,
+      {
+        points: 15,
+        maxPoints: 15,
+        element: () => (
+          <div>
+            <ChoicesEvent label="Elementary school kids really learn fast don't you think?">
+              <Choice label="You're right. It's impressive." ok />
+              <Choice label="That's not normal?" />
+              <Choice label="It's because you teach so well." correct />
+            </ChoicesEvent>
+            <ChoicesEvent label="Should I change the training routine? Maybe they should be running more.">
+              <Choice label="You shouldn't change it." />
+              <Choice label="Maybe you should rethink it." />
+              <Choice label="I trust whatever you decide Yuko." fork />
+            </ChoicesEvent>
+          </div>
+        ),
+      },
+      {
+        points: 22,
+        maxPoints: 10,
+        element: () => (
+          <div>
+            <ChoicesEvent label="Oh Makoto-Kun, why don't you give them some advice too?">
+              <Choice label="You guys got this!" ok />
+              <Choice label="Show some guts!" ok />
+            </ChoicesEvent>
+            <ChoicesEvent label="Age difference really matters when you're as young as they are. Do you really think they can beat the sixth graders.">
+              <Choice label="It's gonna be tough." />
+              <Choice label="As long as we believe in them." ok />
+            </ChoicesEvent>
+          </div>
+        ),
+      },
+      {
+        points: 22,
+        maxPoints: 20,
+        element: () => (
+          <div>
+            <ChoicesEvent label="They called you my boyfriend till the very end...">
+              <Choice label="Wanna make that true?" fork />
+              <Choice label="It's embarassing." />
+              <Choice label="They're just joking." />
+            </ChoicesEvent>
+            <ChoicesEvent label="It's like the kids have left the nest...">
+              <Choice label="Are you sad?" />
+              <Choice label="Are you relieved?" ok />
+            </ChoicesEvent>
+            <ChoicesEvent label="Maybe we should have a little party… you know, to celebrate our first attempt at coaching...">
+              <Choice label="Let's do it." correct />
+              <Choice label="Why?" />
+            </ChoicesEvent>
+          </div>
+        ),
+      },
+      {
+        points: 40,
+        maxPoints: 5,
+        element: () => (
+          <div>
+            <ChoicesEvent label="I was out buying stuff that might be useful for running practice, and I ran out of money.">
+              <Choice label="It's fine." />
+              <Choice label="This is a nice room." />
+              <Choice label="Stuff for the kids?" />
+            </ChoicesEvent>
+            <ChoicesEvent label="Hmm... Oh, do you like children?">
+              <Choice label="I do." />
+              <Choice label="Not really." />
+            </ChoicesEvent>
+            <ChoicesEvent label="Would you want it to be a boy or a girl?">
+              <Choice label="A boy." ok />
+              <Choice label="A girl." ok />
+              <Choice label="I don't care." />
+            </ChoicesEvent>
+          </div>
+        ),
+      },
+      {
+        points: 40,
+        maxPoints: 25,
+        element: () => (
+          <div>
+            <ChoicesEvent label="All it did was make me more confused than I originally was. Guess I'll have to go ask again tomorrow.">
+              <Choice label="You're so hardworking." ok />
+              <Choice label="Why go through all that trouble?" />
+            </ChoicesEvent>
+            <ChoicesEvent label="Can you guess what it is?">
+              <Choice label="A track and field star?" ok />
+              <Choice label="An instructor?" correct />
+              <Choice label="A nursery teacher?" ok />
+              <Choice label="No idea..." />
+            </ChoicesEvent>
+            <ChoicesEvent label="I realized that I might've been relying too much on you.">
+              <Choice label="I don't mind." />
+              <Choice label="You can rely on me even more." />
+            </ChoicesEvent>
+            <ChoicesEvent label="Are you like this... just with me? N-No, no, th-that can't be it, huh...">
+              <Choice label="It's because I love you." fork />
+              <Choice label="It's because you're a close friend." />
+            </ChoicesEvent>
+            <ChoicesEvent label="What's happening...? Is this a dream?">
+              <Choice label="I love you, Yuko." />
+              <Choice label="It's not a dream." />
+            </ChoicesEvent>
+          </div>
+        ),
+      },
+      {
+        points: 40,
+        maxPoints: 15,
+        element: () => (
+          <div>
+            <ChoicesEvent label="I could've given this to you at school, but I wanted to talk somewhere quiet.">
+              <Choice label="Is it important?" ok />
+              <Choice label="What is it?" ok />
+            </ChoicesEvent>
+            <ChoicesEvent label="I know they were kind of a handful, but they also have an endearing side to them, don't you think?">
+              <Choice label="Yeah." ok />
+              <Choice label="Not really." />
+            </ChoicesEvent>
+            <ChoicesEvent label="Because today... Well, my parents aren't home, so...">
+              <Choice label="I see." />
+              <Choice label="What does that mean?" ok />
+            </ChoicesEvent>
+          </div>
+        ),
+      },
+    ],
+    levelsRomance: [
+      ...strengthLevels,
+      {
+        points: 15,
+        maxPoints: 15,
+        element: () => (
+          <div>
+            <ChoicesEvent label="Elementary school kids really learn fast don't you think?">
+              <Choice label="You're right. It's impressive." ok />
+              <Choice label="That's not normal?" />
+              <Choice label="It's because you teach so well." correct />
+            </ChoicesEvent>
+            <ChoicesEvent label="Should I change the training routine? Maybe they should be running more.">
+              <Choice label="You shouldn't change it." />
+              <Choice label="Maybe you should rethink it." />
+              <Choice label="I trust whatever you decide Yuko." fork />
+            </ChoicesEvent>
+          </div>
+        ),
+      },
+      {
+        points: 22,
+        maxPoints: 10,
+        element: () => (
+          <div>
+            <ChoicesEvent label="Oh Makoto-Kun, why don't you give them some advice too?">
+              <Choice label="You guys got this!" ok />
+              <Choice label="Show some guts!" ok />
+            </ChoicesEvent>
+            <ChoicesEvent label="Age difference really matters when you're as young as they are. Do you really think they can beat the sixth graders.">
+              <Choice label="It's gonna be tough." />
+              <Choice label="As long as we believe in them." ok />
+            </ChoicesEvent>
+          </div>
+        ),
+      },
+      {
+        points: 22,
+        maxPoints: 20,
+        element: () => (
+          <div>
+            <ChoicesEvent label="They called you my boyfriend till the very end...">
+              <Choice label="Wanna make that true?" fork />
+              <Choice label="It's embarassing." />
+              <Choice label="They're just joking." />
+            </ChoicesEvent>
+            <ChoicesEvent label="It's like the kids have left the nest...">
+              <Choice label="Are you sad?" />
+              <Choice label="Are you relieved?" ok />
+            </ChoicesEvent>
+            <ChoicesEvent label="Maybe we should have a little party… you know, to celebrate our first attempt at coaching...">
+              <Choice label="Let's do it." correct />
+              <Choice label="Why?" />
+            </ChoicesEvent>
+          </div>
+        ),
+      },
+      {
+        points: 40,
+        maxPoints: 5,
+        element: () => (
+          <div>
+            <ChoicesEvent label="I was out buying stuff that might be useful for running practice, and I ran out of money.">
+              <Choice label="It's fine." />
+              <Choice label="This is a nice room." />
+              <Choice label="Stuff for the kids?" />
+            </ChoicesEvent>
+            <ChoicesEvent label="Hmm... Oh, do you like children?">
+              <Choice label="I do." />
+              <Choice label="Not really." />
+            </ChoicesEvent>
+            <ChoicesEvent label="Would you want it to be a boy or a girl?">
+              <Choice label="A boy." ok />
+              <Choice label="A girl." ok />
+              <Choice label="I don't care." />
+            </ChoicesEvent>
+          </div>
+        ),
+      },
+      {
+        points: 40,
+        maxPoints: 25,
+        element: () => (
+          <div>
+            <ChoicesEvent label="All it did was make me more confused than I originally was. Guess I'll have to go ask again tomorrow.">
+              <Choice label="You're so hardworking." ok />
+              <Choice label="Why go through all that trouble?" />
+            </ChoicesEvent>
+            <ChoicesEvent label="Can you guess what it is?">
+              <Choice label="A track and field star?" ok />
+              <Choice label="An instructor?" correct />
+              <Choice label="A nursery teacher?" ok />
+              <Choice label="No idea..." />
+            </ChoicesEvent>
+            <ChoicesEvent label="I realized that I might've been relying too much on you.">
+              <Choice label="I don't mind." />
+              <Choice label="You can rely on me even more." />
+            </ChoicesEvent>
+            <ChoicesEvent label="Are you like this... just with me? N-No, no, th-that can't be it, huh...">
+              <Choice label="It's because I love you." fork />
+              <Choice label="It's because you're a close friend." />
+            </ChoicesEvent>
+            <ChoicesEvent label="What's happening...? Is this a dream?">
+              <Choice label="I love you, Yuko." />
+              <Choice label="It's not a dream." />
+            </ChoicesEvent>
+          </div>
+        ),
+      },
+      {
+        points: 40,
+        maxPoints: 15,
+        element: () => (
+          <div>
+            <ChoicesEvent label="I could've given this to you at school, but I wanted to talk somewhere quiet.">
+              <Choice label="Is it important?" ok />
+              <Choice label="What is it?" ok />
+            </ChoicesEvent>
+            <ChoicesEvent label="I know they were kind of a handful, but they also have an endearing side to them, don't you think?">
+              <Choice label="Yeah." ok />
+              <Choice label="Not really." />
+            </ChoicesEvent>
+            <ChoicesEvent label="Because today... Well, my parents aren't home, so...">
+              <Choice label="I see." />
+              <Choice label="What does that mean?" ok />
             </ChoicesEvent>
           </div>
         ),
