@@ -267,6 +267,57 @@ const empressLevels = [
   },
 ];
 
+const loversLevels = [
+  {
+    points: 0,
+    maxPoints: 0,
+    element: () => null,
+  },
+  {
+    points: 0,
+    maxPoints: 20,
+    element: () => (
+      <div>
+        <ChoicesEvent label="I think I'll go with the gerberas. What color do you think should I get?">
+          <Choice label="Cute pink." correct />
+          <Choice label="Pure white." />
+          <Choice label="Bright red." />
+          <Choice label="What's a gerbera?" />
+        </ChoicesEvent>
+        <ChoicesEvent label="Oh wait, you've never seen my room, have you? Well then, why am I even asking you?">
+          <Choice label="That's mean." ok />
+          <Choice label="Invite me over, then." />
+        </ChoicesEvent>
+      </div>
+    ),
+  },
+  {
+    points: 0,
+    maxPoints: 0,
+    element: () => (
+      <div>
+        <ChoicesEvent label="I guess my mom's no different.">
+          <Choice label="What makes you say that?" />
+          <Choice label="......" />
+        </ChoicesEvent>
+      </div>
+    ),
+  },
+  {
+    points: 15,
+    maxPoints: 15,
+    element: () => (
+      <div>
+        <ChoicesEvent label="Sorry.">
+          <Choice label="Who was that?" />
+          <Choice label="What was that about?" />
+          <Choice label="Are you okay?" correct />
+        </ChoicesEvent>
+      </div>
+    ),
+  },
+];
+
 export const socialLinks = {
   Magician: {
     name: "Magician",
@@ -2693,6 +2744,241 @@ export const socialLinks = {
             <ChoicesEvent label="I'll be looking forward to it.">
               <Choice label="I'll give it a try." correct />
               <Choice label="I'm fine with the back." ok />
+            </ChoicesEvent>
+          </div>
+        ),
+      },
+    ],
+  },
+  Lovers: {
+    name: "Lovers",
+    calculate: function ({ level, points, multiplier = 1 }) {
+      const isNewlevel =
+        level < this.levels.length && points >= this.levels[level].points;
+      return {
+        Lovers: {
+          level: isNewlevel ? level + 1 : level,
+          points: isNewlevel
+            ? this.levels[level].maxPoints * multiplier
+            : points + 10 * multiplier,
+        },
+      };
+    },
+    levels: [
+      ...loversLevels,
+      {
+        points: 22,
+        maxPoints: 15,
+        element: () => (
+          <div>
+            <ChoicesEvent label="What should I do?">
+              <Choice label="Look around" />
+              <Choice label="Wait here" />
+            </ChoicesEvent>
+            <ChoicesEvent label="Did something happen...?">
+              <Choice label="Go look for her" />
+              <Choice label="Wait a bit longer" />
+            </ChoicesEvent>
+            <ChoicesEvent label="......">
+              <Choice label="I'll take you on." />
+              <Choice label="Her friend." />
+              <Choice label="Just a passerby." />
+            </ChoicesEvent>
+            <ChoicesEvent label="Huh? Who the hell are you?">
+              <Choice label="Her boyfriend." fork />
+              <Choice label="Her friend." />
+              <Choice label="Just a passerby." />
+            </ChoicesEvent>
+            <ChoicesEvent label="I didn't need your help!">
+              <Choice label="I'm sorry." correct />
+              <Choice label="It's okay to rely on others." />
+              <Choice label="You're a girl, so..." />
+            </ChoicesEvent>
+          </div>
+        ),
+      },
+      {
+        points: 0,
+        maxPoints: 20,
+        element: () => (
+          <div>
+            <ChoicesEvent label="Thanks for your help back then. I really appreciate it.">
+              <Choice label="You're quite welcome." ok />
+              <Choice label="Anytime." correct />
+              <Choice label="Thank you, too." />
+            </ChoicesEvent>
+            <ChoicesEvent label="Wouldn't that be annoying, Makoto-kun? Y'know, if people assumed we were dating...">
+              <Choice label="I wouldn't mind." ok />
+              <Choice label="Yeah..." />
+            </ChoicesEvent>
+          </div>
+        ),
+      },
+      {
+        points: 35,
+        maxPoints: 15,
+        element: () => (
+          <div>
+            <ChoicesEvent label="We could have lunch outdoors. Maybe we'll even see a deer or something. Whaddya think?">
+              <Choice label="Sounds good." correct />
+              <Choice label="Let's go with everyone." />
+              <Choice label="Let's go just the two of us." correct />
+              <Choice label="No thanks." />
+            </ChoicesEvent>
+          </div>
+        ),
+      },
+      {
+        points: 35,
+        maxPoints: 15,
+        element: () => (
+          <div>
+            <ChoicesEvent label="I know! Why don't you come help me pick something out, Makoto-kun?">
+              <Choice label="Alright." correct />
+              <Choice label="Im too lazy." />
+            </ChoicesEvent>
+            <ChoicesEvent label="I told her we could meet up and talk about her remarriage. I'm nervous just thinking about it...">
+              <Choice label="Will you let her do it?" />
+              <Choice label="Do you want to see her?" />
+            </ChoicesEvent>
+          </div>
+        ),
+      },
+      {
+        points: 15,
+        maxPoints: 15,
+        element: () => (
+          <div>
+            <ChoicesEvent label="......">
+              <Choice label="Hello?" />
+              <Choice label="...." correct />
+              <Choice label="If it's nothing, I'm leaving." />
+            </ChoicesEvent>
+            <ChoicesEvent label="What do you really think of me?">
+              <Choice label="I love you." fork />
+              <Choice label="You're a precious friend." />
+            </ChoicesEvent>
+          </div>
+        ),
+      },
+      {
+        points: 15,
+        maxPoints: 15,
+        element: () => (
+          <div>
+            <ChoicesEvent label="Wait, I didn't mean it like that! Don't get the wrong idea, okay!?">
+              <Choice label="Too late." correct />
+              <Choice label="I didn't hear anything." correct />
+            </ChoicesEvent>
+          </div>
+        ),
+      },
+    ],
+    levelsRomance: [
+      ...loversLevels,
+      {
+        points: 22,
+        maxPoints: 15,
+        element: () => (
+          <div>
+            <ChoicesEvent label="What should I do?">
+              <Choice label="Look around" />
+              <Choice label="Wait here" />
+            </ChoicesEvent>
+            <ChoicesEvent label="Did something happen...?">
+              <Choice label="Go look for her" />
+              <Choice label="Wait a bit longer" />
+            </ChoicesEvent>
+            <ChoicesEvent label="......">
+              <Choice label="I'll take you on." />
+              <Choice label="Her friend." />
+              <Choice label="Just a passerby." />
+            </ChoicesEvent>
+            <ChoicesEvent label="Huh? Who the hell are you?">
+              <Choice label="Her boyfriend." fork />
+              <Choice label="Her friend." />
+              <Choice label="Just a passerby." />
+            </ChoicesEvent>
+            <ChoicesEvent label="I didn't need your help!">
+              <Choice label="I'm sorry." correct />
+              <Choice label="It's okay to rely on others." />
+              <Choice label="You're a girl, so..." />
+            </ChoicesEvent>
+          </div>
+        ),
+      },
+      {
+        points: 0,
+        maxPoints: 20,
+        element: () => (
+          <div>
+            <ChoicesEvent label="Thanks for your help back then. I really appreciate it.">
+              <Choice label="You're quite welcome." ok />
+              <Choice label="Anytime." correct />
+              <Choice label="Thank you, too." />
+            </ChoicesEvent>
+            <ChoicesEvent label="Wouldn't that be annoying, Makoto-kun? Y'know, if people assumed we were dating...">
+              <Choice label="I wouldn't mind." ok />
+              <Choice label="Yeah..." />
+            </ChoicesEvent>
+          </div>
+        ),
+      },
+      {
+        points: 35,
+        maxPoints: 15,
+        element: () => (
+          <div>
+            <ChoicesEvent label="We could have lunch outdoors. Maybe we'll even see a deer or something. Whaddya think?">
+              <Choice label="Sounds good." correct />
+              <Choice label="Let's go with everyone." />
+              <Choice label="Let's go just the two of us." correct />
+              <Choice label="No thanks." />
+            </ChoicesEvent>
+          </div>
+        ),
+      },
+      {
+        points: 35,
+        maxPoints: 15,
+        element: () => (
+          <div>
+            <ChoicesEvent label="I know! Why don't you come help me pick something out, Makoto-kun?">
+              <Choice label="Alright." correct />
+              <Choice label="Im too lazy." />
+            </ChoicesEvent>
+            <ChoicesEvent label="I told her we could meet up and talk about her remarriage. I'm nervous just thinking about it...">
+              <Choice label="Will you let her do it?" />
+              <Choice label="Do you want to see her?" />
+            </ChoicesEvent>
+          </div>
+        ),
+      },
+      {
+        points: 15,
+        maxPoints: 15,
+        element: () => (
+          <div>
+            <ChoicesEvent label="......">
+              <Choice label="Hello?" />
+              <Choice label="...." correct />
+              <Choice label="If it's nothing, I'm leaving." />
+            </ChoicesEvent>
+            <ChoicesEvent label="What do you really think of me?">
+              <Choice label="I love you." fork />
+              <Choice label="You're a precious friend." />
+            </ChoicesEvent>
+          </div>
+        ),
+      },
+      {
+        points: 15,
+        maxPoints: 15,
+        element: () => (
+          <div>
+            <ChoicesEvent label="Wait, I didn't mean it like that! Don't get the wrong idea, okay!?">
+              <Choice label="Too late." correct />
+              <Choice label="I didn't hear anything." correct />
             </ChoicesEvent>
           </div>
         ),
