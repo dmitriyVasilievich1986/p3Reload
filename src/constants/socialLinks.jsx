@@ -2284,6 +2284,146 @@ export const socialLinks = {
       },
     ],
   },
+  Moon: {
+    name: "Moon",
+    calculate: function ({ level, points, multiplier = 1 }) {
+      const isNewlevel =
+        level < this.levels.length && points >= this.levels[level].points;
+      return {
+        Moon: {
+          level: isNewlevel ? level + 1 : level,
+          points: isNewlevel
+            ? this.levels[level].maxPoints * multiplier
+            : points + 10 * multiplier,
+        },
+      };
+    },
+    levels: [
+      {
+        points: 0,
+        maxPoints: 0,
+        element: () => null,
+      },
+      {
+        points: 0,
+        maxPoints: 15,
+        element: () => (
+          <div>
+            <ChoicesEvent label="Well? Would you wanna be... my younger brother?">
+              <Choice label="Sure, why not." correct />
+              <Choice label="Not really... no." />
+            </ChoicesEvent>
+          </div>
+        ),
+      },
+      {
+        points: 0,
+        maxPoints: 15,
+        element: () => (
+          <div>
+            <ChoicesEvent label="So, do you 'get me'? Hm? Who am I? Go on, I wanna hear it come out of your mouth!">
+              <Choice label="Nozomi Suemitsu" />
+              <Choice label="The gourmet king." correct />
+            </ChoicesEvent>
+          </div>
+        ),
+      },
+      {
+        points: 15,
+        maxPoints: 15,
+        element: () => (
+          <div>
+            <ChoicesEvent label="Whew, that was way too close. If that toilet was just a bit further away... Ohhhh, boy.">
+              <Choice label="Did you eat too much?" />
+              <Choice label="Are you feeling sick?" correct />
+            </ChoicesEvent>
+          </div>
+        ),
+      },
+      {
+        points: 15,
+        maxPoints: 15,
+        element: () => (
+          <div>
+            <ChoicesEvent label="Right, Makoto?">
+              <Choice label="That's right." correct />
+              <Choice label="Sorry, what?" />
+            </ChoicesEvent>
+          </div>
+        ),
+      },
+      {
+        points: 22,
+        maxPoints: 15,
+        element: () => (
+          <div>
+            <ChoicesEvent label="I don't get it. I felt fine up until just a minute ago, then suddenly I felt sick.">
+              <Choice label="Does this happen a lot?" />
+              <Choice label="Did you eat too much?" />
+              <Choice label="Are you sick?" correct />
+            </ChoicesEvent>
+          </div>
+        ),
+      },
+      {
+        points: 22,
+        maxPoints: 15,
+        element: () => (
+          <div>
+            <ChoicesEvent label="Well? Did that just blow your mind?">
+              <Choice label="Yeah, I'm freaking out." />
+              <Choice label="Not really?" />
+              <Choice label="The world is ending?" correct />
+            </ChoicesEvent>
+            <ChoicesEvent label="Not to mention you'll get a discount since I'll be referring you, too. You are one lucky guy!">
+              <Choice label="That's insane!" />
+              <Choice label="No way I'm paying for that." />
+            </ChoicesEvent>
+          </div>
+        ),
+      },
+      {
+        points: 22,
+        maxPoints: 15,
+        element: () => (
+          <div>
+            <ChoicesEvent label="Look at me! I'm paper-thin now.">
+              <Choice label="You do look thinner.	" />
+              <Choice label="No you're not." correct />
+            </ChoicesEvent>
+          </div>
+        ),
+      },
+      {
+        points: 22,
+        maxPoints: 0,
+        element: () => (
+          <div>
+            <ChoicesEvent label="Finally, Paradise is smiling back at me! Yes! Yesss!">
+              <Choice label="You're gonna scam them, too?" />
+              <Choice label="Just knock it off." />
+            </ChoicesEvent>
+          </div>
+        ),
+      },
+      {
+        points: 15,
+        maxPoints: 15,
+        element: () => (
+          <div>
+            <ChoicesEvent label="But I couldn't even cry. I actually felt... relieved. I though, 'Maybe they'll all finally stop laughing at me.">
+              <Choice label="That's terrible." />
+              <Choice label="That's understandable." />
+            </ChoicesEvent>
+            <ChoicesEvent label="But if I keep this up, I'll never be able to replace my brother, will I?">
+              <Choice label="Just be yourself." correct />
+              <Choice label="You're irreplaceable." ok />
+            </ChoicesEvent>
+          </div>
+        ),
+      },
+    ],
+  },
 };
 
 const a = {

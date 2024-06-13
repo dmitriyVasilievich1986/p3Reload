@@ -826,4 +826,26 @@ export const events = {
       };
     },
   },
+  Moon: {
+    name: "Moon",
+    category: "links",
+    label: () => <h3 style={{ textAlign: "center" }}>Moon</h3>,
+    available: () => {
+      return true;
+    },
+    upgrade: function ({ currentStats, currentLinks, arcanes }) {
+      const multiplier = arcanes.includes(socialLinks.Moon.name) ? 1.51 : 1;
+      const newLinks = socialLinks.Moon.calculate({
+        ...currentLinks[socialLinks.Moon.name],
+        multiplier,
+      });
+      return {
+        links: {
+          ...currentLinks,
+          ...newLinks,
+        },
+        stats: { ...currentStats },
+      };
+    },
+  },
 };
