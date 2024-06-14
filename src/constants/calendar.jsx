@@ -228,7 +228,7 @@ const april = [
     activities: {
       morning: events.special,
       day: events.special,
-      evening: events.special,
+      evening: { ...events.tartarus, special: true },
     },
   },
   {
@@ -250,7 +250,7 @@ const april = [
     activities: {
       morning: events.special,
       day: { ...events.Magician, special: true },
-      evening: events.special,
+      evening: { ...events.tartarus, special: true },
     },
   },
   {
@@ -367,6 +367,20 @@ export function initialCalculataion(calendar) {
     let currentLinks = previousDay?.links || { ...initialLinks };
     let response = null;
 
+    if (
+      [
+        previousDay?.activities.day.name,
+        previousDay?.activities.evening.name,
+      ].includes(events.tartarus.name)
+    ) {
+      response = events.drinkMedicine.upgrade({
+        currentStats: currentStats,
+        currentLinks: currentLinks,
+        arcanes: c.arcanes,
+      });
+      currentStats = response.stats;
+      currentLinks = response.links;
+    }
     if (c.activities.morning !== null) {
       response = c.activities.morning.upgrade({
         currentStats: currentStats,

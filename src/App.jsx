@@ -226,6 +226,11 @@ function Calendar(props) {
     });
   };
 
+  const isAfterTartarus = [
+    props.previousDay?.activities.day.name,
+    props.previousDay?.activities.evening.name,
+  ].includes(events.tartarus.name);
+
   return (
     <div>
       <div
@@ -249,6 +254,30 @@ function Calendar(props) {
           label="at school"
           time="morning"
         />
+        {isAfterTartarus && (
+          <div
+            style={{
+              border: "1px solid black",
+              borderRadius: "5px",
+              margin: "10px",
+              position: "relative",
+            }}
+          >
+            <label
+              style={{
+                position: "absolute",
+                top: "-10px",
+                left: "15px",
+                backgroundColor: "white",
+                fontWeight: "bold",
+                padding: "0 5px",
+              }}
+            >
+              After school
+            </label>
+            {events.drinkMedicine.label()}
+          </div>
+        )}
         <DailyEvent
           changeHandler={(e) => changeHandler(e, "day")}
           previousDay={props.previousDay}

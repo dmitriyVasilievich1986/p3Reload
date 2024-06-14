@@ -80,6 +80,19 @@ export const events = {
     available: () => false,
     label: () => <SpecialEvent label="Special Event" />,
   },
+  tartarus: {
+    ...initialUpgrade,
+    name: "Tartarus",
+    category: "Tartarus",
+    available: ({ currentTime }) => currentTime !== "morning",
+    label: () => {
+      return (
+        <div>
+          <h3>Tartarus</h3>
+        </div>
+      );
+    },
+  },
   schoolQuestionCharm: {
     name: "schoolQuestion",
     category: "special",
