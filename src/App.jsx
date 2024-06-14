@@ -39,11 +39,6 @@ function DailyEvent(props) {
   const LinkElement = () => {
     if (props.event.category !== "links") return null;
     if (
-      !props.previousDay?.links ||
-      props.previousDay.links[props.event.name].level === 0
-    )
-      return <h3>Create bond</h3>;
-    if (
       props.previousDay.links[props.event.name].level ===
       props.links[props.event.name].level
     )
