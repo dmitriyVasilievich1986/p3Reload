@@ -76,12 +76,14 @@ export const events = {
     ...initialUpgrade,
     name: "special",
     category: "special",
+    special: true,
     available: () => false,
     label: () => <SpecialEvent label="Special Event" />,
   },
   schoolQuestionCharm: {
     name: "schoolQuestion",
     category: "special",
+    special: true,
     available: () => false,
     label: () => <SpecialEvent label="Do nothing" />,
     upgrade: function ({ currentStats, currentLinks }) {
@@ -428,6 +430,7 @@ export const events = {
   drinkMedicine: {
     name: "Drink Mr. Edogawa's medicine",
     category: "special",
+    special: true,
     label: () => (
       <StatRaise
         label="Drink Mr. Edogawa's medicine"

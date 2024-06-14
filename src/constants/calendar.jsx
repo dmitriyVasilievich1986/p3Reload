@@ -249,7 +249,7 @@ const april = [
     arcanes: [],
     activities: {
       morning: events.special,
-      day: events.Magician,
+      day: { ...events.Magician, special: true },
       evening: events.special,
     },
   },
@@ -305,6 +305,7 @@ const april = [
     activities: {
       morning: {
         ...events.schoolQuestionCharm,
+        special: true,
         label: () => (
           <ChoicesEvent
             head="At school"

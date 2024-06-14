@@ -33,7 +33,7 @@ function DailyEvent(props) {
         currentLinks: props.links,
         currentDate: props.date,
         currentTime: props.time,
-      }) && events[e].category !== "special"
+      }) && !events[e]?.special
   );
 
   const LinkElement = () => {
@@ -108,7 +108,7 @@ function DailyEvent(props) {
       <div
         style={{ width: "100%", padding: "5px" }}
         onClick={() => {
-          if (props.event.category !== "special") setShow((s) => !s);
+          if (!props.event?.special) setShow((s) => !s);
         }}
       >
         <div>{props.event.label()}</div>
@@ -179,18 +179,15 @@ function Calendar(props) {
           c.activities[time] = newEvent;
         if (c.date.getTime() > props.date.getTime())
           c.activities = {
-            morning:
-              c.activities.morning.category === "special"
-                ? c.activities.morning
-                : events.doNothing,
-            day:
-              c.activities.day.category === "special"
-                ? c.activities.day
-                : events.doNothing,
-            evening:
-              c.activities.evening.category === "special"
-                ? c.activities.evening
-                : events.doNothing,
+            morning: c.activities.morning?.special
+              ? c.activities.morning
+              : events.doNothing,
+            day: c.activities.day?.special
+              ? c.activities.day
+              : events.doNothing,
+            evening: c.activities.evening?.special
+              ? c.activities.evening
+              : events.doNothing,
           };
         return c;
       });
@@ -212,18 +209,15 @@ function Calendar(props) {
           return {
             ...c,
             activities: {
-              morning:
-                c.activities.morning.category === "special"
-                  ? c.activities.morning
-                  : events.doNothing,
-              day:
-                c.activities.day.category === "special"
-                  ? c.activities.day
-                  : events.doNothing,
-              evening:
-                c.activities.evening.category === "special"
-                  ? c.activities.evening
-                  : events.doNothing,
+              morning: c.activities.morning?.special
+                ? c.activities.morning
+                : events.doNothing,
+              day: c.activities.day?.special
+                ? c.activities.day
+                : events.doNothing,
+              evening: c.activities.evening?.special
+                ? c.activities.evening
+                : events.doNothing,
             },
           };
         return c;
