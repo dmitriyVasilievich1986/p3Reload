@@ -496,6 +496,120 @@ export const events = {
       };
     },
   },
+  studyAtLibrary: {
+    name: "studyAtLibrary",
+    category: "stats",
+    label: () => (
+      <StatRaise
+        label="Studying At The Library"
+        place="Gekkoukan High School"
+        stats="Academics +2"
+      />
+    ),
+    available: ({ currentDate, currentTime }) => {
+      return currentTime === "day";
+    },
+    upgrade: function ({ currentStats, currentLinks }) {
+      return {
+        links: { ...currentLinks },
+        stats: {
+          ...currentStats,
+          [stats.Academics.name]: currentStats[stats.Academics.name] + 2,
+        },
+      };
+    },
+  },
+  wakatsuKitchen: {
+    name: "wakatsuKitchen",
+    category: "stats",
+    label: () => (
+      <StatRaise
+        label="Wakatsu Kitchen(Prodigy Platter)"
+        place="Iwatodai Strip Mall"
+        stats="Academics +3"
+        price="¥680"
+      />
+    ),
+    available: ({ currentDate, currentTime }) => {
+      const days = [
+        daysNames.thursday,
+        daysNames.friday,
+        daysNames.saturday,
+        daysNames.sunday,
+      ];
+      return (
+        ["day", "evening"].includes(currentTime) &&
+        days.includes(currentDate.getDay())
+      );
+    },
+    upgrade: function ({ currentStats, currentLinks }) {
+      return {
+        links: { ...currentLinks },
+        stats: {
+          ...currentStats,
+          [stats.Academics.name]: currentStats[stats.Academics.name] + 3,
+        },
+      };
+    },
+  },
+  wakatsuKitchenSpecial: {
+    name: "wakatsuKitchenSpecial",
+    category: "stats",
+    label: () => (
+      <StatRaise
+        label="Wakatsu Kitchen(Seafood Full Course)"
+        place="Iwatodai Strip Mall"
+        stats="Academics +4"
+        price="¥900"
+      />
+    ),
+    available: ({ currentDate, currentTime }) => {
+      const days = [
+        daysNames.monday,
+        daysNames.thursday,
+        daysNames.friday,
+        daysNames.sunday,
+      ];
+      return (
+        ["day", "evening"].includes(currentTime) &&
+        days.includes(currentDate.getDay())
+      );
+    },
+    upgrade: function ({ currentStats, currentLinks }) {
+      return {
+        links: { ...currentLinks },
+        stats: {
+          ...currentStats,
+          [stats.Academics.name]: currentStats[stats.Academics.name] + 4,
+        },
+      };
+    },
+  },
+  gameParadeAcademics: {
+    name: "Game Parade(Play You're the Answer)",
+    category: "stats",
+    label: () => (
+      <StatRaise
+        label="Game Parade(Play You're the Answer)"
+        place="Paulownia Mall"
+        stats="Academics +4"
+        price="¥3,000"
+      />
+    ),
+    available: ({ currentDate, currentTime }) => {
+      const days = [daysNames.tuesday, daysNames.friday];
+      return currentTime === "day" && days.includes(currentDate.getDay());
+    },
+    upgrade: function ({ currentStats, currentLinks }) {
+      return {
+        links: { ...currentLinks },
+        stats: {
+          ...currentStats,
+          [stats.Academics.name]: currentStats[stats.Academics.name] + 4,
+        },
+      };
+    },
+  },
   Magician: {
     name: "Magician",
     category: "links",

@@ -283,7 +283,7 @@ const april = [
     activities: {
       morning: events.special,
       day: events.Hierophant,
-      evening: events.special,
+      evening: events.gameParadeAcademics,
     },
   },
   {
@@ -339,7 +339,7 @@ const april = [
     activities: {
       morning: events.special,
       day: events.Hermit,
-      evening: events.special,
+      evening: events.gameParadeAcademics,
     },
   },
   {
