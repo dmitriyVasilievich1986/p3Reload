@@ -48,6 +48,16 @@ export function StatRaise(props) {
   );
 }
 
+export function SocialLink(props) {
+  return (
+    <React.Fragment>
+      <h4 style={{ textAlign: "center" }}>{props.label}</h4>
+      {props.name && <div>name: {props.name}</div>}
+      {props.place && <div>Place: {props.place}</div>}
+    </React.Fragment>
+  );
+}
+
 const initialUpgrade = {
   upgrade: function ({ currentStats, currentLinks }) {
     return { stats: currentStats, links: currentLinks };
@@ -613,13 +623,19 @@ export const events = {
   Magician: {
     name: "Magician",
     category: "links",
-    label: () => <h3 style={{ textAlign: "center" }}>Magician</h3>,
+    label: () => (
+      <SocialLink
+        label="Magician"
+        name="Kenji Tomochika"
+        place="Classroom 2F"
+      />
+    ),
     available: ({ currentDate, currentTime }) => {
       const days = [daysNames.tuesday, daysNames.thursday, daysNames.friday];
       return (
         currentDate.getTime() >= new Date(2009, 3, 22).getTime() &&
-        currentTime === "day" &&
-        days.includes(currentDate.getDay())
+        days.includes(currentDate.getDay()) &&
+        currentTime === "day"
       );
     },
     upgrade: function ({ currentStats, currentLinks, arcanes }) {
@@ -640,12 +656,29 @@ export const events = {
   Priestess: {
     name: "Priestess",
     category: "links",
-    label: () => <h3 style={{ textAlign: "center" }}>Priestess</h3>,
+    label: () => (
+      <SocialLink
+        label="Priestess"
+        name="Fuuka Yamagishi"
+        place="2nd Floor Hallway"
+      />
+    ),
     available: ({ currentDate, currentTime, currentLinks, previousDay }) => {
+      if (previousDay === undefined) return false;
       const isFork =
-        previousDay?.links &&
+        previousDay.links &&
         previousDay.links[socialLinks.Priestess.name].level === 6;
-      return !currentLinks[socialLinks.Priestess.name].romance || isFork;
+      const isRomance =
+        !currentLinks[socialLinks.Priestess.name].romance || isFork;
+      const days = [daysNames.monday, daysNames.friday, daysNames.saturday];
+      return (
+        currentDate.getTime() >= new Date(2009, 5, 19).getTime() &&
+        previousDay.stats[stats.Courage.name] >= 80 &&
+        previousDay.links[socialLinks.Fortune.name].level > 0 &&
+        isRomance &&
+        currentTime === "day" &&
+        days.includes(currentDate.getDay())
+      );
     },
     upgrade: function ({ currentStats, currentLinks, arcanes }) {
       const multiplier = arcanes.includes(socialLinks.Priestess.name)
@@ -667,12 +700,29 @@ export const events = {
   PriestessRomance: {
     name: "Priestess",
     category: "links",
-    label: () => <h3 style={{ textAlign: "center" }}>Priestess</h3>,
+    label: () => (
+      <SocialLink
+        label="Priestess"
+        name="Fuuka Yamagishi"
+        place="2nd Floor Hallway"
+      />
+    ),
     available: ({ currentDate, currentTime, currentLinks, previousDay }) => {
+      if (previousDay === undefined) return false;
       const isFork =
-        previousDay?.links &&
+        previousDay.links &&
         previousDay.links[socialLinks.Priestess.name].level === 6;
-      return currentLinks[socialLinks.Priestess.name].romance || isFork;
+      const isRomance =
+        currentLinks[socialLinks.Priestess.name].romance || isFork;
+      const days = [daysNames.monday, daysNames.friday, daysNames.saturday];
+      return (
+        currentDate.getTime() >= new Date(2009, 5, 19).getTime() &&
+        previousDay.stats[stats.Courage.name] >= 80 &&
+        previousDay.links[socialLinks.Fortune.name].level > 0 &&
+        isRomance &&
+        currentTime === "day" &&
+        days.includes(currentDate.getDay())
+      );
     },
     upgrade: function ({ currentStats, currentLinks, arcanes }) {
       const multiplier = arcanes.includes(socialLinks.Priestess.name)
@@ -692,12 +742,121 @@ export const events = {
       };
     },
   },
+  Empress: {
+    name: "Empress",
+    category: "links",
+    label: () => (
+      <SocialLink
+        label="Empress"
+        name="Mitsuru Kirijo"
+        place="Faculty Office Entrance"
+      />
+    ),
+    available: ({ currentDate, currentTime, currentLinks, previousDay }) => {
+      if (previousDay === undefined) return false;
+      const isFork =
+        previousDay.links &&
+        previousDay.links[socialLinks.Empress.name].level === 6;
+      const isRomance =
+        !currentLinks[socialLinks.Empress.name].romance || isFork;
+      const days = [
+        daysNames.monday,
+        daysNames.tuesday,
+        daysNames.wednesday,
+        daysNames.thursday,
+        daysNames.saturday,
+      ];
+      return (
+        currentDate.getTime() >= new Date(2009, 10, 21).getTime() &&
+        previousDay.stats[stats.Academics.name] >= 230 &&
+        isRomance &&
+        currentTime === "day" &&
+        days.includes(currentDate.getDay())
+      );
+    },
+    upgrade: function ({ currentStats, currentLinks, arcanes }) {
+      const multiplier = arcanes.includes(socialLinks.Empress.name) ? 1.51 : 1;
+      const newLinks = socialLinks.Empress.calculate({
+        ...currentLinks[socialLinks.Empress.name],
+        multiplier,
+      });
+      return {
+        links: {
+          ...currentLinks,
+          ...newLinks,
+        },
+        stats: { ...currentStats },
+      };
+    },
+  },
+  EmpressRomance: {
+    name: "Empress",
+    category: "links",
+    label: () => (
+      <SocialLink
+        label="Empress"
+        name="Mitsuru Kirijo"
+        place="Faculty Office Entrance"
+      />
+    ),
+    available: ({ currentDate, currentTime, currentLinks, previousDay }) => {
+      if (previousDay === undefined) return false;
+      const isFork =
+        previousDay.links &&
+        previousDay.links[socialLinks.Empress.name].level === 6;
+      const isRomance =
+        currentLinks[socialLinks.Empress.name].romance || isFork;
+      const days = [
+        daysNames.monday,
+        daysNames.tuesday,
+        daysNames.wednesday,
+        daysNames.thursday,
+        daysNames.saturday,
+      ];
+      return (
+        currentDate.getTime() >= new Date(2009, 10, 21).getTime() &&
+        previousDay.stats[stats.Academics.name] >= 230 &&
+        isRomance &&
+        currentTime === "day" &&
+        days.includes(currentDate.getDay())
+      );
+    },
+    upgrade: function ({ currentStats, currentLinks, arcanes }) {
+      const multiplier = arcanes.includes(socialLinks.Empress.name) ? 1.51 : 1;
+      const newLinks = socialLinks.Empress.calculate({
+        ...currentLinks[socialLinks.Empress.name],
+        romance: true,
+        multiplier,
+      });
+      return {
+        links: {
+          ...currentLinks,
+          ...newLinks,
+        },
+        stats: { ...currentStats },
+      };
+    },
+  },
   Emperor: {
     name: "Emperor",
     category: "links",
-    label: () => <h3 style={{ textAlign: "center" }}>Emperor</h3>,
-    available: () => {
-      return true;
+    label: () => (
+      <SocialLink
+        label="Emperor"
+        name="Hidetoshi Odagiri"
+        place="Student Council Room"
+      />
+    ),
+    available: ({ currentDate, currentTime }) => {
+      const days = [daysNames.monday, daysNames.wednesday, daysNames.friday];
+      const isToday =
+        currentDate.getTime() >= new Date(2010, 0, 1).getTime() ||
+        days.includes(currentDate.getDay());
+      return (
+        currentDate.getTime() >= new Date(2009, 3, 27).getTime() &&
+        currentTime === "day" &&
+        isToday
+      );
     },
     upgrade: function ({ currentStats, currentLinks, arcanes }) {
       const multiplier = arcanes.includes(socialLinks.Emperor.name) ? 1.51 : 1;
@@ -717,9 +876,26 @@ export const events = {
   Hierophant: {
     name: "Hierophant",
     category: "links",
-    label: () => <h3 style={{ textAlign: "center" }}>Hierophant</h3>,
-    available: () => {
-      return true;
+    label: () => (
+      <SocialLink
+        label="Hierophant"
+        name="Bunkichi and Mitsuko"
+        place="Bookworms Used Books"
+      />
+    ),
+    available: ({ currentDate, currentTime }) => {
+      const days = [
+        daysNames.tuesday,
+        daysNames.wednesday,
+        daysNames.thursday,
+        daysNames.friday,
+        daysNames.saturday,
+      ];
+      return (
+        currentDate.getTime() >= new Date(2009, 3, 25).getTime() &&
+        days.includes(currentDate.getDay()) &&
+        currentTime === "day"
+      );
     },
     upgrade: function ({ currentStats, currentLinks, arcanes }) {
       const multiplier = arcanes.includes(socialLinks.Hierophant.name)
@@ -738,12 +914,113 @@ export const events = {
       };
     },
   },
+  Lovers: {
+    name: "Lovers",
+    category: "links",
+    label: () => (
+      <SocialLink label="Lovers" name="Yukari Takeba" place="Classroom 2F" />
+    ),
+    available: ({ currentDate, currentTime, currentLinks, previousDay }) => {
+      if (previousDay === undefined) return false;
+      const isFork =
+        previousDay.links &&
+        previousDay.links[socialLinks.Empress.name].level === 6;
+      const isRomance =
+        !currentLinks[socialLinks.Empress.name].romance || isFork;
+      const days = [
+        daysNames.monday,
+        daysNames.wednesday,
+        daysNames.thursday,
+        daysNames.saturday,
+      ];
+      return (
+        currentDate.getTime() >= new Date(2009, 6, 25).getTime() &&
+        previousDay.stats[stats.Charm.name] >= 100 &&
+        days.includes(currentDate.getDay()) &&
+        currentTime === "day" &&
+        isRomance
+      );
+    },
+    upgrade: function ({ currentStats, currentLinks, arcanes }) {
+      const multiplier = arcanes.includes(socialLinks.Lovers.name) ? 1.51 : 1;
+      const newLinks = socialLinks.Lovers.calculate({
+        ...currentLinks[socialLinks.Lovers.name],
+        multiplier,
+      });
+      return {
+        links: {
+          ...currentLinks,
+          ...newLinks,
+        },
+        stats: { ...currentStats },
+      };
+    },
+  },
+  LoversRomance: {
+    name: "Lovers",
+    category: "links",
+    label: () => (
+      <SocialLink label="Lovers" name="Yukari Takeba" place="Classroom 2F" />
+    ),
+    available: ({ currentDate, currentTime, currentLinks, previousDay }) => {
+      if (previousDay === undefined) return false;
+      const isFork =
+        previousDay.links &&
+        previousDay.links[socialLinks.Empress.name].level === 6;
+      const isRomance =
+        currentLinks[socialLinks.Empress.name].romance || isFork;
+      const days = [
+        daysNames.monday,
+        daysNames.wednesday,
+        daysNames.thursday,
+        daysNames.saturday,
+      ];
+      return (
+        currentDate.getTime() >= new Date(2009, 6, 25).getTime() &&
+        previousDay.stats[stats.Charm.name] >= 100 &&
+        days.includes(currentDate.getDay()) &&
+        currentTime === "day" &&
+        isRomance
+      );
+    },
+    upgrade: function ({ currentStats, currentLinks, arcanes }) {
+      const multiplier = arcanes.includes(socialLinks.Lovers.name) ? 1.51 : 1;
+      const newLinks = socialLinks.Lovers.calculate({
+        ...currentLinks[socialLinks.Lovers.name],
+        romance: true,
+        multiplier,
+      });
+      return {
+        links: {
+          ...currentLinks,
+          ...newLinks,
+        },
+        stats: { ...currentStats },
+      };
+    },
+  },
   Chariot: {
     name: "Chariot",
     category: "links",
-    label: () => <h3 style={{ textAlign: "center" }}>Chariot</h3>,
-    available: () => {
-      return true;
+    label: () => (
+      <SocialLink
+        label="Chariot"
+        name="Kazushi Miyamoto"
+        place="Classroom 2F"
+      />
+    ),
+    available: ({ currentDate, currentTime }) => {
+      const days = [
+        daysNames.monday,
+        daysNames.tuesday,
+        daysNames.thursday,
+        daysNames.friday,
+      ];
+      return (
+        currentDate.getTime() >= new Date(2009, 3, 23).getTime() &&
+        days.includes(currentDate.getDay()) &&
+        currentTime === "day"
+      );
     },
     upgrade: function ({ currentStats, currentLinks, arcanes }) {
       const multiplier = arcanes.includes(socialLinks.Chariot.name) ? 1.51 : 1;
@@ -760,12 +1037,105 @@ export const events = {
       };
     },
   },
+  Justice: {
+    name: "Justice",
+    category: "links",
+    label: () => (
+      <SocialLink
+        label="Justice"
+        name="Chihiro Fushimi"
+        place="2nd Floor Hallway"
+      />
+    ),
+    available: ({ currentDate, currentTime, currentLinks, previousDay }) => {
+      if (previousDay === undefined) return false;
+      const isFork =
+        previousDay.links &&
+        previousDay.links[socialLinks.Empress.name].level === 6;
+      const isRomance =
+        !currentLinks[socialLinks.Empress.name].romance || isFork;
+      const days = [daysNames.tuesday, daysNames.thursday, daysNames.saturday];
+      return (
+        currentDate.getTime() >= new Date(2009, 4, 7).getTime() &&
+        previousDay.links[socialLinks.Emperor.name].level > 0 &&
+        days.includes(currentDate.getDay()) &&
+        currentTime === "day" &&
+        isRomance
+      );
+    },
+    upgrade: function ({ currentStats, currentLinks, arcanes }) {
+      const multiplier = arcanes.includes(socialLinks.Justice.name) ? 1.51 : 1;
+      const newLinks = socialLinks.Justice.calculate({
+        ...currentLinks[socialLinks.Justice.name],
+        multiplier,
+      });
+      return {
+        links: {
+          ...currentLinks,
+          ...newLinks,
+        },
+        stats: { ...currentStats },
+      };
+    },
+  },
+  JusticeRomance: {
+    name: "Justice",
+    category: "links",
+    label: () => (
+      <SocialLink
+        label="Justice"
+        name="Chihiro Fushimi"
+        place="2nd Floor Hallway"
+      />
+    ),
+    available: ({ currentDate, currentTime, currentLinks, previousDay }) => {
+      if (previousDay === undefined) return false;
+      const isFork =
+        previousDay.links &&
+        previousDay.links[socialLinks.Empress.name].level === 6;
+      const isRomance =
+        currentLinks[socialLinks.Empress.name].romance || isFork;
+      const days = [daysNames.tuesday, daysNames.thursday, daysNames.saturday];
+      return (
+        currentDate.getTime() >= new Date(2009, 4, 7).getTime() &&
+        previousDay.links[socialLinks.Emperor.name].level > 0 &&
+        days.includes(currentDate.getDay()) &&
+        currentTime === "day" &&
+        isRomance
+      );
+    },
+    upgrade: function ({ currentStats, currentLinks, arcanes }) {
+      const multiplier = arcanes.includes(socialLinks.Justice.name) ? 1.51 : 1;
+      const newLinks = socialLinks.Justice.calculate({
+        ...currentLinks[socialLinks.Justice.name],
+        romance: true,
+        multiplier,
+      });
+      return {
+        links: {
+          ...currentLinks,
+          ...newLinks,
+        },
+        stats: { ...currentStats },
+      };
+    },
+  },
   Hermit: {
     name: "Hermit",
     category: "links",
-    label: () => <h3 style={{ textAlign: "center" }}>Hermit</h3>,
-    available: () => {
-      return true;
+    label: () => (
+      <SocialLink
+        label="Hermit"
+        name="Maya"
+        place="Laptop at the Protagonist's room"
+      />
+    ),
+    available: ({ currentDate, currentTime }) => {
+      return (
+        currentDate.getTime() >= new Date(2009, 3, 29).getTime() &&
+        currentDate.getDay() == daysNames.sunday &&
+        currentTime === "day"
+      );
     },
     upgrade: function ({ currentStats, currentLinks, arcanes }) {
       const multiplier = arcanes.includes(socialLinks.Hermit.name) ? 1.51 : 1;
@@ -785,9 +1155,16 @@ export const events = {
   Fortune: {
     name: "Fortune",
     category: "links",
-    label: () => <h3 style={{ textAlign: "center" }}>Fortune</h3>,
-    available: () => {
-      return true;
+    label: () => (
+      <SocialLink label="Fortune" name="Keisuke Hiraga" place="Art Club Room" />
+    ),
+    available: ({ currentDate, currentTime }) => {
+      const days = [daysNames.tuesday, daysNames.wednesday, daysNames.thursday];
+      return (
+        currentDate.getTime() >= new Date(2009, 5, 17).getTime() &&
+        days.includes(currentDate.getDay()) &&
+        currentTime === "day"
+      );
     },
     upgrade: function ({ currentStats, currentLinks, arcanes }) {
       const multiplier = arcanes.includes(socialLinks.Fortune.name) ? 1.51 : 1;
@@ -804,12 +1181,106 @@ export const events = {
       };
     },
   },
+  Strength: {
+    name: "Strength",
+    category: "links",
+    label: () => (
+      <SocialLink
+        label="Strength"
+        name="Yuko Nishiwaki"
+        place="2F Classroom Hallway"
+      />
+    ),
+    available: ({ currentDate, currentTime, currentLinks, previousDay }) => {
+      if (previousDay === undefined) return false;
+      const isFork =
+        previousDay.links &&
+        previousDay.links[socialLinks.Empress.name].level === 6;
+      const isRomance =
+        !currentLinks[socialLinks.Empress.name].romance || isFork;
+      const days = [daysNames.wednesday, daysNames.saturday];
+      return (
+        currentDate.getTime() >= new Date(2009, 3, 24).getTime() &&
+        previousDay.links[socialLinks.Chariot.name].level >= 2 &&
+        days.includes(currentDate.getDay()) &&
+        currentTime === "day" &&
+        isRomance
+      );
+    },
+    upgrade: function ({ currentStats, currentLinks, arcanes }) {
+      const multiplier = arcanes.includes(socialLinks.Strength.name) ? 1.51 : 1;
+      const newLinks = socialLinks.Strength.calculate({
+        ...currentLinks[socialLinks.Strength.name],
+        multiplier,
+      });
+      return {
+        links: {
+          ...currentLinks,
+          ...newLinks,
+        },
+        stats: { ...currentStats },
+      };
+    },
+  },
+  StrengthRomance: {
+    name: "Strength",
+    category: "links",
+    label: () => (
+      <SocialLink
+        label="Strength"
+        name="Yuko Nishiwaki"
+        place="2F Classroom Hallway"
+      />
+    ),
+    available: ({ currentDate, currentTime, currentLinks, previousDay }) => {
+      if (previousDay === undefined) return false;
+      const isFork =
+        previousDay.links &&
+        previousDay.links[socialLinks.Empress.name].level === 6;
+      const isRomance =
+        !currentLinks[socialLinks.Empress.name].romance || isFork;
+      const days = [daysNames.wednesday, daysNames.saturday];
+      return (
+        currentDate.getTime() >= new Date(2009, 3, 24).getTime() &&
+        previousDay.links[socialLinks.Chariot.name].level >= 2 &&
+        days.includes(currentDate.getDay()) &&
+        currentTime === "day" &&
+        isRomance
+      );
+    },
+    upgrade: function ({ currentStats, currentLinks, arcanes }) {
+      const multiplier = arcanes.includes(socialLinks.Strength.name) ? 1.51 : 1;
+      const newLinks = socialLinks.Strength.calculate({
+        ...currentLinks[socialLinks.Strength.name],
+        romance: true,
+        multiplier,
+      });
+      return {
+        links: {
+          ...currentLinks,
+          ...newLinks,
+        },
+        stats: { ...currentStats },
+      };
+    },
+  },
   HangedMan: {
     name: "HangedMan",
     category: "links",
-    label: () => <h3 style={{ textAlign: "center" }}>Hanged Man</h3>,
-    available: () => {
-      return true;
+    label: () => (
+      <SocialLink
+        label="Hanged Man"
+        name="Maiko Oohashi"
+        place="Naganaki Shrine"
+      />
+    ),
+    available: ({ currentDate, currentTime }) => {
+      const days = [daysNames.monday, daysNames.wednesday, daysNames.saturday];
+      return (
+        currentDate.getTime() >= new Date(2009, 4, 6).getTime() &&
+        days.includes(currentDate.getDay()) &&
+        currentTime === "day"
+      );
     },
     upgrade: function ({ currentStats, currentLinks, arcanes }) {
       const multiplier = arcanes.includes(socialLinks.HangedMan.name)
@@ -831,9 +1302,23 @@ export const events = {
   Temperance: {
     name: "Temperance",
     category: "links",
-    label: () => <h3 style={{ textAlign: "center" }}>Temperance</h3>,
-    available: () => {
-      return true;
+    label: () => (
+      <SocialLink
+        label="Temperance"
+        name='André Laurent Jean "Bebe" Geraux'
+        place="2F Classroom Hallway / 1F Laboratory Hallway (Home Economics Room)"
+      />
+    ),
+    available: ({ currentDate, currentTime, previousDay }) => {
+      if (previousDay === undefined) return false;
+      const days = [daysNames.tuesday, daysNames.wednesday, daysNames.friday];
+      return (
+        currentDate.getTime() >= new Date(2009, 3, 8).getTime() &&
+        previousDay.links[socialLinks.Hierophant.name].level >= 3 &&
+        previousDay.stats[stats.Academics.name] >= 20 &&
+        days.includes(currentDate.getDay()) &&
+        currentTime === "day"
+      );
     },
     upgrade: function ({ currentStats, currentLinks, arcanes }) {
       const multiplier = arcanes.includes(socialLinks.Temperance.name)
@@ -855,9 +1340,23 @@ export const events = {
   Devil: {
     name: "Devil",
     category: "links",
-    label: () => <h3 style={{ textAlign: "center" }}>Devil</h3>,
-    available: () => {
-      return true;
+    label: () => (
+      <SocialLink
+        label="Devil"
+        name="President Tanaka"
+        place="Paulownia Mall"
+      />
+    ),
+    available: ({ currentDate, currentTime, previousDay }) => {
+      if (previousDay === undefined) return false;
+      const days = [daysNames.tuesday, daysNames.saturday];
+      return (
+        currentDate.getTime() >= new Date(2009, 4, 16).getTime() &&
+        previousDay.links[socialLinks.Hermit.name].level >= 4 &&
+        previousDay.stats[stats.Charm.name] >= 45 &&
+        days.includes(currentDate.getDay()) &&
+        currentTime === "evening"
+      );
     },
     upgrade: function ({ currentStats, currentLinks, arcanes }) {
       const multiplier = arcanes.includes(socialLinks.Devil.name) ? 1.51 : 1;
@@ -874,34 +1373,27 @@ export const events = {
       };
     },
   },
-  Sun: {
-    name: "Sun",
-    category: "links",
-    label: () => <h3 style={{ textAlign: "center" }}>Sun</h3>,
-    available: () => {
-      return true;
-    },
-    upgrade: function ({ currentStats, currentLinks, arcanes }) {
-      const multiplier = arcanes.includes(socialLinks.Sun.name) ? 1.51 : 1;
-      const newLinks = socialLinks.Sun.calculate({
-        ...currentLinks[socialLinks.Sun.name],
-        multiplier,
-      });
-      return {
-        links: {
-          ...currentLinks,
-          ...newLinks,
-        },
-        stats: { ...currentStats },
-      };
-    },
-  },
   Tower: {
     name: "Tower",
     category: "links",
-    label: () => <h3 style={{ textAlign: "center" }}>Tower</h3>,
-    available: () => {
-      return true;
+    label: () => (
+      <SocialLink label="Tower" name="Mutatsu" place="Club Escapade" />
+    ),
+    available: ({ currentDate, currentTime, previousDay }) => {
+      if (previousDay === undefined) return false;
+      const days = [
+        daysNames.thursday,
+        daysNames.friday,
+        daysNames.saturday,
+        daysNames.sunday,
+      ];
+      return (
+        currentDate.getTime() >= new Date(2009, 4, 23).getTime() &&
+        previousDay.links[socialLinks.Strength.name].level >= 4 &&
+        previousDay.stats[stats.Courage.name] >= 15 &&
+        days.includes(currentDate.getDay()) &&
+        currentTime === "evening"
+      );
     },
     upgrade: function ({ currentStats, currentLinks, arcanes }) {
       const multiplier = arcanes.includes(socialLinks.Tower.name) ? 1.51 : 1;
@@ -921,9 +1413,22 @@ export const events = {
   Star: {
     name: "Star",
     category: "links",
-    label: () => <h3 style={{ textAlign: "center" }}>Star</h3>,
-    available: () => {
-      return true;
+    label: () => (
+      <SocialLink
+        label="Star"
+        name="Mamoru Hayase"
+        place="Iwatodai Station Strip Mall 1F"
+      />
+    ),
+    available: ({ currentDate, currentTime, previousDay }) => {
+      if (previousDay === undefined) return false;
+      const days = [daysNames.wednesday, daysNames.friday, daysNames.sunday];
+      return (
+        currentDate.getTime() >= new Date(2009, 7, 5).getTime() &&
+        previousDay.stats[stats.Courage.name] >= 45 &&
+        days.includes(currentDate.getDay()) &&
+        currentTime === "day"
+      );
     },
     upgrade: function ({ currentStats, currentLinks, arcanes }) {
       const multiplier = arcanes.includes(socialLinks.Star.name) ? 1.51 : 1;
@@ -943,9 +1448,17 @@ export const events = {
   Moon: {
     name: "Moon",
     category: "links",
-    label: () => <h3 style={{ textAlign: "center" }}>Moon</h3>,
-    available: () => {
-      return true;
+    label: () => (
+      <SocialLink label="Moon" name="Nozomi Suemitsu" place="Paulownia Mall" />
+    ),
+    available: ({ currentDate, currentTime, previousDay }) => {
+      if (previousDay === undefined) return false;
+      return (
+        currentDate.getTime() >= new Date(2009, 3, 28).getTime() &&
+        previousDay.links[socialLinks.Magician.name].level >= 3 &&
+        previousDay.stats[stats.Charm.name] >= 15 &&
+        currentTime === "day"
+      );
     },
     upgrade: function ({ currentStats, currentLinks, arcanes }) {
       const multiplier = arcanes.includes(socialLinks.Moon.name) ? 1.51 : 1;
@@ -962,199 +1475,26 @@ export const events = {
       };
     },
   },
-  Empress: {
-    name: "Empress",
+  Sun: {
+    name: "Sun",
     category: "links",
-    label: () => <h3 style={{ textAlign: "center" }}>Empress</h3>,
-    available: ({ currentDate, currentTime, currentLinks, previousDay }) => {
-      const isFork =
-        previousDay?.links &&
-        previousDay.links[socialLinks.Empress.name].level === 6;
-      return !currentLinks[socialLinks.Empress.name].romance || isFork;
+    label: () => (
+      <SocialLink label="Sun" name="Akinari Kamiki" place="Naganaki Shrine" />
+    ),
+    available: ({ currentDate, currentTime, previousDay }) => {
+      if (previousDay === undefined) return false;
+      return (
+        currentDate.getTime() >= new Date(2009, 7, 9).getTime() &&
+        previousDay.links[socialLinks.HangedMan.name].level >= 3 &&
+        previousDay.stats[stats.Academics.name] >= 100 &&
+        currentDate.getDay() == daysNames.sunday &&
+        currentTime === "day"
+      );
     },
     upgrade: function ({ currentStats, currentLinks, arcanes }) {
-      const multiplier = arcanes.includes(socialLinks.Empress.name) ? 1.51 : 1;
-      const newLinks = socialLinks.Empress.calculate({
-        ...currentLinks[socialLinks.Empress.name],
-        multiplier,
-      });
-      return {
-        links: {
-          ...currentLinks,
-          ...newLinks,
-        },
-        stats: { ...currentStats },
-      };
-    },
-  },
-  EmpressRomance: {
-    name: "Empress",
-    category: "links",
-    label: () => <h3 style={{ textAlign: "center" }}>Empress</h3>,
-    available: ({ currentDate, currentTime, currentLinks, previousDay }) => {
-      const isFork =
-        previousDay?.links &&
-        previousDay.links[socialLinks.Empress.name].level === 6;
-      return currentLinks[socialLinks.Empress.name].romance || isFork;
-    },
-    upgrade: function ({ currentStats, currentLinks, arcanes }) {
-      const multiplier = arcanes.includes(socialLinks.Empress.name) ? 1.51 : 1;
-      const newLinks = socialLinks.Empress.calculate({
-        ...currentLinks[socialLinks.Empress.name],
-        romance: true,
-        multiplier,
-      });
-      return {
-        links: {
-          ...currentLinks,
-          ...newLinks,
-        },
-        stats: { ...currentStats },
-      };
-    },
-  },
-  Lovers: {
-    name: "Lovers",
-    category: "links",
-    label: () => <h3 style={{ textAlign: "center" }}>Lovers</h3>,
-    available: ({ currentDate, currentTime, currentLinks, previousDay }) => {
-      const isFork =
-        previousDay?.links &&
-        previousDay.links[socialLinks.Lovers.name].level === 6;
-      return !currentLinks[socialLinks.Lovers.name].romance || isFork;
-    },
-    upgrade: function ({ currentStats, currentLinks, arcanes }) {
-      const multiplier = arcanes.includes(socialLinks.Lovers.name) ? 1.51 : 1;
-      const newLinks = socialLinks.Lovers.calculate({
-        ...currentLinks[socialLinks.Lovers.name],
-        multiplier,
-      });
-      return {
-        links: {
-          ...currentLinks,
-          ...newLinks,
-        },
-        stats: { ...currentStats },
-      };
-    },
-  },
-  LoversRomance: {
-    name: "Lovers",
-    category: "links",
-    label: () => <h3 style={{ textAlign: "center" }}>Lovers</h3>,
-    available: ({ currentDate, currentTime, currentLinks, previousDay }) => {
-      const isFork =
-        previousDay?.links &&
-        previousDay.links[socialLinks.Lovers.name].level === 6;
-      return currentLinks[socialLinks.Lovers.name].romance || isFork;
-    },
-    upgrade: function ({ currentStats, currentLinks, arcanes }) {
-      const multiplier = arcanes.includes(socialLinks.Lovers.name) ? 1.51 : 1;
-      const newLinks = socialLinks.Lovers.calculate({
-        ...currentLinks[socialLinks.Lovers.name],
-        romance: true,
-        multiplier,
-      });
-      return {
-        links: {
-          ...currentLinks,
-          ...newLinks,
-        },
-        stats: { ...currentStats },
-      };
-    },
-  },
-  Justice: {
-    name: "Justice",
-    category: "links",
-    label: () => <h3 style={{ textAlign: "center" }}>Justice</h3>,
-    available: ({ currentDate, currentTime, currentLinks, previousDay }) => {
-      const isFork =
-        previousDay?.links &&
-        previousDay.links[socialLinks.Justice.name].level === 6;
-      return !currentLinks[socialLinks.Justice.name].romance || isFork;
-    },
-    upgrade: function ({ currentStats, currentLinks, arcanes }) {
-      const multiplier = arcanes.includes(socialLinks.Justice.name) ? 1.51 : 1;
-      const newLinks = socialLinks.Justice.calculate({
-        ...currentLinks[socialLinks.Justice.name],
-        multiplier,
-      });
-      return {
-        links: {
-          ...currentLinks,
-          ...newLinks,
-        },
-        stats: { ...currentStats },
-      };
-    },
-  },
-  JusticeRomance: {
-    name: "Justice",
-    category: "links",
-    label: () => <h3 style={{ textAlign: "center" }}>Justice</h3>,
-    available: ({ currentDate, currentTime, currentLinks, previousDay }) => {
-      const isFork =
-        previousDay?.links &&
-        previousDay.links[socialLinks.Justice.name].level === 6;
-      return currentLinks[socialLinks.Justice.name].romance || isFork;
-    },
-    upgrade: function ({ currentStats, currentLinks, arcanes }) {
-      const multiplier = arcanes.includes(socialLinks.Justice.name) ? 1.51 : 1;
-      const newLinks = socialLinks.Justice.calculate({
-        ...currentLinks[socialLinks.Justice.name],
-        romance: true,
-        multiplier,
-      });
-      return {
-        links: {
-          ...currentLinks,
-          ...newLinks,
-        },
-        stats: { ...currentStats },
-      };
-    },
-  },
-  Strength: {
-    name: "Strength",
-    category: "links",
-    label: () => <h3 style={{ textAlign: "center" }}>Strength</h3>,
-    available: ({ currentDate, currentTime, currentLinks, previousDay }) => {
-      const isFork =
-        previousDay?.links &&
-        previousDay.links[socialLinks.Strength.name].level === 6;
-      return !currentLinks[socialLinks.Strength.name].romance || isFork;
-    },
-    upgrade: function ({ currentStats, currentLinks, arcanes }) {
-      const multiplier = arcanes.includes(socialLinks.Strength.name) ? 1.51 : 1;
-      const newLinks = socialLinks.Strength.calculate({
-        ...currentLinks[socialLinks.Strength.name],
-        multiplier,
-      });
-      return {
-        links: {
-          ...currentLinks,
-          ...newLinks,
-        },
-        stats: { ...currentStats },
-      };
-    },
-  },
-  StrengthRomance: {
-    name: "Strength",
-    category: "links",
-    label: () => <h3 style={{ textAlign: "center" }}>Strength</h3>,
-    available: ({ currentDate, currentTime, currentLinks, previousDay }) => {
-      const isFork =
-        previousDay?.links &&
-        previousDay.links[socialLinks.Strength.name].level === 6;
-      return currentLinks[socialLinks.Strength.name].romance || isFork;
-    },
-    upgrade: function ({ currentStats, currentLinks, arcanes }) {
-      const multiplier = arcanes.includes(socialLinks.Strength.name) ? 1.51 : 1;
-      const newLinks = socialLinks.Strength.calculate({
-        ...currentLinks[socialLinks.Strength.name],
-        romance: true,
+      const multiplier = arcanes.includes(socialLinks.Sun.name) ? 1.51 : 1;
+      const newLinks = socialLinks.Sun.calculate({
+        ...currentLinks[socialLinks.Sun.name],
         multiplier,
       });
       return {
@@ -1169,12 +1509,28 @@ export const events = {
   Aeon: {
     name: "Aeon",
     category: "links",
-    label: () => <h3 style={{ textAlign: "center" }}>Aeon</h3>,
+    label: () => <SocialLink label="Aeon" name="Aigis" place="Classroom 2F" />,
     available: ({ currentDate, currentTime, currentLinks, previousDay }) => {
+      if (previousDay === undefined) return false;
       const isFork =
-        previousDay?.links &&
-        previousDay.links[socialLinks.Aeon.name].level === 6;
-      return !currentLinks[socialLinks.Aeon.name].romance || isFork;
+        previousDay.links &&
+        previousDay.links[socialLinks.Empress.name].level === 6;
+      const isRomance =
+        !currentLinks[socialLinks.Empress.name].romance || isFork;
+      const days = [
+        daysNames.monday,
+        daysNames.tuesday,
+        daysNames.wednesday,
+        daysNames.thursday,
+        daysNames.friday,
+        daysNames.saturday,
+      ];
+      return (
+        currentDate.getTime() >= new Date(2010, 0, 8).getTime() &&
+        days.includes(currentDate.getDay()) &&
+        currentTime === "day" &&
+        isRomance
+      );
     },
     upgrade: function ({ currentStats, currentLinks, arcanes }) {
       const multiplier = arcanes.includes(socialLinks.Aeon.name) ? 1.51 : 1;
@@ -1194,12 +1550,28 @@ export const events = {
   AeonRomance: {
     name: "Aeon",
     category: "links",
-    label: () => <h3 style={{ textAlign: "center" }}>Aeon</h3>,
+    label: () => <SocialLink label="Aeon" name="Aigis" place="Classroom 2F" />,
     available: ({ currentDate, currentTime, currentLinks, previousDay }) => {
+      if (previousDay === undefined) return false;
       const isFork =
-        previousDay?.links &&
-        previousDay.links[socialLinks.Aeon.name].level === 6;
-      return currentLinks[socialLinks.Aeon.name].romance || isFork;
+        previousDay.links &&
+        previousDay.links[socialLinks.Empress.name].level === 6;
+      const isRomance =
+        !currentLinks[socialLinks.Empress.name].romance || isFork;
+      const days = [
+        daysNames.monday,
+        daysNames.tuesday,
+        daysNames.wednesday,
+        daysNames.thursday,
+        daysNames.friday,
+        daysNames.saturday,
+      ];
+      return (
+        currentDate.getTime() >= new Date(2010, 0, 8).getTime() &&
+        days.includes(currentDate.getDay()) &&
+        currentTime === "day" &&
+        isRomance
+      );
     },
     upgrade: function ({ currentStats, currentLinks, arcanes }) {
       const multiplier = arcanes.includes(socialLinks.Aeon.name) ? 1.51 : 1;
