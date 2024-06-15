@@ -34,2151 +34,1710 @@ export function ChoicesEvent({ label, children }) {
 }
 
 const priestessLevels = [
-  {
-    points: 0,
-    maxPoints: 0,
-    element: () => <h3>Create bond</h3>,
-  },
-  {
-    points: 0,
-    maxPoints: 30,
-    element: () => (
-      <div>
-        <ChoicesEvent label="Maybe I should give him some food. What do you think, Makoto-kun?">
-          <Choice label="Sure." correct />
-          <Choice label="Don't do it." />
-        </ChoicesEvent>
-        <ChoicesEvent label="I don't want to put you in the hospital...">
-          <Choice label="I can handle a bit." />
-          <Choice label="Maybe we can use it in battle." />
-        </ChoicesEvent>
-        <ChoicesEvent label="I don't think I can do this alone. Can I... count on you to help?">
-          <Choice label="Sure thing." correct />
-          <Choice label="Will it be good next time?" />
-        </ChoicesEvent>
-      </div>
+  LinkLevel(),
+  LinkLevel(0, [
+    choices(
+      "Maybe I should give him some food. What do you think, Makoto-kun?",
+      [
+        choice({ label: "Sure.", correct: true }),
+        choice({ label: "Don't do it." }),
+      ]
     ),
-  },
-  {
-    points: 0,
-    maxPoints: 30,
-    element: () => (
-      <div>
-        <ChoicesEvent label="I still don't have a feel for how much salt to add. How do you do it, Makoto-kun?">
-          <Choice label="Just a dash or two." correct />
-          <Choice label="I don't add salt." />
-          <Choice label="Just dump it a ton." ok />
-        </ChoicesEvent>
-        <ChoicesEvent label="O-Oh, sorry. I know you're just trying to help me, and all I'm doing is being negative.">
-          <Choice label="Just take it slow." correct />
-          <Choice label="Don't get discouraged already." ok />
-          <Choice label="Practice makes perfect." ok />
-        </ChoicesEvent>
-        <ChoicesEvent label="Hmm... But in that case, I can't really read while cooking. I wouldn't want to get the pages dirty.">
-          <Choice label="Go to the bookstore." />
-          <Choice label="I'll help you find something." />
-        </ChoicesEvent>
-      </div>
+    choices("I don't want to put you in the hospital...", [
+      choice({ label: "I can handle a bit." }),
+      choice({ label: "Maybe we can use it in battle." }),
+    ]),
+    choices(
+      "I don't think I can do this alone. Can I... count on you to help?",
+      [
+        choice({ label: "Sure thing.", correct: true }),
+        choice({ label: "Will it be good next time?" }),
+      ]
     ),
-  },
-  {
-    points: 15,
-    maxPoints: 20,
-    element: () => (
-      <div>
-        <ChoicesEvent label="But I couldn't really decide, and I wasn't sure how to use whatever I'd buy...">
-          <Choice label="Do you really need one?" />
-          <Choice label="Start with the basics first." />
-        </ChoicesEvent>
-        <ChoicesEvent label="And it's not like I have any other redeeming qualities.">
-          <Choice label="There's nothing you're good at?" />
-          <Choice label="What about your Persona?" />
-          <Choice label="You're a hard worker." ok />
-        </ChoicesEvent>
-        <ChoicesEvent label="Not to mention that I'm kind of embarrassed about it all. I mean, it's not a very feminine hobby.">
-          <Choice label="That's not true." correct />
-          <Choice label="Maybe you're right." />
-          <Choice label="Why do you think that?" />
-        </ChoicesEvent>
-      </div>
+  ]),
+  LinkLevel(0, [
+    choices(
+      "I still don't have a feel for how much salt to add. How do you do it, Makoto-kun?",
+      [
+        choice({ label: "Just a dash or two.", correct: true }),
+        choice({ label: "I don't add salt." }),
+        choice({ label: "Just dump it a ton.", ok: true }),
+      ]
     ),
-  },
-  {
-    points: 22,
-    maxPoints: 35,
-    element: () => (
-      <div>
-        <ChoicesEvent label="W-Well... How is it?">
-          <Choice label="It's good." ok />
-          <Choice label="You did a great job." correct />
-        </ChoicesEvent>
-        <ChoicesEvent label="Because I don't think I could have made it this far without you.">
-          <Choice label="I'm glad I could help." ok />
-          <Choice label="I didn't do anything." />
-        </ChoicesEvent>
-        <ChoicesEvent label="That might be the reason why I made such good rice balls. Because I was thinking about who was going to eat them.">
-          <Choice label="Thank you." />
-          <Choice label="I think I get it." />
-          <Choice label="Can you make me more sometime?" correct />
-        </ChoicesEvent>
-      </div>
+    choices(
+      "O-Oh, sorry. I know you're just trying to help me, and all I'm doing is being negative.",
+      [
+        choice({ label: "Just take it slow.", correct: true }),
+        choice({ label: "Don't get discouraged already.", ok: true }),
+        choice({ label: "Practice makes perfect.", ok: true }),
+      ]
     ),
-  },
-  {
-    points: 30,
-    maxPoints: 30,
-    element: () => (
-      <div>
-        <ChoicesEvent label="I promise I'm going to do the best I can. So can I count on you?">
-          <Choice label="Of course." correct />
-          <Choice label="You sure you're not overdoing it?" />
-        </ChoicesEvent>
-        <ChoicesEvent label="I know I don't seem very reliable, but I want to make myself a useful member of the team.">
-          <Choice label="That's the spirit." correct />
-          <Choice label="Don't get too carried away." />
-          <Choice label="You're already plenty useful." />
-        </ChoicesEvent>
-      </div>
+    choices(
+      "Hmm... But in that case, I can't really read while cooking. I wouldn't want to get the pages dirty.",
+      [
+        choice({ label: "Go to the bookstore." }),
+        choice({ label: "I'll help you find something." }),
+      ]
     ),
-  },
+  ]),
+  LinkLevel(0, [
+    choices("", [
+      choice({ label: "" }),
+      choice({ label: "" }),
+      choice({ label: "" }),
+    ]),
+  ]),
+  LinkLevel(15, [
+    choices(
+      "But I couldn't really decide, and I wasn't sure how to use whatever I'd buy...",
+      [
+        choice({ label: "Do you really need one?" }),
+        choice({ label: "Start with the basics first." }),
+      ]
+    ),
+    choices("And it's not like I have any other redeeming qualities.", [
+      choice({ label: "There's nothing you're good at?" }),
+      choice({ label: "What about your Persona?" }),
+      choice({ label: "You're a hard worker.", ok: true }),
+    ]),
+    choices(
+      "Not to mention that I'm kind of embarrassed about it all. I mean, it's not a very feminine hobby.",
+      [
+        choice({ label: "That's not true.", correct: true }),
+        choice({ label: "Maybe you're right." }),
+        choice({ label: "Why do you think that?" }),
+      ]
+    ),
+  ]),
+  LinkLevel(22, [
+    choices("W-Well... How is it?", [
+      choice({ label: "It's good.", ok: true }),
+      choice({ label: "You did a great job.", correct: true }),
+    ]),
+    choices(
+      "Because I don't think I could have made it this far without you.",
+      [
+        choice({ label: "I'm glad I could help.", ok: true }),
+        choice({ label: "I didn't do anything." }),
+      ]
+    ),
+    choices(
+      "That might be the reason why I made such good rice balls. Because I was thinking about who was going to eat them.",
+      [
+        choice({ label: "Thank you." }),
+        choice({ label: "I think I get it." }),
+        choice({ label: "Can you make me more sometime?", correct: true }),
+      ]
+    ),
+  ]),
+  LinkLevel(30, [
+    choices(
+      "I promise I'm going to do the best I can. So can I count on you?",
+      [
+        choice({ label: "Of course.", correct: true }),
+        choice({ label: "You sure you're not overdoing it?" }),
+      ]
+    ),
+    choices(
+      "I know I don't seem very reliable, but I want to make myself a useful member of the team.",
+      [
+        choice({ label: "That's the spirit.", correct: true }),
+        choice({ label: "Don't get too carried away." }),
+        choice({ label: "You're already plenty useful." }),
+      ]
+    ),
+  ]),
 ];
 
 const empressLevels = [
-  {
-    points: 0,
-    maxPoints: 0,
-    element: () => <h3>Create bond</h3>,
-  },
-  {
-    points: 0,
-    maxPoints: 5,
-    element: () => (
-      <div>
-        <ChoicesEvent label="It's smaller than I expected.">
-          <Choice label="Is this your first time?" ok />
-          <Choice label="Do you know how to eat it?" ok />
-        </ChoicesEvent>
-      </div>
+  LinkLevel(),
+  LinkLevel(0, [
+    choices("It's smaller than I expected.", [
+      choice({ label: "Is this your first time?", ok: true }),
+      choice({ label: "Do you know how to eat it?", ok: true }),
+    ]),
+  ]),
+  LinkLevel(0, [
+    choices("Sometimes my own ignorance astounds me...", [
+      choice({ label: "Want me to treat you?" }),
+      choice({ label: "Why not give it a try?", ok: true }),
+    ]),
+    choices("Maybe he's just maturing…", [
+      choice({ label: "Are you sad?" }),
+      choice({ label: "Are you happy?", correct: true }),
+    ]),
+    choices("It's the most peculiar feeling", [
+      choice({ label: "Maybe you're in love.", ok: true }),
+      choice({ label: "Maybe you're anxious.", ok: true }),
+      choice({ label: "Maybe you're sad." }),
+    ]),
+    choices(
+      "Sorry for subjecting you to my thoughtless ramblings… Just forget I said anything.",
+      [
+        choice({ label: "I'm rooting for you." }),
+        choice({ label: "I heard nothing.", ok: true }),
+      ]
     ),
-  },
-  {
-    points: 0,
-    maxPoints: 30,
-    element: () => (
-      <div>
-        <ChoicesEvent label="Sometimes my own ignorance astounds me...">
-          <Choice label="Want me to treat you?" />
-          <Choice label="Why not give it a try?" ok />
-        </ChoicesEvent>
-        <ChoicesEvent label="Maybe he's just maturing…">
-          <Choice label="Are you sad?" />
-          <Choice label="Are you happy?" correct />
-        </ChoicesEvent>
-        <ChoicesEvent label="It's the most peculiar feeling">
-          <Choice label="Maybe you're in love." ok />
-          <Choice label="Maybe you're anxious." ok />
-          <Choice label="Maybe you're sad." />
-        </ChoicesEvent>
-        <ChoicesEvent label="Sorry for subjecting you to my thoughtless ramblings… Just forget I said anything.">
-          <Choice label="I'm rooting for you." />
-          <Choice label="I heard nothing." ok />
-        </ChoicesEvent>
-      </div>
+  ]),
+  LinkLevel(22, [
+    choices(
+      "In just a short while, we'll be looking back on these days with nostalgia.",
+      [
+        choice({ label: "What's next for you?" }),
+        choice({ label: "Did something happen?", ok: true }),
+      ]
     ),
-  },
-  {
-    points: 22,
-    maxPoints: 20,
-    element: () => (
-      <div>
-        <ChoicesEvent label="In just a short while, we'll be looking back on these days with nostalgia.">
-          <Choice label="What's next for you?" />
-          <Choice label="Did something happen?" ok />
-        </ChoicesEvent>
-        <ChoicesEvent label="What does marriage mean to you?">
-          <Choice label="It's all for love" correct />
-          <Choice label="It's a social agreement." />
-          <Choice label="It's about compromise." />
-        </ChoicesEvent>
-        <ChoicesEvent label="Am I... wrong about this?">
-          <Choice label="Do you have a boyfriend?" />
-          <Choice label="That's a tough one." />
-        </ChoicesEvent>
-      </div>
+    choices("What does marriage mean to you?", [
+      choice({ label: "It's all for love", correct: true }),
+      choice({ label: "It's a social agreement." }),
+      choice({ label: "It's about compromise." }),
+    ]),
+    choices("Am I... wrong about this?", [
+      choice({ label: "Do you have a boyfriend?" }),
+      choice({ label: "That's a tough one." }),
+    ]),
+  ]),
+  LinkLevel(22, [
+    choices(
+      "It seems a lot of thought goes into the design and construction of a movie theather.",
+      [
+        choice({ label: "...Said the rich girl." }),
+        choice({ label: "Glad you enjoyed it.", correct: true }),
+      ]
     ),
-  },
-  {
-    points: 22,
-    maxPoints: 45,
-    element: () => (
-      <div>
-        <ChoicesEvent label="It seems a lot of thought goes into the design and construction of a movie theather.">
-          <Choice label="...Said the rich girl." />
-          <Choice label="Glad you enjoyed it." correct />
-        </ChoicesEvent>
-        <ChoicesEvent label="She's likely more suited to riding a motorcycle than I am as well.">
-          <Choice label="A motorcycle?" correct />
-          <Choice label="You're not suited?" />
-        </ChoicesEvent>
-        <ChoicesEvent label="I don't regret it. Even now, I spend my time tuning it whenever I can.">
-          <Choice label="What a high-class biker." />
-          <Choice label="Let’s go for a ride." correct />
-        </ChoicesEvent>
-      </div>
+    choices(
+      "She's likely more suited to riding a motorcycle than I am as well.",
+      [
+        choice({ label: "A motorcycle?", correct: true }),
+        choice({ label: "You're not suited?" }),
+      ]
     ),
-  },
-  {
-    points: 22,
-    maxPoints: 25,
-    element: () => (
-      <div>
-        <ChoicesEvent label="......">
-          <Choice label="Looking for something specific?" ok />
-          <Choice label="Need some help?" ok />
-          <Choice label="Borrowing a book?" />
-        </ChoicesEvent>
-        <ChoicesEvent label="...Even if I have to make sacrifices to do it.">
-          <Choice label="Did something happen?" />
-          <Choice label="That doesn't sound good." />
-        </ChoicesEvent>
-        <ChoicesEvent label="This is the best solution for everyone involved...">
-          <Choice label="Is it really?" />
-          <Choice label="I didn't know..." ok />
-        </ChoicesEvent>
-        <ChoicesEvent label="So... I won't run from my fate.">
-          <Choice label="Are you sure about this?" ok />
-          <Choice label="That's admirable." />
-          <Choice label="I'll do something about it." correct />
-        </ChoicesEvent>
-      </div>
+    choices(
+      "I don't regret it. Even now, I spend my time tuning it whenever I can.",
+      [
+        choice({ label: "What a high-class biker." }),
+        choice({ label: "Let's go for a ride.", correct: true }),
+      ]
     ),
-  },
-  {
-    points: 22,
-    maxPoints: 15,
-    element: () => (
-      <div>
-        <ChoicesEvent label="Or, is that too selfish a request?">
-          <Choice label="I don't mind at all." correct />
-          <Choice label="Is that all you need?" />
-        </ChoicesEvent>
-      </div>
-    ),
-  },
+  ]),
+  LinkLevel(22, [
+    choices("......", [
+      choice({ label: "Looking for something specific?", ok: true }),
+      choice({ label: "Need some help?", ok: true }),
+      choice({ label: "Borrowing a book?" }),
+    ]),
+    choices("...Even if I have to make sacrifices to do it.", [
+      choice({ label: "Did something happen?" }),
+      choice({ label: "That doesn't sound good." }),
+    ]),
+    choices("This is the best solution for everyone involved...", [
+      choice({ label: "Is it really?" }),
+      choice({ label: "I didn't know...", ok: true }),
+    ]),
+    choices("So... I won't run from my fate.", [
+      choice({ label: "Are you sure about this?", ok: true }),
+      choice({ label: "That's admirable." }),
+      choice({ label: "I'll do something about it.", correct: true }),
+    ]),
+  ]),
+  LinkLevel(22, [
+    choices("Or, is that too selfish a request?", [
+      choice({ label: "I don't mind at all.", correct: true }),
+      choice({ label: "Is that all you need?" }),
+    ]),
+  ]),
 ];
 
 const loversLevels = [
-  {
-    points: 0,
-    maxPoints: 0,
-    element: () => <h3>Create bond</h3>,
-  },
-  {
-    points: 0,
-    maxPoints: 20,
-    element: () => (
-      <div>
-        <ChoicesEvent label="I think I'll go with the gerberas. What color do you think should I get?">
-          <Choice label="Cute pink." correct />
-          <Choice label="Pure white." />
-          <Choice label="Bright red." />
-          <Choice label="What's a gerbera?" />
-        </ChoicesEvent>
-        <ChoicesEvent label="Oh wait, you've never seen my room, have you? Well then, why am I even asking you?">
-          <Choice label="That's mean." ok />
-          <Choice label="Invite me over, then." />
-        </ChoicesEvent>
-      </div>
+  LinkLevel(),
+  LinkLevel(0, [
+    choices(
+      "I think I'll go with the gerberas. What color do you think should I get?",
+      [
+        choice({ label: "Cute pink.", correct: true }),
+        choice({ label: "Pure white." }),
+        choice({ label: "Bright red." }),
+        choice({ label: "What's a gerbera?" }),
+      ]
     ),
-  },
-  {
-    points: 0,
-    maxPoints: 0,
-    element: () => (
-      <div>
-        <ChoicesEvent label="I guess my mom's no different.">
-          <Choice label="What makes you say that?" />
-          <Choice label="......" />
-        </ChoicesEvent>
-      </div>
+    choices(
+      "Oh wait, you've never seen my room, have you? Well then, why am I even asking you?",
+      [
+        choice({ label: "That's mean.", ok: true }),
+        choice({ label: "Invite me over, then." }),
+      ]
     ),
-  },
-  {
-    points: 15,
-    maxPoints: 15,
-    element: () => (
-      <div>
-        <ChoicesEvent label="Sorry.">
-          <Choice label="Who was that?" />
-          <Choice label="What was that about?" />
-          <Choice label="Are you okay?" correct />
-        </ChoicesEvent>
-      </div>
-    ),
-  },
+  ]),
+  LinkLevel(0, [
+    choices("I guess my mom's no different.", [
+      choice({ label: "What makes you say that?" }),
+      choice({ label: "......" }),
+    ]),
+  ]),
+  LinkLevel(15, [
+    choices("Sorry.", [
+      choice({ label: "Who was that?" }),
+      choice({ label: "What was that about?" }),
+      choice({ label: "Are you okay?", correct: true }),
+    ]),
+  ]),
 ];
 
 const justiceLevels = [
-  {
-    points: 0,
-    maxPoints: 0,
-    element: () => <h3>Create bond</h3>,
-  },
-  {
-    points: 0,
-    maxPoints: 25,
-    element: () => (
-      <div>
-        <ChoicesEvent label="Sorry to drag you along while I go shopping...">
-          <Choice label="Don't worry about it." correct />
-          <Choice label="I was bored anyway." />
-        </ChoicesEvent>
-        <ChoicesEvent label="...Um, do you read much, Makoto-san?">
-          <Choice label="I read the classics." ok />
-          <Choice label="I read manga." ok />
-          <Choice label="I read fashion magazines." />
-          <Choice label="I don't read books." />
-        </ChoicesEvent>
-        <ChoicesEvent label="Is it boring to hang around with, um, someone like me?">
-          <Choice label="I'm having fun." ok />
-          <Choice label="Yeah, it's a drag." />
-          <Choice label="I'm indifferent." />
-        </ChoicesEvent>
-        <ChoicesEvent label="But I'm always so scared, that all I can do is nod...">
-          <Choice label="Are you only like this with guys?" />
-          <Choice label="Why are you so afraid?" />
-        </ChoicesEvent>
-        <ChoicesEvent label="So... whenever I see a man now, all I can think of is that face...">
-          <Choice label="I shouldn't have asked." />
-          <Choice label="I'm sorry." />
-        </ChoicesEvent>
-      </div>
+  LinkLevel(),
+  LinkLevel(0, [
+    choices("Sorry to drag you along while I go shopping...", [
+      choice({ label: "Don't worry about it.", correct: true }),
+      choice({ label: "I was bored anyway." }),
+    ]),
+    choices("...Um, do you read much, Makoto-san?", [
+      choice({ label: "I read the classics.", ok: true }),
+      choice({ label: "I read manga.", ok: true }),
+      choice({ label: "I read fashion magazines." }),
+      choice({ label: "I don't read books." }),
+    ]),
+    choices("Is it boring to hang around with, um, someone like me?", [
+      choice({ label: "I'm having fun.", ok: true }),
+      choice({ label: "Yeah, it's a drag." }),
+      choice({ label: "I'm indifferent." }),
+    ]),
+    choices("But I'm always so scared, that all I can do is nod...", [
+      choice({ label: "Are you only like this with guys?" }),
+      choice({ label: "Why are you so afraid?" }),
+    ]),
+    choices(
+      "So... whenever I see a man now, all I can think of is that face...",
+      [
+        choice({ label: "I shouldn't have asked." }),
+        choice({ label: "I'm sorry." }),
+      ]
     ),
-  },
-  {
-    points: 0,
-    maxPoints: 10,
-    element: () => (
-      <div>
-        <ChoicesEvent label="...Do they not know where they are!?">
-          <Choice label="They have no shame." ok />
-          <Choice label="They're gonna...kiss?" />
-          <Choice label="Where did they go?" />
-        </ChoicesEvent>
-        <ChoicesEvent label="We should notify the student council president right away, and discuss this at our next meeting!">
-          <Choice label="I agree." ok />
-          <Choice label="That's kind of extreme...?" />
-          <Choice label="You don't like kissing?" />
-        </ChoicesEvent>
-      </div>
+  ]),
+  LinkLevel(0, [
+    choices("...Do they not know where they are!?", [
+      choice({ label: "They have no shame.", ok: true }),
+      choice({ label: "They're gonna...kiss?" }),
+      choice({ label: "Where did they go?" }),
+    ]),
+    choices(
+      "We should notify the student council president right away, and discuss this at our next meeting!",
+      [
+        choice({ label: "I agree.", ok: true }),
+        choice({ label: "That's kind of extreme...?" }),
+        choice({ label: "You don't like kissing?" }),
+      ]
     ),
-  },
-  {
-    points: 22,
-    maxPoints: 15,
-    element: () => (
-      <div>
-        <ChoicesEvent label="Makoto-san...">
-          <Choice label="Get lost." />
-          <Choice label="...Hey." />
-        </ChoicesEvent>
-        <ChoicesEvent label="Why am I still shaking?">
-          <Choice label="Let's hold hands." />
-          <Choice label="I'm here for you." correct />
-          <Choice label="Take a deep breath." />
-        </ChoicesEvent>
-      </div>
-    ),
-  },
+  ]),
+  LinkLevel(22, [
+    choices("Makoto-san...", [
+      choice({ label: "Get lost." }),
+      choice({ label: "...Hey." }),
+    ]),
+    choices("Why am I still shaking?", [
+      choice({ label: "Let's hold hands." }),
+      choice({ label: "I'm here for you.", correct: true }),
+      choice({ label: "Take a deep breath." }),
+    ]),
+  ]),
 ];
 
 const strengthLevels = [
-  {
-    points: 0,
-    maxPoints: 0,
-    element: () => <h3>Create bond</h3>,
-  },
-  {
-    points: 0,
-    maxPoints: 35,
-    element: () => (
-      <div>
-        <ChoicesEvent label="Also, I wasn't really in the mental state to do this alone today.">
-          <Choice label="What happened?" ok />
-          <Choice label="You did good." />
-        </ChoicesEvent>
-        <ChoicesEvent label="And before I knew it, I'd dozed off. I ended up handing a blank paper.">
-          <Choice label="That's bad." />
-          <Choice label="It wasn't your fault." ok />
-        </ChoicesEvent>
-        <ChoicesEvent label="But come on, it's way too early to worry about the future, isn't it? We're still just teenagers!">
-          <Choice label="That's true." correct />
-          <Choice label="I don't think so." />
-          <Choice label="You haven't thought about it?" />
-        </ChoicesEvent>
-      </div>
+  LinkLevel(),
+  LinkLevel(0, [
+    choices(
+      "Also, I wasn't really in the mental state to do this alone today.",
+      [
+        choice({ label: "What happened?", ok: true }),
+        choice({ label: "You did good." }),
+      ]
     ),
-  },
-  {
-    points: 0,
-    maxPoints: 10,
-    element: () => (
-      <div>
-        <ChoicesEvent label="Going that far would've been crossing the line.">
-          <Choice label="Does this happen often?" />
-          <Choice label="Do you know who did it?" />
-        </ChoicesEvent>
-        <ChoicesEvent label="Sorry you got dragged into that.">
-          <Choice label="Friend of yours?" />
-          <Choice label="Don't worry about it." ok />
-        </ChoicesEvent>
-        <ChoicesEvent label="They called you my boyfriend. That must have made you feel awkward, huh?">
-          <Choice label="I'm honored." fork />
-          <Choice label="I don't mind." />
-          <Choice label="It might be a problem." />
-        </ChoicesEvent>
-      </div>
+    choices(
+      "And before I knew it, I'd dozed off. I ended up handing a blank paper.",
+      [
+        choice({ label: "That's bad." }),
+        choice({ label: "It wasn't your fault.", ok: true }),
+      ]
     ),
-  },
-  {
-    points: 5,
-    maxPoints: 15,
-    element: () => (
-      <div>
-        <ChoicesEvent label="Makoto-kun, what do you think I should do?">
-          <Choice label="Why not give it a go?" />
-          <Choice label="That's for you to decide." />
-        </ChoicesEvent>
-        <ChoicesEvent label="I mean, why not right? Please? Honestly, I don't think I can handle it on my own...">
-          <Choice label="Sure thing." ok />
-          <Choice label="It's kind of a hassle." />
-        </ChoicesEvent>
-      </div>
+    choices(
+      "But come on, it's way too early to worry about the future, isn't it? We're still just teenagers!",
+      [
+        choice({ label: "That's true.", correct: true }),
+        choice({ label: "I don't think so." }),
+        choice({ label: "You haven't thought about it?" }),
+      ]
     ),
-  },
+  ]),
+  LinkLevel(0, [
+    choices("Going that far would've been crossing the line.", [
+      choice({ label: "Does this happen often?" }),
+      choice({ label: "Do you know who did it?" }),
+    ]),
+    choices("Sorry you got dragged into that.", [
+      choice({ label: "Friend of yours?" }),
+      choice({ label: "Don't worry about it.", ok: true }),
+    ]),
+    choices(
+      "They called you my boyfriend. That must have made you feel awkward, huh?",
+      [
+        choice({ label: "I'm honored.", fork: true }),
+        choice({ label: "I don't mind." }),
+        choice({ label: "It might be a problem." }),
+      ]
+    ),
+  ]),
+  LinkLevel(5, [
+    choices("Makoto-kun, what do you think I should do?", [
+      choice({ label: "Why not give it a go?" }),
+      choice({ label: "That's for you to decide." }),
+    ]),
+    choices(
+      "I mean, why not right? Please? Honestly, I don't think I can handle it on my own...",
+      [
+        choice({ label: "Sure thing.", ok: true }),
+        choice({ label: "It's kind of a hassle." }),
+      ]
+    ),
+  ]),
 ];
 
 const aeonLevels = [
-  {
-    points: 0,
-    maxPoints: 0,
-    element: () => <h3>Create bond</h3>,
-  },
-  {
-    points: 0,
-    maxPoints: 15,
-    element: () => (
-      <div>
-        <ChoicesEvent label="What about you, Makoto-san? Do you... like it here?">
-          <Choice label="I like it here." correct />
-          <Choice label="Not really." />
-          <Choice label="I don't care." />
-        </ChoicesEvent>
-      </div>
+  LinkLevel(),
+  LinkLevel(0, [
+    choices("What about you, Makoto-san? Do you... like it here?", [
+      choice({ label: "I like it here.", correct: true }),
+      choice({ label: "Not really." }),
+      choice({ label: "I don't care." }),
+    ]),
+  ]),
+  LinkLevel(0, [
+    choices("How can we make them understand...?", [
+      choice({ label: "Just try explaining." }),
+      choice({ label: "I don't think we can." }),
+    ]),
+    choices("......", [
+      choice({ label: "Maybe so." }),
+      choice({ label: "That's not true.", ok: true }),
+    ]),
+  ]),
+  LinkLevel(0, [
+    choices("A white, spotted cat... Did you see one, Makoto-san?", [
+      choice({ label: "I might have...", ok: true }),
+      choice({ label: "No, I haven't." }),
+    ]),
+    choices("Goodness, really!? Where might this have been?", [
+      choice({ label: "Near the station" }),
+      choice({ label: "Near the strip mall." }),
+      choice({ label: "I don't remember." }),
+    ]),
+    choices(
+      "Being separated from a loved one can be very distressing after all...",
+      [
+        choice({ label: "All right.", correct: true }),
+        choice({ label: "What a pain..." }),
+      ]
     ),
-  },
-  {
-    points: 0,
-    maxPoints: 5,
-    element: () => (
-      <div>
-        <ChoicesEvent label="How can we make them understand...?">
-          <Choice label="Just try explaining." />
-          <Choice label="I don't think we can." />
-        </ChoicesEvent>
-        <ChoicesEvent label="......">
-          <Choice label="Maybe so." />
-          <Choice label="That's not true." ok />
-        </ChoicesEvent>
-      </div>
-    ),
-  },
-  {
-    points: 0,
-    maxPoints: 15,
-    element: () => (
-      <div>
-        <ChoicesEvent label="A white, spotted cat... Did you see one, Makoto-san?">
-          <Choice label="I might have..." ok />
-          <Choice label="No, I haven't." />
-        </ChoicesEvent>
-        <ChoicesEvent label="Goodness, really!? Where might this have been?">
-          <Choice label="Near the station" />
-          <Choice label="Near the strip mall." />
-          <Choice label="I don't remember." />
-        </ChoicesEvent>
-        <ChoicesEvent label="Being separated from a loved one can be very distressing after all...">
-          <Choice label="All right." correct />
-          <Choice label="What a pain..." />
-        </ChoicesEvent>
-        <ChoicesEvent label="And I was the one who insisted we search... I'm sorry.">
-          <Choice label="Don't let it get to you." />
-          <Choice label="We should head back for today." />
-          <Choice label="Let's keep looking." />
-        </ChoicesEvent>
-      </div>
-    ),
-  },
-  {
-    points: 0,
-    maxPoints: 15,
-    element: () => (
-      <div>
-        <ChoicesEvent label="It seems that 'living' is something that can't be done alone...">
-          <Choice label="You may be right." correct />
-          <Choice label="That's not true." />
-          <Choice label="I don't know." />
-        </ChoicesEvent>
-      </div>
-    ),
-  },
-  {
-    points: 0,
-    maxPoints: 0,
-    element: () => (
-      <div>
-        <ChoicesEvent label="Did I do something wrong?">
-          <Choice label="You didn't call him Joe." />
-          <Choice label="No, you didn't" />
-          <Choice label="He thought I was your boyfriend." />
-        </ChoicesEvent>
-      </div>
-    ),
-  },
-  {
-    points: 0,
-    maxPoints: 0,
-    element: () => (
-      <div>
-        <ChoicesEvent label="Was Mii-chan-san happy?">
-          <Choice label="I think she was happy." />
-          <Choice label="Who knows?" />
-        </ChoicesEvent>
-        <ChoicesEvent label="Was Mii-chan-san... grateful to have been born...?">
-          <Choice label="I'm sure she was happy." />
-          <Choice label="I'm not sure." />
-        </ChoicesEvent>
-        <ChoicesEvent label="For what purpose... was Mii-chan-san born...?">
-          <Choice label="No one can say." />
-          <Choice label="I don't know." />
-        </ChoicesEvent>
-      </div>
-    ),
-  },
-  {
-    points: 0,
-    maxPoints: 15,
-    element: () => (
-      <div>
-        <ChoicesEvent label="I was just curious.">
-          <Choice label="Sometimes." ok />
-          <Choice label="I'm doing it now." correct />
-          <Choice label="No." />
-        </ChoicesEvent>
-        <ChoicesEvent label="......">
-          <Choice label="I don't mind you being here." />
-          <Choice label="What brought this on?" />
-        </ChoicesEvent>
-        <ChoicesEvent label="Why are you so important to me, Makoto-san?">
-          <Choice label="It's love." />
-          <Choice label="Because we're friends" />
-        </ChoicesEvent>
-      </div>
-    ),
-  },
+    choices("And I was the one who insisted we search... I'm sorry.", [
+      choice({ label: "Don't let it get to you." }),
+      choice({ label: "We should head back for today." }),
+      choice({ label: "Let's keep looking." }),
+    ]),
+  ]),
+  LinkLevel(0, [
+    choices("It seems that 'living' is something that can't be done alone...", [
+      choice({ label: "You may be right.", correct: true }),
+      choice({ label: "That's not true." }),
+      choice({ label: "I don't know." }),
+    ]),
+  ]),
+  LinkLevel(0, [
+    choices("Did I do something wrong?", [
+      choice({ label: "You didn't call him Joe." }),
+      choice({ label: "No, you didn't" }),
+      choice({ label: "He thought I was your boyfriend." }),
+    ]),
+  ]),
+  LinkLevel(0, [
+    choices("Was Mii-chan-san happy?", [
+      choice({ label: "I think she was happy." }),
+      choice({ label: "Who knows?" }),
+    ]),
+    choices("Was Mii-chan-san... grateful to have been born...?", [
+      choice({ label: "I'm sure she was happy." }),
+      choice({ label: "I'm not sure." }),
+    ]),
+    choices("For what purpose... was Mii-chan-san born...?", [
+      choice({ label: "No one can say." }),
+      choice({ label: "I don't know." }),
+    ]),
+  ]),
+  LinkLevel(0, [
+    choices("I was just curious.", [
+      choice({ label: "Sometimes.", ok: true }),
+      choice({ label: "I'm doing it now.", correct: true }),
+      choice({ label: "No." }),
+    ]),
+    choices("......", [
+      choice({ label: "I don't mind you being here." }),
+      choice({ label: "What brought this on?" }),
+    ]),
+    choices("Why are you so important to me, Makoto-san?", [
+      choice({ label: "It's love." }),
+      choice({ label: "Because we're friends" }),
+    ]),
+  ]),
 ];
+
+function choice({ label, correct = false, ok = false, fork = false }) {
+  let points = 0;
+  let backgroundColor = "inherit";
+
+  if (correct) {
+    points = 10;
+    backgroundColor = "green";
+  } else if (ok) {
+    points = 5;
+    backgroundColor = "yellow";
+  } else if (fork) {
+    backgroundColor = "blue";
+  }
+
+  return {
+    label,
+    points,
+    element: ({ key }) => (
+      <div
+        key={key}
+        style={{ backgroundColor, textAlign: "center", padding: "0 10px" }}
+      >
+        {label}
+      </div>
+    ),
+  };
+}
+
+function choices(head, choices) {
+  const points = Math.max(...choices.map((c) => c.points));
+
+  return {
+    points,
+    element: ({ key }) => (
+      <div key={key}>
+        <h4 style={{ textAlign: "center" }}>{head}</h4>
+        <div
+          style={{
+            display: "flex",
+            justifyContent: "center",
+            flexDirection: "row",
+            width: "100%",
+          }}
+        >
+          <div style={{ width: "fit-content" }}>
+            {choices.map((c, i) => c.element({ key: i }))}
+          </div>
+        </div>
+      </div>
+    ),
+  };
+}
+
+function LinkLevel(points = 0, levels = null) {
+  if (levels === null)
+    return {
+      points: 0,
+      maxPoints: 0,
+      element: () => <h3 style={{ textAlign: "center" }}>Create bond</h3>,
+    };
+  const maxPoints = levels.reduce((acc, level) => acc + level.points, 0);
+
+  return {
+    points,
+    maxPoints,
+    element: () => <>{levels.map((level, i) => level.element({ key: i }))}</>,
+  };
+}
+
+function calculateLevel({ level, points, romance = false, multiplier = 1 }) {
+  const levelName = romance ? "levelsRomance" : "levels";
+  const isNewlevel =
+    level < this[levelName].length && points >= this[levelName][level].points;
+  return {
+    [this.name]: {
+      level: isNewlevel ? level + 1 : level,
+      romance: romance,
+      points: isNewlevel
+        ? this[levelName][level].maxPoints * multiplier
+        : points + 10 * multiplier,
+    },
+  };
+}
 
 export const socialLinks = {
   Magician: {
     name: "Magician",
-    calculate: function ({ level, points, multiplier = 1 }) {
-      const isNewlevel =
-        level < this.levels.length && points >= this.levels[level].points;
-      return {
-        Magician: {
-          level: isNewlevel ? level + 1 : level,
-          points: isNewlevel
-            ? this.levels[level].maxPoints * multiplier
-            : points + 10 * multiplier,
-        },
-      };
-    },
+    calculate: calculateLevel,
     levels: [
-      {
-        points: 0,
-        maxPoints: 0,
-        element: () => <h3>Create bond</h3>,
-      },
-      {
-        points: 0,
-        maxPoints: 5,
-        element: () => (
-          <div>
-            <ChoicesEvent label="Can you like, just waltz on into Takeba-san's room and stuff?">
-              <Choice label="Of course." />
-              <Choice label="No way." ok />
-              <Choice label="That's a secret." ok />
-            </ChoicesEvent>
-            <ChoicesEvent label="I'm more into older women. How 'bout you?">
-              <Choice label="I'm into older women, too." ok />
-              <Choice label="I prefer girls my age." />
-              <Choice label="I like them all." ok />
-            </ChoicesEvent>
-          </div>
+      LinkLevel(),
+      LinkLevel(0, [
+        choices(
+          "Can you like, just waltz on into Takeba-san's room and stuff?",
+          [
+            choice({ label: "Of course." }),
+            choice({ label: "No way.", ok: true }),
+            choice({ label: "That's a secret.", ok: true }),
+          ]
         ),
-      },
-      {
-        points: 0,
-        maxPoints: 20,
-        element: () => (
-          <div>
-            <ChoicesEvent label="Maaan... I'm so sick of this, dude.">
-              <Choice label="What, of ramen?" />
-              <Choice label="What, of school?" />
-              <Choice label="What, life?" correct />
-            </ChoicesEvent>
-            <ChoicesEvent label="Okay, that settles it. I'm gonna get myself a girlfriend! Right now!">
-              <Choice label="Sounds Impossible." />
-              <Choice label="Good luck!" ok />
-            </ChoicesEvent>
-          </div>
+        choices("I'm more into older women. How 'bout you?", [
+          choice({ label: "I'm into older women, too.", ok: true }),
+          choice({ label: "I prefer girls my age." }),
+          choice({ label: "I like them all.", ok: true }),
+        ]),
+      ]),
+      LinkLevel(0, [
+        choices("Maaan... I'm so sick of this, dude.", [
+          choice({ label: "What, of ramen?" }),
+          choice({ label: "What, of school?" }),
+          choice({ label: "What, life?", correct: true }),
+        ]),
+        choices(
+          "Okay, that settles it. I'm gonna get myself a girlfriend! Right now!",
+          [
+            choice({ label: "Sounds Impossible." }),
+            choice({ label: "Good luck!", ok: true }),
+          ]
         ),
-      },
-      {
-        points: 15,
-        maxPoints: 15,
-        element: () => (
-          <div>
-            <ChoicesEvent label="Hey, thanks for coming, man. You mind waiting here for a sec?">
-              <Choice label="Sure." />
-              <Choice label="Why?" />
-            </ChoicesEvent>
-            <ChoicesEvent label="I'm gonna go ask Ms. Kanou out! Like, right now!">
-              <Choice label="Good luck!" correct />
-              <Choice label="Don't do it." />
-              <Choice label="Whatever, man." />
-            </ChoicesEvent>
-          </div>
+      ]),
+      LinkLevel(0, [
+        choices(
+          "Hey, thanks for coming, man. You mind waiting here for a sec?",
+          [choice({ label: "Sure." }), choice({ label: "Why?" })]
         ),
-      },
-      {
-        points: 15,
-        maxPoints: 15,
-        element: () => (
-          <div>
-            <ChoicesEvent label="Yeah, good-looking people just flock together, y'know?. It's like a law of attraction.">
-              <Choice label="...Is that so?" />
-              <Choice label="Okay..." correct />
-              <Choice label="Good-looking, huh?" />
-            </ChoicesEvent>
-          </div>
+        choices("I'm gonna go ask Ms. Kanou out! Like, right now!", [
+          choice({ label: "Good luck!", correct: true }),
+          choice({ label: "Don't do it." }),
+          choice({ label: "Whatever, man." }),
+        ]),
+      ]),
+      LinkLevel(15, [
+        choices(
+          "Yeah, good-looking people just flock together, y'know?. It's like a law of attraction.",
+          [
+            choice({ label: "...Is that so?" }),
+            choice({ label: "Okay...", correct: true }),
+            choice({ label: "Good-looking, huh?" }),
+          ]
         ),
-      },
-      {
-        points: 15,
-        maxPoints: 15,
-        element: () => (
-          <div>
-            <ChoicesEvent label="Sorry, man. I've gotta pass this time.">
-              <Choice label="Just like that?" />
-              <Choice label="Why?" />
-            </ChoicesEvent>
-            <ChoicesEvent label="I mean, getting into college is pretty important, don't you think? You think about the future too, right?">
-              <Choice label="I've got plans already." correct />
-              <Choice label="Yeah, more than you do." />
-              <Choice label="Not even a little." />
-            </ChoicesEvent>
-          </div>
+      ]),
+      LinkLevel(15, [
+        choices("Sorry, man. I've gotta pass this time.", [
+          choice({ label: "Just like that?" }),
+          choice({ label: "Why?" }),
+        ]),
+        choices(
+          "I mean, getting into college is pretty important, don't you think? You think about the future too, right?",
+          [
+            choice({ label: "I've got plans already.", correct: true }),
+            choice({ label: "Yeah, more than you do." }),
+            choice({ label: "Not even a little." }),
+          ]
         ),
-      },
-      {
-        points: 15,
-        maxPoints: 15,
-        element: () => (
-          <div>
-            <ChoicesEvent label="I can't eat...">
-              <Choice label="What happened." ok />
-              <Choice label="I'll eat it for you." />
-            </ChoicesEvent>
-            <ChoicesEvent label="I saw a magazine in Emiri's room. Guess what it was called.">
-              <Choice label="In Fashion?" />
-              <Choice label="Occult Living?" />
-              <Choice label="Bride-To-Be?" ok />
-            </ChoicesEvent>
-            <ChoicesEvent label="You think that's a good plan?">
-              <Choice label="Congrats!" ok />
-              <Choice label="You're rushing things." />
-              <Choice label="Sure, whatever.	" />
-            </ChoicesEvent>
-          </div>
+      ]),
+      LinkLevel(15, [
+        choices("I can't eat...", [
+          choice({ label: "What happened.", ok: true }),
+          choice({ label: "I'll eat it for you." }),
+        ]),
+        choices("I saw a magazine in Emiri's room. Guess what it was called.", [
+          choice({ label: "In Fashion?" }),
+          choice({ label: "Occult Living?" }),
+          choice({ label: "Bride-To-Be?", ok: true }),
+        ]),
+        choices("You think that's a good plan?", [
+          choice({ label: "Congrats!", ok: true }),
+          choice({ label: "You're rushing things." }),
+          choice({ label: "Sure, whatever." }),
+        ]),
+      ]),
+      LinkLevel(22, [
+        choices(
+          "H-Hey, man. Sorry to make you come here. I, um... Ah, damn it...",
+          [
+            choice({ label: "Spit it out!" }),
+            choice({ label: "Are you in trouble?", correct: true }),
+          ]
         ),
-      },
-      {
-        points: 22,
-        maxPoints: 20,
-        element: () => (
-          <div>
-            <ChoicesEvent label="H-Hey, man. Sorry to make you come here. I, um... Ah, damn it...">
-              <Choice label="Spit it out!" />
-              <Choice label="Are you in trouble?" correct />
-            </ChoicesEvent>
-            <ChoicesEvent label="And now she's being transferred to a school in Kyushu. What do I do!?">
-              <Choice label="You should go with her." ok />
-              <Choice label="You two should talk it out." ok />
-              <Choice label="Figure it out yourself." />
-            </ChoicesEvent>
-          </div>
+        choices(
+          "And now she's being transferred to a school in Kyushu. What do I do!?",
+          [
+            choice({ label: "You should go with her.", ok: true }),
+            choice({ label: "You two should talk it out.", ok: true }),
+            choice({ label: "Figure it out yourself." }),
+          ]
         ),
-      },
-      {
-        points: 22,
-        maxPoints: 15,
-        element: () => (
-          <div>
-            <ChoicesEvent label="I was so excited about going with her that I...I...">
-              <Choice label="Cheer up, man." />
-              <Choice label="Let me handle this!" correct />
-              <Choice label="Haha." />
-            </ChoicesEvent>
-          </div>
+      ]),
+      LinkLevel(22, [
+        choices("I was so excited about going with her that I...I...", [
+          choice({ label: "Cheer up, man." }),
+          choice({ label: "Let me handle this!", correct: true }),
+          choice({ label: "Haha." }),
+        ]),
+      ]),
+      LinkLevel(22, [
+        choices(
+          "Ms. Kanou must be in Kyushu by now. I wonder if she had her wedding already.",
+          [
+            choice({ label: "......", ok: true }),
+            choice({ label: "Maybe she did." }),
+            choice({ label: "I'm stealing your egg!" }),
+          ]
         ),
-      },
-      {
-        points: 22,
-        maxPoints: 15,
-        element: () => (
-          <div>
-            <ChoicesEvent label="Ms. Kanou must be in Kyushu by now. I wonder if she had her wedding already.">
-              <Choice label="......" ok />
-              <Choice label="Maybe she did." />
-              <Choice label="I'm stealing your egg!" />
-            </ChoicesEvent>
-            <ChoicesEvent label="Man, it's always a blast hanging out with you. That said... I still want a girlfriend!">
-              <Choice label="You don't know when to give up..." />
-              <Choice label="You've got this!" ok />
-              <Choice label="Want me to find you a girl?" ok />
-            </ChoicesEvent>
-            <ChoicesEvent label="What I did figure out is... you're a true friend.">
-              <Choice label="...Are we still talking about love?" />
-              <Choice label="That's right! We're great friends." />
-            </ChoicesEvent>
-          </div>
+        choices(
+          "Man, it's always a blast hanging out with you. That said... I still want a girlfriend!",
+          [
+            choice({ label: "You don't know when to give up..." }),
+            choice({ label: "You've got this!", ok: true }),
+            choice({ label: "Want me to find you a girl?", ok: true }),
+          ]
         ),
-      },
+        choices("What I did figure out is... you're a true friend.", [
+          choice({ label: "...Are we still talking about love?" }),
+          choice({ label: "That's right! We're great friends." }),
+        ]),
+      ]),
     ],
   },
   Priestess: {
     name: "Priestess",
-    calculate: function ({ level, points, romance = false, multiplier = 1 }) {
-      const name = romance ? "levelsRomance" : "levels";
-      const isNewlevel =
-        level < this[name].length && points >= this[name][level].points;
-      return {
-        Priestess: {
-          level: isNewlevel ? level + 1 : level,
-          romance: romance,
-          points: isNewlevel
-            ? this[name][level].maxPoints * multiplier
-            : points + 10 * multiplier,
-        },
-      };
-    },
+    calculate: calculateLevel,
     levels: [
       ...priestessLevels,
-      {
-        points: 30,
-        maxPoints: 5,
-        element: () => (
-          <div>
-            <ChoicesEvent label="......">
-              <Choice label="What is it?" />
-              <Choice label="Something wrong with that?" />
-            </ChoicesEvent>
-            <ChoicesEvent label="I mentioned that I don't really like going to bookstores">
-              <Choice label="Yeah, I remember." />
-              <Choice label="But we were just in one..." />
-            </ChoicesEvent>
-            <ChoicesEvent label="She even threatened to show my parents.">
-              <Choice label="You did nothing wrong." />
-              <Choice label="......" />
-              <Choice label="That's messed up." ok />
-            </ChoicesEvent>
-            <ChoicesEvent label="I'm sure it's because you're our leader. That's why I depend on you so much.">
-              <Choice label="Is that the only reason?" />
-              <Choice label="That's probably it." fork />
-            </ChoicesEvent>
-          </div>
+      LinkLevel(30, [
+        choices("......", [
+          choice({ label: "What is it?" }),
+          choice({ label: "Something wrong with that?" }),
+        ]),
+        choices("I mentioned that I don't really like going to bookstores", [
+          choice({ label: "Yeah, I remember." }),
+          choice({ label: "But we were just in one..." }),
+        ]),
+        choices("She even threatened to show my parents.", [
+          choice({ label: "You did nothing wrong." }),
+          choice({ label: "......" }),
+          choice({ label: "That's messed up.", ok: true }),
+        ]),
+        choices(
+          "I'm sure it's because you're our leader. That's why I depend on you so much.",
+          [
+            choice({ label: "Is that the only reason?" }),
+            choice({ label: "That's probably it.", fork: true }),
+          ]
         ),
-      },
-      {
-        points: 35,
-        maxPoints: 10,
-        element: () => (
-          <div>
-            <ChoicesEvent label="How are you able to tell yourself that everything will work out in the end?">
-              <Choice label="I believe in myself." ok />
-              <Choice label="It's just my personality." ok />
-              <Choice label="I've never thought about it." ok />
-            </ChoicesEvent>
-            <ChoicesEvent label="Will that be the end of us spending time together like this?">
-              <Choice label="Not at all." />
-              <Choice label="We'll see each other in the dorm." ok />
-            </ChoicesEvent>
-          </div>
+      ]),
+      LinkLevel(35, [
+        choices(
+          "How are you able to tell yourself that everything will work out in the end?",
+          [
+            choice({ label: "I believe in myself.", ok: true }),
+            choice({ label: "It's just my personality.", ok: true }),
+            choice({ label: "I've never thought about it.", ok: true }),
+          ]
         ),
-      },
-      {
-        points: 40,
-        maxPoints: 15,
-        element: () => (
-          <div>
-            <ChoicesEvent label="">
-              <Choice label="" />
-            </ChoicesEvent>
-          </div>
+        choices(
+          "Will that be the end of us spending time together like this?",
+          [
+            choice({ label: "Not at all." }),
+            choice({ label: "We'll see each other in the dorm.", ok: true }),
+          ]
         ),
-      },
-      {
-        points: 55,
-        maxPoints: 15,
-        element: () => (
-          <div>
-            <ChoicesEvent label="I thought it might be nice to add some texture, so I made sure there's plenty of vegetables mixed in.">
-              <Choice label="How bold." />
-              <Choice label="Is that safe?" />
-              <Choice label="But I like meat..." />
-            </ChoicesEvent>
-            <ChoicesEvent label="You just seem more at ease now. Or maybe it's more confidence? Don't you think so?">
-              <Choice label="I agree." />
-              <Choice label="You haven't seen anything just yet." />
-            </ChoicesEvent>
-            <ChoicesEvent label="Remeber how I told you I was pretty good with machines? Well, how are they?">
-              <Choice label="I love them!" correct />
-              <Choice label="My mind is blown." ok />
-            </ChoicesEvent>
-          </div>
+      ]),
+      LinkLevel(40, [
+        choices("She said, 'When you're friends, you don't keep score.'", [
+          choice({ label: "She's right." }),
+          choice({ label: "Ahaha! That's funny." }),
+        ]),
+        choices("I want to be together with you, forever.", [
+          choice({ label: "I feel the same way." }),
+          choice({ label: "Me too." }),
+        ]),
+        choices("......", [
+          choice({ label: "I love you, Fuuka.", correct: true }),
+          choice({ label: "We'll always be friends." }),
+        ]),
+        choices("...!?", [
+          choice({ label: "We'll be together forever." }),
+          choice({ label: "I'll treat you right." }),
+        ]),
+      ]),
+      LinkLevel(55, [
+        choices(
+          "I thought it might be nice to add some texture, so I made sure there's plenty of vegetables mixed in.",
+          [
+            choice({ label: "How bold." }),
+            choice({ label: "Is that safe?" }),
+            choice({ label: "But I like meat..." }),
+          ]
         ),
-      },
+        choices(
+          "You just seem more at ease now. Or maybe it's more confidence? Don't you think so?",
+          [
+            choice({ label: "I agree." }),
+            choice({ label: "You haven't seen anything just yet." }),
+          ]
+        ),
+        choices(
+          "Remeber how I told you I was pretty good with machines? Well, how are they?",
+          [
+            choice({ label: "I love them!", correct: true }),
+            choice({ label: "My mind is blown.", ok: true }),
+          ]
+        ),
+      ]),
     ],
     levelsRomance: [
       ...priestessLevels,
-      {
-        points: 30,
-        maxPoints: 5,
-        element: () => (
-          <div>
-            <ChoicesEvent label="......">
-              <Choice label="What is it?" />
-              <Choice label="Something wrong with that?" />
-            </ChoicesEvent>
-            <ChoicesEvent label="I mentioned that I don't really like going to bookstores">
-              <Choice label="Yeah, I remember." />
-              <Choice label="But we were just in one..." />
-            </ChoicesEvent>
-            <ChoicesEvent label="She even threatened to show my parents.">
-              <Choice label="You did nothing wrong." />
-              <Choice label="......" />
-              <Choice label="That's messed up." ok />
-            </ChoicesEvent>
-            <ChoicesEvent label="I'm sure it's because you're our leader. That's why I depend on you so much.">
-              <Choice label="Is that the only reason?" fork />
-              <Choice label="That's probably it." />
-            </ChoicesEvent>
-          </div>
+      LinkLevel(30, [
+        choices("......", [
+          choice({ label: "What is it?" }),
+          choice({ label: "Something wrong with that?" }),
+        ]),
+        choices("I mentioned that I don't really like going to bookstores", [
+          choice({ label: "Yeah, I remember." }),
+          choice({ label: "But we were just in one..." }),
+        ]),
+        choices("She even threatened to show my parents.", [
+          choice({ label: "You did nothing wrong." }),
+          choice({ label: "......" }),
+          choice({ label: "That's messed up.", ok: true }),
+        ]),
+        choices(
+          "I'm sure it's because you're our leader. That's why I depend on you so much.",
+          [
+            choice({ label: "Is that the only reason?" }),
+            choice({ label: "That's probably it.", fork: true }),
+          ]
         ),
-      },
-      {
-        points: 35,
-        maxPoints: 10,
-        element: () => (
-          <div>
-            <ChoicesEvent label="How are you able to tell yourself that everything will work out in the end?">
-              <Choice label="I believe in myself." ok />
-              <Choice label="It's just my personality." ok />
-              <Choice label="I've never thought about it." ok />
-            </ChoicesEvent>
-            <ChoicesEvent label="Will that be the end of us spending time together like this?">
-              <Choice label="Not at all." />
-              <Choice label="We'll see each other in the dorm." ok />
-            </ChoicesEvent>
-          </div>
+      ]),
+      LinkLevel(35, [
+        choices(
+          "How are you able to tell yourself that everything will work out in the end?",
+          [
+            choice({ label: "I believe in myself.", ok: true }),
+            choice({ label: "It's just my personality.", ok: true }),
+            choice({ label: "I've never thought about it.", ok: true }),
+          ]
         ),
-      },
-      {
-        points: 40,
-        maxPoints: 15,
-        element: () => (
-          <div>
-            <ChoicesEvent label="She said, ''When you're friends, you don't keep score.''">
-              <Choice label="She's right." />
-              <Choice label="Ahaha! That's funny." />
-            </ChoicesEvent>
-            <ChoicesEvent label="I want to be together with you, forever.">
-              <Choice label="I feel the same way." />
-              <Choice label="Me too." />
-            </ChoicesEvent>
-            <ChoicesEvent label="......">
-              <Choice label="I love you, Fuuka." correct />
-              <Choice label="We'll always be friends." />
-            </ChoicesEvent>
-            <ChoicesEvent label="...!?">
-              <Choice label="We'll be together forever." />
-              <Choice label="I'll treat you right." />
-            </ChoicesEvent>
-          </div>
+        choices(
+          "Will that be the end of us spending time together like this?",
+          [
+            choice({ label: "Not at all." }),
+            choice({ label: "We'll see each other in the dorm.", ok: true }),
+          ]
         ),
-      },
-      {
-        points: 55,
-        maxPoints: 30,
-        element: () => (
-          <div>
-            <ChoicesEvent label="Sorry... I don't know what I'm saying... I'm acting weird, aren't I?">
-              <Choice label="Are you nervous?" />
-              <Choice label="You seem like yourself." />
-            </ChoicesEvent>
-            <ChoicesEvent label="As long as I have you... I don't think I'll lose my way.">
-              <Choice label="Glad to hear it." ok />
-              <Choice label="I'm always here for you." correct />
-            </ChoicesEvent>
-            <ChoicesEvent label="So... what do you think?">
-              <Choice label="I love them!" correct />
-              <Choice label="Your skills are impressive." ok />
-            </ChoicesEvent>
-          </div>
+      ]),
+      LinkLevel(55, [
+        choices("She said, 'When you're friends, you don't keep score.'", [
+          choice({ label: "She's right." }),
+          choice({ label: "Ahaha! That's funny." }),
+        ]),
+        choices("I want to be together with you, forever.", [
+          choice({ label: "I feel the same way." }),
+          choice({ label: "Me too." }),
+        ]),
+        choices("......", [
+          choice({ label: "I love you, Fuuka.", correct: true }),
+          choice({ label: "We'll always be friends." }),
+        ]),
+        choices("...!?", [
+          choice({ label: "We'll be together forever." }),
+          choice({ label: "I'll treat you right." }),
+        ]),
+      ]),
+      LinkLevel(0, [
+        choices(
+          "Sorry... I don't know what I'm saying... I'm acting weird, aren't I?",
+          [
+            choice({ label: "Are you nervous?" }),
+            choice({ label: "You seem like yourself." }),
+          ]
         ),
-      },
+        choices("As long as I have you... I don't think I'll lose my way.", [
+          choice({ label: "Glad to hear it.", ok: true }),
+          choice({ label: "I'm always here for you.", correct: true }),
+        ]),
+        choices("So... what do you think?", [
+          choice({ label: "I love them!", correct: true }),
+          choice({ label: "Your skills are impressive.", ok: true }),
+        ]),
+      ]),
+      LinkLevel(0, [
+        choices("", [
+          choice({ label: "" }),
+          choice({ label: "" }),
+          choice({ label: "" }),
+        ]),
+      ]),
     ],
   },
   Emperor: {
     name: "Emperor",
-    calculate: function ({ level, points, multiplier = 1 }) {
-      const isNewlevel =
-        level < this.levels.length && points >= this.levels[level].points;
-      return {
-        Emperor: {
-          level: isNewlevel ? level + 1 : level,
-          points: isNewlevel
-            ? this.levels[level].maxPoints * multiplier
-            : points + 10 * multiplier,
-        },
-      };
-    },
+    calculate: calculateLevel,
     levels: [
-      {
-        points: 0,
-        maxPoints: 0,
-        element: () => <h3>Create bond</h3>,
-      },
-      {
-        points: 0,
-        maxPoints: 15,
-        element: () => (
-          <div>
-            <ChoicesEvent label="Some students feel the school uniform should be abolished, and they’re recruiting supporters…">
-              <Choice label="They've got a point." />
-              <Choice label="Sounds like nonsense." correct />
-            </ChoicesEvent>
-          </div>
+      LinkLevel(),
+      LinkLevel(0, [
+        choices(
+          "Some students feel the school uniform should be abolished, and they're recruiting supporters.",
+          [
+            choice({ label: "They've got a point." }),
+            choice({ label: "Sounds like nonsense.", correct: true }),
+          ]
         ),
-      },
-      {
-        points: 0,
-        maxPoints: 15,
-        element: () => (
-          <div>
-            <ChoicesEvent label="What!? You can't decide something like that without talking to the president first.">
-              <Choice label="What happened?" ok />
-              <Choice label="No need to fight." correct />
-            </ChoicesEvent>
-          </div>
+      ]),
+      LinkLevel(0, [
+        choices(
+          "What!? You can't decide something like that without talking to the president first.",
+          [
+            choice({ label: "What happened?", ok: true }),
+            choice({ label: "No need to fight.", correct: true }),
+          ]
         ),
-      },
-      {
-        points: 0,
-        maxPoints: 15,
-        element: () => (
-          <div>
-            <ChoicesEvent label="This guy looks like he's about to hit Odagiri!">
-              <Choice label="Knock it off!" />
-              <Choice label="..........." />
-            </ChoicesEvent>
-            <ChoicesEvent label="What is it? Do you need something from me?">
-              <Choice label="You went a little overboard." />
-              <Choice label="Looks like you're hard at work." correct />
-            </ChoicesEvent>
-          </div>
+      ]),
+      LinkLevel(0, [
+        choices("This guy looks like he's about to hit Odagiri!", [
+          choice({ label: "Knock it off!" }),
+          choice({ label: "..........." }),
+        ]),
+        choices("What is it? Do you need something from me?", [
+          choice({ label: "You went a little overboard." }),
+          choice({ label: "Looks like you're hard at work.", correct: true }),
+        ]),
+      ]),
+      LinkLevel(15, [
+        choices("...Bunch of neanderthals", [
+          choice({ label: "They're the worst.", correct: true }),
+          choice({ label: "You shouldn't accuse everyone." }),
+        ]),
+      ]),
+      LinkLevel(15, [
+        choices("It's nice not having those hyenas around.", [
+          choice({ label: "You're not going home yet?" }),
+          choice({ label: "It's nice?" }),
+        ]),
+        choices(
+          "So as you can see, we can't exactly hold a meeting right now. You can leave if you want.",
+          [
+            choice({ label: "But I just got here…", correct: true }),
+            choice({ label: "I think I'll stick around.", correct: true }),
+          ]
         ),
-      },
-      {
-        points: 15,
-        maxPoints: 15,
-        element: () => (
-          <div>
-            <ChoicesEvent label="...Bunch of neanderthals">
-              <Choice label="They're the worst." correct />
-              <Choice label="You shouldn't accuse everyone." />
-            </ChoicesEvent>
-          </div>
+      ]),
+      LinkLevel(15, [
+        choices("About the smoker's punishment, I mean.", [
+          choice({ label: "It seems reasonable." }),
+          choice({ label: "It seems too harsh.", correct: true }),
+        ]),
+      ]),
+      LinkLevel(15, [
+        choices("Um, did Odagiri-san do something?", [
+          choice({ label: "What do you mean?" }),
+          choice({ label: "Why? Is something wrong?" }),
+        ]),
+        choices("...So, you heard all that.", [
+          choice({ label: "It wasn't me.", correct: true }),
+          choice({ label: "You came to my defense?", ok: true }),
+        ]),
+      ]),
+      LinkLevel(22, [
+        choices(
+          "I rambled on about rules and fairness, but all I really proved was that I was desperate for power.",
+          [
+            choice({ label: "Don't blame yourself.", correct: true }),
+            choice({ label: "Good thing you noticed." }),
+          ]
         ),
-      },
-      {
-        points: 15,
-        maxPoints: 15,
-        element: () => (
-          <div>
-            <ChoicesEvent label="It's nice not having those hyenas around.">
-              <Choice label="You're not going home yet?" />
-              <Choice label="It's nice?" />
-            </ChoicesEvent>
-            <ChoicesEvent label="So as you can see, we can't exactly hold a meeting right now. You can leave if you want.">
-              <Choice label="But I just got here…" correct />
-              <Choice label="I think I'll stick around." correct />
-            </ChoicesEvent>
-          </div>
-        ),
-      },
-      {
-        points: 15,
-        maxPoints: 15,
-        element: () => (
-          <div>
-            <ChoicesEvent label="About the smoker’s punishment, I mean.">
-              <Choice label="It seems reasonable." />
-              <Choice label="It seems too harsh." correct />
-            </ChoicesEvent>
-          </div>
-        ),
-      },
-      {
-        points: 15,
-        maxPoints: 15,
-        element: () => (
-          <div>
-            <ChoicesEvent label="Um, did Odagiri-san do something?">
-              <Choice label="What do you mean?" />
-              <Choice label="Why? Is something wrong?" />
-            </ChoicesEvent>
-            <ChoicesEvent label="...So, you heard all that.">
-              <Choice label="It wasn’t me." correct />
-              <Choice label="You came to my defense?" ok />
-            </ChoicesEvent>
-          </div>
-        ),
-      },
-      {
-        points: 22,
-        maxPoints: 15,
-        element: () => (
-          <div>
-            <ChoicesEvent label="I rambled on about rules and fairness, but all I really proved was that I was desperate for power.">
-              <Choice label="Don’t blame yourself." correct />
-              <Choice label="Good thing you noticed." />
-            </ChoicesEvent>
-          </div>
-        ),
-      },
-      {
-        points: 22,
-        maxPoints: 15,
-        element: () => (
-          <div>
-            <ChoicesEvent label="So, how did I do? What'd everyone think?">
-              <Choice label="Not too shabby." correct />
-              <Choice label="You were great." ok />
-            </ChoicesEvent>
-            <ChoicesEvent label="That's why you should be the one to have it.">
-              <Choice label="I'll cherish it." correct />
-              <Choice label="I guess I’ll take it." correct />
-            </ChoicesEvent>
-          </div>
-        ),
-      },
+      ]),
+      LinkLevel(22, [
+        choices("So, how did I do? What'd everyone think?", [
+          choice({ label: "Not too shabby.", correct: true }),
+          choice({ label: "You were great.", correct: true }),
+        ]),
+        choices("That's why you should be the one to have it.", [
+          choice({ label: "I'll cherish it.", correct: true }),
+          choice({ label: "I guess I'll take it.", correct: true }),
+        ]),
+      ]),
     ],
   },
   Hierophant: {
     name: "Hierophant",
-    calculate: function ({ level, points, multiplier = 1 }) {
-      const isNewlevel =
-        level < this.levels.length && points >= this.levels[level].points;
-      return {
-        Hierophant: {
-          level: isNewlevel ? level + 1 : level,
-          points: isNewlevel
-            ? this.levels[level].maxPoints * multiplier
-            : points + 10 * multiplier,
-        },
-      };
-    },
+    calculate: calculateLevel,
     levels: [
-      {
-        points: 0,
-        maxPoints: 0,
-        element: () => <h3>Create bond</h3>,
-      },
-      {
-        points: 0,
-        maxPoints: 20,
-        element: () => (
-          <div>
-            <ChoicesEvent label="What was your name again?">
-              <Choice label="Tell him your name." ok />
-              <Choice label="..." />
-            </ChoicesEvent>
-            <ChoicesEvent label="Someone gave them to me, but I have more than enough. Go ahead and take it, Makoto-chan.">
-              <Choice label="Thank you." correct />
-              <Choice label="I'm okay, thanks." />
-            </ChoicesEvent>
-            <ChoicesEvent label="We have so many, my wife and I would take forever to finish them all.">
-              <Choice label="I'd like that." />
-              <Choice label="No, thank you." />
-            </ChoicesEvent>
-            <ChoicesEvent label="He should be here helping customers... Sorry about that, Makoto-chan.">
-              <Choice label="Boy?" />
-              <Choice label="No need to apologize." />
-            </ChoicesEvent>
-            <ChoicesEvent label="Oh, my dear, he's...">
-              <Choice label="He's what?" />
-              <Choice label="What's this about?" />
-            </ChoicesEvent>
-          </div>
+      LinkLevel(),
+      LinkLevel(0, [
+        choices("What was your name again?", [
+          choice({ label: "Tell him your name.", ok: true }),
+          choice({ label: "..." }),
+        ]),
+        choices(
+          "Someone gave them to me, but I have more than enough. Go ahead and take it, Makoto-chan.",
+          [
+            choice({ label: "Thank you.", correct: true }),
+            choice({ label: "I'm okay, thanks." }),
+          ]
         ),
-      },
-      {
-        points: 0,
-        maxPoints: 20,
-        element: () => (
-          <div>
-            <ChoicesEvent label="I don't see it anywhere...">
-              <Choice label="Looking for something?" ok />
-              <Choice label="Cleaning the store?" />
-            </ChoicesEvent>
-            <ChoicesEvent label="I'm looking for my glasses-Er, not my glasses - my wallet! I can't seem to find it.">
-              <Choice label="Best of luck." />
-              <Choice label="Can I help?" correct />
-            </ChoicesEvent>
-            <ChoicesEvent label="I am one as well! I am a student at Gekkoukan!">
-              <Choice label="Nice to meet you." />
-              <Choice label="...Who are you?" />
-            </ChoicesEvent>
-            <ChoicesEvent label="But you can call me 'Bebe'! It's quite nice to meet you!">
-              <Choice label="Nice to meet you." />
-              <Choice label="......" />
-            </ChoicesEvent>
-            <ChoicesEvent label="Why must you get into a car...? Do you want me to end up all alone!?">
-              <Choice label="What's this about a car?" />
-              <Choice label="All alone?" />
-            </ChoicesEvent>
-            <ChoicesEvent label="On his way home from work, he got into an accident... He was hit by a dump truck driver who was drunk on the job...">
-              <Choice label="I'm sorry to hear that." />
-              <Choice label="That's terrible luck." />
-            </ChoicesEvent>
-          </div>
+        choices(
+          "We have so many, my wife and I would take forever to finish them all.",
+          [
+            choice({ label: "I'd like that." }),
+            choice({ label: "No, thank you." }),
+          ]
         ),
-      },
-      {
-        points: 20,
-        maxPoints: 20,
-        element: () => (
-          <div>
-            <ChoicesEvent label="My wife just headed out to Gekkoukan.">
-              <Choice label="I should go too." correct />
-              <Choice label="I'll wait here." ok />
-            </ChoicesEvent>
-            <ChoicesEvent label="The... The... The tree...">
-              <Choice label="Ask what happened" />
-              <Choice label="Remain silent" />
-            </ChoicesEvent>
-            <ChoicesEvent label="">
-              <Choice label="Do you know anything about this, Makoto-chan?" />
-              <Choice label="No, I don't." />
-              <Choice label="I'm worried." ok />
-            </ChoicesEvent>
-          </div>
+        choices(
+          "He should be here helping customers... Sorry about that, Makoto-chan.",
+          [
+            choice({ label: "Boy?" }),
+            choice({ label: "No need to apologize." }),
+          ]
         ),
-      },
-      {
-        points: 20,
-        maxPoints: 10,
-        element: () => (
-          <div>
-            <ChoicesEvent label="We've been feeling a bit guilty for troubling you about the persimmon tree...">
-              <Choice label="I wouldn't worry about it." ok />
-              <Choice label="What tree?" />
-            </ChoicesEvent>
-            <ChoicesEvent label="Why now? Why do they want to cut it down now...?">
-              <Choice label="Cheer up." ok />
-              <Choice label="It'll be okay." ok />
-            </ChoicesEvent>
-          </div>
+        choices("Oh, my dear, he's...", [
+          choice({ label: "He's what?" }),
+          choice({ label: "What's this about?" }),
+        ]),
+      ]),
+      LinkLevel(0, [
+        choices("I don't see it anywhere...", [
+          choice({ label: "Looking for something?", ok: true }),
+          choice({ label: "Cleaning the store?" }),
+        ]),
+        choices(
+          "I'm looking for my glasses-Er, not my glasses - my wallet! I can't seem to find it.",
+          [
+            choice({ label: "Best of luck." }),
+            choice({ label: "Can I help?", correct: true }),
+          ]
         ),
-      },
-      {
-        points: 20,
-        maxPoints: 15,
-        element: () => (
-          <div>
-            <ChoicesEvent label="If we lose that tree... it would be like losing our son all over again...">
-              <Choice label="You're overthinking it." />
-              <Choice label="Please don't fight." correct />
-            </ChoicesEvent>
-            <ChoicesEvent label="Unfortunately, that just reminded my dear the pain we felt the day our son died...">
-              <Choice label="Cheer up." />
-              <Choice label="I'm sure it'll be okay." />
-            </ChoicesEvent>
-          </div>
+        choices("I am one as well! I am a student at Gekkoukan!", [
+          choice({ label: "Nice to meet you." }),
+          choice({ label: "...Who are you?" }),
+        ]),
+        choices("But you can call me 'Bebe'! It's quite nice to meet you!", [
+          choice({ label: "Nice to meet you." }),
+          choice({ label: "......" }),
+        ]),
+        choices(
+          "Why must you get into a car...? Do you want me to end up all alone!?",
+          [
+            choice({ label: "What's this about a car?" }),
+            choice({ label: "All alone?" }),
+          ]
         ),
-      },
-      {
-        points: 20,
-        maxPoints: 15,
-        element: () => (
-          <div>
-            <ChoicesEvent label="Ah...">
-              <Choice label="What happened?" ok />
-              <Choice label="Are you fighting again?" />
-            </ChoicesEvent>
-            <ChoicesEvent label="They say the tree is a memorial to their former teacher... They don't want it to be cut down.">
-              <Choice label="The tree? A memorial?" />
-              <Choice label="That's great." ok />
-            </ChoicesEvent>
-            <ChoicesEvent label="You must be the one who called on them for this, right, Makoto-chan?">
-              <Choice label="No." ok />
-              <Choice label="That's right." ok />
-              <Choice label="What are you talking about?" ok />
-            </ChoicesEvent>
-          </div>
+        choices(
+          "On his way home from work, he got into an accident... He was hit by a dump truck driver who was drunk on the job...",
+          [
+            choice({ label: "I'm sorry to hear that." }),
+            choice({ label: "That's terrible luck." }),
+          ]
         ),
-      },
-      {
-        points: 20,
-        maxPoints: 20,
-        element: () => (
-          <div>
-            <ChoicesEvent label="Who do you think it was? Here's a hint: 'signature.'">
-              <Choice label="A petitioner?" />
-              <Choice label="A fan of yours?" ok />
-            </ChoicesEvent>
-            <ChoicesEvent label="He's already gathered a number of signatures from students who were in our son's class.">
-              <Choice label="That's great." />
-              <Choice label="That's amazing." />
-            </ChoicesEvent>
-            <ChoicesEvent label="I have to tell my son the good news!">
-              <Choice label="Sure, let's go." correct />
-              <Choice label="Right now?" />
-            </ChoicesEvent>
-          </div>
+      ]),
+      LinkLevel(20, [
+        choices("My wife just headed out to Gekkoukan.", [
+          choice({ label: "I should go too.", correct: true }),
+          choice({ label: "I'll wait here.", ok: true }),
+        ]),
+        choices("The... The... The tree...", [
+          choice({ label: "Ask what happened" }),
+          choice({ label: "Remain silent" }),
+        ]),
+        choices("", [
+          choice({ label: "Do you know anything about this, Makoto-chan?" }),
+          choice({ label: "No, I don't." }),
+          choice({ label: "I'm worried.", ok: true }),
+        ]),
+      ]),
+      LinkLevel(20, [
+        choices(
+          "We've been feeling a bit guilty for troubling you about the persimmon tree...",
+          [
+            choice({ label: "I wouldn't worry about it.", ok: true }),
+            choice({ label: "What tree?" }),
+          ]
         ),
-      },
-      {
-        points: 5,
-        maxPoints: 20,
-        element: () => (
-          <div>
-            <ChoicesEvent label="What? is that surprising? I'm actually quite the net surfer, you know!">
-              <Choice label="What does the letter say?" ok />
-              <Choice label="Why a letter?" ok />
-            </ChoicesEvent>
-            <ChoicesEvent label="Are you curious about the letter? Excited, perhaps? Even exhilerated?">
-              <Choice label="Excited." />
-              <Choice label="Exhilerated." />
-            </ChoicesEvent>
-          </div>
+        choices("Why now? Why do they want to cut it down now...?", [
+          choice({ label: "Cheer up.", ok: true }),
+          choice({ label: "It'll be okay.", ok: true }),
+        ]),
+      ]),
+      LinkLevel(20, [
+        choices(
+          "If we lose that tree... it would be like losing our son all over again...",
+          [
+            choice({ label: "You're overthinking it." }),
+            choice({ label: "Please don't fight.", correct: true }),
+          ]
         ),
-      },
-      {
-        points: 30,
-        maxPoints: 15,
-        element: () => (
-          <div>
-            <ChoicesEvent label="Bunkichi is sleep talking. Looks like he's taking a nap.">
-              <Choice label="Take a closer look." />
-              <Choice label="Leave him alone." />
-            </ChoicesEvent>
-            <ChoicesEvent label="It's the middle of the day, but I feel awfully sleepy.">
-              <Choice label="What matter?" />
-              <Choice label="Why are you relieved?" />
-            </ChoicesEvent>
-            <ChoicesEvent label="We asked them to go ahead and cut the persimmon tree down.">
-              <Choice label="But.. why?" correct />
-              <Choice label="Oh well." />
-            </ChoicesEvent>
-            <ChoicesEvent label="He was a teacher after all.">
-              <Choice label="That's true." />
-              <Choice label="Are you really sure?" />
-            </ChoicesEvent>
-          </div>
+        choices(
+          "Unfortunately, that just reminded my dear the pain we felt the day our son died...",
+          [
+            choice({ label: "Cheer up." }),
+            choice({ label: "I'm sure it'll be okay." }),
+          ]
         ),
-      },
+      ]),
+      LinkLevel(20, [
+        choices("Ah...", [
+          choice({ label: "What happened?", ok: true }),
+          choice({ label: "Are you fighting again?" }),
+        ]),
+        choices(
+          "They say the tree is a memorial to their former teacher... They don't want it to be cut down.",
+          [
+            choice({ label: "The tree? A memorial?" }),
+            choice({ label: "That's great.", ok: true }),
+          ]
+        ),
+        choices(
+          "You must be the one who called on them for this, right, Makoto-chan?",
+          [
+            choice({ label: "No.", ok: true }),
+            choice({ label: "That's right.", ok: true }),
+            choice({ label: "What are you talking about?", ok: true }),
+          ]
+        ),
+      ]),
+      LinkLevel(20, [
+        choices("Who do you think it was? Here's a hint: 'signature.'", [
+          choice({ label: "A petitioner?" }),
+          choice({ label: "A fan of yours?", ok: true }),
+        ]),
+        choices(
+          "He's already gathered a number of signatures from students who were in our son's class.",
+          [
+            choice({ label: "That's great." }),
+            choice({ label: "That's amazing." }),
+          ]
+        ),
+        choices("I have to tell my son the good news!", [
+          choice({ label: "Sure, let's go.", correct: true }),
+          choice({ label: "Right now?" }),
+        ]),
+      ]),
+      LinkLevel(5, [
+        choices(
+          "What? is that surprising? I'm actually quite the net surfer, you know!",
+          [
+            choice({ label: "What does the letter say?", ok: true }),
+            choice({ label: "Why a letter?", ok: true }),
+          ]
+        ),
+        choices(
+          "Are you curious about the letter? Excited, perhaps? Even exhilerated?",
+          [choice({ label: "Excited." }), choice({ label: "Exhilerated." })]
+        ),
+      ]),
+      LinkLevel(30, [
+        choices("Bunkichi is sleep talking. Looks like he's taking a nap.", [
+          choice({ label: "Take a closer look." }),
+          choice({ label: "Leave him alone." }),
+        ]),
+        choices("It's the middle of the day, but I feel awfully sleepy.", [
+          choice({ label: "What matter?" }),
+          choice({ label: "Why are you relieved?" }),
+        ]),
+        choices("We asked them to go ahead and cut the persimmon tree down.", [
+          choice({ label: "But.. why?", correct: true }),
+          choice({ label: "Oh well." }),
+        ]),
+        choices("He was a teacher after all.", [
+          choice({ label: "That's true." }),
+          choice({ label: "Are you really sure?" }),
+        ]),
+      ]),
     ],
   },
   Chariot: {
     name: "Chariot",
-    calculate: function ({ level, points, multiplier = 1 }) {
-      const isNewlevel =
-        level < this.levels.length && points >= this.levels[level].points;
-      return {
-        Chariot: {
-          level: isNewlevel ? level + 1 : level,
-          points: isNewlevel
-            ? this.levels[level].maxPoints * multiplier
-            : points + 10 * multiplier,
-        },
-      };
-    },
+    calculate: calculateLevel,
     levels: [
-      {
-        points: 0,
-        maxPoints: 0,
-        element: () => <h3>Create bond</h3>,
-      },
-      {
-        points: 0,
-        maxPoints: 5,
-        element: () => (
-          <div>
-            <ChoicesEvent label="M-My side is killing me...">
-              <Choice label="Don't overdo it." />
-              <Choice label="Toughen up!" ok />
-            </ChoicesEvent>
-            <ChoicesEvent label="You don't even look tired... Uh, what kind of training regimen do you have?">
-              <Choice label="Just a normal routine." />
-              <Choice label="A very special routine." />
-            </ChoicesEvent>
-          </div>
+      LinkLevel(),
+      LinkLevel(0, [
+        choices("M-My side is killing me...", [
+          choice({ label: "Don't overdo it." }),
+          choice({ label: "Toughen up!", ok: true }),
+        ]),
+        choices(
+          "You don't even look tired... Uh, what kind of training regimen do you have?",
+          [
+            choice({ label: "Just a normal routine." }),
+            choice({ label: "A very special routine." }),
+          ]
         ),
-      },
-      {
-        points: 0,
-        maxPoints: 10,
-        element: () => (
-          <div>
-            <ChoicesEvent label="Um... My anemia's just acting up...">
-              <Choice label="Sorry, that sounds awful." />
-              <Choice label="Are you going to be okay?" ok />
-            </ChoicesEvent>
-            <ChoicesEvent label="Even if I put medicine on it, or massage it, the pain won't go away.">
-              <Choice label="Will it heal?" correct />
-              <Choice label="Take the day off." />
-            </ChoicesEvent>
-          </div>
+      ]),
+      LinkLevel(0, [
+        choices("Um... My anemia's just acting up...", [
+          choice({ label: "Sorry, that sounds awful." }),
+          choice({ label: "Are you going to be okay?", ok: true }),
+        ]),
+        choices(
+          "Even if I put medicine on it, or massage it, the pain won't go away.",
+          [
+            choice({ label: "Will it heal?", correct: true }),
+            choice({ label: "Take the day off." }),
+          ]
         ),
-      },
-      {
-        points: 15,
-        maxPoints: 15,
-        element: () => (
-          <div>
-            <ChoicesEvent label="Wh-What's up...? I was just gonna sneak into practice...">
-              <Choice label="Where have you been?" />
-              <Choice label="Did you ditch?" />
-            </ChoicesEvent>
-            <ChoicesEvent label="She made the appointment without telling me, so... there was nothing I could do!">
-              <Choice label="How did it go?" />
-              <Choice label="That really sucks." correct />
-            </ChoicesEvent>
-          </div>
+      ]),
+      LinkLevel(15, [
+        choices("Wh-What's up...? I was just gonna sneak into practice...", [
+          choice({ label: "Where have you been?" }),
+          choice({ label: "Did you ditch?" }),
+        ]),
+        choices(
+          "She made the appointment without telling me, so... there was nothing I could do!",
+          [
+            choice({ label: "How did it go?" }),
+            choice({ label: "That really sucks.", correct: true }),
+          ]
         ),
-      },
-      {
-        points: 15,
-        maxPoints: 20,
-        element: () => (
-          <div>
-            <ChoicesEvent label="Man... I keep running into you at the weirdest times.">
-              <Choice label="Back from the hospital?" ok />
-              <Choice label="You ditched?" />
-            </ChoicesEvent>
-            <ChoicesEvent label="You gotta be kidding... Why can't I... stand up!?">
-              <Choice label="Take my shoulder!" correct />
-              <Choice label="I'll carry you!" ok />
-              <Choice label="I'll go get help!" />
-            </ChoicesEvent>
-          </div>
+      ]),
+      LinkLevel(15, [
+        choices("Man... I keep running into you at the weirdest times.", [
+          choice({ label: "Back from the hospital?", ok: true }),
+          choice({ label: "You ditched?" }),
+        ]),
+        choices("You gotta be kidding... Why can't I... stand up!?", [
+          choice({ label: "Take my shoulder!", correct: true }),
+          choice({ label: "I'll carry you!", ok: true }),
+          choice({ label: "I'll go get help!" }),
+        ]),
+      ]),
+      LinkLevel(15, [
+        choices("I want to win so I have to practice.", [
+          choice({ label: "There's nothing you can do." }),
+          choice({ label: "Show some guts, man!", ok: true }),
+        ]),
+        choices(
+          "I promised I'd win at next year's meet and become the number one athlete in Japan.",
+          [
+            choice({ label: "You promised?" }),
+            choice({ label: "Why go so far?", ok: true }),
+          ]
         ),
-      },
-      {
-        points: 15,
-        maxPoints: 15,
-        element: () => (
-          <div>
-            <ChoicesEvent label="I want to win so I have to practice.">
-              <Choice label="There's nothing you can do." />
-              <Choice label="Show some guts, man!" ok />
-            </ChoicesEvent>
-            <ChoicesEvent label="I promised I'd win at next year's meet and become the number one athlete in Japan.">
-              <Choice label="You promised?" />
-              <Choice label="Why go so far?" ok />
-            </ChoicesEvent>
-            <ChoicesEvent label="That's why I have to win this meet-so I can make it to nationals!">
-              <Choice label="Do you think you can win?" />
-              <Choice label="What about your knee?" />
-            </ChoicesEvent>
-          </div>
+        choices(
+          "That's why I have to win this meet-so I can make it to nationals!",
+          [
+            choice({ label: "Do you think you can win?" }),
+            choice({ label: "What about your knee?" }),
+          ]
         ),
-      },
-      {
-        points: 15,
-        maxPoints: 20,
-        element: () => (
-          <div>
-            <ChoicesEvent label="I know you didn't say anything. I just think he can tell something's up.">
-              <Choice label="How's your knee?" ok />
-              <Choice label="Can you fake it?" />
-            </ChoicesEvent>
-            <ChoicesEvent label="Otherwise, I won't be able to keep my promise to my nephew!">
-              <Choice label="You need to get tougher." correct />
-              <Choice label="You can't win like this." />
-              <Choice label="You need to take a break." />
-            </ChoicesEvent>
-          </div>
+      ]),
+      LinkLevel(15, [
+        choices(
+          "I know you didn't say anything. I just think he can tell something's up.",
+          [
+            choice({ label: "How's your knee?", ok: true }),
+            choice({ label: "Can you fake it?" }),
+          ]
         ),
-      },
-      {
-        points: 22,
-        maxPoints: 5,
-        element: () => (
-          <div>
-            <ChoicesEvent label="You must know what's going on.">
-              <Choice label="I don't know anything." ok />
-              <Choice label="......" ok />
-            </ChoicesEvent>
-          </div>
+        choices("Otherwise, I won't be able to keep my promise to my nephew!", [
+          choice({ label: "You need to get tougher.", correct: true }),
+          choice({ label: "You can't win like this." }),
+          choice({ label: "You need to take a break." }),
+        ]),
+      ]),
+      LinkLevel(22, [
+        choices("You must know what's going on.", [
+          choice({ label: "I don't know anything.", ok: true }),
+          choice({ label: "......", ok: true }),
+        ]),
+      ]),
+      LinkLevel(22, [
+        choices("I'm sure you love lugging all this dead weight around, huh?", [
+          choice({ label: "I don't mind at all.", correct: true }),
+          choice({ label: "No, not exactly." }),
+          choice({ label: "It's fine-I'm tough as hell.", ok: true }),
+        ]),
+      ]),
+      LinkLevel(22, [
+        choices("I need to talk to you...", [
+          choice({ label: "Right now?" }),
+          choice({ label: "What about?" }),
+        ]),
+        choices(
+          "...I've made up my mind. I'm going to have surgery to fix my knee...",
+          [
+            choice({ label: "What about the big meet?" }),
+            choice({ label: "What about your promise?", correct: true }),
+          ]
         ),
-      },
-      {
-        points: 22,
-        maxPoints: 15,
-        element: () => (
-          <div>
-            <ChoicesEvent label="I'm sure you love lugging all this dead weight around, huh?">
-              <Choice label="I don't mind at all." correct />
-              <Choice label="No, not exactly." />
-              <Choice label="It's fine-I'm tough as hell." ok />
-            </ChoicesEvent>
-          </div>
-        ),
-      },
-      {
-        points: 22,
-        maxPoints: 20,
-        element: () => (
-          <div>
-            <ChoicesEvent label="I need to talk to you...">
-              <Choice label="Right now?" />
-              <Choice label="What about?" />
-            </ChoicesEvent>
-            <ChoicesEvent label="...I've made up my mind. I'm going to have surgery to fix my knee...">
-              <Choice label="What about the big meet?" />
-              <Choice label="What about your promise?" correct />
-            </ChoicesEvent>
-          </div>
-        ),
-      },
+      ]),
     ],
   },
   Hermit: {
     name: "Hermit",
-    calculate: function ({ level, points, multiplier = 1 }) {
-      const isNewlevel =
-        level < this.levels.length && points >= this.levels[level].points;
-      return {
-        Hermit: {
-          level: isNewlevel ? level + 1 : level,
-          points: isNewlevel
-            ? this.levels[level].maxPoints * multiplier
-            : points + 10 * multiplier,
-        },
-      };
-    },
+    calculate: calculateLevel,
     levels: [
-      {
-        points: 0,
-        maxPoints: 0,
-        element: () => <h3>Create bond</h3>,
-      },
-      {
-        points: 0,
-        maxPoints: 20,
-        element: () => (
-          <div>
-            <ChoicesEvent label="u remember me rite? =/">
-              <Choice label="Of course." correct />
-              <Choice label="...Have we met?" />
-            </ChoicesEvent>
-            <ChoicesEvent label="hmmm… what kinda people r we, playing inside on such a beautiful day?">
-              <Choice label="Don't you like video games?" />
-              <Choice label="Sunshine is overrated." correct />
-              <Choice label="Guess we're loners." />
-            </ChoicesEvent>
-          </div>
+      LinkLevel(),
+      LinkLevel(0, [
+        choices("u remember me rite? =/", [
+          choice({ label: "Of course.", correct: true }),
+          choice({ label: "...Have we met?" }),
+        ]),
+        choices(
+          "hmmm… what kinda people r we, playing inside on such a beautiful day?",
+          [
+            choice({ label: "Don't you like video games?" }),
+            choice({ label: "Sunshine is overrated.", correct: true }),
+            choice({ label: "Guess we're loners." }),
+          ]
         ),
-      },
-      {
-        points: 0,
-        maxPoints: 20,
-        element: () => (
-          <div>
-            <ChoicesEvent label="so ummmmm…… i'm drunk! xD">
-              <Choice label="Oh really?! o_O" correct />
-              <Choice label="Are you an adult?" />
-            </ChoicesEvent>
-            <ChoicesEvent label="but lately i cant get motivated to get ne work done @ work. =/">
-              <Choice label="You don't like your job?" correct />
-              <Choice label="Are you burned out?" />
-            </ChoicesEvent>
-          </div>
+      ]),
+      LinkLevel(0, [
+        choices("so ummmmm…… i'm drunk! xD", [
+          choice({ label: "Oh really?! o_O", correct: true }),
+          choice({ label: "Are you an adult?" }),
+        ]),
+        choices(
+          "but lately i cant get motivated to get ne work done @ work. =/",
+          [
+            choice({ label: "You don't like your job?", correct: true }),
+            choice({ label: "Are you burned out?" }),
+          ]
         ),
-      },
-      {
-        points: 20,
-        maxPoints: 15,
-        element: () => (
-          <div>
-            <ChoicesEvent label="Its like all she cares about is marrying me to some dude >=/ whys it her problem?">
-              <Choice label="Don't wanna get married?" />
-              <Choice label="You'll need a boyfriend first." />
-              <Choice label="Let's plan our wedding, then." correct />
-            </ChoicesEvent>
-          </div>
+      ]),
+      LinkLevel(20, [
+        choices(
+          "Its like all she cares about is marrying me to some dude >=/ whys it her problem?",
+          [
+            choice({ label: "Don't wanna get married?" }),
+            choice({ label: "You'll need a boyfriend first." }),
+            choice({ label: "Let's plan our wedding, then.", correct: true }),
+          ]
         ),
-      },
-      {
-        points: 20,
-        maxPoints: 30,
-        element: () => (
-          <div>
-            <ChoicesEvent label="Mr. E is such a stupid eh so bee!! t(-_-t)">
-              <Choice label="Who's Mr. E?" />
-              <Choice label="Are you drunk again?" />
-              <Choice label="Do you mean S.O.B.?" correct />
-            </ChoicesEvent>
-            <ChoicesEvent label="…oh noes! u can't figure out what my job is can u? O_o?">
-              <Choice label="A drunken master?" />
-              <Choice label="Maya's a reporter, right?" />
-              <Choice label="Are you a teacher?" correct />
-            </ChoicesEvent>
-          </div>
+      ]),
+      LinkLevel(20, [
+        choices("Mr. E is such a stupid eh so bee!! t(-_-t)", [
+          choice({ label: "Who's Mr. E?" }),
+          choice({ label: "Are you drunk again?" }),
+          choice({ label: "Do you mean S.O.B.?", correct: true }),
+        ]),
+        choices("…oh noes! u can't figure out what my job is can u? O_o?", [
+          choice({ label: "A drunken master?" }),
+          choice({ label: "Maya's a reporter, right?" }),
+          choice({ label: "Are you a teacher?", correct: true }),
+        ]),
+      ]),
+      LinkLevel(20, [
+        choices(
+          "actually, i only went cuz i was so pissed at that bastard! >=/",
+          [
+            choice({ label: "Calm down." }),
+            choice({ label: "What bastard?", correct: true }),
+          ]
         ),
-      },
-      {
-        points: 20,
-        maxPoints: 15,
-        element: () => (
-          <div>
-            <ChoicesEvent label="actually, i only went cuz i was so pissed at that bastard! >=/">
-              <Choice label="Calm down." />
-              <Choice label="What bastard?" correct />
-            </ChoicesEvent>
-          </div>
+      ]),
+      LinkLevel(20, [
+        choices("…do men only want younger women? be honest ・_・", [
+          choice({ label: "What are you talking about?" }),
+          choice({ label: "Age isn't the point.", ok: true }),
+          choice({ label: "Well, yeah." }),
+        ]),
+        choices("she even stuffs her bra!! lol", [
+          choice({ label: "She, um… what?", ok: true }),
+          choice({ label: "Calm down." }),
+        ]),
+      ]),
+      LinkLevel(20, [
+        choices("oh noes… now i'm starting to get sweaty =/", [
+          choice({ label: "Are you talking to yourself?" }),
+          choice({ label: "Hurry up and tell me.", correct: true }),
+        ]),
+        choices("that's kinda crazy even for me >_>;", [
+          choice({ label: "What is he like?", ok: true }),
+          choice({ label: "Are you gonna ask him out?" }),
+        ]),
+      ]),
+      LinkLevel(20, [
+        choices("it said their canceling innocent sin. …think its for real?!", [
+          choice({ label: "Not much we can do." }),
+          choice({ label: "No way!", ok: true }),
+          choice({ label: "Whatever, I guess." }),
+        ]),
+        choices(
+          "tatsuya... do u think we'll still be able to see each other? T_T",
+          [
+            choice({ label: "I think so." }),
+            choice({ label: "No, this is the end." }),
+            choice({ label: "Don't worry about that." }),
+          ]
         ),
-      },
-      {
-        points: 20,
-        maxPoints: 20,
-        element: () => (
-          <div>
-            <ChoicesEvent label="…do men only want younger women? be honest ・_・">
-              <Choice label="What are you talking about?" />
-              <Choice label="Age isn't the point." ok />
-              <Choice label="Well, yeah." />
-            </ChoicesEvent>
-            <ChoicesEvent label="she even stuffs her bra!! lol">
-              <Choice label="She, um… what?" ok />
-              <Choice label="Calm down." />
-            </ChoicesEvent>
-          </div>
+        choices("maya's not goin quietly! >=/ i'll beat them to the punch!", [
+          choice({ label: "What are you planning?", ok: true }),
+          choice({ label: "This won't change anything." }),
+        ]),
+      ]),
+      LinkLevel(20, [
+        choices("…i should apologize", [
+          choice({ label: "About what?" }),
+          choice({ label: "Oh, no worries.", correct: true }),
+        ]),
+        choices("i dun think i will...", [
+          choice({ label: "Now they'll end it for sure." }),
+          choice({ label: "Is that why you're sorry?" }),
+        ]),
+        choices(
+          "im thinkin bout quittin the MMO today. i… dun think i'll c u again T_T",
+          [
+            choice({ label: "This is sudden..." }),
+            choice({ label: "I'll miss you.", correct: true }),
+          ]
         ),
-      },
-      {
-        points: 20,
-        maxPoints: 20,
-        element: () => (
-          <div>
-            <ChoicesEvent label="oh noes… now i'm starting to get sweaty =/">
-              <Choice label="Are you talking to yourself?" />
-              <Choice label="Hurry up and tell me." correct />
-            </ChoicesEvent>
-            <ChoicesEvent label="that's kinda crazy even for me >_>;">
-              <Choice label="What is he like?" ok />
-              <Choice label="Are you gonna ask him out?" />
-            </ChoicesEvent>
-          </div>
-        ),
-      },
-      {
-        points: 20,
-        maxPoints: 10,
-        element: () => (
-          <div>
-            <ChoicesEvent label="it said their canceling innocent sin. …think its for real?!">
-              <Choice label="Not much we can do." />
-              <Choice label="No way!" ok />
-              <Choice label="Whatever, I guess." />
-            </ChoicesEvent>
-            <ChoicesEvent label="tatsuya... do u think we'll still be able to see each other? T_T">
-              <Choice label="I think so." />
-              <Choice label="No, this is the end." />
-              <Choice label="Don't worry about that." />
-            </ChoicesEvent>
-            <ChoicesEvent label="maya's not goin quietly! >=/ i'll beat them to the punch!">
-              <Choice label="What are you planning?" ok />
-              <Choice label="This won't change anything." />
-            </ChoicesEvent>
-          </div>
-        ),
-      },
-      {
-        points: 20,
-        maxPoints: 25,
-        element: () => (
-          <div>
-            <ChoicesEvent label="…i should apologize">
-              <Choice label="About what?" />
-              <Choice label="Oh, no worries." correct />
-            </ChoicesEvent>
-            <ChoicesEvent label="i dun think i will...">
-              <Choice label="Now they'll end it for sure." />
-              <Choice label="Is that why you're sorry?" />
-            </ChoicesEvent>
-            <ChoicesEvent label="im thinkin bout quittin the MMO today. i… dun think i'll c u again T_T">
-              <Choice label="This is sudden..." />
-              <Choice label="I'll miss you." correct />
-            </ChoicesEvent>
-          </div>
-        ),
-      },
+      ]),
     ],
   },
   Fortune: {
     name: "Fortune",
-    calculate: function ({ level, points, multiplier = 1 }) {
-      const isNewlevel =
-        level < this.levels.length && points >= this.levels[level].points;
-      return {
-        Fortune: {
-          level: isNewlevel ? level + 1 : level,
-          points: isNewlevel
-            ? this.levels[level].maxPoints * multiplier
-            : points + 10 * multiplier,
-        },
-      };
-    },
+    calculate: calculateLevel,
     levels: [
-      {
-        points: 0,
-        maxPoints: 0,
-        element: () => <h3>Create bond</h3>,
-      },
-      {
-        points: 0,
-        maxPoints: 0,
-        element: () => (
-          <div>
-            <ChoicesEvent label="...!">
-              <Choice label="What's wrong?" />
-              <Choice label="Do you need some rest?" />
-            </ChoicesEvent>
-            <ChoicesEvent label="Yamagishi-san won't be going anywhere for a while.">
-              <Choice label="“Strikes again”?" />
-              <Choice label="Is that a problem?" />
-            </ChoicesEvent>
-          </div>
+      LinkLevel(),
+      LinkLevel(0, [
+        choices("...!", [
+          choice({ label: "What's wrong?" }),
+          choice({ label: "Do you need some rest?" }),
+        ]),
+        choices("Yamagishi-san won't be going anywhere for a while.", [
+          choice({ label: "'Strikes again'?" }),
+          choice({ label: "Is that a problem?" }),
+        ]),
+      ]),
+      LinkLevel(0, [
+        choices(
+          "It really helped apply the paint to the canvas, so I'm sure that's the only reason the judges even noticed.",
+          [
+            choice({ label: "You've got talent!", correct: true }),
+            choice({ label: "You got lucky." }),
+          ]
         ),
-      },
-      {
-        points: 0,
-        maxPoints: 15,
-        element: () => (
-          <div>
-            <ChoicesEvent label="It really helped apply the paint to the canvas, so I'm sure that's the only reason the judges even noticed.">
-              <Choice label="You've got talent!" correct />
-              <Choice label="You got lucky." />
-            </ChoicesEvent>
-            <ChoicesEvent label="I recommend adding more shellfish to your diet, like oyster and abalone. They're packed with iron and easy to cook.">
-              <Choice label="Good work, Doc Junior." />
-              <Choice label="Will he be okay?" />
-            </ChoicesEvent>
-          </div>
+        choices(
+          "I recommend adding more shellfish to your diet, like oyster and abalone. They're packed with iron and easy to cook.",
+          [
+            choice({ label: "Good work, Doc Junior." }),
+            choice({ label: "Will he be okay?" }),
+          ]
         ),
-      },
-      {
-        points: 15,
-        maxPoints: 20,
-        element: () => (
-          <div>
-            <ChoicesEvent label="Did you... hear everything?">
-              <Choice label="You're quitting art club?" ok />
-              <Choice label="You're pulling out of the contest?" ok />
-            </ChoicesEvent>
-            <ChoicesEvent label="I have my own dreams too, you know! Ugh, I can't stand it anymore!">
-              <Choice label="Complaining to me won't help you." correct />
-              <Choice label="So you're just gonna take it?" ok />
-            </ChoicesEvent>
-          </div>
+      ]),
+      LinkLevel(15, [
+        choices("Did you... hear everything?", [
+          choice({ label: "You're quitting art club?", ok: true }),
+          choice({ label: "You're pulling out of the contest?", ok: true }),
+        ]),
+        choices(
+          "I have my own dreams too, you know! Ugh, I can't stand it anymore!",
+          [
+            choice({
+              label: "Complaining to me won't help you.",
+              correct: true,
+            }),
+            choice({ label: "So you're just gonna take it?", ok: true }),
+          ]
         ),
-      },
-      {
-        points: 15,
-        maxPoints: 15,
-        element: () => (
-          <div>
-            <ChoicesEvent label="Wait. Then... that means...">
-              <Choice label="You should tell your dad." correct />
-              <Choice label="Now you don't have to quit." ok />
-            </ChoicesEvent>
-          </div>
+      ]),
+      LinkLevel(15, [
+        choices("Wait. Then... that means...", [
+          choice({ label: "You should tell your dad.", correct: true }),
+          choice({ label: "Now you don't have to quit.", ok: true }),
+        ]),
+      ]),
+      LinkLevel(15, [
+        choices("Everyone is working so hard...", [
+          choice({ label: "So are you." }),
+          choice({ label: "What's the matter?" }),
+        ]),
+        choices("I just don't know what to think.", [
+          choice({ label: "Will you study abroad?" }),
+          choice({ label: "It's your choice now.", correct: true }),
+        ]),
+      ]),
+      LinkLevel(15, [
+        choices(
+          "It's like he's suddenly trying to be more understanding. It's weird.",
+          [
+            choice({ label: "Do you want to be a doctor?", correct: true }),
+            choice({ label: "Don't you like art club?" }),
+          ]
         ),
-      },
-      {
-        points: 15,
-        maxPoints: 15,
-        element: () => (
-          <div>
-            <ChoicesEvent label="Everyone is working so hard...">
-              <Choice label="So are you." />
-              <Choice label="What's the matter?" />
-            </ChoicesEvent>
-            <ChoicesEvent label="I just don't know what to think.">
-              <Choice label="Will you study abroad?" />
-              <Choice label="It's your choice now." correct />
-            </ChoicesEvent>
-          </div>
-        ),
-      },
-      {
-        points: 15,
-        maxPoints: 15,
-        element: () => (
-          <div>
-            <ChoicesEvent label="It's like he's suddenly trying to be more understanding. It's weird.">
-              <Choice label="Do you want to be a doctor?" correct />
-              <Choice label="Don't you like art club?" />
-            </ChoicesEvent>
-          </div>
-        ),
-      },
-      {
-        points: 15,
-        maxPoints: 15,
-        element: () => (
-          <div>
-            <ChoicesEvent label="Can you remember my name?">
-              <Choice label="It's okay, I'm fine." correct />
-              <Choice label="Of course. It's Keisuke." />
-              <Choice label="......" />
-            </ChoicesEvent>
-            <ChoicesEvent label="A-Anyway, do you remember what happened?">
-              <Choice label="I do." />
-              <Choice label="I don't." />
-            </ChoicesEvent>
-            <ChoicesEvent label="I'm not a doctor.">
-              <Choice label="Do you think you want to be one?" />
-              <Choice label="Don't beat yourself up for it." />
-            </ChoicesEvent>
-          </div>
-        ),
-      },
-      {
-        points: 22,
-        maxPoints: 15,
-        element: () => (
-          <div>
-            <ChoicesEvent label="Tell the others I said goodbye!">
-              <Choice label="You can't go!" correct />
-              <Choice label="Good luck!" />
-            </ChoicesEvent>
-            <ChoicesEvent label="Ma'am, are you all right!? That cough...">
-              <Choice label="What happened?" />
-              <Choice label="...You should just go." />
-            </ChoicesEvent>
-            <ChoicesEvent label="My train's about to leave... Wh-What should I do...?">
-              <Choice label="Leave this to me!" />
-              <Choice label="You can't abandon your trip!" />
-            </ChoicesEvent>
-            <ChoicesEvent label="How should I help him?">
-              <Choice label="Better leave him alone." />
-              <Choice label="I should talk to him." />
-              <Choice label="I'll try patting his upper back." />
-            </ChoicesEvent>
-            <ChoicesEvent label="What should I do next?">
-              <Choice label="Better leave him alone." />
-              <Choice label="I could rub his back." />
-              <Choice label="I'll lay him on his back." />
-            </ChoicesEvent>
-          </div>
-        ),
-      },
-      {
-        points: 22,
-        maxPoints: 30,
-        element: () => (
-          <div>
-            <ChoicesEvent label="That's why I want you to have it.">
-              <Choice label="I understand." correct />
-              <Choice label="Why?" correct />
-              <Choice label="Stop relying on others." correct />
-            </ChoicesEvent>
-            <ChoicesEvent label="I-I'm not coming off as arrogant, am I?">
-              <Choice label="No, not really." correct />
-              <Choice label="Yeah." correct />
-            </ChoicesEvent>
-          </div>
-        ),
-      },
+      ]),
+      LinkLevel(15, [
+        choices("Can you remember my name?", [
+          choice({ label: "It's okay, I'm fine.", correct: true }),
+          choice({ label: "Of course. It's Keisuke." }),
+          choice({ label: "......" }),
+        ]),
+        choices("A-Anyway, do you remember what happened?", [
+          choice({ label: "I do." }),
+          choice({ label: "I don't." }),
+        ]),
+        choices("I'm not a doctor.", [
+          choice({ label: "Do you think you want to be one?" }),
+          choice({ label: "Don't beat yourself up for it." }),
+        ]),
+      ]),
+      LinkLevel(22, [
+        choices("Tell the others I said goodbye!", [
+          choice({ label: "You can't go!", correct: true }),
+          choice({ label: "Good luck!" }),
+        ]),
+        choices("Ma'am, are you all right!? That cough...", [
+          choice({ label: "What happened?" }),
+          choice({ label: "...You should just go." }),
+        ]),
+        choices("My train's about to leave... Wh-What should I do...?", [
+          choice({ label: "Leave this to me!" }),
+          choice({ label: "You can't abandon your trip!" }),
+        ]),
+        choices("How should I help him?", [
+          choice({ label: "Better leave him alone." }),
+          choice({ label: "I should talk to him." }),
+          choice({ label: "I'll try patting his upper back." }),
+        ]),
+        choices("What should I do next?", [
+          choice({ label: "Better leave him alone." }),
+          choice({ label: "I could rub his back." }),
+          choice({ label: "I'll lay him on his back." }),
+        ]),
+      ]),
+      LinkLevel(22, [
+        choices("That's why I want you to have it.", [
+          choice({ label: "I understand.", correct: true }),
+          choice({ label: "Why?", correct: true }),
+          choice({ label: "Stop relying on others.", correct: true }),
+        ]),
+        choices("I-I'm not coming off as arrogant, am I?", [
+          choice({ label: "No, not really.", correct: true }),
+          choice({ label: "Yeah.", correct: true }),
+        ]),
+      ]),
     ],
   },
   HangedMan: {
     name: "HangedMan",
-    calculate: function ({ level, points, multiplier = 1 }) {
-      const isNewlevel =
-        level < this.levels.length && points >= this.levels[level].points;
-      return {
-        HangedMan: {
-          level: isNewlevel ? level + 1 : level,
-          points: isNewlevel
-            ? this.levels[level].maxPoints * multiplier
-            : points + 10 * multiplier,
-        },
-      };
-    },
+    calculate: calculateLevel,
     levels: [
-      {
-        points: 0,
-        maxPoints: 0,
-        element: () => <h3>Create bond</h3>,
-      },
-      {
-        points: 0,
-        maxPoints: 15,
-        element: () => (
-          <div>
-            <ChoicesEvent label="My tummy's grumbling! Can we go to Wilduck?">
-              <Choice label="Sure, let's go." correct />
-              <Choice label="Let's keep playing." />
-            </ChoicesEvent>
-            <ChoicesEvent label="Why would they get a divorce?">
-              <Choice label="They fell out of love." />
-              <Choice label="It's probably your fault." />
-              <Choice label="I don't know." />
-            </ChoicesEvent>
-            <ChoicesEvent label="...She's sobbing loudly. What should I do?">
-              <Choice label="Calm her down" />
-              <Choice label="Wait for her to finish." />
-            </ChoicesEvent>
-          </div>
+      LinkLevel(),
+      LinkLevel(0, [
+        choices("My tummy's grumbling! Can we go to Wilduck?", [
+          choice({ label: "Sure, let's go.", correct: true }),
+          choice({ label: "Let's keep playing." }),
+        ]),
+        choices("Why would they get a divorce?", [
+          choice({ label: "They fell out of love." }),
+          choice({ label: "It's probably your fault." }),
+          choice({ label: "I don't know." }),
+        ]),
+        choices("...She's sobbing loudly. What should I do?", [
+          choice({ label: "Calm her down" }),
+          choice({ label: "Wait for her to finish." }),
+        ]),
+      ]),
+      LinkLevel(0, [
+        choices("...And who are you?", [
+          choice({ label: "I'm Maiko's friend." }),
+          choice({ label: "Just a random passerby." }),
+        ]),
+        choices("Do you think he'll come home and see me?", [
+          choice({ label: "He'll probably forget." }),
+          choice({ label: "I really can't say." }),
+          choice({ label: "Don't worry, he'll be there.", correct: true }),
+        ]),
+      ]),
+      LinkLevel(20, [
+        choices("They really do care about me!", [
+          choice({ label: "That's great news!", correct: true }),
+          choice({ label: "Of course they care.", correct: true }),
+          choice({ label: "Nah, they don't care." }),
+        ]),
+      ]),
+      LinkLevel(20, [
+        choices("He's so mean. It's not fair!", [
+          choice({ label: "That's awful.", correct: true }),
+          choice({ label: "Why would he do that?" }),
+        ]),
+        choices("Do they just wish I would disappear?", [
+          choice({ label: "It's possible." }),
+          choice({ label: "They would never?", ok: true }),
+        ]),
+      ]),
+      LinkLevel(20, [
+        choices("I made up my mind! I have to run away from home!", [
+          choice({ label: "Don't do it." }),
+          choice({ label: "Calm down.", ok: true }),
+          choice({ label: "It's up to you." }),
+        ]),
+        choices("I'll need lots of snacks, right? And my...insurance card?", [
+          choice({ label: "That should be enough.", correct: true }),
+          choice({ label: "It'll take more than that." }),
+        ]),
+      ]),
+      LinkLevel(30, [
+        choices("She's never done anything like this before!", [
+          choice({ label: "We should look for her." }),
+          choice({ label: "It's probably your fault." }),
+          choice({ label: "Just leave her alone." }),
+        ]),
+        choices(
+          "If you have any idea where she is, I'm begging you to tell us.",
+          [
+            choice({ label: "Maybe the music store." }),
+            choice({ label: "Maybe the takoyaki stand." }),
+          ]
         ),
-      },
-      {
-        points: 0,
-        maxPoints: 15,
-        element: () => (
-          <div>
-            <ChoicesEvent label="...And who are you?">
-              <Choice label="I'm Maiko's friend." />
-              <Choice label="Just a random passerby." />
-            </ChoicesEvent>
-            <ChoicesEvent label="Do you think he'll come home and see me?">
-              <Choice label="He'll probably forget." />
-              <Choice label="I really can't say." />
-              <Choice label="Don't worry, he'll be there." correct />
-            </ChoicesEvent>
-          </div>
+      ]),
+      LinkLevel(15, [
+        choices("What do you wanna get?", [
+          choice({ label: "Hamburgers.", ok: true }),
+          choice({ label: "Japanese food." }),
+        ]),
+        choices(
+          "It was sad, but I listened to the whole thing. Did I do good?",
+          [
+            choice({ label: "You're a good girl.", correct: true }),
+            choice({ label: "Not really." }),
+          ]
         ),
-      },
-      {
-        points: 20,
-        maxPoints: 15,
-        element: () => (
-          <div>
-            <ChoicesEvent label="They really do care about me!">
-              <Choice label="That's great news!" correct />
-              <Choice label="Of course they care." correct />
-              <Choice label="Nah, they don't care." />
-            </ChoicesEvent>
-          </div>
-        ),
-      },
-      {
-        points: 20,
-        maxPoints: 20,
-        element: () => (
-          <div>
-            <ChoicesEvent label="He's so mean. It's not fair!">
-              <Choice label="That's awful." correct />
-              <Choice label="Why would he do that?" />
-            </ChoicesEvent>
-            <ChoicesEvent label="Do they just wish I would disappear?">
-              <Choice label="It's possible." />
-              <Choice label="They would never?" ok />
-            </ChoicesEvent>
-          </div>
-        ),
-      },
-      {
-        points: 20,
-        maxPoints: 20,
-        element: () => (
-          <div>
-            <ChoicesEvent label="I made up my mind! I have to run away from home!">
-              <Choice label="Don't do it." />
-              <Choice label="Calm down." ok />
-              <Choice label="It's up to you." />
-            </ChoicesEvent>
-            <ChoicesEvent label="I'll need lots of snacks, right? And my...insurance card?">
-              <Choice label="That should be enough." correct />
-              <Choice label="It'll take more than that." />
-            </ChoicesEvent>
-          </div>
-        ),
-      },
-      {
-        points: 30,
-        maxPoints: 0,
-        element: () => (
-          <div>
-            <ChoicesEvent label="She's never done anything like this before!">
-              <Choice label="We should look for her." />
-              <Choice label="It's probably your fault." />
-              <Choice label="Just leave her alone." />
-            </ChoicesEvent>
-            <ChoicesEvent label="If you have any idea where she is, I'm begging you to tell us.">
-              <Choice label="Maybe the music store." />
-              <Choice label="Maybe the takoyaki stand." />
-            </ChoicesEvent>
-          </div>
-        ),
-      },
-      {
-        points: 15,
-        maxPoints: 35,
-        element: () => (
-          <div>
-            <ChoicesEvent label="What do you wanna get?">
-              <Choice label="Hamburgers." ok />
-              <Choice label="Japanese food." />
-            </ChoicesEvent>
-            <ChoicesEvent label="It was sad, but I listened to the whole thing. Did I do good?">
-              <Choice label="You're a good girl." correct />
-              <Choice label="Not really." />
-            </ChoicesEvent>
-            <ChoicesEvent label="Who do you think I should pick?">
-              <Choice label="Your dad." correct />
-              <Choice label="Your mom." />
-              <Choice label="You decide." />
-            </ChoicesEvent>
-          </div>
-        ),
-      },
-      {
-        points: 30,
-        maxPoints: 15,
-        element: () => (
-          <div>
-            <ChoicesEvent label="Even if I'm gone... we'll still be friends right?">
-              <Choice label="Friends forever." correct />
-              <Choice label="I might forget about you." />
-            </ChoicesEvent>
-          </div>
-        ),
-      },
-      {
-        points: 15,
-        maxPoints: 15,
-        element: () => (
-          <div>
-            <ChoicesEvent label="Do you think I'll have a family of my own one day?">
-              <Choice label="I'm sure you will." correct />
-              <Choice label="No idea." />
-            </ChoicesEvent>
-            <ChoicesEvent label="Can we get married?">
-              <Choice label="Sure." correct />
-              <Choice label="I'll think about it." />
-            </ChoicesEvent>
-          </div>
-        ),
-      },
+        choices("Who do you think I should pick?", [
+          choice({ label: "Your dad.", correct: true }),
+          choice({ label: "Your mom." }),
+          choice({ label: "You decide." }),
+        ]),
+      ]),
+      LinkLevel(30, [
+        choices("Even if I'm gone... we'll still be friends right?", [
+          choice({ label: "Friends forever.", correct: true }),
+          choice({ label: "I might forget about you." }),
+        ]),
+      ]),
+      LinkLevel(15, [
+        choices("Do you think I'll have a family of my own one day?", [
+          choice({ label: "I'm sure you will.", correct: true }),
+          choice({ label: "No idea." }),
+        ]),
+        choices("Can we get married?", [
+          choice({ label: "Sure.", correct: true }),
+          choice({ label: "I'll think about it." }),
+        ]),
+      ]),
     ],
   },
   Temperance: {
     name: "Temperance",
-    calculate: function ({ level, points, multiplier = 1 }) {
-      const isNewlevel =
-        level < this.levels.length && points >= this.levels[level].points;
-      return {
-        Temperance: {
-          level: isNewlevel ? level + 1 : level,
-          points: isNewlevel
-            ? this.levels[level].maxPoints * multiplier
-            : points + 10 * multiplier,
-        },
-      };
-    },
+    calculate: calculateLevel,
     levels: [
-      {
-        points: 0,
-        maxPoints: 0,
-        element: () => <h3>Create bond</h3>,
-      },
-      {
-        points: 0,
-        maxPoints: 20,
-        element: () => (
-          <div>
-            <ChoicesEvent label="It will be my first time going, Will you maybe, how do you say, show me the ropes?">
-              <Choice label="Sure, let's go." ok />
-              <Choice label="You like sweets?" />
-              <Choice label="There's nothing to show." correct />
-            </ChoicesEvent>
-            <ChoicesEvent label="I love the culture of Nihon! Japan sugoi-amazing!">
-              <Choice label="I totally agree." correct />
-              <Choice label="What about your country?" />
-              <Choice label="It's not that great.	" />
-            </ChoicesEvent>
-          </div>
+      LinkLevel(),
+      LinkLevel(0, [
+        choices(
+          "It will be my first time going, Will you maybe, how do you say, show me the ropes?",
+          [
+            choice({ label: "Sure, let's go.", ok: true }),
+            choice({ label: "You like sweets?" }),
+            choice({ label: "There's nothing to show.", correct: true }),
+          ]
         ),
-      },
-      {
-        points: 0,
-        maxPoints: 20,
-        element: () => (
-          <div>
-            <ChoicesEvent label="You have gotten much better at this, Makoto-dono! Subarashii-wonderful!">
-              <Choice label="I can do better." />
-              <Choice label="Thanks." ok />
-            </ChoicesEvent>
-            <ChoicesEvent label="I would like to make something Japanese, but what?">
-              <Choice label="What do you like?" />
-              <Choice label="Why not western clothes?" />
-              <Choice label="How about a kimono?" correct />
-            </ChoicesEvent>
-          </div>
+        choices("I love the culture of Nihon! Japan sugoi-amazing!", [
+          choice({ label: "I totally agree.", correct: true }),
+          choice({ label: "What about your country?" }),
+          choice({ label: "It's not that great.	" }),
+        ]),
+      ]),
+      LinkLevel(0, [
+        choices(
+          "You have gotten much better at this, Makoto-dono! Subarashii-wonderful!",
+          [
+            choice({ label: "I can do better." }),
+            choice({ label: "Thanks.", ok: true }),
+          ]
         ),
-      },
-      {
-        points: 15,
-        maxPoints: 15,
-        element: () => (
-          <div>
-            <ChoicesEvent label="......">
-              <Choice label="How come you're not working?" />
-              <Choice label="Should we stop for today?" />
-              <Choice label="Are you alright?" correct />
-            </ChoicesEvent>
-            <ChoicesEvent label="She was taken by the angels!">
-              <Choice label="What happened?" />
-              <Choice label="Calm down." />
-              <Choice label="That's terrible..." />
-            </ChoicesEvent>
-          </div>
+        choices("I would like to make something Japanese, but what?", [
+          choice({ label: "What do you like?" }),
+          choice({ label: "Why not western clothes?" }),
+          choice({ label: "How about a kimono?", correct: true }),
+        ]),
+      ]),
+      LinkLevel(15, [
+        choices("......", [
+          choice({ label: "How come you're not working?" }),
+          choice({ label: "Should we stop for today?" }),
+          choice({ label: "Are you alright?", correct: true }),
+        ]),
+        choices("She was taken by the angels!", [
+          choice({ label: "What happened?" }),
+          choice({ label: "Calm down." }),
+          choice({ label: "That's terrible..." }),
+        ]),
+      ]),
+      LinkLevel(15, [
+        choices("", [
+          choice({ label: "Sure.", ok: true }),
+          choice({ label: "Why?" }),
+        ]),
+        choices("", [
+          choice({ label: "You have to accept it." }),
+          choice({ label: "Just stay in Japan!", ok: true }),
+        ]),
+      ]),
+      LinkLevel(15, [
+        choices("I have barely sewn anything at all.", [
+          choice({ label: "What's wrong?" }),
+          choice({ label: "Why not take a break?", ok: true }),
+        ]),
+        choices("Will you go to Azuki Arai with moi?", [
+          choice({ label: "Let's do it.", ok: true }),
+          choice({ label: "Just one minute." }),
+        ]),
+        choices("I want to stay here in Japan even if I have to eat dirt!", [
+          choice({ label: "I have your back!", correct: true }),
+          choice({ label: "What will you do?" }),
+        ]),
+      ]),
+      LinkLevel(15, [
+        choices(
+          "I will show him a kimono! When he sees it, he will understand the beauty of Nihon!",
+          [
+            choice({ label: "Will that be enough?" }),
+            choice({ label: "That's a great idea.", correct: true }),
+          ]
         ),
-      },
-      {
-        points: 15,
-        maxPoints: 10,
-        element: () => (
-          <div>
-            <ChoicesEvent label="Could we go somewhere to eat after this?">
-              <Choice label="Sure." ok />
-              <Choice label="Why?" />
-            </ChoicesEvent>
-            <ChoicesEvent label="I might never come back to Japan again!">
-              <Choice label="You have to accept it." />
-              <Choice label="Just stay in Japan!" ok />
-            </ChoicesEvent>
-          </div>
+      ]),
+      LinkLevel(10, [
+        choices(
+          "When my uncle sees this, I know he'll agree with me about how great Nihon is!",
+          [
+            choice({ label: "When will it be done?" }),
+            choice({ label: "He'll definitely agree!", correct: true }),
+            choice({ label: "Less talk, more work." }),
+          ]
         ),
-      },
-      {
-        points: 15,
-        maxPoints: 25,
-        element: () => (
-          <div>
-            <ChoicesEvent label="I have barely sewn anything at all.">
-              <Choice label="What's wrong?" />
-              <Choice label="Why not take a break?" ok />
-            </ChoicesEvent>
-            <ChoicesEvent label="Will you go to Azuki Arai with moi?">
-              <Choice label="Let's do it." ok />
-              <Choice label="Just one minute." />
-            </ChoicesEvent>
-            <ChoicesEvent label="I want to stay here in Japan even if I have to eat dirt!">
-              <Choice label="I have your back!" correct />
-              <Choice label="What will you do?" />
-            </ChoicesEvent>
-          </div>
+      ]),
+      LinkLevel(22, [
+        choices(
+          "And thanks to all your help, the kimono is almost finished! I feel so blessed.",
+          [
+            choice({ label: "Congrats!", ok: true }),
+            choice({ label: "Aren't you homesick?", correct: true }),
+            choice({ label: "Don't forget, you owe me." }),
+          ]
         ),
-      },
-      {
-        points: 15,
-        maxPoints: 15,
-        element: () => (
-          <div>
-            <ChoicesEvent label="I will show him a kimono! When he sees it, he will understand the beauty of Nihon!">
-              <Choice label="Will that be enough?" />
-              <Choice label="That's a great idea." correct />
-            </ChoicesEvent>
-          </div>
-        ),
-      },
-      {
-        points: 10,
-        maxPoints: 15,
-        element: () => (
-          <div>
-            <ChoicesEvent label="When my uncle sees this, I know he'll agree with me about how great Nihon is!">
-              <Choice label="When will it be done?" />
-              <Choice label="He'll definitely agree!" correct />
-              <Choice label="Less talk, more work." />
-            </ChoicesEvent>
-          </div>
-        ),
-      },
-      {
-        points: 22,
-        maxPoints: 15,
-        element: () => (
-          <div>
-            <ChoicesEvent label="And thanks to all your help, the kimono is almost finished! I feel so blessed.">
-              <Choice label="Congrats!" ok />
-              <Choice label="Aren't you homesick?" correct />
-              <Choice label="Don't forget, you owe me." />
-            </ChoicesEvent>
-          </div>
-        ),
-      },
-      {
-        points: 22,
-        maxPoints: 30,
-        element: () => (
-          <div>
-            <ChoicesEvent label="At last, it is fini!">
-              <Choice label="How does it look?" correct />
-              <Choice label="Great Work!" correct />
-            </ChoicesEvent>
-            <ChoicesEvent label="They are the times I spend with you, my tomodachi.">
-              <Choice label="I'll be waiting for you." correct />
-              <Choice label="Good luck out there." correct />
-            </ChoicesEvent>
-          </div>
-        ),
-      },
+      ]),
+      LinkLevel(22, [
+        choices("At last, it is fini!", [
+          choice({ label: "How does it look?", correct: true }),
+          choice({ label: "Great Work!", correct: true }),
+        ]),
+        choices("They are the times I spend with you, my tomodachi.", [
+          choice({ label: "I'll be waiting for you.", correct: true }),
+          choice({ label: "Good luck out there.", correct: true }),
+        ]),
+      ]),
     ],
   },
   Devil: {
     name: "Devil",
-    calculate: function ({ level, points, multiplier = 1 }) {
-      const isNewlevel =
-        level < this.levels.length && points >= this.levels[level].points;
-      return {
-        Devil: {
-          level: isNewlevel ? level + 1 : level,
-          points: isNewlevel
-            ? this.levels[level].maxPoints * multiplier
-            : points + 10 * multiplier,
-        },
-      };
-    },
+    calculate: calculateLevel,
     levels: [
       {
         points: 0,
@@ -2270,18 +1829,7 @@ export const socialLinks = {
   },
   Sun: {
     name: "Sun",
-    calculate: function ({ level, points, multiplier = 1 }) {
-      const isNewlevel =
-        level < this.levels.length && points >= this.levels[level].points;
-      return {
-        Sun: {
-          level: isNewlevel ? level + 1 : level,
-          points: isNewlevel
-            ? this.levels[level].maxPoints * multiplier
-            : points + 10 * multiplier,
-        },
-      };
-    },
+    calculate: calculateLevel,
     levels: [
       {
         points: 0,
@@ -2373,1387 +1921,1079 @@ export const socialLinks = {
   },
   Tower: {
     name: "Tower",
-    calculate: function ({ level, points, multiplier = 1 }) {
-      const isNewlevel =
-        level < this.levels.length && points >= this.levels[level].points;
-      return {
-        Tower: {
-          level: isNewlevel ? level + 1 : level,
-          points: isNewlevel
-            ? this.levels[level].maxPoints * multiplier
-            : points + 10 * multiplier,
-        },
-      };
-    },
+    calculate: calculateLevel,
     levels: [
-      {
-        points: 0,
-        maxPoints: 0,
-        element: () => <h3>Create bond</h3>,
-      },
-      {
-        points: 0,
-        maxPoints: 20,
-        element: () => (
-          <div>
-            <ChoicesEvent label="What'cha doin' here today, kid?">
-              <Choice label="I came to see you, old man." />
-              <Choice label="None of your business." correct />
-            </ChoicesEvent>
-            <ChoicesEvent label="You don't have to revere me, but at least show some proper respect.">
-              <Choice label="How should I address you?" ok />
-              <Choice label="Show respect?" />
-            </ChoicesEvent>
-          </div>
+      LinkLevel(),
+      LinkLevel(0, [
+        choices("What'cha doin' here today, kid?", [
+          choice({ label: "I came to see you, old man." }),
+          choice({ label: "None of your business.", correct: true }),
+        ]),
+        choices(
+          "You don't have to revere me, but at least show some proper respect.",
+          [
+            choice({ label: "How should I address you?", ok: true }),
+            choice({ label: "Show respect?" }),
+          ]
         ),
-      },
-      {
-        points: 0,
-        maxPoints: 15,
-        element: () => (
-          <div>
-            <ChoicesEvent label="How come you're always alone when I see ya? Don'tcha got any friends?">
-              <Choice label="I can't say I don't." />
-              <Choice label="I don't have any friends." correct />
-            </ChoicesEvent>
-          </div>
+      ]),
+      LinkLevel(0, [
+        choices(
+          "How come you're always alone when I see ya? Don'tcha got any friends?",
+          [
+            choice({ label: "I can't say I don't." }),
+            choice({ label: "I don't have any friends.", correct: true }),
+          ]
         ),
-      },
-      {
-        points: 25,
-        maxPoints: 15,
-        element: () => (
-          <div>
-            <ChoicesEvent label="You should cut it. No, better yet, shave it all off... Give the bald look a try.">
-              <Choice label="Yeah, that might look cool." correct />
-              <Choice label="Yeah, I dunno..." />
-            </ChoicesEvent>
-          </div>
+      ]),
+      LinkLevel(25, [
+        choices(
+          "You should cut it. No, better yet, shave it all off... Give the bald look a try.",
+          [
+            choice({ label: "Yeah, that might look cool.", correct: true }),
+            choice({ label: "Yeah, I dunno..." }),
+          ]
         ),
-      },
-      {
-        points: 25,
-        maxPoints: 20,
-        element: () => (
-          <div>
-            <ChoicesEvent label="High school kids don't have much money, do they? At least, I never gave much to my son.">
-              <Choice label="I have enough." ok />
-              <Choice label="I am not NOT struggling..." />
-            </ChoicesEvent>
-            <ChoicesEvent label='...And I mean something you can buy with money. Not some crap like "love" or "a sense of humor".'>
-              <Choice label="Yes." ok />
-              <Choice label="No." correct />
-            </ChoicesEvent>
-          </div>
+      ]),
+      LinkLevel(25, [
+        choices(
+          "High school kids don't have much money, do they? At least, I never gave much to my son.",
+          [
+            choice({ label: "I have enough.", ok: true }),
+            choice({ label: "I am not NOT struggling..." }),
+          ]
         ),
-      },
-      {
-        points: 25,
-        maxPoints: 20,
-        element: () => (
-          <div>
-            <ChoicesEvent label="Ugh... I'm in bad shape...">
-              <Choice label="Are you okay?" />
-              <Choice label="You should go home." correct />
-            </ChoicesEvent>
-            <ChoicesEvent label="It's times like these... ah... when it's hardest to be alone...">
-              <Choice label="You live by yourself?" />
-              <Choice label="Do you have any coworkers?" ok />
-            </ChoicesEvent>
-          </div>
+        choices(
+          '...And I mean something you can buy with money. Not some crap like "love" or "a sense of humor".',
+          [
+            choice({ label: "Yes.", ok: true }),
+            choice({ label: "No.", correct: true }),
+          ]
         ),
-      },
-      {
-        points: 30,
-        maxPoints: 15,
-        element: () => (
-          <div>
-            <ChoicesEvent label="...Hey! There's a microphone over there. Bring it over, kid! I'll perform a live sutra reading.">
-              <Choice label="Really?" />
-              <Choice label="You probably shouldn't..." correct />
-            </ChoicesEvent>
-          </div>
+      ]),
+      LinkLevel(25, [
+        choices("Ugh... I'm in bad shape...", [
+          choice({ label: "Are you okay?" }),
+          choice({ label: "You should go home.", correct: true }),
+        ]),
+        choices(
+          "It's times like these... ah... when it's hardest to be alone...",
+          [
+            choice({ label: "You live by yourself?" }),
+            choice({ label: "Do you have any coworkers?", ok: true }),
+          ]
         ),
-      },
-      {
-        points: 30,
-        maxPoints: 35,
-        element: () => (
-          <div>
-            <ChoicesEvent label="Didn't dad tell you not to do that, huh?">
-              <Choice label="Dad?" correct />
-              <Choice label="It's my first time hearing it." ok />
-              <Choice label="......" />
-            </ChoicesEvent>
-            <ChoicesEvent label="Where the hell were ya wanderin' around? Iss late!">
-              <Choice label="I was with a friend." ok />
-              <Choice label="I was studying." />
-              <Choice label="None of your business." ok />
-            </ChoicesEvent>
-            <ChoicesEvent label="I wonder if they felt the same way I did, when I was waiting for you earlier...">
-              <Choice label="Who's 'they'?" />
-              <Choice label="What're you talking about?" />
-            </ChoicesEvent>
-            <ChoicesEvent label="…Now when I go home, I don't know what to do with myself, so I just come here and drink every night.">
-              <Choice label="Do you miss your family?" />
-              <Choice label="Are you running away?" ok />
-            </ChoicesEvent>
-          </div>
+      ]),
+      LinkLevel(30, [
+        choices(
+          "...Hey! There's a microphone over there. Bring it over, kid! I'll perform a live sutra reading.",
+          [
+            choice({ label: "Really?" }),
+            choice({ label: "You probably shouldn't...", correct: true }),
+          ]
         ),
-      },
-      {
-        points: 40,
-        maxPoints: 15,
-        element: () => (
-          <div>
-            <ChoicesEvent label="I'm workin' memorial service after memorial service 24/7, as if my little temple was some kinda convenience store...">
-              <Choice label="Why not take a break?" ok />
-              <Choice label="Poor men know no leisure." ok />
-            </ChoicesEvent>
-            <ChoicesEvent label="I've been drinkin' too much lately… Makin' a fool of myself like I did the other day.">
-              <Choice label="Hang in there." ok />
-              <Choice label="Time to retire?" ok />
-            </ChoicesEvent>
-            <ChoicesEvent label="Whaddya think?">
-              <Choice label="What's this about?" ok />
-              <Choice label="I don't really care." ok />
-            </ChoicesEvent>
-          </div>
+      ]),
+      LinkLevel(30, [
+        choices("Didn't dad tell you not to do that, huh?", [
+          choice({ label: "Dad?", correct: true }),
+          choice({ label: "It's my first time hearing it.", ok: true }),
+          choice({ label: "......" }),
+        ]),
+        choices("Where the hell were ya wanderin' around? Iss late!", [
+          choice({ label: "I was with a friend.", ok: true }),
+          choice({ label: "I was studying." }),
+          choice({ label: "None of your business.", ok: true }),
+        ]),
+        choices(
+          "I wonder if they felt the same way I did, when I was waiting for you earlier...",
+          [
+            choice({ label: "Who's 'they'?" }),
+            choice({ label: "What're you talking about?" }),
+          ]
         ),
-      },
-      {
-        points: 40,
-        maxPoints: 15,
-        element: () => (
-          <div>
-            <ChoicesEvent label="…Well? How's that sound?">
-              <Choice label="That's awesome!" correct />
-              <Choice label="It's missing something." />
-            </ChoicesEvent>
-          </div>
+        choices(
+          "…Now when I go home, I don't know what to do with myself, so I just come here and drink every night.",
+          [
+            choice({ label: "Do you miss your family?" }),
+            choice({ label: "Are you running away?", ok: true }),
+          ]
         ),
-      },
+      ]),
+      LinkLevel(40, [
+        choices(
+          "I'm workin' memorial service after memorial service 24/7, as if my little temple was some kinda convenience store...",
+          [
+            choice({ label: "Why not take a break?", ok: true }),
+            choice({ label: "Poor men know no leisure.", ok: true }),
+          ]
+        ),
+        choices(
+          "I've been drinkin' too much lately… Makin' a fool of myself like I did the other day.",
+          [
+            choice({ label: "Hang in there.", ok: true }),
+            choice({ label: "Time to retire?", ok: true }),
+          ]
+        ),
+        choices("Whaddya think?", [
+          choice({ label: "What's this about?", ok: true }),
+          choice({ label: "I don't really care.", ok: true }),
+        ]),
+      ]),
+      LinkLevel(40, [
+        choices("…Well? How's that sound?", [
+          choice({ label: "That's awesome!", correct: true }),
+          choice({ label: "It's missing something." }),
+        ]),
+      ]),
     ],
   },
   Star: {
     name: "Star",
-    calculate: function ({ level, points, multiplier = 1 }) {
-      const isNewlevel =
-        level < this.levels.length && points >= this.levels[level].points;
-      return {
-        Star: {
-          level: isNewlevel ? level + 1 : level,
-          points: isNewlevel
-            ? this.levels[level].maxPoints * multiplier
-            : points + 10 * multiplier,
-        },
-      };
-    },
+    calculate: calculateLevel,
     levels: [
-      {
-        points: 0,
-        maxPoints: 0,
-        element: () => <h3>Create bond</h3>,
-      },
-      {
-        points: 0,
-        maxPoints: 20,
-        element: () => (
-          <div>
-            <ChoicesEvent label="That's why I have to make it big-it's for everyone who's been helping me.">
-              <Choice label="I'm kinda jealous." />
-              <Choice label="Sounds like a lot of pressure." ok />
-            </ChoicesEvent>
-            <ChoicesEvent label="By the way, who would you say is your biggest rival?">
-              <Choice label="You." />
-              <Choice label="Myself." correct />
-            </ChoicesEvent>
-          </div>
+      LinkLevel(),
+      LinkLevel(0, [
+        choices(
+          "That's why I have to make it big-it's for everyone who's been helping me.",
+          [
+            choice({ label: "I'm kinda jealous." }),
+            choice({ label: "Sounds like a lot of pressure.", ok: true }),
+          ]
         ),
-      },
-      {
-        points: 0,
-        maxPoints: 10,
-        element: () => (
-          <div>
-            <ChoicesEvent label="Maybe I should get some for them too?">
-              <Choice label="For your teammates?" ok />
-              <Choice label="Who's 'them'?" ok />
-            </ChoicesEvent>
-            <ChoicesEvent label="Our apartment's pretty small, though, so we're packed like sardines.">
-              <Choice label="Sounds like fun." ok />
-              <Choice label="That sounds rough." ok />
-            </ChoicesEvent>
-          </div>
+        choices("By the way, who would you say is your biggest rival?", [
+          choice({ label: "You." }),
+          choice({ label: "Myself.", correct: true }),
+        ]),
+      ]),
+      LinkLevel(0, [
+        choices("Maybe I should get some for them too?", [
+          choice({ label: "For your teammates?", ok: true }),
+          choice({ label: "Who's 'them'?", ok: true }),
+        ]),
+        choices(
+          "Our apartment's pretty small, though, so we're packed like sardines.",
+          [
+            choice({ label: "Sounds like fun.", ok: true }),
+            choice({ label: "That sounds rough.", ok: true }),
+          ]
         ),
-      },
-      {
-        points: 20,
-        maxPoints: 15,
-        element: () => (
-          <div>
-            <ChoicesEvent label="...All right, just one more!">
-              <Choice label="What are you doing?" ok />
-              <Choice label="Enjoy your food." ok />
-            </ChoicesEvent>
-            <ChoicesEvent label="Know what that means? If I do well enough, I might score a scholarship.">
-              <Choice label="That would be amazing!" ok />
-              <Choice label="What's the big deal?" />
-            </ChoicesEvent>
-            <ChoicesEvent label="And maybe... this'll make my mom's life a little easier.">
-              <Choice label="Hard to say." />
-              <Choice label="Yeah, I bet it would." ok />
-            </ChoicesEvent>
-          </div>
+      ]),
+      LinkLevel(20, [
+        choices("...All right, just one more!", [
+          choice({ label: "What are you doing?", ok: true }),
+          choice({ label: "Enjoy your food.", ok: true }),
+        ]),
+        choices(
+          "Know what that means? If I do well enough, I might score a scholarship.",
+          [
+            choice({ label: "That would be amazing!", ok: true }),
+            choice({ label: "What's the big deal?" }),
+          ]
         ),
-      },
-      {
-        points: 20,
-        maxPoints: 10,
-        element: () => (
-          <div>
-            <ChoicesEvent label="huff huff Sorry I kept you waiting...">
-              <Choice label="You're late." />
-              <Choice label="Are you okay?" ok />
-            </ChoicesEvent>
-            <ChoicesEvent label="I used to come here a lot with my teammates, but...">
-              <Choice label="But what?" />
-              <Choice label="I'll come back here with you." ok />
-            </ChoicesEvent>
-          </div>
+        choices("And maybe... this'll make my mom's life a little easier.", [
+          choice({ label: "Hard to say." }),
+          choice({ label: "Yeah, I bet it would.", ok: true }),
+        ]),
+      ]),
+      LinkLevel(20, [
+        choices("huff huff Sorry I kept you waiting...", [
+          choice({ label: "You're late." }),
+          choice({ label: "Are you okay?", ok: true }),
+        ]),
+        choices("I used to come here a lot with my teammates, but...", [
+          choice({ label: "But what?" }),
+          choice({ label: "I'll come back here with you.", ok: true }),
+        ]),
+      ]),
+      LinkLevel(20, [
+        choices("Let's see.", [
+          choice({ label: "I'll look around for him." }),
+          choice({ label: "I'll wait a bit longer." }),
+        ]),
+        choices("Hmm...", [
+          choice({ label: "Guess I'll kill some time." }),
+          choice({ label: "Guess I'll keep waiting." }),
+        ]),
+        choices("Well...", [
+          choice({ label: "I'll wait just a bit longer." }),
+          choice({ label: "I'm just gonna go home." }),
+        ]),
+        choices("Sorry, but I don't think I can make it today.", [
+          choice({ label: "Well, what happened?" }),
+          choice({ label: "Don't worry, it's okay.", correct: true }),
+        ]),
+      ]),
+      LinkLevel(20, [
+        choices("Thanks for coming all the way here for this.", [
+          choice({ label: "What did you want?" }),
+          choice({ label: "It's no problem at all.", ok: true }),
+        ]),
+        choices("There's still so much I have to do.", [
+          choice({ label: "Sounds pretty rough.", ok: true }),
+          choice({ label: "Stop whining and do it? ", ok: true }),
+        ]),
+        choices("Why'd you have to die, Dad!?", [
+          choice({ label: "This isn't your fault.", ok: true }),
+          choice({ label: "Do something about it!" }),
+        ]),
+        choices("Is this... really how it ends for me?", [
+          choice({ label: "You should just accept it." }),
+          choice({ label: "Don't give up yet.", correct: true }),
+        ]),
+      ]),
+      LinkLevel(30, [
+        choices("Hmmm...", [
+          choice({ label: "Do it!", correct: true }),
+          choice({ label: "I could spot you some cash." }),
+        ]),
+        choices(
+          "In the end, maybe it was my fault the team couldn't work together.",
+          [
+            choice({ label: "It sure was.", correct: true }),
+            choice({ label: "Don't sweat it.", correct: true }),
+          ]
         ),
-      },
-      {
-        points: 20,
-        maxPoints: 15,
-        element: () => (
-          <div>
-            <ChoicesEvent label="Let's see.">
-              <Choice label="I'll look around for him." />
-              <Choice label="I'll wait a bit longer." />
-            </ChoicesEvent>
-            <ChoicesEvent label="Hmm...">
-              <Choice label="Guess I'll kill some time." />
-              <Choice label="Guess I'll keep waiting." />
-            </ChoicesEvent>
-            <ChoicesEvent label="Well...">
-              <Choice label="I'll wait just a bit longer." />
-              <Choice label="I'm just gonna go home." />
-            </ChoicesEvent>
-            <ChoicesEvent label="Sorry, but I don't think I can make it today.">
-              <Choice label="Well, what happened?" />
-              <Choice label="Don't worry, it's okay." correct />
-            </ChoicesEvent>
-          </div>
-        ),
-      },
-      {
-        points: 20,
-        maxPoints: 25,
-        element: () => (
-          <div>
-            <ChoicesEvent label="Thanks for coming all the way here for this.">
-              <Choice label="What did you want?" />
-              <Choice label="It's no problem at all." ok />
-            </ChoicesEvent>
-            <ChoicesEvent label="There's still so much I have to do.">
-              <Choice label="Sounds pretty rough." ok />
-              <Choice label="Stop whining and do it? " ok />
-            </ChoicesEvent>
-            <ChoicesEvent label="Why'd you have to die, Dad!?">
-              <Choice label="This isn't your fault." ok />
-              <Choice label="Do something about it!" />
-            </ChoicesEvent>
-            <ChoicesEvent label="Is this... really how it ends for me?">
-              <Choice label="You should just accept it." />
-              <Choice label="Don't give up yet." correct />
-            </ChoicesEvent>
-          </div>
-        ),
-      },
-      {
-        points: 30,
-        maxPoints: 20,
-        element: () => (
-          <div>
-            <ChoicesEvent label="Hmmm...">
-              <Choice label="Do it!" correct />
-              <Choice label="I could spot you some cash." />
-            </ChoicesEvent>
-            <ChoicesEvent label="In the end, maybe it was my fault the team couldn't work together.">
-              <Choice label="It sure was." ok />
-              <Choice label="Don't sweat it." ok />
-            </ChoicesEvent>
-          </div>
-        ),
-      },
-      {
-        points: 30,
-        maxPoints: 20,
-        element: () => (
-          <div>
-            <ChoicesEvent label="So uh, the big meet for that scholarship was yesterday.">
-              <Choice label="Did you win?" ok />
-              <Choice label="Did you lose?" />
-            </ChoicesEvent>
-            <ChoicesEvent label="I got first place, of course!">
-              <Choice label="Wor, really?" />
-              <Choice label="Congrats, man!" ok />
-            </ChoicesEvent>
-            <ChoicesEvent label="Kinda makes me feel empty inside.">
-              <Choice label="What will you do now?" ok />
-              <Choice label="Will you quit running?" ok />
-            </ChoicesEvent>
-            <ChoicesEvent label="Go ahead and order extra noodles. It's on me.">
-              <Choice label="Thanks!" ok />
-              <Choice label="Don't put yourself out!" />
-            </ChoicesEvent>
-          </div>
-        ),
-      },
-      {
-        points: 30,
-        maxPoints: 15,
-        element: () => (
-          <div>
-            <ChoicesEvent label="Glad we could meet up one more time before I take off.">
-              <Choice label="Take off?" />
-              <Choice label="You're leaving today?" correct />
-            </ChoicesEvent>
-            <ChoicesEvent label="Well then, I better get going...">
-              <Choice label="I'll see you off." />
-              <Choice label="Let's chat a bit more." />
-            </ChoicesEvent>
-          </div>
-        ),
-      },
+      ]),
+      LinkLevel(30, [
+        choices("So uh, the big meet for that scholarship was yesterday.", [
+          choice({ label: "Did you win?", ok: true }),
+          choice({ label: "Did you lose?" }),
+        ]),
+        choices("I got first place, of course!", [
+          choice({ label: "Wor, really?" }),
+          choice({ label: "Congrats, man!", ok: true }),
+        ]),
+        choices("Kinda makes me feel empty inside.", [
+          choice({ label: "What will you do now?", ok: true }),
+          choice({ label: "Will you quit running?", ok: true }),
+        ]),
+        choices("Go ahead and order extra noodles. It's on me.", [
+          choice({ label: "Thanks!", ok: true }),
+          choice({ label: "Don't put yourself out!" }),
+        ]),
+      ]),
+      LinkLevel(30, [
+        choices("Glad we could meet up one more time before I take off.", [
+          choice({ label: "Take off?" }),
+          choice({ label: "You're leaving today?", correct: true }),
+        ]),
+        choices("Well then, I better get going...", [
+          choice({ label: "I'll see you off." }),
+          choice({ label: "Let's chat a bit more." }),
+        ]),
+      ]),
     ],
   },
   Moon: {
     name: "Moon",
-    calculate: function ({ level, points, multiplier = 1 }) {
-      const isNewlevel =
-        level < this.levels.length && points >= this.levels[level].points;
-      return {
-        Moon: {
-          level: isNewlevel ? level + 1 : level,
-          points: isNewlevel
-            ? this.levels[level].maxPoints * multiplier
-            : points + 10 * multiplier,
-        },
-      };
-    },
+    calculate: calculateLevel,
     levels: [
-      {
-        points: 0,
-        maxPoints: 0,
-        element: () => <h3>Create bond</h3>,
-      },
-      {
-        points: 0,
-        maxPoints: 15,
-        element: () => (
-          <div>
-            <ChoicesEvent label="Well? Would you wanna be... my younger brother?">
-              <Choice label="Sure, why not." correct />
-              <Choice label="Not really... no." />
-            </ChoicesEvent>
-          </div>
+      LinkLevel(),
+      LinkLevel(0, [
+        choices("Well? Would you wanna be... my younger brother?", [
+          choice({ label: "Sure, why not.", correct: true }),
+          choice({ label: "Not really... no." }),
+        ]),
+      ]),
+      LinkLevel(0, [
+        choices(
+          "So, do you 'get me'? Hm? Who am I? Go on, I wanna hear it come out of your mouth!",
+          [
+            choice({ label: "Nozomi Suemitsu" }),
+            choice({ label: "The gourmet king.", correct: true }),
+          ]
         ),
-      },
-      {
-        points: 0,
-        maxPoints: 15,
-        element: () => (
-          <div>
-            <ChoicesEvent label="So, do you 'get me'? Hm? Who am I? Go on, I wanna hear it come out of your mouth!">
-              <Choice label="Nozomi Suemitsu" />
-              <Choice label="The gourmet king." correct />
-            </ChoicesEvent>
-          </div>
+      ]),
+      LinkLevel(15, [
+        choices(
+          "Whew, that was way too close. If that toilet was just a bit further away... Ohhhh, boy.",
+          [
+            choice({ label: "Did you eat too much?" }),
+            choice({ label: "Are you feeling sick?", correct: true }),
+          ]
         ),
-      },
-      {
-        points: 15,
-        maxPoints: 15,
-        element: () => (
-          <div>
-            <ChoicesEvent label="Whew, that was way too close. If that toilet was just a bit further away... Ohhhh, boy.">
-              <Choice label="Did you eat too much?" />
-              <Choice label="Are you feeling sick?" correct />
-            </ChoicesEvent>
-          </div>
+      ]),
+      LinkLevel(15, [
+        choices("Right, Makoto?", [
+          choice({ label: "That's right.", correct: true }),
+          choice({ label: "Sorry, what?" }),
+        ]),
+      ]),
+      LinkLevel(22, [
+        choices(
+          "I don't get it. I felt fine up until just a minute ago, then suddenly I felt sick.",
+          [
+            choice({ label: "Does this happen a lot?" }),
+            choice({ label: "Did you eat too much?" }),
+            choice({ label: "Are you sick?", correct: true }),
+          ]
         ),
-      },
-      {
-        points: 15,
-        maxPoints: 15,
-        element: () => (
-          <div>
-            <ChoicesEvent label="Right, Makoto?">
-              <Choice label="That's right." correct />
-              <Choice label="Sorry, what?" />
-            </ChoicesEvent>
-          </div>
+      ]),
+      LinkLevel(22, [
+        choices("Well? Did that just blow your mind?", [
+          choice({ label: "Yeah, I'm freaking out." }),
+          choice({ label: "Not really?" }),
+          choice({ label: "The world is ending?", correct: true }),
+        ]),
+        choices(
+          "Not to mention you'll get a discount since I'll be referring you, too. You are one lucky guy!",
+          [
+            choice({ label: "That's insane!" }),
+            choice({ label: "No way I'm paying for that." }),
+          ]
         ),
-      },
-      {
-        points: 22,
-        maxPoints: 15,
-        element: () => (
-          <div>
-            <ChoicesEvent label="I don't get it. I felt fine up until just a minute ago, then suddenly I felt sick.">
-              <Choice label="Does this happen a lot?" />
-              <Choice label="Did you eat too much?" />
-              <Choice label="Are you sick?" correct />
-            </ChoicesEvent>
-          </div>
+      ]),
+      LinkLevel(22, [
+        choices("Look at me! I'm paper-thin now.", [
+          choice({ label: "You do look thinner.	" }),
+          choice({ label: "No you're not.", correct: true }),
+        ]),
+      ]),
+      LinkLevel(22, [
+        choices("Finally, Paradise is smiling back at me! Yes! Yesss!", [
+          choice({ label: "You're gonna scam them, too?" }),
+          choice({ label: "Just knock it off." }),
+        ]),
+      ]),
+      LinkLevel(15, [
+        choices(
+          "But I couldn't even cry. I actually felt... relieved. I though, 'Maybe they'll all finally stop laughing at me.",
+          [
+            choice({ label: "That's terrible." }),
+            choice({ label: "That's understandable." }),
+          ]
         ),
-      },
-      {
-        points: 22,
-        maxPoints: 15,
-        element: () => (
-          <div>
-            <ChoicesEvent label="Well? Did that just blow your mind?">
-              <Choice label="Yeah, I'm freaking out." />
-              <Choice label="Not really?" />
-              <Choice label="The world is ending?" correct />
-            </ChoicesEvent>
-            <ChoicesEvent label="Not to mention you'll get a discount since I'll be referring you, too. You are one lucky guy!">
-              <Choice label="That's insane!" />
-              <Choice label="No way I'm paying for that." />
-            </ChoicesEvent>
-          </div>
+        choices(
+          "But if I keep this up, I'll never be able to replace my brother, will I?",
+          [
+            choice({ label: "Just be yourself.", correct: true }),
+            choice({ label: "You're irreplaceable.", ok: true }),
+          ]
         ),
-      },
-      {
-        points: 22,
-        maxPoints: 15,
-        element: () => (
-          <div>
-            <ChoicesEvent label="Look at me! I'm paper-thin now.">
-              <Choice label="You do look thinner.	" />
-              <Choice label="No you're not." correct />
-            </ChoicesEvent>
-          </div>
-        ),
-      },
-      {
-        points: 22,
-        maxPoints: 0,
-        element: () => (
-          <div>
-            <ChoicesEvent label="Finally, Paradise is smiling back at me! Yes! Yesss!">
-              <Choice label="You're gonna scam them, too?" />
-              <Choice label="Just knock it off." />
-            </ChoicesEvent>
-          </div>
-        ),
-      },
-      {
-        points: 15,
-        maxPoints: 15,
-        element: () => (
-          <div>
-            <ChoicesEvent label="But I couldn't even cry. I actually felt... relieved. I though, 'Maybe they'll all finally stop laughing at me.">
-              <Choice label="That's terrible." />
-              <Choice label="That's understandable." />
-            </ChoicesEvent>
-            <ChoicesEvent label="But if I keep this up, I'll never be able to replace my brother, will I?">
-              <Choice label="Just be yourself." correct />
-              <Choice label="You're irreplaceable." ok />
-            </ChoicesEvent>
-          </div>
-        ),
-      },
+      ]),
     ],
   },
   Empress: {
     name: "Empress",
-    calculate: function ({ level, points, multiplier = 1 }) {
-      const isNewlevel =
-        level < this.levels.length && points >= this.levels[level].points;
-      return {
-        Empress: {
-          level: isNewlevel ? level + 1 : level,
-          points: isNewlevel
-            ? this.levels[level].maxPoints * multiplier
-            : points + 10 * multiplier,
-        },
-      };
-    },
+    calculate: calculateLevel,
     levels: [
       ...empressLevels,
-      {
-        points: 22,
-        maxPoints: 15,
-        element: () => (
-          <div>
-            <ChoicesEvent label="Somewhere far away, where no one knows who you are?">
-              <Choice label="Yes." />
-              <Choice label="No." />
-            </ChoicesEvent>
-            <ChoicesEvent label="Talking to you has become something of an outlet for me. Heh, I'm sure you're sick of it by now.">
-              <Choice label="Vent all you want." ok />
-              <Choice label="This isn't like you." ok />
-            </ChoicesEvent>
-            <ChoicesEvent label="Ah... Keep in mind, this is a what-if scenario.">
-              <Choice label="That's up to you." />
-              <Choice label="It's not meant to be." fork />
-            </ChoicesEvent>
-            <ChoicesEvent label="How dare you say that!?">
-              <Choice label="Calm down, Mitsuru" />
-              <Choice label="Don't insult her father!" correct />
-            </ChoicesEvent>
-            <ChoicesEvent label="Please excuse me.">
-              <Choice label="Don't give in." correct />
-              <Choice label="You're sure about this?" ok />
-            </ChoicesEvent>
-          </div>
+      LinkLevel(22, [
+        choices("Somewhere far away, where no one knows who you are?", [
+          choice({ label: "Yes." }),
+          choice({ label: "No." }),
+        ]),
+        choices(
+          "Talking to you has become something of an outlet for me. Heh, I'm sure you're sick of it by now.",
+          [
+            choice({ label: "Vent all you want.", ok: true }),
+            choice({ label: "This isn't like you.", ok: true }),
+          ]
         ),
-      },
-      {
-        points: 22,
-        maxPoints: 15,
-        element: () => (
-          <div>
-            <ChoicesEvent label="I am so sorry about what happened last time.">
-              <Choice label="What happened?" />
-              <Choice label="Don't worry about it." />
-              <Choice label="It made me happy." correct />
-            </ChoicesEvent>
-            <ChoicesEvent label="I just didn't think I'd end up shouting them in public like that.">
-              <Choice label="Talk about bold." />
-              <Choice label="Your feelings?" />
-            </ChoicesEvent>
-            <ChoicesEvent label="...I feel like I'm going to die of embarassment.">
-              <Choice label="I love you too." correct />
-              <Choice label="I'm sorry but..." />
-            </ChoicesEvent>
-            <ChoicesEvent label="I've been thinking about this for a while now, but the way you address me...">
-              <Choice label="Mitsuru?" />
-              <Choice label="What about it?" />
-            </ChoicesEvent>
-          </div>
+        choices("Ah... Keep in mind, this is a what-if scenario.", [
+          choice({ label: "That's up to you." }),
+          choice({ label: "It's not meant to be.", fork: true }),
+        ]),
+        choices("How dare you say that!?", [
+          choice({ label: "Calm down, Mitsuru" }),
+          choice({ label: "Don't insult her father!", correct: true }),
+        ]),
+        choices("Please excuse me.", [
+          choice({ label: "Don't give in.", correct: true }),
+          choice({ label: "You're sure about this?", ok: true }),
+        ]),
+      ]),
+      LinkLevel(22, [
+        choices("I am so sorry about what happened last time.", [
+          choice({ label: "What happened?" }),
+          choice({ label: "Don't worry about it." }),
+          choice({ label: "It made me happy.", correct: true }),
+        ]),
+        choices(
+          "I just didn't think I'd end up shouting them in public like that.",
+          [
+            choice({ label: "Talk about bold." }),
+            choice({ label: "Your feelings?" }),
+          ]
         ),
-      },
-      {
-        points: 22,
-        maxPoints: 15,
-        element: () => (
-          <div>
-            <ChoicesEvent label="The battery and tire pressue look good... And I've already changed the oil, so that's fine.">
-              <Choice label="Impressive." />
-              <Choice label="Looks like fun." ok />
-            </ChoicesEvent>
-          </div>
+        choices("...I feel like I'm going to die of embarassment.", [
+          choice({ label: "I love you too.", correct: true }),
+          choice({ label: "I'm sorry but..." }),
+        ]),
+        choices(
+          "I've been thinking about this for a while now, but the way you address me...",
+          [choice({ label: "Mitsuru?" }), choice({ label: "What about it?" })]
         ),
-      },
+      ]),
+      LinkLevel(22, [
+        choices(
+          "The battery and tire pressue look good... And I've already changed the oil, so that's fine.",
+          [
+            choice({ label: "Impressive." }),
+            choice({ label: "Looks like fun.", ok: true }),
+          ]
+        ),
+      ]),
     ],
     levelsRomance: [
       ...empressLevels,
-      {
-        points: 22,
-        maxPoints: 15,
-        element: () => (
-          <div>
-            <ChoicesEvent label="Somewhere far away, where no one knows who you are?">
-              <Choice label="Yes." />
-              <Choice label="No." />
-            </ChoicesEvent>
-            <ChoicesEvent label="Talking to you has become something of an outlet for me. Heh, I'm sure you're sick of it by now.">
-              <Choice label="Vent all you want." ok />
-              <Choice label="This isn't like you." ok />
-            </ChoicesEvent>
-            <ChoicesEvent label="Ah... Keep in mind, this is a what-if scenario.">
-              <Choice label="That's up to you." fork />
-              <Choice label="It's not meant to be." />
-            </ChoicesEvent>
-            <ChoicesEvent label="How dare you say that!?">
-              <Choice label="Calm down, Mitsuru" />
-              <Choice label="Don't insult her father!" correct />
-            </ChoicesEvent>
-            <ChoicesEvent label="Please excuse me.">
-              <Choice label="Don't give in." correct />
-              <Choice label="You're sure about this?" ok />
-            </ChoicesEvent>
-          </div>
+      LinkLevel(22, [
+        choices("Somewhere far away, where no one knows who you are?", [
+          choice({ label: "Yes." }),
+          choice({ label: "No." }),
+        ]),
+        choices(
+          "Talking to you has become something of an outlet for me. Heh, I'm sure you're sick of it by now.",
+          [
+            choice({ label: "Vent all you want.", ok: true }),
+            choice({ label: "This isn't like you.", ok: true }),
+          ]
         ),
-      },
-      {
-        points: 22,
-        maxPoints: 15,
-        element: () => (
-          <div>
-            <ChoicesEvent label="I am so sorry about what happened last time.">
-              <Choice label="What happened?" />
-              <Choice label="Don't worry about it." />
-              <Choice label="It made me happy." correct />
-            </ChoicesEvent>
-            <ChoicesEvent label="I just didn't think I'd end up shouting them in public like that.">
-              <Choice label="Talk about bold." />
-              <Choice label="Your feelings?" />
-            </ChoicesEvent>
-            <ChoicesEvent label="...I feel like I'm going to die of embarassment.">
-              <Choice label="I love you too." correct />
-              <Choice label="I'm sorry but..." />
-            </ChoicesEvent>
-            <ChoicesEvent label="I've been thinking about this for a while now, but the way you address me...">
-              <Choice label="Mitsuru?" />
-              <Choice label="What about it?" />
-            </ChoicesEvent>
-          </div>
+        choices("Ah... Keep in mind, this is a what-if scenario.", [
+          choice({ label: "That's up to you." }),
+          choice({ label: "It's not meant to be.", fork: true }),
+        ]),
+        choices("How dare you say that!?", [
+          choice({ label: "Calm down, Mitsuru" }),
+          choice({ label: "Don't insult her father!", correct: true }),
+        ]),
+        choices("Please excuse me.", [
+          choice({ label: "Don't give in.", correct: true }),
+          choice({ label: "You're sure about this?", ok: true }),
+        ]),
+      ]),
+      LinkLevel(22, [
+        choices("I am so sorry about what happened last time.", [
+          choice({ label: "What happened?" }),
+          choice({ label: "Don't worry about it." }),
+          choice({ label: "It made me happy.", correct: true }),
+        ]),
+        choices(
+          "I just didn't think I'd end up shouting them in public like that.",
+          [
+            choice({ label: "Talk about bold." }),
+            choice({ label: "Your feelings?" }),
+          ]
         ),
-      },
-      {
-        points: 22,
-        maxPoints: 15,
-        element: () => (
-          <div>
-            <ChoicesEvent label="I'll be looking forward to it.">
-              <Choice label="I'll give it a try." correct />
-              <Choice label="I'm fine with the back." ok />
-            </ChoicesEvent>
-          </div>
+        choices("...I feel like I'm going to die of embarassment.", [
+          choice({ label: "I love you too.", correct: true }),
+          choice({ label: "I'm sorry but..." }),
+        ]),
+        choices(
+          "I've been thinking about this for a while now, but the way you address me...",
+          [choice({ label: "Mitsuru?" }), choice({ label: "What about it?" })]
         ),
-      },
+      ]),
+      LinkLevel(22, [
+        choices(
+          "The battery and tire pressue look good... And I've already changed the oil, so that's fine.",
+          [
+            choice({ label: "Impressive." }),
+            choice({ label: "Looks like fun.", ok: true }),
+          ]
+        ),
+      ]),
+      LinkLevel(22, [
+        choices("I'll be looking forward to it.", [
+          choice({ label: "I'll give it a try.", correct: true }),
+          choice({ label: "I'm fine with the back.", ok: true }),
+        ]),
+      ]),
     ],
   },
   Lovers: {
     name: "Lovers",
-    calculate: function ({ level, points, multiplier = 1 }) {
-      const isNewlevel =
-        level < this.levels.length && points >= this.levels[level].points;
-      return {
-        Lovers: {
-          level: isNewlevel ? level + 1 : level,
-          points: isNewlevel
-            ? this.levels[level].maxPoints * multiplier
-            : points + 10 * multiplier,
-        },
-      };
-    },
+    calculate: calculateLevel,
     levels: [
       ...loversLevels,
-      {
-        points: 22,
-        maxPoints: 15,
-        element: () => (
-          <div>
-            <ChoicesEvent label="What should I do?">
-              <Choice label="Look around" />
-              <Choice label="Wait here" />
-            </ChoicesEvent>
-            <ChoicesEvent label="Did something happen...?">
-              <Choice label="Go look for her" />
-              <Choice label="Wait a bit longer" />
-            </ChoicesEvent>
-            <ChoicesEvent label="......">
-              <Choice label="I'll take you on." />
-              <Choice label="Her friend." />
-              <Choice label="Just a passerby." />
-            </ChoicesEvent>
-            <ChoicesEvent label="Huh? Who the hell are you?">
-              <Choice label="Her boyfriend." fork />
-              <Choice label="Her friend." />
-              <Choice label="Just a passerby." />
-            </ChoicesEvent>
-            <ChoicesEvent label="I didn't need your help!">
-              <Choice label="I'm sorry." correct />
-              <Choice label="It's okay to rely on others." />
-              <Choice label="You're a girl, so..." />
-            </ChoicesEvent>
-          </div>
+      LinkLevel(22, [
+        choices("What should I do?", [
+          choice({ label: "Look around" }),
+          choice({ label: "Wait here" }),
+        ]),
+        choices("Did something happen...?", [
+          choice({ label: "Go look for her" }),
+          choice({ label: "Wait a bit longer" }),
+        ]),
+        choices("......", [
+          choice({ label: "I'll take you on." }),
+          choice({ label: "Her friend." }),
+          choice({ label: "Just a passerby." }),
+        ]),
+        choices("Huh? Who the hell are you?", [
+          choice({ label: "Her boyfriend.", fork: true }),
+          choice({ label: "Her friend." }),
+          choice({ label: "Just a passerby." }),
+        ]),
+        choices("I didn't need your help!", [
+          choice({ label: "I'm sorry.", correct: true }),
+          choice({ label: "It's okay to rely on others." }),
+          choice({ label: "You're a girl, so..." }),
+        ]),
+      ]),
+      LinkLevel(0, [
+        choices("Thanks for your help back then. I really appreciate it.", [
+          choice({ label: "You're quite welcome.", ok: true }),
+          choice({ label: "Anytime.", correct: true }),
+          choice({ label: "Thank you, too." }),
+        ]),
+        choices(
+          "Wouldn't that be annoying, Makoto-kun? Y'know, if people assumed we were dating...",
+          [
+            choice({ label: "I wouldn't mind.", ok: true }),
+            choice({ label: "Yeah..." }),
+          ]
         ),
-      },
-      {
-        points: 0,
-        maxPoints: 20,
-        element: () => (
-          <div>
-            <ChoicesEvent label="Thanks for your help back then. I really appreciate it.">
-              <Choice label="You're quite welcome." ok />
-              <Choice label="Anytime." correct />
-              <Choice label="Thank you, too." />
-            </ChoicesEvent>
-            <ChoicesEvent label="Wouldn't that be annoying, Makoto-kun? Y'know, if people assumed we were dating...">
-              <Choice label="I wouldn't mind." ok />
-              <Choice label="Yeah..." />
-            </ChoicesEvent>
-          </div>
+      ]),
+      LinkLevel(35, [
+        choices(
+          "We could have lunch outdoors. Maybe we'll even see a deer or something. Whaddya think?",
+          [
+            choice({ label: "Sounds good.", correct: true }),
+            choice({ label: "Let's go with everyone." }),
+            choice({ label: "Let's go just the two of us.", correct: true }),
+            choice({ label: "No thanks." }),
+          ]
         ),
-      },
-      {
-        points: 35,
-        maxPoints: 15,
-        element: () => (
-          <div>
-            <ChoicesEvent label="We could have lunch outdoors. Maybe we'll even see a deer or something. Whaddya think?">
-              <Choice label="Sounds good." correct />
-              <Choice label="Let's go with everyone." />
-              <Choice label="Let's go just the two of us." correct />
-              <Choice label="No thanks." />
-            </ChoicesEvent>
-          </div>
+      ]),
+      LinkLevel(35, [
+        choices(
+          "I know! Why don't you come help me pick something out, Makoto-kun?",
+          [
+            choice({ label: "Alright.", correct: true }),
+            choice({ label: "Im too lazy." }),
+          ]
         ),
-      },
-      {
-        points: 35,
-        maxPoints: 15,
-        element: () => (
-          <div>
-            <ChoicesEvent label="I know! Why don't you come help me pick something out, Makoto-kun?">
-              <Choice label="Alright." correct />
-              <Choice label="Im too lazy." />
-            </ChoicesEvent>
-            <ChoicesEvent label="I told her we could meet up and talk about her remarriage. I'm nervous just thinking about it...">
-              <Choice label="Will you let her do it?" />
-              <Choice label="Do you want to see her?" />
-            </ChoicesEvent>
-          </div>
+        choices(
+          "I told her we could meet up and talk about her remarriage. I'm nervous just thinking about it...",
+          [
+            choice({ label: "Will you let her do it?" }),
+            choice({ label: "Do you want to see her?" }),
+          ]
         ),
-      },
-      {
-        points: 15,
-        maxPoints: 15,
-        element: () => (
-          <div>
-            <ChoicesEvent label="......">
-              <Choice label="Hello?" />
-              <Choice label="...." correct />
-              <Choice label="If it's nothing, I'm leaving." />
-            </ChoicesEvent>
-            <ChoicesEvent label="What do you really think of me?">
-              <Choice label="I love you." fork />
-              <Choice label="You're a precious friend." />
-            </ChoicesEvent>
-          </div>
+      ]),
+      LinkLevel(15, [
+        choices("......", [
+          choice({ label: "Hello?" }),
+          choice({ label: "....", correct: true }),
+          choice({ label: "If it's nothing, I'm leaving." }),
+        ]),
+        choices("What do you really think of me?", [
+          choice({ label: "I love you.", fork: true }),
+          choice({ label: "You're a precious friend." }),
+        ]),
+      ]),
+      LinkLevel(15, [
+        choices(
+          "Wait, I didn't mean it like that! Don't get the wrong idea, okay!?",
+          [
+            choice({ label: "Too late.", correct: true }),
+            choice({ label: "I didn't hear anything.", correct: true }),
+          ]
         ),
-      },
-      {
-        points: 15,
-        maxPoints: 15,
-        element: () => (
-          <div>
-            <ChoicesEvent label="Wait, I didn't mean it like that! Don't get the wrong idea, okay!?">
-              <Choice label="Too late." correct />
-              <Choice label="I didn't hear anything." correct />
-            </ChoicesEvent>
-          </div>
-        ),
-      },
+      ]),
     ],
     levelsRomance: [
       ...loversLevels,
-      {
-        points: 22,
-        maxPoints: 15,
-        element: () => (
-          <div>
-            <ChoicesEvent label="What should I do?">
-              <Choice label="Look around" />
-              <Choice label="Wait here" />
-            </ChoicesEvent>
-            <ChoicesEvent label="Did something happen...?">
-              <Choice label="Go look for her" />
-              <Choice label="Wait a bit longer" />
-            </ChoicesEvent>
-            <ChoicesEvent label="......">
-              <Choice label="I'll take you on." />
-              <Choice label="Her friend." />
-              <Choice label="Just a passerby." />
-            </ChoicesEvent>
-            <ChoicesEvent label="Huh? Who the hell are you?">
-              <Choice label="Her boyfriend." fork />
-              <Choice label="Her friend." />
-              <Choice label="Just a passerby." />
-            </ChoicesEvent>
-            <ChoicesEvent label="I didn't need your help!">
-              <Choice label="I'm sorry." correct />
-              <Choice label="It's okay to rely on others." />
-              <Choice label="You're a girl, so..." />
-            </ChoicesEvent>
-          </div>
+      LinkLevel(22, [
+        choices("What should I do?", [
+          choice({ label: "Look around" }),
+          choice({ label: "Wait here" }),
+        ]),
+        choices("Did something happen...?", [
+          choice({ label: "Go look for her" }),
+          choice({ label: "Wait a bit longer" }),
+        ]),
+        choices("......", [
+          choice({ label: "I'll take you on." }),
+          choice({ label: "Her friend." }),
+          choice({ label: "Just a passerby." }),
+        ]),
+        choices("Huh? Who the hell are you?", [
+          choice({ label: "Her boyfriend.", fork: true }),
+          choice({ label: "Her friend." }),
+          choice({ label: "Just a passerby." }),
+        ]),
+        choices("I didn't need your help!", [
+          choice({ label: "I'm sorry.", correct: true }),
+          choice({ label: "It's okay to rely on others." }),
+          choice({ label: "You're a girl, so..." }),
+        ]),
+      ]),
+      LinkLevel(0, [
+        choices("Thanks for your help back then. I really appreciate it.", [
+          choice({ label: "You're quite welcome.", ok: true }),
+          choice({ label: "Anytime.", correct: true }),
+          choice({ label: "Thank you, too." }),
+        ]),
+        choices(
+          "Wouldn't that be annoying, Makoto-kun? Y'know, if people assumed we were dating...",
+          [
+            choice({ label: "I wouldn't mind.", ok: true }),
+            choice({ label: "Yeah..." }),
+          ]
         ),
-      },
-      {
-        points: 0,
-        maxPoints: 20,
-        element: () => (
-          <div>
-            <ChoicesEvent label="Thanks for your help back then. I really appreciate it.">
-              <Choice label="You're quite welcome." ok />
-              <Choice label="Anytime." correct />
-              <Choice label="Thank you, too." />
-            </ChoicesEvent>
-            <ChoicesEvent label="Wouldn't that be annoying, Makoto-kun? Y'know, if people assumed we were dating...">
-              <Choice label="I wouldn't mind." ok />
-              <Choice label="Yeah..." />
-            </ChoicesEvent>
-          </div>
+      ]),
+      LinkLevel(35, [
+        choices(
+          "We could have lunch outdoors. Maybe we'll even see a deer or something. Whaddya think?",
+          [
+            choice({ label: "Sounds good.", correct: true }),
+            choice({ label: "Let's go with everyone." }),
+            choice({ label: "Let's go just the two of us.", correct: true }),
+            choice({ label: "No thanks." }),
+          ]
         ),
-      },
-      {
-        points: 35,
-        maxPoints: 15,
-        element: () => (
-          <div>
-            <ChoicesEvent label="We could have lunch outdoors. Maybe we'll even see a deer or something. Whaddya think?">
-              <Choice label="Sounds good." correct />
-              <Choice label="Let's go with everyone." />
-              <Choice label="Let's go just the two of us." correct />
-              <Choice label="No thanks." />
-            </ChoicesEvent>
-          </div>
+      ]),
+      LinkLevel(35, [
+        choices(
+          "I know! Why don't you come help me pick something out, Makoto-kun?",
+          [
+            choice({ label: "Alright.", correct: true }),
+            choice({ label: "Im too lazy." }),
+          ]
         ),
-      },
-      {
-        points: 35,
-        maxPoints: 15,
-        element: () => (
-          <div>
-            <ChoicesEvent label="I know! Why don't you come help me pick something out, Makoto-kun?">
-              <Choice label="Alright." correct />
-              <Choice label="Im too lazy." />
-            </ChoicesEvent>
-            <ChoicesEvent label="I told her we could meet up and talk about her remarriage. I'm nervous just thinking about it...">
-              <Choice label="Will you let her do it?" />
-              <Choice label="Do you want to see her?" />
-            </ChoicesEvent>
-          </div>
+        choices(
+          "I told her we could meet up and talk about her remarriage. I'm nervous just thinking about it...",
+          [
+            choice({ label: "Will you let her do it?" }),
+            choice({ label: "Do you want to see her?" }),
+          ]
         ),
-      },
-      {
-        points: 15,
-        maxPoints: 15,
-        element: () => (
-          <div>
-            <ChoicesEvent label="......">
-              <Choice label="Hello?" />
-              <Choice label="...." correct />
-              <Choice label="If it's nothing, I'm leaving." />
-            </ChoicesEvent>
-            <ChoicesEvent label="What do you really think of me?">
-              <Choice label="I love you." fork />
-              <Choice label="You're a precious friend." />
-            </ChoicesEvent>
-          </div>
+      ]),
+      LinkLevel(15, [
+        choices("......", [
+          choice({ label: "Hello?" }),
+          choice({ label: "....", correct: true }),
+          choice({ label: "If it's nothing, I'm leaving." }),
+        ]),
+        choices("What do you really think of me?", [
+          choice({ label: "I love you.", fork: true }),
+          choice({ label: "You're a precious friend." }),
+        ]),
+      ]),
+      LinkLevel(15, [
+        choices(
+          "Wait, I didn't mean it like that! Don't get the wrong idea, okay!?",
+          [
+            choice({ label: "Too late.", correct: true }),
+            choice({ label: "I didn't hear anything.", correct: true }),
+          ]
         ),
-      },
-      {
-        points: 15,
-        maxPoints: 15,
-        element: () => (
-          <div>
-            <ChoicesEvent label="Wait, I didn't mean it like that! Don't get the wrong idea, okay!?">
-              <Choice label="Too late." correct />
-              <Choice label="I didn't hear anything." correct />
-            </ChoicesEvent>
-          </div>
-        ),
-      },
+      ]),
     ],
   },
   Justice: {
     name: "Justice",
-    calculate: function ({ level, points, multiplier = 1 }) {
-      const isNewlevel =
-        level < this.levels.length && points >= this.levels[level].points;
-      return {
-        Justice: {
-          level: isNewlevel ? level + 1 : level,
-          points: isNewlevel
-            ? this.levels[level].maxPoints * multiplier
-            : points + 10 * multiplier,
-        },
-      };
-    },
+    calculate: calculateLevel,
     levels: [...justiceLevels],
     levelsRomance: [
       ...justiceLevels,
-      {
-        points: 22,
-        maxPoints: 50,
-        element: () => (
-          <div>
-            <ChoicesEvent label="So, um... there was something I needed to ask you...">
-              <Choice label="I'm all ears." correct />
-              <Choice label="Something on your mind?" />
-            </ChoicesEvent>
-            <ChoicesEvent label="Is she in love right now?">
-              <Choice label="Yeah, she's in love." fork />
-              <Choice label="You're jumping to conclusions." />
-            </ChoicesEvent>
-            <ChoicesEvent label="Sorry for asking about such a weird topic.">
-              <Choice label="Happy to help." correct />
-              <Choice label="Don't worry about it." />
-            </ChoicesEvent>
-            <ChoicesEvent label="What should I do.">
-              <Choice label="Hold her hand." fork />
-              <Choice label="Kiss her." />
-              <Choice label="Talk to her softly." />
-            </ChoicesEvent>
-          </div>
+      LinkLevel(22, [
+        choices("So, um... there was something I needed to ask you...", [
+          choice({ label: "I'm all ears.", correct: true }),
+          choice({ label: "Something on your mind?" }),
+        ]),
+        choices("Is she in love right now?", [
+          choice({ label: "Yeah, she's in love.", fork: true }),
+          choice({ label: "You're jumping to conclusions." }),
+        ]),
+        choices("Sorry for asking about such a weird topic.", [
+          choice({ label: "Happy to help.", correct: true }),
+          choice({ label: "Don't worry about it." }),
+        ]),
+        choices("What should I do.", [
+          choice({ label: "Hold her hand.", fork: true }),
+          choice({ label: "Kiss her." }),
+          choice({ label: "Talk to her softly." }),
+        ]),
+      ]),
+      LinkLevel(22, [
+        choices("Wh-What should I do…?", [
+          choice({ label: "Is it good?", correct: true }),
+          choice({ label: "You're not going to buy it?" }),
+        ]),
+        choices("That is, until recently...", [
+          choice({ label: "What do you think now?" }),
+          choice({ label: "What do you mean?" }),
+        ]),
+      ]),
+      LinkLevel(30, [
+        choices("Makoto-san…", [
+          choice({ label: "Try to remember..." }),
+          choice({ label: "It's gotta be a misunderstanding.", ok: true }),
+        ]),
+        choices("I couldn't stand up to them… But… I… didn't take anything!", [
+          choice({ label: "Don't worry." }),
+          choice({ label: "We have to do something...", ok: true }),
+        ]),
+      ]),
+      LinkLevel(30, [
+        choices(
+          "See, how could it not be her!? And with such an innocent face too...",
+          [
+            choice({ label: "That's all a misunderstanding." }),
+            choice({ label: "......" }),
+          ]
         ),
-      },
-      {
-        points: 22,
-        maxPoints: 20,
-        element: () => (
-          <div>
-            <ChoicesEvent label="Wh-What should I do…?">
-              <Choice label="Is it good?" correct />
-              <Choice label="You're not going to buy it?" />
-            </ChoicesEvent>
-            <ChoicesEvent label="That is, until recently...">
-              <Choice label="What do you think now?" />
-              <Choice label="What do you mean?" />
-            </ChoicesEvent>
-          </div>
-        ),
-      },
-      {
-        points: 30,
-        maxPoints: 10,
-        element: () => (
-          <div>
-            <ChoicesEvent label="Makoto-san…">
-              <Choice label="Try to remember..." />
-              <Choice label="It's gotta be a misunderstanding." ok />
-            </ChoicesEvent>
-            <ChoicesEvent label="I couldn't stand up to them… But… I… didn't take anything!">
-              <Choice label="Don't worry." />
-              <Choice label="We have to do something..." ok />
-            </ChoicesEvent>
-          </div>
-        ),
-      },
-      {
-        points: 30,
-        maxPoints: 5,
-        element: () => (
-          <div>
-            <ChoicesEvent label="See, how could it not be her!? And with such an innocent face too...">
-              <Choice label="That's all a misunderstanding." />
-              <Choice label="......" />
-            </ChoicesEvent>
-            <ChoicesEvent label="I don't really have anyone else I can count on...">
-              <Choice label="The rumors will stop soon." />
-              <Choice label="I know you're innocent." ok />
-              <Choice label="Be strong." />
-            </ChoicesEvent>
-          </div>
-        ),
-      },
-      {
-        points: 30,
-        maxPoints: 15,
-        element: () => (
-          <div>
-            <ChoicesEvent label="Don't tell me she thinks I stole the money too!">
-              <Choice label="Don't worry, she'll help us." ok />
-              <Choice label="Mitsuru's not like that." />
-            </ChoicesEvent>
-            <ChoicesEvent label="......">
-              <Choice label="Chihiro is innocent." ok />
-              <Choice label="You need to tell her yourself." ok />
-            </ChoicesEvent>
-            <ChoicesEvent label="...Give me a hand, will you, Yuki?">
-              <Choice label="Why me?" />
-              <Choice label="Alright." />
-            </ChoicesEvent>
-            <ChoicesEvent label="Ehehehehe!">
-              <Choice label="What's gotten into you?" ok />
-              <Choice label="So you are ARE guilty?" />
-            </ChoicesEvent>
-            <ChoicesEvent label="I love you!">
-              <Choice label="I feel the same Chihiro." fork />
-              <Choice label="I like working with you, but..." />
-            </ChoicesEvent>
-            <ChoicesEvent label="Huh? What did you say?">
-              <Choice label="I said I feel the same." />
-              <Choice label="I love you." />
-            </ChoicesEvent>
-          </div>
-        ),
-      },
-      {
-        points: 40,
-        maxPoints: 15,
-        element: () => (
-          <div>
-            <ChoicesEvent label="Just promise to think of me when you read it…">
-              <Choice label="Thank you." correct />
-              <Choice label="I don't read shoujo manga." />
-            </ChoicesEvent>
-            <ChoicesEvent label="I-I don't have to spell it out, do I!?">
-              <Choice label="It's getting late..." />
-              <Choice label="Lock your doors." />
-            </ChoicesEvent>
-          </div>
-        ),
-      },
+        choices("I don't really have anyone else I can count on...", [
+          choice({ label: "The rumors will stop soon." }),
+          choice({ label: "I know you're innocent.", ok: true }),
+          choice({ label: "Be strong." }),
+        ]),
+      ]),
+      LinkLevel(30, [
+        choices("Don't tell me she thinks I stole the money too!", [
+          choice({ label: "Don't worry, she'll help us.", ok: true }),
+          choice({ label: "Mitsuru's not like that." }),
+        ]),
+        choices("......", [
+          choice({ label: "Chihiro is innocent.", ok: true }),
+          choice({ label: "You need to tell her yourself.", ok: true }),
+        ]),
+        choices("...Give me a hand, will you, Yuki?", [
+          choice({ label: "Why me?" }),
+          choice({ label: "Alright." }),
+        ]),
+        choices("Ehehehehe!", [
+          choice({ label: "What's gotten into you?", ok: true }),
+          choice({ label: "So you are ARE guilty?" }),
+        ]),
+        choices("I love you!", [
+          choice({ label: "I feel the same Chihiro.", fork: true }),
+          choice({ label: "I like working with you, but..." }),
+        ]),
+        choices("Huh? What did you say?", [
+          choice({ label: "I said I feel the same." }),
+          choice({ label: "I love you." }),
+        ]),
+      ]),
+      LinkLevel(40, [
+        choices("Just promise to think of me when you read it…", [
+          choice({ label: "Thank you.", correct: true }),
+          choice({ label: "I don't read shoujo manga." }),
+        ]),
+        choices("I-I don't have to spell it out, do I!?", [
+          choice({ label: "It's getting late..." }),
+          choice({ label: "Lock your doors." }),
+        ]),
+      ]),
     ],
   },
   Strength: {
     name: "Strength",
-    calculate: function ({ level, points, multiplier = 1 }) {
-      const isNewlevel =
-        level < this.levels.length && points >= this.levels[level].points;
-      return {
-        Strength: {
-          level: isNewlevel ? level + 1 : level,
-          points: isNewlevel
-            ? this.levels[level].maxPoints * multiplier
-            : points + 10 * multiplier,
-        },
-      };
-    },
+    calculate: calculateLevel,
     levels: [
       ...strengthLevels,
-      {
-        points: 15,
-        maxPoints: 15,
-        element: () => (
-          <div>
-            <ChoicesEvent label="Elementary school kids really learn fast don't you think?">
-              <Choice label="You're right. It's impressive." ok />
-              <Choice label="That's not normal?" />
-              <Choice label="It's because you teach so well." correct />
-            </ChoicesEvent>
-            <ChoicesEvent label="Should I change the training routine? Maybe they should be running more.">
-              <Choice label="You shouldn't change it." />
-              <Choice label="Maybe you should rethink it." />
-              <Choice label="I trust whatever you decide Yuko." fork />
-            </ChoicesEvent>
-          </div>
+      LinkLevel(15, [
+        choices("Elementary school kids really learn fast don't you think?", [
+          choice({ label: "You're right. It's impressive.", ok: true }),
+          choice({ label: "That's not normal?" }),
+          choice({ label: "It's because you teach so well.", correct: true }),
+        ]),
+        choices(
+          "Should I change the training routine? Maybe they should be running more.",
+          [
+            choice({ label: "You shouldn't change it." }),
+            choice({ label: "Maybe you should rethink it." }),
+            choice({ label: "I trust whatever you decide Yuko.", fork: true }),
+          ]
         ),
-      },
-      {
-        points: 22,
-        maxPoints: 10,
-        element: () => (
-          <div>
-            <ChoicesEvent label="Oh Makoto-Kun, why don't you give them some advice too?">
-              <Choice label="You guys got this!" ok />
-              <Choice label="Show some guts!" ok />
-            </ChoicesEvent>
-            <ChoicesEvent label="Age difference really matters when you're as young as they are. Do you really think they can beat the sixth graders.">
-              <Choice label="It's gonna be tough." />
-              <Choice label="As long as we believe in them." ok />
-            </ChoicesEvent>
-          </div>
+      ]),
+      LinkLevel(22, [
+        choices("Oh Makoto-Kun, why don't you give them some advice too?", [
+          choice({ label: "You guys got this!", ok: true }),
+          choice({ label: "Show some guts!", ok: true }),
+        ]),
+        choices(
+          "Age difference really matters when you're as young as they are. Do you really think they can beat the sixth graders.",
+          [
+            choice({ label: "It's gonna be tough." }),
+            choice({ label: "As long as we believe in them.", ok: true }),
+          ]
         ),
-      },
-      {
-        points: 22,
-        maxPoints: 20,
-        element: () => (
-          <div>
-            <ChoicesEvent label="They called you my boyfriend till the very end...">
-              <Choice label="Wanna make that true?" fork />
-              <Choice label="It's embarassing." />
-              <Choice label="They're just joking." />
-            </ChoicesEvent>
-            <ChoicesEvent label="It's like the kids have left the nest...">
-              <Choice label="Are you sad?" />
-              <Choice label="Are you relieved?" ok />
-            </ChoicesEvent>
-            <ChoicesEvent label="Maybe we should have a little party… you know, to celebrate our first attempt at coaching...">
-              <Choice label="Let's do it." correct />
-              <Choice label="Why?" />
-            </ChoicesEvent>
-          </div>
+      ]),
+      LinkLevel(22, [
+        choices("They called you my boyfriend till the very end...", [
+          choice({ label: "Wanna make that true?", fork: true }),
+          choice({ label: "It's embarassing." }),
+          choice({ label: "They're just joking." }),
+        ]),
+        choices("It's like the kids have left the nest...", [
+          choice({ label: "Are you sad?" }),
+          choice({ label: "Are you relieved?", ok: true }),
+        ]),
+        choices(
+          "Maybe we should have a little party… you know, to celebrate our first attempt at coaching...",
+          [
+            choice({ label: "Let's do it.", correct: true }),
+            choice({ label: "Why?" }),
+          ]
         ),
-      },
-      {
-        points: 40,
-        maxPoints: 5,
-        element: () => (
-          <div>
-            <ChoicesEvent label="I was out buying stuff that might be useful for running practice, and I ran out of money.">
-              <Choice label="It's fine." />
-              <Choice label="This is a nice room." />
-              <Choice label="Stuff for the kids?" />
-            </ChoicesEvent>
-            <ChoicesEvent label="Hmm... Oh, do you like children?">
-              <Choice label="I do." />
-              <Choice label="Not really." />
-            </ChoicesEvent>
-            <ChoicesEvent label="Would you want it to be a boy or a girl?">
-              <Choice label="A boy." ok />
-              <Choice label="A girl." ok />
-              <Choice label="I don't care." />
-            </ChoicesEvent>
-          </div>
+      ]),
+      LinkLevel(40, [
+        choices(
+          "I was out buying stuff that might be useful for running practice, and I ran out of money.",
+          [
+            choice({ label: "It's fine." }),
+            choice({ label: "This is a nice room." }),
+            choice({ label: "Stuff for the kids?" }),
+          ]
         ),
-      },
-      {
-        points: 40,
-        maxPoints: 25,
-        element: () => (
-          <div>
-            <ChoicesEvent label="All it did was make me more confused than I originally was. Guess I'll have to go ask again tomorrow.">
-              <Choice label="You're so hardworking." ok />
-              <Choice label="Why go through all that trouble?" />
-            </ChoicesEvent>
-            <ChoicesEvent label="Can you guess what it is?">
-              <Choice label="A track and field star?" ok />
-              <Choice label="An instructor?" correct />
-              <Choice label="A nursery teacher?" ok />
-              <Choice label="No idea..." />
-            </ChoicesEvent>
-            <ChoicesEvent label="I realized that I might've been relying too much on you.">
-              <Choice label="I don't mind." />
-              <Choice label="You can rely on me even more." />
-            </ChoicesEvent>
-            <ChoicesEvent label="Are you like this... just with me? N-No, no, th-that can't be it, huh...">
-              <Choice label="It's because I love you." fork />
-              <Choice label="It's because you're a close friend." />
-            </ChoicesEvent>
-            <ChoicesEvent label="What's happening...? Is this a dream?">
-              <Choice label="I love you, Yuko." />
-              <Choice label="It's not a dream." />
-            </ChoicesEvent>
-          </div>
+        choices("Hmm... Oh, do you like children?", [
+          choice({ label: "I do." }),
+          choice({ label: "Not really." }),
+        ]),
+        choices("Would you want it to be a boy or a girl?", [
+          choice({ label: "A boy.", ok: true }),
+          choice({ label: "A girl.", ok: true }),
+          choice({ label: "I don't care." }),
+        ]),
+      ]),
+      LinkLevel(40, [
+        choices(
+          "All it did was make me more confused than I originally was. Guess I'll have to go ask again tomorrow.",
+          [
+            choice({ label: "You're so hardworking.", ok: true }),
+            choice({ label: "Why go through all that trouble?" }),
+          ]
         ),
-      },
-      {
-        points: 40,
-        maxPoints: 15,
-        element: () => (
-          <div>
-            <ChoicesEvent label="I could've given this to you at school, but I wanted to talk somewhere quiet.">
-              <Choice label="Is it important?" ok />
-              <Choice label="What is it?" ok />
-            </ChoicesEvent>
-            <ChoicesEvent label="I know they were kind of a handful, but they also have an endearing side to them, don't you think?">
-              <Choice label="Yeah." ok />
-              <Choice label="Not really." />
-            </ChoicesEvent>
-            <ChoicesEvent label="Because today... Well, my parents aren't home, so...">
-              <Choice label="I see." />
-              <Choice label="What does that mean?" ok />
-            </ChoicesEvent>
-          </div>
+        choices("Can you guess what it is?", [
+          choice({ label: "A track and field star?", ok: true }),
+          choice({ label: "An instructor?", correct: true }),
+          choice({ label: "A nursery teacher?", ok: true }),
+          choice({ label: "No idea..." }),
+        ]),
+        choices("I realized that I might've been relying too much on you.", [
+          choice({ label: "I don't mind." }),
+          choice({ label: "You can rely on me even more." }),
+        ]),
+        choices(
+          "Are you like this... just with me? N-No, no, th-that can't be it, huh...",
+          [
+            choice({ label: "It's because I love you.", fork: true }),
+            choice({ label: "It's because you're a close friend." }),
+          ]
         ),
-      },
+        choices("What's happening...? Is this a dream?", [
+          choice({ label: "I love you, Yuko." }),
+          choice({ label: "It's not a dream." }),
+        ]),
+      ]),
+      LinkLevel(40, [
+        choices(
+          "I could've given this to you at school, but I wanted to talk somewhere quiet.",
+          [
+            choice({ label: "Is it important?", ok: true }),
+            choice({ label: "What is it?", ok: true }),
+          ]
+        ),
+        choices(
+          "I know they were kind of a handful, but they also have an endearing side to them, don't you think?",
+          [
+            choice({ label: "Yeah.", ok: true }),
+            choice({ label: "Not really." }),
+          ]
+        ),
+        choices("Because today... Well, my parents aren't home, so...", [
+          choice({ label: "I see." }),
+          choice({ label: "What does that mean?", ok: true }),
+        ]),
+      ]),
+      LinkLevel(40, [
+        choices("", [
+          choice({ label: "" }),
+          choice({ label: "" }),
+          choice({ label: "" }),
+        ]),
+      ]),
     ],
     levelsRomance: [
       ...strengthLevels,
-      {
-        points: 15,
-        maxPoints: 15,
-        element: () => (
-          <div>
-            <ChoicesEvent label="Elementary school kids really learn fast don't you think?">
-              <Choice label="You're right. It's impressive." ok />
-              <Choice label="That's not normal?" />
-              <Choice label="It's because you teach so well." correct />
-            </ChoicesEvent>
-            <ChoicesEvent label="Should I change the training routine? Maybe they should be running more.">
-              <Choice label="You shouldn't change it." />
-              <Choice label="Maybe you should rethink it." />
-              <Choice label="I trust whatever you decide Yuko." fork />
-            </ChoicesEvent>
-          </div>
+      LinkLevel(15, [
+        choices("Elementary school kids really learn fast don't you think?", [
+          choice({ label: "You're right. It's impressive.", ok: true }),
+          choice({ label: "That's not normal?" }),
+          choice({ label: "It's because you teach so well.", correct: true }),
+        ]),
+        choices(
+          "Should I change the training routine? Maybe they should be running more.",
+          [
+            choice({ label: "You shouldn't change it." }),
+            choice({ label: "Maybe you should rethink it." }),
+            choice({ label: "I trust whatever you decide Yuko.", fork: true }),
+          ]
         ),
-      },
-      {
-        points: 22,
-        maxPoints: 10,
-        element: () => (
-          <div>
-            <ChoicesEvent label="Oh Makoto-Kun, why don't you give them some advice too?">
-              <Choice label="You guys got this!" ok />
-              <Choice label="Show some guts!" ok />
-            </ChoicesEvent>
-            <ChoicesEvent label="Age difference really matters when you're as young as they are. Do you really think they can beat the sixth graders.">
-              <Choice label="It's gonna be tough." />
-              <Choice label="As long as we believe in them." ok />
-            </ChoicesEvent>
-          </div>
+      ]),
+      LinkLevel(22, [
+        choices("Oh Makoto-Kun, why don't you give them some advice too?", [
+          choice({ label: "You guys got this!", ok: true }),
+          choice({ label: "Show some guts!", ok: true }),
+        ]),
+        choices(
+          "Age difference really matters when you're as young as they are. Do you really think they can beat the sixth graders.",
+          [
+            choice({ label: "It's gonna be tough." }),
+            choice({ label: "As long as we believe in them.", ok: true }),
+          ]
         ),
-      },
-      {
-        points: 22,
-        maxPoints: 20,
-        element: () => (
-          <div>
-            <ChoicesEvent label="They called you my boyfriend till the very end...">
-              <Choice label="Wanna make that true?" fork />
-              <Choice label="It's embarassing." />
-              <Choice label="They're just joking." />
-            </ChoicesEvent>
-            <ChoicesEvent label="It's like the kids have left the nest...">
-              <Choice label="Are you sad?" />
-              <Choice label="Are you relieved?" ok />
-            </ChoicesEvent>
-            <ChoicesEvent label="Maybe we should have a little party… you know, to celebrate our first attempt at coaching...">
-              <Choice label="Let's do it." correct />
-              <Choice label="Why?" />
-            </ChoicesEvent>
-          </div>
+      ]),
+      LinkLevel(22, [
+        choices("They called you my boyfriend till the very end...", [
+          choice({ label: "Wanna make that true?", fork: true }),
+          choice({ label: "It's embarassing." }),
+          choice({ label: "They're just joking." }),
+        ]),
+        choices("It's like the kids have left the nest...", [
+          choice({ label: "Are you sad?" }),
+          choice({ label: "Are you relieved?", ok: true }),
+        ]),
+        choices(
+          "Maybe we should have a little party… you know, to celebrate our first attempt at coaching...",
+          [
+            choice({ label: "Let's do it.", correct: true }),
+            choice({ label: "Why?" }),
+          ]
         ),
-      },
-      {
-        points: 40,
-        maxPoints: 5,
-        element: () => (
-          <div>
-            <ChoicesEvent label="I was out buying stuff that might be useful for running practice, and I ran out of money.">
-              <Choice label="It's fine." />
-              <Choice label="This is a nice room." />
-              <Choice label="Stuff for the kids?" />
-            </ChoicesEvent>
-            <ChoicesEvent label="Hmm... Oh, do you like children?">
-              <Choice label="I do." />
-              <Choice label="Not really." />
-            </ChoicesEvent>
-            <ChoicesEvent label="Would you want it to be a boy or a girl?">
-              <Choice label="A boy." ok />
-              <Choice label="A girl." ok />
-              <Choice label="I don't care." />
-            </ChoicesEvent>
-          </div>
+      ]),
+      LinkLevel(40, [
+        choices(
+          "I was out buying stuff that might be useful for running practice, and I ran out of money.",
+          [
+            choice({ label: "It's fine." }),
+            choice({ label: "This is a nice room." }),
+            choice({ label: "Stuff for the kids?" }),
+          ]
         ),
-      },
-      {
-        points: 40,
-        maxPoints: 25,
-        element: () => (
-          <div>
-            <ChoicesEvent label="All it did was make me more confused than I originally was. Guess I'll have to go ask again tomorrow.">
-              <Choice label="You're so hardworking." ok />
-              <Choice label="Why go through all that trouble?" />
-            </ChoicesEvent>
-            <ChoicesEvent label="Can you guess what it is?">
-              <Choice label="A track and field star?" ok />
-              <Choice label="An instructor?" correct />
-              <Choice label="A nursery teacher?" ok />
-              <Choice label="No idea..." />
-            </ChoicesEvent>
-            <ChoicesEvent label="I realized that I might've been relying too much on you.">
-              <Choice label="I don't mind." />
-              <Choice label="You can rely on me even more." />
-            </ChoicesEvent>
-            <ChoicesEvent label="Are you like this... just with me? N-No, no, th-that can't be it, huh...">
-              <Choice label="It's because I love you." fork />
-              <Choice label="It's because you're a close friend." />
-            </ChoicesEvent>
-            <ChoicesEvent label="What's happening...? Is this a dream?">
-              <Choice label="I love you, Yuko." />
-              <Choice label="It's not a dream." />
-            </ChoicesEvent>
-          </div>
+        choices("Hmm... Oh, do you like children?", [
+          choice({ label: "I do." }),
+          choice({ label: "Not really." }),
+        ]),
+        choices("Would you want it to be a boy or a girl?", [
+          choice({ label: "A boy.", ok: true }),
+          choice({ label: "A girl.", ok: true }),
+          choice({ label: "I don't care." }),
+        ]),
+      ]),
+      LinkLevel(40, [
+        choices(
+          "All it did was make me more confused than I originally was. Guess I'll have to go ask again tomorrow.",
+          [
+            choice({ label: "You're so hardworking.", ok: true }),
+            choice({ label: "Why go through all that trouble?" }),
+          ]
         ),
-      },
-      {
-        points: 40,
-        maxPoints: 15,
-        element: () => (
-          <div>
-            <ChoicesEvent label="I could've given this to you at school, but I wanted to talk somewhere quiet.">
-              <Choice label="Is it important?" ok />
-              <Choice label="What is it?" ok />
-            </ChoicesEvent>
-            <ChoicesEvent label="I know they were kind of a handful, but they also have an endearing side to them, don't you think?">
-              <Choice label="Yeah." ok />
-              <Choice label="Not really." />
-            </ChoicesEvent>
-            <ChoicesEvent label="Because today... Well, my parents aren't home, so...">
-              <Choice label="I see." />
-              <Choice label="What does that mean?" ok />
-            </ChoicesEvent>
-          </div>
+        choices("Can you guess what it is?", [
+          choice({ label: "A track and field star?", ok: true }),
+          choice({ label: "An instructor?", correct: true }),
+          choice({ label: "A nursery teacher?", ok: true }),
+          choice({ label: "No idea..." }),
+        ]),
+        choices("I realized that I might've been relying too much on you.", [
+          choice({ label: "I don't mind." }),
+          choice({ label: "You can rely on me even more." }),
+        ]),
+        choices(
+          "Are you like this... just with me? N-No, no, th-that can't be it, huh...",
+          [
+            choice({ label: "It's because I love you.", fork: true }),
+            choice({ label: "It's because you're a close friend." }),
+          ]
         ),
-      },
+        choices("What's happening...? Is this a dream?", [
+          choice({ label: "I love you, Yuko." }),
+          choice({ label: "It's not a dream." }),
+        ]),
+      ]),
+      LinkLevel(40, [
+        choices(
+          "I could've given this to you at school, but I wanted to talk somewhere quiet.",
+          [
+            choice({ label: "Is it important?", ok: true }),
+            choice({ label: "What is it?", ok: true }),
+          ]
+        ),
+        choices(
+          "I know they were kind of a handful, but they also have an endearing side to them, don't you think?",
+          [
+            choice({ label: "Yeah.", ok: true }),
+            choice({ label: "Not really." }),
+          ]
+        ),
+        choices("Because today... Well, my parents aren't home, so...", [
+          choice({ label: "I see." }),
+          choice({ label: "What does that mean?", ok: true }),
+        ]),
+      ]),
     ],
   },
   Aeon: {
     name: "Aeon",
-    calculate: function ({ level, points, multiplier = 1 }) {
-      const isNewlevel =
-        level < this.levels.length && points >= this.levels[level].points;
-      return {
-        Aeon: {
-          level: isNewlevel ? level + 1 : level,
-          points: isNewlevel
-            ? this.levels[level].maxPoints * multiplier
-            : points + 10 * multiplier,
-        },
-      };
-    },
+    calculate: calculateLevel,
     levels: [
       ...aeonLevels,
-      {
-        points: 0,
-        maxPoints: 15,
-        element: () => (
-          <div>
-            <ChoicesEvent label="January 31st...">
-              <Choice label="You're right." correct />
-              <Choice label="I hadn't noticed..." />
-            </ChoicesEvent>
-            <ChoicesEvent label="I love you so much... that I feel like I'm going to break down somehow...">
-              <Choice label="I love you, too." fork />
-              <Choice label="Sorry, but I can't..." />
-            </ChoicesEvent>
-          </div>
+      LinkLevel(0, [
+        choices("January 31st...", [
+          choice({ label: "You're right.", correct: true }),
+          choice({ label: "I hadn't noticed..." }),
+        ]),
+        choices(
+          "I love you so much... that I feel like I'm going to break down somehow...",
+          [
+            choice({ label: "I love you, too.", fork: true }),
+            choice({ label: "Sorry, but I can't..." }),
+          ]
         ),
-      },
-      {
-        points: 30,
-        maxPoints: 0,
-        element: () => (
-          <div>
-            <ChoicesEvent label="There's something only I can say, because I am unable to die.">
-              <Choice label="What is it?" />
-              <Choice label="I don't get it." />
-            </ChoicesEvent>
-            <ChoicesEvent label="Aigis is gazing at you intently...">
-              <Choice label="Nod silently" />
-              <Choice label="Hold her hand gently" />
-            </ChoicesEvent>
-          </div>
+      ]),
+      LinkLevel(30, [
+        choices(
+          "There's something only I can say, because I am unable to die.",
+          [
+            choice({ label: "What is it?" }),
+            choice({ label: "I don't get it." }),
+          ]
         ),
-      },
+        choices("Aigis is gazing at you intently...", [
+          choice({ label: "Nod silently" }),
+          choice({ label: "Hold her hand gently" }),
+        ]),
+      ]),
+      LinkLevel(30, [
+        choices("", [
+          choice({ label: "" }),
+          choice({ label: "" }),
+          choice({ label: "" }),
+        ]),
+      ]),
     ],
     levelsRomance: [
       ...aeonLevels,
-      {
-        points: 0,
-        maxPoints: 15,
-        element: () => (
-          <div>
-            <ChoicesEvent label="January 31st...">
-              <Choice label="You're right." correct />
-              <Choice label="I hadn't noticed..." />
-            </ChoicesEvent>
-            <ChoicesEvent label="I love you so much... that I feel like I'm going to break down somehow...">
-              <Choice label="I love you, too." fork />
-              <Choice label="Sorry, but I can't..." />
-            </ChoicesEvent>
-          </div>
+      LinkLevel(0, [
+        choices("January 31st...", [
+          choice({ label: "You're right.", correct: true }),
+          choice({ label: "I hadn't noticed..." }),
+        ]),
+        choices(
+          "I love you so much... that I feel like I'm going to break down somehow...",
+          [
+            choice({ label: "I love you, too.", fork: true }),
+            choice({ label: "Sorry, but I can't..." }),
+          ]
         ),
-      },
-      {
-        points: 30,
-        maxPoints: 0,
-        element: () => (
-          <div>
-            <ChoicesEvent label="There's something only I can say, because I am unable to die.">
-              <Choice label="What is it?" />
-              <Choice label="I don't get it." />
-            </ChoicesEvent>
-            <ChoicesEvent label="Aigis is gazing at you intently...">
-              <Choice label="Nod silently" />
-              <Choice label="Hold her hand gently" />
-            </ChoicesEvent>
-          </div>
+      ]),
+      LinkLevel(30, [
+        choices(
+          "There's something only I can say, because I am unable to die.",
+          [
+            choice({ label: "What is it?" }),
+            choice({ label: "I don't get it." }),
+          ]
         ),
-      },
+        choices("Aigis is gazing at you intently...", [
+          choice({ label: "Nod silently" }),
+          choice({ label: "Hold her hand gently" }),
+        ]),
+      ]),
     ],
   },
 };
