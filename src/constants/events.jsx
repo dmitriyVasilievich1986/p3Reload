@@ -1605,4 +1605,23 @@ export const events = {
       };
     },
   },
+  Fool: {
+    name: "Fool",
+    category: "links",
+    special: true,
+    label: () => <SocialLink label="Fool" name="S.E.E.S." place="Tartarus" />,
+    available: () => false,
+    upgrade: function ({ currentStats, currentLinks, arcanes }) {
+      const newLinks = socialLinks.Fool.calculate({
+        ...currentLinks[socialLinks.Fool.name],
+      });
+      return {
+        links: {
+          ...currentLinks,
+          ...newLinks,
+        },
+        stats: { ...currentStats },
+      };
+    },
+  },
 };

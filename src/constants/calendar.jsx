@@ -23,6 +23,7 @@ const initialLinks = {
   [socialLinks.Tower.name]: { level: 0, points: 0, multiplier: 1 },
   [socialLinks.Star.name]: { level: 0, points: 0, multiplier: 1 },
   [socialLinks.Moon.name]: { level: 0, points: 0, multiplier: 1 },
+  [socialLinks.Fool.name]: { level: 0, points: 0, multiplier: 1 },
   [socialLinks.Priestess.name]: {
     level: 0,
     points: 0,
@@ -206,7 +207,7 @@ const april = [
         ),
       },
       day: events.special,
-      evening: events.special,
+      evening: events.Fool,
     },
   },
   {
@@ -228,7 +229,7 @@ const april = [
     activities: {
       morning: events.special,
       day: events.special,
-      evening: { ...events.tartarus, special: true },
+      evening: events.Fool,
     },
   },
   {
