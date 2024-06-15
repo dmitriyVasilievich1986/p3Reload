@@ -295,7 +295,7 @@ const april = [
     activities: {
       morning: events.special,
       day: events.Hierophant,
-      evening: events.special,
+      evening: events.wilduckBurgeMysteryBurger,
     },
   },
   {

@@ -440,6 +440,61 @@ export const events = {
       };
     },
   },
+  wilduckBurgeMysteryBurger: {
+    name: "wilduckBurgeMysteryBurger",
+    category: "stats",
+    label: () => (
+      <StatRaise
+        label="Wilduck Burger(Mystery Burger)"
+        place="Iwatodai Strip Mall"
+        stats="Courage +3"
+        price="¥1,000"
+      />
+    ),
+    available: ({ currentDate, currentTime }) => {
+      return (
+        ["day", "evening"].includes(currentTime) &&
+        currentDate.getDay() !== daysNames.thursday
+      );
+    },
+    upgrade: function ({ currentStats, currentLinks }) {
+      return {
+        links: { ...currentLinks },
+        stats: {
+          ...currentStats,
+          [stats.Courage.name]: currentStats[stats.Courage.name] + 3,
+        },
+      };
+    },
+  },
+  wilduckBurgeWeekendWilduckSet: {
+    name: "wilduckBurgeWeekendWilduckSet",
+    category: "stats",
+    label: () => (
+      <StatRaise
+        label="Wilduck Burger(Weekend Wilduck Set)"
+        place="Iwatodai Strip Mall"
+        stats="Courage +4"
+        price="¥1,200"
+      />
+    ),
+    available: ({ currentDate, currentTime }) => {
+      const days = [daysNames.saturday, daysNames.sunday];
+      return (
+        ["day", "evening"].includes(currentTime) &&
+        days.includes(currentDate.getDay())
+      );
+    },
+    upgrade: function ({ currentStats, currentLinks }) {
+      return {
+        links: { ...currentLinks },
+        stats: {
+          ...currentStats,
+          [stats.Courage.name]: currentStats[stats.Courage.name] + 4,
+        },
+      };
+    },
+  },
   drinkMedicine: {
     name: "Drink Mr. Edogawa's medicine",
     category: "special",
