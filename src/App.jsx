@@ -222,9 +222,9 @@ function Calendar(props) {
   };
 
   const isAfterTartarus = [
-    props.previousDay?.activities.day.name,
-    props.previousDay?.activities.evening.name,
-  ].includes(events.tartarus.name);
+    props.previousDay?.activities.day.category,
+    props.previousDay?.activities.evening.category,
+  ].includes(events.tartarus.category);
 
   return (
     <div>

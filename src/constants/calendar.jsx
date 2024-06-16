@@ -229,7 +229,7 @@ const april = [
     activities: {
       morning: events.special,
       day: events.special,
-      evening: events.Fool,
+      evening: { ...events.Fool, category: "Tartarus" },
     },
   },
   {
@@ -370,9 +370,9 @@ export function initialCalculataion(calendar) {
 
     if (
       [
-        previousDay?.activities.day.name,
-        previousDay?.activities.evening.name,
-      ].includes(events.tartarus.name)
+        previousDay?.activities.day.category,
+        previousDay?.activities.evening.category,
+      ].includes(events.tartarus.category)
     ) {
       response = events.drinkMedicine.upgrade({
         currentStats: currentStats,
