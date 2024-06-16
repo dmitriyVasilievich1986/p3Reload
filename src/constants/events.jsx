@@ -121,10 +121,8 @@ export const events = {
       />
     ),
     available: ({ currentDate, currentTime }) => {
-      return (
-        ["day", "evening"].includes(currentTime) &&
-        [daysNames.wednesday, daysNames.saturday].includes(currentDate.getDay())
-      );
+      const days = [daysNames.wednesday, daysNames.saturday];
+      return (currentTime = "day" && days.includes(currentDate.getDay()));
     },
     upgrade: function ({ currentStats, currentLinks }) {
       return {
@@ -148,10 +146,8 @@ export const events = {
       />
     ),
     available: ({ currentDate, currentTime }) => {
-      return (
-        [daysNames.tuesday, daysNames.friday].includes(currentDate.getDay()) &&
-        ["day", "evening"].includes(currentTime)
-      );
+      const days = [daysNames.tuesday, daysNames.friday];
+      return days.includes(currentDate.getDay()) && currentTime === "day";
     },
     upgrade: function ({ currentStats, currentLinks }) {
       return {
@@ -176,8 +172,7 @@ export const events = {
     ),
     available: ({ currentDate, currentTime }) => {
       return (
-        currentDate.getDay() === daysNames.thursday &&
-        ["day", "evening"].includes(currentTime)
+        currentDate.getDay() === daysNames.thursday && currentTime === "day"
       );
     },
     upgrade: function ({ currentStats, currentLinks }) {
@@ -375,7 +370,11 @@ export const events = {
         daysNames.thursday,
         daysNames.friday,
       ];
-      return currentTime === "day" && days.includes(currentDate.getDay());
+      return (
+        currentDate.getTime() >= new Date(2009, 6, 22) &&
+        days.includes(currentDate.getDay()) &&
+        currentTime === "day"
+      );
     },
     upgrade: function ({ currentStats, currentLinks }) {
       return {
@@ -428,7 +427,10 @@ export const events = {
     ),
     available: ({ currentDate, currentTime }) => {
       const days = [daysNames.tuesday, daysNames.friday];
-      return currentTime === "day" && days.includes(currentDate.getDay());
+      return (
+        ["day", "evening"].includes(currentTime) &&
+        days.includes(currentDate.getDay())
+      );
     },
     upgrade: function ({ currentStats, currentLinks }) {
       return {
@@ -678,7 +680,7 @@ export const events = {
       />
     ),
     available: ({ currentDate, currentTime }) => {
-      const days = [daysNames.tuesday, daysNames.friday];
+      const days = [daysNames.wednesday, daysNames.saturday];
       return currentTime === "day" && days.includes(currentDate.getDay());
     },
     upgrade: function ({ currentStats, currentLinks }) {
