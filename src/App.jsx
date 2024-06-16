@@ -42,13 +42,13 @@ function DailyEvent(props) {
       props.previousDay.links[props.event.name].level ===
       props.links[props.event.name].level
     )
-      return <h3>Spending time</h3>;
-    const romanceFork = props.links[props.event.name]?.romance
-      ? "levelsRomance"
-      : "levels";
-    return socialLinks[props.event.name][romanceFork][
-      props.links[props.event.name].level - 1
-    ].element();
+      return socialLinks[props.event.name].getStaleLevel();
+    return socialLinks[props.event.name]
+      .getlevel({
+        romance: props.links[props.event.name].romance,
+        level: props.links[props.event.name].level - 1,
+      })
+      .element();
   };
 
   return (
@@ -145,7 +145,7 @@ function HeroStats(props) {
 function SocialLinks(props) {
   const getLevel = (name) => {
     if (props.links[name].level === 0) return "not established";
-    if (props.links[name].level === socialLinks[name].levels.length)
+    if (props.links[name].level === socialLinks[name].maxLevel)
       return "max level";
     return `${props.links[name].level} (${props.links[name].points} pts.)`;
   };

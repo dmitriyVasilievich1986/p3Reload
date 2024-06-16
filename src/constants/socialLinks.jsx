@@ -556,25 +556,34 @@ function LinkLevel(points = 0, levels = null) {
   };
 }
 
-function calculateLevel({ level, points, romance = false, multiplier = 1 }) {
-  const levelName = romance ? "levelsRomance" : "levels";
-  const isNewlevel =
-    level < this[levelName].length && points >= this[levelName][level].points;
-  return {
-    [this.name]: {
-      level: isNewlevel ? level + 1 : level,
-      romance: romance,
-      points: isNewlevel
-        ? this[levelName][level].maxPoints * multiplier
-        : points + 10 * multiplier,
-    },
-  };
-}
+const baseSocialLinkCalculation = {
+  maxLevel: 10,
+  getlevel: function ({ level, romance = false }) {
+    return this[romance ? "levelsRomance" : "levels"][level];
+  },
+  calculate: function ({ level, points, romance = false, multiplier = 1 }) {
+    const currentLevel = this.getlevel({ level, romance });
+    const isNewlevel = level < this.maxLevel && points >= currentLevel.points;
+    return {
+      [this.name]: {
+        level: isNewlevel ? level + 1 : level,
+        romance: romance,
+        points: isNewlevel
+          ? currentLevel.maxPoints * multiplier
+          : points + 10 * multiplier,
+      },
+    };
+  },
+  getStaleLevel: function () {
+    return <h3>Spending time</h3>;
+  },
+  levels: [],
+};
 
 export const socialLinks = {
   Magician: {
     name: "Magician",
-    calculate: calculateLevel,
+    ...baseSocialLinkCalculation,
     levels: [
       LinkLevel(),
       LinkLevel(0, [
@@ -703,11 +712,16 @@ export const socialLinks = {
           choice({ label: "That's right! We're great friends." }),
         ]),
       ]),
+      {
+        points: 0,
+        maxPoints: 0,
+        element: () => <h3>Link Maxed</h3>,
+      },
     ],
   },
   Priestess: {
     name: "Priestess",
-    calculate: calculateLevel,
+    ...baseSocialLinkCalculation,
     levels: [
       ...priestessLevels,
       LinkLevel(30, [
@@ -791,6 +805,11 @@ export const socialLinks = {
           ]
         ),
       ]),
+      {
+        points: 0,
+        maxPoints: 0,
+        element: () => <h3>Link Maxed</h3>,
+      },
     ],
     levelsRomance: [
       ...priestessLevels,
@@ -875,11 +894,16 @@ export const socialLinks = {
           choice({ label: "" }),
         ]),
       ]),
+      {
+        points: 0,
+        maxPoints: 0,
+        element: () => <h3>Link Maxed</h3>,
+      },
     ],
   },
   Emperor: {
     name: "Emperor",
-    calculate: calculateLevel,
+    ...baseSocialLinkCalculation,
     levels: [
       LinkLevel(),
       LinkLevel(0, [
@@ -964,11 +988,16 @@ export const socialLinks = {
           choice({ label: "I guess I'll take it.", correct: true }),
         ]),
       ]),
+      {
+        points: 0,
+        maxPoints: 0,
+        element: () => <h3>Link Maxed</h3>,
+      },
     ],
   },
   Hierophant: {
     name: "Hierophant",
-    calculate: calculateLevel,
+    ...baseSocialLinkCalculation,
     levels: [
       LinkLevel(),
       LinkLevel(0, [
@@ -1150,11 +1179,16 @@ export const socialLinks = {
           choice({ label: "Are you really sure?" }),
         ]),
       ]),
+      {
+        points: 0,
+        maxPoints: 0,
+        element: () => <h3>Link Maxed</h3>,
+      },
     ],
   },
   Chariot: {
     name: "Chariot",
-    calculate: calculateLevel,
+    ...baseSocialLinkCalculation,
     levels: [
       LinkLevel(),
       LinkLevel(0, [
@@ -1267,11 +1301,16 @@ export const socialLinks = {
           ]
         ),
       ]),
+      {
+        points: 0,
+        maxPoints: 0,
+        element: () => <h3>Link Maxed</h3>,
+      },
     ],
   },
   Hermit: {
     name: "Hermit",
-    calculate: calculateLevel,
+    ...baseSocialLinkCalculation,
     levels: [
       LinkLevel(),
       LinkLevel(0, [
@@ -1389,11 +1428,16 @@ export const socialLinks = {
           ]
         ),
       ]),
+      {
+        points: 0,
+        maxPoints: 0,
+        element: () => <h3>Link Maxed</h3>,
+      },
     ],
   },
   Fortune: {
     name: "Fortune",
-    calculate: calculateLevel,
+    ...baseSocialLinkCalculation,
     levels: [
       LinkLevel(),
       LinkLevel(0, [
@@ -1513,11 +1557,16 @@ export const socialLinks = {
           choice({ label: "Yeah.", correct: true }),
         ]),
       ]),
+      {
+        points: 0,
+        maxPoints: 0,
+        element: () => <h3>Link Maxed</h3>,
+      },
     ],
   },
   HangedMan: {
     name: "HangedMan",
-    calculate: calculateLevel,
+    ...baseSocialLinkCalculation,
     levels: [
       LinkLevel(),
       LinkLevel(0, [
@@ -1622,11 +1671,16 @@ export const socialLinks = {
           choice({ label: "I'll think about it." }),
         ]),
       ]),
+      {
+        points: 0,
+        maxPoints: 0,
+        element: () => <h3>Link Maxed</h3>,
+      },
     ],
   },
   Temperance: {
     name: "Temperance",
-    calculate: calculateLevel,
+    ...baseSocialLinkCalculation,
     levels: [
       LinkLevel(),
       LinkLevel(0, [
@@ -1733,11 +1787,31 @@ export const socialLinks = {
           choice({ label: "Good luck out there.", correct: true }),
         ]),
       ]),
+      {
+        points: 0,
+        maxPoints: 0,
+        element: () => <h3>Link Maxed</h3>,
+      },
     ],
   },
   Devil: {
     name: "Devil",
-    calculate: calculateLevel,
+    ...baseSocialLinkCalculation,
+    getlevel: function ({ level }) {
+      if (level === 10) return this.levels[2];
+      if (level === 0) return this.levels[0];
+      return this.levels[1];
+    },
+    calculate: function ({ level }) {
+      const isNewlevel = level < this.maxLevel;
+      return {
+        [this.name]: {
+          level: isNewlevel ? level + 1 : level,
+          romance: false,
+          points: 0,
+        },
+      };
+    },
     levels: [
       {
         points: 0,
@@ -1747,89 +1821,33 @@ export const socialLinks = {
       {
         points: 0,
         maxPoints: 0,
-        element: () => (
-          <div>
-            <h4>Any</h4>
-          </div>
-        ),
+        element: () => <h3>Choose Any</h3>,
       },
       {
         points: 0,
         maxPoints: 0,
-        element: () => (
-          <div>
-            <h4>Any</h4>
-          </div>
-        ),
-      },
-      {
-        points: 0,
-        maxPoints: 0,
-        element: () => (
-          <div>
-            <h4>Any</h4>
-          </div>
-        ),
-      },
-      {
-        points: 0,
-        maxPoints: 0,
-        element: () => (
-          <div>
-            <h4>Any</h4>
-          </div>
-        ),
-      },
-      {
-        points: 0,
-        maxPoints: 0,
-        element: () => (
-          <div>
-            <h4>Any</h4>
-          </div>
-        ),
-      },
-      {
-        points: 0,
-        maxPoints: 0,
-        element: () => (
-          <div>
-            <h4>Any</h4>
-          </div>
-        ),
-      },
-      {
-        points: 0,
-        maxPoints: 0,
-        element: () => (
-          <div>
-            <h4>Any</h4>
-          </div>
-        ),
-      },
-      {
-        points: 0,
-        maxPoints: 0,
-        element: () => (
-          <div>
-            <h4>Any</h4>
-          </div>
-        ),
-      },
-      {
-        points: 0,
-        maxPoints: 0,
-        element: () => (
-          <div>
-            <h4>Any</h4>
-          </div>
-        ),
+        element: () => <h3>Link Maxed</h3>,
       },
     ],
   },
   Sun: {
     name: "Sun",
-    calculate: calculateLevel,
+    ...baseSocialLinkCalculation,
+    getlevel: function ({ level }) {
+      if (level === 10) return this.levels[2];
+      if (level === 0) return this.levels[0];
+      return this.levels[1];
+    },
+    calculate: function ({ level }) {
+      const isNewlevel = level < this.maxLevel;
+      return {
+        [this.name]: {
+          level: isNewlevel ? level + 1 : level,
+          romance: false,
+          points: 0,
+        },
+      };
+    },
     levels: [
       {
         points: 0,
@@ -1839,89 +1857,18 @@ export const socialLinks = {
       {
         points: 0,
         maxPoints: 0,
-        element: () => (
-          <div>
-            <h4>Any</h4>
-          </div>
-        ),
+        element: () => <h3>Choose Any</h3>,
       },
       {
         points: 0,
         maxPoints: 0,
-        element: () => (
-          <div>
-            <h4>Any</h4>
-          </div>
-        ),
-      },
-      {
-        points: 0,
-        maxPoints: 0,
-        element: () => (
-          <div>
-            <h4>Any</h4>
-          </div>
-        ),
-      },
-      {
-        points: 0,
-        maxPoints: 0,
-        element: () => (
-          <div>
-            <h4>Any</h4>
-          </div>
-        ),
-      },
-      {
-        points: 0,
-        maxPoints: 0,
-        element: () => (
-          <div>
-            <h4>Any</h4>
-          </div>
-        ),
-      },
-      {
-        points: 0,
-        maxPoints: 0,
-        element: () => (
-          <div>
-            <h4>Any</h4>
-          </div>
-        ),
-      },
-      {
-        points: 0,
-        maxPoints: 0,
-        element: () => (
-          <div>
-            <h4>Any</h4>
-          </div>
-        ),
-      },
-      {
-        points: 0,
-        maxPoints: 0,
-        element: () => (
-          <div>
-            <h4>Any</h4>
-          </div>
-        ),
-      },
-      {
-        points: 0,
-        maxPoints: 0,
-        element: () => (
-          <div>
-            <h4>Any</h4>
-          </div>
-        ),
+        element: () => <h3>Link Maxed</h3>,
       },
     ],
   },
   Tower: {
     name: "Tower",
-    calculate: calculateLevel,
+    ...baseSocialLinkCalculation,
     levels: [
       LinkLevel(),
       LinkLevel(0, [
@@ -2045,11 +1992,16 @@ export const socialLinks = {
           choice({ label: "It's missing something." }),
         ]),
       ]),
+      {
+        points: 0,
+        maxPoints: 0,
+        element: () => <h3>Link Maxed</h3>,
+      },
     ],
   },
   Star: {
     name: "Star",
-    calculate: calculateLevel,
+    ...baseSocialLinkCalculation,
     levels: [
       LinkLevel(),
       LinkLevel(0, [
@@ -2182,11 +2134,16 @@ export const socialLinks = {
           choice({ label: "Let's chat a bit more." }),
         ]),
       ]),
+      {
+        points: 0,
+        maxPoints: 0,
+        element: () => <h3>Link Maxed</h3>,
+      },
     ],
   },
   Moon: {
     name: "Moon",
-    calculate: calculateLevel,
+    ...baseSocialLinkCalculation,
     levels: [
       LinkLevel(),
       LinkLevel(0, [
@@ -2271,11 +2228,16 @@ export const socialLinks = {
           ]
         ),
       ]),
+      {
+        points: 0,
+        maxPoints: 0,
+        element: () => <h3>Link Maxed</h3>,
+      },
     ],
   },
   Empress: {
     name: "Empress",
-    calculate: calculateLevel,
+    ...baseSocialLinkCalculation,
     levels: [
       ...empressLevels,
       LinkLevel(22, [
@@ -2334,6 +2296,11 @@ export const socialLinks = {
           ]
         ),
       ]),
+      {
+        points: 0,
+        maxPoints: 0,
+        element: () => <h3>Link Maxed</h3>,
+      },
     ],
     levelsRomance: [
       ...empressLevels,
@@ -2399,11 +2366,16 @@ export const socialLinks = {
           choice({ label: "I'm fine with the back.", ok: true }),
         ]),
       ]),
+      {
+        points: 0,
+        maxPoints: 0,
+        element: () => <h3>Link Maxed</h3>,
+      },
     ],
   },
   Lovers: {
     name: "Lovers",
-    calculate: calculateLevel,
+    ...baseSocialLinkCalculation,
     levels: [
       ...loversLevels,
       LinkLevel(22, [
@@ -2492,6 +2464,11 @@ export const socialLinks = {
           ]
         ),
       ]),
+      {
+        points: 0,
+        maxPoints: 0,
+        element: () => <h3>Link Maxed</h3>,
+      },
     ],
     levelsRomance: [
       ...loversLevels,
@@ -2581,12 +2558,24 @@ export const socialLinks = {
           ]
         ),
       ]),
+      {
+        points: 0,
+        maxPoints: 0,
+        element: () => <h3>Link Maxed</h3>,
+      },
     ],
   },
   Justice: {
     name: "Justice",
-    calculate: calculateLevel,
-    levels: [...justiceLevels],
+    ...baseSocialLinkCalculation,
+    levels: [
+      ...justiceLevels,
+      {
+        points: 0,
+        maxPoints: 0,
+        element: () => <h3>Link Maxed</h3>,
+      },
+    ],
     levelsRomance: [
       ...justiceLevels,
       LinkLevel(22, [
@@ -2678,11 +2667,16 @@ export const socialLinks = {
           choice({ label: "Lock your doors." }),
         ]),
       ]),
+      {
+        points: 0,
+        maxPoints: 0,
+        element: () => <h3>Link Maxed</h3>,
+      },
     ],
   },
   Strength: {
     name: "Strength",
-    calculate: calculateLevel,
+    ...baseSocialLinkCalculation,
     levels: [
       ...strengthLevels,
       LinkLevel(15, [
@@ -2807,6 +2801,11 @@ export const socialLinks = {
           choice({ label: "" }),
         ]),
       ]),
+      {
+        points: 0,
+        maxPoints: 0,
+        element: () => <h3>Link Maxed</h3>,
+      },
     ],
     levelsRomance: [
       ...strengthLevels,
@@ -2925,11 +2924,16 @@ export const socialLinks = {
           choice({ label: "What does that mean?", ok: true }),
         ]),
       ]),
+      {
+        points: 0,
+        maxPoints: 0,
+        element: () => <h3>Link Maxed</h3>,
+      },
     ],
   },
   Aeon: {
     name: "Aeon",
-    calculate: calculateLevel,
+    ...baseSocialLinkCalculation,
     levels: [
       ...aeonLevels,
       LinkLevel(0, [
@@ -2965,6 +2969,11 @@ export const socialLinks = {
           choice({ label: "" }),
         ]),
       ]),
+      {
+        points: 0,
+        maxPoints: 0,
+        element: () => <h3>Link Maxed</h3>,
+      },
     ],
     levelsRomance: [
       ...aeonLevels,
@@ -2994,14 +3003,25 @@ export const socialLinks = {
           choice({ label: "Hold her hand gently" }),
         ]),
       ]),
+      {
+        points: 0,
+        maxPoints: 0,
+        element: () => <h3>Link Maxed</h3>,
+      },
     ],
   },
   Fool: {
     name: "Fool",
+    ...baseSocialLinkCalculation,
+    getlevel: function ({ level }) {
+      if (level === 0) return this.levels[0];
+      return this.levels[1];
+    },
     calculate: function ({ level }) {
       return {
         [this.name]: {
           level: level + 1,
+          romance: false,
           points: 0,
         },
       };
@@ -3015,47 +3035,7 @@ export const socialLinks = {
       {
         points: 0,
         maxPoints: 0,
-        element: () => null,
-      },
-      {
-        points: 0,
-        maxPoints: 0,
-        element: () => null,
-      },
-      {
-        points: 0,
-        maxPoints: 0,
-        element: () => null,
-      },
-      {
-        points: 0,
-        maxPoints: 0,
-        element: () => null,
-      },
-      {
-        points: 0,
-        maxPoints: 0,
-        element: () => null,
-      },
-      {
-        points: 0,
-        maxPoints: 0,
-        element: () => null,
-      },
-      {
-        points: 0,
-        maxPoints: 0,
-        element: () => null,
-      },
-      {
-        points: 0,
-        maxPoints: 0,
-        element: () => null,
-      },
-      {
-        points: 0,
-        maxPoints: 0,
-        element: () => null,
+        element: () => <h3>Automatic</h3>,
       },
     ],
   },
