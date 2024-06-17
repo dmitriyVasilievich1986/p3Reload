@@ -492,7 +492,7 @@ function choice({ label, correct = false, ok = false, fork = false }) {
   let backgroundColor = "inherit";
 
   if (correct) {
-    points = 10;
+    points = 15;
     backgroundColor = "green";
   } else if (ok) {
     points = 5;
