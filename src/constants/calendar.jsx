@@ -64,6 +64,17 @@ const initialLinks = {
 
 const april = [
   {
+    date: new Date(2009, 3, 7),
+    stats: initialStats,
+    links: initialLinks,
+    arcanes: [],
+    activities: {
+      morning: events.special,
+      day: events.special,
+      evening: events.special,
+    },
+  },
+  {
     date: new Date(2009, 3, 8),
     stats: initialStats,
     links: initialLinks,
@@ -202,7 +213,9 @@ const april = [
               "The places where people dumped their waste in the Jomon Period - What are they called nowadays?"
             }
           >
+            <Choice label="Boneyards" />
             <Choice label="Middens" correct />
+            <Choice label="Hovels" />
           </ChoicesEvent>
         ),
       },
@@ -315,6 +328,9 @@ const april = [
             }
           >
             <Choice label="A." correct />
+            <Choice label="B." />
+            <Choice label="C." />
+            <Choice label="D." />
           </ChoicesEvent>
         ),
       },
