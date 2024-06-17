@@ -1,5 +1,6 @@
-import { events, ChoicesEvent, Choice } from "./events";
+import { Choices, Choice } from "../components/choices/Choices.jsx";
 import { socialLinks } from "./socialLinks";
+import { events } from "./events";
 import { stats } from "./stats";
 import React from "react";
 
@@ -83,8 +84,7 @@ const april = [
       morning: {
         ...events.schoolQuestionCharm,
         label: () => (
-          <ChoicesEvent
-            head="At school"
+          <Choices
             label={
               'Among these phrases, "a rain of flower", "mystical mirage" and "vivid carp streamers" which one symbolizes summer?'
             }
@@ -92,7 +92,7 @@ const april = [
             <Choice label="a rain of flower" />
             <Choice label="mystical mirage" />
             <Choice label="vivid carp streamers" correct />
-          </ChoicesEvent>
+          </Choices>
         ),
       },
       day: events.special,
@@ -207,7 +207,7 @@ const april = [
       morning: {
         ...events.schoolQuestionCharm,
         label: () => (
-          <ChoicesEvent
+          <Choices
             head="At school"
             label={
               "The places where people dumped their waste in the Jomon Period - What are they called nowadays?"
@@ -216,7 +216,7 @@ const april = [
             <Choice label="Boneyards" />
             <Choice label="Middens" correct />
             <Choice label="Hovels" />
-          </ChoicesEvent>
+          </Choices>
         ),
       },
       day: events.special,
@@ -321,7 +321,7 @@ const april = [
         ...events.schoolQuestionCharm,
         special: true,
         label: () => (
-          <ChoicesEvent
+          <Choices
             head="At school"
             label={
               "Do you know which one's not an algebraic spiral or whatever?"
@@ -331,7 +331,7 @@ const april = [
             <Choice label="B." />
             <Choice label="C." />
             <Choice label="D." />
-          </ChoicesEvent>
+          </Choices>
         ),
       },
       day: events.Emperor,

@@ -1,37 +1,77 @@
+import { Choices, Choice } from "../components/choices/Choices";
 import React from "react";
 
-export function Choice({ label, correct = false, ok = false, fork = false }) {
-  let color = "inherit";
-  if (correct) color = "green";
-  if (ok) color = "yellow";
-  if (fork) color = "blue";
-  return (
-    <div
-      style={{
-        backgroundColor: color,
-        textAlign: "center",
-      }}
-    >
-      {label}
-    </div>
-  );
+function choice(props) {
+  let points = 0;
+
+  if (props?.correct) {
+    points = 15;
+  } else if (props?.ok) {
+    points = 5;
+  }
+
+  return {
+    points,
+    element: ({ key }) => <Choice key={key} {...props} />,
+  };
 }
 
-export function ChoicesEvent({ label, children }) {
-  return (
-    <div>
-      <h4>{label}</h4>
-      <div
-        style={{
-          display: "flex",
-          justifyContent: "center",
-        }}
-      >
-        <div style={{ width: "250px" }}>{children}</div>
-      </div>
-    </div>
-  );
+function choices(head, choices) {
+  const points = Math.max(...choices.map((c) => c.points));
+
+  return {
+    points,
+    element: ({ key }) => (
+      <Choices key={key} label={head}>
+        {choices.map((c, i) => c.element({ key: i }))}
+      </Choices>
+    ),
+  };
 }
+
+function LinkLevel(points = 0, levels = null) {
+  if (levels === null)
+    return {
+      points: 0,
+      maxPoints: 0,
+      element: () => <h3 style={{ textAlign: "center" }}>Create bond</h3>,
+    };
+  const maxPoints = levels.reduce((acc, level) => acc + level.points, 0);
+
+  return {
+    points,
+    maxPoints,
+    element: () => (
+      <div style={{ display: "flex", flexDirection: "column", gap: "2rem" }}>
+        {levels.map((level, i) => level.element({ key: i }))}
+      </div>
+    ),
+  };
+}
+
+const baseSocialLinkCalculation = {
+  maxLevel: 10,
+  getlevel: function ({ level, romance = false }) {
+    return this[romance ? "levelsRomance" : "levels"][level];
+  },
+  calculate: function ({ level, points, romance = false, multiplier = 1 }) {
+    const currentLevel = this.getlevel({ level, romance });
+    const isNewlevel = level < this.maxLevel && points >= currentLevel.points;
+    return {
+      [this.name]: {
+        level: isNewlevel ? level + 1 : level,
+        romance: romance,
+        points: isNewlevel
+          ? currentLevel.maxPoints * multiplier
+          : points + 10 * multiplier,
+      },
+    };
+  },
+  getStaleLevel: function () {
+    return <h3>Spending time</h3>;
+  },
+  levels: [],
+};
 
 const priestessLevels = [
   LinkLevel(),
@@ -486,99 +526,6 @@ const aeonLevels = [
     ]),
   ]),
 ];
-
-function choice({ label, correct = false, ok = false, fork = false }) {
-  let points = 0;
-  let backgroundColor = "inherit";
-
-  if (correct) {
-    points = 15;
-    backgroundColor = "green";
-  } else if (ok) {
-    points = 5;
-    backgroundColor = "yellow";
-  } else if (fork) {
-    backgroundColor = "blue";
-  }
-
-  return {
-    label,
-    points,
-    element: ({ key }) => (
-      <div
-        key={key}
-        style={{ backgroundColor, textAlign: "center", padding: "0 10px" }}
-      >
-        {label}
-      </div>
-    ),
-  };
-}
-
-function choices(head, choices) {
-  const points = Math.max(...choices.map((c) => c.points));
-
-  return {
-    points,
-    element: ({ key }) => (
-      <div key={key}>
-        <h4 style={{ textAlign: "center" }}>{head}</h4>
-        <div
-          style={{
-            display: "flex",
-            justifyContent: "center",
-            flexDirection: "row",
-            width: "100%",
-          }}
-        >
-          <div style={{ width: "fit-content" }}>
-            {choices.map((c, i) => c.element({ key: i }))}
-          </div>
-        </div>
-      </div>
-    ),
-  };
-}
-
-function LinkLevel(points = 0, levels = null) {
-  if (levels === null)
-    return {
-      points: 0,
-      maxPoints: 0,
-      element: () => <h3 style={{ textAlign: "center" }}>Create bond</h3>,
-    };
-  const maxPoints = levels.reduce((acc, level) => acc + level.points, 0);
-
-  return {
-    points,
-    maxPoints,
-    element: () => <>{levels.map((level, i) => level.element({ key: i }))}</>,
-  };
-}
-
-const baseSocialLinkCalculation = {
-  maxLevel: 10,
-  getlevel: function ({ level, romance = false }) {
-    return this[romance ? "levelsRomance" : "levels"][level];
-  },
-  calculate: function ({ level, points, romance = false, multiplier = 1 }) {
-    const currentLevel = this.getlevel({ level, romance });
-    const isNewlevel = level < this.maxLevel && points >= currentLevel.points;
-    return {
-      [this.name]: {
-        level: isNewlevel ? level + 1 : level,
-        romance: romance,
-        points: isNewlevel
-          ? currentLevel.maxPoints * multiplier
-          : points + 10 * multiplier,
-      },
-    };
-  },
-  getStaleLevel: function () {
-    return <h3>Spending time</h3>;
-  },
-  levels: [],
-};
 
 export const socialLinks = {
   Magician: {
