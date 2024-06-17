@@ -1,7 +1,7 @@
 .card {
-    background-color: #f5ebe0;
+    background-color: #f8f9fa;
     padding: 0 10px 15px 10px;
-    border: 1px solid #000;
+    border: 3px solid #ccc;
     box-sizing: border-box;
     border-radius: 5px;
     position: relative;
@@ -9,11 +9,13 @@
     margin: 0;
 
     &.primary {
+        border: 1px solid #e9ecef;
         background-color: #fff;
     }
 
     &.enable {
-        background-color: #fcbf49;
+        background-color: #f8f9fa;
+        border: 3px solid #495057;
 
         &:hover {
             background-color: #f77f00;
