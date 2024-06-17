@@ -10,58 +10,12 @@ const initialStats = {
   [stats.Courage.name]: 0,
 };
 
-const initialLinks = {
-  [socialLinks.Magician.name]: { level: 0, points: 0, multiplier: 1 },
-  [socialLinks.Emperor.name]: { level: 0, points: 0, multiplier: 1 },
-  [socialLinks.Hierophant.name]: { level: 0, points: 0, multiplier: 1 },
-  [socialLinks.Chariot.name]: { level: 0, points: 0, multiplier: 1 },
-  [socialLinks.Hermit.name]: { level: 0, points: 0, multiplier: 1 },
-  [socialLinks.Fortune.name]: { level: 0, points: 0, multiplier: 1 },
-  [socialLinks.HangedMan.name]: { level: 0, points: 0, multiplier: 1 },
-  [socialLinks.Temperance.name]: { level: 0, points: 0, multiplier: 1 },
-  [socialLinks.Devil.name]: { level: 0, points: 0, multiplier: 1 },
-  [socialLinks.Sun.name]: { level: 0, points: 0, multiplier: 1 },
-  [socialLinks.Tower.name]: { level: 0, points: 0, multiplier: 1 },
-  [socialLinks.Star.name]: { level: 0, points: 0, multiplier: 1 },
-  [socialLinks.Moon.name]: { level: 0, points: 0, multiplier: 1 },
-  [socialLinks.Fool.name]: { level: 0, points: 0, multiplier: 1 },
-  [socialLinks.Priestess.name]: {
-    level: 0,
-    points: 0,
-    multiplier: 1,
-    romance: false,
-  },
-  [socialLinks.Empress.name]: {
-    level: 0,
-    points: 0,
-    multiplier: 1,
-    romance: false,
-  },
-  [socialLinks.Lovers.name]: {
-    level: 0,
-    points: 0,
-    multiplier: 1,
-    romance: false,
-  },
-  [socialLinks.Justice.name]: {
-    level: 0,
-    points: 0,
-    multiplier: 1,
-    romance: false,
-  },
-  [socialLinks.Strength.name]: {
-    level: 0,
-    points: 0,
-    multiplier: 1,
-    romance: false,
-  },
-  [socialLinks.Aeon.name]: {
-    level: 0,
-    points: 0,
-    multiplier: 1,
-    romance: false,
-  },
-};
+const initialLinks = Object.fromEntries(
+  Object.keys(socialLinks).map((k) => [
+    k,
+    { level: 0, points: 0, multiplier: 1, romance: false },
+  ])
+);
 
 const april = [
   {
