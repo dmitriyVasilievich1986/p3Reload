@@ -151,9 +151,13 @@ function HeroStats(props) {
 function SocialLinks(props) {
   const getLevel = (name) => {
     if (props.links[name].level === 0) return "not established";
-    if (props.links[name].level === socialLinks[name].maxLevel)
+    if (props.links[name].level >= socialLinks[name].maxLevel)
       return "max level";
-    return `${props.links[name].level} (${props.links[name].points} pts.)`;
+    return `${props.links[name].level} (${props.links[name].points}/${
+      socialLinks[name].getlevel({
+        ...props.links[name],
+      }).points
+    } pts.)`;
   };
   return (
     <div>
