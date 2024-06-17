@@ -964,6 +964,7 @@ export const events = {
         daysNames.thursday,
         daysNames.friday,
         daysNames.saturday,
+        daysNames.sunday,
       ];
       return (
         currentDate.getTime() >= new Date(2009, 3, 25).getTime() &&
