@@ -5,6 +5,7 @@ import { calendar, initialCalculataion } from "./constants/calendar";
 import { events } from "./constants/events";
 import { stats } from "./constants/stats";
 import { socialLinks } from "./constants/socialLinks";
+import Card from "./components/card/Card";
 
 function outsideClickWrapper(props) {
   React.useEffect(() => {
@@ -52,27 +53,7 @@ function DailyEvent(props) {
   };
 
   return (
-    <div
-      style={{
-        border: "1px solid black",
-        borderRadius: "5px",
-        margin: "10px",
-        position: "relative",
-      }}
-      ref={blockRef}
-    >
-      <label
-        style={{
-          position: "absolute",
-          top: "-10px",
-          left: "15px",
-          backgroundColor: "white",
-          fontWeight: "bold",
-          padding: "0 5px",
-        }}
-      >
-        {props.label}
-      </label>
+    <Card head={props.label} enable={!props.event?.special}>
       <div
         style={{
           maxHeight: "300px",
@@ -83,8 +64,12 @@ function DailyEvent(props) {
           backgroundColor: "white",
           width: "100%",
           zIndex: "99",
+          margin: 0,
+          padding: 0,
           top: "calc(100% + 5px)",
           display: show ? "block" : "none",
+          boxSizing: "border-box",
+          left: "0px",
           padding: "5px",
         }}
       >
@@ -109,7 +94,7 @@ function DailyEvent(props) {
         <div>{props.event.label()}</div>
         <LinkElement />
       </div>
-    </div>
+    </Card>
   );
 }
 
@@ -237,73 +222,54 @@ function Calendar(props) {
   ].includes(events.tartarus.category);
 
   return (
-    <div>
-      <div
-        style={{
-          width: "500px",
-          borderRadius: "10px",
-          border: "1px solid black",
-        }}
-      >
-        <h1>
-          {monthNames[props.date.getMonth()]} {props.date.getDate()} (
-          {daysNamesIndex[props.date.getDay()]})
-        </h1>
-        <DailyEvent
-          changeHandler={(e) => changeHandler(e, "morning")}
-          event={props.activities.morning}
-          previousDay={props.previousDay}
-          stats={props.stats}
-          links={props.links}
-          date={props.date}
-          label="at school"
-          time="morning"
-        />
-        {isAfterTartarus && (
-          <div
-            style={{
-              border: "1px solid black",
-              borderRadius: "5px",
-              margin: "10px",
-              position: "relative",
-            }}
-          >
-            <label
-              style={{
-                position: "absolute",
-                top: "-10px",
-                left: "15px",
-                backgroundColor: "white",
-                fontWeight: "bold",
-                padding: "0 5px",
-              }}
-            >
-              After school
-            </label>
-            {events.drinkMedicine.label()}
-          </div>
-        )}
-        <DailyEvent
-          changeHandler={(e) => changeHandler(e, "day")}
-          previousDay={props.previousDay}
-          event={props.activities.day}
-          links={props.links}
-          stats={props.stats}
-          date={props.date}
-          time="day"
-          label="day"
-        />
-        <DailyEvent
-          changeHandler={(e) => changeHandler(e, "evening")}
-          event={props.activities.evening}
-          previousDay={props.previousDay}
-          links={props.links}
-          stats={props.stats}
-          date={props.date}
-          time="evening"
-          label="evening"
-        />
-      </div>
+    <div style={{ width: "500px" }}>
+      <Card color="primary">
+        <div
+          style={{
+            flexDirection: "column",
+            display: "flex",
+            gap: "10px",
+          }}
+        >
+          <h1>
+            {monthNames[props.date.getMonth()]} {props.date.getDate()} (
+            {daysNamesIndex[props.date.getDay()]})
+          </h1>
+          <DailyEvent
+            changeHandler={(e) => changeHandler(e, "morning")}
+            event={props.activities.morning}
+            previousDay={props.previousDay}
+            stats={props.stats}
+            links={props.links}
+            date={props.date}
+            label="at school"
+            time="morning"
+          />
+          {isAfterTartarus && (
+            <Card head="After school">{events.drinkMedicine.label()}</Card>
+          )}
+          <DailyEvent
+            changeHandler={(e) => changeHandler(e, "day")}
+            previousDay={props.previousDay}
+            event={props.activities.day}
+            links={props.links}
+            stats={props.stats}
+            date={props.date}
+            time="day"
+            label="day"
+          />
+          <DailyEvent
+            changeHandler={(e) => changeHandler(e, "evening")}
+            event={props.activities.evening}
+            previousDay={props.previousDay}
+            links={props.links}
+            stats={props.stats}
+            date={props.date}
+            time="evening"
+            label="evening"
+          />
+        </div>
+      </Card>
       <HeroStats stats={props.stats} previousDay={props.previousDay} />
       <SocialLinks
         links={props.links}
@@ -330,7 +296,7 @@ function App() {
           style={{
             width: "fit-content",
             display: "flex",
-            gap: "10px",
+            gap: "3rem",
           }}
         >
           {calendarArray.map((c, i) => (
