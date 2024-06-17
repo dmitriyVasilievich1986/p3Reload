@@ -615,7 +615,7 @@ export const socialLinks = {
           ]
         ),
       ]),
-      LinkLevel(0, [
+      LinkLevel(15, [
         choices(
           "Hey, thanks for coming, man. You mind waiting here for a sec?",
           [choice({ label: "Sure." }), choice({ label: "Why?" })]
@@ -630,7 +630,7 @@ export const socialLinks = {
         choices(
           "Yeah, good-looking people just flock together, y'know?. It's like a law of attraction.",
           [
-            choice({ label: "...Is that so?" }),
+            choice({ label: "...Is that so?", ok: true }),
             choice({ label: "Okay...", correct: true }),
             choice({ label: "Good-looking, huh?" }),
           ]
