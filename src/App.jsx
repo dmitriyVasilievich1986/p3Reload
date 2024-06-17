@@ -124,19 +124,25 @@ function HeroStats(props) {
       : `${previousName} -> ${currentName}`;
   };
 
+  const getPoints = (statName) => {
+    if (props.stats[statName] >= stats[statName].maxPoints) return "max level";
+    const level = stats[statName].getLevel(props.stats[statName]);
+    return ` (${props.stats[statName]}/${level.nextLevel} pts.)`;
+  };
+
   return (
     <div>
       <div>
-        Academics: {getLevel(stats.Academics.name)}(
-        {props.stats[stats.Academics.name]} pts.)
+        Academics: {getLevel(stats.Academics.name)}
+        {getPoints(stats.Academics.name)}
       </div>
       <div>
-        Charm: {getLevel(stats.Charm.name)}({props.stats[stats.Charm.name]}{" "}
-        pts.)
+        Charm: {getLevel(stats.Charm.name)}
+        {getPoints(stats.Charm.name)}
       </div>
       <div>
-        Courage: {getLevel(stats.Courage.name)}(
-        {props.stats[stats.Courage.name]} pts.)
+        Courage: {getLevel(stats.Courage.name)}
+        {getPoints(stats.Courage.name)}
       </div>
     </div>
   );
