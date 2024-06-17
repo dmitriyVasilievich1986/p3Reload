@@ -646,7 +646,7 @@ export const events = {
         price="¥900"
       />
     ),
-    available: ({ currentDate, currentTime }) => {
+    available: ({ currentDate, currentTime, previousDay }) => {
       const days = [
         daysNames.monday,
         daysNames.thursday,
@@ -654,6 +654,7 @@ export const events = {
         daysNames.sunday,
       ];
       return (
+        previousDay?.stats[stats.Charm.name] >= 30 &&
         ["day", "evening"].includes(currentTime) &&
         days.includes(currentDate.getDay())
       );
