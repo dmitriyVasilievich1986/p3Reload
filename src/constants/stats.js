@@ -1,47 +1,59 @@
+function baseStats(levelsArray) {
+  const levels = levelsArray.map(([name, value]) => ({
+    name,
+    value,
+    nextLevel: 0,
+  }));
+  levels.reduce(
+    (a, b) => {
+      a.nextLevel = b.value;
+      return b;
+    },
+    { name: "", value: 0, nextLevel: 0 }
+  );
+  const maxPoints = levels[levels.length - 1].value;
+  return {
+    levels,
+    maxPoints,
+    getLevel: function (points) {
+      const l = this.levels.filter((level) => points >= level.value);
+      return l[l.length - 1];
+    },
+  };
+}
+
 export const stats = {
   Academics: {
     name: "Academics",
-    levels: [
-      { name: "Slacker", value: 0 },
-      { name: "Average", value: 20 },
-      { name: "Above Average", value: 55 },
-      { name: "Smart", value: 100 },
-      { name: "Intelligent", value: 155 },
-      { name: "Genius", value: 230 },
-    ],
-    getLevel: function (points) {
-      const l = this.levels.filter((level) => points >= level.value);
-      return l[l.length - 1];
-    },
+    ...baseStats([
+      ["Slacker", 0],
+      ["Average", 20],
+      ["Above Average", 55],
+      ["Smart", 100],
+      ["Intelligent", 155],
+      ["Genius", 230],
+    ]),
   },
   Charm: {
     name: "Charm",
-    levels: [
-      { name: "Plain", value: 0 },
-      { name: "Unpolished", value: 15 },
-      { name: "Confident", value: 30 },
-      { name: "Smooth", value: 45 },
-      { name: "Popular", value: 70 },
-      { name: "Charismatic", value: 100 },
-    ],
-    getLevel: function (points) {
-      const l = this.levels.filter((level) => points >= level.value);
-      return l[l.length - 1];
-    },
+    ...baseStats([
+      ["Plain", 0],
+      ["Unpolished", 15],
+      ["Confident", 30],
+      ["Smooth", 45],
+      ["Popular", 70],
+      ["Charismatic", 100],
+    ]),
   },
   Courage: {
     name: "Courage",
-    levels: [
-      { name: "Timid", value: 0 },
-      { name: "Ordinary", value: 15 },
-      { name: "Determined", value: 30 },
-      { name: "Tough", value: 45 },
-      { name: "Fearless", value: 60 },
-      { name: "Badass", value: 80 },
-    ],
-    getLevel: function (points) {
-      const l = this.levels.filter((level) => points >= level.value);
-      return l[l.length - 1];
-    },
+    ...baseStats([
+      ["Timid", 0],
+      ["Ordinary", 15],
+      ["Determined", 30],
+      ["Tough", 45],
+      ["Fearless", 60],
+      ["Badass", 80],
+    ]),
   },
 };
