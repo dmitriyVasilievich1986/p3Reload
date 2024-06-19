@@ -1,9 +1,8 @@
+import EventCard from "../components/eventCard/EventCard";
 import { socialLinks } from "./socialLinks";
 import { daysNames } from "./monthsNames";
 import { stats } from "./stats";
 import React from "react";
-
-
 
 export function SpecialEvent({ label }) {
   return <h2>{label}</h2>;
@@ -65,7 +64,14 @@ export const events = {
     name: "doNothing",
     category: "empty",
     available: ({ currentTime }) => currentTime !== "morning",
-    label: () => <SpecialEvent label="Free time" />,
+    label: () => <EventCard head="Free Time" />,
+  },
+  noControl: {
+    ...initialUpgrade,
+    name: "noControl",
+    category: "empty",
+    available: () => false,
+    label: () => <EventCard head="Control Not Available" />,
   },
   special: {
     ...initialUpgrade,
@@ -73,41 +79,29 @@ export const events = {
     category: "special",
     special: true,
     available: () => false,
-    label: () => <SpecialEvent label="Special Event" />,
+    label: () => <EventCard head="Special Event" />,
   },
   tartarus: {
     ...initialUpgrade,
-    name: "Tartarus",
+    name: "tartarus",
     category: "Tartarus",
     available: ({ currentTime }) => currentTime !== "morning",
-    label: () => {
-      return (
-        <div>
-          <h3>Tartarus</h3>
-        </div>
-      );
-    },
+    label: () => <EventCard head="Tartarus" />,
   },
   exams: {
     ...initialUpgrade,
-    name: "Exams",
+    name: "exams",
     category: "exams",
     special: true,
     available: () => false,
-    label: () => {
-      return (
-        <div>
-          <h3>Exam</h3>
-        </div>
-      );
-    },
+    label: () => <EventCard head="Exam" />,
   },
   schoolQuestionCharm: {
     name: "schoolQuestion",
     category: "special",
     special: true,
     available: () => false,
-    label: () => <SpecialEvent label="Do nothing" />,
+    label: () => null,
     upgrade: function ({ currentStats, currentLinks }) {
       return {
         links: { ...currentLinks },
@@ -122,11 +116,11 @@ export const events = {
     name: "cinema",
     category: "stats",
     label: () => (
-      <StatRaise
-        label="Cinema('Unresolved Mysteries')"
+      <EventCard
+        head="Cinema('Unresolved Mysteries')"
         place="Port Island Station"
         stats="Academics +4"
-        price="¥5,000"
+        price={5000}
       />
     ),
     available: ({ currentDate, currentTime }) => {
@@ -147,11 +141,11 @@ export const events = {
     name: "cinema",
     category: "stats",
     label: () => (
-      <StatRaise
-        label="Cinema('Thy Name')"
+      <EventCard
+        head="Cinema('Thy Name')"
         place="Port Island Station"
         stats="Charm +4"
-        price="¥5,000"
+        price={5000}
       />
     ),
     available: ({ currentDate, currentTime }) => {
@@ -172,11 +166,11 @@ export const events = {
     name: "cinema",
     category: "stats",
     label: () => (
-      <StatRaise
-        label="Cinema('The Way of the Godson')"
+      <EventCard
+        head="Cinema('The Way of the Godson')"
         place="Port Island Station"
         stats="Courage +4"
-        price="¥5,000"
+        price={5000}
       />
     ),
     available: ({ currentDate, currentTime }) => {
@@ -198,11 +192,11 @@ export const events = {
     name: "Hagakure Ramen(Pork Ramen)",
     category: "stats",
     label: () => (
-      <StatRaise
-        label="Hagakure Ramen(Pork Ramen)"
+      <EventCard
+        head="Hagakure Ramen(Pork Ramen)"
         place="Iwatodai Strip Mall"
         stats="Charm +3"
-        price="¥900"
+        price={900}
       />
     ),
     available: ({ currentDate, currentTime }) => {
@@ -225,11 +219,11 @@ export const events = {
     name: "Hagakure Ramen(Special Hagakure Bowl)",
     category: "stats",
     label: () => (
-      <StatRaise
-        label="Hagakure Ramen(Special Hagakure Bowl)"
+      <EventCard
+        head="Hagakure Ramen(Special Hagakure Bowl)"
         place="Iwatodai Strip Mall"
         stats="Charm +4"
-        price="¥1,200"
+        price={1200}
       />
     ),
     available: ({ currentDate, currentTime, currentStats }) => {
@@ -254,11 +248,11 @@ export const events = {
     name: "Chagall Cafe(Pheromone Coffee)",
     category: "stats",
     label: () => (
-      <StatRaise
-        label="Chagall Cafe(Pheromone Coffee)"
+      <EventCard
+        head="Chagall Cafe(Pheromone Coffee)"
         place="Paulownia Mall"
         stats="Charm +2"
-        price="¥500"
+        price={500}
       />
     ),
     available: ({ currentDate, currentTime }) => {
@@ -282,11 +276,11 @@ export const events = {
     name: "Chagall Cafe(Part-Time Work)",
     category: "stats",
     label: () => (
-      <StatRaise
-        label="Chagall Cafe(Part-Time Work)"
+      <EventCard
+        head="Chagall Cafe(Part-Time Work)"
         stats="Courage +1 | Charm +1"
         place="Paulownia Mall"
-        gain="¥2,500"
+        gain={2500}
       />
     ),
     available: ({ currentDate, currentTime }) => {
@@ -308,11 +302,11 @@ export const events = {
     name: "Game Parade(Play High School of Youth)",
     category: "stats",
     label: () => (
-      <StatRaise
-        label="Game Parade(Play High School of Youth)"
+      <EventCard
+        head="Game Parade(Play High School of Youth)"
         place="Paulownia Mall"
         stats="Charm +4"
-        price="¥3,000"
+        price={3000}
       />
     ),
     available: ({ currentDate, currentTime }) => {
@@ -336,11 +330,11 @@ export const events = {
     name: "Manga Star Net Cafe",
     category: "stats",
     label: () => (
-      <StatRaise
-        label="Manga Star Net Cafe"
+      <EventCard
+        head="Manga Star Net Cafe"
         place="Iwatodai Strip Mall"
         stats="Charm +4"
-        price="¥1,200"
+        price={1200}
       />
     ),
     available: ({ currentDate, currentTime }) => {
@@ -364,11 +358,11 @@ export const events = {
     name: "Be Blue V(Work part-time)",
     category: "stats",
     label: () => (
-      <StatRaise
-        label="Be Blue V(Work part-time)"
+      <EventCard
+        head="Be Blue V(Work part-time)"
         stats="Charm +1 | Academics +1"
         place="Paulownia Mall"
-        gain="¥3,500"
+        gain={3500}
       />
     ),
     available: ({ currentDate, currentTime }) => {
@@ -400,11 +394,11 @@ export const events = {
     name: "Mandragora(Sing solo karaoke)",
     category: "stats",
     label: () => (
-      <StatRaise
-        label="Mandragora(Sing solo karaoke)"
+      <EventCard
+        head="Mandragora(Sing solo karaoke)"
         place="Paulownia Mall"
         stats="Courage +2"
-        price="¥800"
+        price={800}
       />
     ),
     available: ({ currentDate, currentTime }) => {
@@ -427,11 +421,11 @@ export const events = {
     name: "Game Parade(Play House of the Deceased)",
     category: "stats",
     label: () => (
-      <StatRaise
-        label="Game Parade(Play House of the Deceased)"
+      <EventCard
+        head="Game Parade(Play House of the Deceased)"
         place="Paulownia Mall"
         stats="Courage +4"
-        price="¥3,000"
+        price={3000}
       />
     ),
     available: ({ currentDate, currentTime }) => {
@@ -455,11 +449,11 @@ export const events = {
     name: "wilduckBurgeMysteryBurger",
     category: "stats",
     label: () => (
-      <StatRaise
-        label="Wilduck Burger(Mystery Burger)"
+      <EventCard
+        head="Wilduck Burger(Mystery Burger)"
         place="Iwatodai Strip Mall"
         stats="Courage +3"
-        price="¥1,000"
+        price={1000}
       />
     ),
     available: ({ currentDate, currentTime }) => {
@@ -482,11 +476,11 @@ export const events = {
     name: "wilduckBurgeWeekendWilduckSet",
     category: "stats",
     label: () => (
-      <StatRaise
-        label="Wilduck Burger(Weekend Wilduck Set)"
+      <EventCard
+        head="Wilduck Burger(Weekend Wilduck Set)"
         place="Iwatodai Strip Mall"
         stats="Courage +4"
-        price="¥1,200"
+        price={1200}
       />
     ),
     available: ({ currentDate, currentTime }) => {
@@ -511,8 +505,8 @@ export const events = {
     category: "special",
     special: true,
     label: () => (
-      <StatRaise
-        label="Drink Mr. Edogawa's medicine"
+      <EventCard
+        head="Drink Mr. Edogawa's medicine"
         place="Nurse's Office"
         stats="Courage +2"
       />
@@ -551,7 +545,7 @@ export const events = {
   stayAwakeInClass: {
     name: "Stay Awake in Class",
     category: "stats",
-    label: () => <StatRaise label="Stay Awake in Class" stats="Academics +2" />,
+    label: () => <EventCard head="Stay Awake in Class" stats="Academics +2" />,
     available: ({ currentDate, currentTime }) => {
       return currentTime === "morning";
     },
@@ -569,10 +563,10 @@ export const events = {
     name: "studyAtHome",
     category: "stats",
     label: () => (
-      <StatRaise
-        label="Studying In Your Room"
-        place="Your Room"
+      <EventCard
+        head="Studying In Your Room"
         stats="Academics +2"
+        place="Your Room"
       />
     ),
     available: ({ currentDate, currentTime }) => {
@@ -592,8 +586,8 @@ export const events = {
     name: "studyAtLibrary",
     category: "stats",
     label: () => (
-      <StatRaise
-        label="Studying At The Library"
+      <EventCard
+        head="Studying At The Library"
         place="Gekkoukan High School"
         stats="Academics +2"
       />
@@ -615,11 +609,11 @@ export const events = {
     name: "wakatsuKitchen",
     category: "stats",
     label: () => (
-      <StatRaise
-        label="Wakatsu Kitchen(Prodigy Platter)"
+      <EventCard
+        head="Wakatsu Kitchen(Prodigy Platter)"
         place="Iwatodai Strip Mall"
         stats="Academics +3"
-        price="¥680"
+        price={680}
       />
     ),
     available: ({ currentDate, currentTime }) => {
@@ -648,11 +642,11 @@ export const events = {
     name: "wakatsuKitchenSpecial",
     category: "stats",
     label: () => (
-      <StatRaise
-        label="Wakatsu Kitchen(Seafood Full Course)"
+      <EventCard
+        head="Wakatsu Kitchen(Seafood Full Course)"
         place="Iwatodai Strip Mall"
         stats="Academics +4"
-        price="¥900"
+        price={900}
       />
     ),
     available: ({ currentDate, currentTime, previousDay }) => {
@@ -682,11 +676,11 @@ export const events = {
     name: "Game Parade(Play You're the Answer)",
     category: "stats",
     label: () => (
-      <StatRaise
-        label="Game Parade(Play You're the Answer)"
+      <EventCard
+        head="Game Parade(Play You're the Answer)"
         place="Paulownia Mall"
         stats="Academics +4"
-        price="¥3,000"
+        price={3000}
       />
     ),
     available: ({ currentDate, currentTime }) => {
@@ -707,11 +701,7 @@ export const events = {
     ...linkBaseFunctions,
     name: socialLinks.Magician.name,
     label: () => (
-      <SocialLink
-        label="Magician"
-        name="Kenji Tomochika"
-        place="Classroom 2F"
-      />
+      <EventCard head="Magician" name="Kenji Tomochika" place="Classroom 2F" />
     ),
     available: ({ currentDate, currentTime }) => {
       const days = [daysNames.tuesday, daysNames.thursday, daysNames.friday];
@@ -727,10 +717,10 @@ export const events = {
     ...linkBaseFunctions,
     name: socialLinks.Priestess.name,
     label: () => (
-      <SocialLink
-        label="Priestess"
-        name="Fuuka Yamagishi"
+      <EventCard
         place="2nd Floor Hallway"
+        name="Fuuka Yamagishi"
+        head="Priestess"
       />
     ),
     available: ({ currentDate, currentTime, currentLinks, previousDay }) => {
@@ -743,11 +733,11 @@ export const events = {
       const days = [daysNames.monday, daysNames.friday, daysNames.saturday];
       return (
         currentDate.getTime() >= new Date(2009, 5, 19).getTime() &&
-        previousDay.stats[stats.Courage.name] >= 80 &&
         previousDay.links[socialLinks.Fortune.name].level > 0 &&
-        isRomance &&
+        previousDay.stats[stats.Courage.name] >= 80 &&
+        days.includes(currentDate.getDay()) &&
         currentTime === "day" &&
-        days.includes(currentDate.getDay())
+        isRomance
       );
     },
   },
@@ -755,10 +745,10 @@ export const events = {
     ...linkBaseFunctions,
     name: socialLinks.Priestess.name,
     label: () => (
-      <SocialLink
-        label="Priestess"
-        name="Fuuka Yamagishi"
+      <EventCard
+        head="Priestess(Romance)"
         place="2nd Floor Hallway"
+        name="Fuuka Yamagishi"
       />
     ),
     available: ({ currentDate, currentTime, currentLinks, previousDay }) => {
@@ -783,10 +773,10 @@ export const events = {
     ...linkBaseFunctions,
     name: socialLinks.Empress.name,
     label: () => (
-      <SocialLink
-        label="Empress"
-        name="Mitsuru Kirijo"
+      <EventCard
         place="Faculty Office Entrance"
+        name="Mitsuru Kirijo"
+        head="Empress"
       />
     ),
     available: ({ currentDate, currentTime, currentLinks, previousDay }) => {
@@ -816,10 +806,10 @@ export const events = {
     ...linkBaseFunctions,
     name: socialLinks.Empress.name,
     label: () => (
-      <SocialLink
-        label="Empress"
-        name="Mitsuru Kirijo"
+      <EventCard
         place="Faculty Office Entrance"
+        head="Empress(Romance)"
+        name="Mitsuru Kirijo"
       />
     ),
     available: ({ currentDate, currentTime, currentLinks, previousDay }) => {
@@ -849,10 +839,10 @@ export const events = {
     ...linkBaseFunctions,
     name: socialLinks.Emperor.name,
     label: () => (
-      <SocialLink
-        label="Emperor"
-        name="Hidetoshi Odagiri"
+      <EventCard
         place="Student Council Room"
+        name="Hidetoshi Odagiri"
+        head="Emperor"
       />
     ),
     available: ({ currentDate, currentTime }) => {
@@ -871,10 +861,10 @@ export const events = {
     ...linkBaseFunctions,
     name: socialLinks.Hierophant.name,
     label: () => (
-      <SocialLink
-        label="Hierophant"
-        name="Bunkichi and Mitsuko"
+      <EventCard
         place="Bookworms Used Books"
+        name="Bunkichi and Mitsuko"
+        head="Hierophant"
       />
     ),
     available: ({ currentDate, currentTime }) => {
@@ -925,7 +915,11 @@ export const events = {
     ...linkBaseFunctions,
     name: socialLinks.Lovers.name,
     label: () => (
-      <SocialLink label="Lovers" name="Yukari Takeba" place="Classroom 2F" />
+      <SocialLink
+        label="Lovers(Romance)"
+        name="Yukari Takeba"
+        place="Classroom 2F"
+      />
     ),
     available: ({ currentDate, currentTime, currentLinks, previousDay }) => {
       if (previousDay === undefined) return false;
@@ -953,11 +947,7 @@ export const events = {
     ...linkBaseFunctions,
     name: socialLinks.Chariot.name,
     label: () => (
-      <SocialLink
-        label="Chariot"
-        name="Kazushi Miyamoto"
-        place="Classroom 2F"
-      />
+      <EventCard name="Kazushi Miyamoto" place="Classroom 2F" head="Chariot" />
     ),
     available: ({ currentDate, currentTime }) => {
       const days = [
@@ -978,10 +968,10 @@ export const events = {
     ...linkBaseFunctions,
     name: socialLinks.Justice.name,
     label: () => (
-      <SocialLink
-        label="Justice"
-        name="Chihiro Fushimi"
+      <EventCard
         place="2nd Floor Hallway"
+        name="Chihiro Fushimi"
+        head="Justice"
       />
     ),
     available: ({ currentDate, currentTime, currentLinks, previousDay }) => {
@@ -1005,10 +995,10 @@ export const events = {
     ...linkBaseFunctions,
     name: socialLinks.Justice.name,
     label: () => (
-      <SocialLink
-        label="Justice"
-        name="Chihiro Fushimi"
+      <EventCard
         place="2nd Floor Hallway"
+        name="Chihiro Fushimi"
+        head="Justice"
       />
     ),
     available: ({ currentDate, currentTime, currentLinks, previousDay }) => {
@@ -1032,10 +1022,10 @@ export const events = {
     ...linkBaseFunctions,
     name: socialLinks.Hermit.name,
     label: () => (
-      <SocialLink
-        label="Hermit"
-        name="Maya"
+      <EventCard
         place="Laptop at the Protagonist's room"
+        head="Hermit"
+        name="Maya"
       />
     ),
     available: ({ currentDate, currentTime }) => {
@@ -1050,7 +1040,7 @@ export const events = {
     ...linkBaseFunctions,
     name: socialLinks.Fortune.name,
     label: () => (
-      <SocialLink label="Fortune" name="Keisuke Hiraga" place="Art Club Room" />
+      <SocialLink name="Keisuke Hiraga" place="Art Club Room" label="Fortune" />
     ),
     available: ({ currentDate, currentTime }) => {
       const days = [daysNames.tuesday, daysNames.wednesday, daysNames.thursday];
@@ -1065,10 +1055,10 @@ export const events = {
     ...linkBaseFunctions,
     name: socialLinks.Strength.name,
     label: () => (
-      <SocialLink
-        label="Strength"
-        name="Yuko Nishiwaki"
+      <EventCard
         place="2F Classroom Hallway"
+        name="Yuko Nishiwaki"
+        head="Strength"
       />
     ),
     available: ({ currentDate, currentTime, currentLinks, previousDay }) => {
@@ -1092,10 +1082,10 @@ export const events = {
     ...linkBaseFunctions,
     name: socialLinks.Strength.name,
     label: () => (
-      <SocialLink
-        label="Strength"
-        name="Yuko Nishiwaki"
+      <EventCard
         place="2F Classroom Hallway"
+        head="Strength(Romance)"
+        name="Yuko Nishiwaki"
       />
     ),
     available: ({ currentDate, currentTime, currentLinks, previousDay }) => {
@@ -1119,10 +1109,10 @@ export const events = {
     ...linkBaseFunctions,
     name: socialLinks.HangedMan.name,
     label: () => (
-      <SocialLink
-        label="Hanged Man"
-        name="Maiko Oohashi"
+      <EventCard
         place="Naganaki Shrine"
+        name="Maiko Oohashi"
+        head="Hanged Man"
       />
     ),
     available: ({ currentDate, currentTime }) => {
@@ -1138,10 +1128,10 @@ export const events = {
     ...linkBaseFunctions,
     name: socialLinks.Temperance.name,
     label: () => (
-      <SocialLink
-        label="Temperance"
-        name='André Laurent Jean "Bebe" Geraux'
+      <EventCard
         place="2F Classroom Hallway / 1F Laboratory Hallway (Home Economics Room)"
+        name='André Laurent Jean "Bebe" Geraux'
+        head="Temperance"
       />
     ),
     available: ({ currentDate, currentTime, previousDay }) => {
@@ -1160,11 +1150,7 @@ export const events = {
     ...linkBaseFunctions,
     name: socialLinks.Devil.name,
     label: () => (
-      <SocialLink
-        label="Devil"
-        name="President Tanaka"
-        place="Paulownia Mall"
-      />
+      <EventCard name="President Tanaka" place="Paulownia Mall" head="Devil" />
     ),
     available: ({ currentDate, currentTime, previousDay }) => {
       if (previousDay === undefined) return false;
@@ -1182,7 +1168,7 @@ export const events = {
     ...linkBaseFunctions,
     name: socialLinks.Tower.name,
     label: () => (
-      <SocialLink label="Tower" name="Mutatsu" place="Club Escapade" />
+      <SocialLink place="Club Escapade" name="Mutatsu" label="Tower" />
     ),
     available: ({ currentDate, currentTime, previousDay }) => {
       if (previousDay === undefined) return false;
@@ -1205,10 +1191,10 @@ export const events = {
     ...linkBaseFunctions,
     name: socialLinks.Star.name,
     label: () => (
-      <SocialLink
-        label="Star"
-        name="Mamoru Hayase"
+      <EventCard
         place="Iwatodai Station Strip Mall 1F"
+        name="Mamoru Hayase"
+        head="Star"
       />
     ),
     available: ({ currentDate, currentTime, previousDay }) => {
@@ -1226,7 +1212,7 @@ export const events = {
     ...linkBaseFunctions,
     name: socialLinks.Moon.name,
     label: () => (
-      <SocialLink label="Moon" name="Nozomi Suemitsu" place="Paulownia Mall" />
+      <SocialLink name="Nozomi Suemitsu" place="Paulownia Mall" label="Moon" />
     ),
     available: ({ currentDate, currentTime, previousDay }) => {
       if (previousDay === undefined) return false;
@@ -1242,7 +1228,7 @@ export const events = {
     ...linkBaseFunctions,
     name: socialLinks.Sun.name,
     label: () => (
-      <SocialLink label="Sun" name="Akinari Kamiki" place="Naganaki Shrine" />
+      <SocialLink place="Naganaki Shrine" name="Akinari Kamiki" label="Sun" />
     ),
     available: ({ currentDate, currentTime, previousDay }) => {
       if (previousDay === undefined) return false;
@@ -1258,7 +1244,7 @@ export const events = {
   Aeon: {
     ...linkBaseFunctions,
     name: socialLinks.Aeon.name,
-    label: () => <SocialLink label="Aeon" name="Aigis" place="Classroom 2F" />,
+    label: () => <SocialLink place="Classroom 2F" label="Aeon" name="Aigis" />,
     available: ({ currentDate, currentTime, currentLinks, previousDay }) => {
       if (previousDay === undefined) return false;
       const isFork =
@@ -1285,7 +1271,9 @@ export const events = {
   AeonRomance: {
     ...linkBaseFunctions,
     name: socialLinks.Aeon.name,
-    label: () => <SocialLink label="Aeon" name="Aigis" place="Classroom 2F" />,
+    label: () => (
+      <SocialLink label="Aeon(Romance)" place="Classroom 2F" name="Aigis" />
+    ),
     available: ({ currentDate, currentTime, currentLinks, previousDay }) => {
       if (previousDay === undefined) return false;
       const isFork =
