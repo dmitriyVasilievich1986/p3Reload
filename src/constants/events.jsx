@@ -4,32 +4,6 @@ import { daysNames } from "./monthsNames";
 import { stats } from "./stats";
 import React from "react";
 
-export function SpecialEvent({ label }) {
-  return <h2>{label}</h2>;
-}
-
-export function StatRaise(props) {
-  return (
-    <React.Fragment>
-      <h4 style={{ textAlign: "center" }}>{props.label}</h4>
-      <div>Stats: {props.stats}</div>
-      {props.place && <div>Place: {props.place}</div>}
-      {props.price && <div>Price: {props.price}</div>}
-      {props.gain && <div>Gain: {props.gain}</div>}
-    </React.Fragment>
-  );
-}
-
-export function SocialLink(props) {
-  return (
-    <React.Fragment>
-      <h4 style={{ textAlign: "center" }}>{props.label}</h4>
-      {props.name && <div>name: {props.name}</div>}
-      {props.place && <div>Place: {props.place}</div>}
-    </React.Fragment>
-  );
-}
-
 const initialUpgrade = {
   upgrade: function ({ currentStats, currentLinks }) {
     return { stats: currentStats, links: currentLinks };
@@ -528,7 +502,7 @@ export const events = {
   sleepDuringClass: {
     name: "Sleep During Class",
     category: "stats",
-    label: () => <StatRaise label="Sleep During Class" stats="Courage +2" />,
+    label: () => <EventCard head="Sleep During Class" stats="Courage +2" />,
     available: ({ currentDate, currentTime }) => {
       return currentTime === "morning";
     },
@@ -887,7 +861,7 @@ export const events = {
     ...linkBaseFunctions,
     name: socialLinks.Lovers.name,
     label: () => (
-      <SocialLink label="Lovers" name="Yukari Takeba" place="Classroom 2F" />
+      <EventCard head="Lovers" name="Yukari Takeba" place="Classroom 2F" />
     ),
     available: ({ currentDate, currentTime, currentLinks, previousDay }) => {
       if (previousDay === undefined) return false;
@@ -915,8 +889,8 @@ export const events = {
     ...linkBaseFunctions,
     name: socialLinks.Lovers.name,
     label: () => (
-      <SocialLink
-        label="Lovers(Romance)"
+      <EventCard
+        head="Lovers(Romance)"
         name="Yukari Takeba"
         place="Classroom 2F"
       />
@@ -1040,7 +1014,7 @@ export const events = {
     ...linkBaseFunctions,
     name: socialLinks.Fortune.name,
     label: () => (
-      <SocialLink name="Keisuke Hiraga" place="Art Club Room" label="Fortune" />
+      <EventCard name="Keisuke Hiraga" place="Art Club Room" head="Fortune" />
     ),
     available: ({ currentDate, currentTime }) => {
       const days = [daysNames.tuesday, daysNames.wednesday, daysNames.thursday];
@@ -1168,7 +1142,7 @@ export const events = {
     ...linkBaseFunctions,
     name: socialLinks.Tower.name,
     label: () => (
-      <SocialLink place="Club Escapade" name="Mutatsu" label="Tower" />
+      <EventCard place="Club Escapade" name="Mutatsu" head="Tower" />
     ),
     available: ({ currentDate, currentTime, previousDay }) => {
       if (previousDay === undefined) return false;
@@ -1212,7 +1186,7 @@ export const events = {
     ...linkBaseFunctions,
     name: socialLinks.Moon.name,
     label: () => (
-      <SocialLink name="Nozomi Suemitsu" place="Paulownia Mall" label="Moon" />
+      <EventCard name="Nozomi Suemitsu" place="Paulownia Mall" head="Moon" />
     ),
     available: ({ currentDate, currentTime, previousDay }) => {
       if (previousDay === undefined) return false;
@@ -1228,7 +1202,7 @@ export const events = {
     ...linkBaseFunctions,
     name: socialLinks.Sun.name,
     label: () => (
-      <SocialLink place="Naganaki Shrine" name="Akinari Kamiki" label="Sun" />
+      <EventCard place="Naganaki Shrine" name="Akinari Kamiki" head="Sun" />
     ),
     available: ({ currentDate, currentTime, previousDay }) => {
       if (previousDay === undefined) return false;
@@ -1244,7 +1218,7 @@ export const events = {
   Aeon: {
     ...linkBaseFunctions,
     name: socialLinks.Aeon.name,
-    label: () => <SocialLink place="Classroom 2F" label="Aeon" name="Aigis" />,
+    label: () => <EventCard place="Classroom 2F" label="Aeon" head="Aigis" />,
     available: ({ currentDate, currentTime, currentLinks, previousDay }) => {
       if (previousDay === undefined) return false;
       const isFork =
@@ -1272,7 +1246,7 @@ export const events = {
     ...linkBaseFunctions,
     name: socialLinks.Aeon.name,
     label: () => (
-      <SocialLink label="Aeon(Romance)" place="Classroom 2F" name="Aigis" />
+      <EventCard head="Aeon(Romance)" place="Classroom 2F" name="Aigis" />
     ),
     available: ({ currentDate, currentTime, currentLinks, previousDay }) => {
       if (previousDay === undefined) return false;
@@ -1301,7 +1275,7 @@ export const events = {
     ...linkBaseFunctions,
     name: socialLinks.Fool.name,
     special: true,
-    label: () => <SocialLink label="Fool" name="S.E.E.S." place="Tartarus" />,
+    label: () => <EventCard head="Fool" name="S.E.E.S." place="Tartarus" />,
     available: () => false,
   },
 };
