@@ -1,0 +1,15 @@
+.event-card {
+    &>.head {
+        text-align: center;
+    }
+
+    &>.item {
+        display: flex;
+    
+        &>label {
+            font-weight: bold;
+            width: 50px;
+        }
+    }
+}
+
