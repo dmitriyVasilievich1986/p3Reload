@@ -4,6 +4,12 @@ import { daysNames } from "./monthsNames";
 import { stats } from "./stats";
 import React from "react";
 
+const holidays = [
+  new Date(2009, 3, 29).getTime(),
+  new Date(2009, 4, 4).getTime(),
+  new Date(2009, 4, 5).getTime(),
+];
+
 const initialUpgrade = {
   upgrade: function ({ currentStats, currentLinks }) {
     return { stats: currentStats, links: currentLinks };
