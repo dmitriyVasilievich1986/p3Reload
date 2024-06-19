@@ -3,34 +3,7 @@ import { daysNames } from "./monthsNames";
 import { stats } from "./stats";
 import React from "react";
 
-export function Choice({ label, correct = false }) {
-  return (
-    <div
-      style={{
-        backgroundColor: correct ? "green" : "inherit",
-        textAlign: "center",
-      }}
-    >
-      {label}
-    </div>
-  );
-}
 
-export function ChoicesEvent({ label, children, head = null }) {
-  return (
-    <div>
-      <h4>{label}</h4>
-      <div
-        style={{
-          display: "flex",
-          justifyContent: "center",
-        }}
-      >
-        <div style={{ width: "250px" }}>{children}</div>
-      </div>
-    </div>
-  );
-}
 
 export function SpecialEvent({ label }) {
   return <h2>{label}</h2>;
