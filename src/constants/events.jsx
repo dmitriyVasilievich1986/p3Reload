@@ -677,6 +677,68 @@ export const events = {
       };
     },
   },
+  lobbyPCAcademics: {
+    name: "lobbyPCAcademics",
+    category: "stats",
+    label: () => (
+      <EventCard head="Lobby PC" place="Dorm" stats="Academics +4" />
+    ),
+    available: ({ currentTime, currentDate }) => {
+      return (
+        ["day", "evening"].includes(currentTime) &&
+        currentDate.getTime() >= new Date(2009, 3, 29).getTime()
+      );
+    },
+    upgrade: function ({ currentStats, currentLinks }) {
+      return {
+        links: { ...currentLinks },
+        stats: {
+          ...currentStats,
+          [stats.Academics.name]: currentStats[stats.Academics.name] + 4,
+        },
+      };
+    },
+  },
+  lobbyPCCourage: {
+    name: "lobbyPCCourage",
+    category: "stats",
+    label: () => <EventCard head="Lobby PC" place="Dorm" stats="Courage +4" />,
+    available: ({ currentTime, currentDate }) => {
+      return (
+        ["day", "evening"].includes(currentTime) &&
+        currentDate.getTime() >= new Date(2009, 3, 29).getTime()
+      );
+    },
+    upgrade: function ({ currentStats, currentLinks }) {
+      return {
+        links: { ...currentLinks },
+        stats: {
+          ...currentStats,
+          [stats.Courage.name]: currentStats[stats.Courage.name] + 4,
+        },
+      };
+    },
+  },
+  lobbyPCCharm: {
+    name: "lobbyPCCharm",
+    category: "stats",
+    label: () => <EventCard head="Lobby PC" place="Dorm" stats="Charm +4" />,
+    available: ({ currentTime, currentDate }) => {
+      return (
+        ["day", "evening"].includes(currentTime) &&
+        currentDate.getTime() >= new Date(2009, 3, 29).getTime()
+      );
+    },
+    upgrade: function ({ currentStats, currentLinks }) {
+      return {
+        links: { ...currentLinks },
+        stats: {
+          ...currentStats,
+          [stats.Charm.name]: currentStats[stats.Charm.name] + 4,
+        },
+      };
+    },
+  },
   Magician: {
     ...linkBaseFunctions,
     name: socialLinks.Magician.name,
