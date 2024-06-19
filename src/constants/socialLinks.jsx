@@ -1,6 +1,8 @@
 import { Choices, Choice } from "../components/choices/Choices";
 import React from "react";
 
+const mainCharName = "Protagonist";
+
 function choice(props) {
   let points = 0;
 
@@ -953,11 +955,11 @@ export const socialLinks = {
       LinkLevel(),
       LinkLevel(0, [
         choices("What was your name again?", [
-          choice({ label: "Tell him your name.", ok: true }),
+          choice({ label: mainCharName, ok: true }),
           choice({ label: "..." }),
         ]),
         choices(
-          "Someone gave them to me, but I have more than enough. Go ahead and take it, Makoto-chan.",
+          `Someone gave it to me, but I have more than enough. Go ahead and take it, ${mainCharName}-chan.`,
           [
             choice({ label: "Thank you.", correct: true }),
             choice({ label: "I'm okay, thanks." }),
@@ -971,7 +973,7 @@ export const socialLinks = {
           ]
         ),
         choices(
-          "He should be here helping customers... Sorry about that, Makoto-chan.",
+          `He should be here helping customers... Sorry about that, ${mainCharName}-chan.`,
           [
             choice({ label: "Boy?" }),
             choice({ label: "No need to apologize." }),
@@ -988,9 +990,9 @@ export const socialLinks = {
           choice({ label: "Cleaning the store?" }),
         ]),
         choices(
-          "I'm looking for my glasses-Er, not my glasses - my wallet! I can't seem to find it.",
+          "It's not y contact lens I'm looking for, it's my wallet. My wallet! Now, where did I put it?",
           [
-            choice({ label: "Best of luck." }),
+            choice({ label: "Best of luck.", ok: true }),
             choice({ label: "Can I help?", correct: true }),
           ]
         ),
@@ -1020,14 +1022,13 @@ export const socialLinks = {
       LinkLevel(20, [
         choices("My wife just headed out to Gekkoukan.", [
           choice({ label: "I should go too.", correct: true }),
-          choice({ label: "I'll wait here.", ok: true }),
+          choice({ label: "I'll wait here.", correct: true }),
         ]),
         choices("The... The... The tree...", [
-          choice({ label: "Ask what happened" }),
-          choice({ label: "Remain silent" }),
+          choice({ label: "What happened" }),
+          choice({ label: "Tree?" }),
         ]),
-        choices("", [
-          choice({ label: "Do you know anything about this, Makoto-chan?" }),
+        choices(`Do you know anything about this, ${mainCharName}-chan?`, [
           choice({ label: "No, I don't." }),
           choice({ label: "I'm worried.", ok: true }),
         ]),
@@ -1054,7 +1055,7 @@ export const socialLinks = {
           ]
         ),
         choices(
-          "Unfortunately, that just reminded my dear the pain we felt the day our son died...",
+          "Unfortunately, that just reminded my dear of the pain we felt the day our son died...",
           [
             choice({ label: "Cheer up." }),
             choice({ label: "I'm sure it'll be okay." }),
@@ -1074,7 +1075,7 @@ export const socialLinks = {
           ]
         ),
         choices(
-          "You must be the one who called on them for this, right, Makoto-chan?",
+          `You must be the one who called on them for this, right, ${mainCharName}-chan?`,
           [
             choice({ label: "No.", ok: true }),
             choice({ label: "That's right.", ok: true }),
@@ -1084,7 +1085,7 @@ export const socialLinks = {
       ]),
       LinkLevel(20, [
         choices("Who do you think it was? Here's a hint: 'signature.'", [
-          choice({ label: "A petitioner?" }),
+          choice({ label: "A petitioner?", ok: true }),
           choice({ label: "A fan of yours?", ok: true }),
         ]),
         choices(
@@ -1096,12 +1097,12 @@ export const socialLinks = {
         ),
         choices("I have to tell my son the good news!", [
           choice({ label: "Sure, let's go.", correct: true }),
-          choice({ label: "Right now?" }),
+          choice({ label: "Right now?", correct: true }),
         ]),
       ]),
-      LinkLevel(5, [
+      LinkLevel(20, [
         choices(
-          "What? is that surprising? I'm actually quite the net surfer, you know!",
+          "What, is that surprising? I'm actually quite the net surfer, you know!",
           [
             choice({ label: "What does the letter say?", ok: true }),
             choice({ label: "Why a letter?", ok: true }),
