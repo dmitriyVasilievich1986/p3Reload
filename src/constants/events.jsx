@@ -37,6 +37,28 @@ const initialUpgrade = {
   },
 };
 
+const linkBaseFunctions = {
+  name: "",
+  category: "links",
+  upgrade: function ({ currentStats, currentLinks, arcanes }) {
+    let multiplier = currentLinks[this.name].multiplier;
+    if (arcanes.includes(this.name)) multiplier *= 1.51;
+    if (currentStats[stats.Charm.name] >= 100) multiplier *= 1.51;
+
+    const newLinks = socialLinks[this.name].calculate({
+      ...currentLinks[this.name],
+      multiplier,
+    });
+    return {
+      links: {
+        ...currentLinks,
+        ...newLinks,
+      },
+      stats: { ...currentStats },
+    };
+  },
+};
+
 export const events = {
   doNothing: {
     ...initialUpgrade,
@@ -668,8 +690,8 @@ export const events = {
     },
   },
   Magician: {
-    name: "Magician",
-    category: "links",
+    ...linkBaseFunctions,
+    name: socialLinks.Magician.name,
     label: () => (
       <SocialLink
         label="Magician"
@@ -681,28 +703,15 @@ export const events = {
       const days = [daysNames.tuesday, daysNames.thursday, daysNames.friday];
       return (
         currentDate.getTime() >= new Date(2009, 3, 22).getTime() &&
+        !holidays.includes(currentDate.getTime()) &&
         days.includes(currentDate.getDay()) &&
         currentTime === "day"
       );
     },
-    upgrade: function ({ currentStats, currentLinks, arcanes }) {
-      const multiplier = arcanes.includes(socialLinks.Magician.name) ? 1.51 : 1;
-      const newLinks = socialLinks.Magician.calculate({
-        ...currentLinks[socialLinks.Magician.name],
-        multiplier,
-      });
-      return {
-        links: {
-          ...currentLinks,
-          ...newLinks,
-        },
-        stats: { ...currentStats },
-      };
-    },
   },
   Priestess: {
-    name: "Priestess",
-    category: "links",
+    ...linkBaseFunctions,
+    name: socialLinks.Priestess.name,
     label: () => (
       <SocialLink
         label="Priestess"
@@ -727,26 +736,10 @@ export const events = {
         days.includes(currentDate.getDay())
       );
     },
-    upgrade: function ({ currentStats, currentLinks, arcanes }) {
-      const multiplier = arcanes.includes(socialLinks.Priestess.name)
-        ? 1.51
-        : 1;
-      const newLinks = socialLinks.Priestess.calculate({
-        ...currentLinks[socialLinks.Priestess.name],
-        multiplier,
-      });
-      return {
-        links: {
-          ...currentLinks,
-          ...newLinks,
-        },
-        stats: { ...currentStats },
-      };
-    },
   },
   PriestessRomance: {
-    name: "Priestess",
-    category: "links",
+    ...linkBaseFunctions,
+    name: socialLinks.Priestess.name,
     label: () => (
       <SocialLink
         label="Priestess"
@@ -771,27 +764,10 @@ export const events = {
         days.includes(currentDate.getDay())
       );
     },
-    upgrade: function ({ currentStats, currentLinks, arcanes }) {
-      const multiplier = arcanes.includes(socialLinks.Priestess.name)
-        ? 1.51
-        : 1;
-      const newLinks = socialLinks.Priestess.calculate({
-        ...currentLinks[socialLinks.Priestess.name],
-        romance: true,
-        multiplier,
-      });
-      return {
-        links: {
-          ...currentLinks,
-          ...newLinks,
-        },
-        stats: { ...currentStats },
-      };
-    },
   },
   Empress: {
-    name: "Empress",
-    category: "links",
+    ...linkBaseFunctions,
+    name: socialLinks.Empress.name,
     label: () => (
       <SocialLink
         label="Empress"
@@ -821,24 +797,10 @@ export const events = {
         days.includes(currentDate.getDay())
       );
     },
-    upgrade: function ({ currentStats, currentLinks, arcanes }) {
-      const multiplier = arcanes.includes(socialLinks.Empress.name) ? 1.51 : 1;
-      const newLinks = socialLinks.Empress.calculate({
-        ...currentLinks[socialLinks.Empress.name],
-        multiplier,
-      });
-      return {
-        links: {
-          ...currentLinks,
-          ...newLinks,
-        },
-        stats: { ...currentStats },
-      };
-    },
   },
   EmpressRomance: {
-    name: "Empress",
-    category: "links",
+    ...linkBaseFunctions,
+    name: socialLinks.Empress.name,
     label: () => (
       <SocialLink
         label="Empress"
@@ -868,25 +830,10 @@ export const events = {
         days.includes(currentDate.getDay())
       );
     },
-    upgrade: function ({ currentStats, currentLinks, arcanes }) {
-      const multiplier = arcanes.includes(socialLinks.Empress.name) ? 1.51 : 1;
-      const newLinks = socialLinks.Empress.calculate({
-        ...currentLinks[socialLinks.Empress.name],
-        romance: true,
-        multiplier,
-      });
-      return {
-        links: {
-          ...currentLinks,
-          ...newLinks,
-        },
-        stats: { ...currentStats },
-      };
-    },
   },
   Emperor: {
-    name: "Emperor",
-    category: "links",
+    ...linkBaseFunctions,
+    name: socialLinks.Emperor.name,
     label: () => (
       <SocialLink
         label="Emperor"
@@ -905,24 +852,10 @@ export const events = {
         isToday
       );
     },
-    upgrade: function ({ currentStats, currentLinks, arcanes }) {
-      const multiplier = arcanes.includes(socialLinks.Emperor.name) ? 1.51 : 1;
-      const newLinks = socialLinks.Emperor.calculate({
-        ...currentLinks[socialLinks.Emperor.name],
-        multiplier,
-      });
-      return {
-        links: {
-          ...currentLinks,
-          ...newLinks,
-        },
-        stats: { ...currentStats },
-      };
-    },
   },
   Hierophant: {
-    name: "Hierophant",
-    category: "links",
+    ...linkBaseFunctions,
+    name: socialLinks.Hierophant.name,
     label: () => (
       <SocialLink
         label="Hierophant"
@@ -945,26 +878,10 @@ export const events = {
         currentTime === "day"
       );
     },
-    upgrade: function ({ currentStats, currentLinks, arcanes }) {
-      const multiplier = arcanes.includes(socialLinks.Hierophant.name)
-        ? 1.51
-        : 1;
-      const newLinks = socialLinks.Hierophant.calculate({
-        ...currentLinks[socialLinks.Hierophant.name],
-        multiplier,
-      });
-      return {
-        links: {
-          ...currentLinks,
-          ...newLinks,
-        },
-        stats: { ...currentStats },
-      };
-    },
   },
   Lovers: {
-    name: "Lovers",
-    category: "links",
+    ...linkBaseFunctions,
+    name: socialLinks.Lovers.name,
     label: () => (
       <SocialLink label="Lovers" name="Yukari Takeba" place="Classroom 2F" />
     ),
@@ -989,24 +906,10 @@ export const events = {
         isRomance
       );
     },
-    upgrade: function ({ currentStats, currentLinks, arcanes }) {
-      const multiplier = arcanes.includes(socialLinks.Lovers.name) ? 1.51 : 1;
-      const newLinks = socialLinks.Lovers.calculate({
-        ...currentLinks[socialLinks.Lovers.name],
-        multiplier,
-      });
-      return {
-        links: {
-          ...currentLinks,
-          ...newLinks,
-        },
-        stats: { ...currentStats },
-      };
-    },
   },
   LoversRomance: {
-    name: "Lovers",
-    category: "links",
+    ...linkBaseFunctions,
+    name: socialLinks.Lovers.name,
     label: () => (
       <SocialLink label="Lovers" name="Yukari Takeba" place="Classroom 2F" />
     ),
@@ -1031,25 +934,10 @@ export const events = {
         isRomance
       );
     },
-    upgrade: function ({ currentStats, currentLinks, arcanes }) {
-      const multiplier = arcanes.includes(socialLinks.Lovers.name) ? 1.51 : 1;
-      const newLinks = socialLinks.Lovers.calculate({
-        ...currentLinks[socialLinks.Lovers.name],
-        romance: true,
-        multiplier,
-      });
-      return {
-        links: {
-          ...currentLinks,
-          ...newLinks,
-        },
-        stats: { ...currentStats },
-      };
-    },
   },
   Chariot: {
-    name: "Chariot",
-    category: "links",
+    ...linkBaseFunctions,
+    name: socialLinks.Chariot.name,
     label: () => (
       <SocialLink
         label="Chariot"
@@ -1066,28 +954,15 @@ export const events = {
       ];
       return (
         currentDate.getTime() >= new Date(2009, 3, 23).getTime() &&
+        !holidays.includes(currentDate.getTime()) &&
         days.includes(currentDate.getDay()) &&
         currentTime === "day"
       );
     },
-    upgrade: function ({ currentStats, currentLinks, arcanes }) {
-      const multiplier = arcanes.includes(socialLinks.Chariot.name) ? 1.51 : 1;
-      const newLinks = socialLinks.Chariot.calculate({
-        ...currentLinks[socialLinks.Chariot.name],
-        multiplier,
-      });
-      return {
-        links: {
-          ...currentLinks,
-          ...newLinks,
-        },
-        stats: { ...currentStats },
-      };
-    },
   },
   Justice: {
-    name: "Justice",
-    category: "links",
+    ...linkBaseFunctions,
+    name: socialLinks.Justice.name,
     label: () => (
       <SocialLink
         label="Justice"
@@ -1111,24 +986,10 @@ export const events = {
         isRomance
       );
     },
-    upgrade: function ({ currentStats, currentLinks, arcanes }) {
-      const multiplier = arcanes.includes(socialLinks.Justice.name) ? 1.51 : 1;
-      const newLinks = socialLinks.Justice.calculate({
-        ...currentLinks[socialLinks.Justice.name],
-        multiplier,
-      });
-      return {
-        links: {
-          ...currentLinks,
-          ...newLinks,
-        },
-        stats: { ...currentStats },
-      };
-    },
   },
   JusticeRomance: {
-    name: "Justice",
-    category: "links",
+    ...linkBaseFunctions,
+    name: socialLinks.Justice.name,
     label: () => (
       <SocialLink
         label="Justice"
@@ -1152,25 +1013,10 @@ export const events = {
         isRomance
       );
     },
-    upgrade: function ({ currentStats, currentLinks, arcanes }) {
-      const multiplier = arcanes.includes(socialLinks.Justice.name) ? 1.51 : 1;
-      const newLinks = socialLinks.Justice.calculate({
-        ...currentLinks[socialLinks.Justice.name],
-        romance: true,
-        multiplier,
-      });
-      return {
-        links: {
-          ...currentLinks,
-          ...newLinks,
-        },
-        stats: { ...currentStats },
-      };
-    },
   },
   Hermit: {
-    name: "Hermit",
-    category: "links",
+    ...linkBaseFunctions,
+    name: socialLinks.Hermit.name,
     label: () => (
       <SocialLink
         label="Hermit"
@@ -1185,24 +1031,10 @@ export const events = {
         currentTime === "day"
       );
     },
-    upgrade: function ({ currentStats, currentLinks, arcanes }) {
-      const multiplier = arcanes.includes(socialLinks.Hermit.name) ? 1.51 : 1;
-      const newLinks = socialLinks.Hermit.calculate({
-        ...currentLinks[socialLinks.Hermit.name],
-        multiplier,
-      });
-      return {
-        links: {
-          ...currentLinks,
-          ...newLinks,
-        },
-        stats: { ...currentStats },
-      };
-    },
   },
   Fortune: {
-    name: "Fortune",
-    category: "links",
+    ...linkBaseFunctions,
+    name: socialLinks.Fortune.name,
     label: () => (
       <SocialLink label="Fortune" name="Keisuke Hiraga" place="Art Club Room" />
     ),
@@ -1214,24 +1046,10 @@ export const events = {
         currentTime === "day"
       );
     },
-    upgrade: function ({ currentStats, currentLinks, arcanes }) {
-      const multiplier = arcanes.includes(socialLinks.Fortune.name) ? 1.51 : 1;
-      const newLinks = socialLinks.Fortune.calculate({
-        ...currentLinks[socialLinks.Fortune.name],
-        multiplier,
-      });
-      return {
-        links: {
-          ...currentLinks,
-          ...newLinks,
-        },
-        stats: { ...currentStats },
-      };
-    },
   },
   Strength: {
-    name: "Strength",
-    category: "links",
+    ...linkBaseFunctions,
+    name: socialLinks.Strength.name,
     label: () => (
       <SocialLink
         label="Strength"
@@ -1254,25 +1072,11 @@ export const events = {
         currentTime === "day" &&
         isRomance
       );
-    },
-    upgrade: function ({ currentStats, currentLinks, arcanes }) {
-      const multiplier = arcanes.includes(socialLinks.Strength.name) ? 1.51 : 1;
-      const newLinks = socialLinks.Strength.calculate({
-        ...currentLinks[socialLinks.Strength.name],
-        multiplier,
-      });
-      return {
-        links: {
-          ...currentLinks,
-          ...newLinks,
-        },
-        stats: { ...currentStats },
-      };
     },
   },
   StrengthRomance: {
-    name: "Strength",
-    category: "links",
+    ...linkBaseFunctions,
+    name: socialLinks.Strength.name,
     label: () => (
       <SocialLink
         label="Strength"
@@ -1296,25 +1100,10 @@ export const events = {
         isRomance
       );
     },
-    upgrade: function ({ currentStats, currentLinks, arcanes }) {
-      const multiplier = arcanes.includes(socialLinks.Strength.name) ? 1.51 : 1;
-      const newLinks = socialLinks.Strength.calculate({
-        ...currentLinks[socialLinks.Strength.name],
-        romance: true,
-        multiplier,
-      });
-      return {
-        links: {
-          ...currentLinks,
-          ...newLinks,
-        },
-        stats: { ...currentStats },
-      };
-    },
   },
   HangedMan: {
-    name: "HangedMan",
-    category: "links",
+    ...linkBaseFunctions,
+    name: socialLinks.HangedMan.name,
     label: () => (
       <SocialLink
         label="Hanged Man"
@@ -1330,26 +1119,10 @@ export const events = {
         currentTime === "day"
       );
     },
-    upgrade: function ({ currentStats, currentLinks, arcanes }) {
-      const multiplier = arcanes.includes(socialLinks.HangedMan.name)
-        ? 1.51
-        : 1;
-      const newLinks = socialLinks.HangedMan.calculate({
-        ...currentLinks[socialLinks.HangedMan.name],
-        multiplier,
-      });
-      return {
-        links: {
-          ...currentLinks,
-          ...newLinks,
-        },
-        stats: { ...currentStats },
-      };
-    },
   },
   Temperance: {
-    name: "Temperance",
-    category: "links",
+    ...linkBaseFunctions,
+    name: socialLinks.Temperance.name,
     label: () => (
       <SocialLink
         label="Temperance"
@@ -1368,26 +1141,10 @@ export const events = {
         currentTime === "day"
       );
     },
-    upgrade: function ({ currentStats, currentLinks, arcanes }) {
-      const multiplier = arcanes.includes(socialLinks.Temperance.name)
-        ? 1.51
-        : 1;
-      const newLinks = socialLinks.Temperance.calculate({
-        ...currentLinks[socialLinks.Temperance.name],
-        multiplier,
-      });
-      return {
-        links: {
-          ...currentLinks,
-          ...newLinks,
-        },
-        stats: { ...currentStats },
-      };
-    },
   },
   Devil: {
-    name: "Devil",
-    category: "links",
+    ...linkBaseFunctions,
+    name: socialLinks.Devil.name,
     label: () => (
       <SocialLink
         label="Devil"
@@ -1406,24 +1163,10 @@ export const events = {
         currentTime === "evening"
       );
     },
-    upgrade: function ({ currentStats, currentLinks, arcanes }) {
-      const multiplier = arcanes.includes(socialLinks.Devil.name) ? 1.51 : 1;
-      const newLinks = socialLinks.Devil.calculate({
-        ...currentLinks[socialLinks.Devil.name],
-        multiplier,
-      });
-      return {
-        links: {
-          ...currentLinks,
-          ...newLinks,
-        },
-        stats: { ...currentStats },
-      };
-    },
   },
   Tower: {
-    name: "Tower",
-    category: "links",
+    ...linkBaseFunctions,
+    name: socialLinks.Tower.name,
     label: () => (
       <SocialLink label="Tower" name="Mutatsu" place="Club Escapade" />
     ),
@@ -1443,24 +1186,10 @@ export const events = {
         currentTime === "evening"
       );
     },
-    upgrade: function ({ currentStats, currentLinks, arcanes }) {
-      const multiplier = arcanes.includes(socialLinks.Tower.name) ? 1.51 : 1;
-      const newLinks = socialLinks.Tower.calculate({
-        ...currentLinks[socialLinks.Tower.name],
-        multiplier,
-      });
-      return {
-        links: {
-          ...currentLinks,
-          ...newLinks,
-        },
-        stats: { ...currentStats },
-      };
-    },
   },
   Star: {
-    name: "Star",
-    category: "links",
+    ...linkBaseFunctions,
+    name: socialLinks.Star.name,
     label: () => (
       <SocialLink
         label="Star"
@@ -1478,24 +1207,10 @@ export const events = {
         currentTime === "day"
       );
     },
-    upgrade: function ({ currentStats, currentLinks, arcanes }) {
-      const multiplier = arcanes.includes(socialLinks.Star.name) ? 1.51 : 1;
-      const newLinks = socialLinks.Star.calculate({
-        ...currentLinks[socialLinks.Star.name],
-        multiplier,
-      });
-      return {
-        links: {
-          ...currentLinks,
-          ...newLinks,
-        },
-        stats: { ...currentStats },
-      };
-    },
   },
   Moon: {
-    name: "Moon",
-    category: "links",
+    ...linkBaseFunctions,
+    name: socialLinks.Moon.name,
     label: () => (
       <SocialLink label="Moon" name="Nozomi Suemitsu" place="Paulownia Mall" />
     ),
@@ -1508,24 +1223,10 @@ export const events = {
         currentTime === "day"
       );
     },
-    upgrade: function ({ currentStats, currentLinks, arcanes }) {
-      const multiplier = arcanes.includes(socialLinks.Moon.name) ? 1.51 : 1;
-      const newLinks = socialLinks.Moon.calculate({
-        ...currentLinks[socialLinks.Moon.name],
-        multiplier,
-      });
-      return {
-        links: {
-          ...currentLinks,
-          ...newLinks,
-        },
-        stats: { ...currentStats },
-      };
-    },
   },
   Sun: {
-    name: "Sun",
-    category: "links",
+    ...linkBaseFunctions,
+    name: socialLinks.Sun.name,
     label: () => (
       <SocialLink label="Sun" name="Akinari Kamiki" place="Naganaki Shrine" />
     ),
@@ -1539,24 +1240,10 @@ export const events = {
         currentTime === "day"
       );
     },
-    upgrade: function ({ currentStats, currentLinks, arcanes }) {
-      const multiplier = arcanes.includes(socialLinks.Sun.name) ? 1.51 : 1;
-      const newLinks = socialLinks.Sun.calculate({
-        ...currentLinks[socialLinks.Sun.name],
-        multiplier,
-      });
-      return {
-        links: {
-          ...currentLinks,
-          ...newLinks,
-        },
-        stats: { ...currentStats },
-      };
-    },
   },
   Aeon: {
-    name: "Aeon",
-    category: "links",
+    ...linkBaseFunctions,
+    name: socialLinks.Aeon.name,
     label: () => <SocialLink label="Aeon" name="Aigis" place="Classroom 2F" />,
     available: ({ currentDate, currentTime, currentLinks, previousDay }) => {
       if (previousDay === undefined) return false;
@@ -1579,25 +1266,11 @@ export const events = {
         currentTime === "day" &&
         isRomance
       );
-    },
-    upgrade: function ({ currentStats, currentLinks, arcanes }) {
-      const multiplier = arcanes.includes(socialLinks.Aeon.name) ? 1.51 : 1;
-      const newLinks = socialLinks.Aeon.calculate({
-        ...currentLinks[socialLinks.Aeon.name],
-        multiplier,
-      });
-      return {
-        links: {
-          ...currentLinks,
-          ...newLinks,
-        },
-        stats: { ...currentStats },
-      };
     },
   },
   AeonRomance: {
-    name: "Aeon",
-    category: "links",
+    ...linkBaseFunctions,
+    name: socialLinks.Aeon.name,
     label: () => <SocialLink label="Aeon" name="Aigis" place="Classroom 2F" />,
     available: ({ currentDate, currentTime, currentLinks, previousDay }) => {
       if (previousDay === undefined) return false;
@@ -1621,39 +1294,12 @@ export const events = {
         isRomance
       );
     },
-    upgrade: function ({ currentStats, currentLinks, arcanes }) {
-      const multiplier = arcanes.includes(socialLinks.Aeon.name) ? 1.51 : 1;
-      const newLinks = socialLinks.Aeon.calculate({
-        ...currentLinks[socialLinks.Aeon.name],
-        romance: true,
-        multiplier,
-      });
-      return {
-        links: {
-          ...currentLinks,
-          ...newLinks,
-        },
-        stats: { ...currentStats },
-      };
-    },
   },
   Fool: {
-    name: "Fool",
-    category: "links",
+    ...linkBaseFunctions,
+    name: socialLinks.Fool.name,
     special: true,
     label: () => <SocialLink label="Fool" name="S.E.E.S." place="Tartarus" />,
     available: () => false,
-    upgrade: function ({ currentStats, currentLinks, arcanes }) {
-      const newLinks = socialLinks.Fool.calculate({
-        ...currentLinks[socialLinks.Fool.name],
-      });
-      return {
-        links: {
-          ...currentLinks,
-          ...newLinks,
-        },
-        stats: { ...currentStats },
-      };
-    },
   },
 };
