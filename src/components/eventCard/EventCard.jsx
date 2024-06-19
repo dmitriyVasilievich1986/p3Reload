@@ -14,11 +14,11 @@ export function Item(props) {
   );
 }
 
-export function price(props) {
-  if (!props?.price) return null;
-  if (props.price < 1000) return `¥${props.price}`;
-  const first = Math.floor(props.price / 1000);
-  const second = String(props.price % 1000).padEnd(3, "0");
+export function price(price) {
+  if (!price) return null;
+  if (price < 1000) return `¥${price}`;
+  const first = Math.floor(price / 1000);
+  const second = String(price % 1000).padEnd(3, "0");
   return `¥${first},${second}`;
 }
 
@@ -28,9 +28,9 @@ function EventCard(props) {
       <h3 className={cx("head")}>{props.head}</h3>
       <Item label="Name" value={props?.name} />
       <Item label="Place" value={props?.place} />
+      <Item label="Stats" value={props?.stats} />
       <Item label="Price" value={price(props?.price)} />
       <Item label="Gain" value={price(props?.receive)} />
-      <Item label="Stats" value={props?.stats} />
       {props.children}
     </div>
   );
