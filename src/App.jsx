@@ -171,7 +171,7 @@ function Calendar(props) {
           c.activities = {
             morning: c.activities.morning?.special
               ? c.activities.morning
-              : events.doNothing,
+              : events.stayAwakeInClass,
             day: c.activities.day?.special
               ? c.activities.day
               : events.doNothing,
