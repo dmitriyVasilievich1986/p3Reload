@@ -162,7 +162,6 @@ const april = [
         ...events.schoolQuestionCharm,
         label: () => (
           <Choices
-            head="At school"
             label={
               "The places where people dumped their waste in the Jomon Period - What are they called nowadays?"
             }
@@ -276,7 +275,6 @@ const april = [
         special: true,
         label: () => (
           <Choices
-            head="At school"
             label={
               "Do you know which one's not an algebraic spiral or whatever?"
             }
