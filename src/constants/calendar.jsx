@@ -10,6 +10,12 @@ const initialStats = {
   [stats.Courage.name]: 0,
 };
 
+const classmates = [
+  socialLinks.Magician.name,
+  socialLinks.Chariot.name,
+  socialLinks.Lovers.name,
+];
+
 const initialLinks = Object.fromEntries(
   Object.keys(socialLinks).map((k) => [
     k,
@@ -332,6 +338,9 @@ export function initialCalculataion(calendar) {
     const previousDay = calendar.find(
       (d) => d.date.getTime() === c.date.getTime() - 86400000
     );
+    const weekAgoStats = calendar.find(
+      (d) => d.date.getTime() === c.date.getTime() - 86400000 * 7
+    )?.stats || { ...initialStats };
     let currentStats = previousDay?.stats || { ...initialStats };
     let currentLinks = previousDay?.links || { ...initialLinks };
     let response = null;
@@ -352,6 +361,7 @@ export function initialCalculataion(calendar) {
     }
     if (c.activities.morning !== null) {
       response = c.activities.morning.upgrade({
+        weekAgoStats: weekAgoStats,
         currentStats: currentStats,
         currentLinks: currentLinks,
         arcanes: c.arcanes,
@@ -361,6 +371,7 @@ export function initialCalculataion(calendar) {
     }
     if (c.activities.day !== null) {
       response = c.activities.day.upgrade({
+        weekAgoStats: weekAgoStats,
         currentStats: currentStats,
         currentLinks: currentLinks,
         arcanes: c.arcanes,
@@ -370,6 +381,7 @@ export function initialCalculataion(calendar) {
     }
     if (c.activities.evening !== null) {
       response = c.activities.evening.upgrade({
+        weekAgoStats: weekAgoStats,
         currentStats: currentStats,
         currentLinks: currentLinks,
         arcanes: c.arcanes,

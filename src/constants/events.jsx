@@ -88,6 +88,20 @@ export const events = {
       );
     },
   },
+  exams: {
+    ...initialUpgrade,
+    name: "Exams",
+    category: "exams",
+    special: true,
+    available: () => false,
+    label: () => {
+      return (
+        <div>
+          <h3>Exam</h3>
+        </div>
+      );
+    },
+  },
   schoolQuestionCharm: {
     name: "schoolQuestion",
     category: "special",
