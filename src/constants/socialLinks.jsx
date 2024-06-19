@@ -54,16 +54,20 @@ const baseSocialLinkCalculation = {
   getlevel: function ({ level, romance = false }) {
     return this[romance ? "levelsRomance" : "levels"][level];
   },
-  calculate: function ({ level, points, romance = false, multiplier = 1 }) {
+  calculate: function ({ level, points, romance = false, multiplier }) {
     const currentLevel = this.getlevel({ level, romance });
     const isNewlevel = level < this.maxLevel && points >= currentLevel.points;
+    const newPoints = Math.floor(
+      isNewlevel
+        ? currentLevel.maxPoints * multiplier
+        : points + 10 * multiplier
+    );
     return {
       [this.name]: {
         level: isNewlevel ? level + 1 : level,
-        romance: romance,
-        points: isNewlevel
-          ? currentLevel.maxPoints * multiplier
-          : points + 10 * multiplier,
+        points: newPoints,
+        multiplier,
+        romance,
       },
     };
   },
@@ -1749,12 +1753,13 @@ export const socialLinks = {
       if (level === 0) return this.levels[0];
       return this.levels[1];
     },
-    calculate: function ({ level }) {
+    calculate: function ({ level, multiplier }) {
       const isNewlevel = level < this.maxLevel;
       return {
         [this.name]: {
           level: isNewlevel ? level + 1 : level,
           romance: false,
+          multiplier,
           points: 0,
         },
       };
@@ -1785,12 +1790,13 @@ export const socialLinks = {
       if (level === 0) return this.levels[0];
       return this.levels[1];
     },
-    calculate: function ({ level }) {
+    calculate: function ({ level, multiplier }) {
       const isNewlevel = level < this.maxLevel;
       return {
         [this.name]: {
           level: isNewlevel ? level + 1 : level,
           romance: false,
+          multiplier,
           points: 0,
         },
       };
@@ -2964,11 +2970,12 @@ export const socialLinks = {
       if (level === 0) return this.levels[0];
       return this.levels[1];
     },
-    calculate: function ({ level }) {
+    calculate: function ({ level, multiplier }) {
       return {
         [this.name]: {
           level: level + 1,
           romance: false,
+          multiplier,
           points: 0,
         },
       };
