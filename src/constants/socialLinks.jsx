@@ -1154,27 +1154,31 @@ export const socialLinks = {
             choice({ label: "A very special routine." }),
           ]
         ),
+        choices("Let's get go- Argh", [
+          choice({ label: "What's wrong?" }),
+          choice({ label: "Come on, hurry up." }),
+        ]),
       ]),
       LinkLevel(0, [
-        choices("Um... My anemia's just acting up...", [
+        choices("It's just, um... my anemia's acting up.", [
           choice({ label: "Sorry, that sounds awful." }),
           choice({ label: "Are you going to be okay?", ok: true }),
         ]),
         choices(
-          "Even if I put medicine on it, or massage it, the pain won't go away.",
+          "I tried medicine, I tried wrapping it, but the pain won't stop.",
           [
-            choice({ label: "Will it heal?", correct: true }),
-            choice({ label: "Take the day off." }),
+            choice({ label: "Will it heal?", ok: true }),
+            choice({ label: "Take a break from practice." }),
           ]
         ),
       ]),
-      LinkLevel(15, [
-        choices("Wh-What's up...? I was just gonna sneak into practice...", [
+      LinkLevel(18, [
+        choices("Wh-What's up? I was just gonna sneak back into practice.", [
           choice({ label: "Where have you been?" }),
           choice({ label: "Did you ditch?" }),
         ]),
         choices(
-          "She made the appointment without telling me, so... there was nothing I could do!",
+          "She made the appointment without telling me, so there was nothing I could do!",
           [
             choice({ label: "How did it go?" }),
             choice({ label: "That really sucks.", correct: true }),
@@ -1184,7 +1188,7 @@ export const socialLinks = {
       LinkLevel(15, [
         choices("Man... I keep running into you at the weirdest times.", [
           choice({ label: "Back from the hospital?", ok: true }),
-          choice({ label: "You ditched?" }),
+          choice({ label: "Did you ditched?" }),
         ]),
         choices("You gotta be kidding... Why can't I... stand up!?", [
           choice({ label: "Take my shoulder!", correct: true }),
@@ -1193,7 +1197,7 @@ export const socialLinks = {
         ]),
       ]),
       LinkLevel(15, [
-        choices("I want to win so I have to practice.", [
+        choices("I want to win, so I have to practice.", [
           choice({ label: "There's nothing you can do." }),
           choice({ label: "Show some guts, man!", ok: true }),
         ]),
@@ -1208,7 +1212,7 @@ export const socialLinks = {
           "That's why I have to win this meet-so I can make it to nationals!",
           [
             choice({ label: "Do you think you can win?" }),
-            choice({ label: "What about your knee?" }),
+            choice({ label: "What about your knee?", ok: true }),
           ]
         ),
       ]),
