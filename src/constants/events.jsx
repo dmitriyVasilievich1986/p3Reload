@@ -1071,10 +1071,13 @@ export const events = {
       />
     ),
     available: ({ currentDate, currentTime }) => {
+      const freeDay =
+        holidays.includes(currentDate.getTime()) ||
+        currentDate.getDay() === daysNames.sunday;
       return (
         currentDate.getTime() >= new Date(2009, 3, 29).getTime() &&
-        currentDate.getDay() == daysNames.sunday &&
-        currentTime === "day"
+        currentTime === "day" &&
+        freeDay
       );
     },
   },
