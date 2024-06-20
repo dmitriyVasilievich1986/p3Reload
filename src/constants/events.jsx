@@ -100,7 +100,7 @@ export const events = {
         head="Cinema('Unresolved Mysteries')"
         place="Port Island Station"
         stats="Academics +4"
-        price={5000}
+        price={1500}
       />
     ),
     available: ({ currentDate, currentTime }) => {
@@ -125,7 +125,7 @@ export const events = {
         head="Cinema('Thy Name')"
         place="Port Island Station"
         stats="Charm +4"
-        price={5000}
+        price={1500}
       />
     ),
     available: ({ currentDate, currentTime }) => {
@@ -147,16 +147,15 @@ export const events = {
     category: "stats",
     label: () => (
       <EventCard
-        head="Cinema('The Way of the Godson')"
+        head="Cinema('The School of No Wonder/The Way of Godson')"
         place="Port Island Station"
         stats="Courage +4"
-        price={5000}
+        price={1500}
       />
     ),
     available: ({ currentDate, currentTime }) => {
-      return (
-        currentDate.getDay() === daysNames.thursday && currentTime === "day"
-      );
+      const days = [daysNames.monday, daysNames.thursday];
+      return days.includes(currentDate.getDay()) && currentTime === "day";
     },
     upgrade: function ({ currentStats, currentLinks }) {
       return {
