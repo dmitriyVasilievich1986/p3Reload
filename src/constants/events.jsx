@@ -1107,9 +1107,9 @@ export const events = {
       if (previousDay === undefined) return false;
       const isFork =
         previousDay.links &&
-        previousDay.links[socialLinks.Empress.name].level === 6;
+        previousDay.links[socialLinks.Strength.name].level === 6;
       const isRomance =
-        !currentLinks[socialLinks.Empress.name].romance || isFork;
+        !currentLinks[socialLinks.Strength.name].romance || isFork;
       const days = [daysNames.wednesday, daysNames.saturday];
       return (
         currentDate.getTime() >= new Date(2009, 3, 24).getTime() &&
@@ -1134,9 +1134,9 @@ export const events = {
       if (previousDay === undefined) return false;
       const isFork =
         previousDay.links &&
-        previousDay.links[socialLinks.Empress.name].level === 6;
+        previousDay.links[socialLinks.Strength.name].level === 6;
       const isRomance =
-        !currentLinks[socialLinks.Empress.name].romance || isFork;
+        currentLinks[socialLinks.Strength.name].romance || isFork;
       const days = [daysNames.wednesday, daysNames.saturday];
       return (
         currentDate.getTime() >= new Date(2009, 3, 24).getTime() &&
