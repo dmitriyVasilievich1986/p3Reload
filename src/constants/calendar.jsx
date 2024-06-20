@@ -28,6 +28,7 @@ const april = [
     date: new Date(2009, 3, 7),
     stats: initialStats,
     links: initialLinks,
+    singleTimeEvents: [],
     arcanes: [],
     activities: {
       morning: events.special,
@@ -39,6 +40,7 @@ const april = [
     date: new Date(2009, 3, 8),
     stats: initialStats,
     links: initialLinks,
+    singleTimeEvents: [],
     arcanes: [],
     activities: {
       morning: {
@@ -63,6 +65,7 @@ const april = [
     date: new Date(2009, 3, 9),
     stats: initialStats,
     links: initialLinks,
+    singleTimeEvents: [],
     arcanes: [],
     activities: {
       morning: events.stayAwakeInClass,
@@ -74,6 +77,7 @@ const april = [
     date: new Date(2009, 3, 10),
     stats: initialStats,
     links: initialLinks,
+    singleTimeEvents: [],
     arcanes: [],
     activities: {
       morning: events.special,
@@ -85,6 +89,7 @@ const april = [
     date: new Date(2009, 3, 11),
     stats: initialStats,
     links: initialLinks,
+    singleTimeEvents: [],
     arcanes: [],
     activities: {
       morning: events.special,
@@ -96,6 +101,7 @@ const april = [
     date: new Date(2009, 3, 12),
     stats: initialStats,
     links: initialLinks,
+    singleTimeEvents: [],
     arcanes: [],
     activities: {
       morning: events.special,
@@ -107,6 +113,7 @@ const april = [
     date: new Date(2009, 3, 13),
     stats: initialStats,
     links: initialLinks,
+    singleTimeEvents: [],
     arcanes: [],
     activities: {
       morning: events.special,
@@ -118,6 +125,7 @@ const april = [
     date: new Date(2009, 3, 14),
     stats: initialStats,
     links: initialLinks,
+    singleTimeEvents: [],
     arcanes: [],
     activities: {
       morning: events.special,
@@ -129,6 +137,7 @@ const april = [
     date: new Date(2009, 3, 15),
     stats: initialStats,
     links: initialLinks,
+    singleTimeEvents: [],
     arcanes: [],
     activities: {
       morning: events.special,
@@ -140,6 +149,7 @@ const april = [
     date: new Date(2009, 3, 16),
     stats: initialStats,
     links: initialLinks,
+    singleTimeEvents: [],
     arcanes: [],
     activities: {
       morning: events.special,
@@ -151,6 +161,7 @@ const april = [
     date: new Date(2009, 3, 17),
     stats: initialStats,
     links: initialLinks,
+    singleTimeEvents: [],
     arcanes: [],
     activities: {
       morning: events.special,
@@ -162,6 +173,7 @@ const april = [
     date: new Date(2009, 3, 18),
     stats: initialStats,
     links: initialLinks,
+    singleTimeEvents: [],
     arcanes: [],
     activities: {
       morning: {
@@ -186,6 +198,7 @@ const april = [
     date: new Date(2009, 3, 19),
     stats: initialStats,
     links: initialLinks,
+    singleTimeEvents: [],
     arcanes: [],
     activities: {
       morning: events.special,
@@ -197,6 +210,7 @@ const april = [
     date: new Date(2009, 3, 20),
     stats: initialStats,
     links: initialLinks,
+    singleTimeEvents: [],
     arcanes: [],
     activities: {
       morning: events.special,
@@ -208,6 +222,7 @@ const april = [
     date: new Date(2009, 3, 21),
     stats: initialStats,
     links: initialLinks,
+    singleTimeEvents: [],
     arcanes: [],
     activities: {
       morning: events.stayAwakeInClass,
@@ -219,6 +234,7 @@ const april = [
     date: new Date(2009, 3, 22),
     stats: initialStats,
     links: initialLinks,
+    singleTimeEvents: [],
     arcanes: [],
     activities: {
       morning: events.special,
@@ -230,6 +246,7 @@ const april = [
     date: new Date(2009, 3, 23),
     stats: initialStats,
     links: initialLinks,
+    singleTimeEvents: [],
     arcanes: [],
     activities: {
       morning: events.special,
@@ -241,6 +258,7 @@ const april = [
     date: new Date(2009, 3, 24),
     stats: initialStats,
     links: initialLinks,
+    singleTimeEvents: [],
     arcanes: [],
     activities: {
       morning: events.special,
@@ -252,6 +270,7 @@ const april = [
     date: new Date(2009, 3, 25),
     stats: initialStats,
     links: initialLinks,
+    singleTimeEvents: [],
     arcanes: [],
     activities: {
       morning: events.special,
@@ -263,17 +282,19 @@ const april = [
     date: new Date(2009, 3, 26),
     stats: initialStats,
     links: initialLinks,
+    singleTimeEvents: [],
     arcanes: [],
     activities: {
       morning: events.special,
       day: events.Hierophant,
-      evening: events.wilduckBurgeMysteryBurger,
+      evening: events.wakatsuKitchen,
     },
   },
   {
     date: new Date(2009, 3, 27),
     stats: initialStats,
     links: initialLinks,
+    singleTimeEvents: [],
     arcanes: [],
     activities: {
       morning: {
@@ -300,6 +321,7 @@ const april = [
     date: new Date(2009, 3, 28),
     stats: initialStats,
     links: initialLinks,
+    singleTimeEvents: [],
     arcanes: [],
     activities: {
       morning: events.special,
@@ -311,6 +333,7 @@ const april = [
     date: new Date(2009, 3, 29),
     stats: initialStats,
     links: initialLinks,
+    singleTimeEvents: [],
     arcanes: [],
     activities: {
       morning: events.special,
@@ -322,6 +345,7 @@ const april = [
     date: new Date(2009, 3, 30),
     stats: initialStats,
     links: initialLinks,
+    singleTimeEvents: [],
     arcanes: [],
     activities: {
       morning: events.stayAwakeInClass,
@@ -343,6 +367,7 @@ export function initialCalculataion(calendar) {
     )?.stats || { ...initialStats };
     let currentStats = previousDay?.stats || { ...initialStats };
     let currentLinks = previousDay?.links || { ...initialLinks };
+    let singleTimeEvents = previousDay?.singleTimeEvents || [];
     let response = null;
 
     if (
@@ -353,43 +378,47 @@ export function initialCalculataion(calendar) {
     ) {
       response = events.drinkMedicine.upgrade({
         currentStats: currentStats,
-        currentLinks: currentLinks,
-        arcanes: c.arcanes,
       });
       currentStats = response.stats;
-      currentLinks = response.links;
     }
     if (c.activities.morning !== null) {
       response = c.activities.morning.upgrade({
+        singleTimeEvents: singleTimeEvents,
         weekAgoStats: weekAgoStats,
         currentStats: currentStats,
         currentLinks: currentLinks,
         arcanes: c.arcanes,
       });
-      currentStats = response.stats;
-      currentLinks = response.links;
+      singleTimeEvents = response?.singleTimeEvents || singleTimeEvents;
+      currentStats = response?.stats || currentStats;
+      currentLinks = response?.links || currentLinks;
     }
     if (c.activities.day !== null) {
       response = c.activities.day.upgrade({
+        singleTimeEvents: singleTimeEvents,
         weekAgoStats: weekAgoStats,
         currentStats: currentStats,
         currentLinks: currentLinks,
         arcanes: c.arcanes,
       });
-      currentStats = response.stats;
-      currentLinks = response.links;
+      singleTimeEvents = response?.singleTimeEvents || singleTimeEvents;
+      currentStats = response?.stats || currentStats;
+      currentLinks = response?.links || currentLinks;
     }
     if (c.activities.evening !== null) {
       response = c.activities.evening.upgrade({
+        singleTimeEvents: singleTimeEvents,
         weekAgoStats: weekAgoStats,
         currentStats: currentStats,
         currentLinks: currentLinks,
         arcanes: c.arcanes,
       });
-      currentStats = response.stats;
-      currentLinks = response.links;
+      singleTimeEvents = response?.singleTimeEvents || singleTimeEvents;
+      currentStats = response?.stats || currentStats;
+      currentLinks = response?.links || currentLinks;
     }
 
+    c.singleTimeEvents = [...singleTimeEvents];
     c.stats = currentStats;
     c.links = currentLinks;
   });

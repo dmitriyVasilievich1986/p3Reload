@@ -82,9 +82,8 @@ export const events = {
     special: true,
     available: () => false,
     label: () => null,
-    upgrade: function ({ currentStats, currentLinks }) {
+    upgrade: function ({ currentStats }) {
       return {
-        links: { ...currentLinks },
         stats: {
           ...currentStats,
           [stats.Charm.name]: currentStats[stats.Charm.name] + 2,
@@ -103,13 +102,12 @@ export const events = {
         price={1500}
       />
     ),
-    available: ({ currentDate, currentTime }) => {
+    available: function ({ currentDate, currentTime }) {
       const days = [daysNames.wednesday, daysNames.saturday];
       return (currentTime = "day" && days.includes(currentDate.getDay()));
     },
-    upgrade: function ({ currentStats, currentLinks }) {
+    upgrade: function ({ currentStats }) {
       return {
-        links: { ...currentLinks },
         stats: {
           ...currentStats,
           [stats.Academics.name]: currentStats[stats.Academics.name] + 4,
@@ -128,13 +126,12 @@ export const events = {
         price={1500}
       />
     ),
-    available: ({ currentDate, currentTime }) => {
+    available: function ({ currentDate, currentTime }) {
       const days = [daysNames.tuesday, daysNames.friday];
       return days.includes(currentDate.getDay()) && currentTime === "day";
     },
-    upgrade: function ({ currentStats, currentLinks }) {
+    upgrade: function ({ currentStats }) {
       return {
-        links: { ...currentLinks },
         stats: {
           ...currentStats,
           [stats.Charm.name]: currentStats[stats.Charm.name] + 4,
@@ -153,13 +150,12 @@ export const events = {
         price={1500}
       />
     ),
-    available: ({ currentDate, currentTime }) => {
+    available: function ({ currentDate, currentTime }) {
       const days = [daysNames.monday, daysNames.thursday];
       return days.includes(currentDate.getDay()) && currentTime === "day";
     },
-    upgrade: function ({ currentStats, currentLinks }) {
+    upgrade: function ({ currentStats }) {
       return {
-        links: { ...currentLinks },
         stats: {
           ...currentStats,
           [stats.Courage.name]: currentStats[stats.Courage.name] + 4,
@@ -178,15 +174,14 @@ export const events = {
         price={900}
       />
     ),
-    available: ({ currentDate, currentTime }) => {
+    available: function ({ currentDate, currentTime }) {
       return (
         currentDate.getDay() !== daysNames.sunday &&
         ["day", "evening"].includes(currentTime)
       );
     },
-    upgrade: function ({ currentStats, currentLinks }) {
+    upgrade: function ({ currentStats }) {
       return {
-        links: { ...currentLinks },
         stats: {
           ...currentStats,
           [stats.Charm.name]: currentStats[stats.Charm.name] + 3,
@@ -205,7 +200,7 @@ export const events = {
         price={1200}
       />
     ),
-    available: ({ currentDate, currentTime, currentStats }) => {
+    available: function ({ currentDate, currentTime, currentStats }) {
       const days = [daysNames.tuesday, daysNames.wednesday, daysNames.friday];
       return (
         currentStats[stats.Courage.name] >= stats.Courage.levels[2].value &&
@@ -213,9 +208,8 @@ export const events = {
         days.includes(currentDate.getDay())
       );
     },
-    upgrade: function ({ currentStats, currentLinks }) {
+    upgrade: function ({ currentStats }) {
       return {
-        links: { ...currentLinks },
         stats: {
           ...currentStats,
           [stats.Charm.name]: currentStats[stats.Charm.name] + 4,
@@ -234,16 +228,15 @@ export const events = {
         price={500}
       />
     ),
-    available: ({ currentDate, currentTime }) => {
+    available: function ({ currentDate, currentTime }) {
       const days = [daysNames.monday, daysNames.tuesday, daysNames.wednesday];
       return (
         (currentDate.getDay() === daysNames.friday && currentTime === "day") ||
         (currentTime === "evening" && days.includes(currentDate.getDay()))
       );
     },
-    upgrade: function ({ currentStats, currentLinks }) {
+    upgrade: function ({ currentStats }) {
       return {
-        links: { ...currentLinks },
         stats: {
           ...currentStats,
           [stats.Charm.name]: currentStats[stats.Charm.name] + 2,
@@ -262,13 +255,12 @@ export const events = {
         gain={2500}
       />
     ),
-    available: ({ currentDate, currentTime }) => {
+    available: function ({ currentDate, currentTime }) {
       const days = [daysNames.monday, daysNames.tuesday, daysNames.wednesday];
       return currentTime === "evening" && days.includes(currentDate.getDay());
     },
-    upgrade: function ({ currentStats, currentLinks }) {
+    upgrade: function ({ currentStats }) {
       return {
-        links: { ...currentLinks },
         stats: {
           ...currentStats,
           [stats.Courage.name]: currentStats[stats.Courage.name] + 1,
@@ -288,16 +280,15 @@ export const events = {
         price={3000}
       />
     ),
-    available: ({ currentDate, currentTime }) => {
+    available: function ({ currentDate, currentTime }) {
       const days = [daysNames.monday, daysNames.thursday];
       return (
         ["day", "evening"].includes(currentTime) &&
         days.includes(currentDate.getDay())
       );
     },
-    upgrade: function ({ currentStats, currentLinks }) {
+    upgrade: function ({ currentStats }) {
       return {
-        links: { ...currentLinks },
         stats: {
           ...currentStats,
           [stats.Charm.name]: currentStats[stats.Charm.name] + 4,
@@ -316,16 +307,15 @@ export const events = {
         price={1200}
       />
     ),
-    available: ({ currentDate, currentTime }) => {
+    available: function ({ currentDate, currentTime }) {
       const days = [daysNames.monday, daysNames.thursday];
       return (
         ["day", "evening"].includes(currentTime) &&
         days.includes(currentDate.getDay())
       );
     },
-    upgrade: function ({ currentStats, currentLinks }) {
+    upgrade: function ({ currentStats }) {
       return {
-        links: { ...currentLinks },
         stats: {
           ...currentStats,
           [stats.Charm.name]: currentStats[stats.Charm.name] + 4,
@@ -344,7 +334,7 @@ export const events = {
         gain={3500}
       />
     ),
-    available: ({ currentDate, currentTime }) => {
+    available: function ({ currentDate, currentTime }) {
       const days = [
         daysNames.monday,
         daysNames.tuesday,
@@ -358,9 +348,8 @@ export const events = {
         currentTime === "day"
       );
     },
-    upgrade: function ({ currentStats, currentLinks }) {
+    upgrade: function ({ currentStats }) {
       return {
-        links: { ...currentLinks },
         stats: {
           ...currentStats,
           [stats.Academics.name]: currentStats[stats.Academics.name] + 1,
@@ -380,15 +369,14 @@ export const events = {
         price={800}
       />
     ),
-    available: ({ currentDate, currentTime }) => {
+    available: function ({ currentDate, currentTime }) {
       return (
         ["day", "evening"].includes(currentTime) &&
         currentDate.getDay() !== daysNames.sunday
       );
     },
-    upgrade: function ({ currentStats, currentLinks }) {
+    upgrade: function ({ currentStats }) {
       return {
-        links: { ...currentLinks },
         stats: {
           ...currentStats,
           [stats.Courage.name]: currentStats[stats.Courage.name] + 2,
@@ -407,16 +395,15 @@ export const events = {
         price={3000}
       />
     ),
-    available: ({ currentDate, currentTime }) => {
+    available: function ({ currentDate, currentTime }) {
       const days = [daysNames.tuesday, daysNames.friday];
       return (
         ["day", "evening"].includes(currentTime) &&
         days.includes(currentDate.getDay())
       );
     },
-    upgrade: function ({ currentStats, currentLinks }) {
+    upgrade: function ({ currentStats }) {
       return {
-        links: { ...currentLinks },
         stats: {
           ...currentStats,
           [stats.Courage.name]: currentStats[stats.Courage.name] + 4,
@@ -435,15 +422,14 @@ export const events = {
         price={1000}
       />
     ),
-    available: ({ currentDate, currentTime }) => {
+    available: function ({ currentDate, currentTime }) {
       return (
         ["day", "evening"].includes(currentTime) &&
         currentDate.getDay() !== daysNames.thursday
       );
     },
-    upgrade: function ({ currentStats, currentLinks }) {
+    upgrade: function ({ currentStats }) {
       return {
-        links: { ...currentLinks },
         stats: {
           ...currentStats,
           [stats.Courage.name]: currentStats[stats.Courage.name] + 3,
@@ -462,16 +448,15 @@ export const events = {
         price={1200}
       />
     ),
-    available: ({ currentDate, currentTime }) => {
+    available: function ({ currentDate, currentTime }) {
       const days = [daysNames.saturday, daysNames.sunday];
       return (
         ["day", "evening"].includes(currentTime) &&
         days.includes(currentDate.getDay())
       );
     },
-    upgrade: function ({ currentStats, currentLinks }) {
+    upgrade: function ({ currentStats }) {
       return {
-        links: { ...currentLinks },
         stats: {
           ...currentStats,
           [stats.Courage.name]: currentStats[stats.Courage.name] + 4,
@@ -490,13 +475,12 @@ export const events = {
         stats="Courage +2"
       />
     ),
-    available: ({ currentDate, currentTime }) => {
+    available: function ({ currentDate, currentTime }) {
       const days = [daysNames.tuesday, daysNames.friday];
       return currentTime === "day" && days.includes(currentDate.getDay());
     },
-    upgrade: function ({ currentStats, currentLinks }) {
+    upgrade: function ({ currentStats }) {
       return {
-        links: { ...currentLinks },
         stats: {
           ...currentStats,
           [stats.Courage.name]: currentStats[stats.Courage.name] + 2,
@@ -508,12 +492,11 @@ export const events = {
     name: "Sleep During Class",
     category: "stats",
     label: () => <EventCard head="Sleep During Class" stats="Courage +2" />,
-    available: ({ currentDate, currentTime }) => {
+    available: function ({ currentDate, currentTime }) {
       return currentTime === "morning";
     },
-    upgrade: function ({ currentStats, currentLinks }) {
+    upgrade: function ({ currentStats }) {
       return {
-        links: { ...currentLinks },
         stats: {
           ...currentStats,
           [stats.Courage.name]: currentStats[stats.Courage.name] + 2,
@@ -525,12 +508,11 @@ export const events = {
     name: "Stay Awake in Class",
     category: "stats",
     label: () => <EventCard head="Stay Awake in Class" stats="Academics +2" />,
-    available: ({ currentDate, currentTime }) => {
+    available: function ({ currentTime }) {
       return currentTime === "morning";
     },
-    upgrade: function ({ currentStats, currentLinks }) {
+    upgrade: function ({ currentStats }) {
       return {
-        links: { ...currentLinks },
         stats: {
           ...currentStats,
           [stats.Academics.name]: currentStats[stats.Academics.name] + 2,
@@ -548,12 +530,11 @@ export const events = {
         place="Your Room"
       />
     ),
-    available: ({ currentDate, currentTime }) => {
+    available: function ({ currentTime }) {
       return currentTime === "evening";
     },
-    upgrade: function ({ currentStats, currentLinks }) {
+    upgrade: function ({ currentStats }) {
       return {
-        links: { ...currentLinks },
         stats: {
           ...currentStats,
           [stats.Academics.name]: currentStats[stats.Academics.name] + 2,
@@ -571,12 +552,11 @@ export const events = {
         stats="Academics +2"
       />
     ),
-    available: ({ currentDate, currentTime }) => {
+    available: function ({ currentTime }) {
       return currentTime === "day";
     },
-    upgrade: function ({ currentStats, currentLinks }) {
+    upgrade: function ({ currentStats }) {
       return {
-        links: { ...currentLinks },
         stats: {
           ...currentStats,
           [stats.Academics.name]: currentStats[stats.Academics.name] + 2,
@@ -595,7 +575,7 @@ export const events = {
         price={680}
       />
     ),
-    available: ({ currentDate, currentTime }) => {
+    available: function ({ currentDate, currentTime }) {
       const days = [
         daysNames.thursday,
         daysNames.friday,
@@ -607,9 +587,8 @@ export const events = {
         days.includes(currentDate.getDay())
       );
     },
-    upgrade: function ({ currentStats, currentLinks }) {
+    upgrade: function ({ currentStats }) {
       return {
-        links: { ...currentLinks },
         stats: {
           ...currentStats,
           [stats.Academics.name]: currentStats[stats.Academics.name] + 3,
@@ -628,7 +607,7 @@ export const events = {
         price={900}
       />
     ),
-    available: ({ currentDate, currentTime, previousDay }) => {
+    available: function ({ currentDate, currentTime, previousDay }) {
       const days = [
         daysNames.monday,
         daysNames.thursday,
@@ -641,9 +620,8 @@ export const events = {
         days.includes(currentDate.getDay())
       );
     },
-    upgrade: function ({ currentStats, currentLinks }) {
+    upgrade: function ({ currentStats }) {
       return {
-        links: { ...currentLinks },
         stats: {
           ...currentStats,
           [stats.Academics.name]: currentStats[stats.Academics.name] + 4,
@@ -662,13 +640,12 @@ export const events = {
         price={3000}
       />
     ),
-    available: ({ currentDate, currentTime }) => {
+    available: function ({ currentDate, currentTime }) {
       const days = [daysNames.wednesday, daysNames.saturday];
       return currentTime === "day" && days.includes(currentDate.getDay());
     },
-    upgrade: function ({ currentStats, currentLinks }) {
+    upgrade: function ({ currentStats }) {
       return {
-        links: { ...currentLinks },
         stats: {
           ...currentStats,
           [stats.Academics.name]: currentStats[stats.Academics.name] + 4,
@@ -676,21 +653,26 @@ export const events = {
       };
     },
   },
-  lobbyPCAcademics: {
-    name: "lobbyPCAcademics",
+  lobbyPCDigitalCramSchool: {
+    name: "lobbyPCDigitalCramSchool",
     category: "stats",
     label: () => (
-      <EventCard head="Lobby PC" place="Dorm" stats="Academics +4" />
+      <EventCard
+        head="Lobby PC(Digital Cram School)"
+        stats="Academics +4"
+        place="Dorm"
+      />
     ),
-    available: ({ currentTime, currentDate }) => {
+    available: function ({ currentTime, currentDate, singleTimeEvents }) {
       return (
+        currentDate.getTime() >= new Date(2009, 3, 29).getTime() &&
         ["day", "evening"].includes(currentTime) &&
-        currentDate.getTime() >= new Date(2009, 3, 29).getTime()
+        !singleTimeEvents.includes(this.name)
       );
     },
-    upgrade: function ({ currentStats, currentLinks }) {
+    upgrade: function ({ currentStats, singleTimeEvents }) {
       return {
-        links: { ...currentLinks },
+        singleTimeEvents: [...singleTimeEvents, this.name],
         stats: {
           ...currentStats,
           [stats.Academics.name]: currentStats[stats.Academics.name] + 4,
@@ -698,19 +680,55 @@ export const events = {
       };
     },
   },
-  lobbyPCCourage: {
-    name: "lobbyPCCourage",
+  lobbyPCLanguageMadeEasy: {
+    name: "lobbyPCLanguageMadeEasy",
     category: "stats",
-    label: () => <EventCard head="Lobby PC" place="Dorm" stats="Courage +4" />,
-    available: ({ currentTime, currentDate }) => {
+    label: () => (
+      <EventCard
+        head="Lobby PC(Language Made Easy)"
+        stats="Academics +4"
+        place="Dorm"
+        price={1200}
+      />
+    ),
+    available: function ({ currentTime, currentDate, singleTimeEvents }) {
       return (
+        currentDate.getTime() >= new Date(2009, 3, 29).getTime() &&
         ["day", "evening"].includes(currentTime) &&
-        currentDate.getTime() >= new Date(2009, 3, 29).getTime()
+        !singleTimeEvents.includes(this.name)
       );
     },
-    upgrade: function ({ currentStats, currentLinks }) {
+    upgrade: function ({ currentStats, singleTimeEvents }) {
       return {
-        links: { ...currentLinks },
+        singleTimeEvents: [...singleTimeEvents, this.name],
+        stats: {
+          ...currentStats,
+          [stats.Academics.name]: currentStats[stats.Academics.name] + 4,
+        },
+      };
+    },
+  },
+  lobbyPCAnimalOthello: {
+    name: "lobbyPCAnimalOthello",
+    category: "stats",
+    label: () => (
+      <EventCard
+        head="Lobby PC(Animal Othello)"
+        stats="Courage +4"
+        place="Dorm"
+        price={1200}
+      />
+    ),
+    available: function ({ currentTime, currentDate, singleTimeEvents }) {
+      return (
+        currentDate.getTime() >= new Date(2009, 3, 29).getTime() &&
+        ["day", "evening"].includes(currentTime) &&
+        !singleTimeEvents.includes(this.name)
+      );
+    },
+    upgrade: function ({ currentStats, singleTimeEvents }) {
+      return {
+        singleTimeEvents: [...singleTimeEvents, this.name],
         stats: {
           ...currentStats,
           [stats.Courage.name]: currentStats[stats.Courage.name] + 4,
@@ -718,19 +736,83 @@ export const events = {
       };
     },
   },
-  lobbyPCCharm: {
-    name: "lobbyPCCharm",
+  lobbyPCTypinGhoul: {
+    name: "lobbyPCTypinGhoul",
     category: "stats",
-    label: () => <EventCard head="Lobby PC" place="Dorm" stats="Charm +4" />,
-    available: ({ currentTime, currentDate }) => {
+    label: () => (
+      <EventCard
+        head="Lobby PC(Typin Ghoul)"
+        stats="Courage +4"
+        place="Dorm"
+        price={1200}
+      />
+    ),
+    available: function ({ currentTime, currentDate, singleTimeEvents }) {
       return (
+        currentDate.getTime() >= new Date(2009, 3, 29).getTime() &&
         ["day", "evening"].includes(currentTime) &&
-        currentDate.getTime() >= new Date(2009, 3, 29).getTime()
+        !singleTimeEvents.includes(this.name)
       );
     },
-    upgrade: function ({ currentStats, currentLinks }) {
+    upgrade: function ({ currentStats, singleTimeEvents }) {
       return {
-        links: { ...currentLinks },
+        singleTimeEvents: [...singleTimeEvents, this.name],
+        stats: {
+          ...currentStats,
+          [stats.Courage.name]: currentStats[stats.Courage.name] + 4,
+        },
+      };
+    },
+  },
+  lobbyPCLessonsInEtiquette: {
+    name: "lobbyPCLessonsInEtiquette",
+    category: "stats",
+    label: () => (
+      <EventCard
+        head="Lobby PC(Lessons in Etiquette)"
+        stats="Charm +4"
+        place="Dorm"
+        price={1200}
+      />
+    ),
+    available: function ({ currentTime, currentDate, singleTimeEvents }) {
+      return (
+        currentDate.getTime() >= new Date(2009, 3, 29).getTime() &&
+        ["day", "evening"].includes(currentTime) &&
+        !singleTimeEvents.includes(this.name)
+      );
+    },
+    upgrade: function ({ currentStats, singleTimeEvents }) {
+      return {
+        singleTimeEvents: [...singleTimeEvents, this.name],
+        stats: {
+          ...currentStats,
+          [stats.Charm.name]: currentStats[stats.Charm.name] + 4,
+        },
+      };
+    },
+  },
+  lobbyPCVirtualDiet: {
+    name: "lobbyPCVirtualDiet",
+    category: "stats",
+    label: () => (
+      <EventCard
+        head="Lobby PC(Virtual Diet)"
+        stats="Charm +4"
+        place="Dorm"
+        price={1200}
+      />
+    ),
+    available: function ({ currentTime, currentDate, singleTimeEvents }) {
+      return (
+        currentDate.getTime() >= new Date(2009, 3, 29).getTime() &&
+        ["day", "evening"].includes(currentTime) &&
+        !singleTimeEvents.includes(this.name)
+      );
+    },
+    upgrade: function ({ currentStats, singleTimeEvents }) {
+      return {
+        singleTimeEvents: [...singleTimeEvents, this.name],
         stats: {
           ...currentStats,
           [stats.Charm.name]: currentStats[stats.Charm.name] + 4,
@@ -744,7 +826,7 @@ export const events = {
     label: () => (
       <EventCard head="Magician" name="Kenji Tomochika" place="Classroom 2F" />
     ),
-    available: ({ currentDate, currentTime }) => {
+    available: function ({ currentDate, currentTime }) {
       const days = [daysNames.tuesday, daysNames.thursday, daysNames.friday];
       return (
         currentDate.getTime() >= new Date(2009, 3, 22).getTime() &&
@@ -764,7 +846,12 @@ export const events = {
         head="Priestess"
       />
     ),
-    available: ({ currentDate, currentTime, currentLinks, previousDay }) => {
+    available: function ({
+      currentDate,
+      currentTime,
+      currentLinks,
+      previousDay,
+    }) {
       if (previousDay === undefined) return false;
       const isFork =
         previousDay.links &&
@@ -792,7 +879,12 @@ export const events = {
         name="Fuuka Yamagishi"
       />
     ),
-    available: ({ currentDate, currentTime, currentLinks, previousDay }) => {
+    available: function ({
+      currentDate,
+      currentTime,
+      currentLinks,
+      previousDay,
+    }) {
       if (previousDay === undefined) return false;
       const isFork =
         previousDay.links &&
@@ -820,7 +912,12 @@ export const events = {
         head="Empress"
       />
     ),
-    available: ({ currentDate, currentTime, currentLinks, previousDay }) => {
+    available: function ({
+      currentDate,
+      currentTime,
+      currentLinks,
+      previousDay,
+    }) {
       if (previousDay === undefined) return false;
       const isFork =
         previousDay.links &&
@@ -853,7 +950,12 @@ export const events = {
         name="Mitsuru Kirijo"
       />
     ),
-    available: ({ currentDate, currentTime, currentLinks, previousDay }) => {
+    available: function ({
+      currentDate,
+      currentTime,
+      currentLinks,
+      previousDay,
+    }) {
       if (previousDay === undefined) return false;
       const isFork =
         previousDay.links &&
@@ -886,7 +988,7 @@ export const events = {
         head="Emperor"
       />
     ),
-    available: ({ currentDate, currentTime }) => {
+    available: function ({ currentDate, currentTime }) {
       const days = [daysNames.monday, daysNames.wednesday, daysNames.friday];
       const isToday =
         currentDate.getTime() >= new Date(2010, 0, 1).getTime() ||
@@ -908,7 +1010,7 @@ export const events = {
         head="Hierophant"
       />
     ),
-    available: ({ currentDate, currentTime }) => {
+    available: function ({ currentDate, currentTime }) {
       const days = [
         daysNames.tuesday,
         daysNames.wednesday,
@@ -930,7 +1032,12 @@ export const events = {
     label: () => (
       <EventCard head="Lovers" name="Yukari Takeba" place="Classroom 2F" />
     ),
-    available: ({ currentDate, currentTime, currentLinks, previousDay }) => {
+    available: function ({
+      currentDate,
+      currentTime,
+      currentLinks,
+      previousDay,
+    }) {
       if (previousDay === undefined) return false;
       const isFork =
         previousDay.links &&
@@ -962,7 +1069,12 @@ export const events = {
         place="Classroom 2F"
       />
     ),
-    available: ({ currentDate, currentTime, currentLinks, previousDay }) => {
+    available: function ({
+      currentDate,
+      currentTime,
+      currentLinks,
+      previousDay,
+    }) {
       if (previousDay === undefined) return false;
       const isFork =
         previousDay.links &&
@@ -990,7 +1102,7 @@ export const events = {
     label: () => (
       <EventCard name="Kazushi Miyamoto" place="Classroom 2F" head="Chariot" />
     ),
-    available: ({ currentDate, currentTime }) => {
+    available: function ({ currentDate, currentTime }) {
       const days = [
         daysNames.monday,
         daysNames.tuesday,
@@ -1015,7 +1127,12 @@ export const events = {
         head="Justice"
       />
     ),
-    available: ({ currentDate, currentTime, currentLinks, previousDay }) => {
+    available: function ({
+      currentDate,
+      currentTime,
+      currentLinks,
+      previousDay,
+    }) {
       if (previousDay === undefined) return false;
       const isFork =
         previousDay.links &&
@@ -1042,7 +1159,12 @@ export const events = {
         head="Justice"
       />
     ),
-    available: ({ currentDate, currentTime, currentLinks, previousDay }) => {
+    available: function ({
+      currentDate,
+      currentTime,
+      currentLinks,
+      previousDay,
+    }) {
       if (previousDay === undefined) return false;
       const isFork =
         previousDay.links &&
@@ -1069,7 +1191,7 @@ export const events = {
         name="Maya"
       />
     ),
-    available: ({ currentDate, currentTime }) => {
+    available: function ({ currentDate, currentTime }) {
       const freeDay =
         holidays.includes(currentDate.getTime()) ||
         currentDate.getDay() === daysNames.sunday;
@@ -1086,7 +1208,7 @@ export const events = {
     label: () => (
       <EventCard name="Keisuke Hiraga" place="Art Club Room" head="Fortune" />
     ),
-    available: ({ currentDate, currentTime }) => {
+    available: function ({ currentDate, currentTime }) {
       const days = [daysNames.tuesday, daysNames.wednesday, daysNames.thursday];
       return (
         currentDate.getTime() >= new Date(2009, 5, 17).getTime() &&
@@ -1105,7 +1227,12 @@ export const events = {
         head="Strength"
       />
     ),
-    available: ({ currentDate, currentTime, currentLinks, previousDay }) => {
+    available: function ({
+      currentDate,
+      currentTime,
+      currentLinks,
+      previousDay,
+    }) {
       if (previousDay === undefined) return false;
       const isFork =
         previousDay.links &&
@@ -1132,7 +1259,12 @@ export const events = {
         name="Yuko Nishiwaki"
       />
     ),
-    available: ({ currentDate, currentTime, currentLinks, previousDay }) => {
+    available: function ({
+      currentDate,
+      currentTime,
+      currentLinks,
+      previousDay,
+    }) {
       if (previousDay === undefined) return false;
       const isFork =
         previousDay.links &&
@@ -1159,7 +1291,7 @@ export const events = {
         head="Hanged Man"
       />
     ),
-    available: ({ currentDate, currentTime }) => {
+    available: function ({ currentDate, currentTime }) {
       const days = [daysNames.monday, daysNames.wednesday, daysNames.saturday];
       return (
         currentDate.getTime() >= new Date(2009, 4, 6).getTime() &&
@@ -1178,7 +1310,7 @@ export const events = {
         head="Temperance"
       />
     ),
-    available: ({ currentDate, currentTime, previousDay }) => {
+    available: function ({ currentDate, currentTime, previousDay }) {
       if (previousDay === undefined) return false;
       const days = [daysNames.tuesday, daysNames.wednesday, daysNames.friday];
       return (
@@ -1196,7 +1328,7 @@ export const events = {
     label: () => (
       <EventCard name="President Tanaka" place="Paulownia Mall" head="Devil" />
     ),
-    available: ({ currentDate, currentTime, previousDay }) => {
+    available: function ({ currentDate, currentTime, previousDay }) {
       if (previousDay === undefined) return false;
       const days = [daysNames.tuesday, daysNames.saturday];
       return (
@@ -1214,7 +1346,7 @@ export const events = {
     label: () => (
       <EventCard place="Club Escapade" name="Mutatsu" head="Tower" />
     ),
-    available: ({ currentDate, currentTime, previousDay }) => {
+    available: function ({ currentDate, currentTime, previousDay }) {
       if (previousDay === undefined) return false;
       const days = [
         daysNames.thursday,
@@ -1241,7 +1373,7 @@ export const events = {
         head="Star"
       />
     ),
-    available: ({ currentDate, currentTime, previousDay }) => {
+    available: function ({ currentDate, currentTime, previousDay }) {
       if (previousDay === undefined) return false;
       const days = [daysNames.wednesday, daysNames.friday, daysNames.sunday];
       return (
@@ -1258,7 +1390,7 @@ export const events = {
     label: () => (
       <EventCard name="Nozomi Suemitsu" place="Paulownia Mall" head="Moon" />
     ),
-    available: ({ currentDate, currentTime, previousDay }) => {
+    available: function ({ currentDate, currentTime, previousDay }) {
       if (previousDay === undefined) return false;
       return (
         currentDate.getTime() >= new Date(2009, 3, 28).getTime() &&
@@ -1274,7 +1406,7 @@ export const events = {
     label: () => (
       <EventCard place="Naganaki Shrine" name="Akinari Kamiki" head="Sun" />
     ),
-    available: ({ currentDate, currentTime, previousDay }) => {
+    available: function ({ currentDate, currentTime, previousDay }) {
       if (previousDay === undefined) return false;
       return (
         currentDate.getTime() >= new Date(2009, 7, 9).getTime() &&
@@ -1289,7 +1421,12 @@ export const events = {
     ...linkBaseFunctions,
     name: socialLinks.Aeon.name,
     label: () => <EventCard place="Classroom 2F" label="Aeon" head="Aigis" />,
-    available: ({ currentDate, currentTime, currentLinks, previousDay }) => {
+    available: function ({
+      currentDate,
+      currentTime,
+      currentLinks,
+      previousDay,
+    }) {
       if (previousDay === undefined) return false;
       const isFork =
         previousDay.links &&
@@ -1318,7 +1455,12 @@ export const events = {
     label: () => (
       <EventCard head="Aeon(Romance)" place="Classroom 2F" name="Aigis" />
     ),
-    available: ({ currentDate, currentTime, currentLinks, previousDay }) => {
+    available: function ({
+      currentDate,
+      currentTime,
+      currentLinks,
+      previousDay,
+    }) {
       if (previousDay === undefined) return false;
       const isFork =
         previousDay.links &&

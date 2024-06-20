@@ -18,6 +18,7 @@ function DayEvent(props) {
 
   const availableEvents = Object.keys(events).filter((e) =>
     events[e].available({
+      singleTimeEvents: props.singleTimeEvents,
       previousDay: props.previousDay,
       currentStats: props.stats,
       currentLinks: props.links,
