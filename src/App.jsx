@@ -13,7 +13,13 @@ function App() {
   if (calendarArray === null) return null;
   return (
     <React.Fragment>
-      <div style={{ width: "100vw", overflow: "scroll", height: "900px" }}>
+      <div
+        style={{
+          width: "100vw",
+          overflow: "scroll",
+          height: "calc(100% + 3rem)",
+        }}
+      >
         <div
           style={{
             width: "fit-content",
