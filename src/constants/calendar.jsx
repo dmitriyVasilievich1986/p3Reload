@@ -1,4 +1,5 @@
 import { Choices, Choice } from "../components/choices/Choices.jsx";
+import EventCard from "../components/eventCard/EventCard.jsx";
 import { socialLinks } from "./socialLinks";
 import { events } from "./events";
 import { stats } from "./stats";
