@@ -296,33 +296,6 @@ export const events = {
       };
     },
   },
-  mangaStarNetCafe: {
-    name: "Manga Star Net Cafe",
-    category: "stats",
-    label: () => (
-      <EventCard
-        head="Manga Star Net Cafe"
-        place="Iwatodai Strip Mall"
-        stats="Charm +4"
-        price={1200}
-      />
-    ),
-    available: function ({ currentDate, currentTime }) {
-      const days = [daysNames.monday, daysNames.thursday];
-      return (
-        ["day", "evening"].includes(currentTime) &&
-        days.includes(currentDate.getDay())
-      );
-    },
-    upgrade: function ({ currentStats }) {
-      return {
-        stats: {
-          ...currentStats,
-          [stats.Charm.name]: currentStats[stats.Charm.name] + 4,
-        },
-      };
-    },
-  },
   beBlueV: {
     name: "Be Blue V(Work part-time)",
     category: "stats",
