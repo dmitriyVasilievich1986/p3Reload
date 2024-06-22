@@ -45,7 +45,9 @@ function DayEvent(props) {
   return (
     <OutsideClick
       clickHandler={() => setShow(false)}
-      onClick={() => setShow((p) => !p)}
+      onClick={() => {
+        !props.event.special && setShow((p) => !p);
+      }}
       className={cx("flex-column")}
     >
       <DropBox show={show}>
