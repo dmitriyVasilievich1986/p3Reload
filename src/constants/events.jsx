@@ -277,7 +277,7 @@ export const events = {
         head="Game Parade(Play High School of Youth)"
         place="Paulownia Mall"
         stats="Charm +4"
-        price={3000}
+        price={1500}
       />
     ),
     available: function ({ currentDate, currentTime }) {
