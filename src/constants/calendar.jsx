@@ -228,7 +228,7 @@ const april = [
     activities: {
       morning: events.stayAwakeInClass,
       day: events.gameParadeCourage,
-      evening: events.gameParadeCourage,
+      evening: events.tartarus,
     },
   },
   {
@@ -240,7 +240,7 @@ const april = [
     activities: {
       morning: events.special,
       day: { ...events.Magician, special: true },
-      evening: events.tartarus,
+      evening: events.gameParadeAcademics,
     },
   },
   {
