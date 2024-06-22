@@ -240,7 +240,7 @@ const april = [
     activities: {
       morning: events.special,
       day: { ...events.Magician, special: true },
-      evening: { ...events.tartarus, special: true },
+      evening: events.tartarus,
     },
   },
   {
