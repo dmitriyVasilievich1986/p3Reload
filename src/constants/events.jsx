@@ -104,7 +104,7 @@ export const events = {
     ),
     available: function ({ currentDate, currentTime }) {
       const days = [daysNames.wednesday, daysNames.saturday];
-      return (currentTime = "day" && days.includes(currentDate.getDay()));
+      return currentTime === "day" && days.includes(currentDate.getDay());
     },
     upgrade: function ({ currentStats }) {
       return {
@@ -642,7 +642,10 @@ export const events = {
     ),
     available: function ({ currentDate, currentTime }) {
       const days = [daysNames.wednesday, daysNames.saturday];
-      return currentTime === "day" && days.includes(currentDate.getDay());
+      return (
+        ["day", "evening"].includes(currentTime) &&
+        days.includes(currentDate.getDay())
+      );
     },
     upgrade: function ({ currentStats }) {
       return {
