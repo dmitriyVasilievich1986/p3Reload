@@ -656,6 +656,23 @@ export const events = {
       };
     },
   },
+  dormExamStudying: {
+    name: "dormExamStudying",
+    category: "stats",
+    special: true,
+    label: () => (
+      <EventCard head="Dorm Exam Studying" stats="Academics +4" place="Dorm" />
+    ),
+    available: () => false,
+    upgrade: function ({ currentStats }) {
+      return {
+        stats: {
+          ...currentStats,
+          [stats.Academics.name]: currentStats[stats.Academics.name] + 4,
+        },
+      };
+    },
+  },
   lobbyPCDigitalCramSchool: {
     name: "lobbyPCDigitalCramSchool",
     category: "stats",
