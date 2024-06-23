@@ -139,7 +139,7 @@ export const may = [
     singleTimeEvents: [],
     arcanes: [],
     activities: {
-      morning: events.special,
+      morning: events.noControl,
       day: events.Hermit,
       evening: events.tartarus,
     },
@@ -190,7 +190,7 @@ export const may = [
     singleTimeEvents: [],
     arcanes: [],
     activities: {
-      morning: events.special,
+      morning: events.noControl,
       day: events.Hierophant,
       evening: events.wakatsuKitchenSpecial,
     },
@@ -232,7 +232,7 @@ export const may = [
     singleTimeEvents: [],
     arcanes: [],
     activities: {
-      morning: events.special,
+      morning: events.noControl,
       day: events.Hermit,
       evening: events.dormExamStudyingTeam,
     },
@@ -351,7 +351,7 @@ export const may = [
     singleTimeEvents: [],
     arcanes: [],
     activities: {
-      morning: events.special,
+      morning: events.noControl,
       day: events.doNothing,
       evening: events.doNothing,
     },
@@ -364,7 +364,7 @@ export const may = [
     activities: {
       morning: {
         ...events.exams,
-        label: () => <h2>Exam results</h2>,
+        label: () => <EventCard head="Exam results" />,
         upgrade: function ({ currentStats, currentLinks, weekAgoStats }) {
           let newMultiplier = 1;
           let charmAddendum = 2;
@@ -408,7 +408,7 @@ export const may = [
     singleTimeEvents: [],
     arcanes: [],
     activities: {
-      morning: events.special,
+      morning: events.noControl,
       day: events.doNothing,
       evening: events.doNothing,
     },
@@ -419,7 +419,7 @@ export const may = [
     singleTimeEvents: [],
     arcanes: [],
     activities: {
-      morning: events.special,
+      morning: events.noControl,
       day: events.doNothing,
       evening: events.doNothing,
     },
@@ -452,7 +452,7 @@ export const may = [
     singleTimeEvents: [],
     arcanes: [],
     activities: {
-      morning: events.special,
+      morning: events.noControl,
       day: events.doNothing,
       evening: events.doNothing,
     },
@@ -463,7 +463,7 @@ export const may = [
     singleTimeEvents: [],
     arcanes: [],
     activities: {
-      morning: events.special,
+      morning: events.noControl,
       day: events.doNothing,
       evening: events.doNothing,
     },
