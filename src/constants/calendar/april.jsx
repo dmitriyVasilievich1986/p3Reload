@@ -284,28 +284,22 @@ export const april = [
     arcanes: [],
     activities: {
       morning: events.special,
-      day: {
-        ...events.Chariot,
+      afterSchool: {
+        ...events.special,
         label: () => (
-          <>
-            <EventCard
-              place="2nd Floor Hallway"
-              name="Chihiro Fushimi"
-              head="Justice"
-            >
-              <Item
-                label="Key"
-                value="Talk to Chihiro and say 'Let's hang out.'"
-              />
-            </EventCard>
-            <EventCard
-              name="Kazushi Miyamoto"
-              place="Classroom 2F"
-              head="Chariot"
+          <EventCard
+            place="2nd Floor Hallway"
+            name="Chihiro Fushimi"
+            head="Justice"
+          >
+            <Item
+              label="Key"
+              value={`Talk to Chihiro and say "Let's hang out."`}
             />
-          </>
+          </EventCard>
         ),
       },
+      day: events.Chariot,
       evening: events.gameParadeCourage,
     },
   },
@@ -327,25 +321,19 @@ export const april = [
     arcanes: [],
     activities: {
       morning: events.stayAwakeInClass,
-      day: {
-        ...events.Magician,
+      afterSchool: {
+        ...events.special,
         label: () => (
-          <>
-            <EventCard
-              place="2nd Floor Hallway"
-              name="Chihiro Fushimi"
-              head="Justice"
-            >
-              <Item label="Key" value="Talk to Chihiro" />
-            </EventCard>
-            <EventCard
-              name="Kenji Tomochika"
-              place="Classroom 2F"
-              head="Magician"
-            />
-          </>
+          <EventCard
+            place="2nd Floor Hallway"
+            name="Chihiro Fushimi"
+            head="Justice"
+          >
+            <Item label="Key" value="Talk to Chihiro" />
+          </EventCard>
         ),
       },
+      day: events.Magician,
       evening: events.gameParadeCharm,
     },
   },

@@ -54,6 +54,7 @@ function Calendar(props) {
               morning: c.activities.morning?.special
                 ? c.activities.morning
                 : events.stayAwakeInClass,
+              afterSchool: null,
               day: c.activities.day?.special
                 ? c.activities.day
                 : events.doNothing,
@@ -84,22 +85,24 @@ function Calendar(props) {
             />
           </Card>
           <Tartarus previousDay={props.previousDay} />
-          {["day", "evening"].map((time) => (
-            <Card
-              enable={!props.activities[time].special}
-              head={time}
-              key={time}
-            >
-              <DayEvent
-                {...props}
-                time={time}
-                event={props.activities[time]}
-                changeHandler={(name) =>
-                  updateCalendar({ activity: { [time]: events[name] } })
-                }
-              />
-            </Card>
-          ))}
+          {["afterSchool", "day", "evening"]
+            .filter((time) => props.activities?.[time])
+            .map((time) => (
+              <Card
+                enable={!props.activities[time].special}
+                head={time}
+                key={time}
+              >
+                <DayEvent
+                  {...props}
+                  time={time}
+                  event={props.activities[time]}
+                  changeHandler={(name) =>
+                    updateCalendar({ activity: { [time]: events[name] } })
+                  }
+                />
+              </Card>
+            ))}
         </div>
       </Card>
       <HeroStats {...props} />

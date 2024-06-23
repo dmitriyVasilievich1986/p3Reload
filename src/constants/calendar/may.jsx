@@ -24,28 +24,22 @@ export const may = [
     arcanes: [],
     activities: {
       morning: events.special,
-      day: {
-        ...events.Strength,
+      afterSchool: {
+        ...events.special,
         label: () => (
-          <>
-            <EventCard
-              place="2nd Floor Hallway"
-              name="Chihiro Fushimi"
-              head="Justice"
-            >
-              <Item
-                value="Talk to Chihiro and say 'Let's hang out.'"
-                label="Key"
-              />
-            </EventCard>
-            <EventCard
-              place="2F Classroom Hallway"
-              name="Yuko Nishiwaki"
-              head="Strength"
+          <EventCard
+            place="2nd Floor Hallway"
+            name="Chihiro Fushimi"
+            head="Justice"
+          >
+            <Item
+              value={`Talk to Chihiro and say "Let's hang out."`}
+              label="Key"
             />
-          </>
+          </EventCard>
         ),
       },
+      day: events.Strength,
       evening: events.gameParadeAcademics,
     },
   },
@@ -79,7 +73,6 @@ export const may = [
     activities: {
       morning: events.special,
       day: events.Hierophant,
-      // day: events.Hermit,
       evening: events.gameParadeCourage,
     },
   },
@@ -212,9 +205,7 @@ export const may = [
         ...events.schoolQuestionCharm,
         label: () => (
           <Choices
-            label={
-              "What's the other name for 'May Sickness'-the more casual one?"
-            }
+            label={`What's the other name for "May Sickness"-the more casual one?`}
           >
             <Choice label="May Blues." points={15} />
           </Choices>
@@ -253,8 +244,8 @@ export const may = [
     arcanes: [],
     activities: {
       morning: events.exams,
-      day: events.special,
-      evening: events.special,
+      day: events.exams,
+      evening: events.exams,
     },
   },
   {
@@ -275,8 +266,8 @@ export const may = [
           </Choices>
         ),
       },
-      day: events.special,
-      evening: events.special,
+      day: events.exams,
+      evening: events.exams,
     },
   },
   {
@@ -297,8 +288,8 @@ export const may = [
           </Choices>
         ),
       },
-      day: events.special,
-      evening: events.special,
+      day: events.exams,
+      evening: events.exams,
     },
   },
   {
@@ -317,8 +308,8 @@ export const may = [
           </Choices>
         ),
       },
-      day: events.special,
-      evening: events.special,
+      day: events.exams,
+      evening: events.exams,
     },
   },
   {
@@ -339,8 +330,8 @@ export const may = [
           </Choices>
         ),
       },
-      day: events.special,
-      evening: events.special,
+      day: events.exams,
+      evening: events.exams,
     },
   },
   {
@@ -439,7 +430,7 @@ export const may = [
     singleTimeEvents: [],
     arcanes: [],
     activities: {
-      morning: events.special,
+      morning: events.stayAwakeInClass,
       day: events.doNothing,
       evening: events.doNothing,
     },
