@@ -988,6 +988,7 @@ export const events = {
         days.includes(currentDate.getDay());
       return (
         currentDate.getTime() >= new Date(2009, 3, 27).getTime() &&
+        !holidays.includes(currentDate.getTime()) &&
         currentTime === "day" &&
         isToday
       );
@@ -1236,6 +1237,7 @@ export const events = {
       return (
         currentDate.getTime() >= new Date(2009, 3, 24).getTime() &&
         previousDay.links[socialLinks.Chariot.name].level >= 2 &&
+        !holidays.includes(currentDate.getTime()) &&
         days.includes(currentDate.getDay()) &&
         currentTime === "day" &&
         isRomance
@@ -1268,6 +1270,7 @@ export const events = {
       return (
         currentDate.getTime() >= new Date(2009, 3, 24).getTime() &&
         previousDay.links[socialLinks.Chariot.name].level >= 2 &&
+        !holidays.includes(currentDate.getTime()) &&
         days.includes(currentDate.getDay()) &&
         currentTime === "day" &&
         isRomance
