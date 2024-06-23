@@ -142,14 +142,39 @@ export const statsEventsAcademics = {
     },
     upgrade: getAcademicsUpgradeFunction(4),
   },
-  dormExamStudying: {
-    name: "dormExamStudying",
+  dormExamStudyingGroup: {
+    name: "dormExamStudyingGroup",
     category: "stats",
-    special: true,
     label: () => (
-      <EventCard head="Dorm Exam Studying" stats="Academics +4" place="Dorm" />
+      <EventCard
+        head="Dorm Exam Group Studying"
+        stats="Academics +4"
+        place="Dorm"
+      />
     ),
-    available: () => false,
+    available: ({ currentDate }) => {
+      const dates = [
+        new Date(2009, 4, 15).getTime(),
+        new Date(2009, 4, 16).getTime(),
+      ];
+      return dates.includes(currentDate.getTime());
+    },
     upgrade: getAcademicsUpgradeFunction(4),
+  },
+  dormExamStudyingTeam: {
+    name: "dormExamStudyingTeam",
+    category: "stats",
+    label: () => (
+      <EventCard
+        head="Dorm Exam Study with the Team"
+        stats="Academics +5"
+        place="Dorm"
+      />
+    ),
+    available: ({ currentDate }) => {
+      const dates = [new Date(2009, 4, 17).getTime()];
+      return dates.includes(currentDate.getTime());
+    },
+    upgrade: getAcademicsUpgradeFunction(5),
   },
 };

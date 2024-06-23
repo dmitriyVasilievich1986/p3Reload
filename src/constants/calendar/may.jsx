@@ -221,16 +221,7 @@ export const may = [
         ),
       },
       day: events.Hierophant,
-      evening: {
-        ...events.dormExamStudying,
-        label: () => (
-          <EventCard
-            head="Group Study with Mitsuru and Akihiko"
-            stats="Academics +4"
-            place="Dorm"
-          />
-        ),
-      },
+      evening: events.dormExamStudyingGroup,
     },
   },
   {
@@ -241,16 +232,7 @@ export const may = [
     activities: {
       morning: events.stayAwakeInClass,
       day: events.HangedMan,
-      evening: {
-        ...events.dormExamStudying,
-        label: () => (
-          <EventCard
-            head="Group Study with Yukari and Junpei"
-            stats="Academics +4"
-            place="Dorm"
-          />
-        ),
-      },
+      evening: events.dormExamStudyingGroup,
     },
   },
   {
@@ -261,24 +243,7 @@ export const may = [
     activities: {
       morning: events.special,
       day: events.Hermit,
-      evening: {
-        ...events.dormExamStudying,
-        upgrade: function ({ currentStats }) {
-          return {
-            stats: {
-              ...currentStats,
-              [stats.Academics.name]: currentStats[stats.Academics.name] + 5,
-            },
-          };
-        },
-        label: () => (
-          <EventCard
-            head="Study with the Team"
-            stats="Academics +5"
-            place="Dorm"
-          />
-        ),
-      },
+      evening: events.dormExamStudyingTeam,
     },
   },
   {
