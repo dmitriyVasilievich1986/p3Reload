@@ -1,4 +1,4 @@
-import { calendar, initialCalculataion } from "./constants/calendar";
+import calendar, { initialCalculataion } from "./constants/calendar";
 import Calendar from "./components/calendarPage/Calendar";
 import React from "react";
 import "./App.css";
