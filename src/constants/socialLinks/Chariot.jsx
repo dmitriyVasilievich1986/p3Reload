@@ -1,3 +1,4 @@
+import EventCard from "../../components/eventCard/EventCard";
 import { stats } from "../stats";
 import React from "react";
 
@@ -7,6 +8,41 @@ import {
   choices,
   choice,
 } from "./baseFunctions";
+
+function chariotStrength() {
+  const payload = LinkLevel(0, [
+    choices("M-My side is killing me...", [
+      choice({ label: "Don't overdo it." }),
+      choice({ label: "Toughen up!", points: 5 }),
+    ]),
+    choices(
+      "You don't even look tired... Uh, what kind of training regimen do you have?",
+      [
+        choice({ label: "Just a normal routine." }),
+        choice({ label: "A very special routine." }),
+      ]
+    ),
+    choices("Let's get go- Argh", [
+      choice({ label: "What's wrong?" }),
+      choice({ label: "Come on, hurry up." }),
+    ]),
+  ]);
+  return {
+    ...payload,
+    element: () => (
+      <>
+        {payload.element()}
+        <EventCard
+          place="2F Classroom Hallway"
+          name="Yuko Nishiwaki"
+          head="Strength"
+        >
+          <h3 style={{ textAlign: "center" }}>Create bond</h3>
+        </EventCard>
+      </>
+    ),
+  };
+}
 
 export const Chariot = {
   name: "Chariot",
@@ -54,23 +90,7 @@ export const Chariot = {
   },
   levels: [
     LinkLevel(),
-    LinkLevel(0, [
-      choices("M-My side is killing me...", [
-        choice({ label: "Don't overdo it." }),
-        choice({ label: "Toughen up!", points: 5 }),
-      ]),
-      choices(
-        "You don't even look tired... Uh, what kind of training regimen do you have?",
-        [
-          choice({ label: "Just a normal routine." }),
-          choice({ label: "A very special routine." }),
-        ]
-      ),
-      choices("Let's get go- Argh", [
-        choice({ label: "What's wrong?" }),
-        choice({ label: "Come on, hurry up." }),
-      ]),
-    ]),
+    chariotStrength(),
     LinkLevel(0, [
       choices("It's just, um... my anemia's acting up.", [
         choice({ label: "Sorry, that sounds awful." }),
