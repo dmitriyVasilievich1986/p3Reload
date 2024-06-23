@@ -34,37 +34,6 @@ const strengthLevels = [
       ]
     ),
   ]),
-  LinkLevel(0, [
-    choices("Going that far would've been crossing the line.", [
-      choice({ label: "Does this happen often?" }),
-      choice({ label: "Do you know who did it?" }),
-    ]),
-    choices("Sorry you got dragged into that.", [
-      choice({ label: "Friend of yours?" }),
-      choice({ label: "Don't worry about it.", points: 5 }),
-    ]),
-    choices(
-      "They called you my boyfriend. That must have made you feel awkward, huh?",
-      [
-        choice({ label: "I'm honored.", fork: true, points: 5 }),
-        choice({ label: "I don't mind.", points: 5 }),
-        choice({ label: "It might be a problem." }),
-      ]
-    ),
-  ]),
-  LinkLevel(20, [
-    choices(`${mainCharName}-kun, what do you think I should do?`, [
-      choice({ label: "Why not give it a go?" }),
-      choice({ label: "That's for you to decide." }),
-    ]),
-    choices(
-      "I mean, why not, right? Please? Honestly, I don't think I can handle it on my own...",
-      [
-        choice({ label: "Sure thing.", points: 5 }),
-        choice({ label: "It's kind of a hassle." }),
-      ]
-    ),
-  ]),
 ];
 
 export const Strength = {
@@ -72,6 +41,37 @@ export const Strength = {
   ...baseSocialLinkCalculation,
   levels: [
     ...strengthLevels,
+    LinkLevel(0, [
+      choices("Going that far would've been crossing the line.", [
+        choice({ label: "Does this happen often?" }),
+        choice({ label: "Do you know who did it?" }),
+      ]),
+      choices("Sorry you got dragged into that.", [
+        choice({ label: "Friend of yours?" }),
+        choice({ label: "Don't worry about it.", points: 5 }),
+      ]),
+      choices(
+        "They called you my boyfriend. That must have made you feel awkward, huh?",
+        [
+          choice({ label: "I'm honored.", points: 5 }),
+          choice({ label: "I don't mind.", fork: true, points: 5 }),
+          choice({ label: "It might be a problem." }),
+        ]
+      ),
+    ]),
+    LinkLevel(20, [
+      choices(`${mainCharName}-kun, what do you think I should do?`, [
+        choice({ label: "Why not give it a go?" }),
+        choice({ label: "That's for you to decide." }),
+      ]),
+      choices(
+        "I mean, why not, right? Please? Honestly, I don't think I can handle it on my own...",
+        [
+          choice({ label: "Sure thing.", points: 5 }),
+          choice({ label: "It's kind of a hassle." }),
+        ]
+      ),
+    ]),
     LinkLevel(15, [
       choices("Elementary school kids really learn fast don't you think?", [
         choice({ label: "You're right. It's impressive.", points: 5 }),
@@ -81,13 +81,9 @@ export const Strength = {
       choices(
         "Should I change the training routine? Maybe they should be running more.",
         [
-          choice({ label: "You shouldn't change it.", points: 5 }),
+          choice({ label: "You shouldn't change it.", fork: true, points: 5 }),
           choice({ label: "Maybe you should rethink it." }),
-          choice({
-            label: "I trust whatever you decide Yuko.",
-            points: 5,
-            fork: true,
-          }),
+          choice({ label: "I trust whatever you decide Yuko.", points: 5 }),
         ]
       ),
     ]),
@@ -206,6 +202,37 @@ export const Strength = {
   ],
   levelsRomance: [
     ...strengthLevels,
+    LinkLevel(0, [
+      choices("Going that far would've been crossing the line.", [
+        choice({ label: "Does this happen often?" }),
+        choice({ label: "Do you know who did it?" }),
+      ]),
+      choices("Sorry you got dragged into that.", [
+        choice({ label: "Friend of yours?" }),
+        choice({ label: "Don't worry about it.", points: 5 }),
+      ]),
+      choices(
+        "They called you my boyfriend. That must have made you feel awkward, huh?",
+        [
+          choice({ label: "I'm honored.", fork: true, points: 5 }),
+          choice({ label: "I don't mind.", points: 5 }),
+          choice({ label: "It might be a problem." }),
+        ]
+      ),
+    ]),
+    LinkLevel(20, [
+      choices(`${mainCharName}-kun, what do you think I should do?`, [
+        choice({ label: "Why not give it a go?" }),
+        choice({ label: "That's for you to decide." }),
+      ]),
+      choices(
+        "I mean, why not, right? Please? Honestly, I don't think I can handle it on my own...",
+        [
+          choice({ label: "Sure thing.", points: 5 }),
+          choice({ label: "It's kind of a hassle." }),
+        ]
+      ),
+    ]),
     LinkLevel(15, [
       choices("Elementary school kids really learn fast don't you think?", [
         choice({ label: "You're right. It's impressive.", points: 5 }),

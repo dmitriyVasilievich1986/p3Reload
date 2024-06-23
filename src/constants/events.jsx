@@ -1216,7 +1216,7 @@ export const events = {
       if (previousDay === undefined) return false;
       const isFork =
         previousDay.links &&
-        previousDay.links[socialLinks.Strength.name].level === 6;
+        previousDay.links[socialLinks.Strength.name].level === 2;
       const isRomance =
         !currentLinks[socialLinks.Strength.name].romance || isFork;
       const days = [daysNames.wednesday, daysNames.saturday];
@@ -1240,6 +1240,19 @@ export const events = {
         name="Yuko Nishiwaki"
       />
     ),
+    upgrade: function ({ currentLinks, ...props }) {
+      return socialLinks[this.name].calculate({
+        ...props,
+        name: this.name,
+        currentLinks: {
+          ...currentLinks,
+          [socialLinks.Strength.name]: {
+            ...currentLinks[socialLinks.Strength.name],
+            romance: true,
+          },
+        },
+      });
+    },
     available: function ({
       currentDate,
       currentTime,
@@ -1249,7 +1262,7 @@ export const events = {
       if (previousDay === undefined) return false;
       const isFork =
         previousDay.links &&
-        previousDay.links[socialLinks.Strength.name].level === 6;
+        previousDay.links[socialLinks.Strength.name].level === 2;
       const isRomance =
         currentLinks[socialLinks.Strength.name].romance || isFork;
       const days = [daysNames.wednesday, daysNames.saturday];
