@@ -1,4 +1,5 @@
 import { Choices, Choice } from "../components/choices/Choices";
+import { stats } from "./stats";
 import React from "react";
 
 const mainCharName = "Protagonist";
@@ -56,20 +57,32 @@ const baseSocialLinkCalculation = {
   getlevel: function ({ level, romance = false }) {
     return this[romance ? "levelsRomance" : "levels"][level];
   },
-  calculate: function ({ level, points, romance = false, multiplier }) {
-    const currentLevel = this.getlevel({ level, romance });
-    const isNewlevel = level < this.maxLevel && points >= currentLevel.points;
+  calculate: function ({ currentStats, currentLinks, arcanes, name }) {
+    const thisLink = currentLinks[name];
+    const currentLevel = this.getlevel({
+      level: thisLink.level,
+      romance: thisLink.romance,
+    });
+    const isNewlevel =
+      thisLink.level < this.maxLevel && thisLink.points >= currentLevel.points;
+
+    let multiplier = thisLink.multiplier;
+    if (arcanes.includes(name)) multiplier *= 1.51;
+    if (currentStats[stats.Charm.name] >= 100) multiplier *= 1.51;
+
     const newPoints = Math.floor(
       isNewlevel
         ? currentLevel.maxPoints * multiplier
-        : points + 10 * multiplier
+        : thisLink.points + 10 * multiplier
     );
     return {
-      [this.name]: {
-        level: isNewlevel ? level + 1 : level,
+      links: {
+        ...currentLinks,
+        [name]: {
+          ...thisLink,
+          level: isNewlevel ? thisLink.level + 1 : thisLink.level,
         points: newPoints,
-        multiplier,
-        romance,
+        },
       },
     };
   },
@@ -1141,6 +1154,48 @@ export const socialLinks = {
   Chariot: {
     name: "Chariot",
     ...baseSocialLinkCalculation,
+    calculate: function ({ currentStats, currentLinks, arcanes, name }) {
+      const thisLink = currentLinks[name];
+      const currentLevel = this.getlevel({
+        level: thisLink.level,
+        romance: thisLink.romance,
+      });
+      const isNewlevel =
+        thisLink.level < this.maxLevel &&
+        thisLink.points >= currentLevel.points;
+
+      let multiplier = thisLink.multiplier;
+      if (arcanes.includes(name)) multiplier *= 1.51;
+      if (currentStats[stats.Charm.name] >= 100) multiplier *= 1.51;
+
+      const newPoints = Math.floor(
+        isNewlevel
+          ? currentLevel.maxPoints * multiplier
+          : thisLink.points + 10 * multiplier
+      );
+      const strengthLink =
+        thisLink.level === 1
+          ? {
+              Strength: {
+                level: 1,
+                points: 0,
+                romance: false,
+                multiplier: thisLink.multiplier,
+              },
+            }
+          : {};
+      return {
+        links: {
+          ...currentLinks,
+          [name]: {
+            ...thisLink,
+            level: isNewlevel ? thisLink.level + 1 : thisLink.level,
+            points: newPoints,
+          },
+          ...strengthLink,
+        },
+      };
+    },
     levels: [
       LinkLevel(),
       LinkLevel(0, [
@@ -1758,14 +1813,16 @@ export const socialLinks = {
       if (level === 0) return this.levels[0];
       return this.levels[1];
     },
-    calculate: function ({ level, multiplier }) {
-      const isNewlevel = level < this.maxLevel;
+    calculate: function ({ currentLinks, name }) {
+      const thisLink = currentLinks[name];
+      const isNewlevel = thisLink.level < this.maxLevel;
       return {
-        [this.name]: {
-          level: isNewlevel ? level + 1 : level,
-          romance: false,
-          multiplier,
-          points: 0,
+        links: {
+          ...currentLinks,
+          [name]: {
+            ...thisLink,
+            level: isNewlevel ? thisLink.level + 1 : thisLink.level,
+          },
         },
       };
     },
@@ -1795,14 +1852,16 @@ export const socialLinks = {
       if (level === 0) return this.levels[0];
       return this.levels[1];
     },
-    calculate: function ({ level, multiplier }) {
-      const isNewlevel = level < this.maxLevel;
+    calculate: function ({ currentLinks, name }) {
+      const thisLink = currentLinks[name];
+      const isNewlevel = thisLink.level < this.maxLevel;
       return {
-        [this.name]: {
-          level: isNewlevel ? level + 1 : level,
-          romance: false,
-          multiplier,
-          points: 0,
+        links: {
+          ...currentLinks,
+          [name]: {
+            ...thisLink,
+            level: isNewlevel ? thisLink.level + 1 : thisLink.level,
+          },
         },
       };
     },
@@ -2975,13 +3034,15 @@ export const socialLinks = {
       if (level === 0) return this.levels[0];
       return this.levels[1];
     },
-    calculate: function ({ level, multiplier }) {
+    calculate: function ({ currentLinks, name }) {
+      const thisLink = currentLinks[name];
       return {
-        [this.name]: {
-          level: level + 1,
-          romance: false,
-          multiplier,
-          points: 0,
+        links: {
+          ...currentLinks,
+          [name]: {
+            ...thisLink,
+            level: thisLink.level + 1,
+          },
         },
       };
     },

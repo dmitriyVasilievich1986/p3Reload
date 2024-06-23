@@ -19,22 +19,8 @@ const initialUpgrade = {
 const linkBaseFunctions = {
   name: "",
   category: "links",
-  upgrade: function ({ currentStats, currentLinks, arcanes }) {
-    let multiplier = currentLinks[this.name].multiplier;
-    if (arcanes.includes(this.name)) multiplier *= 1.51;
-    if (currentStats[stats.Charm.name] >= 100) multiplier *= 1.51;
-
-    const newLinks = socialLinks[this.name].calculate({
-      ...currentLinks[this.name],
-      multiplier,
-    });
-    return {
-      links: {
-        ...currentLinks,
-        ...newLinks,
-      },
-      stats: { ...currentStats },
-    };
+  upgrade: function (props) {
+    return socialLinks[this.name].calculate({ ...props, name: this.name });
   },
 };
 
