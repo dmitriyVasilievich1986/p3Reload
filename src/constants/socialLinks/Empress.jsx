@@ -11,29 +11,29 @@ const empressLevels = [
   LinkLevel(),
   LinkLevel(0, [
     choices("It's smaller than I expected.", [
-      choice({ label: "Is this your first time?", ok: true }),
-      choice({ label: "Do you know how to eat it?", ok: true }),
+      choice({ label: "Is this your first time?", points: 5 }),
+      choice({ label: "Do you know how to eat it?", points: 5 }),
     ]),
   ]),
   LinkLevel(0, [
     choices("Sometimes my own ignorance astounds me...", [
       choice({ label: "Want me to treat you?" }),
-      choice({ label: "Why not give it a try?", ok: true }),
+      choice({ label: "Why not give it a try?", points: 5 }),
     ]),
     choices("Maybe he's just maturing…", [
       choice({ label: "Are you sad?" }),
-      choice({ label: "Are you happy?", correct: true }),
+      choice({ label: "Are you happy?", points: 15 }),
     ]),
     choices("It's the most peculiar feeling", [
-      choice({ label: "Maybe you're in love.", ok: true }),
-      choice({ label: "Maybe you're anxious.", ok: true }),
+      choice({ label: "Maybe you're in love.", points: 5 }),
+      choice({ label: "Maybe you're anxious.", points: 5 }),
       choice({ label: "Maybe you're sad." }),
     ]),
     choices(
       "Sorry for subjecting you to my thoughtless ramblings… Just forget I said anything.",
       [
         choice({ label: "I'm rooting for you." }),
-        choice({ label: "I heard nothing.", ok: true }),
+        choice({ label: "I heard nothing.", points: 5 }),
       ]
     ),
   ]),
@@ -42,11 +42,11 @@ const empressLevels = [
       "In just a short while, we'll be looking back on these days with nostalgia.",
       [
         choice({ label: "What's next for you?" }),
-        choice({ label: "Did something happen?", ok: true }),
+        choice({ label: "Did something happen?", points: 5 }),
       ]
     ),
     choices("What does marriage mean to you?", [
-      choice({ label: "It's all for love", correct: true }),
+      choice({ label: "It's all for love", points: 15 }),
       choice({ label: "It's a social agreement." }),
       choice({ label: "It's about compromise." }),
     ]),
@@ -60,13 +60,13 @@ const empressLevels = [
       "It seems a lot of thought goes into the design and construction of a movie theather.",
       [
         choice({ label: "...Said the rich girl." }),
-        choice({ label: "Glad you enjoyed it.", correct: true }),
+        choice({ label: "Glad you enjoyed it.", points: 15 }),
       ]
     ),
     choices(
       "She's likely more suited to riding a motorcycle than I am as well.",
       [
-        choice({ label: "A motorcycle?", correct: true }),
+        choice({ label: "A motorcycle?", points: 15 }),
         choice({ label: "You're not suited?" }),
       ]
     ),
@@ -74,14 +74,14 @@ const empressLevels = [
       "I don't regret it. Even now, I spend my time tuning it whenever I can.",
       [
         choice({ label: "What a high-class biker." }),
-        choice({ label: "Let's go for a ride.", correct: true }),
+        choice({ label: "Let's go for a ride.", points: 15 }),
       ]
     ),
   ]),
   LinkLevel(22, [
     choices("......", [
-      choice({ label: "Looking for something specific?", ok: true }),
-      choice({ label: "Need some help?", ok: true }),
+      choice({ label: "Looking for something specific?", points: 5 }),
+      choice({ label: "Need some help?", points: 5 }),
       choice({ label: "Borrowing a book?" }),
     ]),
     choices("...Even if I have to make sacrifices to do it.", [
@@ -90,17 +90,17 @@ const empressLevels = [
     ]),
     choices("This is the best solution for everyone involved...", [
       choice({ label: "Is it really?" }),
-      choice({ label: "I didn't know...", ok: true }),
+      choice({ label: "I didn't know...", points: 5 }),
     ]),
     choices("So... I won't run from my fate.", [
-      choice({ label: "Are you sure about this?", ok: true }),
+      choice({ label: "Are you sure about this?", points: 5 }),
       choice({ label: "That's admirable." }),
-      choice({ label: "I'll do something about it.", correct: true }),
+      choice({ label: "I'll do something about it.", points: 15 }),
     ]),
   ]),
   LinkLevel(22, [
     choices("Or, is that too selfish a request?", [
-      choice({ label: "I don't mind at all.", correct: true }),
+      choice({ label: "I don't mind at all.", points: 15 }),
       choice({ label: "Is that all you need?" }),
     ]),
   ]),
@@ -119,8 +119,8 @@ export const Empress = {
       choices(
         "Talking to you has become something of an outlet for me. Heh, I'm sure you're sick of it by now.",
         [
-          choice({ label: "Vent all you want.", ok: true }),
-          choice({ label: "This isn't like you.", ok: true }),
+          choice({ label: "Vent all you want.", points: 5 }),
+          choice({ label: "This isn't like you.", points: 5 }),
         ]
       ),
       choices("Ah... Keep in mind, this is a what-if scenario.", [
@@ -129,18 +129,18 @@ export const Empress = {
       ]),
       choices("How dare you say that!?", [
         choice({ label: "Calm down, Mitsuru" }),
-        choice({ label: "Don't insult her father!", correct: true }),
+        choice({ label: "Don't insult her father!", points: 15 }),
       ]),
       choices("Please excuse me.", [
-        choice({ label: "Don't give in.", correct: true }),
-        choice({ label: "You're sure about this?", ok: true }),
+        choice({ label: "Don't give in.", points: 15 }),
+        choice({ label: "You're sure about this?", points: 5 }),
       ]),
     ]),
     LinkLevel(22, [
       choices("I am so sorry about what happened last time.", [
         choice({ label: "What happened?" }),
         choice({ label: "Don't worry about it." }),
-        choice({ label: "It made me happy.", correct: true }),
+        choice({ label: "It made me happy.", points: 15 }),
       ]),
       choices(
         "I just didn't think I'd end up shouting them in public like that.",
@@ -150,7 +150,7 @@ export const Empress = {
         ]
       ),
       choices("...I feel like I'm going to die of embarassment.", [
-        choice({ label: "I love you too.", correct: true }),
+        choice({ label: "I love you too.", points: 15 }),
         choice({ label: "I'm sorry but..." }),
       ]),
       choices(
@@ -163,7 +163,7 @@ export const Empress = {
         "The battery and tire pressue look good... And I've already changed the oil, so that's fine.",
         [
           choice({ label: "Impressive." }),
-          choice({ label: "Looks like fun.", ok: true }),
+          choice({ label: "Looks like fun.", points: 5 }),
         ]
       ),
     ]),
@@ -183,8 +183,8 @@ export const Empress = {
       choices(
         "Talking to you has become something of an outlet for me. Heh, I'm sure you're sick of it by now.",
         [
-          choice({ label: "Vent all you want.", ok: true }),
-          choice({ label: "This isn't like you.", ok: true }),
+          choice({ label: "Vent all you want.", points: 5 }),
+          choice({ label: "This isn't like you.", points: 5 }),
         ]
       ),
       choices("Ah... Keep in mind, this is a what-if scenario.", [
@@ -193,18 +193,18 @@ export const Empress = {
       ]),
       choices("How dare you say that!?", [
         choice({ label: "Calm down, Mitsuru" }),
-        choice({ label: "Don't insult her father!", correct: true }),
+        choice({ label: "Don't insult her father!", points: 15 }),
       ]),
       choices("Please excuse me.", [
-        choice({ label: "Don't give in.", correct: true }),
-        choice({ label: "You're sure about this?", ok: true }),
+        choice({ label: "Don't give in.", points: 15 }),
+        choice({ label: "You're sure about this?", points: 5 }),
       ]),
     ]),
     LinkLevel(22, [
       choices("I am so sorry about what happened last time.", [
         choice({ label: "What happened?" }),
         choice({ label: "Don't worry about it." }),
-        choice({ label: "It made me happy.", correct: true }),
+        choice({ label: "It made me happy.", points: 15 }),
       ]),
       choices(
         "I just didn't think I'd end up shouting them in public like that.",
@@ -214,7 +214,7 @@ export const Empress = {
         ]
       ),
       choices("...I feel like I'm going to die of embarassment.", [
-        choice({ label: "I love you too.", correct: true }),
+        choice({ label: "I love you too.", points: 15 }),
         choice({ label: "I'm sorry but..." }),
       ]),
       choices(
@@ -227,14 +227,14 @@ export const Empress = {
         "The battery and tire pressue look good... And I've already changed the oil, so that's fine.",
         [
           choice({ label: "Impressive." }),
-          choice({ label: "Looks like fun.", ok: true }),
+          choice({ label: "Looks like fun.", points: 5 }),
         ]
       ),
     ]),
     LinkLevel(22, [
       choices("I'll be looking forward to it.", [
-        choice({ label: "I'll give it a try.", correct: true }),
-        choice({ label: "I'm fine with the back.", ok: true }),
+        choice({ label: "I'll give it a try.", points: 15 }),
+        choice({ label: "I'm fine with the back.", points: 5 }),
       ]),
     ]),
     {

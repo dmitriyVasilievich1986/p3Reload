@@ -17,7 +17,7 @@ export const Emperor = {
         "Some students think the school uniform should be abolished, and they're recruiting supporters.",
         [
           choice({ label: "They've got a point." }),
-          choice({ label: "Sounds like nonsense.", correct: true }),
+          choice({ label: "Sounds like nonsense.", points: 15 }),
         ]
       ),
     ]),
@@ -25,8 +25,8 @@ export const Emperor = {
       choices(
         "What!? You can't decide something like that without talking to the president first.",
         [
-          choice({ label: "What happened?", ok: true }),
-          choice({ label: "No need to fight.", ok: true }),
+          choice({ label: "What happened?", points: 5 }),
+          choice({ label: "No need to fight.", points: 5 }),
         ]
       ),
     ]),
@@ -37,12 +37,12 @@ export const Emperor = {
       ]),
       choices("What is it? Do you need something from me?", [
         choice({ label: "You went a little overboard." }),
-        choice({ label: "Looks like you're hard at work.", correct: true }),
+        choice({ label: "Looks like you're hard at work.", points: 15 }),
       ]),
     ]),
     LinkLevel(15, [
       choices("...Bunch of neanderthals", [
-        choice({ label: "They're the worst.", correct: true }),
+        choice({ label: "They're the worst.", points: 15 }),
         choice({ label: "You shouldn't accuse everyone." }),
       ]),
     ]),
@@ -54,15 +54,15 @@ export const Emperor = {
       choices(
         "So as you can see, we can't exactly hold a meeting right now. You can leave if you want.",
         [
-          choice({ label: "But I just got here…", correct: true }),
-          choice({ label: "I think I'll stick around.", correct: true }),
+          choice({ label: "But I just got here…", points: 15 }),
+          choice({ label: "I think I'll stick around.", points: 15 }),
         ]
       ),
     ]),
     LinkLevel(15, [
       choices("About the smoker's punishment, I mean.", [
         choice({ label: "It seems reasonable." }),
-        choice({ label: "It seems too harsh.", correct: true }),
+        choice({ label: "It seems too harsh.", points: 15 }),
       ]),
     ]),
     LinkLevel(15, [
@@ -71,27 +71,27 @@ export const Emperor = {
         choice({ label: "Why? Is something wrong?" }),
       ]),
       choices("...So, you heard all that.", [
-        choice({ label: "It wasn't me.", correct: true }),
-        choice({ label: "You came to my defense?", ok: true }),
+        choice({ label: "It wasn't me.", points: 15 }),
+        choice({ label: "You came to my defense?", points: 5 }),
       ]),
     ]),
     LinkLevel(22, [
       choices(
         "I rambled on about rules and fairness, but all I really proved was that I was desperate for power.",
         [
-          choice({ label: "Don't blame yourself.", correct: true }),
+          choice({ label: "Don't blame yourself.", points: 15 }),
           choice({ label: "Good thing you noticed." }),
         ]
       ),
     ]),
     LinkLevel(22, [
       choices("So, how did I do? What'd everyone think?", [
-        choice({ label: "Not too shabby.", correct: true }),
-        choice({ label: "You were great.", correct: true }),
+        choice({ label: "Not too shabby.", points: 15 }),
+        choice({ label: "You were great.", points: 15 }),
       ]),
       choices("That's why you should be the one to have it.", [
-        choice({ label: "I'll cherish it.", correct: true }),
-        choice({ label: "I guess I'll take it.", correct: true }),
+        choice({ label: "I'll cherish it.", points: 15 }),
+        choice({ label: "I guess I'll take it.", points: 15 }),
       ]),
     ]),
     {

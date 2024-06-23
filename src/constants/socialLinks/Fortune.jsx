@@ -26,7 +26,7 @@ export const Fortune = {
       choices(
         "It really helped apply the paint to the canvas, so I'm sure that's the only reason the judges even noticed.",
         [
-          choice({ label: "You've got talent!", correct: true }),
+          choice({ label: "You've got talent!", points: 15 }),
           choice({ label: "You got lucky." }),
         ]
       ),
@@ -40,24 +40,24 @@ export const Fortune = {
     ]),
     LinkLevel(15, [
       choices("Did you... hear everything?", [
-        choice({ label: "You're quitting art club?", ok: true }),
-        choice({ label: "You're pulling out of the contest?", ok: true }),
+        choice({ label: "You're quitting art club?", points: 5 }),
+        choice({ label: "You're pulling out of the contest?", points: 5 }),
       ]),
       choices(
         "I have my own dreams too, you know! Ugh, I can't stand it anymore!",
         [
           choice({
             label: "Complaining to me won't help you.",
-            correct: true,
+            points: 15,
           }),
-          choice({ label: "So you're just gonna take it?", ok: true }),
+          choice({ label: "So you're just gonna take it?", points: 5 }),
         ]
       ),
     ]),
     LinkLevel(15, [
       choices("Wait. Then... that means...", [
-        choice({ label: "You should tell your dad.", correct: true }),
-        choice({ label: "Now you don't have to quit.", ok: true }),
+        choice({ label: "You should tell your dad.", points: 15 }),
+        choice({ label: "Now you don't have to quit.", points: 5 }),
       ]),
     ]),
     LinkLevel(15, [
@@ -67,21 +67,21 @@ export const Fortune = {
       ]),
       choices("I just don't know what to think.", [
         choice({ label: "Will you study abroad?" }),
-        choice({ label: "It's your choice now.", correct: true }),
+        choice({ label: "It's your choice now.", points: 15 }),
       ]),
     ]),
     LinkLevel(15, [
       choices(
         "It's like he's suddenly trying to be more understanding. It's weird.",
         [
-          choice({ label: "Do you want to be a doctor?", correct: true }),
+          choice({ label: "Do you want to be a doctor?", points: 15 }),
           choice({ label: "Don't you like art club?" }),
         ]
       ),
     ]),
     LinkLevel(15, [
       choices("Can you remember my name?", [
-        choice({ label: "It's okay, I'm fine.", correct: true }),
+        choice({ label: "It's okay, I'm fine.", points: 15 }),
         choice({ label: "Of course. It's Keisuke." }),
         choice({ label: "......" }),
       ]),
@@ -96,7 +96,7 @@ export const Fortune = {
     ]),
     LinkLevel(22, [
       choices("Tell the others I said goodbye!", [
-        choice({ label: "You can't go!", correct: true }),
+        choice({ label: "You can't go!", points: 15 }),
         choice({ label: "Good luck!" }),
       ]),
       choices("Ma'am, are you all right!? That cough...", [
@@ -120,13 +120,13 @@ export const Fortune = {
     ]),
     LinkLevel(22, [
       choices("That's why I want you to have it.", [
-        choice({ label: "I understand.", correct: true }),
-        choice({ label: "Why?", correct: true }),
-        choice({ label: "Stop relying on others.", correct: true }),
+        choice({ label: "I understand.", points: 15 }),
+        choice({ label: "Why?", points: 15 }),
+        choice({ label: "Stop relying on others.", points: 15 }),
       ]),
       choices("I-I'm not coming off as arrogant, am I?", [
-        choice({ label: "No, not really.", correct: true }),
-        choice({ label: "Yeah.", correct: true }),
+        choice({ label: "No, not really.", points: 15 }),
+        choice({ label: "Yeah.", points: 15 }),
       ]),
     ]),
     {

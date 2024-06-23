@@ -13,7 +13,7 @@ const loversLevels = [
     choices(
       "I think I'll go with the gerberas. What color do you think should I get?",
       [
-        choice({ label: "Cute pink.", correct: true }),
+        choice({ label: "Cute pink.", points: 15 }),
         choice({ label: "Pure white." }),
         choice({ label: "Bright red." }),
         choice({ label: "What's a gerbera?" }),
@@ -22,7 +22,7 @@ const loversLevels = [
     choices(
       "Oh wait, you've never seen my room, have you? Well then, why am I even asking you?",
       [
-        choice({ label: "That's mean.", ok: true }),
+        choice({ label: "That's mean.", points: 5 }),
         choice({ label: "Invite me over, then." }),
       ]
     ),
@@ -37,7 +37,7 @@ const loversLevels = [
     choices("Sorry.", [
       choice({ label: "Who was that?" }),
       choice({ label: "What was that about?" }),
-      choice({ label: "Are you okay?", correct: true }),
+      choice({ label: "Are you okay?", points: 15 }),
     ]),
   ]),
 ];
@@ -67,21 +67,21 @@ export const Lovers = {
         choice({ label: "Just a passerby." }),
       ]),
       choices("I didn't need your help!", [
-        choice({ label: "I'm sorry.", correct: true }),
+        choice({ label: "I'm sorry.", points: 15 }),
         choice({ label: "It's okay to rely on others." }),
         choice({ label: "You're a girl, so..." }),
       ]),
     ]),
     LinkLevel(0, [
       choices("Thanks for your help back then. I really appreciate it.", [
-        choice({ label: "You're quite welcome.", ok: true }),
-        choice({ label: "Anytime.", correct: true }),
+        choice({ label: "You're quite welcome.", points: 5 }),
+        choice({ label: "Anytime.", points: 15 }),
         choice({ label: "Thank you, too." }),
       ]),
       choices(
         "Wouldn't that be annoying, Makoto-kun? Y'know, if people assumed we were dating...",
         [
-          choice({ label: "I wouldn't mind.", ok: true }),
+          choice({ label: "I wouldn't mind.", points: 5 }),
           choice({ label: "Yeah..." }),
         ]
       ),
@@ -90,9 +90,9 @@ export const Lovers = {
       choices(
         "We could have lunch outdoors. Maybe we'll even see a deer or something. Whaddya think?",
         [
-          choice({ label: "Sounds good.", correct: true }),
+          choice({ label: "Sounds good.", points: 15 }),
           choice({ label: "Let's go with everyone." }),
-          choice({ label: "Let's go just the two of us.", correct: true }),
+          choice({ label: "Let's go just the two of us.", points: 15 }),
           choice({ label: "No thanks." }),
         ]
       ),
@@ -101,7 +101,7 @@ export const Lovers = {
       choices(
         "I know! Why don't you come help me pick something out, Makoto-kun?",
         [
-          choice({ label: "Alright.", correct: true }),
+          choice({ label: "Alright.", points: 15 }),
           choice({ label: "Im too lazy." }),
         ]
       ),
@@ -116,7 +116,7 @@ export const Lovers = {
     LinkLevel(15, [
       choices("......", [
         choice({ label: "Hello?" }),
-        choice({ label: "....", correct: true }),
+        choice({ label: "....", points: 15 }),
         choice({ label: "If it's nothing, I'm leaving." }),
       ]),
       choices("What do you really think of me?", [
@@ -128,8 +128,8 @@ export const Lovers = {
       choices(
         "Wait, I didn't mean it like that! Don't get the wrong idea, okay!?",
         [
-          choice({ label: "Too late.", correct: true }),
-          choice({ label: "I didn't hear anything.", correct: true }),
+          choice({ label: "Too late.", points: 15 }),
+          choice({ label: "I didn't hear anything.", points: 15 }),
         ]
       ),
     ]),
@@ -161,21 +161,21 @@ export const Lovers = {
         choice({ label: "Just a passerby." }),
       ]),
       choices("I didn't need your help!", [
-        choice({ label: "I'm sorry.", correct: true }),
+        choice({ label: "I'm sorry.", points: 15 }),
         choice({ label: "It's okay to rely on others." }),
         choice({ label: "You're a girl, so..." }),
       ]),
     ]),
     LinkLevel(0, [
       choices("Thanks for your help back then. I really appreciate it.", [
-        choice({ label: "You're quite welcome.", ok: true }),
-        choice({ label: "Anytime.", correct: true }),
+        choice({ label: "You're quite welcome.", points: 5 }),
+        choice({ label: "Anytime.", points: 15 }),
         choice({ label: "Thank you, too." }),
       ]),
       choices(
         "Wouldn't that be annoying, Makoto-kun? Y'know, if people assumed we were dating...",
         [
-          choice({ label: "I wouldn't mind.", ok: true }),
+          choice({ label: "I wouldn't mind.", points: 5 }),
           choice({ label: "Yeah..." }),
         ]
       ),
@@ -184,9 +184,9 @@ export const Lovers = {
       choices(
         "We could have lunch outdoors. Maybe we'll even see a deer or something. Whaddya think?",
         [
-          choice({ label: "Sounds good.", correct: true }),
+          choice({ label: "Sounds good.", points: 15 }),
           choice({ label: "Let's go with everyone." }),
-          choice({ label: "Let's go just the two of us.", correct: true }),
+          choice({ label: "Let's go just the two of us.", points: 15 }),
           choice({ label: "No thanks." }),
         ]
       ),
@@ -195,7 +195,7 @@ export const Lovers = {
       choices(
         "I know! Why don't you come help me pick something out, Makoto-kun?",
         [
-          choice({ label: "Alright.", correct: true }),
+          choice({ label: "Alright.", points: 15 }),
           choice({ label: "Im too lazy." }),
         ]
       ),
@@ -210,7 +210,7 @@ export const Lovers = {
     LinkLevel(15, [
       choices("......", [
         choice({ label: "Hello?" }),
-        choice({ label: "....", correct: true }),
+        choice({ label: "....", points: 15 }),
         choice({ label: "If it's nothing, I'm leaving." }),
       ]),
       choices("What do you really think of me?", [
@@ -222,8 +222,8 @@ export const Lovers = {
       choices(
         "Wait, I didn't mean it like that! Don't get the wrong idea, okay!?",
         [
-          choice({ label: "Too late.", correct: true }),
-          choice({ label: "I didn't hear anything.", correct: true }),
+          choice({ label: "Too late.", points: 15 }),
+          choice({ label: "I didn't hear anything.", points: 15 }),
         ]
       ),
     ]),

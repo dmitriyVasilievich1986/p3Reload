@@ -13,7 +13,7 @@ const priestessLevels = [
     choices(
       "Maybe I should give him some food. What do you think, Makoto-kun?",
       [
-        choice({ label: "Sure.", correct: true }),
+        choice({ label: "Sure.", points: 15 }),
         choice({ label: "Don't do it." }),
       ]
     ),
@@ -24,7 +24,7 @@ const priestessLevels = [
     choices(
       "I don't think I can do this alone. Can I... count on you to help?",
       [
-        choice({ label: "Sure thing.", correct: true }),
+        choice({ label: "Sure thing.", points: 15 }),
         choice({ label: "Will it be good next time?" }),
       ]
     ),
@@ -33,17 +33,17 @@ const priestessLevels = [
     choices(
       "I still don't have a feel for how much salt to add. How do you do it, Makoto-kun?",
       [
-        choice({ label: "Just a dash or two.", correct: true }),
+        choice({ label: "Just a dash or two.", points: 15 }),
         choice({ label: "I don't add salt." }),
-        choice({ label: "Just dump it a ton.", ok: true }),
+        choice({ label: "Just dump it a ton.", points: 5 }),
       ]
     ),
     choices(
       "O-Oh, sorry. I know you're just trying to help me, and all I'm doing is being negative.",
       [
-        choice({ label: "Just take it slow.", correct: true }),
-        choice({ label: "Don't get discouraged already.", ok: true }),
-        choice({ label: "Practice makes perfect.", ok: true }),
+        choice({ label: "Just take it slow.", points: 15 }),
+        choice({ label: "Don't get discouraged already.", points: 5 }),
+        choice({ label: "Practice makes perfect.", points: 5 }),
       ]
     ),
     choices(
@@ -72,12 +72,12 @@ const priestessLevels = [
     choices("And it's not like I have any other redeeming qualities.", [
       choice({ label: "There's nothing you're good at?" }),
       choice({ label: "What about your Persona?" }),
-      choice({ label: "You're a hard worker.", ok: true }),
+      choice({ label: "You're a hard worker.", points: 5 }),
     ]),
     choices(
       "Not to mention that I'm kind of embarrassed about it all. I mean, it's not a very feminine hobby.",
       [
-        choice({ label: "That's not true.", correct: true }),
+        choice({ label: "That's not true.", points: 15 }),
         choice({ label: "Maybe you're right." }),
         choice({ label: "Why do you think that?" }),
       ]
@@ -85,13 +85,13 @@ const priestessLevels = [
   ]),
   LinkLevel(22, [
     choices("W-Well... How is it?", [
-      choice({ label: "It's good.", ok: true }),
-      choice({ label: "You did a great job.", correct: true }),
+      choice({ label: "It's good.", points: 5 }),
+      choice({ label: "You did a great job.", points: 15 }),
     ]),
     choices(
       "Because I don't think I could have made it this far without you.",
       [
-        choice({ label: "I'm glad I could help.", ok: true }),
+        choice({ label: "I'm glad I could help.", points: 5 }),
         choice({ label: "I didn't do anything." }),
       ]
     ),
@@ -100,7 +100,7 @@ const priestessLevels = [
       [
         choice({ label: "Thank you." }),
         choice({ label: "I think I get it." }),
-        choice({ label: "Can you make me more sometime?", correct: true }),
+        choice({ label: "Can you make me more sometime?", points: 15 }),
       ]
     ),
   ]),
@@ -108,14 +108,14 @@ const priestessLevels = [
     choices(
       "I promise I'm going to do the best I can. So can I count on you?",
       [
-        choice({ label: "Of course.", correct: true }),
+        choice({ label: "Of course.", points: 15 }),
         choice({ label: "You sure you're not overdoing it?" }),
       ]
     ),
     choices(
       "I know I don't seem very reliable, but I want to make myself a useful member of the team.",
       [
-        choice({ label: "That's the spirit.", correct: true }),
+        choice({ label: "That's the spirit.", points: 15 }),
         choice({ label: "Don't get too carried away." }),
         choice({ label: "You're already plenty useful." }),
       ]
@@ -140,7 +140,7 @@ export const Priestess = {
       choices("She even threatened to show my parents.", [
         choice({ label: "You did nothing wrong." }),
         choice({ label: "......" }),
-        choice({ label: "That's messed up.", ok: true }),
+        choice({ label: "That's messed up.", points: 5 }),
       ]),
       choices(
         "I'm sure it's because you're our leader. That's why I depend on you so much.",
@@ -154,14 +154,14 @@ export const Priestess = {
       choices(
         "How are you able to tell yourself that everything will work out in the end?",
         [
-          choice({ label: "I believe in myself.", ok: true }),
-          choice({ label: "It's just my personality.", ok: true }),
-          choice({ label: "I've never thought about it.", ok: true }),
+          choice({ label: "I believe in myself.", points: 5 }),
+          choice({ label: "It's just my personality.", points: 5 }),
+          choice({ label: "I've never thought about it.", points: 5 }),
         ]
       ),
       choices("Will that be the end of us spending time together like this?", [
         choice({ label: "Not at all." }),
-        choice({ label: "We'll see each other in the dorm.", ok: true }),
+        choice({ label: "We'll see each other in the dorm.", points: 5 }),
       ]),
     ]),
     LinkLevel(40, [
@@ -174,7 +174,7 @@ export const Priestess = {
         choice({ label: "Me too." }),
       ]),
       choices("......", [
-        choice({ label: "I love you, Fuuka.", correct: true }),
+        choice({ label: "I love you, Fuuka.", points: 15 }),
         choice({ label: "We'll always be friends." }),
       ]),
       choices("...!?", [
@@ -201,8 +201,8 @@ export const Priestess = {
       choices(
         "Remeber how I told you I was pretty good with machines? Well, how are they?",
         [
-          choice({ label: "I love them!", correct: true }),
-          choice({ label: "My mind is blown.", ok: true }),
+          choice({ label: "I love them!", points: 15 }),
+          choice({ label: "My mind is blown.", points: 5 }),
         ]
       ),
     ]),
@@ -226,7 +226,7 @@ export const Priestess = {
       choices("She even threatened to show my parents.", [
         choice({ label: "You did nothing wrong." }),
         choice({ label: "......" }),
-        choice({ label: "That's messed up.", ok: true }),
+        choice({ label: "That's messed up.", points: 5 }),
       ]),
       choices(
         "I'm sure it's because you're our leader. That's why I depend on you so much.",
@@ -240,14 +240,14 @@ export const Priestess = {
       choices(
         "How are you able to tell yourself that everything will work out in the end?",
         [
-          choice({ label: "I believe in myself.", ok: true }),
-          choice({ label: "It's just my personality.", ok: true }),
-          choice({ label: "I've never thought about it.", ok: true }),
+          choice({ label: "I believe in myself.", points: 5 }),
+          choice({ label: "It's just my personality.", points: 5 }),
+          choice({ label: "I've never thought about it.", points: 5 }),
         ]
       ),
       choices("Will that be the end of us spending time together like this?", [
         choice({ label: "Not at all." }),
-        choice({ label: "We'll see each other in the dorm.", ok: true }),
+        choice({ label: "We'll see each other in the dorm.", points: 5 }),
       ]),
     ]),
     LinkLevel(55, [
@@ -260,7 +260,7 @@ export const Priestess = {
         choice({ label: "Me too." }),
       ]),
       choices("......", [
-        choice({ label: "I love you, Fuuka.", correct: true }),
+        choice({ label: "I love you, Fuuka.", points: 15 }),
         choice({ label: "We'll always be friends." }),
       ]),
       choices("...!?", [
@@ -277,12 +277,12 @@ export const Priestess = {
         ]
       ),
       choices("As long as I have you... I don't think I'll lose my way.", [
-        choice({ label: "Glad to hear it.", ok: true }),
-        choice({ label: "I'm always here for you.", correct: true }),
+        choice({ label: "Glad to hear it.", points: 5 }),
+        choice({ label: "I'm always here for you.", points: 15 }),
       ]),
       choices("So... what do you think?", [
-        choice({ label: "I love them!", correct: true }),
-        choice({ label: "Your skills are impressive.", ok: true }),
+        choice({ label: "I love them!", points: 15 }),
+        choice({ label: "Your skills are impressive.", points: 5 }),
       ]),
     ]),
     LinkLevel(0, [

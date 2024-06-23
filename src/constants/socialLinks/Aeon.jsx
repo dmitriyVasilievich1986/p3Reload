@@ -11,7 +11,7 @@ const aeonLevels = [
   LinkLevel(),
   LinkLevel(0, [
     choices("What about you, Makoto-san? Do you... like it here?", [
-      choice({ label: "I like it here.", correct: true }),
+      choice({ label: "I like it here.", points: 15 }),
       choice({ label: "Not really." }),
       choice({ label: "I don't care." }),
     ]),
@@ -23,12 +23,12 @@ const aeonLevels = [
     ]),
     choices("......", [
       choice({ label: "Maybe so." }),
-      choice({ label: "That's not true.", ok: true }),
+      choice({ label: "That's not true.", points: 5 }),
     ]),
   ]),
   LinkLevel(0, [
     choices("A white, spotted cat... Did you see one, Makoto-san?", [
-      choice({ label: "I might have...", ok: true }),
+      choice({ label: "I might have...", points: 5 }),
       choice({ label: "No, I haven't." }),
     ]),
     choices("Goodness, really!? Where might this have been?", [
@@ -39,7 +39,7 @@ const aeonLevels = [
     choices(
       "Being separated from a loved one can be very distressing after all...",
       [
-        choice({ label: "All right.", correct: true }),
+        choice({ label: "All right.", points: 15 }),
         choice({ label: "What a pain..." }),
       ]
     ),
@@ -51,7 +51,7 @@ const aeonLevels = [
   ]),
   LinkLevel(0, [
     choices("It seems that 'living' is something that can't be done alone...", [
-      choice({ label: "You may be right.", correct: true }),
+      choice({ label: "You may be right.", points: 15 }),
       choice({ label: "That's not true." }),
       choice({ label: "I don't know." }),
     ]),
@@ -79,8 +79,8 @@ const aeonLevels = [
   ]),
   LinkLevel(0, [
     choices("I was just curious.", [
-      choice({ label: "Sometimes.", ok: true }),
-      choice({ label: "I'm doing it now.", correct: true }),
+      choice({ label: "Sometimes.", points: 5 }),
+      choice({ label: "I'm doing it now.", points: 15 }),
       choice({ label: "No." }),
     ]),
     choices("......", [
@@ -101,7 +101,7 @@ export const Aeon = {
     ...aeonLevels,
     LinkLevel(0, [
       choices("January 31st...", [
-        choice({ label: "You're right.", correct: true }),
+        choice({ label: "You're right.", points: 15 }),
         choice({ label: "I hadn't noticed..." }),
       ]),
       choices(
@@ -139,7 +139,7 @@ export const Aeon = {
     ...aeonLevels,
     LinkLevel(0, [
       choices("January 31st...", [
-        choice({ label: "You're right.", correct: true }),
+        choice({ label: "You're right.", points: 15 }),
         choice({ label: "I hadn't noticed..." }),
       ]),
       choices(

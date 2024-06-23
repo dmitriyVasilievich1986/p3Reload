@@ -14,7 +14,7 @@ export const Moon = {
     LinkLevel(),
     LinkLevel(0, [
       choices("Well? Would you wanna be... my younger brother?", [
-        choice({ label: "Sure, why not.", correct: true }),
+        choice({ label: "Sure, why not.", points: 15 }),
         choice({ label: "Not really... no." }),
       ]),
     ]),
@@ -23,7 +23,7 @@ export const Moon = {
         "So, do you 'get me'? Hm? Who am I? Go on, I wanna hear it come out of your mouth!",
         [
           choice({ label: "Nozomi Suemitsu" }),
-          choice({ label: "The gourmet king.", correct: true }),
+          choice({ label: "The gourmet king.", points: 15 }),
         ]
       ),
     ]),
@@ -32,13 +32,13 @@ export const Moon = {
         "Whew, that was way too close. If that toilet was just a bit further away... Ohhhh, boy.",
         [
           choice({ label: "Did you eat too much?" }),
-          choice({ label: "Are you feeling sick?", correct: true }),
+          choice({ label: "Are you feeling sick?", points: 15 }),
         ]
       ),
     ]),
     LinkLevel(15, [
       choices("Right, Makoto?", [
-        choice({ label: "That's right.", correct: true }),
+        choice({ label: "That's right.", points: 15 }),
         choice({ label: "Sorry, what?" }),
       ]),
     ]),
@@ -48,7 +48,7 @@ export const Moon = {
         [
           choice({ label: "Does this happen a lot?" }),
           choice({ label: "Did you eat too much?" }),
-          choice({ label: "Are you sick?", correct: true }),
+          choice({ label: "Are you sick?", points: 15 }),
         ]
       ),
     ]),
@@ -56,7 +56,7 @@ export const Moon = {
       choices("Well? Did that just blow your mind?", [
         choice({ label: "Yeah, I'm freaking out." }),
         choice({ label: "Not really?" }),
-        choice({ label: "The world is ending?", correct: true }),
+        choice({ label: "The world is ending?", points: 15 }),
       ]),
       choices(
         "Not to mention you'll get a discount since I'll be referring you, too. You are one lucky guy!",
@@ -69,7 +69,7 @@ export const Moon = {
     LinkLevel(22, [
       choices("Look at me! I'm paper-thin now.", [
         choice({ label: "You do look thinner.	" }),
-        choice({ label: "No you're not.", correct: true }),
+        choice({ label: "No you're not.", points: 15 }),
       ]),
     ]),
     LinkLevel(22, [
@@ -89,8 +89,8 @@ export const Moon = {
       choices(
         "But if I keep this up, I'll never be able to replace my brother, will I?",
         [
-          choice({ label: "Just be yourself.", correct: true }),
-          choice({ label: "You're irreplaceable.", ok: true }),
+          choice({ label: "Just be yourself.", points: 15 }),
+          choice({ label: "You're irreplaceable.", points: 5 }),
         ]
       ),
     ]),

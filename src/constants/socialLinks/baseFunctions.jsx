@@ -4,18 +4,10 @@ import React from "react";
 
 export const mainCharName = "Protagonist";
 
-export function choice(props) {
-  let points = 0;
-
-  if (props?.correct) {
-    points = 15;
-  } else if (props?.ok) {
-    points = 5;
-  }
-
+export function choice({ points = 0, ...props }) {
   return {
     points,
-    element: ({ key }) => <Choice key={key} {...props} />,
+    element: ({ key }) => <Choice key={key} points={points} {...props} />,
   };
 }
 

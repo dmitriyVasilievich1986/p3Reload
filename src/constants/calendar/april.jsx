@@ -32,7 +32,7 @@ export const april = [
           >
             <Choice label="a rain of flower" />
             <Choice label="mystical mirage" />
-            <Choice label="vivid carp streamers" correct />
+            <Choice label="vivid carp streamers" points={15} />
           </Choices>
         ),
       },
@@ -154,7 +154,7 @@ export const april = [
             }
           >
             <Choice label="Boneyards" />
-            <Choice label="Middens" correct />
+            <Choice label="Middens" points={15} />
             <Choice label="Hovels" />
           </Choices>
         ),
@@ -266,7 +266,7 @@ export const april = [
               "Do you know which one's not an algebraic spiral or whatever?"
             }
           >
-            <Choice label="A." correct />
+            <Choice label="A." points={15} />
             <Choice label="B." />
             <Choice label="C." />
             <Choice label="D." />

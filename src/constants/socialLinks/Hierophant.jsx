@@ -15,13 +15,13 @@ export const Hierophant = {
     LinkLevel(),
     LinkLevel(0, [
       choices("What was your name again?", [
-        choice({ label: mainCharName, ok: true }),
+        choice({ label: mainCharName, points: 5 }),
         choice({ label: "..." }),
       ]),
       choices(
         `Someone gave it to me, but I have more than enough. Go ahead and take it, ${mainCharName}-chan.`,
         [
-          choice({ label: "Thank you.", correct: true }),
+          choice({ label: "Thank you.", points: 15 }),
           choice({ label: "I'm okay, thanks." }),
         ]
       ),
@@ -43,14 +43,14 @@ export const Hierophant = {
     ]),
     LinkLevel(0, [
       choices("I don't see it anywhere...", [
-        choice({ label: "Looking for something?", ok: true }),
+        choice({ label: "Looking for something?", points: 5 }),
         choice({ label: "Cleaning the store?" }),
       ]),
       choices(
         "It's not y contact lens I'm looking for, it's my wallet. My wallet! Now, where did I put it?",
         [
-          choice({ label: "Best of luck.", ok: true }),
-          choice({ label: "Can I help?", correct: true }),
+          choice({ label: "Best of luck.", points: 5 }),
+          choice({ label: "Can I help?", points: 15 }),
         ]
       ),
       choices("I am one as well! I am a student at Gekkoukan!", [
@@ -78,8 +78,8 @@ export const Hierophant = {
     ]),
     LinkLevel(20, [
       choices("My wife just headed out to Gekkoukan.", [
-        choice({ label: "I should go too.", correct: true }),
-        choice({ label: "I'll wait here.", correct: true }),
+        choice({ label: "I should go too.", points: 15 }),
+        choice({ label: "I'll wait here.", points: 15 }),
       ]),
       choices("The... The... The tree...", [
         choice({ label: "What happened" }),
@@ -87,20 +87,20 @@ export const Hierophant = {
       ]),
       choices(`Do you know anything about this, ${mainCharName}-chan?`, [
         choice({ label: "No, I don't." }),
-        choice({ label: "I'm worried.", ok: true }),
+        choice({ label: "I'm worried.", points: 5 }),
       ]),
     ]),
     LinkLevel(20, [
       choices(
         "We've been feeling a bit guilty for troubling you about the persimmon tree...",
         [
-          choice({ label: "I wouldn't worry about it.", ok: true }),
+          choice({ label: "I wouldn't worry about it.", points: 5 }),
           choice({ label: "What tree?" }),
         ]
       ),
       choices("Why now? Why do they want to cut it down now...?", [
-        choice({ label: "Cheer up.", ok: true }),
-        choice({ label: "It'll be okay.", ok: true }),
+        choice({ label: "Cheer up.", points: 5 }),
+        choice({ label: "It'll be okay.", points: 5 }),
       ]),
     ]),
     LinkLevel(20, [
@@ -108,7 +108,7 @@ export const Hierophant = {
         "If we lose that tree... it would be like losing our son all over again...",
         [
           choice({ label: "You're overthinking it." }),
-          choice({ label: "Please don't fight.", correct: true }),
+          choice({ label: "Please don't fight.", points: 15 }),
         ]
       ),
       choices(
@@ -121,29 +121,29 @@ export const Hierophant = {
     ]),
     LinkLevel(20, [
       choices("Ah...", [
-        choice({ label: "What happened?", ok: true }),
+        choice({ label: "What happened?", points: 5 }),
         choice({ label: "Are you fighting again?" }),
       ]),
       choices(
         "They say the tree is a memorial to their former teacher... They don't want it to be cut down.",
         [
           choice({ label: "The tree? A memorial?" }),
-          choice({ label: "That's great.", ok: true }),
+          choice({ label: "That's great.", points: 5 }),
         ]
       ),
       choices(
         `You must be the one who called on them for this, right, ${mainCharName}-chan?`,
         [
-          choice({ label: "No.", ok: true }),
-          choice({ label: "That's right.", ok: true }),
-          choice({ label: "What are you talking about?", ok: true }),
+          choice({ label: "No.", points: 5 }),
+          choice({ label: "That's right.", points: 5 }),
+          choice({ label: "What are you talking about?", points: 5 }),
         ]
       ),
     ]),
     LinkLevel(20, [
       choices("Who do you think it was? Here's a hint: 'signature.'", [
-        choice({ label: "A petitioner?", ok: true }),
-        choice({ label: "A fan of yours?", ok: true }),
+        choice({ label: "A petitioner?", points: 5 }),
+        choice({ label: "A fan of yours?", points: 5 }),
       ]),
       choices(
         "He's already gathered a number of signatures from students who were in our son's class.",
@@ -153,16 +153,16 @@ export const Hierophant = {
         ]
       ),
       choices("I have to tell my son the good news!", [
-        choice({ label: "Sure, let's go.", correct: true }),
-        choice({ label: "Right now?", correct: true }),
+        choice({ label: "Sure, let's go.", points: 15 }),
+        choice({ label: "Right now?", points: 15 }),
       ]),
     ]),
     LinkLevel(20, [
       choices(
         "What, is that surprising? I'm actually quite the net surfer, you know!",
         [
-          choice({ label: "What does the letter say?", ok: true }),
-          choice({ label: "Why a letter?", ok: true }),
+          choice({ label: "What does the letter say?", points: 5 }),
+          choice({ label: "Why a letter?", points: 5 }),
         ]
       ),
       choices(
@@ -180,7 +180,7 @@ export const Hierophant = {
         choice({ label: "Why are you relieved?" }),
       ]),
       choices("We asked them to go ahead and cut the persimmon tree down.", [
-        choice({ label: "But.. why?", correct: true }),
+        choice({ label: "But.. why?", points: 15 }),
         choice({ label: "Oh well." }),
       ]),
       choices("He was a teacher after all.", [

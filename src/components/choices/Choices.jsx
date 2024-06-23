@@ -5,9 +5,21 @@ import React from "react";
 const cx = classnames.bind(style);
 
 export function Choice(props) {
+  const points = props?.points || 0;
+  let backgroundColor = "inherit";
+  if (props?.fork) {
+    backgroundColor = "#004e98";
+  } else if (points > 0) {
+    const adden = (15 - points) * 7;
+    backgroundColor = `rgb(${49 + adden}, ${87 + adden}, ${44 + adden})`;
+  }
+
   return (
     <div className={cx("choice")}>
-      <div className={cx({ ok: props?.ok, correct: props?.correct })}>
+      <div
+        style={{ backgroundColor }}
+        className={cx({ selected: points > 0 || props.fork })}
+      >
         {props.label}
       </div>
     </div>

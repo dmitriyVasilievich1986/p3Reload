@@ -14,7 +14,7 @@ const strengthLevels = [
     choices(
       "Also, I wasn't really in the mental state to do this alone today.",
       [
-        choice({ label: "What happened?", correct: true }),
+        choice({ label: "What happened?", points: 15 }),
         choice({ label: "You did good." }),
       ]
     ),
@@ -22,13 +22,13 @@ const strengthLevels = [
       "And before I knew it, I'd dozed off. I ended up handing in a blank paper.",
       [
         choice({ label: "That's bad." }),
-        choice({ label: "It wasn't your fault.", ok: true }),
+        choice({ label: "It wasn't your fault.", points: 5 }),
       ]
     ),
     choices(
       "But come on, it's way too early to worry about the future, isn't it? We're still just teenagers!",
       [
-        choice({ label: "That's true.", correct: true }),
+        choice({ label: "That's true.", points: 15 }),
         choice({ label: "I don't think so." }),
         choice({ label: "You haven't thought about it?" }),
       ]
@@ -41,13 +41,13 @@ const strengthLevels = [
     ]),
     choices("Sorry you got dragged into that.", [
       choice({ label: "Friend of yours?" }),
-      choice({ label: "Don't worry about it.", ok: true }),
+      choice({ label: "Don't worry about it.", points: 5 }),
     ]),
     choices(
       "They called you my boyfriend. That must have made you feel awkward, huh?",
       [
-        choice({ label: "I'm honored.", fork: true, ok: true }),
-        choice({ label: "I don't mind.", ok: true }),
+        choice({ label: "I'm honored.", fork: true, points: 5 }),
+        choice({ label: "I don't mind.", points: 5 }),
         choice({ label: "It might be a problem." }),
       ]
     ),
@@ -60,7 +60,7 @@ const strengthLevels = [
     choices(
       "I mean, why not, right? Please? Honestly, I don't think I can handle it on my own...",
       [
-        choice({ label: "Sure thing.", ok: true }),
+        choice({ label: "Sure thing.", points: 5 }),
         choice({ label: "It's kind of a hassle." }),
       ]
     ),
@@ -74,18 +74,18 @@ export const Strength = {
     ...strengthLevels,
     LinkLevel(15, [
       choices("Elementary school kids really learn fast don't you think?", [
-        choice({ label: "You're right. It's impressive.", ok: true }),
+        choice({ label: "You're right. It's impressive.", points: 5 }),
         choice({ label: "That's not normal?" }),
-        choice({ label: "It's because you teach so well.", correct: true }),
+        choice({ label: "It's because you teach so well.", points: 10 }),
       ]),
       choices(
         "Should I change the training routine? Maybe they should be running more.",
         [
-          choice({ label: "You shouldn't change it.", ok: true }),
+          choice({ label: "You shouldn't change it.", points: 5 }),
           choice({ label: "Maybe you should rethink it." }),
           choice({
             label: "I trust whatever you decide Yuko.",
-            ok: true,
+            points: 5,
             fork: true,
           }),
         ]
@@ -93,14 +93,14 @@ export const Strength = {
     ]),
     LinkLevel(22, [
       choices("Oh Makoto-Kun, why don't you give them some advice too?", [
-        choice({ label: "You guys got this!", ok: true }),
-        choice({ label: "Show some guts!", ok: true }),
+        choice({ label: "You guys got this!", points: 5 }),
+        choice({ label: "Show some guts!", points: 5 }),
       ]),
       choices(
         "Age difference really matters when you're as young as they are. Do you really think they can beat the sixth graders.",
         [
           choice({ label: "It's gonna be tough." }),
-          choice({ label: "As long as we believe in them.", ok: true }),
+          choice({ label: "As long as we believe in them.", points: 5 }),
         ]
       ),
     ]),
@@ -112,12 +112,12 @@ export const Strength = {
       ]),
       choices("It's like the kids have left the nest...", [
         choice({ label: "Are you sad?" }),
-        choice({ label: "Are you relieved?", ok: true }),
+        choice({ label: "Are you relieved?", points: 5 }),
       ]),
       choices(
         "Maybe we should have a little party… you know, to celebrate our first attempt at coaching...",
         [
-          choice({ label: "Let's do it.", correct: true }),
+          choice({ label: "Let's do it.", points: 15 }),
           choice({ label: "Why?" }),
         ]
       ),
@@ -136,8 +136,8 @@ export const Strength = {
         choice({ label: "Not really." }),
       ]),
       choices("Would you want it to be a boy or a girl?", [
-        choice({ label: "A boy.", ok: true }),
-        choice({ label: "A girl.", ok: true }),
+        choice({ label: "A boy.", points: 5 }),
+        choice({ label: "A girl.", points: 5 }),
         choice({ label: "I don't care." }),
       ]),
     ]),
@@ -145,14 +145,14 @@ export const Strength = {
       choices(
         "All it did was make me more confused than I originally was. Guess I'll have to go ask again tomorrow.",
         [
-          choice({ label: "You're so hardworking.", ok: true }),
+          choice({ label: "You're so hardworking.", points: 5 }),
           choice({ label: "Why go through all that trouble?" }),
         ]
       ),
       choices("Can you guess what it is?", [
-        choice({ label: "A track and field star?", ok: true }),
-        choice({ label: "An instructor?", correct: true }),
-        choice({ label: "A nursery teacher?", ok: true }),
+        choice({ label: "A track and field star?", points: 5 }),
+        choice({ label: "An instructor?", points: 15 }),
+        choice({ label: "A nursery teacher?", points: 5 }),
         choice({ label: "No idea..." }),
       ]),
       choices("I realized that I might've been relying too much on you.", [
@@ -175,17 +175,20 @@ export const Strength = {
       choices(
         "I could've given this to you at school, but I wanted to talk somewhere quiet.",
         [
-          choice({ label: "Is it important?", ok: true }),
-          choice({ label: "What is it?", ok: true }),
+          choice({ label: "Is it important?", points: 5 }),
+          choice({ label: "What is it?", points: 5 }),
         ]
       ),
       choices(
         "I know they were kind of a handful, but they also have an endearing side to them, don't you think?",
-        [choice({ label: "Yeah.", ok: true }), choice({ label: "Not really." })]
+        [
+          choice({ label: "Yeah.", points: 5 }),
+          choice({ label: "Not really." }),
+        ]
       ),
       choices("Because today... Well, my parents aren't home, so...", [
         choice({ label: "I see." }),
-        choice({ label: "What does that mean?", ok: true }),
+        choice({ label: "What does that mean?", points: 5 }),
       ]),
     ]),
     LinkLevel(40, [
@@ -205,9 +208,9 @@ export const Strength = {
     ...strengthLevels,
     LinkLevel(15, [
       choices("Elementary school kids really learn fast don't you think?", [
-        choice({ label: "You're right. It's impressive.", ok: true }),
+        choice({ label: "You're right. It's impressive.", points: 5 }),
         choice({ label: "That's not normal?" }),
-        choice({ label: "It's because you teach so well.", correct: true }),
+        choice({ label: "It's because you teach so well.", points: 15 }),
       ]),
       choices(
         "Should I change the training routine? Maybe they should be running more.",
@@ -220,14 +223,14 @@ export const Strength = {
     ]),
     LinkLevel(22, [
       choices("Oh Makoto-Kun, why don't you give them some advice too?", [
-        choice({ label: "You guys got this!", ok: true }),
-        choice({ label: "Show some guts!", ok: true }),
+        choice({ label: "You guys got this!", points: 5 }),
+        choice({ label: "Show some guts!", points: 5 }),
       ]),
       choices(
         "Age difference really matters when you're as young as they are. Do you really think they can beat the sixth graders.",
         [
           choice({ label: "It's gonna be tough." }),
-          choice({ label: "As long as we believe in them.", ok: true }),
+          choice({ label: "As long as we believe in them.", points: 5 }),
         ]
       ),
     ]),
@@ -239,12 +242,12 @@ export const Strength = {
       ]),
       choices("It's like the kids have left the nest...", [
         choice({ label: "Are you sad?" }),
-        choice({ label: "Are you relieved?", ok: true }),
+        choice({ label: "Are you relieved?", points: 5 }),
       ]),
       choices(
         "Maybe we should have a little party… you know, to celebrate our first attempt at coaching...",
         [
-          choice({ label: "Let's do it.", correct: true }),
+          choice({ label: "Let's do it.", points: 15 }),
           choice({ label: "Why?" }),
         ]
       ),
@@ -263,8 +266,8 @@ export const Strength = {
         choice({ label: "Not really." }),
       ]),
       choices("Would you want it to be a boy or a girl?", [
-        choice({ label: "A boy.", ok: true }),
-        choice({ label: "A girl.", ok: true }),
+        choice({ label: "A boy.", points: 5 }),
+        choice({ label: "A girl.", points: 5 }),
         choice({ label: "I don't care." }),
       ]),
     ]),
@@ -272,14 +275,14 @@ export const Strength = {
       choices(
         "All it did was make me more confused than I originally was. Guess I'll have to go ask again tomorrow.",
         [
-          choice({ label: "You're so hardworking.", ok: true }),
+          choice({ label: "You're so hardworking.", points: 5 }),
           choice({ label: "Why go through all that trouble?" }),
         ]
       ),
       choices("Can you guess what it is?", [
-        choice({ label: "A track and field star?", ok: true }),
-        choice({ label: "An instructor?", correct: true }),
-        choice({ label: "A nursery teacher?", ok: true }),
+        choice({ label: "A track and field star?", points: 5 }),
+        choice({ label: "An instructor?", points: 15 }),
+        choice({ label: "A nursery teacher?", points: 5 }),
         choice({ label: "No idea..." }),
       ]),
       choices("I realized that I might've been relying too much on you.", [
@@ -302,17 +305,20 @@ export const Strength = {
       choices(
         "I could've given this to you at school, but I wanted to talk somewhere quiet.",
         [
-          choice({ label: "Is it important?", ok: true }),
-          choice({ label: "What is it?", ok: true }),
+          choice({ label: "Is it important?", points: 5 }),
+          choice({ label: "What is it?", points: 5 }),
         ]
       ),
       choices(
         "I know they were kind of a handful, but they also have an endearing side to them, don't you think?",
-        [choice({ label: "Yeah.", ok: true }), choice({ label: "Not really." })]
+        [
+          choice({ label: "Yeah.", points: 5 }),
+          choice({ label: "Not really." }),
+        ]
       ),
       choices("Because today... Well, my parents aren't home, so...", [
         choice({ label: "I see." }),
-        choice({ label: "What does that mean?", ok: true }),
+        choice({ label: "What does that mean?", points: 5 }),
       ]),
     ]),
     {
