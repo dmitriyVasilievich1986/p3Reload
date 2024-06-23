@@ -81,7 +81,7 @@ const baseSocialLinkCalculation = {
         [name]: {
           ...thisLink,
           level: isNewlevel ? thisLink.level + 1 : thisLink.level,
-        points: newPoints,
+          points: newPoints,
         },
       },
     };
@@ -406,12 +406,12 @@ const strengthLevels = [
     choices(
       "Also, I wasn't really in the mental state to do this alone today.",
       [
-        choice({ label: "What happened?", ok: true }),
+        choice({ label: "What happened?", correct: true }),
         choice({ label: "You did good." }),
       ]
     ),
     choices(
-      "And before I knew it, I'd dozed off. I ended up handing a blank paper.",
+      "And before I knew it, I'd dozed off. I ended up handing in a blank paper.",
       [
         choice({ label: "That's bad." }),
         choice({ label: "It wasn't your fault.", ok: true }),
@@ -438,19 +438,19 @@ const strengthLevels = [
     choices(
       "They called you my boyfriend. That must have made you feel awkward, huh?",
       [
-        choice({ label: "I'm honored.", fork: true }),
-        choice({ label: "I don't mind." }),
+        choice({ label: "I'm honored.", fork: true, ok: true }),
+        choice({ label: "I don't mind.", ok: true }),
         choice({ label: "It might be a problem." }),
       ]
     ),
   ]),
-  LinkLevel(5, [
-    choices("Makoto-kun, what do you think I should do?", [
+  LinkLevel(20, [
+    choices(`${mainCharName}-kun, what do you think I should do?`, [
       choice({ label: "Why not give it a go?" }),
       choice({ label: "That's for you to decide." }),
     ]),
     choices(
-      "I mean, why not right? Please? Honestly, I don't think I can handle it on my own...",
+      "I mean, why not, right? Please? Honestly, I don't think I can handle it on my own...",
       [
         choice({ label: "Sure thing.", ok: true }),
         choice({ label: "It's kind of a hassle." }),
@@ -554,7 +554,7 @@ export const socialLinks = {
       LinkLevel(),
       LinkLevel(0, [
         choices(
-          "Can you like, just waltz on into Takeba-san's room and stuff?",
+          "Can you, like, just waltz on into Takeba-san's room and stuff?",
           [
             choice({ label: "Of course." }),
             choice({ label: "No way.", ok: true }),
@@ -874,7 +874,7 @@ export const socialLinks = {
       LinkLevel(),
       LinkLevel(0, [
         choices(
-          "Some students feel the school uniform should be abolished, and they're recruiting supporters.",
+          "Some students think the school uniform should be abolished, and they're recruiting supporters.",
           [
             choice({ label: "They've got a point." }),
             choice({ label: "Sounds like nonsense.", correct: true }),
@@ -886,7 +886,7 @@ export const socialLinks = {
           "What!? You can't decide something like that without talking to the president first.",
           [
             choice({ label: "What happened?", ok: true }),
-            choice({ label: "No need to fight.", correct: true }),
+            choice({ label: "No need to fight.", ok: true }),
           ]
         ),
       ]),
@@ -1228,7 +1228,7 @@ export const socialLinks = {
           ]
         ),
       ]),
-      LinkLevel(18, [
+      LinkLevel(20, [
         choices("Wh-What's up? I was just gonna sneak back into practice.", [
           choice({ label: "Where have you been?" }),
           choice({ label: "Did you ditch?" }),
@@ -1277,18 +1277,18 @@ export const socialLinks = {
           "I know you didn't say anything. I just think he can tell something's up.",
           [
             choice({ label: "How's your knee?", ok: true }),
-            choice({ label: "Can you fake it?" }),
+            choice({ label: "Can you hide it?" }),
           ]
         ),
         choices("Otherwise, I won't be able to keep my promise to my nephew!", [
           choice({ label: "You need to get tougher.", correct: true }),
-          choice({ label: "You can't win like this." }),
+          choice({ label: "You can't win like this.", ok: true }),
           choice({ label: "You need to take a break." }),
         ]),
       ]),
       LinkLevel(22, [
         choices("You must know what's going on.", [
-          choice({ label: "I don't know anything.", ok: true }),
+          choice({ label: "I don't know anything." }),
           choice({ label: "......", ok: true }),
         ]),
       ]),
@@ -1325,7 +1325,7 @@ export const socialLinks = {
     levels: [
       LinkLevel(),
       LinkLevel(0, [
-        choices("u remember me rite? =/", [
+        choices("u remember me rite? :O", [
           choice({ label: "Of course.", correct: true }),
           choice({ label: "...Have we met?" }),
         ]),
@@ -1333,27 +1333,24 @@ export const socialLinks = {
           "hmmm… what kinda people r we, playing inside on such a beautiful day?",
           [
             choice({ label: "Don't you like video games?" }),
-            choice({ label: "Sunshine is overrated.", correct: true }),
+            choice({ label: "Sunshine is overrated.", ok: true }),
             choice({ label: "Guess we're loners." }),
           ]
         ),
       ]),
       LinkLevel(0, [
         choices("so ummmmm…… i'm drunk! xD", [
-          choice({ label: "Oh really?! o_O", correct: true }),
+          choice({ label: "Oh really? o_O", ok: true }),
           choice({ label: "Are you an adult?" }),
         ]),
-        choices(
-          "but lately i cant get motivated to get ne work done @ work. =/",
-          [
-            choice({ label: "You don't like your job?", correct: true }),
-            choice({ label: "Are you burned out?" }),
-          ]
-        ),
+        choices("but lately i cant get motivated to get work done @ work. =/", [
+          choice({ label: "You don't like your job?", correct: true }),
+          choice({ label: "Are you burned out?" }),
+        ]),
       ]),
       LinkLevel(20, [
         choices(
-          "Its like all she cares about is marrying me to some dude >=/ whys it her problem?",
+          "Its like all she cares about is marrying me off to some dude >=/ whys it her problem?",
           [
             choice({ label: "Don't wanna get married?" }),
             choice({ label: "You'll need a boyfriend first." }),
@@ -1363,14 +1360,14 @@ export const socialLinks = {
       ]),
       LinkLevel(20, [
         choices("Mr. E is such a stupid eh so bee!! t(-_-t)", [
-          choice({ label: "Who's Mr. E?" }),
+          choice({ label: "Who's Mr. E?", ok: true }),
           choice({ label: "Are you drunk again?" }),
-          choice({ label: "Do you mean S.O.B.?", correct: true }),
+          choice({ label: "Do you mean S.O.B.?", ok: true }),
         ]),
-        choices("…oh noes! u can't figure out what my job is can u? O_o?", [
-          choice({ label: "A drunken master?" }),
+        choices("…oh noes! u cant figure out what my job is can u? O_o", [
+          choice({ label: "A drunken master?", ok: true }),
           choice({ label: "Maya's a reporter, right?" }),
-          choice({ label: "Are you a teacher?", correct: true }),
+          choice({ label: "Are you a teacher?", ok: true }),
         ]),
       ]),
       LinkLevel(20, [
@@ -2705,9 +2702,13 @@ export const socialLinks = {
         choices(
           "Should I change the training routine? Maybe they should be running more.",
           [
-            choice({ label: "You shouldn't change it." }),
+            choice({ label: "You shouldn't change it.", ok: true }),
             choice({ label: "Maybe you should rethink it." }),
-            choice({ label: "I trust whatever you decide Yuko.", fork: true }),
+            choice({
+              label: "I trust whatever you decide Yuko.",
+              ok: true,
+              fork: true,
+            }),
           ]
         ),
       ]),
