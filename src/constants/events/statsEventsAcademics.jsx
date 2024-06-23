@@ -152,12 +152,12 @@ export const statsEventsAcademics = {
         place="Dorm"
       />
     ),
-    available: ({ currentDate }) => {
+    available: ({ currentDate, currentTime }) => {
       const dates = [
         new Date(2009, 4, 15).getTime(),
         new Date(2009, 4, 16).getTime(),
       ];
-      return dates.includes(currentDate.getTime());
+      return dates.includes(currentDate.getTime()) && currentTime === "evening";
     },
     upgrade: getAcademicsUpgradeFunction(4),
   },
@@ -171,9 +171,9 @@ export const statsEventsAcademics = {
         place="Dorm"
       />
     ),
-    available: ({ currentDate }) => {
+    available: ({ currentDate, currentTime }) => {
       const dates = [new Date(2009, 4, 17).getTime()];
-      return dates.includes(currentDate.getTime());
+      return dates.includes(currentDate.getTime()) && currentTime === "evening";
     },
     upgrade: getAcademicsUpgradeFunction(5),
   },
