@@ -1,6 +1,7 @@
 import EventCard, { Item } from "../../components/eventCard/EventCard.jsx";
 import { Choices, Choice } from "../../components/choices/Choices.jsx";
 import { baseCalendar, classmates } from "./baseFunctions.jsx";
+import { socialLinks } from "../socialLinks/index.js";
 import { events } from "../events";
 import { stats } from "../stats";
 import React from "react";
