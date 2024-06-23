@@ -12,6 +12,7 @@ export const specialEvents = {
   },
   noControl: {
     ...initialUpgrade,
+    special: true,
     name: "noControl",
     category: "empty",
     available: () => false,
