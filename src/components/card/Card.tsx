@@ -1,15 +1,15 @@
+import { CardProps, HeadProps } from "./types";
 import classnames from "classnames/bind";
 import * as style from "./style.scss";
-import React from "react";
 
 const cx = classnames.bind(style);
 
-function Head(props) {
+function Head(props: HeadProps) {
   if (!props?.head) return null;
   return <legend className={cx("head")}>{props.head}</legend>;
 }
 
-function Card(props) {
+function Card(props: CardProps) {
   return (
     <fieldset
       className={cx("card", {
