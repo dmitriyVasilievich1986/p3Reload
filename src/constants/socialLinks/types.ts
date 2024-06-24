@@ -57,10 +57,10 @@ export type CalculateProps = {
   currentLinks: SocialLinksStatsArray;
   arcanes: SocialLinkNames[];
   currentStats: CharStats;
-  name: SocialLinkNames;
 };
 
 export type SocialLinkTypeBase = {
+  name: SocialLinkNames;
   maxLevel: number;
   getlevel: (props: GetlevelProps) => SocialLinkLevel;
   calculate: (props: CalculateProps) => { links: SocialLinksStatsArray };

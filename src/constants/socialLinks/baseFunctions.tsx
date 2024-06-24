@@ -7,6 +7,7 @@ import {
   SocialLinkLevelBase,
   SocialLinkTypeBase,
   SocialLinkLevel,
+  SocialLinkNames,
   CalculateProps,
   KeyProps,
 } from "./types";
@@ -65,6 +66,7 @@ export function LinkLevel(
 }
 
 export const baseSocialLinkCalculation: SocialLinkTypeBase = {
+  name: SocialLinkNames.Aeon,
   maxLevel: 10,
   getlevel: function ({ level, romance = false }) {
     return romance ? this.levelsRomance[level] : this.levels[level];
@@ -73,9 +75,8 @@ export const baseSocialLinkCalculation: SocialLinkTypeBase = {
     currentStats,
     currentLinks,
     arcanes,
-    name,
   }: CalculateProps) {
-    const thisLink = currentLinks[name];
+    const thisLink = currentLinks[this.name];
     const currentLevel = this.getlevel({
       level: thisLink.level,
       romance: thisLink.romance,
@@ -84,7 +85,7 @@ export const baseSocialLinkCalculation: SocialLinkTypeBase = {
       thisLink.level < this.maxLevel && thisLink.points >= currentLevel.points;
 
     let multiplier = thisLink.multiplier;
-    if (arcanes.includes(name)) multiplier *= 1.51;
+    if (arcanes.includes(this.name)) multiplier *= 1.51;
     if (currentStats[StatsNames.Charm] >= 100) multiplier *= 1.51;
 
     const newPoints = Math.floor(
@@ -95,7 +96,7 @@ export const baseSocialLinkCalculation: SocialLinkTypeBase = {
     return {
       links: {
         ...currentLinks,
-        [name]: {
+        [this.name]: {
           ...thisLink,
           level: isNewlevel ? thisLink.level + 1 : thisLink.level,
           points: newPoints,
@@ -117,13 +118,13 @@ export const alwaysLevelUp: SocialLinkTypeBase = {
     if (level === 0) return this.levels[0];
     return this.levels[1];
   },
-  calculate: function ({ currentLinks, name }) {
-    const thisLink = currentLinks[name];
+  calculate: function ({ currentLinks }) {
+    const thisLink = currentLinks[this.name];
     const isNewlevel = thisLink.level < this.maxLevel;
     return {
       links: {
         ...currentLinks,
-        [name]: {
+        [this.name]: {
           ...thisLink,
           level: isNewlevel ? thisLink.level + 1 : thisLink.level,
         },
