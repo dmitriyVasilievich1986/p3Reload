@@ -1,4 +1,5 @@
-import React from "react";
+import { SocialLinkNames, SocialLinkType } from "./types";
+import { EventCard } from "../../components/eventCard";
 
 import {
   baseSocialLinkCalculation,
@@ -65,15 +66,15 @@ const justiceLevels = [
   ]),
 ];
 
-export const Justice = {
-  name: "Justice",
+export const Justice: SocialLinkType = {
   ...baseSocialLinkCalculation,
+  name: SocialLinkNames.Justice,
   levels: [
     ...justiceLevels,
     {
       points: 0,
       maxPoints: 0,
-      element: () => <h3>Link Maxed</h3>,
+      element: () => <EventCard head="Link Maxed" />,
     },
   ],
   levelsRomance: [
@@ -170,7 +171,7 @@ export const Justice = {
     {
       points: 0,
       maxPoints: 0,
-      element: () => <h3>Link Maxed</h3>,
+      element: () => <EventCard head="Link Maxed" />,
     },
   ],
 };

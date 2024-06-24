@@ -1,4 +1,5 @@
-import React from "react";
+import { SocialLinkNames, SocialLinkType } from "./types";
+import { EventCard } from "../../components/eventCard";
 
 import {
   baseSocialLinkCalculation,
@@ -106,9 +107,9 @@ const empressLevels = [
   ]),
 ];
 
-export const Empress = {
-  name: "Empress",
+export const Empress: SocialLinkType = {
   ...baseSocialLinkCalculation,
+  name: SocialLinkNames.Empress,
   levels: [
     ...empressLevels,
     LinkLevel(22, [
@@ -170,7 +171,7 @@ export const Empress = {
     {
       points: 0,
       maxPoints: 0,
-      element: () => <h3>Link Maxed</h3>,
+      element: () => <EventCard head="Link Maxed" />,
     },
   ],
   levelsRomance: [
@@ -240,7 +241,7 @@ export const Empress = {
     {
       points: 0,
       maxPoints: 0,
-      element: () => <h3>Link Maxed</h3>,
+      element: () => <EventCard head="Link Maxed" />,
     },
   ],
 };

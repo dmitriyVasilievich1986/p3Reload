@@ -1,43 +1,45 @@
+import { SocialLinkNames, SocialLinkType } from "./types";
+
 import { Hierophant } from "./Hierophant";
 import { Temperance } from "./Temperance";
 import { Priestess } from "./Priestess";
 import { HangedMan } from "./HangedMan";
-import { Magician } from "./Magician";
 import { Strength } from "./Strength";
-import { Emperor } from "./Emperor";
+import { Magician } from "./Magician";
 import { Chariot } from "./Chariot";
-import { Fortune } from "./Fortune";
+import { Emperor } from "./Emperor";
 import { Empress } from "./Empress";
+import { Fortune } from "./Fortune";
 import { Justice } from "./Justice";
-import { Hermit } from "./Hermit";
 import { Lovers } from "./Lovers";
-import { Devil } from "./Devil";
+import { Hermit } from "./Hermit";
 import { Tower } from "./Tower";
-import { Star } from "./Star";
-import { Moon } from "./Moon";
+import { Devil } from "./Devil";
 import { Aeon } from "./Aeon";
 import { Fool } from "./Fool";
+import { Moon } from "./Moon";
+import { Star } from "./Star";
 import { Sun } from "./Sun";
 
-export const socialLinks = {
-  Magician,
-  Priestess,
-  Emperor,
-  Hierophant,
-  Chariot,
-  Hermit,
-  Fortune,
-  HangedMan,
-  Temperance,
-  Devil,
-  Sun,
-  Tower,
-  Star,
-  Moon,
-  Empress,
-  Lovers,
-  Justice,
-  Strength,
+export const socialLinks: { [key in SocialLinkNames]: SocialLinkType } = {
   Aeon,
+  Chariot,
+  Devil,
+  Emperor,
+  Empress,
   Fool,
+  Fortune,
+  Hermit,
+  HangedMan,
+  Hierophant,
+  Justice,
+  Lovers,
+  Magician,
+  Moon,
+  Priestess,
+  Star,
+  Sun,
+  Strength,
+  Temperance,
+  Tower,
 };

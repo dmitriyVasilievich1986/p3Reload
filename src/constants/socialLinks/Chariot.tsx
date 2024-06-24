@@ -1,6 +1,6 @@
-import EventCard from "../../components/eventCard/EventCard";
-import { stats } from "../stats";
-import React from "react";
+import { SocialLinkNames, SocialLinkType } from "./types";
+import { EventCard } from "../../components/eventCard";
+import { StatsNames } from "../stats/types";
 
 import {
   baseSocialLinkCalculation,
@@ -31,21 +31,21 @@ function chariotStrength() {
     ...payload,
     element: () => (
       <>
-        {payload.element()}
+        {payload.element({ key: "chariotStrength" })}
         <EventCard
           place="2F Classroom Hallway"
           name="Yuko Nishiwaki"
           head="Strength"
         >
-          <h3 style={{ textAlign: "center" }}>Create bond</h3>
+          <EventCard head="Create bond" />
         </EventCard>
       </>
     ),
   };
 }
 
-export const Chariot = {
-  name: "Chariot",
+export const Chariot: SocialLinkType = {
+  name: SocialLinkNames.Chariot,
   ...baseSocialLinkCalculation,
   calculate: function ({ currentStats, currentLinks, arcanes, name }) {
     const thisLink = currentLinks[name];
@@ -58,7 +58,7 @@ export const Chariot = {
 
     let multiplier = thisLink.multiplier;
     if (arcanes.includes(name)) multiplier *= 1.51;
-    if (currentStats[stats.Charm.name] >= 100) multiplier *= 1.51;
+    if (currentStats[StatsNames.Charm] >= 100) multiplier *= 1.51;
 
     const newPoints = Math.floor(
       isNewlevel
@@ -191,7 +191,7 @@ export const Chariot = {
     {
       points: 0,
       maxPoints: 0,
-      element: () => <h3>Link Maxed</h3>,
+      element: () => <EventCard head="Link Maxed" />,
     },
   ],
 };

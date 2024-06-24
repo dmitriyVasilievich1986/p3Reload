@@ -1,22 +1,39 @@
-import { Choices, Choice } from "../../components/choices/Choices";
-import { stats } from "../stats";
-import React from "react";
+import { ChoiceProps } from "../../components/choices/types";
+import { Choices, Choice } from "../../components/choices";
+import { EventCard } from "../../components/eventCard";
+import { StatsNames } from "../stats/types";
 
-export const mainCharName = "Protagonist";
+import {
+  SocialLinkLevelBase,
+  SocialLinkTypeBase,
+  SocialLinkLevel,
+  CalculateProps,
+  KeyProps,
+} from "./types";
 
-export function choice({ points = 0, ...props }) {
+export const mainCharName: string = "Protagonist";
+
+export function choice({
+  points = 0,
+  ...props
+}: ChoiceProps): SocialLinkLevelBase {
   return {
     points,
-    element: ({ key }) => <Choice key={key} points={points} {...props} />,
+    element: ({ key }: KeyProps) => (
+      <Choice key={key} points={points} {...props} />
+    ),
   };
 }
 
-export function choices(head, choices) {
+export function choices(
+  head: string,
+  choices: SocialLinkLevelBase[]
+): SocialLinkLevelBase {
   const points = Math.max(...choices.map((c) => c.points));
 
   return {
     points,
-    element: ({ key }) => (
+    element: ({ key }: KeyProps) => (
       <Choices key={key} label={head}>
         {choices.map((c, i) => c.element({ key: i }))}
       </Choices>
@@ -24,12 +41,15 @@ export function choices(head, choices) {
   };
 }
 
-export function LinkLevel(points = 0, levels = null) {
+export function LinkLevel(
+  points: number = 0,
+  levels: SocialLinkLevelBase[] | null = null
+): SocialLinkLevel {
   if (levels === null)
     return {
       points: 0,
       maxPoints: 0,
-      element: () => <h3 style={{ textAlign: "center" }}>Create bond</h3>,
+      element: () => <EventCard head="Create bond" />,
     };
   const maxPoints = levels.reduce((acc, level) => acc + level.points, 0);
 
@@ -44,12 +64,17 @@ export function LinkLevel(points = 0, levels = null) {
   };
 }
 
-export const baseSocialLinkCalculation = {
+export const baseSocialLinkCalculation: SocialLinkTypeBase = {
   maxLevel: 10,
   getlevel: function ({ level, romance = false }) {
-    return this[romance ? "levelsRomance" : "levels"][level];
+    return romance ? this.levelsRomance[level] : this.levels[level];
   },
-  calculate: function ({ currentStats, currentLinks, arcanes, name }) {
+  calculate: function ({
+    currentStats,
+    currentLinks,
+    arcanes,
+    name,
+  }: CalculateProps) {
     const thisLink = currentLinks[name];
     const currentLevel = this.getlevel({
       level: thisLink.level,
@@ -60,7 +85,7 @@ export const baseSocialLinkCalculation = {
 
     let multiplier = thisLink.multiplier;
     if (arcanes.includes(name)) multiplier *= 1.51;
-    if (currentStats[stats.Charm.name] >= 100) multiplier *= 1.51;
+    if (currentStats[StatsNames.Charm] >= 100) multiplier *= 1.51;
 
     const newPoints = Math.floor(
       isNewlevel
@@ -79,12 +104,13 @@ export const baseSocialLinkCalculation = {
     };
   },
   getStaleLevel: function () {
-    return <h3>Spending time</h3>;
+    return <EventCard head="Spending time" />;
   },
+  levelsRomance: [],
   levels: [],
 };
 
-export const alwaysLevelUp = {
+export const alwaysLevelUp: SocialLinkTypeBase = {
   ...baseSocialLinkCalculation,
   getlevel: function ({ level }) {
     if (level === 10) return this.levels[2];

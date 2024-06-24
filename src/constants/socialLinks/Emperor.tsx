@@ -1,4 +1,5 @@
-import React from "react";
+import { SocialLinkNames, SocialLinkType } from "./types";
+import { EventCard } from "../../components/eventCard";
 
 import {
   baseSocialLinkCalculation,
@@ -7,9 +8,9 @@ import {
   choice,
 } from "./baseFunctions";
 
-export const Emperor = {
-  name: "Emperor",
+export const Emperor: SocialLinkType = {
   ...baseSocialLinkCalculation,
+  name: SocialLinkNames.Emperor,
   levels: [
     LinkLevel(),
     LinkLevel(0, [
@@ -97,7 +98,7 @@ export const Emperor = {
     {
       points: 0,
       maxPoints: 0,
-      element: () => <h3>Link Maxed</h3>,
+      element: () => <EventCard head="Link Maxed" />,
     },
   ],
 };

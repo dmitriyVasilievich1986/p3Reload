@@ -1,4 +1,5 @@
-import React from "react";
+import { SocialLinkNames, SocialLinkType } from "./types";
+import { EventCard } from "../../components/eventCard";
 
 import {
   baseSocialLinkCalculation,
@@ -7,9 +8,9 @@ import {
   choice,
 } from "./baseFunctions";
 
-export const Fortune = {
-  name: "Fortune",
+export const Fortune: SocialLinkType = {
   ...baseSocialLinkCalculation,
+  name: SocialLinkNames.Fortune,
   levels: [
     LinkLevel(),
     LinkLevel(0, [
@@ -132,7 +133,7 @@ export const Fortune = {
     {
       points: 0,
       maxPoints: 0,
-      element: () => <h3>Link Maxed</h3>,
+      element: () => <EventCard head="Link Maxed" />,
     },
   ],
 };
