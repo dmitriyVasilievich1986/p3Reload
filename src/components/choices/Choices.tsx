@@ -1,10 +1,10 @@
+import { ChoiceProps, ChoicesProps } from "./types";
 import classnames from "classnames/bind";
 import * as style from "./style.scss";
-import React from "react";
 
 const cx = classnames.bind(style);
 
-export function Choice(props) {
+export function Choice(props: ChoiceProps) {
   const points = props?.points || 0;
   let backgroundColor = "inherit";
   if (props?.fork) {
@@ -26,7 +26,7 @@ export function Choice(props) {
   );
 }
 
-export function Choices(props) {
+export function Choices(props: ChoicesProps) {
   return (
     <div className={cx("choices")}>
       <label>{props.label}</label>
