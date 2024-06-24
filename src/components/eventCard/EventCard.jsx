@@ -31,6 +31,7 @@ function EventCard(props) {
       <Item label="Stats" value={props?.stats} />
       <Item label="Price" value={price(props?.price)} />
       <Item label="Gain" value={price(props?.receive)} />
+      <Item label="Prerequisite" value={props?.prerequisite} />
       {props.children}
     </div>
   );

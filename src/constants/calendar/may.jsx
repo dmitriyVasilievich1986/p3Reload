@@ -1,5 +1,5 @@
-import EventCard, { Item } from "../../components/eventCard/EventCard.jsx";
 import { Choices, Choice } from "../../components/choices/Choices.jsx";
+import EventCard from "../../components/eventCard/EventCard.jsx";
 import { baseCalendar, classmates } from "./baseFunctions.jsx";
 import { socialLinks } from "../socialLinks/index.js";
 import { events } from "../events";
@@ -29,15 +29,11 @@ export const may = [
         ...events.special,
         label: () => (
           <EventCard
+            prerequisite={`Talk to Chihiro and say "Let's hang out."`}
             place="2nd Floor Hallway"
             name="Chihiro Fushimi"
             head="Justice"
-          >
-            <Item
-              value={`Talk to Chihiro and say "Let's hang out."`}
-              label="Key"
             />
-          </EventCard>
         ),
       },
       day: events.Strength,

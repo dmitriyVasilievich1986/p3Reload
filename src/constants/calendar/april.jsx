@@ -288,15 +288,11 @@ export const april = [
         ...events.special,
         label: () => (
           <EventCard
+            prerequisite={`Talk to Chihiro and say "Let's hang out."`}
             place="2nd Floor Hallway"
             name="Chihiro Fushimi"
             head="Justice"
-          >
-            <Item
-              label="Key"
-              value={`Talk to Chihiro and say "Let's hang out."`}
-            />
-          </EventCard>
+          />
         ),
       },
       day: events.Chariot,
@@ -325,12 +321,11 @@ export const april = [
         ...events.special,
         label: () => (
           <EventCard
+            prerequisite="Talk to Chihiro"
             place="2nd Floor Hallway"
             name="Chihiro Fushimi"
             head="Justice"
-          >
-            <Item label="Key" value="Talk to Chihiro" />
-          </EventCard>
+          />
         ),
       },
       day: events.Magician,
