@@ -22,6 +22,7 @@ export const baseCalendar = {
 
 export const classmates = [
   socialLinks.Magician.name,
+  socialLinks.Strength.name,
   socialLinks.Chariot.name,
   socialLinks.Lovers.name,
 ];
