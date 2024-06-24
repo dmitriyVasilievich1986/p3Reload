@@ -18,3 +18,7 @@ export type statsLevels = {
     getLevel: (points: number) => statsLevel;
   };
 };
+
+export type CharStats = {
+  [key in StatsNames]: number;
+};
