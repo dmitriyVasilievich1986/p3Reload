@@ -1,11 +1,15 @@
+import { OutsideProps } from "./types";
 import React from "react";
 
-function OutsideClick(props) {
-  const fragmentRef = React.useRef(null);
+export function OutsideClick(props: OutsideProps) {
+  const fragmentRef = React.useRef<HTMLDivElement>(null);
 
   React.useEffect(() => {
-    function handleClickOutside(event) {
-      if (fragmentRef.current && !fragmentRef.current.contains(event.target)) {
+    function handleClickOutside(event: MouseEvent) {
+      if (
+        fragmentRef.current &&
+        !fragmentRef.current.contains(event.target as HTMLDivElement)
+      ) {
         props.clickHandler();
       }
     }
@@ -26,5 +30,3 @@ function OutsideClick(props) {
     </div>
   );
 }
-
-export default OutsideClick;
