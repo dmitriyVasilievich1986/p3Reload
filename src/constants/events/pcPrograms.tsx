@@ -1,11 +1,11 @@
-import EventCard from "../../components/eventCard/EventCard";
-import { stats } from "../stats";
-import React from "react";
+import { pcProgramsNames, Categories, Times, Event } from "./types";
+import { EventCard } from "../../components/eventCard";
+import { StatsNames } from "../stats/types";
 
-export const pcPrograms = {
-  lobbyPCLanguageMadeEasy: {
-    name: "lobbyPCLanguageMadeEasy",
-    category: "stats",
+export const pcPrograms: { [key in pcProgramsNames]: Event } = {
+  [pcProgramsNames.lobbyPCLanguageMadeEasy]: {
+    name: pcProgramsNames.lobbyPCLanguageMadeEasy,
+    category: Categories.Stats,
     label: () => (
       <EventCard
         head="Lobby PC(Language Made Easy)"
@@ -17,7 +17,7 @@ export const pcPrograms = {
     available: function ({ currentTime, currentDate, singleTimeEvents }) {
       return (
         currentDate.getTime() >= new Date(2009, 3, 29).getTime() &&
-        ["day", "evening"].includes(currentTime) &&
+        [Times.Day, Times.Evening].includes(currentTime) &&
         !singleTimeEvents.includes(this.name)
       );
     },
@@ -26,14 +26,14 @@ export const pcPrograms = {
         singleTimeEvents: [...singleTimeEvents, this.name],
         stats: {
           ...currentStats,
-          [stats.Academics.name]: currentStats[stats.Academics.name] + 4,
+          [StatsNames.Academics]: currentStats[StatsNames.Academics] + 4,
         },
       };
     },
   },
-  lobbyPCDigitalCramSchool: {
-    name: "lobbyPCDigitalCramSchool",
-    category: "stats",
+  [pcProgramsNames.lobbyPCDigitalCramSchool]: {
+    name: pcProgramsNames.lobbyPCDigitalCramSchool,
+    category: Categories.Stats,
     label: () => (
       <EventCard
         head="Lobby PC(Digital Cram School)"
@@ -44,7 +44,7 @@ export const pcPrograms = {
     available: function ({ currentTime, currentDate, singleTimeEvents }) {
       return (
         currentDate.getTime() >= new Date(2009, 3, 29).getTime() &&
-        ["day", "evening"].includes(currentTime) &&
+        [Times.Day, Times.Evening].includes(currentTime) &&
         !singleTimeEvents.includes(this.name)
       );
     },
@@ -53,14 +53,14 @@ export const pcPrograms = {
         singleTimeEvents: [...singleTimeEvents, this.name],
         stats: {
           ...currentStats,
-          [stats.Academics.name]: currentStats[stats.Academics.name] + 4,
+          [StatsNames.Academics]: currentStats[StatsNames.Academics] + 4,
         },
       };
     },
   },
-  lobbyPCAnimalOthello: {
-    name: "lobbyPCAnimalOthello",
-    category: "stats",
+  [pcProgramsNames.lobbyPCAnimalOthello]: {
+    name: pcProgramsNames.lobbyPCAnimalOthello,
+    category: Categories.Stats,
     label: () => (
       <EventCard
         head="Lobby PC(Animal Othello)"
@@ -72,7 +72,7 @@ export const pcPrograms = {
     available: function ({ currentTime, currentDate, singleTimeEvents }) {
       return (
         currentDate.getTime() >= new Date(2009, 3, 29).getTime() &&
-        ["day", "evening"].includes(currentTime) &&
+        [Times.Day, Times.Evening].includes(currentTime) &&
         !singleTimeEvents.includes(this.name)
       );
     },
@@ -81,14 +81,14 @@ export const pcPrograms = {
         singleTimeEvents: [...singleTimeEvents, this.name],
         stats: {
           ...currentStats,
-          [stats.Courage.name]: currentStats[stats.Courage.name] + 4,
+          [StatsNames.Courage]: currentStats[StatsNames.Courage] + 4,
         },
       };
     },
   },
-  lobbyPCTypinGhoul: {
-    name: "lobbyPCTypinGhoul",
-    category: "stats",
+  [pcProgramsNames.lobbyPCTypinGhoul]: {
+    name: pcProgramsNames.lobbyPCTypinGhoul,
+    category: Categories.Stats,
     label: () => (
       <EventCard
         head="Lobby PC(Typin Ghoul)"
@@ -100,7 +100,7 @@ export const pcPrograms = {
     available: function ({ currentTime, currentDate, singleTimeEvents }) {
       return (
         currentDate.getTime() >= new Date(2009, 3, 29).getTime() &&
-        ["day", "evening"].includes(currentTime) &&
+        [Times.Day, Times.Evening].includes(currentTime) &&
         !singleTimeEvents.includes(this.name)
       );
     },
@@ -109,14 +109,14 @@ export const pcPrograms = {
         singleTimeEvents: [...singleTimeEvents, this.name],
         stats: {
           ...currentStats,
-          [stats.Courage.name]: currentStats[stats.Courage.name] + 4,
+          [StatsNames.Courage]: currentStats[StatsNames.Courage] + 4,
         },
       };
     },
   },
-  lobbyPCLessonsInEtiquette: {
-    name: "lobbyPCLessonsInEtiquette",
-    category: "stats",
+  [pcProgramsNames.lobbyPCLessonsInEtiquette]: {
+    name: pcProgramsNames.lobbyPCLessonsInEtiquette,
+    category: Categories.Stats,
     label: () => (
       <EventCard
         head="Lobby PC(Lessons in Etiquette)"
@@ -128,7 +128,7 @@ export const pcPrograms = {
     available: function ({ currentTime, currentDate, singleTimeEvents }) {
       return (
         currentDate.getTime() >= new Date(2009, 3, 29).getTime() &&
-        ["day", "evening"].includes(currentTime) &&
+        [Times.Day, Times.Evening].includes(currentTime) &&
         !singleTimeEvents.includes(this.name)
       );
     },
@@ -137,14 +137,14 @@ export const pcPrograms = {
         singleTimeEvents: [...singleTimeEvents, this.name],
         stats: {
           ...currentStats,
-          [stats.Charm.name]: currentStats[stats.Charm.name] + 4,
+          [StatsNames.Charm]: currentStats[StatsNames.Charm] + 4,
         },
       };
     },
   },
-  lobbyPCVirtualDiet: {
-    name: "lobbyPCVirtualDiet",
-    category: "stats",
+  [pcProgramsNames.lobbyPCVirtualDiet]: {
+    name: pcProgramsNames.lobbyPCVirtualDiet,
+    category: Categories.Stats,
     label: () => (
       <EventCard
         head="Lobby PC(Virtual Diet)"
@@ -156,7 +156,7 @@ export const pcPrograms = {
     available: function ({ currentTime, currentDate, singleTimeEvents }) {
       return (
         currentDate.getTime() >= new Date(2009, 3, 29).getTime() &&
-        ["day", "evening"].includes(currentTime) &&
+        [Times.Day, Times.Evening].includes(currentTime) &&
         !singleTimeEvents.includes(this.name)
       );
     },
@@ -165,7 +165,7 @@ export const pcPrograms = {
         singleTimeEvents: [...singleTimeEvents, this.name],
         stats: {
           ...currentStats,
-          [stats.Charm.name]: currentStats[stats.Charm.name] + 4,
+          [StatsNames.Charm]: currentStats[StatsNames.Charm] + 4,
         },
       };
     },

@@ -1,32 +1,41 @@
-import EventCard from "../../components/eventCard/EventCard";
-import { daysNames } from "../monthsNames";
-import { stats } from "../stats";
-import React from "react";
+import { EventCard } from "../../components/eventCard";
+import { StatsNames } from "../stats/types";
+import { DaysNames } from "../monthsNames";
 
-const getAcademicsUpgradeFunction = (value) => {
-  return function ({ currentStats }) {
+import {
+  statsEventsAcademicsNames,
+  upgradeProps,
+  Categories,
+  Times,
+  Event,
+} from "./types";
+
+const getAcademicsUpgradeFunction = (value: number) => {
+  return function ({ currentStats }: upgradeProps) {
     return {
       stats: {
         ...currentStats,
-        [stats.Academics.name]: currentStats[stats.Academics.name] + value,
+        [StatsNames.Academics]: currentStats[StatsNames.Academics] + value,
       },
     };
   };
 };
 
-export const statsEventsAcademics = {
-  stayAwakeInClass: {
-    name: "Stay Awake in Class",
-    category: "stats",
+export const statsEventsAcademics: {
+  [key in statsEventsAcademicsNames]: Event;
+} = {
+  [statsEventsAcademicsNames.stayAwakeInClass]: {
+    name: statsEventsAcademicsNames.stayAwakeInClass,
+    category: Categories.Stats,
     label: () => <EventCard head="Stay Awake in Class" stats="Academics +2" />,
     available: function ({ currentTime }) {
-      return currentTime === "morning";
+      return currentTime === Times.Morning;
     },
     upgrade: getAcademicsUpgradeFunction(2),
   },
-  studyAtHome: {
-    name: "studyAtHome",
-    category: "stats",
+  [statsEventsAcademicsNames.studyAtHome]: {
+    name: statsEventsAcademicsNames.studyAtHome,
+    category: Categories.Stats,
     label: () => (
       <EventCard
         head="Studying In Your Room"
@@ -35,13 +44,13 @@ export const statsEventsAcademics = {
       />
     ),
     available: function ({ currentTime }) {
-      return currentTime === "evening";
+      return currentTime === Times.Evening;
     },
     upgrade: getAcademicsUpgradeFunction(2),
   },
-  studyAtLibrary: {
-    name: "studyAtLibrary",
-    category: "stats",
+  [statsEventsAcademicsNames.studyAtLibrary]: {
+    name: statsEventsAcademicsNames.studyAtLibrary,
+    category: Categories.Stats,
     label: () => (
       <EventCard
         head="Studying At The Library"
@@ -50,13 +59,13 @@ export const statsEventsAcademics = {
       />
     ),
     available: function ({ currentTime }) {
-      return currentTime === "day";
+      return currentTime === Times.Day;
     },
     upgrade: getAcademicsUpgradeFunction(2),
   },
-  wakatsuKitchen: {
-    name: "wakatsuKitchen",
-    category: "stats",
+  [statsEventsAcademicsNames.wakatsuKitchen]: {
+    name: statsEventsAcademicsNames.wakatsuKitchen,
+    category: Categories.Stats,
     label: () => (
       <EventCard
         head="Wakatsu Kitchen(Prodigy Platter)"
@@ -67,21 +76,21 @@ export const statsEventsAcademics = {
     ),
     available: function ({ currentDate, currentTime }) {
       const days = [
-        daysNames.thursday,
-        daysNames.friday,
-        daysNames.saturday,
-        daysNames.sunday,
+        DaysNames.thursday,
+        DaysNames.friday,
+        DaysNames.saturday,
+        DaysNames.sunday,
       ];
       return (
-        ["day", "evening"].includes(currentTime) &&
+        [Times.Day, Times.Evening].includes(currentTime) &&
         days.includes(currentDate.getDay())
       );
     },
     upgrade: getAcademicsUpgradeFunction(3),
   },
-  cinemaTheaterAcademics: {
-    name: "cinema",
-    category: "stats",
+  [statsEventsAcademicsNames.cinemaTheaterAcademics]: {
+    name: statsEventsAcademicsNames.cinemaTheaterAcademics,
+    category: Categories.Stats,
     label: () => (
       <EventCard
         head="Cinema('Unresolved Mysteries')"
@@ -91,14 +100,14 @@ export const statsEventsAcademics = {
       />
     ),
     available: function ({ currentDate, currentTime }) {
-      const days = [daysNames.wednesday, daysNames.saturday];
-      return currentTime === "day" && days.includes(currentDate.getDay());
+      const days = [DaysNames.wednesday, DaysNames.saturday];
+      return currentTime === Times.Day && days.includes(currentDate.getDay());
     },
     upgrade: getAcademicsUpgradeFunction(4),
   },
-  wakatsuKitchenSpecial: {
-    name: "wakatsuKitchenSpecial",
-    category: "stats",
+  [statsEventsAcademicsNames.wakatsuKitchenSpecial]: {
+    name: statsEventsAcademicsNames.wakatsuKitchenSpecial,
+    category: Categories.Stats,
     label: () => (
       <EventCard
         head="Wakatsu Kitchen(Seafood Full Course)"
@@ -109,22 +118,22 @@ export const statsEventsAcademics = {
     ),
     available: function ({ currentDate, currentTime, previousDay }) {
       const days = [
-        daysNames.monday,
-        daysNames.thursday,
-        daysNames.friday,
-        daysNames.sunday,
+        DaysNames.monday,
+        DaysNames.thursday,
+        DaysNames.friday,
+        DaysNames.sunday,
       ];
       return (
-        previousDay?.stats[stats.Charm.name] >= 30 &&
-        ["day", "evening"].includes(currentTime) &&
+        previousDay?.stats[StatsNames.Charm] >= 30 &&
+        [Times.Day, Times.Evening].includes(currentTime) &&
         days.includes(currentDate.getDay())
       );
     },
     upgrade: getAcademicsUpgradeFunction(4),
   },
-  gameParadeAcademics: {
-    name: "Game Parade(Play You're the Answer)",
-    category: "stats",
+  [statsEventsAcademicsNames.gameParadeAcademics]: {
+    name: statsEventsAcademicsNames.gameParadeAcademics,
+    category: Categories.Stats,
     label: () => (
       <EventCard
         head="Game Parade(Play You're the Answer)"
@@ -134,17 +143,17 @@ export const statsEventsAcademics = {
       />
     ),
     available: function ({ currentDate, currentTime }) {
-      const days = [daysNames.wednesday, daysNames.saturday];
+      const days = [DaysNames.wednesday, DaysNames.saturday];
       return (
-        ["day", "evening"].includes(currentTime) &&
+        [Times.Day, Times.Evening].includes(currentTime) &&
         days.includes(currentDate.getDay())
       );
     },
     upgrade: getAcademicsUpgradeFunction(4),
   },
-  dormExamStudyingGroup: {
-    name: "dormExamStudyingGroup",
-    category: "stats",
+  [statsEventsAcademicsNames.dormExamStudyingGroup]: {
+    name: statsEventsAcademicsNames.dormExamStudyingGroup,
+    category: Categories.Stats,
     label: () => (
       <EventCard
         head="Dorm Exam Group Studying"
@@ -157,13 +166,15 @@ export const statsEventsAcademics = {
         new Date(2009, 4, 15).getTime(),
         new Date(2009, 4, 16).getTime(),
       ];
-      return dates.includes(currentDate.getTime()) && currentTime === "evening";
+      return (
+        dates.includes(currentDate.getTime()) && currentTime === Times.Evening
+      );
     },
     upgrade: getAcademicsUpgradeFunction(4),
   },
-  dormExamStudyingTeam: {
-    name: "dormExamStudyingTeam",
-    category: "stats",
+  [statsEventsAcademicsNames.dormExamStudyingTeam]: {
+    name: statsEventsAcademicsNames.dormExamStudyingTeam,
+    category: Categories.Stats,
     label: () => (
       <EventCard
         head="Dorm Exam Study with the Team"
@@ -173,7 +184,9 @@ export const statsEventsAcademics = {
     ),
     available: ({ currentDate, currentTime }) => {
       const dates = [new Date(2009, 4, 17).getTime()];
-      return dates.includes(currentDate.getTime()) && currentTime === "evening";
+      return (
+        dates.includes(currentDate.getTime()) && currentTime === Times.Evening
+      );
     },
     upgrade: getAcademicsUpgradeFunction(5),
   },
