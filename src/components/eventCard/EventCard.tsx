@@ -1,10 +1,10 @@
+import { EventProps, ItemProps } from "./types";
 import classnames from "classnames/bind";
 import * as style from "./style.scss";
-import React from "react";
 
 const cx = classnames.bind(style);
 
-export function Item(props) {
+export function Item(props: ItemProps) {
   if (!props?.value) return null;
   return (
     <div className={cx("item")}>
@@ -14,7 +14,7 @@ export function Item(props) {
   );
 }
 
-export function price(price) {
+export function price(price: number | undefined) {
   if (!price) return null;
   if (price < 1000) return `¥${price}`;
   const first = Math.floor(price / 1000);
@@ -22,7 +22,7 @@ export function price(price) {
   return `¥${first},${second}`;
 }
 
-function EventCard(props) {
+function EventCard(props: EventProps) {
   return (
     <div className={cx("event-card")}>
       <h3 className={cx("head")}>{props.head}</h3>
