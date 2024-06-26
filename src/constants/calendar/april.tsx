@@ -1,19 +1,20 @@
-import EventCard, { Item } from "../../components/eventCard/EventCard.jsx";
-import { Choices, Choice } from "../../components/choices/Choices.jsx";
-import { baseCalendar } from "./baseFunctions.jsx";
+import { Choices, Choice } from "../../components/choices";
+import { EventCard } from "../../components/eventCard";
+import { Categories, Times } from "../events/types";
+import { baseCalendar } from "./baseFunctions";
+import { singleDay } from "./types";
 import { events } from "../events";
-import React from "react";
 
-export const april = [
+export const april: singleDay[] = [
   {
     date: new Date(2009, 3, 7),
     ...baseCalendar,
     singleTimeEvents: [],
     arcanes: [],
     activities: {
-      morning: events.special,
-      day: events.special,
-      evening: events.special,
+      [Times.Morning]: events.Special,
+      [Times.Day]: events.Special,
+      [Times.Evening]: events.Special,
     },
   },
   {
@@ -22,7 +23,7 @@ export const april = [
     singleTimeEvents: [],
     arcanes: [],
     activities: {
-      morning: {
+      [Times.Morning]: {
         ...events.schoolQuestionCharm,
         label: () => (
           <Choices
@@ -36,8 +37,8 @@ export const april = [
           </Choices>
         ),
       },
-      day: events.special,
-      evening: events.special,
+      [Times.Day]: events.Special,
+      [Times.Evening]: events.Special,
     },
   },
   {
@@ -46,9 +47,9 @@ export const april = [
     singleTimeEvents: [],
     arcanes: [],
     activities: {
-      morning: events.stayAwakeInClass,
-      day: events.special,
-      evening: events.special,
+      [Times.Morning]: events.stayAwakeInClass,
+      [Times.Day]: events.Special,
+      [Times.Evening]: events.Special,
     },
   },
   {
@@ -57,9 +58,9 @@ export const april = [
     singleTimeEvents: [],
     arcanes: [],
     activities: {
-      morning: events.special,
-      day: events.special,
-      evening: events.special,
+      [Times.Morning]: events.Special,
+      [Times.Day]: events.Special,
+      [Times.Evening]: events.Special,
     },
   },
   {
@@ -68,9 +69,9 @@ export const april = [
     singleTimeEvents: [],
     arcanes: [],
     activities: {
-      morning: events.special,
-      day: events.special,
-      evening: events.special,
+      [Times.Morning]: events.Special,
+      [Times.Day]: events.Special,
+      [Times.Evening]: events.Special,
     },
   },
   {
@@ -79,9 +80,9 @@ export const april = [
     singleTimeEvents: [],
     arcanes: [],
     activities: {
-      morning: events.special,
-      day: events.special,
-      evening: events.special,
+      [Times.Morning]: events.Special,
+      [Times.Day]: events.Special,
+      [Times.Evening]: events.Special,
     },
   },
   {
@@ -90,9 +91,9 @@ export const april = [
     singleTimeEvents: [],
     arcanes: [],
     activities: {
-      morning: events.special,
-      day: events.special,
-      evening: events.special,
+      [Times.Morning]: events.Special,
+      [Times.Day]: events.Special,
+      [Times.Evening]: events.Special,
     },
   },
   {
@@ -101,9 +102,9 @@ export const april = [
     singleTimeEvents: [],
     arcanes: [],
     activities: {
-      morning: events.special,
-      day: events.special,
-      evening: events.special,
+      [Times.Morning]: events.Special,
+      [Times.Day]: events.Special,
+      [Times.Evening]: events.Special,
     },
   },
   {
@@ -112,9 +113,9 @@ export const april = [
     singleTimeEvents: [],
     arcanes: [],
     activities: {
-      morning: events.special,
-      day: events.special,
-      evening: events.special,
+      [Times.Morning]: events.Special,
+      [Times.Day]: events.Special,
+      [Times.Evening]: events.Special,
     },
   },
   {
@@ -123,9 +124,9 @@ export const april = [
     singleTimeEvents: [],
     arcanes: [],
     activities: {
-      morning: events.special,
-      day: events.special,
-      evening: events.special,
+      [Times.Morning]: events.Special,
+      [Times.Day]: events.Special,
+      [Times.Evening]: events.Special,
     },
   },
   {
@@ -134,9 +135,9 @@ export const april = [
     singleTimeEvents: [],
     arcanes: [],
     activities: {
-      morning: events.special,
-      day: events.special,
-      evening: events.special,
+      [Times.Morning]: events.Special,
+      [Times.Day]: events.Special,
+      [Times.Evening]: events.Special,
     },
   },
   {
@@ -145,7 +146,7 @@ export const april = [
     singleTimeEvents: [],
     arcanes: [],
     activities: {
-      morning: {
+      [Times.Morning]: {
         ...events.schoolQuestionCharm,
         label: () => (
           <Choices
@@ -159,8 +160,8 @@ export const april = [
           </Choices>
         ),
       },
-      day: events.special,
-      evening: events.Fool,
+      [Times.Day]: events.Special,
+      [Times.Evening]: events.Fool,
     },
   },
   {
@@ -169,9 +170,9 @@ export const april = [
     singleTimeEvents: [],
     arcanes: [],
     activities: {
-      morning: events.special,
-      day: events.special,
-      evening: events.special,
+      [Times.Morning]: events.Special,
+      [Times.Day]: events.Special,
+      [Times.Evening]: events.Special,
     },
   },
   {
@@ -180,9 +181,9 @@ export const april = [
     singleTimeEvents: [],
     arcanes: [],
     activities: {
-      morning: events.special,
-      day: events.special,
-      evening: { ...events.Fool, category: "Tartarus" },
+      [Times.Morning]: events.Special,
+      [Times.Day]: events.Special,
+      [Times.Evening]: { ...events.Fool, category: Categories.Tartarus },
     },
   },
   {
@@ -191,9 +192,9 @@ export const april = [
     singleTimeEvents: [],
     arcanes: [],
     activities: {
-      morning: events.stayAwakeInClass,
-      day: events.gameParadeCourage,
-      evening: events.gameParadeCourage,
+      [Times.Morning]: events.stayAwakeInClass,
+      [Times.Day]: events.gameParadeCourage,
+      [Times.Evening]: events.gameParadeCourage,
     },
   },
   {
@@ -202,9 +203,9 @@ export const april = [
     singleTimeEvents: [],
     arcanes: [],
     activities: {
-      morning: events.special,
-      day: { ...events.Magician, special: true },
-      evening: events.tartarus,
+      [Times.Morning]: events.Special,
+      [Times.Day]: { ...events.Magician, special: true },
+      [Times.Evening]: events.Tartarus,
     },
   },
   {
@@ -213,9 +214,9 @@ export const april = [
     singleTimeEvents: [],
     arcanes: [],
     activities: {
-      morning: events.special,
-      day: events.Chariot,
-      evening: events.gameParadeCharm,
+      [Times.Morning]: events.Special,
+      [Times.Day]: events.Chariot,
+      [Times.Evening]: events.gameParadeCharm,
     },
   },
   {
@@ -224,9 +225,9 @@ export const april = [
     singleTimeEvents: [],
     arcanes: [],
     activities: {
-      morning: events.special,
-      day: events.Magician,
-      evening: events.gameParadeCourage,
+      [Times.Morning]: events.Special,
+      [Times.Day]: events.Magician,
+      [Times.Evening]: events.gameParadeCourage,
     },
   },
   {
@@ -235,9 +236,9 @@ export const april = [
     singleTimeEvents: [],
     arcanes: [],
     activities: {
-      morning: events.special,
-      day: events.Hierophant,
-      evening: events.gameParadeAcademics,
+      [Times.Morning]: events.Special,
+      [Times.Day]: events.Hierophant,
+      [Times.Evening]: events.gameParadeAcademics,
     },
   },
   {
@@ -246,9 +247,9 @@ export const april = [
     singleTimeEvents: [],
     arcanes: [],
     activities: {
-      morning: events.special,
-      day: events.Hierophant,
-      evening: events.wilduckBurgeMysteryBurger,
+      [Times.Morning]: events.Special,
+      [Times.Day]: events.Hierophant,
+      [Times.Evening]: events.wilduckBurgeMysteryBurger,
     },
   },
   {
@@ -257,7 +258,7 @@ export const april = [
     singleTimeEvents: [],
     arcanes: [],
     activities: {
-      morning: {
+      [Times.Morning]: {
         ...events.schoolQuestionCharm,
         special: true,
         label: () => (
@@ -273,8 +274,8 @@ export const april = [
           </Choices>
         ),
       },
-      day: events.Emperor,
-      evening: events.gameParadeCharm,
+      [Times.Day]: events.Emperor,
+      [Times.Evening]: events.gameParadeCharm,
     },
   },
   {
@@ -283,9 +284,9 @@ export const april = [
     singleTimeEvents: [],
     arcanes: [],
     activities: {
-      morning: events.special,
-      afterSchool: {
-        ...events.special,
+      [Times.Morning]: events.Special,
+      [Times.AfterSchool]: {
+        ...events.Special,
         label: () => (
           <EventCard
             prerequisite={`Talk to Chihiro and say "Let's hang out."`}
@@ -295,8 +296,8 @@ export const april = [
           />
         ),
       },
-      day: events.Chariot,
-      evening: events.gameParadeCourage,
+      [Times.Day]: events.Chariot,
+      [Times.Evening]: events.gameParadeCourage,
     },
   },
   {
@@ -305,9 +306,9 @@ export const april = [
     singleTimeEvents: [],
     arcanes: [],
     activities: {
-      morning: events.special,
-      day: events.Hermit,
-      evening: events.gameParadeAcademics,
+      [Times.Morning]: events.Special,
+      [Times.Day]: events.Hermit,
+      [Times.Evening]: events.gameParadeAcademics,
     },
   },
   {
@@ -316,9 +317,9 @@ export const april = [
     singleTimeEvents: [],
     arcanes: [],
     activities: {
-      morning: events.stayAwakeInClass,
-      afterSchool: {
-        ...events.special,
+      [Times.Morning]: events.stayAwakeInClass,
+      [Times.AfterSchool]: {
+        ...events.Special,
         label: () => (
           <EventCard
             prerequisite="Talk to Chihiro"
@@ -328,8 +329,8 @@ export const april = [
           />
         ),
       },
-      day: events.Magician,
-      evening: events.gameParadeCharm,
+      [Times.Day]: events.Magician,
+      [Times.Evening]: events.gameParadeCharm,
     },
   },
 ];

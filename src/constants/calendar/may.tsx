@@ -1,21 +1,22 @@
-import { Choices, Choice } from "../../components/choices/Choices.jsx";
-import EventCard from "../../components/eventCard/EventCard.jsx";
-import { baseCalendar, classmates } from "./baseFunctions.jsx";
-import { socialLinks } from "../socialLinks/index.js";
+import { Choices, Choice } from "../../components/choices";
+import { EventCard } from "../../components/eventCard";
+import { baseCalendar, classmates } from "./baseFunctions";
+import { Categories, Times } from "../events/types";
+import { singleDay } from "./types";
 import { events } from "../events";
-import { stats } from "../stats";
-import React from "react";
+import { SocialLinkNames, SocialLinkStats } from "../socialLinks/types";
+import { StatsNames } from "../stats/types";
 
-export const may = [
+export const may: singleDay[] = [
   {
     date: new Date(2009, 4, 1),
     ...baseCalendar,
     singleTimeEvents: [],
     arcanes: [],
     activities: {
-      morning: events.special,
-      day: events.special,
-      evening: events.gameParadeCourage,
+      [Times.Morning]: events.Special,
+      [Times.Day]: events.Special,
+      [Times.Evening]: events.gameParadeCourage,
     },
   },
   {
@@ -24,20 +25,20 @@ export const may = [
     singleTimeEvents: [],
     arcanes: [],
     activities: {
-      morning: events.special,
-      afterSchool: {
-        ...events.special,
+      [Times.Morning]: events.Special,
+      [Times.AfterSchool]: {
+        ...events.Special,
         label: () => (
           <EventCard
             prerequisite={`Talk to Chihiro and say "Let's hang out."`}
             place="2nd Floor Hallway"
             name="Chihiro Fushimi"
             head="Justice"
-            />
+          />
         ),
       },
-      day: events.Strength,
-      evening: events.gameParadeAcademics,
+      [Times.Day]: events.Strength,
+      [Times.Evening]: events.gameParadeAcademics,
     },
   },
   {
@@ -46,9 +47,9 @@ export const may = [
     singleTimeEvents: [],
     arcanes: [],
     activities: {
-      morning: events.special,
-      day: events.Hermit,
-      evening: events.lobbyPCDigitalCramSchool,
+      [Times.Morning]: events.Special,
+      [Times.Day]: events.Hermit,
+      [Times.Evening]: events.lobbyPCDigitalCramSchool,
     },
   },
   {
@@ -57,9 +58,9 @@ export const may = [
     singleTimeEvents: [],
     arcanes: [],
     activities: {
-      morning: events.special,
-      day: events.Hermit,
-      evening: events.gameParadeCharm,
+      [Times.Morning]: events.Special,
+      [Times.Day]: events.Hermit,
+      [Times.Evening]: events.gameParadeCharm,
     },
   },
   {
@@ -68,9 +69,9 @@ export const may = [
     singleTimeEvents: [],
     arcanes: [],
     activities: {
-      morning: events.special,
-      day: events.Hierophant,
-      evening: events.gameParadeCourage,
+      [Times.Morning]: events.Special,
+      [Times.Day]: events.Hierophant,
+      [Times.Evening]: events.gameParadeCourage,
     },
   },
   {
@@ -79,7 +80,7 @@ export const may = [
     singleTimeEvents: [],
     arcanes: [],
     activities: {
-      morning: {
+      [Times.Morning]: {
         ...events.schoolQuestionCharm,
         label: () => (
           <Choices
@@ -93,8 +94,8 @@ export const may = [
           </Choices>
         ),
       },
-      day: events.Emperor,
-      evening: events.gameParadeAcademics,
+      [Times.Day]: events.Emperor,
+      [Times.Evening]: events.gameParadeAcademics,
     },
   },
   {
@@ -103,9 +104,9 @@ export const may = [
     singleTimeEvents: [],
     arcanes: [],
     activities: {
-      morning: events.special,
-      day: events.Justice,
-      evening: events.lobbyPCLanguageMadeEasy,
+      [Times.Morning]: events.Special,
+      [Times.Day]: events.Justice,
+      [Times.Evening]: events.lobbyPCLanguageMadeEasy,
     },
   },
   {
@@ -114,9 +115,9 @@ export const may = [
     singleTimeEvents: [],
     arcanes: [],
     activities: {
-      morning: events.special,
-      day: events.Magician,
-      evening: events.gameParadeCourage,
+      [Times.Morning]: events.Special,
+      [Times.Day]: events.Magician,
+      [Times.Evening]: events.gameParadeCourage,
     },
   },
   {
@@ -125,9 +126,9 @@ export const may = [
     singleTimeEvents: [],
     arcanes: [],
     activities: {
-      morning: events.special,
-      day: events.Fool,
-      evening: events.special,
+      [Times.Morning]: events.Special,
+      [Times.Day]: events.Fool,
+      [Times.Evening]: events.Special,
     },
   },
   {
@@ -136,9 +137,9 @@ export const may = [
     singleTimeEvents: [],
     arcanes: [],
     activities: {
-      morning: events.noControl,
-      day: events.Hermit,
-      evening: events.tartarus,
+      [Times.Morning]: events.NoControl,
+      [Times.Day]: events.Hermit,
+      [Times.Evening]: events.Tartarus,
     },
   },
   {
@@ -147,9 +148,9 @@ export const may = [
     singleTimeEvents: [],
     arcanes: [],
     activities: {
-      morning: events.stayAwakeInClass,
-      day: events.HangedMan,
-      evening: events.gameParadeCharm,
+      [Times.Morning]: events.stayAwakeInClass,
+      [Times.Day]: events.HangedMan,
+      [Times.Evening]: events.gameParadeCharm,
     },
   },
   {
@@ -158,9 +159,9 @@ export const may = [
     singleTimeEvents: [],
     arcanes: [],
     activities: {
-      morning: events.special,
-      day: events.special,
-      evening: events.lobbyPCLessonsInEtiquette,
+      [Times.Morning]: events.Special,
+      [Times.Day]: events.Special,
+      [Times.Evening]: events.lobbyPCLessonsInEtiquette,
     },
   },
   {
@@ -169,7 +170,7 @@ export const may = [
     singleTimeEvents: [],
     arcanes: [],
     activities: {
-      morning: {
+      [Times.Morning]: {
         ...events.schoolQuestionCharm,
         label: () => (
           <Choices label={"Which tool did he use in his experiments?"}>
@@ -179,8 +180,8 @@ export const may = [
           </Choices>
         ),
       },
-      day: events.HangedMan,
-      evening: events.gameParadeAcademics,
+      [Times.Day]: events.HangedMan,
+      [Times.Evening]: events.gameParadeAcademics,
     },
   },
   {
@@ -189,9 +190,9 @@ export const may = [
     singleTimeEvents: [],
     arcanes: [],
     activities: {
-      morning: events.noControl,
-      day: events.Hierophant,
-      evening: events.wakatsuKitchenSpecial,
+      [Times.Morning]: events.NoControl,
+      [Times.Day]: events.Hierophant,
+      [Times.Evening]: events.wakatsuKitchenSpecial,
     },
   },
   {
@@ -200,7 +201,7 @@ export const may = [
     singleTimeEvents: [],
     arcanes: [],
     activities: {
-      morning: {
+      [Times.Morning]: {
         ...events.schoolQuestionCharm,
         label: () => (
           <Choices
@@ -212,8 +213,8 @@ export const may = [
           </Choices>
         ),
       },
-      day: events.Hierophant,
-      evening: events.dormExamStudyingGroup,
+      [Times.Day]: events.Hierophant,
+      [Times.Evening]: events.dormExamStudyingGroup,
     },
   },
   {
@@ -222,9 +223,9 @@ export const may = [
     singleTimeEvents: [],
     arcanes: [],
     activities: {
-      morning: events.stayAwakeInClass,
-      day: events.HangedMan,
-      evening: events.dormExamStudyingGroup,
+      [Times.Morning]: events.stayAwakeInClass,
+      [Times.Day]: events.HangedMan,
+      [Times.Evening]: events.dormExamStudyingGroup,
     },
   },
   {
@@ -233,9 +234,9 @@ export const may = [
     singleTimeEvents: [],
     arcanes: [],
     activities: {
-      morning: events.noControl,
-      day: events.Hermit,
-      evening: events.dormExamStudyingTeam,
+      [Times.Morning]: events.NoControl,
+      [Times.Day]: events.Hermit,
+      [Times.Evening]: events.dormExamStudyingTeam,
     },
   },
   {
@@ -244,9 +245,9 @@ export const may = [
     singleTimeEvents: [],
     arcanes: [],
     activities: {
-      morning: events.exams,
-      day: events.exams,
-      evening: events.exams,
+      [Times.Morning]: events.Exams,
+      [Times.Day]: events.Exams,
+      [Times.Evening]: events.Exams,
     },
   },
   {
@@ -255,8 +256,8 @@ export const may = [
     singleTimeEvents: [],
     arcanes: [],
     activities: {
-      morning: {
-        ...events.exams,
+      [Times.Morning]: {
+        ...events.Exams,
         label: () => (
           <Choices
             label={
@@ -270,8 +271,8 @@ export const may = [
           </Choices>
         ),
       },
-      day: events.exams,
-      evening: events.exams,
+      [Times.Day]: events.Exams,
+      [Times.Evening]: events.Exams,
     },
   },
   {
@@ -280,8 +281,8 @@ export const may = [
     singleTimeEvents: [],
     arcanes: [],
     activities: {
-      morning: {
-        ...events.exams,
+      [Times.Morning]: {
+        ...events.Exams,
         label: () => (
           <Choices
             label={
@@ -295,8 +296,8 @@ export const may = [
           </Choices>
         ),
       },
-      day: events.exams,
-      evening: events.exams,
+      [Times.Day]: events.Exams,
+      [Times.Evening]: events.Exams,
     },
   },
   {
@@ -305,8 +306,8 @@ export const may = [
     singleTimeEvents: [],
     arcanes: [],
     activities: {
-      morning: {
-        ...events.exams,
+      [Times.Morning]: {
+        ...events.Exams,
         label: () => (
           <Choices
             label={"Which of the following is generated by a pantograph?"}
@@ -318,8 +319,8 @@ export const may = [
           </Choices>
         ),
       },
-      day: events.exams,
-      evening: events.exams,
+      [Times.Day]: events.Exams,
+      [Times.Evening]: events.Exams,
     },
   },
   {
@@ -328,8 +329,8 @@ export const may = [
     singleTimeEvents: [],
     arcanes: [],
     activities: {
-      morning: {
-        ...events.exams,
+      [Times.Morning]: {
+        ...events.Exams,
         label: () => (
           <Choices
             label={
@@ -343,8 +344,8 @@ export const may = [
           </Choices>
         ),
       },
-      day: events.exams,
-      evening: events.exams,
+      [Times.Day]: events.Exams,
+      [Times.Evening]: events.Exams,
     },
   },
   {
@@ -353,9 +354,9 @@ export const may = [
     singleTimeEvents: [],
     arcanes: [],
     activities: {
-      morning: events.exams,
-      day: events.doNothing,
-      evening: events.doNothing,
+      [Times.Morning]: events.Exams,
+      [Times.Day]: events.DoNothing,
+      [Times.Evening]: events.DoNothing,
     },
   },
   {
@@ -364,9 +365,9 @@ export const may = [
     singleTimeEvents: [],
     arcanes: [],
     activities: {
-      morning: events.noControl,
-      day: events.doNothing,
-      evening: events.doNothing,
+      [Times.Morning]: events.NoControl,
+      [Times.Day]: events.DoNothing,
+      [Times.Evening]: events.DoNothing,
     },
   },
   {
@@ -375,22 +376,22 @@ export const may = [
     singleTimeEvents: [],
     arcanes: [],
     activities: {
-      morning: {
-        ...events.exams,
+      [Times.Morning]: {
+        ...events.Exams,
         label: () => <EventCard head="Exam results" />,
         upgrade: function ({ currentStats, currentLinks, weekAgoStats }) {
           let newMultiplier = 1;
           let charmAddendum = 2;
-          if (weekAgoStats[stats.Academics.name] >= 55) {
+          if (weekAgoStats[StatsNames.Academics] >= 55) {
             newMultiplier = 1.51;
             charmAddendum = 4;
-          } else if (weekAgoStats[stats.Academics.name] >= 20) {
+          } else if (weekAgoStats[StatsNames.Academics] >= 20) {
             newMultiplier = 1.21;
             charmAddendum = 3;
           }
 
           const newLinks = Object.fromEntries(
-            Object.keys(currentLinks)
+            (Object.keys(currentLinks) as Array<SocialLinkNames>)
               .filter((k) => classmates.includes(k))
               .map((k) => [
                 k,
@@ -405,14 +406,14 @@ export const may = [
             },
             stats: {
               ...currentStats,
-              [stats.Charm.name]:
-                currentStats[stats.Charm.name] + charmAddendum,
+              [StatsNames.Charm]:
+                currentStats[StatsNames.Charm] + charmAddendum,
             },
           };
         },
       },
-      day: events.doNothing,
-      evening: events.doNothing,
+      [Times.Day]: events.DoNothing,
+      [Times.Evening]: events.DoNothing,
     },
   },
   {
@@ -421,9 +422,9 @@ export const may = [
     singleTimeEvents: [],
     arcanes: [],
     activities: {
-      morning: events.noControl,
-      day: events.doNothing,
-      evening: events.doNothing,
+      [Times.Morning]: events.NoControl,
+      [Times.Day]: events.DoNothing,
+      [Times.Evening]: events.DoNothing,
     },
   },
   {
@@ -432,9 +433,9 @@ export const may = [
     singleTimeEvents: [],
     arcanes: [],
     activities: {
-      morning: events.noControl,
-      day: events.doNothing,
-      evening: events.doNothing,
+      [Times.Morning]: events.NoControl,
+      [Times.Day]: events.DoNothing,
+      [Times.Evening]: events.DoNothing,
     },
   },
   {
@@ -443,9 +444,9 @@ export const may = [
     singleTimeEvents: [],
     arcanes: [],
     activities: {
-      morning: events.stayAwakeInClass,
-      day: events.doNothing,
-      evening: events.doNothing,
+      [Times.Morning]: events.stayAwakeInClass,
+      [Times.Day]: events.DoNothing,
+      [Times.Evening]: events.DoNothing,
     },
   },
   {
@@ -454,9 +455,9 @@ export const may = [
     singleTimeEvents: [],
     arcanes: [],
     activities: {
-      morning: events.stayAwakeInClass,
-      day: events.doNothing,
-      evening: events.doNothing,
+      [Times.Morning]: events.stayAwakeInClass,
+      [Times.Day]: events.DoNothing,
+      [Times.Evening]: events.DoNothing,
     },
   },
   {
@@ -465,9 +466,9 @@ export const may = [
     singleTimeEvents: [],
     arcanes: [],
     activities: {
-      morning: events.noControl,
-      day: events.doNothing,
-      evening: events.doNothing,
+      [Times.Morning]: events.NoControl,
+      [Times.Day]: events.DoNothing,
+      [Times.Evening]: events.DoNothing,
     },
   },
   {
@@ -476,9 +477,9 @@ export const may = [
     singleTimeEvents: [],
     arcanes: [],
     activities: {
-      morning: events.noControl,
-      day: events.doNothing,
-      evening: events.doNothing,
+      [Times.Morning]: events.NoControl,
+      [Times.Day]: events.DoNothing,
+      [Times.Evening]: events.DoNothing,
     },
   },
 ];
