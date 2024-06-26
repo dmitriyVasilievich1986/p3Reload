@@ -95,6 +95,7 @@ export type upgradeProps = {
   currentLinks: SocialLinksStatsArray;
   arcanes: SocialLinkNames[];
   currentStats: CharStats;
+  weekAgoStats: CharStats;
   singleTimeEvents: (
     | SpecialEventsNames
     | pcProgramsNames
