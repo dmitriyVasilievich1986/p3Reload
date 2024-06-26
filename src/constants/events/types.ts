@@ -110,6 +110,15 @@ export type upgradeProps = {
 export type upgradeResponse = {
   stats?: CharStats;
   links?: SocialLinksStatsArray;
+  singleTimeEvents?: (
+    | SpecialEventsNames
+    | pcProgramsNames
+    | statsEventsAcademicsNames
+    | statsEventsCharmNames
+    | statsEventsCourageNames
+    | SocialLinkNames
+    | socialLinkRomanceNames
+  )[];
 };
 
 export type Event = {
