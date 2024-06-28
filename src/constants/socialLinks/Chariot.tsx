@@ -1,4 +1,4 @@
-import { SocialLinkNames, SocialLinkType } from "./types";
+import { SocialLinkNames, SocialLinkType, CalculateProps } from "./types";
 import { EventCard } from "../../components/eventCard";
 import { StatsNames } from "../stats/types";
 
@@ -45,10 +45,14 @@ function chariotStrength() {
 }
 
 export const Chariot: SocialLinkType = {
-  name: SocialLinkNames.Chariot,
   ...baseSocialLinkCalculation,
-  calculate: function ({ currentStats, currentLinks, arcanes, name }) {
-    const thisLink = currentLinks[name];
+  name: SocialLinkNames.Chariot,
+  calculate: function ({
+    currentStats,
+    currentLinks,
+    arcanes,
+  }: CalculateProps) {
+    const thisLink = currentLinks[SocialLinkNames.Chariot];
     const currentLevel = this.getlevel({
       level: thisLink.level,
       romance: thisLink.romance,
@@ -57,7 +61,7 @@ export const Chariot: SocialLinkType = {
       thisLink.level < this.maxLevel && thisLink.points >= currentLevel.points;
 
     let multiplier = thisLink.multiplier;
-    if (arcanes.includes(name)) multiplier *= 1.51;
+    if (arcanes.includes(SocialLinkNames.Chariot)) multiplier *= 1.51;
     if (currentStats[StatsNames.Charm] >= 100) multiplier *= 1.51;
 
     const newPoints = Math.floor(
@@ -79,7 +83,7 @@ export const Chariot: SocialLinkType = {
     return {
       links: {
         ...currentLinks,
-        [name]: {
+        [SocialLinkNames.Chariot]: {
           ...thisLink,
           level: isNewlevel ? thisLink.level + 1 : thisLink.level,
           points: newPoints,
