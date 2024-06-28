@@ -1,13 +1,14 @@
+import { StatsNames } from "../../constants/stats/types";
 import { stats } from "../../constants/stats";
+import { HeroStatsProps } from "./types";
 import classnames from "classnames/bind";
 import * as style from "./style.scss";
 import Card from "../card/Card";
-import React from "react";
 
 const cx = classnames.bind(style);
 
-function HeroStats(props) {
-  const getLevel = (name) => {
+function HeroStats(props: HeroStatsProps) {
+  const getLevel = (name: StatsNames) => {
     const currentName = stats[name].getLevel(props.stats[name]).name;
     const previousName = props.previousDay
       ? stats[name].getLevel(props.previousDay.stats[name]).name
@@ -17,7 +18,7 @@ function HeroStats(props) {
       : `${previousName} -> ${currentName}`;
   };
 
-  const getPoints = (name) => {
+  const getPoints = (name: StatsNames) => {
     if (props.stats[name] >= stats[name].maxPoints) return "max level";
     const level = stats[name].getLevel(props.stats[name]);
     return ` (${props.stats[name]}/${level.nextLevel} pts.)`;
@@ -26,14 +27,12 @@ function HeroStats(props) {
   return (
     <Card head="Stats" color="primary">
       <div className={cx("stat")}>
-        {[stats.Academics.name, stats.Charm.name, stats.Courage.name].map(
-          (stat) => (
-            <div key={stat}>
-              <label>{stat}</label>: {getLevel(stats[stat].name)}
-              {getPoints(stats[stat].name)}
-            </div>
-          )
-        )}
+        {(Object.keys(StatsNames) as Array<StatsNames>).map((stat) => (
+          <div key={stat}>
+            <label>{stat}</label>: {getLevel(stats[stat].name)}
+            {getPoints(stats[stat].name)}
+          </div>
+        ))}
       </div>
     </Card>
   );

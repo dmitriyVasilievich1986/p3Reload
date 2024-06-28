@@ -1,13 +1,14 @@
+import { SocialLinkNames } from "../../constants/socialLinks/types";
 import { socialLinks } from "../../constants/socialLinks";
+import { SocialLinksProps } from "./types";
 import classnames from "classnames/bind";
 import * as style from "./style.scss";
-import Card from "../card/Card";
-import React from "react";
+import { Card } from "../card";
 
 const cx = classnames.bind(style);
 
-function SocialLinks(props) {
-  const getLevel = (name) => {
+function SocialLinks(props: SocialLinksProps) {
+  const getLevel = (name: SocialLinkNames) => {
     if (props.links[name].level === 0) return "not established";
     if (props.links[name].level >= socialLinks[name].maxLevel)
       return "max level";
@@ -21,7 +22,7 @@ function SocialLinks(props) {
   return (
     <Card head="Links" color="primary">
       <div className={cx("stat")}>
-        {Object.keys(props.links).map((l) => (
+        {(Object.keys(props.links) as Array<SocialLinkNames>).map((l) => (
           <div key={l}>
             <input
               onChange={() => props.changeHandler({ arcane: l })}
