@@ -1,11 +1,11 @@
 import { Choices, Choice } from "../../components/choices";
-import { EventCard } from "../../components/eventCard";
 import { baseCalendar, classmates } from "./baseFunctions";
-import { Categories, Times } from "../events/types";
+import { EventCard } from "../../components/eventCard";
+import { SocialLinkNames } from "../socialLinks/types";
+import { StatsNames } from "../stats/types";
+import { Times } from "../events/types";
 import { singleDay } from "./types";
 import { events } from "../events";
-import { SocialLinkNames, SocialLinkStats } from "../socialLinks/types";
-import { StatsNames } from "../stats/types";
 
 export const may: singleDay[] = [
   {
