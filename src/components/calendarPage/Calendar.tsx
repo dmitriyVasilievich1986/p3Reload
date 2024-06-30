@@ -64,9 +64,8 @@ function Calendar(props: CalendarProps) {
           return {
             ...c,
             activities: {
-              [Times[Times.Morning]]: c.activities[Times[Times.Morning]]
-                ?.special
-                ? c.activities[Times[Times.Morning]]
+              [Times.Morning]: c.activities[Times.Morning]?.special
+                ? c.activities[Times.Morning]
                 : events.stayAwakeInClass,
               [Times.AfterSchool]: null,
               [Times.Day]: c.activities[Times.Day]?.special
@@ -104,8 +103,8 @@ function Calendar(props: CalendarProps) {
 
           <Tartarus previousDay={props.previousDay} />
 
-          {([Times.Day, Times.Evening] as Array<Times>)
-            .filter((time) => !props.activities?.[time])
+          {([Times.AfterSchool, Times.Day, Times.Evening] as Array<Times>)
+            .filter((time) => !!props.activities?.[time])
             .map((time) => (
               <Card
                 enable={!props.activities[time]!.special}
