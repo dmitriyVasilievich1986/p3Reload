@@ -74,21 +74,25 @@ export enum socialLinkRomanceNames {
   AeonRomance = "AeonRomance",
 }
 
+const allNames = {
+  ...SpecialEventsNames,
+  ...pcProgramsNames,
+  ...statsEventsAcademicsNames,
+  ...statsEventsCharmNames,
+  ...statsEventsCourageNames,
+  ...SocialLinkNames,
+  ...socialLinkRomanceNames,
+};
+
+export type allEventsNames = (typeof allNames)[keyof typeof allNames];
+
 type availableProps = {
   currentLinks: SocialLinksStatsArray;
   currentStats: CharStats;
   currentTime: Times;
   currentDate: Date;
   previousDay: any;
-  singleTimeEvents: (
-    | SpecialEventsNames
-    | pcProgramsNames
-    | statsEventsAcademicsNames
-    | statsEventsCharmNames
-    | statsEventsCourageNames
-    | SocialLinkNames
-    | socialLinkRomanceNames
-  )[];
+  singleTimeEvents: allEventsNames[];
 };
 
 export type upgradeProps = {
@@ -96,29 +100,13 @@ export type upgradeProps = {
   arcanes: SocialLinkNames[];
   currentStats: CharStats;
   weekAgoStats: CharStats;
-  singleTimeEvents: (
-    | SpecialEventsNames
-    | pcProgramsNames
-    | statsEventsAcademicsNames
-    | statsEventsCharmNames
-    | statsEventsCourageNames
-    | SocialLinkNames
-    | socialLinkRomanceNames
-  )[];
+  singleTimeEvents: allEventsNames[];
 };
 
 export type upgradeResponse = {
   stats?: CharStats;
   links?: SocialLinksStatsArray;
-  singleTimeEvents?: (
-    | SpecialEventsNames
-    | pcProgramsNames
-    | statsEventsAcademicsNames
-    | statsEventsCharmNames
-    | statsEventsCourageNames
-    | SocialLinkNames
-    | socialLinkRomanceNames
-  )[];
+  singleTimeEvents?: allEventsNames[];
 };
 
 export type Event = {
@@ -127,12 +115,5 @@ export type Event = {
   upgrade: (props: upgradeProps) => upgradeResponse;
   available: (props: availableProps) => boolean;
   label: () => React.ReactNode;
-  name:
-    | SpecialEventsNames
-    | pcProgramsNames
-    | statsEventsAcademicsNames
-    | statsEventsCharmNames
-    | statsEventsCourageNames
-    | SocialLinkNames
-    | socialLinkRomanceNames;
+  name: allEventsNames;
 };

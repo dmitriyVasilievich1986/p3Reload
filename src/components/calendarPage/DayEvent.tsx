@@ -1,3 +1,4 @@
+import { allEventsNames, Categories } from "../../constants/events/types";
 import { SocialLinkNames } from "../../constants/socialLinks/types";
 import { OutsideClick } from "../supportComponents/OutsideClick";
 import { socialLinks } from "../../constants/socialLinks";
@@ -6,16 +7,6 @@ import classnames from "classnames/bind";
 import { DayEventProps } from "./types";
 import * as style from "./style.scss";
 import React from "react";
-
-import {
-  SpecialEventsNames,
-  pcProgramsNames,
-  statsEventsAcademicsNames,
-  statsEventsCharmNames,
-  statsEventsCourageNames,
-  socialLinkRomanceNames,
-  Categories,
-} from "../../constants/events/types";
 
 const cx = classnames.bind(style);
 
@@ -28,25 +19,16 @@ function DropBox(props: { show: boolean; children: React.ReactNode }) {
 function DayEvent(props: DayEventProps) {
   const [show, setShow] = React.useState(false);
 
-  const availableEvents = (
-    Object.keys(events) as Array<
-      | SpecialEventsNames
-      | pcProgramsNames
-      | statsEventsAcademicsNames
-      | statsEventsCharmNames
-      | statsEventsCourageNames
-      | SocialLinkNames
-      | socialLinkRomanceNames
-    >
-  ).filter((e) =>
-    events[e].available({
-      singleTimeEvents: props.singleTimeEvents,
-      previousDay: props.previousDay,
-      currentStats: props.stats,
-      currentLinks: props.links,
-      currentDate: props.date,
-      currentTime: props.time,
-    })
+  const availableEvents = (Object.keys(events) as Array<allEventsNames>).filter(
+    (e) =>
+      events[e].available({
+        singleTimeEvents: props.singleTimeEvents,
+        previousDay: props.previousDay,
+        currentStats: props.stats,
+        currentLinks: props.links,
+        currentDate: props.date,
+        currentTime: props.time,
+      })
   );
 
   const LinkElement = () => {
