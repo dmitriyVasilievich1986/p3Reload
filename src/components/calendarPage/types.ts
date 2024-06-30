@@ -1,3 +1,4 @@
+import { Times, Event, allEventsNames } from "../../constants/events/types";
 import { singleDay } from "../../constants/calendar/types";
 import { CharStats } from "../../constants/stats/types";
 
@@ -5,17 +6,6 @@ import {
   SocialLinksStatsArray,
   SocialLinkNames,
 } from "../../constants/socialLinks/types";
-
-import {
-  SpecialEventsNames,
-  pcProgramsNames,
-  statsEventsAcademicsNames,
-  statsEventsCharmNames,
-  statsEventsCourageNames,
-  socialLinkRomanceNames,
-  Times,
-  Event,
-} from "../../constants/events/types";
 
 export type SocialLinksProps = {
   links: SocialLinksStatsArray;
@@ -35,25 +25,8 @@ export type DayEventProps = {
   event: Event;
   time: Times;
   date: Date;
-  changeHandler: (
-    props:
-      | SpecialEventsNames
-      | pcProgramsNames
-      | statsEventsAcademicsNames
-      | statsEventsCharmNames
-      | statsEventsCourageNames
-      | SocialLinkNames
-      | socialLinkRomanceNames
-  ) => void;
-  singleTimeEvents: (
-    | SpecialEventsNames
-    | pcProgramsNames
-    | statsEventsAcademicsNames
-    | statsEventsCharmNames
-    | statsEventsCourageNames
-    | SocialLinkNames
-    | socialLinkRomanceNames
-  )[];
+  changeHandler: (props: allEventsNames) => void;
+  singleTimeEvents: allEventsNames[];
 };
 
 export type CalendarProps = {
@@ -69,13 +42,5 @@ export type CalendarProps = {
     [Times.Day]: Event;
     [Times.Evening]: Event;
   };
-  singleTimeEvents: (
-    | SpecialEventsNames
-    | pcProgramsNames
-    | statsEventsAcademicsNames
-    | statsEventsCharmNames
-    | statsEventsCourageNames
-    | SocialLinkNames
-    | socialLinkRomanceNames
-  )[];
+  singleTimeEvents: allEventsNames[];
 };
