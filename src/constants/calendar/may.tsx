@@ -9,8 +9,8 @@ import { events } from "../events";
 
 export const may: singleDay[] = [
   {
-    date: new Date(2009, 4, 1),
     ...baseCalendar,
+    date: new Date(2009, 4, 1),
     singleTimeEvents: [],
     arcanes: [],
     activities: {
@@ -20,8 +20,8 @@ export const may: singleDay[] = [
     },
   },
   {
-    date: new Date(2009, 4, 2),
     ...baseCalendar,
+    date: new Date(2009, 4, 2),
     singleTimeEvents: [],
     arcanes: [],
     activities: {
@@ -42,8 +42,8 @@ export const may: singleDay[] = [
     },
   },
   {
-    date: new Date(2009, 4, 3),
     ...baseCalendar,
+    date: new Date(2009, 4, 3),
     singleTimeEvents: [],
     arcanes: [],
     activities: {
@@ -53,8 +53,8 @@ export const may: singleDay[] = [
     },
   },
   {
-    date: new Date(2009, 4, 4),
     ...baseCalendar,
+    date: new Date(2009, 4, 4),
     singleTimeEvents: [],
     arcanes: [],
     activities: {
@@ -64,8 +64,8 @@ export const may: singleDay[] = [
     },
   },
   {
-    date: new Date(2009, 4, 5),
     ...baseCalendar,
+    date: new Date(2009, 4, 5),
     singleTimeEvents: [],
     arcanes: [],
     activities: {
@@ -75,8 +75,8 @@ export const may: singleDay[] = [
     },
   },
   {
-    date: new Date(2009, 4, 6),
     ...baseCalendar,
+    date: new Date(2009, 4, 6),
     singleTimeEvents: [],
     arcanes: [],
     activities: {
@@ -99,8 +99,8 @@ export const may: singleDay[] = [
     },
   },
   {
-    date: new Date(2009, 4, 7),
     ...baseCalendar,
+    date: new Date(2009, 4, 7),
     singleTimeEvents: [],
     arcanes: [],
     activities: {
@@ -110,8 +110,8 @@ export const may: singleDay[] = [
     },
   },
   {
-    date: new Date(2009, 4, 8),
     ...baseCalendar,
+    date: new Date(2009, 4, 8),
     singleTimeEvents: [],
     arcanes: [],
     activities: {
@@ -121,8 +121,8 @@ export const may: singleDay[] = [
     },
   },
   {
-    date: new Date(2009, 4, 9),
     ...baseCalendar,
+    date: new Date(2009, 4, 9),
     singleTimeEvents: [],
     arcanes: [],
     activities: {
@@ -132,8 +132,8 @@ export const may: singleDay[] = [
     },
   },
   {
-    date: new Date(2009, 4, 10),
     ...baseCalendar,
+    date: new Date(2009, 4, 10),
     singleTimeEvents: [],
     arcanes: [],
     activities: {
@@ -143,8 +143,8 @@ export const may: singleDay[] = [
     },
   },
   {
-    date: new Date(2009, 4, 11),
     ...baseCalendar,
+    date: new Date(2009, 4, 11),
     singleTimeEvents: [],
     arcanes: [],
     activities: {
@@ -154,8 +154,8 @@ export const may: singleDay[] = [
     },
   },
   {
-    date: new Date(2009, 4, 12),
     ...baseCalendar,
+    date: new Date(2009, 4, 12),
     singleTimeEvents: [],
     arcanes: [],
     activities: {
@@ -165,8 +165,8 @@ export const may: singleDay[] = [
     },
   },
   {
-    date: new Date(2009, 4, 13),
     ...baseCalendar,
+    date: new Date(2009, 4, 13),
     singleTimeEvents: [],
     arcanes: [],
     activities: {
@@ -185,8 +185,8 @@ export const may: singleDay[] = [
     },
   },
   {
-    date: new Date(2009, 4, 14),
     ...baseCalendar,
+    date: new Date(2009, 4, 14),
     singleTimeEvents: [],
     arcanes: [],
     activities: {
@@ -196,8 +196,8 @@ export const may: singleDay[] = [
     },
   },
   {
-    date: new Date(2009, 4, 15),
     ...baseCalendar,
+    date: new Date(2009, 4, 15),
     singleTimeEvents: [],
     arcanes: [],
     activities: {
@@ -218,8 +218,8 @@ export const may: singleDay[] = [
     },
   },
   {
-    date: new Date(2009, 4, 16),
     ...baseCalendar,
+    date: new Date(2009, 4, 16),
     singleTimeEvents: [],
     arcanes: [],
     activities: {
@@ -229,8 +229,8 @@ export const may: singleDay[] = [
     },
   },
   {
-    date: new Date(2009, 4, 17),
     ...baseCalendar,
+    date: new Date(2009, 4, 17),
     singleTimeEvents: [],
     arcanes: [],
     activities: {
@@ -240,8 +240,8 @@ export const may: singleDay[] = [
     },
   },
   {
-    date: new Date(2009, 4, 18),
     ...baseCalendar,
+    date: new Date(2009, 4, 18),
     singleTimeEvents: [],
     arcanes: [],
     activities: {
@@ -251,8 +251,8 @@ export const may: singleDay[] = [
     },
   },
   {
-    date: new Date(2009, 4, 19),
     ...baseCalendar,
+    date: new Date(2009, 4, 19),
     singleTimeEvents: [],
     arcanes: [],
     activities: {
@@ -276,8 +276,8 @@ export const may: singleDay[] = [
     },
   },
   {
-    date: new Date(2009, 4, 20),
     ...baseCalendar,
+    date: new Date(2009, 4, 20),
     singleTimeEvents: [],
     arcanes: [],
     activities: {
@@ -301,8 +301,8 @@ export const may: singleDay[] = [
     },
   },
   {
-    date: new Date(2009, 4, 21),
     ...baseCalendar,
+    date: new Date(2009, 4, 21),
     singleTimeEvents: [],
     arcanes: [],
     activities: {
@@ -324,8 +324,8 @@ export const may: singleDay[] = [
     },
   },
   {
-    date: new Date(2009, 4, 22),
     ...baseCalendar,
+    date: new Date(2009, 4, 22),
     singleTimeEvents: [],
     arcanes: [],
     activities: {
@@ -349,8 +349,8 @@ export const may: singleDay[] = [
     },
   },
   {
-    date: new Date(2009, 4, 23),
     ...baseCalendar,
+    date: new Date(2009, 4, 23),
     singleTimeEvents: [],
     arcanes: [],
     activities: {
@@ -360,8 +360,8 @@ export const may: singleDay[] = [
     },
   },
   {
-    date: new Date(2009, 4, 24),
     ...baseCalendar,
+    date: new Date(2009, 4, 24),
     singleTimeEvents: [],
     arcanes: [],
     activities: {
@@ -371,8 +371,8 @@ export const may: singleDay[] = [
     },
   },
   {
-    date: new Date(2009, 4, 25),
     ...baseCalendar,
+    date: new Date(2009, 4, 25),
     singleTimeEvents: [],
     arcanes: [],
     activities: {
@@ -417,8 +417,8 @@ export const may: singleDay[] = [
     },
   },
   {
+    ...baseCalendar,
     date: new Date(2009, 4, 26),
-    ...baseCalendar,
     singleTimeEvents: [],
     arcanes: [],
     activities: {
@@ -428,8 +428,8 @@ export const may: singleDay[] = [
     },
   },
   {
+    ...baseCalendar,
     date: new Date(2009, 4, 27),
-    ...baseCalendar,
     singleTimeEvents: [],
     arcanes: [],
     activities: {
@@ -439,8 +439,8 @@ export const may: singleDay[] = [
     },
   },
   {
+    ...baseCalendar,
     date: new Date(2009, 4, 28),
-    ...baseCalendar,
     singleTimeEvents: [],
     arcanes: [],
     activities: {
@@ -450,8 +450,8 @@ export const may: singleDay[] = [
     },
   },
   {
+    ...baseCalendar,
     date: new Date(2009, 4, 29),
-    ...baseCalendar,
     singleTimeEvents: [],
     arcanes: [],
     activities: {
@@ -461,8 +461,8 @@ export const may: singleDay[] = [
     },
   },
   {
-    date: new Date(2009, 4, 30),
     ...baseCalendar,
+    date: new Date(2009, 4, 30),
     singleTimeEvents: [],
     arcanes: [],
     activities: {
@@ -472,8 +472,8 @@ export const may: singleDay[] = [
     },
   },
   {
-    date: new Date(2009, 4, 31),
     ...baseCalendar,
+    date: new Date(2009, 4, 31),
     singleTimeEvents: [],
     arcanes: [],
     activities: {
