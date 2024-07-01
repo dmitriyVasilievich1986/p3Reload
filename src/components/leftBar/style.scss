@@ -1,7 +1,7 @@
 .left-bar {
     background-color: #001d3d;
-    position: absolute;
     color: #f5ebe0;
+    position: fixed;
     padding: 2rem 0;
     height: 100vh;
     z-index: 10;
@@ -19,6 +19,7 @@
 .month-wrapper {
     text-align: center;
     cursor: pointer;
+    margin: 1rem 0;
 
     &>.dates {
         display: none;
