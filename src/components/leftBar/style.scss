@@ -1,0 +1,42 @@
+.left-bar {
+    background-color: #001d3d;
+    position: absolute;
+    color: #f5ebe0;
+    padding: 2rem 0;
+    height: 100vh;
+    z-index: 10;
+    width: 50px;
+    left: 0;
+    top: 0;
+
+    transition: width 0.5s;
+
+    &:hover {
+        width: 200px;
+    }
+}
+
+.month-wrapper {
+    text-align: center;
+    cursor: pointer;
+
+    &>.dates {
+        display: none;
+        text-align: left;
+
+        &.show {
+            flex-direction: column;
+            display: flex;
+        }
+
+        &>label {
+            padding: 2px 10px 2px 1rem;
+
+            &:hover {
+                background-color: #f5ebe0;
+                color: #001d3d;
+                cursor: pointer;
+            }
+        }
+    }
+}

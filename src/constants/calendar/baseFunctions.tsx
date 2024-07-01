@@ -1,5 +1,6 @@
 import { StatsNames, CharStats } from "../stats/types";
 import { Categories, Times } from "../events/types";
+import { MonthNames } from "../monthsNames";
 import { singleDay } from "./types";
 import { events } from "../events";
 
@@ -45,8 +46,14 @@ const initialLinks: SocialLinksStatsArray = {
 };
 
 export const baseCalendar = {
+  date: new Date(),
   links: initialLinks,
   stats: initialStats,
+  getId: function () {
+    const month = MonthNames[this.date.getMonth()];
+    const day = this.date.getDate();
+    return `${month}_${day}`;
+  },
 };
 
 export const classmates: SocialLinkNames[] = [
