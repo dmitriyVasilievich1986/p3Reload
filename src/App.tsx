@@ -1,5 +1,6 @@
 import { singleDay } from "./constants/calendar/types";
 import { Calendar } from "./components/calendarPage";
+import { LeftBar } from "./components/leftBar";
 import React from "react";
 import "./App.css";
 
@@ -10,6 +11,7 @@ import {
 
 function App() {
   const [calendar, setCalendar] = React.useState<singleDay[]>([]);
+  const calendarRef = React.useRef<HTMLDivElement>(null);
 
   React.useEffect(() => {
     setCalendar(initialCalculataion(initialCalendar));
@@ -17,7 +19,9 @@ function App() {
 
   return (
     <React.Fragment>
+      <LeftBar calendarRef={calendarRef} />
       <div
+        ref={calendarRef}
         style={{
           width: "100vw",
           overflow: "scroll",
@@ -31,6 +35,7 @@ function App() {
             gap: "3rem",
           }}
         >
+          <div />
           {calendar.map((c, i) => (
             <Calendar
               key={c.date.getTime()}
