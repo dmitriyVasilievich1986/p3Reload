@@ -84,7 +84,7 @@ function Calendar(props: CalendarProps) {
   };
 
   return (
-    <div className={cx("calendar")}>
+    <div className={cx("calendar")} id={props.getId()}>
       <Card color="primary">
         <div className={cx("flex-column")}>
           <CurrentDate date={props.date} />
