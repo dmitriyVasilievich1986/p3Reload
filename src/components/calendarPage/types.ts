@@ -29,18 +29,8 @@ export type DayEventProps = {
   singleTimeEvents: allEventsNames[];
 };
 
-export type CalendarProps = {
-  links: SocialLinksStatsArray;
-  arcanes: SocialLinkNames[];
+export type CalendarProps = singleDay & {
   previousDay: singleDay;
   stats: CharStats;
-  date: Date;
   setCalendarArray: React.Dispatch<React.SetStateAction<singleDay[]>>;
-  activities: {
-    [Times.Morning]: Event;
-    [Times.AfterSchool]?: Event | null;
-    [Times.Day]: Event;
-    [Times.Evening]: Event;
-  };
-  singleTimeEvents: allEventsNames[];
 };

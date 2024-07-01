@@ -1,15 +1,6 @@
 import { SocialLinksStatsArray, SocialLinkNames } from "../socialLinks/types";
-import { Times, Event } from "../events/types";
+import { allEventsNames, Times, Event } from "../events/types";
 import { CharStats } from "../stats/types";
-
-import {
-  SpecialEventsNames,
-  pcProgramsNames,
-  statsEventsAcademicsNames,
-  statsEventsCharmNames,
-  statsEventsCourageNames,
-  socialLinkRomanceNames,
-} from "../events/types";
 
 export type singleDay = {
   links: SocialLinksStatsArray;
@@ -22,13 +13,5 @@ export type singleDay = {
     [Times.Day]: Event;
     [Times.Evening]: Event;
   };
-  singleTimeEvents: (
-    | SpecialEventsNames
-    | pcProgramsNames
-    | statsEventsAcademicsNames
-    | statsEventsCharmNames
-    | statsEventsCourageNames
-    | SocialLinkNames
-    | socialLinkRomanceNames
-  )[];
+  singleTimeEvents: allEventsNames[];
 };
