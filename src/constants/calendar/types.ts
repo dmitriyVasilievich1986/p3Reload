@@ -7,6 +7,7 @@ export type singleDay = {
   arcanes: SocialLinkNames[];
   stats: CharStats;
   date: Date;
+  getId: () => string;
   activities: {
     [Times.Morning]: Event;
     [Times.AfterSchool]?: Event | null;
