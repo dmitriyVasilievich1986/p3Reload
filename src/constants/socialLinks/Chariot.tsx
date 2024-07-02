@@ -11,8 +11,8 @@ import {
 
 function chariotStrength() {
   const payload = LinkLevel(0, [
-    choices("M-My side is killing me...", [
-      choice({ label: "Don't overdo it." }),
+    choices("M-My side is killing me... I might've overdone it a bit.", [
+      choice({ label: "Don't push yourself." }),
       choice({ label: "Toughen up!", points: 5 }),
     ]),
     choices(
@@ -22,7 +22,7 @@ function chariotStrength() {
         choice({ label: "A very special routine." }),
       ]
     ),
-    choices("Let's get go- Argh", [
+    choices("Let's get go- Argh!", [
       choice({ label: "What's wrong?" }),
       choice({ label: "Come on, hurry up." }),
     ]),
@@ -97,7 +97,7 @@ export const Chariot: SocialLinkType = {
     chariotStrength(),
     LinkLevel(0, [
       choices("It's just, um... my anemia's acting up.", [
-        choice({ label: "Sorry, that sounds awful." }),
+        choice({ label: "Sorry, that sounds awful!" }),
         choice({ label: "Are you going to be okay?", points: 5 }),
       ]),
       choices(
@@ -180,15 +180,22 @@ export const Chariot: SocialLinkType = {
       ]),
     ]),
     LinkLevel(22, [
-      choices("I need to talk to you...", [
-        choice({ label: "Right now?" }),
-        choice({ label: "What about?" }),
+      choices("There's something I wanna talk to you about.", [
+        choice({ label: "Okay, let's hear it." }),
+        choice({ label: "What is it about?" }),
       ]),
       choices(
-        "...I've made up my mind. I'm going to have surgery to fix my knee...",
+        "I've made up my mind. I'm going to have surgery to fix my knee.",
         [
-          choice({ label: "What about the big meet?" }),
-          choice({ label: "What about your promise?", points: 15 }),
+          choice({ label: "What about the big meet?", points: 15 }),
+          choice({ label: "What about your promise?" }),
+        ]
+      ),
+      choices(
+        "I'm not gonna worry about winning races. I'm gonna focus on winning back my health instead.",
+        [
+          choice({ label: "You've got this!", points: 5 }),
+          choice({ label: "You've really grown up.", points: 5 }),
         ]
       ),
     ]),
