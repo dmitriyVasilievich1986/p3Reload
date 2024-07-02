@@ -69,22 +69,22 @@ export const Hermit: SocialLinkType = {
       ),
     ]),
     LinkLevel(20, [
-      choices("…do men only want younger women? be honest ・_・", [
+      choices("…do men only want younger women? b honest ._.", [
         choice({ label: "What are you talking about?" }),
         choice({ label: "Age isn't the point.", points: 5 }),
-        choice({ label: "Well, yeah." }),
+        choice({ label: "Well, yeah.", points: 15 }),
       ]),
       choices("she even stuffs her bra!! lol", [
         choice({ label: "She, um… what?", points: 5 }),
-        choice({ label: "Calm down." }),
+        choice({ label: "Calm down.", points: 5 }),
       ]),
     ]),
     LinkLevel(20, [
-      choices("oh noes… now i'm starting to get sweaty =/", [
+      choices("oh noes… now im starting to get sweaty =/", [
         choice({ label: "Are you talking to yourself?" }),
         choice({ label: "Hurry up and tell me.", points: 15 }),
       ]),
-      choices("that's kinda crazy even for me >_>;", [
+      choices("thats kinda crazy even for me >_>;", [
         choice({ label: "What is he like?", points: 5 }),
         choice({ label: "Are you gonna ask him out?" }),
       ]),
