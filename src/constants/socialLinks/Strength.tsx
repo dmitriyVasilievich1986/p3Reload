@@ -89,12 +89,15 @@ export const Strength: SocialLinkType = {
       ),
     ]),
     LinkLevel(22, [
-      choices("Oh Makoto-Kun, why don't you give them some advice too?", [
-        choice({ label: "You guys got this!", points: 5 }),
-        choice({ label: "Show some guts!", points: 5 }),
-      ]),
       choices(
-        "Age difference really matters when you're as young as they are. Do you really think they can beat the sixth graders.",
+        `...Oh, ${mainCharName}-kun, why don't you give them some advice too?`,
+        [
+          choice({ label: "You guys got this.", points: 5 }),
+          choice({ label: "Show some guts!", points: 5 }),
+        ]
+      ),
+      choices(
+        "Age difference really matters when you're as young as they are. Do you really think they can beat the sixth graders?",
         [
           choice({ label: "It's gonna be tough." }),
           choice({ label: "As long as we believe in them.", points: 5 }),
@@ -103,16 +106,16 @@ export const Strength: SocialLinkType = {
     ]),
     LinkLevel(22, [
       choices("They called you my boyfriend till the very end...", [
-        choice({ label: "Wanna make that true?", fork: true }),
-        choice({ label: "It's embarassing." }),
-        choice({ label: "They're just joking." }),
+        choice({ label: "Wanna make that true?" }),
+        choice({ label: "It's embarassing.", fork: true }),
+        choice({ label: "They're just joking.", fork: true }),
       ]),
       choices("It's like the kids have left the nest...", [
         choice({ label: "Are you sad?" }),
         choice({ label: "Are you relieved?", points: 5 }),
       ]),
       choices(
-        "Maybe we should have a little party… you know, to celebrate our first attempt at coaching...",
+        "Maybe we should throw a little party. You know, to celebrate our first attempt at coaching.",
         [
           choice({ label: "Let's do it.", points: 15 }),
           choice({ label: "Why?" }),
@@ -238,24 +241,31 @@ export const Strength: SocialLinkType = {
       choices("Elementary school kids really learn fast don't you think?", [
         choice({ label: "You're right. It's impressive.", points: 5 }),
         choice({ label: "That's not normal?" }),
-        choice({ label: "It's because you teach so well.", points: 15 }),
+        choice({ label: "It's because you teach so well.", points: 10 }),
       ]),
       choices(
         "Should I change the training routine? Maybe they should be running more.",
         [
-          choice({ label: "You shouldn't change it." }),
+          choice({ label: "You shouldn't change it.", points: 5 }),
           choice({ label: "Maybe you should rethink it." }),
-          choice({ label: "I trust whatever you decide Yuko.", fork: true }),
+          choice({
+            label: "I trust whatever you decide Yuko.",
+            fork: true,
+            points: 5,
+          }),
         ]
       ),
     ]),
     LinkLevel(22, [
-      choices("Oh Makoto-Kun, why don't you give them some advice too?", [
-        choice({ label: "You guys got this!", points: 5 }),
-        choice({ label: "Show some guts!", points: 5 }),
-      ]),
       choices(
-        "Age difference really matters when you're as young as they are. Do you really think they can beat the sixth graders.",
+        `...Oh, ${mainCharName}-kun, why don't you give them some advice too?`,
+        [
+          choice({ label: "You guys got this.", points: 5 }),
+          choice({ label: "Show some guts!", points: 5 }),
+        ]
+      ),
+      choices(
+        "Age difference really matters when you're as young as they are. Do you really think they can beat the sixth graders?",
         [
           choice({ label: "It's gonna be tough." }),
           choice({ label: "As long as we believe in them.", points: 5 }),
@@ -273,7 +283,7 @@ export const Strength: SocialLinkType = {
         choice({ label: "Are you relieved?", points: 5 }),
       ]),
       choices(
-        "Maybe we should have a little party… you know, to celebrate our first attempt at coaching...",
+        "Maybe we should throw a little party. You know, to celebrate our first attempt at coaching.",
         [
           choice({ label: "Let's do it.", points: 15 }),
           choice({ label: "Why?" }),
