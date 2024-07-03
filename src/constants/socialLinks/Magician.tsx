@@ -3,6 +3,7 @@ import { EventCard } from "../../components/eventCard";
 
 import {
   baseSocialLinkCalculation,
+  mainCharName,
   LinkLevel,
   choices,
   choice,
@@ -25,7 +26,7 @@ export const Magician: SocialLinkType = {
       choices("I'm more into older women. How 'bout you?", [
         choice({ label: "I'm into older women, too.", points: 5 }),
         choice({ label: "I prefer girls my age." }),
-        choice({ label: "I like them all.", points: 5 }),
+        choice({ label: "I like them all!", points: 5 }),
       ]),
     ]),
     LinkLevel(0, [
@@ -35,7 +36,7 @@ export const Magician: SocialLinkType = {
         choice({ label: "What, life?", points: 15 }),
       ]),
       choices(
-        "Okay, that settles it. I'm gonna get myself a girlfriend! Right now!",
+        `Okay, that settles it, ${mainCharName}. I'm gonna get myself a girlfriend! Right now!`,
         [
           choice({ label: "Sounds Impossible." }),
           choice({ label: "Good luck!", points: 5 }),
@@ -55,7 +56,7 @@ export const Magician: SocialLinkType = {
     ]),
     LinkLevel(15, [
       choices(
-        "Yeah, good-looking people just flock together, y'know?. It's like a law of attraction.",
+        "Yeah, good-looking people just flock together, y'know? It's like a law of attraction.",
         [
           choice({ label: "...Is that so?", points: 5 }),
           choice({ label: "Okay...", points: 15 }),
@@ -64,12 +65,12 @@ export const Magician: SocialLinkType = {
       ),
     ]),
     LinkLevel(15, [
-      choices("Sorry, man. I've gotta pass this time.", [
+      choices("Sorry, man, but I've gotta pass this time.", [
         choice({ label: "Just like that?" }),
         choice({ label: "Why?" }),
       ]),
       choices(
-        "I mean, getting into college is pretty important, don't you think? You think about the future too, right?",
+        "I mean, getting into college is pretty important, don't ya think? You think about the future too, right?",
         [
           choice({ label: "I've got plans already.", points: 15 }),
           choice({ label: "Yeah, more than you do." }),
@@ -79,7 +80,7 @@ export const Magician: SocialLinkType = {
     ]),
     LinkLevel(15, [
       choices("I can't eat...", [
-        choice({ label: "What happened.", points: 5 }),
+        choice({ label: "What happened?", points: 5 }),
         choice({ label: "I'll eat it for you." }),
       ]),
       choices("I saw a magazine in Emiri's room. Guess what it was called.", [
@@ -93,11 +94,11 @@ export const Magician: SocialLinkType = {
         choice({ label: "Sure, whatever." }),
       ]),
     ]),
-    LinkLevel(22, [
+    LinkLevel(30, [
       choices(
         "H-Hey, man. Sorry to make you come here. I, um... Ah, damn it...",
         [
-          choice({ label: "Spit it out!" }),
+          choice({ label: "Spit it out!", points: 5 }),
           choice({ label: "Are you in trouble?", points: 15 }),
         ]
       ),
@@ -129,9 +130,9 @@ export const Magician: SocialLinkType = {
       choices(
         "Man, it's always a blast hanging out with you. That said... I still want a girlfriend!",
         [
-          choice({ label: "You don't know when to give up..." }),
-          choice({ label: "You've got this!", points: 5 }),
-          choice({ label: "Want me to find you a girl?", points: 5 }),
+          choice({ label: "You don't know when to give up...", points: 5 }),
+          choice({ label: "You've got this!", points: 15 }),
+          choice({ label: "Want me to find you a girl?", points: 15 }),
         ]
       ),
       choices("What I did figure out is... you're a true friend.", [
