@@ -63,6 +63,28 @@ export const statsEventsAcademics: {
     },
     upgrade: getAcademicsUpgradeFunction(2),
   },
+  [statsEventsAcademicsNames.wakatsuKitchenDay]: {
+    name: statsEventsAcademicsNames.wakatsuKitchenDay,
+    category: Categories.Stats,
+    label: () => (
+      <EventCard
+        head="Wakatsu Kitchen(Prodigy Platter)"
+        place="Iwatodai Strip Mall"
+        stats="Academics +3"
+        price={680}
+      />
+    ),
+    available: function ({ currentDate, currentTime }) {
+      const days = [
+        DaysNames.thursday,
+        DaysNames.friday,
+        DaysNames.saturday,
+        DaysNames.sunday,
+      ];
+      return days.includes(currentDate.getDay()) && currentTime == Times.Day;
+    },
+    upgrade: getAcademicsUpgradeFunction(3),
+  },
   [statsEventsAcademicsNames.wakatsuKitchen]: {
     name: statsEventsAcademicsNames.wakatsuKitchen,
     category: Categories.Stats,
@@ -82,11 +104,26 @@ export const statsEventsAcademics: {
         DaysNames.sunday,
       ];
       return (
-        [Times.Day, Times.Evening].includes(currentTime) &&
-        days.includes(currentDate.getDay())
+        days.includes(currentDate.getDay()) && currentTime == Times.Evening
       );
     },
-    upgrade: getAcademicsUpgradeFunction(3),
+    upgrade: function ({ currentStats, singleTimeEvents }: upgradeProps) {
+      if (
+        !singleTimeEvents.includes(statsEventsAcademicsNames.wakatsuKitchen)
+      ) {
+      }
+      return {
+        singleTimeEvents: singleTimeEvents.includes(
+          statsEventsAcademicsNames.wakatsuKitchen
+        )
+          ? singleTimeEvents
+          : [...singleTimeEvents, statsEventsAcademicsNames.wakatsuKitchen],
+        stats: {
+          ...currentStats,
+          [StatsNames.Academics]: currentStats[StatsNames.Academics] + 3,
+        },
+      };
+    },
   },
   [statsEventsAcademicsNames.cinemaTheaterAcademics]: {
     name: statsEventsAcademicsNames.cinemaTheaterAcademics,
@@ -116,7 +153,12 @@ export const statsEventsAcademics: {
         price={900}
       />
     ),
-    available: function ({ currentDate, currentTime, previousDay }) {
+    available: function ({
+      currentDate,
+      currentTime,
+      previousDay,
+      singleTimeEvents,
+    }) {
       const days = [
         DaysNames.monday,
         DaysNames.thursday,
@@ -124,9 +166,10 @@ export const statsEventsAcademics: {
         DaysNames.sunday,
       ];
       return (
+        singleTimeEvents.includes(statsEventsAcademicsNames.wakatsuKitchen) &&
         previousDay?.stats[StatsNames.Charm] >= 30 &&
-        [Times.Day, Times.Evening].includes(currentTime) &&
-        days.includes(currentDate.getDay())
+        days.includes(currentDate.getDay()) &&
+        currentTime == Times.Evening
       );
     },
     upgrade: getAcademicsUpgradeFunction(4),
