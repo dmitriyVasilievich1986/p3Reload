@@ -205,7 +205,18 @@ export const april: singleDay[] = [
     activities: {
       [Times.Morning]: events.Special,
       [Times.Day]: { ...events.Magician, special: true },
-      [Times.Evening]: events.Tartarus,
+      [Times.Evening]: {
+        ...events.Tartarus,
+        label: () => (
+          <EventCard head="Tartarus">
+            <ul>
+              <li>
+                <p>Gain at least ¥27,100</p>
+              </li>
+            </ul>
+          </EventCard>
+        ),
+      },
     },
   },
   {

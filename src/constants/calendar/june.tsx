@@ -1,3 +1,4 @@
+import { EventCard } from "../../components/eventCard";
 import { baseCalendar } from "./baseFunctions";
 import { Times } from "../events/types";
 import { singleDay } from "./types";
@@ -87,9 +88,24 @@ export const june: singleDay[] = [
     singleTimeEvents: [],
     arcanes: [],
     activities: {
-      [Times.Morning]: events.NoControl,
-      [Times.Day]: { ...events.Tartarus, special: true },
-      [Times.Evening]: events.DoNothing,
+      [Times.Morning]: {
+        ...events.Special,
+        label: () => (
+          <EventCard head="Empress And Emperror Boss Fight" place="Tartarus" />
+        ),
+      },
+      [Times.Day]: {
+        ...events.Special,
+        label: () => (
+          <EventCard head="Empress And Emperror Boss Fight" place="Tartarus" />
+        ),
+      },
+      [Times.Evening]: {
+        ...events.Special,
+        label: () => (
+          <EventCard head="Empress And Emperror Boss Fight" place="Tartarus" />
+        ),
+      },
     },
   },
   {

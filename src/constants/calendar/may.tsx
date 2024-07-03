@@ -137,9 +137,15 @@ export const may: singleDay[] = [
     singleTimeEvents: [],
     arcanes: [],
     activities: {
-      [Times.Morning]: events.Special,
-      [Times.Day]: events.Fool,
-      [Times.Evening]: events.Special,
+      [Times.Morning]: {
+        ...events.Special,
+        label: () => <EventCard head="Priestess Boss Fight" place="Tartarus" />,
+      },
+      [Times.Day]: {
+        ...events.Special,
+        label: () => <EventCard head="Priestess Boss Fight" place="Tartarus" />,
+      },
+      [Times.Evening]: events.Fool,
     },
   },
   {
