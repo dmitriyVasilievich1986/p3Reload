@@ -36,7 +36,7 @@ export const Emperor: SocialLinkType = {
         choice({ label: "Knock it off!" }),
         choice({ label: "..........." }),
       ]),
-      choices("What is it? Do you need something from me?", [
+      choices("What is it? Did you need something from me?", [
         choice({ label: "You went a little overboard." }),
         choice({ label: "Looks like you're hard at work.", points: 15 }),
       ]),
@@ -50,13 +50,13 @@ export const Emperor: SocialLinkType = {
     LinkLevel(15, [
       choices("It's nice not having those hyenas around.", [
         choice({ label: "You're not going home yet?" }),
-        choice({ label: "It's nice?" }),
+        choice({ label: `"It's nice"?` }),
       ]),
       choices(
         "So as you can see, we can't exactly hold a meeting right now. You can leave if you want.",
         [
           choice({ label: "But I just got here…", points: 15 }),
-          choice({ label: "I think I'll stick around.", points: 15 }),
+          choice({ label: "I think I'll stick around.", points: 5 }),
         ]
       ),
     ]),
@@ -73,7 +73,7 @@ export const Emperor: SocialLinkType = {
       ]),
       choices("...So, you heard all that.", [
         choice({ label: "It wasn't me.", points: 15 }),
-        choice({ label: "You came to my defense?", points: 5 }),
+        choice({ label: "You stood up for me?", points: 5 }),
       ]),
     ]),
     LinkLevel(22, [
@@ -81,14 +81,14 @@ export const Emperor: SocialLinkType = {
         "I rambled on about rules and fairness, but all I really proved was that I was desperate for power.",
         [
           choice({ label: "Don't blame yourself.", points: 15 }),
-          choice({ label: "Good thing you noticed." }),
+          choice({ label: "What matters is you realized it.", points: 15 }),
         ]
       ),
     ]),
     LinkLevel(22, [
       choices("So, how did I do? What'd everyone think?", [
         choice({ label: "Not too shabby.", points: 15 }),
-        choice({ label: "You were great.", points: 15 }),
+        choice({ label: "You were great.", points: 5 }),
       ]),
       choices("That's why you should be the one to have it.", [
         choice({ label: "I'll cherish it.", points: 15 }),
