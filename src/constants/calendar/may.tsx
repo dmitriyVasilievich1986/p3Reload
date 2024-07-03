@@ -94,6 +94,17 @@ export const may: singleDay[] = [
           </Choices>
         ),
       },
+      [Times.AfterSchool]: {
+        ...events.Special,
+        label: () => (
+          <EventCard
+            prerequisite='Give her "Weird Takoyaki" & "Mad Bull"'
+            place="Naganaki Shrine"
+            name="Maiko Oohashi"
+            head="Hanged Man"
+          />
+        ),
+      },
       [Times.Day]: events.Emperor,
       [Times.Evening]: events.gameParadeAcademics,
     },
