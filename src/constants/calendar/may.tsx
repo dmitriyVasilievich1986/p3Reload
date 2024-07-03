@@ -387,7 +387,8 @@ export const may: singleDay[] = [
     singleTimeEvents: [],
     arcanes: [],
     activities: {
-      [Times.Morning]: {
+      [Times.Morning]: events.stayAwakeInClass,
+      [Times.AfterSchool]: {
         ...events.Exams,
         label: () => <EventCard head="Exam results" />,
         upgrade: function ({ currentStats, currentLinks, weekAgoStats }) {
