@@ -16,7 +16,7 @@ export const may: singleDay[] = [
     activities: {
       [Times.Morning]: events.Special,
       [Times.Day]: events.Special,
-      [Times.Evening]: events.gameParadeCourage,
+      [Times.Evening]: events.lobbyPCLessonsInEtiquette,
     },
   },
   {
@@ -71,7 +71,7 @@ export const may: singleDay[] = [
     activities: {
       [Times.Morning]: events.Special,
       [Times.Day]: events.Hierophant,
-      [Times.Evening]: events.gameParadeCourage,
+      [Times.Evening]: events.lobbyPCVirtualDiet,
     },
   },
   {
@@ -106,7 +106,7 @@ export const may: singleDay[] = [
         ),
       },
       [Times.Day]: events.Emperor,
-      [Times.Evening]: events.gameParadeAcademics,
+      [Times.Evening]: events.lobbyPCAnimalOthello,
     },
   },
   {
@@ -117,7 +117,7 @@ export const may: singleDay[] = [
     activities: {
       [Times.Morning]: events.Special,
       [Times.Day]: events.Justice,
-      [Times.Evening]: events.lobbyPCLanguageMadeEasy,
+      [Times.Evening]: events.wakatsuKitchenSpecial,
     },
   },
   {
@@ -128,7 +128,7 @@ export const may: singleDay[] = [
     activities: {
       [Times.Morning]: events.Special,
       [Times.Day]: events.Magician,
-      [Times.Evening]: events.gameParadeCourage,
+      [Times.Evening]: events.wakatsuKitchenSpecial,
     },
   },
   {
@@ -137,9 +137,15 @@ export const may: singleDay[] = [
     singleTimeEvents: [],
     arcanes: [],
     activities: {
-      [Times.Morning]: events.Special,
-      [Times.Day]: events.Fool,
-      [Times.Evening]: events.Special,
+      [Times.Morning]: {
+        ...events.Special,
+        label: () => <EventCard head="Priestess Boss Fight" place="Tartarus" />,
+      },
+      [Times.Day]: {
+        ...events.Special,
+        label: () => <EventCard head="Priestess Boss Fight" place="Tartarus" />,
+      },
+      [Times.Evening]: events.Fool,
     },
   },
   {
@@ -161,7 +167,7 @@ export const may: singleDay[] = [
     activities: {
       [Times.Morning]: events.stayAwakeInClass,
       [Times.Day]: events.HangedMan,
-      [Times.Evening]: events.gameParadeCharm,
+      [Times.Evening]: events.wakatsuKitchenSpecial,
     },
   },
   {
@@ -171,8 +177,8 @@ export const may: singleDay[] = [
     arcanes: [],
     activities: {
       [Times.Morning]: events.Special,
-      [Times.Day]: events.Special,
-      [Times.Evening]: events.lobbyPCLessonsInEtiquette,
+      [Times.Day]: events.DoNothing,
+      [Times.Evening]: events.lobbyPCTypinGhoul,
     },
   },
   {
@@ -192,7 +198,7 @@ export const may: singleDay[] = [
         ),
       },
       [Times.Day]: events.HangedMan,
-      [Times.Evening]: events.gameParadeAcademics,
+      [Times.Evening]: events.lobbyPCLanguageMadeEasy,
     },
   },
   {
