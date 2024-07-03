@@ -54,6 +54,7 @@ export const classmates: SocialLinkNames[] = [
   SocialLinkNames.Strength,
   SocialLinkNames.Chariot,
   SocialLinkNames.Lovers,
+  SocialLinkNames.Emperor,
 ];
 
 export function initialCalculataion(calendar: singleDay[]) {
