@@ -1,5 +1,5 @@
+import { Categories, Times, Event } from "../events/types";
 import { StatsNames, CharStats } from "../stats/types";
-import { Categories, Times } from "../events/types";
 import { MonthNames } from "../monthsNames";
 import { singleDay } from "./types";
 import { events } from "../events";
@@ -94,42 +94,20 @@ export function initialCalculataion(calendar: singleDay[]) {
       });
       currentStats = response?.stats || currentStats;
     }
-    if (c.activities[Times.Morning] !== null) {
-      response = c.activities[Times.Morning].upgrade({
-        singleTimeEvents: singleTimeEvents,
-        weekAgoStats: weekAgoStats,
-        currentStats: currentStats,
-        currentLinks: currentLinks,
-        arcanes: c.arcanes,
+    [Times.Morning, Times.AfterSchool, Times.Day, Times.Evening]
+      .filter((time) => !!c.activities?.[time])
+      .forEach((time) => {
+        response = (c.activities[time] as Event).upgrade({
+          singleTimeEvents: singleTimeEvents,
+          weekAgoStats: weekAgoStats,
+          currentStats: currentStats,
+          currentLinks: currentLinks,
+          arcanes: c.arcanes,
+        });
+        singleTimeEvents = response?.singleTimeEvents || singleTimeEvents;
+        currentStats = response?.stats || currentStats;
+        currentLinks = response?.links || currentLinks;
       });
-      singleTimeEvents = response?.singleTimeEvents || singleTimeEvents;
-      currentStats = response?.stats || currentStats;
-      currentLinks = response?.links || currentLinks;
-    }
-    if (c.activities[Times.Day] !== null) {
-      response = c.activities[Times.Day].upgrade({
-        singleTimeEvents: singleTimeEvents,
-        weekAgoStats: weekAgoStats,
-        currentStats: currentStats,
-        currentLinks: currentLinks,
-        arcanes: c.arcanes,
-      });
-      singleTimeEvents = response?.singleTimeEvents || singleTimeEvents;
-      currentStats = response?.stats || currentStats;
-      currentLinks = response?.links || currentLinks;
-    }
-    if (c.activities[Times.Evening] !== null) {
-      response = c.activities[Times.Evening].upgrade({
-        singleTimeEvents: singleTimeEvents,
-        weekAgoStats: weekAgoStats,
-        currentStats: currentStats,
-        currentLinks: currentLinks,
-        arcanes: c.arcanes,
-      });
-      singleTimeEvents = response?.singleTimeEvents || singleTimeEvents;
-      currentStats = response?.stats || currentStats;
-      currentLinks = response?.links || currentLinks;
-    }
 
     c.singleTimeEvents = [...singleTimeEvents];
     c.stats = currentStats;
