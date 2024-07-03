@@ -40,6 +40,7 @@ export enum statsEventsAcademicsNames {
   dormExamStudyingGroup = "dormExamStudyingGroup",
   dormExamStudyingTeam = "dormExamStudyingTeam",
   gameParadeAcademics = "gameParadeAcademics",
+  wakatsuKitchenDay = "wakatsuKitchenDay",
   stayAwakeInClass = "stayAwakeInClass",
   studyAtLibrary = "studyAtLibrary",
   wakatsuKitchen = "wakatsuKitchen",
