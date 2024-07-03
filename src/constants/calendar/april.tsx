@@ -249,7 +249,7 @@ export const april: singleDay[] = [
     activities: {
       [Times.Morning]: events.Special,
       [Times.Day]: events.Hierophant,
-      [Times.Evening]: events.wilduckBurgeMysteryBurger,
+      [Times.Evening]: events.wakatsuKitchen,
     },
   },
   {
