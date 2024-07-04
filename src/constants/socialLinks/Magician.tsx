@@ -94,7 +94,7 @@ export const Magician: SocialLinkType = {
         choice({ label: "Sure, whatever." }),
       ]),
     ]),
-    LinkLevel(30, [
+    LinkLevel(25, [
       choices(
         "H-Hey, man. Sorry to make you come here. I, um... Ah, damn it...",
         [
