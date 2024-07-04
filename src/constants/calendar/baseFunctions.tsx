@@ -62,6 +62,7 @@ export const classmates: SocialLinkNames[] = [
   SocialLinkNames.Chariot,
   SocialLinkNames.Lovers,
   SocialLinkNames.Emperor,
+  SocialLinkNames.Moon,
 ];
 
 export function initialCalculataion(calendar: singleDay[]) {
