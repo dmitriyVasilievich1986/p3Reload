@@ -65,9 +65,7 @@ export const Chariot: SocialLinkType = {
     if (currentStats[StatsNames.Charm] >= 100) multiplier *= 1.51;
 
     const newPoints = Math.floor(
-      isNewlevel
-        ? currentLevel.maxPoints * multiplier
-        : thisLink.points + 10 * multiplier
+      isNewlevel ? currentLevel.maxPoints * multiplier : thisLink.points + 10
     );
     const strengthLink =
       thisLink.level === 1
