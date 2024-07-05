@@ -90,7 +90,7 @@ function Calendar(props: CalendarProps) {
             .filter((time) => time === null || !!props.activities?.[time])
             .map((time) => {
               if (time === null)
-                return <Tartarus previousDay={props.previousDay} />;
+                return <Tartarus previousDay={props.previousDay} key={time} />;
               return (
                 <Card
                   enable={!props.activities[time]!.special}
