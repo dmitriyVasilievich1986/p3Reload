@@ -40,26 +40,15 @@ function Tartarus(props: TartarusProps) {
 }
 
 function Calendar(props: CalendarProps) {
-  const updateCalendar = ({ activity, arcane }: UpdateCalendarProps) => {
+  const updateCalendar = ({ activity }: UpdateCalendarProps) => {
     props.setCalendarArray((prev: singleDay[]) => {
       const newCalendar: singleDay[] = (prev as Array<singleDay>).map((c) => {
         if (c.date.getTime() === props.date.getTime()) {
-          if (activity) {
-            return {
-              ...c,
-              activities: { ...c.activities, ...activity },
-            };
-          } else if (arcane) {
-            return {
-              ...c,
-              arcanes: c.arcanes.includes(arcane)
-                ? c.arcanes.filter((a) => a !== arcane)
-                : [...c.arcanes, arcane],
-            };
-          }
-          return c;
-        }
-        if (c.date.getTime() > props.date.getTime())
+          return {
+            ...c,
+            activities: { ...c.activities, ...activity },
+          };
+        } else if (c.date.getTime() > props.date.getTime())
           return {
             ...c,
             arcanes: [],
@@ -84,49 +73,45 @@ function Calendar(props: CalendarProps) {
     });
   };
 
+  const timesValues: (Times | null)[] = [
+    Times.Morning,
+    null,
+    Times.AfterSchool,
+    Times.Day,
+    Times.Evening,
+  ];
+
   return (
     <div className={cx("calendar")} id={props.getId()}>
       <Card color="primary">
         <div className={cx("flex-column")}>
           <CurrentDate date={props.date} />
-          <Card
-            head="morning"
-            enable={!props.activities[Times.Morning].special}
-          >
-            <DayEvent
-              {...props}
-              event={props.activities[Times.Morning]}
-              time={Times.Morning}
-              changeHandler={(name) =>
-                updateCalendar({ activity: { [Times.Morning]: events[name] } })
-              }
-            />
-          </Card>
-
-          <Tartarus previousDay={props.previousDay} />
-
-          {([Times.AfterSchool, Times.Day, Times.Evening] as Array<Times>)
-            .filter((time) => !!props.activities?.[time])
-            .map((time) => (
-              <Card
-                enable={!props.activities[time]!.special}
-                head={time}
-                key={time}
-              >
-                <DayEvent
-                  time={time}
-                  event={props.activities[time] as Event}
-                  changeHandler={(name) =>
-                    updateCalendar({ activity: { [time]: events[name] } })
-                  }
-                  {...props}
-                />
-              </Card>
-            ))}
+          {timesValues
+            .filter((time) => time === null || !!props.activities?.[time])
+            .map((time) => {
+              if (time === null)
+                return <Tartarus previousDay={props.previousDay} />;
+              return (
+                <Card
+                  enable={!props.activities[time]!.special}
+                  head={time}
+                  key={time}
+                >
+                  <DayEvent
+                    time={time}
+                    event={props.activities[time] as Event}
+                    changeHandler={(name) =>
+                      updateCalendar({ activity: { [time]: events[name] } })
+                    }
+                    {...props}
+                  />
+                </Card>
+              );
+            })}
         </div>
       </Card>
       <HeroStats {...props} />
-      <SocialLinks {...props} changeHandler={updateCalendar} />
+      <SocialLinks {...props} />
     </div>
   );
 }

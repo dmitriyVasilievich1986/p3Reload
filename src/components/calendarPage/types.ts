@@ -18,7 +18,6 @@ export type TartarusProps = {
 export type SocialLinksProps = {
   links: SocialLinksStatsArray;
   arcanes: SocialLinkNames[];
-  changeHandler: (props: { arcane: SocialLinkNames }) => void;
 };
 
 export type HeroStatsProps = {
@@ -27,8 +26,7 @@ export type HeroStatsProps = {
 };
 
 export type UpdateCalendarProps = {
-  activity?: { [key in Times]?: Event };
-  arcane?: SocialLinkNames;
+  activity: { [key in Times]?: Event };
 };
 
 export type DayEventProps = {
