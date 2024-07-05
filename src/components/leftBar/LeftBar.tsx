@@ -25,6 +25,7 @@ function LeftBar(props: LeftBarProps) {
           <MonthBlock
             days={calendar.filter((c) => c.date.getMonth() === m)}
             clickHandler={clickHandler}
+            key={m}
           />
         ))}
       </div>

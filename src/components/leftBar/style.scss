@@ -17,27 +17,46 @@
 }
 
 .month-wrapper {
-    text-align: center;
     cursor: pointer;
     margin: 1rem 0;
 
+    &>.month-name {
+        text-align: center;
+        width: 100%;
+    }
+
+    &:hover>.month-name {
+        font-weight: bolder;
+        font-size: larger;
+    }
+
     &>.dates {
-        display: none;
-        text-align: left;
-
-        &.show {
-            flex-direction: column;
+        transition: grid-template-rows 500ms;
+        grid-template-rows: 0fr;
+        grid-auto-flow: column;
+        display: grid;
+        
+        &>div {
+            overflow-y: hidden;
+            flex-flow: column;
+            margin-top: 10px;
             display: flex;
-        }
 
-        &>label {
-            padding: 2px 10px 2px 1rem;
+            &>label {
+                padding: 2px 10px 2px 1rem;
 
-            &:hover {
-                background-color: #f5ebe0;
-                color: #001d3d;
-                cursor: pointer;
+                &:hover {
+                    background-color: #f5ebe0;
+                    padding: 5px 10px 5px 1rem;
+                    font-weight: bolder;
+                    color: #001d3d;
+                    cursor: pointer;
+                }
             }
         }
+    }
+
+    &:hover>.dates {
+        grid-template-rows: 1fr;
     }
 }
