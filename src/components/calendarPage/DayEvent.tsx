@@ -18,6 +18,9 @@ function DropBox(props: { show: boolean; children: React.ReactNode }) {
 
 function DayEvent(props: DayEventProps) {
   const [show, setShow] = React.useState(false);
+  const card =
+    props.event.category === Categories.Links &&
+    props.arcanes.includes(props.event.name as SocialLinkNames);
 
   const availableEvents = (Object.keys(events) as Array<allEventsNames>).filter(
     (e) =>
@@ -71,7 +74,7 @@ function DayEvent(props: DayEventProps) {
         ))}
       </DropBox>
 
-      {props.event.label()}
+      {props.event.label({ card })}
       <LinkElement />
     </OutsideClick>
   );
