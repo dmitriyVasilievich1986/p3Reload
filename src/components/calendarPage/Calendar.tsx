@@ -1,20 +1,25 @@
 import { MonthNames, DaysNamesIndex } from "../../constants/monthsNames";
-import { SocialLinkNames } from "../../constants/socialLinks/types";
 import { initialCalculataion } from "../../constants/calendar";
 import { Times, Event } from "../../constants/events/types";
 import { singleDay } from "../../constants/calendar/types";
 import { events } from "../../constants/events";
 import classnames from "classnames/bind";
 import SocialLinks from "./SocialLinks";
-import { CalendarProps } from "./types";
 import * as style from "./style.scss";
 import HeroStats from "./HeroStats";
 import DayEvent from "./DayEvent";
 import Card from "../card/Card";
 
+import {
+  UpdateCalendarProps,
+  CalendarProps,
+  TartarusProps,
+  DateProps,
+} from "./types";
+
 const cx = classnames.bind(style);
 
-function CurrentDate({ date }: { date: Date }) {
+function CurrentDate({ date }: DateProps) {
   const dayName = DaysNamesIndex[date.getDay()];
   const month = MonthNames[date.getMonth()];
   const day = date.getDate();
@@ -22,7 +27,7 @@ function CurrentDate({ date }: { date: Date }) {
   return <h1>{`${month} ${day} (${dayName})`}</h1>;
 }
 
-function Tartarus(props: { previousDay: singleDay }) {
+function Tartarus(props: TartarusProps) {
   if (
     ![
       props.previousDay?.activities[Times.Day].category,
@@ -35,13 +40,7 @@ function Tartarus(props: { previousDay: singleDay }) {
 }
 
 function Calendar(props: CalendarProps) {
-  const updateCalendar = ({
-    activity,
-    arcane,
-  }: {
-    activity?: { [key in Times]?: Event };
-    arcane?: SocialLinkNames;
-  }) => {
+  const updateCalendar = ({ activity, arcane }: UpdateCalendarProps) => {
     props.setCalendarArray((prev: singleDay[]) => {
       const newCalendar: singleDay[] = (prev as Array<singleDay>).map((c) => {
         if (c.date.getTime() === props.date.getTime()) {

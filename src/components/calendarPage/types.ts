@@ -7,6 +7,14 @@ import {
   SocialLinkNames,
 } from "../../constants/socialLinks/types";
 
+export type DateProps = {
+  date: Date;
+};
+
+export type TartarusProps = {
+  previousDay: singleDay;
+};
+
 export type SocialLinksProps = {
   links: SocialLinksStatsArray;
   arcanes: SocialLinkNames[];
@@ -18,16 +26,21 @@ export type HeroStatsProps = {
   stats: CharStats;
 };
 
+export type UpdateCalendarProps = {
+  activity?: { [key in Times]?: Event };
+  arcane?: SocialLinkNames;
+};
+
 export type DayEventProps = {
   links: SocialLinksStatsArray;
-  previousDay: singleDay;
+  arcanes: SocialLinkNames[];
   stats: CharStats;
   event: Event;
   time: Times;
-  date: Date;
   changeHandler: (props: allEventsNames) => void;
   singleTimeEvents: allEventsNames[];
-};
+} & DateProps &
+  TartarusProps;
 
 export type CalendarProps = singleDay & {
   previousDay: singleDay;
