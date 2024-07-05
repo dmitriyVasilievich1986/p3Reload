@@ -71,7 +71,7 @@ export const baseSocialLinkCalculation: SocialLinkTypeBase = {
   getlevel: function ({ level, romance = false }) {
     return romance ? this.levelsRomance[level] : this.levels[level];
   },
-  calculate: function ({
+  _calculate: function ({
     currentStats,
     currentLinks,
     arcanes,
@@ -83,24 +83,45 @@ export const baseSocialLinkCalculation: SocialLinkTypeBase = {
     });
     const isNewlevel =
       thisLink.level < this.maxLevel && thisLink.points >= currentLevel.points;
+    const level = isNewlevel ? thisLink.level + 1 : thisLink.level;
+    let points;
 
-    let multiplier = thisLink.multiplier;
-    if (arcanes.includes(this.name)) multiplier *= 1.51;
-    if (currentStats[StatsNames.Charm] >= 100) multiplier *= 1.51;
+    if (isNewlevel) {
+      let multiplier = thisLink.multiplier;
+      const newLevel = this.getlevel({ level, romance: thisLink.romance });
+      if (currentStats[StatsNames.Charm] >= 100) multiplier *= 1.51;
 
-    const newPoints = Math.floor(
-      isNewlevel ? currentLevel.maxPoints * multiplier : thisLink.points + 10
-    );
+      if (arcanes.includes(this.name)) {
+        multiplier *= 1.51;
+      } else if (
+        currentLevel.maxPoints > 0 &&
+        currentLevel.maxPoints * multiplier < newLevel.points &&
+        Math.floor(newLevel.points - currentLevel.maxPoints * multiplier) %
+          10 !==
+          0
+      ) {
+        multiplier *= 1.51;
+        arcanes.push(this.name);
+      }
+
+      points = Math.floor(currentLevel.maxPoints * multiplier);
+    } else {
+      points = thisLink.points + 10;
+    }
+
     return {
       links: {
         ...currentLinks,
         [this.name]: {
           ...thisLink,
-          level: isNewlevel ? thisLink.level + 1 : thisLink.level,
-          points: newPoints,
+          points,
+          level,
         },
       },
     };
+  },
+  calculate: function (props: CalculateProps) {
+    return this._calculate(props);
   },
   getStaleLevel: function () {
     return <EventCard head="Spending time" />;

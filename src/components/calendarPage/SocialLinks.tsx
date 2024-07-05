@@ -24,11 +24,6 @@ function SocialLinks(props: SocialLinksProps) {
       <div className={cx("stat")}>
         {(Object.keys(props.links) as Array<SocialLinkNames>).map((l) => (
           <div key={l}>
-            <input
-              onChange={() => props.changeHandler({ arcane: l })}
-              checked={props.arcanes.includes(l)}
-              type="checkbox"
-            />
             <label>{l}</label>: {getLevel(l)}
           </div>
         ))}

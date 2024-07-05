@@ -1,7 +1,11 @@
 import React from "react";
 
-export type EventProps = {
+export type HeadProps = {
   head: string;
+  card?: boolean;
+};
+
+export type EventProps = {
   name?: string;
   place?: string;
   stats?: string;
@@ -9,9 +13,9 @@ export type EventProps = {
   price?: number;
   receive?: number;
   children?: React.ReactNode;
-};
+} & HeadProps;
 
 export type ItemProps = {
   label: string;
-  value?: string | null;
+  value?: string;
 };

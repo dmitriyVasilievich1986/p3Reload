@@ -47,48 +47,21 @@ function chariotStrength() {
 export const Chariot: SocialLinkType = {
   ...baseSocialLinkCalculation,
   name: SocialLinkNames.Chariot,
-  calculate: function ({
-    currentStats,
-    currentLinks,
-    arcanes,
-  }: CalculateProps) {
-    const thisLink = currentLinks[SocialLinkNames.Chariot];
-    const currentLevel = this.getlevel({
-      level: thisLink.level,
-      romance: thisLink.romance,
-    });
-    const isNewlevel =
-      thisLink.level < this.maxLevel && thisLink.points >= currentLevel.points;
-
-    let multiplier = thisLink.multiplier;
-    if (arcanes.includes(SocialLinkNames.Chariot)) multiplier *= 1.51;
-    if (currentStats[StatsNames.Charm] >= 100) multiplier *= 1.51;
-
-    const newPoints = Math.floor(
-      isNewlevel ? currentLevel.maxPoints * multiplier : thisLink.points + 10
-    );
-    const strengthLink =
-      thisLink.level === 1
-        ? {
-            Strength: {
-              level: 1,
-              points: 0,
-              romance: false,
-              multiplier: thisLink.multiplier,
-            },
-          }
-        : {};
-    return {
-      links: {
-        ...currentLinks,
-        [SocialLinkNames.Chariot]: {
-          ...thisLink,
-          level: isNewlevel ? thisLink.level + 1 : thisLink.level,
-          points: newPoints,
+  calculate: function (props: CalculateProps) {
+    const payload = this._calculate(props);
+    const thisLink = props.currentLinks[SocialLinkNames.Chariot];
+    if (thisLink.level === 1) {
+      return {
+        links: {
+          ...payload.links,
+          [SocialLinkNames.Strength]: {
+            ...props.currentLinks[SocialLinkNames.Strength],
+            level: 1,
+          },
         },
-        ...strengthLink,
-      },
-    };
+      };
+    }
+    return payload;
   },
   levels: [
     LinkLevel(),
