@@ -110,11 +110,16 @@ export type upgradeResponse = {
   singleTimeEvents?: allEventsNames[];
 };
 
+export type LabelProps = {
+  card?: boolean;
+};
+
 export type Event = {
   category: Categories;
   special?: boolean;
   upgrade: (props: upgradeProps) => upgradeResponse;
   available: (props: availableProps) => boolean;
-  label: () => React.ReactNode;
+  label: (props?: LabelProps) => React.ReactNode;
   name: allEventsNames;
+  linkName?: SocialLinkNames;
 };

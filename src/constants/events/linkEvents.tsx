@@ -12,8 +12,14 @@ export const linkEvents: {
   [SocialLinkNames.Magician]: {
     ...linkBaseFunctions,
     name: SocialLinkNames.Magician,
-    label: () => (
-      <EventCard head="Magician" name="Kenji Tomochika" place="Classroom 2F" />
+    linkName: SocialLinkNames.Magician,
+    label: (props) => (
+      <EventCard
+        name="Kenji Tomochika"
+        place="Classroom 2F"
+        head="Magician"
+        card={props?.card}
+      />
     ),
     available: function ({ currentDate, currentTime }) {
       const days = [DaysNames.tuesday, DaysNames.thursday, DaysNames.friday];
@@ -28,11 +34,13 @@ export const linkEvents: {
   [SocialLinkNames.Priestess]: {
     ...linkBaseFunctions,
     name: SocialLinkNames.Priestess,
-    label: () => (
+    linkName: SocialLinkNames.Priestess,
+    label: (props) => (
       <EventCard
         place="2nd Floor Hallway"
         name="Fuuka Yamagishi"
         head="Priestess"
+        card={props?.card}
       />
     ),
     available: function ({
@@ -61,11 +69,13 @@ export const linkEvents: {
   [socialLinkRomanceNames.PriestessRomance]: {
     ...linkBaseFunctions,
     name: socialLinkRomanceNames.PriestessRomance,
-    label: () => (
+    linkName: SocialLinkNames.Priestess,
+    label: (props) => (
       <EventCard
         head="Priestess(Romance)"
         place="2nd Floor Hallway"
         name="Fuuka Yamagishi"
+        card={props?.card}
       />
     ),
     available: function ({
@@ -94,11 +104,13 @@ export const linkEvents: {
   [SocialLinkNames.Empress]: {
     ...linkBaseFunctions,
     name: SocialLinkNames.Empress,
-    label: () => (
+    linkName: SocialLinkNames.Empress,
+    label: (props) => (
       <EventCard
         place="Faculty Office Entrance"
         name="Mitsuru Kirijo"
         head="Empress"
+        card={props?.card}
       />
     ),
     available: function ({
@@ -132,11 +144,13 @@ export const linkEvents: {
   [socialLinkRomanceNames.EmpressRomance]: {
     ...linkBaseFunctions,
     name: socialLinkRomanceNames.EmpressRomance,
-    label: () => (
+    linkName: SocialLinkNames.Empress,
+    label: (props) => (
       <EventCard
         place="Faculty Office Entrance"
         head="Empress(Romance)"
         name="Mitsuru Kirijo"
+        card={props?.card}
       />
     ),
     available: function ({
@@ -169,11 +183,13 @@ export const linkEvents: {
   [SocialLinkNames.Emperor]: {
     ...linkBaseFunctions,
     name: SocialLinkNames.Emperor,
-    label: () => (
+    linkName: SocialLinkNames.Emperor,
+    label: (props) => (
       <EventCard
         place="Student Council Room"
         name="Hidetoshi Odagiri"
         head="Emperor"
+        card={props?.card}
       />
     ),
     available: function ({ currentDate, currentTime }) {
@@ -192,11 +208,13 @@ export const linkEvents: {
   [SocialLinkNames.Hierophant]: {
     ...linkBaseFunctions,
     name: SocialLinkNames.Hierophant,
-    label: () => (
+    linkName: SocialLinkNames.Hierophant,
+    label: (props) => (
       <EventCard
         place="Bookworms Used Books"
         name="Bunkichi and Mitsuko"
         head="Hierophant"
+        card={props?.card}
       />
     ),
     available: function ({ currentDate, currentTime }) {
@@ -218,8 +236,14 @@ export const linkEvents: {
   [SocialLinkNames.Lovers]: {
     ...linkBaseFunctions,
     name: SocialLinkNames.Lovers,
-    label: () => (
-      <EventCard head="Lovers" name="Yukari Takeba" place="Classroom 2F" />
+    linkName: SocialLinkNames.Lovers,
+    label: (props) => (
+      <EventCard
+        name="Yukari Takeba"
+        place="Classroom 2F"
+        head="Lovers"
+        card={props?.card}
+      />
     ),
     available: function ({
       currentDate,
@@ -251,11 +275,13 @@ export const linkEvents: {
   [socialLinkRomanceNames.LoversRomance]: {
     ...linkBaseFunctions,
     name: socialLinkRomanceNames.LoversRomance,
-    label: () => (
+    linkName: SocialLinkNames.Lovers,
+    label: (props) => (
       <EventCard
         head="Lovers(Romance)"
         name="Yukari Takeba"
         place="Classroom 2F"
+        card={props?.card}
       />
     ),
     available: function ({
@@ -287,8 +313,14 @@ export const linkEvents: {
   [SocialLinkNames.Chariot]: {
     ...linkBaseFunctions,
     name: SocialLinkNames.Chariot,
-    label: () => (
-      <EventCard name="Kazushi Miyamoto" place="Classroom 2F" head="Chariot" />
+    linkName: SocialLinkNames.Chariot,
+    label: (props) => (
+      <EventCard
+        name="Kazushi Miyamoto"
+        place="Classroom 2F"
+        head="Chariot"
+        card={props?.card}
+      />
     ),
     available: function ({ currentDate, currentTime }) {
       const days = [
@@ -308,11 +340,13 @@ export const linkEvents: {
   [SocialLinkNames.Justice]: {
     ...linkBaseFunctions,
     name: SocialLinkNames.Justice,
-    label: () => (
+    linkName: SocialLinkNames.Justice,
+    label: (props) => (
       <EventCard
         place="2nd Floor Hallway"
         name="Chihiro Fushimi"
         head="Justice"
+        card={props?.card}
       />
     ),
     available: function ({
@@ -340,11 +374,13 @@ export const linkEvents: {
   [socialLinkRomanceNames.JusticeRomance]: {
     ...linkBaseFunctions,
     name: socialLinkRomanceNames.JusticeRomance,
-    label: () => (
+    linkName: SocialLinkNames.Justice,
+    label: (props) => (
       <EventCard
         place="2nd Floor Hallway"
         name="Chihiro Fushimi"
         head="Justice"
+        card={props?.card}
       />
     ),
     available: function ({
@@ -371,11 +407,13 @@ export const linkEvents: {
   [SocialLinkNames.Hermit]: {
     ...linkBaseFunctions,
     name: SocialLinkNames.Hermit,
-    label: () => (
+    linkName: SocialLinkNames.Hermit,
+    label: (props) => (
       <EventCard
         place="Laptop at the Protagonist's room"
         head="Hermit"
         name="Maya"
+        card={props?.card}
       />
     ),
     available: function ({ currentDate, currentTime }) {
@@ -392,8 +430,14 @@ export const linkEvents: {
   [SocialLinkNames.Fortune]: {
     ...linkBaseFunctions,
     name: SocialLinkNames.Fortune,
-    label: () => (
-      <EventCard name="Keisuke Hiraga" place="Art Club Room" head="Fortune" />
+    linkName: SocialLinkNames.Fortune,
+    label: (props) => (
+      <EventCard
+        name="Keisuke Hiraga"
+        place="Art Club Room"
+        head="Fortune"
+        card={props?.card}
+      />
     ),
     available: function ({ currentDate, currentTime }) {
       const days = [DaysNames.tuesday, DaysNames.wednesday, DaysNames.thursday];
@@ -407,11 +451,13 @@ export const linkEvents: {
   [SocialLinkNames.Strength]: {
     ...linkBaseFunctions,
     name: SocialLinkNames.Strength,
-    label: () => (
+    linkName: SocialLinkNames.Strength,
+    label: (props) => (
       <EventCard
         place="2F Classroom Hallway"
         name="Yuko Nishiwaki"
         head="Strength"
+        card={props?.card}
       />
     ),
     available: function ({
@@ -440,11 +486,13 @@ export const linkEvents: {
   [socialLinkRomanceNames.StrengthRomance]: {
     ...linkBaseFunctions,
     name: socialLinkRomanceNames.StrengthRomance,
-    label: () => (
+    linkName: SocialLinkNames.Strength,
+    label: (props) => (
       <EventCard
         place="2F Classroom Hallway"
         head="Strength(Romance)"
         name="Yuko Nishiwaki"
+        card={props?.card}
       />
     ),
     upgrade: function ({ currentLinks, ...props }) {
@@ -485,11 +533,13 @@ export const linkEvents: {
   [SocialLinkNames.HangedMan]: {
     ...linkBaseFunctions,
     name: SocialLinkNames.HangedMan,
-    label: () => (
+    linkName: SocialLinkNames.HangedMan,
+    label: (props) => (
       <EventCard
         place="Naganaki Shrine"
         name="Maiko Oohashi"
         head="Hanged Man"
+        card={props?.card}
       />
     ),
     available: function ({ currentDate, currentTime }) {
@@ -504,11 +554,13 @@ export const linkEvents: {
   [SocialLinkNames.Temperance]: {
     ...linkBaseFunctions,
     name: SocialLinkNames.Temperance,
-    label: () => (
+    linkName: SocialLinkNames.Temperance,
+    label: (props) => (
       <EventCard
         place="2F Classroom Hallway / 1F Laboratory Hallway (Home Economics Room)"
         name='André Laurent Jean "Bebe" Geraux'
         head="Temperance"
+        card={props?.card}
       />
     ),
     available: function ({ currentDate, currentTime, previousDay }) {
@@ -526,8 +578,14 @@ export const linkEvents: {
   [SocialLinkNames.Devil]: {
     ...linkBaseFunctions,
     name: SocialLinkNames.Devil,
-    label: () => (
-      <EventCard name="President Tanaka" place="Paulownia Mall" head="Devil" />
+    linkName: SocialLinkNames.Devil,
+    label: (props) => (
+      <EventCard
+        name="President Tanaka"
+        place="Paulownia Mall"
+        head="Devil"
+        card={props?.card}
+      />
     ),
     available: function ({ currentDate, currentTime, previousDay }) {
       if (previousDay === undefined) return false;
@@ -544,8 +602,14 @@ export const linkEvents: {
   [SocialLinkNames.Tower]: {
     ...linkBaseFunctions,
     name: SocialLinkNames.Tower,
-    label: () => (
-      <EventCard place="Club Escapade" name="Mutatsu" head="Tower" />
+    linkName: SocialLinkNames.Tower,
+    label: (props) => (
+      <EventCard
+        place="Club Escapade"
+        name="Mutatsu"
+        head="Tower"
+        card={props?.card}
+      />
     ),
     available: function ({ currentDate, currentTime, previousDay }) {
       if (previousDay === undefined) return false;
@@ -567,11 +631,13 @@ export const linkEvents: {
   [SocialLinkNames.Star]: {
     ...linkBaseFunctions,
     name: SocialLinkNames.Star,
-    label: () => (
+    linkName: SocialLinkNames.Star,
+    label: (props) => (
       <EventCard
         place="Iwatodai Station Strip Mall 1F"
         name="Mamoru Hayase"
         head="Star"
+        card={props?.card}
       />
     ),
     available: function ({ currentDate, currentTime, previousDay }) {
@@ -588,8 +654,14 @@ export const linkEvents: {
   [SocialLinkNames.Moon]: {
     ...linkBaseFunctions,
     name: SocialLinkNames.Moon,
-    label: () => (
-      <EventCard name="Nozomi Suemitsu" place="Paulownia Mall" head="Moon" />
+    linkName: SocialLinkNames.Moon,
+    label: (props) => (
+      <EventCard
+        name="Nozomi Suemitsu"
+        place="Paulownia Mall"
+        head="Moon"
+        card={props?.card}
+      />
     ),
     available: function ({ currentDate, currentTime, previousDay }) {
       if (previousDay === undefined) return false;
@@ -604,8 +676,14 @@ export const linkEvents: {
   [SocialLinkNames.Sun]: {
     ...linkBaseFunctions,
     name: SocialLinkNames.Sun,
-    label: () => (
-      <EventCard place="Naganaki Shrine" name="Akinari Kamiki" head="Sun" />
+    linkName: SocialLinkNames.Sun,
+    label: (props) => (
+      <EventCard
+        place="Naganaki Shrine"
+        name="Akinari Kamiki"
+        head="Sun"
+        card={props?.card}
+      />
     ),
     available: function ({ currentDate, currentTime, previousDay }) {
       if (previousDay === undefined) return false;
@@ -621,7 +699,15 @@ export const linkEvents: {
   [SocialLinkNames.Aeon]: {
     ...linkBaseFunctions,
     name: SocialLinkNames.Aeon,
-    label: () => <EventCard place="Classroom 2F" name="Aigis" head="Aeon" />,
+    linkName: SocialLinkNames.Aeon,
+    label: (props) => (
+      <EventCard
+        place="Classroom 2F"
+        name="Aigis"
+        head="Aeon"
+        card={props?.card}
+      />
+    ),
     available: function ({
       currentDate,
       currentTime,
@@ -653,7 +739,15 @@ export const linkEvents: {
   [socialLinkRomanceNames.AeonRomance]: {
     ...linkBaseFunctions,
     name: socialLinkRomanceNames.AeonRomance,
-    label: () => <EventCard place="Classroom 2F" name="Aigis" head="Aeon" />,
+    linkName: SocialLinkNames.Aeon,
+    label: (props) => (
+      <EventCard
+        place="Classroom 2F"
+        name="Aigis"
+        head="Aeon"
+        card={props?.card}
+      />
+    ),
     available: function ({
       currentDate,
       currentTime,
@@ -685,8 +779,16 @@ export const linkEvents: {
   [SocialLinkNames.Fool]: {
     ...linkBaseFunctions,
     name: SocialLinkNames.Fool,
+    linkName: SocialLinkNames.Fool,
     special: true,
-    label: () => <EventCard head="Fool" name="S.E.E.S." place="Tartarus" />,
+    label: (props) => (
+      <EventCard
+        place="Tartarus"
+        name="S.E.E.S."
+        head="Fool"
+        card={props?.card}
+      />
+    ),
     available: () => false,
   },
 };

@@ -152,7 +152,7 @@ export const may: singleDay[] = [
     ...baseCalendar,
     date: new Date(2009, 4, 10),
     singleTimeEvents: [],
-    arcanes: [SocialLinkNames.Hermit],
+    arcanes: [],
     activities: {
       [Times.Morning]: events.NoControl,
       [Times.Day]: events.Hermit,
