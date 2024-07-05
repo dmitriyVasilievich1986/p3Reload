@@ -71,7 +71,7 @@ export const baseSocialLinkCalculation: SocialLinkTypeBase = {
   getlevel: function ({ level, romance = false }) {
     return romance ? this.levelsRomance[level] : this.levels[level];
   },
-  calculate: function ({
+  _calculate: function ({
     currentStats,
     currentLinks,
     arcanes,
@@ -113,6 +113,9 @@ export const baseSocialLinkCalculation: SocialLinkTypeBase = {
         },
       },
     };
+  },
+  calculate: function (props: CalculateProps) {
+    return this._calculate(props);
   },
   getStaleLevel: function () {
     return <EventCard head="Spending time" />;
