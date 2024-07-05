@@ -12,6 +12,7 @@ export const linkEvents: {
   [SocialLinkNames.Magician]: {
     ...linkBaseFunctions,
     name: SocialLinkNames.Magician,
+    linkName: SocialLinkNames.Magician,
     label: (props) => (
       <EventCard
         name="Kenji Tomochika"
@@ -33,6 +34,7 @@ export const linkEvents: {
   [SocialLinkNames.Priestess]: {
     ...linkBaseFunctions,
     name: SocialLinkNames.Priestess,
+    linkName: SocialLinkNames.Priestess,
     label: (props) => (
       <EventCard
         place="2nd Floor Hallway"
@@ -67,6 +69,7 @@ export const linkEvents: {
   [socialLinkRomanceNames.PriestessRomance]: {
     ...linkBaseFunctions,
     name: socialLinkRomanceNames.PriestessRomance,
+    linkName: SocialLinkNames.Priestess,
     label: (props) => (
       <EventCard
         head="Priestess(Romance)"
@@ -101,6 +104,7 @@ export const linkEvents: {
   [SocialLinkNames.Empress]: {
     ...linkBaseFunctions,
     name: SocialLinkNames.Empress,
+    linkName: SocialLinkNames.Empress,
     label: (props) => (
       <EventCard
         place="Faculty Office Entrance"
@@ -140,6 +144,7 @@ export const linkEvents: {
   [socialLinkRomanceNames.EmpressRomance]: {
     ...linkBaseFunctions,
     name: socialLinkRomanceNames.EmpressRomance,
+    linkName: SocialLinkNames.Empress,
     label: (props) => (
       <EventCard
         place="Faculty Office Entrance"
@@ -178,6 +183,7 @@ export const linkEvents: {
   [SocialLinkNames.Emperor]: {
     ...linkBaseFunctions,
     name: SocialLinkNames.Emperor,
+    linkName: SocialLinkNames.Emperor,
     label: (props) => (
       <EventCard
         place="Student Council Room"
@@ -202,6 +208,7 @@ export const linkEvents: {
   [SocialLinkNames.Hierophant]: {
     ...linkBaseFunctions,
     name: SocialLinkNames.Hierophant,
+    linkName: SocialLinkNames.Hierophant,
     label: (props) => (
       <EventCard
         place="Bookworms Used Books"
@@ -229,6 +236,7 @@ export const linkEvents: {
   [SocialLinkNames.Lovers]: {
     ...linkBaseFunctions,
     name: SocialLinkNames.Lovers,
+    linkName: SocialLinkNames.Lovers,
     label: (props) => (
       <EventCard
         name="Yukari Takeba"
@@ -267,6 +275,7 @@ export const linkEvents: {
   [socialLinkRomanceNames.LoversRomance]: {
     ...linkBaseFunctions,
     name: socialLinkRomanceNames.LoversRomance,
+    linkName: SocialLinkNames.Lovers,
     label: (props) => (
       <EventCard
         head="Lovers(Romance)"
@@ -304,6 +313,7 @@ export const linkEvents: {
   [SocialLinkNames.Chariot]: {
     ...linkBaseFunctions,
     name: SocialLinkNames.Chariot,
+    linkName: SocialLinkNames.Chariot,
     label: (props) => (
       <EventCard
         name="Kazushi Miyamoto"
@@ -330,6 +340,7 @@ export const linkEvents: {
   [SocialLinkNames.Justice]: {
     ...linkBaseFunctions,
     name: SocialLinkNames.Justice,
+    linkName: SocialLinkNames.Justice,
     label: (props) => (
       <EventCard
         place="2nd Floor Hallway"
@@ -363,6 +374,7 @@ export const linkEvents: {
   [socialLinkRomanceNames.JusticeRomance]: {
     ...linkBaseFunctions,
     name: socialLinkRomanceNames.JusticeRomance,
+    linkName: SocialLinkNames.Justice,
     label: (props) => (
       <EventCard
         place="2nd Floor Hallway"
@@ -395,6 +407,7 @@ export const linkEvents: {
   [SocialLinkNames.Hermit]: {
     ...linkBaseFunctions,
     name: SocialLinkNames.Hermit,
+    linkName: SocialLinkNames.Hermit,
     label: (props) => (
       <EventCard
         place="Laptop at the Protagonist's room"
@@ -417,6 +430,7 @@ export const linkEvents: {
   [SocialLinkNames.Fortune]: {
     ...linkBaseFunctions,
     name: SocialLinkNames.Fortune,
+    linkName: SocialLinkNames.Fortune,
     label: (props) => (
       <EventCard
         name="Keisuke Hiraga"
@@ -437,6 +451,7 @@ export const linkEvents: {
   [SocialLinkNames.Strength]: {
     ...linkBaseFunctions,
     name: SocialLinkNames.Strength,
+    linkName: SocialLinkNames.Strength,
     label: (props) => (
       <EventCard
         place="2F Classroom Hallway"
@@ -471,6 +486,7 @@ export const linkEvents: {
   [socialLinkRomanceNames.StrengthRomance]: {
     ...linkBaseFunctions,
     name: socialLinkRomanceNames.StrengthRomance,
+    linkName: SocialLinkNames.Strength,
     label: (props) => (
       <EventCard
         place="2F Classroom Hallway"
@@ -517,6 +533,7 @@ export const linkEvents: {
   [SocialLinkNames.HangedMan]: {
     ...linkBaseFunctions,
     name: SocialLinkNames.HangedMan,
+    linkName: SocialLinkNames.HangedMan,
     label: (props) => (
       <EventCard
         place="Naganaki Shrine"
@@ -537,6 +554,7 @@ export const linkEvents: {
   [SocialLinkNames.Temperance]: {
     ...linkBaseFunctions,
     name: SocialLinkNames.Temperance,
+    linkName: SocialLinkNames.Temperance,
     label: (props) => (
       <EventCard
         place="2F Classroom Hallway / 1F Laboratory Hallway (Home Economics Room)"
@@ -560,6 +578,7 @@ export const linkEvents: {
   [SocialLinkNames.Devil]: {
     ...linkBaseFunctions,
     name: SocialLinkNames.Devil,
+    linkName: SocialLinkNames.Devil,
     label: (props) => (
       <EventCard
         name="President Tanaka"
@@ -583,6 +602,7 @@ export const linkEvents: {
   [SocialLinkNames.Tower]: {
     ...linkBaseFunctions,
     name: SocialLinkNames.Tower,
+    linkName: SocialLinkNames.Tower,
     label: (props) => (
       <EventCard
         place="Club Escapade"
@@ -611,6 +631,7 @@ export const linkEvents: {
   [SocialLinkNames.Star]: {
     ...linkBaseFunctions,
     name: SocialLinkNames.Star,
+    linkName: SocialLinkNames.Star,
     label: (props) => (
       <EventCard
         place="Iwatodai Station Strip Mall 1F"
@@ -633,6 +654,7 @@ export const linkEvents: {
   [SocialLinkNames.Moon]: {
     ...linkBaseFunctions,
     name: SocialLinkNames.Moon,
+    linkName: SocialLinkNames.Moon,
     label: (props) => (
       <EventCard
         name="Nozomi Suemitsu"
@@ -654,6 +676,7 @@ export const linkEvents: {
   [SocialLinkNames.Sun]: {
     ...linkBaseFunctions,
     name: SocialLinkNames.Sun,
+    linkName: SocialLinkNames.Sun,
     label: (props) => (
       <EventCard
         place="Naganaki Shrine"
@@ -676,6 +699,7 @@ export const linkEvents: {
   [SocialLinkNames.Aeon]: {
     ...linkBaseFunctions,
     name: SocialLinkNames.Aeon,
+    linkName: SocialLinkNames.Aeon,
     label: (props) => (
       <EventCard
         place="Classroom 2F"
@@ -715,6 +739,7 @@ export const linkEvents: {
   [socialLinkRomanceNames.AeonRomance]: {
     ...linkBaseFunctions,
     name: socialLinkRomanceNames.AeonRomance,
+    linkName: SocialLinkNames.Aeon,
     label: (props) => (
       <EventCard
         place="Classroom 2F"
@@ -754,6 +779,7 @@ export const linkEvents: {
   [SocialLinkNames.Fool]: {
     ...linkBaseFunctions,
     name: SocialLinkNames.Fool,
+    linkName: SocialLinkNames.Fool,
     special: true,
     label: (props) => (
       <EventCard

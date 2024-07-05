@@ -121,4 +121,5 @@ export type Event = {
   available: (props: availableProps) => boolean;
   label: (props?: LabelProps) => React.ReactNode;
   name: allEventsNames;
+  linkName?: SocialLinkNames;
 };
