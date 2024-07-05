@@ -19,8 +19,7 @@ function DropBox(props: { show: boolean; children: React.ReactNode }) {
 function DayEvent(props: DayEventProps) {
   const [show, setShow] = React.useState(false);
   const card =
-    props.event.category === Categories.Links &&
-    props.arcanes.includes(props.event.name as SocialLinkNames);
+    props.event.linkName && props.arcanes.includes(props.event.linkName);
 
   const availableEvents = (Object.keys(events) as Array<allEventsNames>).filter(
     (e) =>
@@ -35,22 +34,18 @@ function DayEvent(props: DayEventProps) {
   );
 
   const LinkElement = () => {
-    if (
-      props.event.category !== Categories.Links ||
-      !(props.event.name in SocialLinkNames)
-    )
-      return null;
-    if (
-      props.previousDay.links[props.event.name as SocialLinkNames].level ===
-      props.links[props.event.name as SocialLinkNames].level
-    )
-      return socialLinks[props.event.name as SocialLinkNames].getStaleLevel();
-    return socialLinks[props.event.name as SocialLinkNames]
+    if (props.event.category !== Categories.Links) return null;
+
+    const linkName = props.event.linkName as SocialLinkNames;
+    if (props.previousDay.links[linkName].level === props.links[linkName].level)
+      return socialLinks[linkName].getStaleLevel();
+
+    return socialLinks[linkName]
       .getlevel({
-        romance: props.links[props.event.name as SocialLinkNames].romance,
-        level: props.links[props.event.name as SocialLinkNames].level - 1,
+        romance: props.links[linkName].romance,
+        level: props.links[linkName].level - 1,
       })
-      .element({ key: props.event.name });
+      .element({ key: linkName });
   };
 
   return (
