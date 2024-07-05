@@ -1,6 +1,5 @@
 import { SocialLinkNames, SocialLinkType, CalculateProps } from "./types";
 import { EventCard } from "../../components/eventCard";
-import { StatsNames } from "../stats/types";
 
 import {
   baseSocialLinkCalculation,
