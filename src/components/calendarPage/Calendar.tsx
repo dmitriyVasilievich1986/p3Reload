@@ -63,11 +63,14 @@ function Calendar(props: CalendarProps) {
         if (c.date.getTime() > props.date.getTime())
           return {
             ...c,
+            arcanes: [],
             activities: {
               [Times.Morning]: c.activities[Times.Morning]?.special
                 ? c.activities[Times.Morning]
                 : events.stayAwakeInClass,
-              [Times.AfterSchool]: null,
+              [Times.AfterSchool]: c.activities[Times.AfterSchool]?.special
+                ? c.activities[Times.AfterSchool]
+                : null,
               [Times.Day]: c.activities[Times.Day]?.special
                 ? c.activities[Times.Day]
                 : events.DoNothing,
