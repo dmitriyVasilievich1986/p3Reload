@@ -1,6 +1,7 @@
-import { EventProps, ItemProps } from "./types";
+import { EventProps, ItemProps, HeadProps } from "./types";
 import classnames from "classnames/bind";
 import * as style from "./style.scss";
+import tarotIcon from "./tarot.png";
 
 const cx = classnames.bind(style);
 
@@ -14,8 +15,17 @@ export function Item(props: ItemProps) {
   );
 }
 
-export function price(price: number | undefined) {
-  if (!price) return null;
+export function Head(props: HeadProps) {
+  return (
+    <div className={cx("head")}>
+      <h3>{props.head}</h3>
+      {props.card && <img src={tarotIcon} />}
+    </div>
+  );
+}
+
+export function price(price?: number): string | undefined {
+  if (!price) return undefined;
   if (price < 1000) return `¥${price}`;
   const first = Math.floor(price / 1000);
   const second = String(price % 1000).padEnd(3, "0");
@@ -25,7 +35,7 @@ export function price(price: number | undefined) {
 function EventCard(props: EventProps) {
   return (
     <div className={cx("event-card")}>
-      <h3 className={cx("head")}>{props.head}</h3>
+      <Head {...props} />
       <Item label="Name" value={props?.name} />
       <Item label="Place" value={props?.place} />
       <Item label="Stats" value={props?.stats} />
