@@ -1,0 +1,64 @@
+.modal-window {
+    background-color: rgba($color: #ccc, $alpha: 0.8);
+    position: fixed;
+    height: 100vh;
+    width: 100vw;
+    z-index: 99;
+    left: 0;
+    top: 0;
+    
+    justify-content: center;
+    flex-direction: column;
+    align-items: center;
+    display: flex;
+
+    &>.inner-window {
+        flex-direction: column;
+        display: flex;
+        gap: 1rem;
+
+        &>.close {
+            justify-content: end;
+            display: flex;
+            width: 100%;
+
+            &>button {
+                width: 150px;
+            }
+        }
+
+        &>.wrapper {
+            box-shadow: 0 0 10px 0 rgba(0, 0, 0, 0.9);
+            background-color: #fff;
+            justify-content: center;
+            flex-direction: row;
+            border-radius: 15px;
+            overflow-y: auto;
+            flex-wrap: wrap;
+            display: flex;
+            padding: 1rem;
+            gap: 1rem;
+            
+            max-height: 90vh;
+            max-width: 90vw;
+        }
+    }
+}
+
+.events-list {
+    width: 500px;
+}
+
+.events-wrapper {
+    height: fit-content;
+    max-height: 300px;
+    overflow-y: auto;
+
+    &>div {
+        cursor: pointer;
+
+        &:hover {
+            background-color: #f77f00;
+        }
+    }
+}

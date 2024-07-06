@@ -1,4 +1,4 @@
-import { Times, Event, allEventsNames } from "../../constants/events/types";
+import { Times, Event } from "../../constants/events/types";
 import { singleDay } from "../../constants/calendar/types";
 import { CharStats } from "../../constants/stats/types";
 
@@ -32,16 +32,13 @@ export type UpdateCalendarProps = {
 export type DayEventProps = {
   links: SocialLinksStatsArray;
   arcanes: SocialLinkNames[];
+  onClick: () => void;
   stats: CharStats;
   event: Event;
-  time: Times;
-  changeHandler: (props: allEventsNames) => void;
-  singleTimeEvents: allEventsNames[];
-} & DateProps &
-  TartarusProps;
+} & TartarusProps;
 
 export type CalendarProps = singleDay & {
+  setDayConstants: (time: Times) => void;
   previousDay: singleDay;
   stats: CharStats;
-  setCalendarArray: React.Dispatch<React.SetStateAction<singleDay[]>>;
 };
