@@ -39,7 +39,6 @@ function App() {
           {calendar.map((c, i) => (
             <Calendar
               key={c.date.getTime()}
-              setCalendarArray={setCalendar}
               previousDay={calendar?.[i - 1]}
               {...c}
             />
