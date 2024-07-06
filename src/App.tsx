@@ -36,7 +36,7 @@ function App() {
       />
       <LeftBar calendarRef={calendarRef} />
       <div className={cx("App")}>
-        <div>
+        <div ref={calendarRef}>
           <div />
           {calendar.map((c, i) => (
             <Calendar
