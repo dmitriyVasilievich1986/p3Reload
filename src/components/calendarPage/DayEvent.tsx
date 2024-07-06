@@ -27,7 +27,7 @@ function DayEvent(props: DayEventProps) {
   };
 
   return (
-    <div className={cx("flex-column")}>
+    <div className={cx("flex-column")} onClick={props.onClick}>
       {props.event.label({ card })}
       <LinkElement />
     </div>

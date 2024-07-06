@@ -32,11 +32,13 @@ export type UpdateCalendarProps = {
 export type DayEventProps = {
   links: SocialLinksStatsArray;
   arcanes: SocialLinkNames[];
+  onClick: () => void;
   stats: CharStats;
   event: Event;
 } & TartarusProps;
 
 export type CalendarProps = singleDay & {
+  setDayConstants: (time: Times) => void;
   previousDay: singleDay;
   stats: CharStats;
 };

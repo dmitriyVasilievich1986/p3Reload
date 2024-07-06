@@ -60,6 +60,7 @@ function Calendar(props: CalendarProps) {
                 >
                   <DayEvent
                     event={props.activities[time] as Event}
+                    onClick={() => props.setDayConstants(time)}
                     {...props}
                   />
                 </Card>
