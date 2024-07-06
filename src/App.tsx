@@ -3,14 +3,17 @@ import { singleDay } from "./constants/calendar/types";
 import { Calendar } from "./components/calendarPage";
 import { Modal } from "./components/modalWindow";
 import { LeftBar } from "./components/leftBar";
+import classnames from "classnames/bind";
+import * as style from "./App.scss";
 import React from "react";
-import "./App.css";
 
 import {
   initialCalculataion,
   calendar as initialCalendar,
 } from "./constants/calendar";
 import { Times } from "./constants/events/types";
+
+const cx = classnames.bind(style);
 
 function App() {
   const [calendar, setCalendar] = React.useState<singleDay[]>([]);
@@ -32,21 +35,8 @@ function App() {
         setDayConstants={setDayConstants}
       />
       <LeftBar calendarRef={calendarRef} />
-      <div
-        ref={calendarRef}
-        style={{
-          width: "100vw",
-          overflow: "scroll",
-          height: "calc(100% + 3rem)",
-        }}
-      >
-        <div
-          style={{
-            width: "fit-content",
-            display: "flex",
-            gap: "3rem",
-          }}
-        >
+      <div className={cx("App")}>
+        <div>
           <div />
           {calendar.map((c, i) => (
             <Calendar
