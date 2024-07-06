@@ -1,5 +1,7 @@
+import { DayConstants } from "./components/modalWindow/types";
 import { singleDay } from "./constants/calendar/types";
 import { Calendar } from "./components/calendarPage";
+import { Modal } from "./components/modalWindow";
 import { LeftBar } from "./components/leftBar";
 import React from "react";
 import "./App.css";
@@ -8,10 +10,14 @@ import {
   initialCalculataion,
   calendar as initialCalendar,
 } from "./constants/calendar";
+import { Times } from "./constants/events/types";
 
 function App() {
   const [calendar, setCalendar] = React.useState<singleDay[]>([]);
   const calendarRef = React.useRef<HTMLDivElement>(null);
+  const [dayConstants, setDayConstants] = React.useState<DayConstants | null>(
+    null
+  );
 
   React.useEffect(() => {
     setCalendar(initialCalculataion(initialCalendar));
@@ -19,6 +25,12 @@ function App() {
 
   return (
     <React.Fragment>
+      <Modal
+        calendar={calendar}
+        setCalendar={setCalendar}
+        dayConstants={dayConstants}
+        setDayConstants={setDayConstants}
+      />
       <LeftBar calendarRef={calendarRef} />
       <div
         ref={calendarRef}
@@ -39,8 +51,10 @@ function App() {
           {calendar.map((c, i) => (
             <Calendar
               key={c.date.getTime()}
-              setCalendarArray={setCalendar}
               previousDay={calendar?.[i - 1]}
+              setDayConstants={(time: Times) =>
+                setDayConstants({ time, day: c.date })
+              }
               {...c}
             />
           ))}
