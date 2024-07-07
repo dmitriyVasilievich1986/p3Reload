@@ -358,7 +358,7 @@ export const linkEvents: {
       if (previousDay === undefined) return false;
       const isFork =
         previousDay.links &&
-        previousDay.links[SocialLinkNames.Empress].level === 6;
+        previousDay.links[SocialLinkNames.Justice].level === 4;
       const isRomance =
         !currentLinks[SocialLinkNames.Empress].romance || isFork;
       const days = [DaysNames.tuesday, DaysNames.thursday, DaysNames.saturday];
@@ -378,11 +378,23 @@ export const linkEvents: {
     label: (props) => (
       <EventCard
         place="2nd Floor Hallway"
+        head="Justice(Romance)"
         name="Chihiro Fushimi"
-        head="Justice"
         card={props?.card}
       />
     ),
+    upgrade: function (props) {
+      return socialLinks[SocialLinkNames.Justice].calculate({
+        ...props,
+        currentLinks: {
+          ...props.currentLinks,
+          [SocialLinkNames.Justice]: {
+            ...props.currentLinks[SocialLinkNames.Justice],
+            romance: true,
+          },
+        },
+      });
+    },
     available: function ({
       currentDate,
       currentTime,
@@ -392,7 +404,7 @@ export const linkEvents: {
       if (previousDay === undefined) return false;
       const isFork =
         previousDay.links &&
-        previousDay.links[SocialLinkNames.Empress].level === 6;
+        previousDay.links[SocialLinkNames.Justice].level === 4;
       const isRomance = currentLinks[SocialLinkNames.Empress].romance || isFork;
       const days = [DaysNames.tuesday, DaysNames.thursday, DaysNames.saturday];
       return (
