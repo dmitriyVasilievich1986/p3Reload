@@ -95,10 +95,11 @@ export const baseSocialLinkCalculation: SocialLinkTypeBase = {
         multiplier *= 1.51;
       } else if (
         Math.floor(
-          (newLevel.points - currentLevel.maxPoints * multiplier * 1.51) / 10
+          (newLevel.points - currentLevel.maxPoints * multiplier * 1.51) / 10 +
+            0.99
         ) <
           Math.floor(
-            (newLevel.points - currentLevel.maxPoints * multiplier) / 10
+            (newLevel.points - currentLevel.maxPoints * multiplier) / 10 + 0.99
           ) &&
         Math.floor(currentLevel.maxPoints * multiplier) < newLevel.points
       ) {
