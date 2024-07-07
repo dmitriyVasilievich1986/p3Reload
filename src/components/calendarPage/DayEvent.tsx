@@ -26,8 +26,14 @@ function DayEvent(props: DayEventProps) {
       .element({ key: linkName });
   };
 
+  const clickHandler = () => {
+    if (!props.event?.special) {
+      props.onClick();
+    }
+  };
+
   return (
-    <div className={cx("flex-column")} onClick={props.onClick}>
+    <div className={cx("flex-column")} onClick={clickHandler}>
       {props.event.label({ card })}
       <LinkElement />
     </div>
