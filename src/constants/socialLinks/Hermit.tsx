@@ -90,7 +90,7 @@ export const Hermit: SocialLinkType = {
       ]),
     ]),
     LinkLevel(20, [
-      choices("it said their canceling innocent sin. …think its for real?!", [
+      choices("it said their canceling innocent sin. …think its for real?", [
         choice({ label: "Not much we can do." }),
         choice({ label: "No way!", points: 5 }),
         choice({ label: "Whatever, I guess." }),
@@ -103,7 +103,7 @@ export const Hermit: SocialLinkType = {
           choice({ label: "Don't worry about that." }),
         ]
       ),
-      choices("maya's not goin quietly! >=/ i'll beat them to the punch!", [
+      choices("maya's not goin quietly! >=/ i'll beat em to the punch!", [
         choice({ label: "What are you planning?", points: 5 }),
         choice({ label: "This won't change anything." }),
       ]),
@@ -111,11 +111,11 @@ export const Hermit: SocialLinkType = {
     LinkLevel(20, [
       choices("…i should apologize", [
         choice({ label: "About what?" }),
-        choice({ label: "Oh, no worries.", points: 15 }),
+        choice({ label: "Oh, no worries.", points: 5 }),
       ]),
       choices("i dun think i will...", [
         choice({ label: "Now they'll end it for sure." }),
-        choice({ label: "Is that why you're sorry?" }),
+        choice({ label: "Is that why you're sorry?", points: 5 }),
       ]),
       choices(
         "im thinkin bout quittin the MMO today. i… dun think i'll c u again T_T",
