@@ -10,8 +10,9 @@ export const initialUpgrade = {
 
 export const linkBaseFunctions = {
   name: SocialLinkNames.Aeon,
+  linkName: SocialLinkNames.Aeon,
   category: Categories.Links,
   upgrade: function (props: upgradeProps): upgradeResponse {
-    return socialLinks[this.name].calculate({ ...props });
+    return socialLinks[this.linkName].calculate({ ...props });
   },
 };
