@@ -84,7 +84,7 @@ export const Strength: SocialLinkType = {
         [
           choice({ label: "You shouldn't change it.", fork: true, points: 5 }),
           choice({ label: "Maybe you should rethink it." }),
-          choice({ label: "I trust whatever you decide Yuko.", points: 5 }),
+          choice({ label: "I trust whatever you decide Yuko." }),
         ]
       ),
     ]),
@@ -123,79 +123,69 @@ export const Strength: SocialLinkType = {
       ),
     ]),
     LinkLevel(40, [
-      choices(
-        "I was out buying stuff that might be useful for running practice, and I ran out of money.",
-        [
-          choice({ label: "It's fine." }),
-          choice({ label: "This is a nice room." }),
-          choice({ label: "Stuff for the kids?" }),
-        ]
-      ),
-      choices("Hmm... Oh, do you like children?", [
-        choice({ label: "I do." }),
-        choice({ label: "Not really." }),
+      choices(`Which one sounds better to you, ${mainCharName}-kun?`, [
+        choice({ label: "The cute one.", points: 5 }),
+        choice({ label: "The reasonable one.", points: 5 }),
+        choice({ label: "Either is fine." }),
       ]),
-      choices("Would you want it to be a boy or a girl?", [
-        choice({ label: "A boy.", points: 5 }),
-        choice({ label: "A girl.", points: 5 }),
-        choice({ label: "I don't care." }),
+      choices("Sorry for always dragging you into situations like this", [
+        choice({ label: "Glad it didn't turn into a fight." }),
+        choice({ label: "You handled it well." }),
       ]),
     ]),
-    LinkLevel(40, [
-      choices(
-        "All it did was make me more confused than I originally was. Guess I'll have to go ask again tomorrow.",
-        [
-          choice({ label: "You're so hardworking.", points: 5 }),
-          choice({ label: "Why go through all that trouble?" }),
-        ]
-      ),
+    LinkLevel(30, [
+      choices("I thought my stomach was gonna explode!", [
+        choice({ label: "That sounds like you." }),
+        choice({ label: "You're gonna get fat" }),
+      ]),
       choices("Can you guess what it is?", [
         choice({ label: "A track and field star?", points: 5 }),
         choice({ label: "An instructor?", points: 15 }),
         choice({ label: "A nursery teacher?", points: 5 }),
-        choice({ label: "No idea..." }),
-      ]),
-      choices("I realized that I might've been relying too much on you.", [
-        choice({ label: "I don't mind." }),
-        choice({ label: "You can rely on me even more." }),
+        choice({ label: "No idea...", points: 5 }),
       ]),
       choices(
-        "Are you like this... just with me? N-No, no, th-that can't be it, huh...",
+        "Thinking back, I really caused you a lot of trouble, so... I'm sorry.",
         [
-          choice({ label: "It's because I love you.", fork: true }),
-          choice({ label: "It's because you're a close friend." }),
+          choice({ label: "I don't mind." }),
+          choice({ label: "You can rely on me even more." }),
         ]
       ),
-      choices("What's happening...? Is this a dream?", [
-        choice({ label: "I love you, Yuko." }),
-        choice({ label: "It's not a dream." }),
-      ]),
+      choices(
+        "If you've got something on your mind, I'm here for you anytime, even if you just gotta rant, all right?",
+        [
+          choice({ label: "Thanks.", points: 5 }),
+          choice({ label: "You're so dependable." }),
+          choice({ label: "I do have some homework..." }),
+        ]
+      ),
     ]),
     LinkLevel(40, [
       choices(
-        "I could've given this to you at school, but I wanted to talk somewhere quiet.",
+        "Ugh, this is so heavy. I should't have crammed everything in there...",
         [
-          choice({ label: "Is it important?", points: 5 }),
-          choice({ label: "What is it?", points: 5 }),
+          choice({ label: "Stuff for the track team?" }),
+          choice({ label: "Want me to carry it?", points: 5 }),
         ]
       ),
       choices(
-        "I know they were kind of a handful, but they also have an endearing side to them, don't you think?",
+        "It hasn't even been that long since we cached those kids though, huh?",
         [
-          choice({ label: "Yeah.", points: 5 }),
-          choice({ label: "Not really." }),
+          choice({ label: "That's just how fulfilling it was.", points: 5 }),
+          choice({ label: "It's age..." }),
         ]
       ),
-      choices("Because today... Well, my parents aren't home, so...", [
-        choice({ label: "I see." }),
-        choice({ label: "What does that mean?", points: 5 }),
-      ]),
-    ]),
-    LinkLevel(40, [
-      choices("", [
-        choice({ label: "" }),
-        choice({ label: "" }),
-        choice({ label: "" }),
+      choices(
+        `It's from those kids. They told me to "make sure I give it to my boyfriend."`,
+        [
+          choice({ label: "Boyfriend..." }),
+          choice({ label: "Where's yours?", points: 5 }),
+          choice({ label: "I'm honored.", points: 5 }),
+        ]
+      ),
+      choices("Kinda makes me wanna do it all again. What about you?", [
+        choice({ label: "If the opportunity arises.", points: 5 }),
+        choice({ label: "Let me think about it." }),
       ]),
     ]),
     {
@@ -219,7 +209,7 @@ export const Strength: SocialLinkType = {
         "They called you my boyfriend. That must have made you feel awkward, huh?",
         [
           choice({ label: "I'm honored.", fork: true, points: 5 }),
-          choice({ label: "I don't mind.", points: 5 }),
+          choice({ label: "I don't mind." }),
           choice({ label: "It might be a problem." }),
         ]
       ),
@@ -246,7 +236,7 @@ export const Strength: SocialLinkType = {
       choices(
         "Should I change the training routine? Maybe they should be running more.",
         [
-          choice({ label: "You shouldn't change it.", points: 5 }),
+          choice({ label: "You shouldn't change it." }),
           choice({ label: "Maybe you should rethink it." }),
           choice({
             label: "I trust whatever you decide Yuko.",
@@ -309,11 +299,11 @@ export const Strength: SocialLinkType = {
         choice({ label: "I don't care." }),
       ]),
     ]),
-    LinkLevel(40, [
+    LinkLevel(30, [
       choices(
         "All it did was make me more confused than I originally was. Guess I'll have to go ask again tomorrow.",
         [
-          choice({ label: "You're so hardworking.", points: 5 }),
+          choice({ label: "You're so hardworking." }),
           choice({ label: "Why go through all that trouble?" }),
         ]
       ),
@@ -321,27 +311,27 @@ export const Strength: SocialLinkType = {
         choice({ label: "A track and field star?", points: 5 }),
         choice({ label: "An instructor?", points: 15 }),
         choice({ label: "A nursery teacher?", points: 5 }),
-        choice({ label: "No idea..." }),
+        choice({ label: "No idea...", points: 5 }),
       ]),
-      choices("I realized that I might've been relying too much on you.", [
+      choices("I realized now that I might've been relying too much on you.", [
         choice({ label: "I don't mind." }),
         choice({ label: "You can rely on me even more." }),
       ]),
       choices(
         "Are you like this... just with me? N-No, no, th-that can't be it, huh...",
         [
-          choice({ label: "It's because I love you.", fork: true }),
+          choice({ label: "It's because I love you.", fork: true, points: 5 }),
           choice({ label: "It's because you're a close friend." }),
         ]
       ),
       choices("What's happening...? Is this a dream?", [
-        choice({ label: "I love you, Yuko." }),
-        choice({ label: "It's not a dream." }),
+        choice({ label: "I love you, Yuko.", points: 5 }),
+        choice({ label: "It's not a dream.", points: 5 }),
       ]),
     ]),
     LinkLevel(40, [
       choices(
-        "I could've given this to you at school, but I wanted to talk somewhere quiet.",
+        "I guess I could've told you this next part at school, but I wanted to talk somewhere quiet.",
         [
           choice({ label: "Is it important?", points: 5 }),
           choice({ label: "What is it?", points: 5 }),
@@ -351,7 +341,7 @@ export const Strength: SocialLinkType = {
         "I know they were kind of a handful, but they also have an endearing side to them, don't you think?",
         [
           choice({ label: "Yeah.", points: 5 }),
-          choice({ label: "Not really." }),
+          choice({ label: "Not really.", points: 5 }),
         ]
       ),
       choices("Because today... Well, my parents aren't home, so...", [
