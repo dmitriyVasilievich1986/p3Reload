@@ -94,11 +94,14 @@ export const baseSocialLinkCalculation: SocialLinkTypeBase = {
       if (arcanes.includes(this.name)) {
         multiplier *= 1.51;
       } else if (
-        currentLevel.maxPoints > 0 &&
-        currentLevel.maxPoints * multiplier < newLevel.points &&
-        Math.floor(newLevel.points - currentLevel.maxPoints * multiplier) %
-          10 !==
-          0
+        Math.floor(
+          (newLevel.points - currentLevel.maxPoints * multiplier * 1.51) / 10 +
+            0.99
+        ) <
+          Math.floor(
+            (newLevel.points - currentLevel.maxPoints * multiplier) / 10 + 0.99
+          ) &&
+        Math.floor(currentLevel.maxPoints * multiplier) < newLevel.points
       ) {
         multiplier *= 1.51;
         arcanes.push(this.name);
