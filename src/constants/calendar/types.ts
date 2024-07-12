@@ -1,5 +1,5 @@
 import { SocialLinksStatsArray, SocialLinkNames } from "../socialLinks/types";
-import { allEventsNames, Times, Event } from "../events/types";
+import { allEventsNames, Event } from "../events/types";
 import { CharStats } from "../stats/types";
 
 export type singleDay = {

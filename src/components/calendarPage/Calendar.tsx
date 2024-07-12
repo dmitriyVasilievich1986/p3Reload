@@ -1,7 +1,5 @@
 import { MonthNames, DaysNamesIndex } from "../../constants/monthsNames";
-import { CalendarProps, TartarusProps, DateProps } from "./types";
-import { Times, Event } from "../../constants/events/types";
-import { events } from "../../constants/events";
+import { CalendarProps, DateProps } from "./types";
 import classnames from "classnames/bind";
 import SocialLinks from "./SocialLinks";
 import * as style from "./style.scss";

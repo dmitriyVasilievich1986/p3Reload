@@ -1,8 +1,6 @@
-import { Categories, Times, Event } from "../events/types";
 import { StatsNames, CharStats } from "../stats/types";
 import { MonthNames } from "../monthsNames";
 import { singleDay } from "./types";
-import { events } from "../events";
 
 import {
   SocialLinksStatsArray,
