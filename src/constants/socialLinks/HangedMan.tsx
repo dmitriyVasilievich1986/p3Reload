@@ -53,21 +53,21 @@ export const HangedMan: SocialLinkType = {
       ]),
       choices("Do they just wish I would disappear?", [
         choice({ label: "It's possible." }),
-        choice({ label: "They would never?", points: 5 }),
+        choice({ label: "They would never.", points: 5 }),
       ]),
     ]),
     LinkLevel(20, [
       choices("I made up my mind! I have to run away from home!", [
         choice({ label: "Don't do it." }),
         choice({ label: "Calm down.", points: 5 }),
-        choice({ label: "It's up to you." }),
+        choice({ label: "It's up to you.", points: 5 }),
       ]),
-      choices("I'll need lots of snacks, right? And my...insurance card?", [
+      choices("I need lots of snacks, right? And my...insurance card?", [
         choice({ label: "That should be enough.", points: 15 }),
         choice({ label: "It'll take more than that." }),
       ]),
     ]),
-    LinkLevel(30, [
+    LinkLevel(40, [
       choices("She's never done anything like this before!", [
         choice({ label: "We should look for her." }),
         choice({ label: "It's probably your fault." }),
@@ -97,12 +97,12 @@ export const HangedMan: SocialLinkType = {
       ]),
     ]),
     LinkLevel(30, [
-      choices("Even if I'm gone... we'll still be friends right?", [
+      choices("Even if I'm gone... we'll still be friends, right?", [
         choice({ label: "Friends forever.", points: 15 }),
         choice({ label: "I might forget about you." }),
       ]),
     ]),
-    LinkLevel(15, [
+    LinkLevel(30, [
       choices("Do you think I'll have a family of my own one day?", [
         choice({ label: "I'm sure you will.", points: 15 }),
         choice({ label: "No idea." }),
