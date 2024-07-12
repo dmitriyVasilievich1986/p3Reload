@@ -1,5 +1,6 @@
 import { Choices, Choice } from "../../components/choices";
 import { EventCard } from "../../components/eventCard";
+import { WideEvent } from "../../components/wideEvent";
 import { Categories, Times } from "../events/types";
 import { baseCalendar } from "./baseFunctions";
 import { singleDay } from "./types";
@@ -11,20 +12,23 @@ export const april: singleDay[] = [
     date: new Date(2009, 3, 7),
     singleTimeEvents: [],
     arcanes: [],
-    activities: {
-      [Times.Morning]: events.Special,
-      [Times.Day]: events.Special,
-      [Times.Evening]: events.Special,
-    },
+    activities: [
+      {
+        ...events.Special,
+        time: Times.WholeDay,
+        label: () => <WideEvent>{events.Special.label()}</WideEvent>,
+      },
+    ],
   },
   {
     ...baseCalendar,
     date: new Date(2009, 3, 8),
     singleTimeEvents: [],
     arcanes: [],
-    activities: {
-      [Times.Morning]: {
+    activities: [
+      {
         ...events.schoolQuestionCharm,
+        time: Times.Morning,
         label: () => (
           <Choices
             label={
@@ -37,116 +41,134 @@ export const april: singleDay[] = [
           </Choices>
         ),
       },
-      [Times.Day]: events.Special,
-      [Times.Evening]: events.Special,
-    },
+      events.Special,
+      { ...events.Special, time: Times.Evening },
+    ],
   },
   {
     ...baseCalendar,
     date: new Date(2009, 3, 9),
     singleTimeEvents: [],
     arcanes: [],
-    activities: {
-      [Times.Morning]: events.stayAwakeInClass,
-      [Times.Day]: events.Special,
-      [Times.Evening]: events.Special,
-    },
+    activities: [
+      {
+        ...events.Special,
+        time: Times.WholeDay,
+        label: () => <WideEvent>{events.Special.label()}</WideEvent>,
+      },
+    ],
   },
   {
     ...baseCalendar,
     date: new Date(2009, 3, 10),
     singleTimeEvents: [],
     arcanes: [],
-    activities: {
-      [Times.Morning]: events.Special,
-      [Times.Day]: events.Special,
-      [Times.Evening]: events.Special,
-    },
+    activities: [
+      {
+        ...events.Special,
+        time: Times.WholeDay,
+        label: () => <WideEvent>{events.Special.label()}</WideEvent>,
+      },
+    ],
   },
   {
     ...baseCalendar,
     date: new Date(2009, 3, 11),
     singleTimeEvents: [],
     arcanes: [],
-    activities: {
-      [Times.Morning]: events.Special,
-      [Times.Day]: events.Special,
-      [Times.Evening]: events.Special,
-    },
+    activities: [
+      {
+        ...events.Special,
+        time: Times.WholeDay,
+        label: () => <WideEvent>{events.Special.label()}</WideEvent>,
+      },
+    ],
   },
   {
     ...baseCalendar,
     date: new Date(2009, 3, 12),
     singleTimeEvents: [],
     arcanes: [],
-    activities: {
-      [Times.Morning]: events.Special,
-      [Times.Day]: events.Special,
-      [Times.Evening]: events.Special,
-    },
+    activities: [
+      {
+        ...events.Special,
+        time: Times.WholeDay,
+        label: () => <WideEvent>{events.Special.label()}</WideEvent>,
+      },
+    ],
   },
   {
     ...baseCalendar,
     date: new Date(2009, 3, 13),
     singleTimeEvents: [],
     arcanes: [],
-    activities: {
-      [Times.Morning]: events.Special,
-      [Times.Day]: events.Special,
-      [Times.Evening]: events.Special,
-    },
+    activities: [
+      {
+        ...events.Special,
+        time: Times.WholeDay,
+        label: () => <WideEvent>{events.Special.label()}</WideEvent>,
+      },
+    ],
   },
   {
     ...baseCalendar,
     date: new Date(2009, 3, 14),
     singleTimeEvents: [],
     arcanes: [],
-    activities: {
-      [Times.Morning]: events.Special,
-      [Times.Day]: events.Special,
-      [Times.Evening]: events.Special,
-    },
+    activities: [
+      {
+        ...events.Special,
+        time: Times.WholeDay,
+        label: () => <WideEvent>{events.Special.label()}</WideEvent>,
+      },
+    ],
   },
   {
     ...baseCalendar,
     date: new Date(2009, 3, 15),
     singleTimeEvents: [],
     arcanes: [],
-    activities: {
-      [Times.Morning]: events.Special,
-      [Times.Day]: events.Special,
-      [Times.Evening]: events.Special,
-    },
+    activities: [
+      {
+        ...events.Special,
+        time: Times.WholeDay,
+        label: () => <WideEvent>{events.Special.label()}</WideEvent>,
+      },
+    ],
   },
   {
     ...baseCalendar,
     date: new Date(2009, 3, 16),
     singleTimeEvents: [],
     arcanes: [],
-    activities: {
-      [Times.Morning]: events.Special,
-      [Times.Day]: events.Special,
-      [Times.Evening]: events.Special,
-    },
+    activities: [
+      {
+        ...events.Special,
+        time: Times.WholeDay,
+        label: () => <WideEvent>{events.Special.label()}</WideEvent>,
+      },
+    ],
   },
   {
     ...baseCalendar,
     date: new Date(2009, 3, 17),
     singleTimeEvents: [],
     arcanes: [],
-    activities: {
-      [Times.Morning]: events.Special,
-      [Times.Day]: events.Special,
-      [Times.Evening]: events.Special,
-    },
+    activities: [
+      {
+        ...events.Special,
+        time: Times.WholeDay,
+        label: () => <WideEvent>{events.Special.label()}</WideEvent>,
+      },
+    ],
   },
   {
     ...baseCalendar,
     date: new Date(2009, 3, 18),
     singleTimeEvents: [],
     arcanes: [],
-    activities: {
-      [Times.Morning]: {
+    activities: [
+      {
         ...events.schoolQuestionCharm,
         label: () => (
           <Choices
@@ -160,53 +182,61 @@ export const april: singleDay[] = [
           </Choices>
         ),
       },
-      [Times.Day]: events.Special,
-      [Times.Evening]: events.Fool,
-    },
+      events.Special,
+      { ...events.Special, time: Times.Evening },
+      { ...events.Fool, time: Times.DarkHour },
+    ],
   },
   {
     ...baseCalendar,
     date: new Date(2009, 3, 19),
     singleTimeEvents: [],
     arcanes: [],
-    activities: {
-      [Times.Morning]: events.Special,
-      [Times.Day]: events.Special,
-      [Times.Evening]: events.Special,
-    },
+    activities: [
+      {
+        ...events.Special,
+        time: Times.WholeDay,
+        label: () => <WideEvent>{events.Special.label()}</WideEvent>,
+      },
+    ],
   },
   {
     ...baseCalendar,
     date: new Date(2009, 3, 20),
     singleTimeEvents: [],
     arcanes: [],
-    activities: {
-      [Times.Morning]: events.Special,
-      [Times.Day]: events.Special,
-      [Times.Evening]: { ...events.Fool, category: Categories.Tartarus },
-    },
+    activities: [
+      {
+        ...events.Fool,
+        time: Times.DarkHour,
+        category: Categories.Tartarus,
+        label: () => <WideEvent>{events.Fool.label()}</WideEvent>,
+      },
+    ],
   },
   {
     ...baseCalendar,
     date: new Date(2009, 3, 21),
     singleTimeEvents: [],
     arcanes: [],
-    activities: {
-      [Times.Morning]: events.stayAwakeInClass,
-      [Times.Day]: events.gameParadeCourage,
-      [Times.Evening]: events.gameParadeCourage,
-    },
+    activities: [
+      events.stayAwakeInClass,
+      events.drinkMedicine,
+      { ...events.gameParadeCourage, time: Times.Day },
+      events.gameParadeCourage,
+    ],
   },
   {
     ...baseCalendar,
     date: new Date(2009, 3, 22),
     singleTimeEvents: [],
     arcanes: [],
-    activities: {
-      [Times.Morning]: events.Special,
-      [Times.Day]: { ...events.Magician, special: true },
-      [Times.Evening]: {
+    activities: [
+      { ...events.Special, time: Times.Morning },
+      { ...events.Magician, special: true },
+      {
         ...events.Tartarus,
+        time: Times.Evening,
         label: () => (
           <EventCard head="Tartarus">
             <ul>
@@ -217,60 +247,62 @@ export const april: singleDay[] = [
           </EventCard>
         ),
       },
-    },
+    ],
   },
   {
     ...baseCalendar,
     date: new Date(2009, 3, 23),
     singleTimeEvents: [],
     arcanes: [],
-    activities: {
-      [Times.Morning]: events.Special,
-      [Times.Day]: events.Chariot,
-      [Times.Evening]: events.gameParadeCharm,
-    },
+    activities: [
+      { ...events.Special, time: Times.Morning },
+      events.drinkMedicine,
+      events.Chariot,
+      events.gameParadeCharm,
+    ],
   },
   {
     ...baseCalendar,
     date: new Date(2009, 3, 24),
     singleTimeEvents: [],
     arcanes: [],
-    activities: {
-      [Times.Morning]: events.Special,
-      [Times.Day]: events.Magician,
-      [Times.Evening]: events.gameParadeCourage,
-    },
+    activities: [
+      { ...events.Special, time: Times.Morning },
+      events.Magician,
+      events.gameParadeCourage,
+    ],
   },
   {
     ...baseCalendar,
     date: new Date(2009, 3, 25),
     singleTimeEvents: [],
     arcanes: [],
-    activities: {
-      [Times.Morning]: events.Special,
-      [Times.Day]: events.Hierophant,
-      [Times.Evening]: events.gameParadeAcademics,
-    },
+    activities: [
+      { ...events.Special, time: Times.Morning },
+      events.Hierophant,
+      events.gameParadeAcademics,
+    ],
   },
   {
     ...baseCalendar,
     date: new Date(2009, 3, 26),
     singleTimeEvents: [],
     arcanes: [],
-    activities: {
-      [Times.Morning]: events.Special,
-      [Times.Day]: events.Hierophant,
-      [Times.Evening]: events.wakatsuKitchen,
-    },
+    activities: [
+      { ...events.Special, time: Times.Morning },
+      events.Hierophant,
+      events.wakatsuKitchen,
+    ],
   },
   {
     ...baseCalendar,
     date: new Date(2009, 3, 27),
     singleTimeEvents: [],
     arcanes: [],
-    activities: {
-      [Times.Morning]: {
+    activities: [
+      {
         ...events.schoolQuestionCharm,
+        time: Times.Morning,
         special: true,
         label: () => (
           <Choices
@@ -285,19 +317,20 @@ export const april: singleDay[] = [
           </Choices>
         ),
       },
-      [Times.Day]: events.Emperor,
-      [Times.Evening]: events.gameParadeCharm,
-    },
+      events.Emperor,
+      events.gameParadeCharm,
+    ],
   },
   {
     ...baseCalendar,
     date: new Date(2009, 3, 28),
     singleTimeEvents: [],
     arcanes: [],
-    activities: {
-      [Times.Morning]: events.Special,
-      [Times.AfterSchool]: {
+    activities: [
+      { ...events.Special, time: Times.Morning },
+      {
         ...events.Special,
+        time: Times.AfterSchool,
         label: () => (
           <EventCard
             prerequisite={`Talk to Chihiro and say "Let's hang out."`}
@@ -307,30 +340,31 @@ export const april: singleDay[] = [
           />
         ),
       },
-      [Times.Day]: events.Chariot,
-      [Times.Evening]: events.gameParadeCourage,
-    },
+      events.Chariot,
+      events.gameParadeCourage,
+    ],
   },
   {
     ...baseCalendar,
     date: new Date(2009, 3, 29),
     singleTimeEvents: [],
     arcanes: [],
-    activities: {
-      [Times.Morning]: events.Special,
-      [Times.Day]: events.Hermit,
-      [Times.Evening]: events.gameParadeAcademics,
-    },
+    activities: [
+      { ...events.Special, time: Times.Morning },
+      events.Hermit,
+      events.gameParadeAcademics,
+    ],
   },
   {
     ...baseCalendar,
     date: new Date(2009, 3, 30),
     singleTimeEvents: [],
     arcanes: [],
-    activities: {
-      [Times.Morning]: events.stayAwakeInClass,
-      [Times.AfterSchool]: {
+    activities: [
+      events.stayAwakeInClass,
+      {
         ...events.Special,
+        time: Times.AfterSchool,
         label: () => (
           <EventCard
             prerequisite="Talk to Chihiro"
@@ -340,8 +374,8 @@ export const april: singleDay[] = [
           />
         ),
       },
-      [Times.Day]: events.Magician,
-      [Times.Evening]: events.gameParadeCharm,
-    },
+      events.Magician,
+      events.gameParadeCharm,
+    ],
   },
 ];
