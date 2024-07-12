@@ -28,6 +28,7 @@ export const statsEventsCharm: {
   [statsEventsCharmNames.beBlueV]: {
     name: statsEventsCharmNames.beBlueV,
     category: Categories.Stats,
+    time: Times.Day,
     label: () => (
       <EventCard
         head="Be Blue V(Work part-time)"
@@ -63,6 +64,7 @@ export const statsEventsCharm: {
   [statsEventsCharmNames.chagallCafePartTimeWork]: {
     name: statsEventsCharmNames.chagallCafePartTimeWork,
     category: Categories.Stats,
+    time: Times.Evening,
     label: () => (
       <EventCard
         head="Chagall Cafe(Part-Time Work)"
@@ -90,6 +92,7 @@ export const statsEventsCharm: {
   [statsEventsCharmNames.chagallCafeCharm]: {
     name: statsEventsCharmNames.chagallCafeCharm,
     category: Categories.Stats,
+    time: Times.Evening,
     label: () => (
       <EventCard
         head="Chagall Cafe(Pheromone Coffee)"
@@ -111,6 +114,7 @@ export const statsEventsCharm: {
   [statsEventsCharmNames.schoolQuestionCharm]: {
     name: statsEventsCharmNames.schoolQuestionCharm,
     category: Categories.Special,
+    time: Times.Morning,
     special: true,
     available: () => false,
     label: () => null,
@@ -119,6 +123,7 @@ export const statsEventsCharm: {
   [statsEventsCharmNames.hagakureRamen]: {
     name: statsEventsCharmNames.hagakureRamen,
     category: Categories.Stats,
+    time: Times.Evening,
     label: () => (
       <EventCard
         head="Hagakure Ramen(Pork Ramen)"
@@ -138,6 +143,7 @@ export const statsEventsCharm: {
   [statsEventsCharmNames.cinemaTheaterCharm]: {
     name: statsEventsCharmNames.cinemaTheaterCharm,
     category: Categories.Stats,
+    time: Times.Day,
     label: () => (
       <EventCard
         head="Cinema('Thy Name')"
@@ -155,6 +161,7 @@ export const statsEventsCharm: {
   [statsEventsCharmNames.hagakureRamenSpecial]: {
     name: statsEventsCharmNames.hagakureRamenSpecial,
     category: Categories.Stats,
+    time: Times.Evening,
     label: () => (
       <EventCard
         head="Hagakure Ramen(Special Hagakure Bowl)"
@@ -176,6 +183,7 @@ export const statsEventsCharm: {
   [statsEventsCharmNames.gameParadeCharm]: {
     name: statsEventsCharmNames.gameParadeCharm,
     category: Categories.Stats,
+    time: Times.Evening,
     label: () => (
       <EventCard
         head="Game Parade(Play High School of Youth)"

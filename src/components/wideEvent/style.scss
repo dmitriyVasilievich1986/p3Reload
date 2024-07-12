@@ -1,0 +1,10 @@
+.wide-event {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 300px;
+
+    &>div {
+        width: 100%;
+    }
+}

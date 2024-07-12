@@ -1,5 +1,5 @@
 import { SocialLinksStatsArray, SocialLinkNames } from "../socialLinks/types";
-import { allEventsNames, Times, Event } from "../events/types";
+import { allEventsNames, Event } from "../events/types";
 import { CharStats } from "../stats/types";
 
 export type singleDay = {
@@ -8,11 +8,6 @@ export type singleDay = {
   stats: CharStats;
   date: Date;
   getId: () => string;
-  activities: {
-    [Times.Morning]: Event;
-    [Times.AfterSchool]?: Event | null;
-    [Times.Day]: Event;
-    [Times.Evening]: Event;
-  };
+  activities: Event[];
   singleTimeEvents: allEventsNames[];
 };

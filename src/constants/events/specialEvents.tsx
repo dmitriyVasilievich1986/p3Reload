@@ -5,6 +5,7 @@ import { initialUpgrade } from "./base";
 export const specialEvents: { [key in SpecialEventsNames]: Event } = {
   [SpecialEventsNames.DoNothing]: {
     ...initialUpgrade,
+    time: Times.Day,
     name: SpecialEventsNames.DoNothing,
     category: Categories.Empty,
     available: ({ currentTime }) => currentTime !== Times.Morning,
@@ -12,6 +13,7 @@ export const specialEvents: { [key in SpecialEventsNames]: Event } = {
   },
   [SpecialEventsNames.NoControl]: {
     ...initialUpgrade,
+    time: Times.Day,
     special: true,
     name: SpecialEventsNames.NoControl,
     category: Categories.Empty,
@@ -20,6 +22,7 @@ export const specialEvents: { [key in SpecialEventsNames]: Event } = {
   },
   [SpecialEventsNames.Special]: {
     ...initialUpgrade,
+    time: Times.Day,
     name: SpecialEventsNames.Special,
     category: Categories.Special,
     special: true,
@@ -28,6 +31,7 @@ export const specialEvents: { [key in SpecialEventsNames]: Event } = {
   },
   [SpecialEventsNames.Tartarus]: {
     ...initialUpgrade,
+    time: Times.Evening,
     name: SpecialEventsNames.Tartarus,
     category: Categories.Tartarus,
     available: ({ currentTime }) => currentTime !== Times.Morning,
@@ -35,6 +39,7 @@ export const specialEvents: { [key in SpecialEventsNames]: Event } = {
   },
   [SpecialEventsNames.Exams]: {
     ...initialUpgrade,
+    time: Times.WholeDay,
     name: SpecialEventsNames.Exams,
     category: Categories.Exams,
     special: true,

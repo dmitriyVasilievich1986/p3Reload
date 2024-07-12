@@ -27,6 +27,7 @@ export const statsEventsCourage: {
   [statsEventsCourageNames.drinkMedicine]: {
     name: statsEventsCourageNames.drinkMedicine,
     category: Categories.Special,
+    time: Times.AfterSchool,
     special: true,
     label: () => (
       <EventCard
@@ -44,6 +45,7 @@ export const statsEventsCourage: {
   [statsEventsCourageNames.sleepDuringClass]: {
     name: statsEventsCourageNames.sleepDuringClass,
     category: Categories.Stats,
+    time: Times.Morning,
     label: () => <EventCard head="Sleep During Class" stats="Courage +2" />,
     available: function ({ currentTime }) {
       return currentTime === Times.Morning;
@@ -53,6 +55,7 @@ export const statsEventsCourage: {
   [statsEventsCourageNames.Mandragora]: {
     name: statsEventsCourageNames.Mandragora,
     category: Categories.Stats,
+    time: Times.Evening,
     label: () => (
       <EventCard
         head="Mandragora(Sing solo karaoke)"
@@ -72,6 +75,7 @@ export const statsEventsCourage: {
   [statsEventsCourageNames.wilduckBurgeMysteryBurger]: {
     name: statsEventsCourageNames.wilduckBurgeMysteryBurger,
     category: Categories.Stats,
+    time: Times.Evening,
     label: () => (
       <EventCard
         head="Wilduck Burger(Mystery Burger)"
@@ -91,6 +95,7 @@ export const statsEventsCourage: {
   [statsEventsCourageNames.gameParadeCourage]: {
     name: statsEventsCourageNames.gameParadeCourage,
     category: Categories.Stats,
+    time: Times.Evening,
     label: () => (
       <EventCard
         head="Game Parade(Play House of the Deceased)"
@@ -111,6 +116,7 @@ export const statsEventsCourage: {
   [statsEventsCourageNames.wilduckBurgeWeekendWilduckSet]: {
     name: statsEventsCourageNames.wilduckBurgeWeekendWilduckSet,
     category: Categories.Stats,
+    time: Times.Evening,
     label: () => (
       <EventCard
         head="Wilduck Burger(Weekend Wilduck Set)"
@@ -131,6 +137,7 @@ export const statsEventsCourage: {
   [statsEventsCourageNames.cinemaTheaterCourage]: {
     name: statsEventsCourageNames.cinemaTheaterCourage,
     category: Categories.Stats,
+    time: Times.Day,
     label: () => (
       <EventCard
         head="Cinema('The School of No Wonder/The Way of Godson')"

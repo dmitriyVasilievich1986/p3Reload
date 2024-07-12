@@ -11,6 +11,7 @@ export const linkEvents: {
 } = {
   [SocialLinkNames.Magician]: {
     ...linkBaseFunctions,
+    time: Times.Day,
     name: SocialLinkNames.Magician,
     linkName: SocialLinkNames.Magician,
     label: (props) => (
@@ -33,6 +34,7 @@ export const linkEvents: {
   },
   [SocialLinkNames.Priestess]: {
     ...linkBaseFunctions,
+    time: Times.Day,
     name: SocialLinkNames.Priestess,
     linkName: SocialLinkNames.Priestess,
     label: (props) => (
@@ -68,6 +70,7 @@ export const linkEvents: {
   },
   [socialLinkRomanceNames.PriestessRomance]: {
     ...linkBaseFunctions,
+    time: Times.Day,
     name: socialLinkRomanceNames.PriestessRomance,
     linkName: SocialLinkNames.Priestess,
     label: (props) => (
@@ -103,6 +106,7 @@ export const linkEvents: {
   },
   [SocialLinkNames.Empress]: {
     ...linkBaseFunctions,
+    time: Times.Day,
     name: SocialLinkNames.Empress,
     linkName: SocialLinkNames.Empress,
     label: (props) => (
@@ -143,6 +147,7 @@ export const linkEvents: {
   },
   [socialLinkRomanceNames.EmpressRomance]: {
     ...linkBaseFunctions,
+    time: Times.Day,
     name: socialLinkRomanceNames.EmpressRomance,
     linkName: SocialLinkNames.Empress,
     label: (props) => (
@@ -182,6 +187,7 @@ export const linkEvents: {
   },
   [SocialLinkNames.Emperor]: {
     ...linkBaseFunctions,
+    time: Times.Day,
     name: SocialLinkNames.Emperor,
     linkName: SocialLinkNames.Emperor,
     label: (props) => (
@@ -207,6 +213,7 @@ export const linkEvents: {
   },
   [SocialLinkNames.Hierophant]: {
     ...linkBaseFunctions,
+    time: Times.Day,
     name: SocialLinkNames.Hierophant,
     linkName: SocialLinkNames.Hierophant,
     label: (props) => (
@@ -235,6 +242,7 @@ export const linkEvents: {
   },
   [SocialLinkNames.Lovers]: {
     ...linkBaseFunctions,
+    time: Times.Day,
     name: SocialLinkNames.Lovers,
     linkName: SocialLinkNames.Lovers,
     label: (props) => (
@@ -274,6 +282,7 @@ export const linkEvents: {
   },
   [socialLinkRomanceNames.LoversRomance]: {
     ...linkBaseFunctions,
+    time: Times.Day,
     name: socialLinkRomanceNames.LoversRomance,
     linkName: SocialLinkNames.Lovers,
     label: (props) => (
@@ -312,6 +321,7 @@ export const linkEvents: {
   },
   [SocialLinkNames.Chariot]: {
     ...linkBaseFunctions,
+    time: Times.Day,
     name: SocialLinkNames.Chariot,
     linkName: SocialLinkNames.Chariot,
     label: (props) => (
@@ -339,6 +349,7 @@ export const linkEvents: {
   },
   [SocialLinkNames.Justice]: {
     ...linkBaseFunctions,
+    time: Times.Day,
     name: SocialLinkNames.Justice,
     linkName: SocialLinkNames.Justice,
     label: (props) => (
@@ -373,6 +384,7 @@ export const linkEvents: {
   },
   [socialLinkRomanceNames.JusticeRomance]: {
     ...linkBaseFunctions,
+    time: Times.Day,
     name: socialLinkRomanceNames.JusticeRomance,
     linkName: SocialLinkNames.Justice,
     label: (props) => (
@@ -418,6 +430,7 @@ export const linkEvents: {
   },
   [SocialLinkNames.Hermit]: {
     ...linkBaseFunctions,
+    time: Times.Day,
     name: SocialLinkNames.Hermit,
     linkName: SocialLinkNames.Hermit,
     label: (props) => (
@@ -441,6 +454,7 @@ export const linkEvents: {
   },
   [SocialLinkNames.Fortune]: {
     ...linkBaseFunctions,
+    time: Times.Day,
     name: SocialLinkNames.Fortune,
     linkName: SocialLinkNames.Fortune,
     label: (props) => (
@@ -462,6 +476,7 @@ export const linkEvents: {
   },
   [SocialLinkNames.Strength]: {
     ...linkBaseFunctions,
+    time: Times.Day,
     name: SocialLinkNames.Strength,
     linkName: SocialLinkNames.Strength,
     label: (props) => (
@@ -497,6 +512,7 @@ export const linkEvents: {
   },
   [socialLinkRomanceNames.StrengthRomance]: {
     ...linkBaseFunctions,
+    time: Times.Day,
     name: socialLinkRomanceNames.StrengthRomance,
     linkName: SocialLinkNames.Strength,
     label: (props) => (
@@ -544,6 +560,7 @@ export const linkEvents: {
   },
   [SocialLinkNames.HangedMan]: {
     ...linkBaseFunctions,
+    time: Times.Day,
     name: SocialLinkNames.HangedMan,
     linkName: SocialLinkNames.HangedMan,
     label: (props) => (
@@ -565,6 +582,7 @@ export const linkEvents: {
   },
   [SocialLinkNames.Temperance]: {
     ...linkBaseFunctions,
+    time: Times.Day,
     name: SocialLinkNames.Temperance,
     linkName: SocialLinkNames.Temperance,
     label: (props) => (
@@ -589,6 +607,7 @@ export const linkEvents: {
   },
   [SocialLinkNames.Devil]: {
     ...linkBaseFunctions,
+    time: Times.Evening,
     name: SocialLinkNames.Devil,
     linkName: SocialLinkNames.Devil,
     label: (props) => (
@@ -613,6 +632,7 @@ export const linkEvents: {
   },
   [SocialLinkNames.Tower]: {
     ...linkBaseFunctions,
+    time: Times.Evening,
     name: SocialLinkNames.Tower,
     linkName: SocialLinkNames.Tower,
     label: (props) => (
@@ -642,6 +662,7 @@ export const linkEvents: {
   },
   [SocialLinkNames.Star]: {
     ...linkBaseFunctions,
+    time: Times.Day,
     name: SocialLinkNames.Star,
     linkName: SocialLinkNames.Star,
     label: (props) => (
@@ -665,6 +686,7 @@ export const linkEvents: {
   },
   [SocialLinkNames.Moon]: {
     ...linkBaseFunctions,
+    time: Times.Day,
     name: SocialLinkNames.Moon,
     linkName: SocialLinkNames.Moon,
     label: (props) => (
@@ -687,6 +709,7 @@ export const linkEvents: {
   },
   [SocialLinkNames.Sun]: {
     ...linkBaseFunctions,
+    time: Times.Day,
     name: SocialLinkNames.Sun,
     linkName: SocialLinkNames.Sun,
     label: (props) => (
@@ -710,6 +733,7 @@ export const linkEvents: {
   },
   [SocialLinkNames.Aeon]: {
     ...linkBaseFunctions,
+    time: Times.Day,
     name: SocialLinkNames.Aeon,
     linkName: SocialLinkNames.Aeon,
     label: (props) => (
@@ -750,6 +774,7 @@ export const linkEvents: {
   },
   [socialLinkRomanceNames.AeonRomance]: {
     ...linkBaseFunctions,
+    time: Times.Day,
     name: socialLinkRomanceNames.AeonRomance,
     linkName: SocialLinkNames.Aeon,
     label: (props) => (
@@ -790,6 +815,7 @@ export const linkEvents: {
   },
   [SocialLinkNames.Fool]: {
     ...linkBaseFunctions,
+    time: Times.DarkHour,
     name: SocialLinkNames.Fool,
     linkName: SocialLinkNames.Fool,
     special: true,

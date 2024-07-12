@@ -15,6 +15,7 @@ import {
   allEventsNames,
   Event,
   Times,
+  Categories,
 } from "../../constants/events/types";
 
 const cx = classnames.bind(style);
@@ -38,29 +39,33 @@ function Modal(props: {
         if (c.date.getTime() === dayConstants.day.getTime()) {
           return {
             ...c,
-            activities: {
-              ...c.activities,
-              [dayConstants.time]: event,
-            },
+            activities: c.activities.map((a) =>
+              a.time === dayConstants.time
+                ? { ...event, time: props.dayConstants?.time as Times }
+                : a
+            ),
           };
+        } else if (
+          c.date.getTime() === dayConstants.day.getTime() + 86400000 &&
+          event.category === Categories.Tartarus
+        ) {
+          const activities = c.activities
+            .filter((a) => a !== events.drinkMedicine)
+            .map((a) =>
+              a.special ? a : { ...events.DoNothing, time: a.time }
+            );
+          activities.splice(1, 0, events.drinkMedicine);
+
+          return { ...c, activities };
         } else if (c.date.getTime() > dayConstants.day.getTime())
           return {
             ...c,
             arcanes: [],
-            activities: {
-              [Times.Morning]: c.activities[Times.Morning]?.special
-                ? c.activities[Times.Morning]
-                : events.stayAwakeInClass,
-              [Times.AfterSchool]: c.activities[Times.AfterSchool]?.special
-                ? c.activities[Times.AfterSchool]
-                : null,
-              [Times.Day]: c.activities[Times.Day]?.special
-                ? c.activities[Times.Day]
-                : events.DoNothing,
-              [Times.Evening]: c.activities[Times.Evening]?.special
-                ? c.activities[Times.Evening]
-                : events.DoNothing,
-            },
+            activities: c.activities
+              .filter((a) => a !== events.drinkMedicine)
+              .map((a) =>
+                a.special ? a : { ...events.DoNothing, time: a.time }
+              ),
           };
         return c;
       });

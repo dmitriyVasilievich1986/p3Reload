@@ -1,4 +1,6 @@
+import { Choices, Choice } from "../../components/choices";
 import { EventCard } from "../../components/eventCard";
+import { WideEvent } from "../../components/wideEvent";
 import { baseCalendar } from "./baseFunctions";
 import { Times } from "../events/types";
 import { singleDay } from "./types";
@@ -10,344 +12,390 @@ export const june: singleDay[] = [
     date: new Date(2009, 5, 1),
     singleTimeEvents: [],
     arcanes: [],
-    activities: {
-      [Times.Morning]: events.NoControl,
-      [Times.Day]: events.DoNothing,
-      [Times.Evening]: events.DoNothing,
-    },
+    activities: [
+      { ...events.NoControl, time: Times.Morning },
+      events.DoNothing,
+      { ...events.DoNothing, time: Times.Evening },
+    ],
   },
   {
     ...baseCalendar,
     date: new Date(2009, 5, 2),
     singleTimeEvents: [],
     arcanes: [],
-    activities: {
-      [Times.Morning]: events.stayAwakeInClass,
-      [Times.Day]: events.DoNothing,
-      [Times.Evening]: events.DoNothing,
-    },
+    activities: [
+      events.stayAwakeInClass,
+      events.DoNothing,
+      { ...events.DoNothing, time: Times.Evening },
+    ],
   },
   {
     ...baseCalendar,
     date: new Date(2009, 5, 3),
     singleTimeEvents: [],
     arcanes: [],
-    activities: {
-      [Times.Morning]: events.NoControl,
-      [Times.Day]: events.DoNothing,
-      [Times.Evening]: events.DoNothing,
-    },
+    activities: [
+      { ...events.NoControl, time: Times.Morning },
+      events.DoNothing,
+      { ...events.DoNothing, time: Times.Evening },
+    ],
   },
   {
     ...baseCalendar,
     date: new Date(2009, 5, 4),
     singleTimeEvents: [],
     arcanes: [],
-    activities: {
-      [Times.Morning]: events.NoControl,
-      [Times.Day]: events.DoNothing,
-      [Times.Evening]: events.DoNothing,
-    },
+    activities: [
+      { ...events.NoControl, time: Times.Morning },
+      events.DoNothing,
+      { ...events.DoNothing, time: Times.Evening },
+    ],
   },
   {
     ...baseCalendar,
     date: new Date(2009, 5, 5),
     singleTimeEvents: [],
     arcanes: [],
-    activities: {
-      [Times.Morning]: events.NoControl,
-      [Times.Day]: events.DoNothing,
-      [Times.Evening]: events.DoNothing,
-    },
+    activities: [
+      { ...events.NoControl, time: Times.Morning },
+      events.DoNothing,
+      { ...events.DoNothing, time: Times.Evening },
+    ],
   },
   {
     ...baseCalendar,
     date: new Date(2009, 5, 6),
     singleTimeEvents: [],
     arcanes: [],
-    activities: {
-      [Times.Morning]: events.NoControl,
-      [Times.Day]: events.DoNothing,
-      [Times.Evening]: events.DoNothing,
-    },
+    activities: [
+      { ...events.NoControl, time: Times.Morning },
+      events.DoNothing,
+      { ...events.DoNothing, time: Times.Evening },
+    ],
   },
   {
     ...baseCalendar,
     date: new Date(2009, 5, 7),
     singleTimeEvents: [],
     arcanes: [],
-    activities: {
-      [Times.Morning]: events.NoControl,
-      [Times.Day]: events.DoNothing,
-      [Times.Evening]: events.DoNothing,
-    },
+    activities: [
+      { ...events.NoControl, time: Times.Morning },
+      events.DoNothing,
+      { ...events.DoNothing, time: Times.Evening },
+    ],
   },
   {
     ...baseCalendar,
     date: new Date(2009, 5, 8),
     singleTimeEvents: [],
     arcanes: [],
-    activities: {
-      [Times.Morning]: {
+    activities: [
+      {
         ...events.Special,
+        time: Times.WholeDay,
         label: () => (
-          <EventCard head="Empress And Emperror Boss Fight" place="Tartarus" />
+          <WideEvent>
+            <EventCard
+              head="Empress And Emperror Boss Fight"
+              place="Tartarus"
+            />
+          </WideEvent>
         ),
       },
-      [Times.Day]: {
-        ...events.Special,
-        label: () => (
-          <EventCard head="Empress And Emperror Boss Fight" place="Tartarus" />
-        ),
-      },
-      [Times.Evening]: {
-        ...events.Special,
-        label: () => (
-          <EventCard head="Empress And Emperror Boss Fight" place="Tartarus" />
-        ),
-      },
-    },
+    ],
   },
   {
     ...baseCalendar,
     date: new Date(2009, 5, 9),
     singleTimeEvents: [],
     arcanes: [],
-    activities: {
-      [Times.Morning]: events.NoControl,
-      [Times.Day]: events.DoNothing,
-      [Times.Evening]: events.DoNothing,
-    },
+    activities: [
+      { ...events.NoControl, time: Times.Morning },
+      events.DoNothing,
+      { ...events.DoNothing, time: Times.Evening },
+    ],
   },
   {
     ...baseCalendar,
     date: new Date(2009, 5, 10),
     singleTimeEvents: [],
     arcanes: [],
-    activities: {
-      [Times.Morning]: events.Special,
-      [Times.Day]: events.DoNothing,
-      [Times.Evening]: events.DoNothing,
-    },
+    activities: [
+      events.stayAwakeInClass,
+      events.DoNothing,
+      { ...events.DoNothing, time: Times.Evening },
+    ],
   },
   {
     ...baseCalendar,
     date: new Date(2009, 5, 11),
     singleTimeEvents: [],
     arcanes: [],
-    activities: {
-      [Times.Morning]: events.Special,
-      [Times.Day]: events.DoNothing,
-      [Times.Evening]: events.DoNothing,
-    },
+    activities: [
+      { ...events.NoControl, time: Times.Morning },
+      events.DoNothing,
+      { ...events.DoNothing, time: Times.Evening },
+    ],
   },
   {
     ...baseCalendar,
     date: new Date(2009, 5, 12),
     singleTimeEvents: [],
     arcanes: [],
-    activities: {
-      [Times.Morning]: events.Special,
-      [Times.Day]: events.DoNothing,
-      [Times.Evening]: events.DoNothing,
-    },
+    activities: [
+      { ...events.NoControl, time: Times.Morning },
+      events.DoNothing,
+      { ...events.DoNothing, time: Times.Evening },
+    ],
   },
   {
     ...baseCalendar,
     date: new Date(2009, 5, 13),
     singleTimeEvents: [],
     arcanes: [],
-    activities: {
-      [Times.Morning]: events.Special,
-      [Times.Day]: events.DoNothing,
-      [Times.Evening]: events.DoNothing,
-    },
+    activities: [
+      { ...events.NoControl, time: Times.Morning },
+      events.DoNothing,
+      { ...events.DoNothing, time: Times.Evening },
+    ],
   },
   {
     ...baseCalendar,
     date: new Date(2009, 5, 14),
     singleTimeEvents: [],
     arcanes: [],
-    activities: {
-      [Times.Morning]: events.Special,
-      [Times.Day]: events.DoNothing,
-      [Times.Evening]: events.DoNothing,
-    },
+    activities: [
+      { ...events.NoControl, time: Times.Morning },
+      events.DoNothing,
+      { ...events.DoNothing, time: Times.Evening },
+    ],
   },
   {
     ...baseCalendar,
     date: new Date(2009, 5, 15),
     singleTimeEvents: [],
     arcanes: [],
-    activities: {
-      [Times.Morning]: events.Special,
-      [Times.Day]: events.DoNothing,
-      [Times.Evening]: events.DoNothing,
-    },
+    activities: [
+      {
+        ...events.schoolQuestionCharm,
+        time: Times.Morning,
+        label: () => (
+          <Choices
+            label={
+              'Which phrase means, "able to see things for what they really are"?'
+            }
+          >
+            <Choice label="Keen eye" points={15} />
+          </Choices>
+        ),
+      },
+      events.DoNothing,
+      { ...events.DoNothing, time: Times.Evening },
+    ],
   },
   {
     ...baseCalendar,
     date: new Date(2009, 5, 16),
     singleTimeEvents: [],
     arcanes: [],
-    activities: {
-      [Times.Morning]: events.Special,
-      [Times.Day]: events.DoNothing,
-      [Times.Evening]: events.DoNothing,
-    },
+    activities: [
+      { ...events.NoControl, time: Times.Morning },
+      events.DoNothing,
+      { ...events.DoNothing, time: Times.Evening },
+    ],
   },
   {
     ...baseCalendar,
     date: new Date(2009, 5, 17),
     singleTimeEvents: [],
     arcanes: [],
-    activities: {
-      [Times.Morning]: events.Special,
-      [Times.Day]: events.DoNothing,
-      [Times.Evening]: events.DoNothing,
-    },
+    activities: [
+      {
+        ...events.schoolQuestionCharm,
+        time: Times.Morning,
+        label: () => (
+          <Choices
+            label={"What early religious practice was the origin of magic?"}
+          >
+            <Choice label="Shamanism" points={15} />
+          </Choices>
+        ),
+      },
+      events.DoNothing,
+      { ...events.DoNothing, time: Times.Evening },
+    ],
   },
   {
     ...baseCalendar,
     date: new Date(2009, 5, 18),
     singleTimeEvents: [],
     arcanes: [],
-    activities: {
-      [Times.Morning]: events.Special,
-      [Times.Day]: events.DoNothing,
-      [Times.Evening]: events.DoNothing,
-    },
+    activities: [
+      { ...events.NoControl, time: Times.Morning },
+      events.DoNothing,
+      { ...events.DoNothing, time: Times.Evening },
+    ],
   },
   {
     ...baseCalendar,
     date: new Date(2009, 5, 19),
     singleTimeEvents: [],
     arcanes: [],
-    activities: {
-      [Times.Morning]: events.Special,
-      [Times.Day]: events.DoNothing,
-      [Times.Evening]: events.DoNothing,
-    },
+    activities: [
+      { ...events.NoControl, time: Times.Morning },
+      events.DoNothing,
+      { ...events.DoNothing, time: Times.Evening },
+    ],
   },
   {
     ...baseCalendar,
     date: new Date(2009, 5, 20),
     singleTimeEvents: [],
     arcanes: [],
-    activities: {
-      [Times.Morning]: events.Special,
-      [Times.Day]: events.DoNothing,
-      [Times.Evening]: events.DoNothing,
-    },
+    activities: [
+      { ...events.NoControl, time: Times.Morning },
+      events.DoNothing,
+      { ...events.DoNothing, time: Times.Evening },
+    ],
   },
   {
     ...baseCalendar,
     date: new Date(2009, 5, 21),
     singleTimeEvents: [],
     arcanes: [],
-    activities: {
-      [Times.Morning]: events.Special,
-      [Times.Day]: events.DoNothing,
-      [Times.Evening]: events.DoNothing,
-    },
+    activities: [
+      { ...events.NoControl, time: Times.Morning },
+      events.DoNothing,
+      { ...events.DoNothing, time: Times.Evening },
+    ],
   },
   {
     ...baseCalendar,
     date: new Date(2009, 5, 22),
     singleTimeEvents: [],
     arcanes: [],
-    activities: {
-      [Times.Morning]: events.Special,
-      [Times.Day]: events.DoNothing,
-      [Times.Evening]: events.DoNothing,
-    },
+    activities: [
+      {
+        ...events.schoolQuestionCharm,
+        time: Times.Morning,
+        label: () => (
+          <Choices label={"What else do people call this curve?"}>
+            <Choice label="Witch of Agnesi" points={15} />
+          </Choices>
+        ),
+      },
+      events.DoNothing,
+      { ...events.DoNothing, time: Times.Evening },
+    ],
   },
   {
     ...baseCalendar,
     date: new Date(2009, 5, 23),
     singleTimeEvents: [],
     arcanes: [],
-    activities: {
-      [Times.Morning]: events.Special,
-      [Times.Day]: events.DoNothing,
-      [Times.Evening]: events.DoNothing,
-    },
+    activities: [
+      { ...events.NoControl, time: Times.Morning },
+      events.DoNothing,
+      { ...events.DoNothing, time: Times.Evening },
+    ],
   },
   {
     ...baseCalendar,
     date: new Date(2009, 5, 24),
     singleTimeEvents: [],
     arcanes: [],
-    activities: {
-      [Times.Morning]: events.Special,
-      [Times.Day]: events.DoNothing,
-      [Times.Evening]: events.DoNothing,
-    },
+    activities: [
+      { ...events.NoControl, time: Times.Morning },
+      events.DoNothing,
+      { ...events.DoNothing, time: Times.Evening },
+    ],
   },
   {
     ...baseCalendar,
     date: new Date(2009, 5, 25),
     singleTimeEvents: [],
     arcanes: [],
-    activities: {
-      [Times.Morning]: events.Special,
-      [Times.Day]: events.DoNothing,
-      [Times.Evening]: events.DoNothing,
-    },
+    activities: [
+      {
+        ...events.schoolQuestionCharm,
+        time: Times.Morning,
+        label: () => (
+          <Choices
+            label={
+              "What's it called when the air bubbles in a whirlpool bath hit you and make you vibrate?"
+            }
+          >
+            <Choice label="The flutter effect" points={15} />
+          </Choices>
+        ),
+      },
+      events.DoNothing,
+      { ...events.DoNothing, time: Times.Evening },
+    ],
   },
   {
     ...baseCalendar,
     date: new Date(2009, 5, 26),
     singleTimeEvents: [],
     arcanes: [],
-    activities: {
-      [Times.Morning]: events.Special,
-      [Times.Day]: events.DoNothing,
-      [Times.Evening]: events.DoNothing,
-    },
+    activities: [
+      { ...events.NoControl, time: Times.Morning },
+      events.DoNothing,
+      { ...events.DoNothing, time: Times.Evening },
+    ],
   },
   {
     ...baseCalendar,
     date: new Date(2009, 5, 27),
     singleTimeEvents: [],
     arcanes: [],
-    activities: {
-      [Times.Morning]: events.Special,
-      [Times.Day]: events.DoNothing,
-      [Times.Evening]: events.DoNothing,
-    },
+    activities: [
+      { ...events.NoControl, time: Times.Morning },
+      events.DoNothing,
+      { ...events.DoNothing, time: Times.Evening },
+    ],
   },
   {
     ...baseCalendar,
     date: new Date(2009, 5, 28),
     singleTimeEvents: [],
     arcanes: [],
-    activities: {
-      [Times.Morning]: events.Special,
-      [Times.Day]: events.DoNothing,
-      [Times.Evening]: events.DoNothing,
-    },
+    activities: [
+      { ...events.NoControl, time: Times.Morning },
+      events.DoNothing,
+      { ...events.DoNothing, time: Times.Evening },
+    ],
   },
   {
     ...baseCalendar,
     date: new Date(2009, 5, 29),
     singleTimeEvents: [],
     arcanes: [],
-    activities: {
-      [Times.Morning]: events.Special,
-      [Times.Day]: events.DoNothing,
-      [Times.Evening]: events.DoNothing,
-    },
+    activities: [
+      {
+        ...events.schoolQuestionCharm,
+        time: Times.Morning,
+        label: () => (
+          <Choices
+            label={"What form of natural magic is used to find water sources?"}
+          >
+            <Choice label="Dowsing" points={15} />
+          </Choices>
+        ),
+      },
+      events.DoNothing,
+      { ...events.DoNothing, time: Times.Evening },
+    ],
   },
   {
     ...baseCalendar,
     date: new Date(2009, 5, 30),
     singleTimeEvents: [],
     arcanes: [],
-    activities: {
-      [Times.Morning]: events.Special,
-      [Times.Day]: events.DoNothing,
-      [Times.Evening]: events.DoNothing,
-    },
+    activities: [
+      { ...events.NoControl, time: Times.Morning },
+      events.DoNothing,
+      { ...events.DoNothing, time: Times.Evening },
+    ],
   },
 ];
