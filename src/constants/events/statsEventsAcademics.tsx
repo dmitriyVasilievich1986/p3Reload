@@ -27,6 +27,7 @@ export const statsEventsAcademics: {
   [statsEventsAcademicsNames.stayAwakeInClass]: {
     name: statsEventsAcademicsNames.stayAwakeInClass,
     category: Categories.Stats,
+    time: Times.Morning,
     label: () => <EventCard head="Stay Awake in Class" stats="Academics +2" />,
     available: function ({ currentTime }) {
       return currentTime === Times.Morning;
@@ -36,6 +37,7 @@ export const statsEventsAcademics: {
   [statsEventsAcademicsNames.studyAtHome]: {
     name: statsEventsAcademicsNames.studyAtHome,
     category: Categories.Stats,
+    time: Times.Evening,
     label: () => (
       <EventCard
         head="Studying In Your Room"
@@ -51,6 +53,7 @@ export const statsEventsAcademics: {
   [statsEventsAcademicsNames.studyAtLibrary]: {
     name: statsEventsAcademicsNames.studyAtLibrary,
     category: Categories.Stats,
+    time: Times.Day,
     label: () => (
       <EventCard
         head="Studying At The Library"
@@ -66,6 +69,7 @@ export const statsEventsAcademics: {
   [statsEventsAcademicsNames.wakatsuKitchenDay]: {
     name: statsEventsAcademicsNames.wakatsuKitchenDay,
     category: Categories.Stats,
+    time: Times.Day,
     label: () => (
       <EventCard
         head="Wakatsu Kitchen(Prodigy Platter)"
@@ -88,6 +92,7 @@ export const statsEventsAcademics: {
   [statsEventsAcademicsNames.wakatsuKitchen]: {
     name: statsEventsAcademicsNames.wakatsuKitchen,
     category: Categories.Stats,
+    time: Times.Evening,
     label: () => (
       <EventCard
         head="Wakatsu Kitchen(Prodigy Platter)"
@@ -128,6 +133,7 @@ export const statsEventsAcademics: {
   [statsEventsAcademicsNames.cinemaTheaterAcademics]: {
     name: statsEventsAcademicsNames.cinemaTheaterAcademics,
     category: Categories.Stats,
+    time: Times.Day,
     label: () => (
       <EventCard
         head="Cinema('Unresolved Mysteries')"
@@ -145,6 +151,7 @@ export const statsEventsAcademics: {
   [statsEventsAcademicsNames.wakatsuKitchenSpecial]: {
     name: statsEventsAcademicsNames.wakatsuKitchenSpecial,
     category: Categories.Stats,
+    time: Times.Evening,
     label: () => (
       <EventCard
         head="Wakatsu Kitchen(Seafood Full Course)"
@@ -177,6 +184,7 @@ export const statsEventsAcademics: {
   [statsEventsAcademicsNames.gameParadeAcademics]: {
     name: statsEventsAcademicsNames.gameParadeAcademics,
     category: Categories.Stats,
+    time: Times.Evening,
     label: () => (
       <EventCard
         head="Game Parade(Play You're the Answer)"
@@ -197,6 +205,7 @@ export const statsEventsAcademics: {
   [statsEventsAcademicsNames.dormExamStudyingGroup]: {
     name: statsEventsAcademicsNames.dormExamStudyingGroup,
     category: Categories.Stats,
+    time: Times.Evening,
     label: () => (
       <EventCard
         head="Dorm Exam Group Studying"
@@ -218,6 +227,7 @@ export const statsEventsAcademics: {
   [statsEventsAcademicsNames.dormExamStudyingTeam]: {
     name: statsEventsAcademicsNames.dormExamStudyingTeam,
     category: Categories.Stats,
+    time: Times.Evening,
     label: () => (
       <EventCard
         head="Dorm Exam Study with the Team"
