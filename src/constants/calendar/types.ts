@@ -8,11 +8,6 @@ export type singleDay = {
   stats: CharStats;
   date: Date;
   getId: () => string;
-  activities: {
-    [Times.Morning]: Event;
-    [Times.AfterSchool]?: Event | null;
-    [Times.Day]: Event;
-    [Times.Evening]: Event;
-  };
+  activities: Event[];
   singleTimeEvents: allEventsNames[];
 };

@@ -117,6 +117,7 @@ export type LabelProps = {
 };
 
 export type Event = {
+  time: Times;
   category: Categories;
   special?: boolean;
   upgrade: (props: upgradeProps) => upgradeResponse;
