@@ -12,6 +12,7 @@ function Head(props: HeadProps) {
 function Card(props: CardProps) {
   return (
     <fieldset
+      onClick={props?.onClick}
       className={cx("card", {
         enable: props?.enable,
         primary: props?.color === "primary",

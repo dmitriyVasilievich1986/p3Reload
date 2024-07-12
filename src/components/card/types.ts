@@ -9,4 +9,5 @@ export type CardProps = {
   children?: React.ReactNode;
   enable?: boolean;
   color?: "primary" | "secondary";
+  onClick?: () => void;
 };
