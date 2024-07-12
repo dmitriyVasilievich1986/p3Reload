@@ -12,9 +12,11 @@ export enum Categories {
 
 export enum Times {
   Morning = "Morning",
-  AfterSchool = "AfterSchool",
+  AfterSchool = "After School",
   Day = "Day",
   Evening = "Evening",
+  DarkHour = "Dark Hour",
+  WholeDay = "Whole Day",
 }
 
 export enum SpecialEventsNames {
@@ -115,6 +117,7 @@ export type LabelProps = {
 };
 
 export type Event = {
+  time: Times;
   category: Categories;
   special?: boolean;
   upgrade: (props: upgradeProps) => upgradeResponse;

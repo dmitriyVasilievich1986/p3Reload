@@ -6,6 +6,7 @@ export const pcPrograms: { [key in pcProgramsNames]: Event } = {
   [pcProgramsNames.lobbyPCLanguageMadeEasy]: {
     name: pcProgramsNames.lobbyPCLanguageMadeEasy,
     category: Categories.Stats,
+    time: Times.Evening,
     label: () => (
       <EventCard
         head="Lobby PC(Language Made Easy)"
@@ -34,6 +35,7 @@ export const pcPrograms: { [key in pcProgramsNames]: Event } = {
   [pcProgramsNames.lobbyPCDigitalCramSchool]: {
     name: pcProgramsNames.lobbyPCDigitalCramSchool,
     category: Categories.Stats,
+    time: Times.Evening,
     label: () => (
       <EventCard
         head="Lobby PC(Digital Cram School)"
@@ -61,6 +63,7 @@ export const pcPrograms: { [key in pcProgramsNames]: Event } = {
   [pcProgramsNames.lobbyPCAnimalOthello]: {
     name: pcProgramsNames.lobbyPCAnimalOthello,
     category: Categories.Stats,
+    time: Times.Evening,
     label: () => (
       <EventCard
         head="Lobby PC(Animal Othello)"
@@ -89,6 +92,7 @@ export const pcPrograms: { [key in pcProgramsNames]: Event } = {
   [pcProgramsNames.lobbyPCTypinGhoul]: {
     name: pcProgramsNames.lobbyPCTypinGhoul,
     category: Categories.Stats,
+    time: Times.Evening,
     label: () => (
       <EventCard
         head="Lobby PC(Typin Ghoul)"
@@ -117,6 +121,7 @@ export const pcPrograms: { [key in pcProgramsNames]: Event } = {
   [pcProgramsNames.lobbyPCLessonsInEtiquette]: {
     name: pcProgramsNames.lobbyPCLessonsInEtiquette,
     category: Categories.Stats,
+    time: Times.Evening,
     label: () => (
       <EventCard
         head="Lobby PC(Lessons in Etiquette)"
@@ -145,6 +150,7 @@ export const pcPrograms: { [key in pcProgramsNames]: Event } = {
   [pcProgramsNames.lobbyPCVirtualDiet]: {
     name: pcProgramsNames.lobbyPCVirtualDiet,
     category: Categories.Stats,
+    time: Times.Evening,
     label: () => (
       <EventCard
         head="Lobby PC(Virtual Diet)"

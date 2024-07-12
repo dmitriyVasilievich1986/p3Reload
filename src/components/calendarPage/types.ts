@@ -30,9 +30,9 @@ export type UpdateCalendarProps = {
 };
 
 export type DayEventProps = {
+  onClick: (time: Times) => void;
   links: SocialLinksStatsArray;
   arcanes: SocialLinkNames[];
-  onClick: () => void;
   stats: CharStats;
   event: Event;
 } & TartarusProps;

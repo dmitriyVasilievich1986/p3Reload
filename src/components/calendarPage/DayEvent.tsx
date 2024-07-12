@@ -28,7 +28,7 @@ function DayEvent(props: DayEventProps) {
 
   const clickHandler = () => {
     if (!props.event?.special) {
-      props.onClick();
+      props.onClick(props.event.time);
     }
   };
 
