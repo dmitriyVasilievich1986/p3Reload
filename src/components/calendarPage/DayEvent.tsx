@@ -4,6 +4,7 @@ import { socialLinks } from "../../constants/socialLinks";
 import classnames from "classnames/bind";
 import { DayEventProps } from "./types";
 import * as style from "./style.scss";
+import Card from "../card/Card";
 
 const cx = classnames.bind(style);
 
@@ -33,10 +34,16 @@ function DayEvent(props: DayEventProps) {
   };
 
   return (
-    <div className={cx("flex-column")} onClick={clickHandler}>
-      {props.event.label({ card })}
-      <LinkElement />
-    </div>
+    <Card
+      enable={!props.event.special}
+      head={props.event.time}
+      onClick={clickHandler}
+    >
+      <div className={cx("flex-column")}>
+        {props.event.label({ card })}
+        <LinkElement />
+      </div>
+    </Card>
   );
 }
 
