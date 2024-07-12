@@ -78,38 +78,18 @@ export function initialCalculataion(calendar: singleDay[]) {
     let singleTimeEvents = previousDay?.singleTimeEvents || [];
     let response = null;
 
-    if (
-      previousDay !== undefined &&
-      (
-        [
-          previousDay.activities[Times.Day].category,
-          previousDay.activities[Times[Times.Evening]].category,
-        ] as Array<Categories>
-      ).includes(events.Tartarus.category)
-    ) {
-      response = events.drinkMedicine.upgrade({
+    c.activities.forEach((activity) => {
+      response = activity.upgrade({
         singleTimeEvents: singleTimeEvents,
         weekAgoStats: weekAgoStats,
         currentStats: currentStats,
         currentLinks: currentLinks,
         arcanes: c.arcanes,
       });
+      singleTimeEvents = response?.singleTimeEvents || singleTimeEvents;
       currentStats = response?.stats || currentStats;
-    }
-    [Times.Morning, Times.AfterSchool, Times.Day, Times.Evening]
-      .filter((time) => !!c.activities?.[time])
-      .forEach((time) => {
-        response = (c.activities[time] as Event).upgrade({
-          singleTimeEvents: singleTimeEvents,
-          weekAgoStats: weekAgoStats,
-          currentStats: currentStats,
-          currentLinks: currentLinks,
-          arcanes: c.arcanes,
-        });
-        singleTimeEvents = response?.singleTimeEvents || singleTimeEvents;
-        currentStats = response?.stats || currentStats;
-        currentLinks = response?.links || currentLinks;
-      });
+      currentLinks = response?.links || currentLinks;
+    });
 
     c.singleTimeEvents = [...singleTimeEvents];
     c.stats = currentStats;
