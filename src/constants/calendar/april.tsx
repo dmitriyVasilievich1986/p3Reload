@@ -207,11 +207,12 @@ export const april: singleDay[] = [
     arcanes: [],
     activities: [
       {
-        ...events.Fool,
-        time: Times.DarkHour,
+        ...events.Special,
+        time: Times.WholeDay,
         category: Categories.Tartarus,
-        label: () => <WideEvent>{events.Fool.label()}</WideEvent>,
+        label: () => <WideEvent>{events.Special.label()}</WideEvent>,
       },
+      { ...events.Fool, time: Times.DarkHour },
     ],
   },
   {

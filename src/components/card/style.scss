@@ -8,6 +8,12 @@
     width: 100%;
     margin: 0;
 
+    &>.card-badge {
+        position: absolute;
+        right: -15px;
+        top: -23px;
+    }
+
     &.primary {
         border: 1px solid #e9ecef;
         background-color: #fff;

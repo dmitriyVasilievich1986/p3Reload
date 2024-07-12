@@ -1,0 +1,30 @@
+.badge {
+    justify-content: center;
+    align-items: center;
+    display: flex;
+
+    font-weight: bolder;
+    font-size: 1.2rem;
+    color: white;
+
+    border-radius: 20px;
+    height: 30px;
+    width: 30px;
+
+    &.red {
+        background-color: #8d0801;
+    }
+
+    &.green {
+        background-color: #344e41;
+    }
+
+    &.blue {
+        background-color: #00509d;
+    }
+
+    &.yellow {
+        background-color: #ffbe0b;
+        color: #14213d;
+    }
+}

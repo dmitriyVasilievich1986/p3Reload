@@ -24,13 +24,12 @@ function Calendar(props: CalendarProps) {
         <div className={cx("flex-column")}>
           <CurrentDate date={props.date} />
           {props.activities.map((activity, i) => (
-            <Card enable={!activity.special} head={activity.time} key={i}>
-              <DayEvent
-                onClick={props.setDayConstants}
-                event={activity}
-                {...props}
-              />
-            </Card>
+            <DayEvent
+              onClick={props.setDayConstants}
+              event={activity}
+              {...props}
+              key={i}
+            />
           ))}
         </div>
       </Card>

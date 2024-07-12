@@ -9,14 +9,21 @@ function Head(props: HeadProps) {
   return <legend className={cx("head")}>{props.head}</legend>;
 }
 
+function Badge(props: { children?: React.ReactNode }) {
+  if (!props?.children) return null;
+  return <div className="card-badge">{props.children}</div>;
+}
+
 function Card(props: CardProps) {
   return (
     <fieldset
+      onClick={props?.onClick}
       className={cx("card", {
         enable: props?.enable,
         primary: props?.color === "primary",
       })}
     >
+      <Badge>{props?.badge}</Badge>
       <Head head={props?.head} />
       {props.children}
     </fieldset>
