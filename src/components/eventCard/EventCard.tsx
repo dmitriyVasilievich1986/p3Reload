@@ -3,6 +3,7 @@ import classnames from "classnames/bind";
 import * as style from "./style.scss";
 import { Tooltip } from "../tootlip";
 import tarotIcon from "./tarot.png";
+import charmIcon from "./charm.png";
 import bookIcon from "./book.png";
 
 const cx = classnames.bind(style);
@@ -30,6 +31,17 @@ export function Head(props: HeadProps) {
           }
         >
           <img src={tarotIcon} />
+        </Tooltip>
+      )}
+      {props.charm && (
+        <Tooltip
+          tooltip={
+            <p style={{ width: "110px", textAlign: "center" }}>
+              Max Charm multiplier
+            </p>
+          }
+        >
+          <img src={charmIcon} />
         </Tooltip>
       )}
       {props?.multiplier && props.multiplier > 1 && (
