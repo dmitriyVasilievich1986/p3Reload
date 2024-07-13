@@ -1,6 +1,7 @@
 import { EventProps, ItemProps, HeadProps } from "./types";
 import classnames from "classnames/bind";
 import * as style from "./style.scss";
+import { Tooltip } from "../tootlip";
 import tarotIcon from "./tarot.png";
 
 const cx = classnames.bind(style);
@@ -19,7 +20,17 @@ export function Head(props: HeadProps) {
   return (
     <div className={cx("head")}>
       <h3>{props.head}</h3>
-      {props.card && <img src={tarotIcon} />}
+      {props.card && (
+        <Tooltip
+          tooltip={
+            <p style={{ width: "110px", textAlign: "center" }}>
+              Card multiplier
+            </p>
+          }
+        >
+          <img src={tarotIcon} />
+        </Tooltip>
+      )}
     </div>
   );
 }
