@@ -16,7 +16,9 @@ export const april: singleDay[] = [
       {
         ...events.Special,
         time: Times.WholeDay,
-        label: () => <WideEvent>{events.Special.label()}</WideEvent>,
+        label: (props) => (
+          <WideEvent>{events.Special.label({ ...props })}</WideEvent>
+        ),
       },
     ],
   },
@@ -54,7 +56,9 @@ export const april: singleDay[] = [
       {
         ...events.Special,
         time: Times.WholeDay,
-        label: () => <WideEvent>{events.Special.label()}</WideEvent>,
+        label: (props) => (
+          <WideEvent>{events.Special.label({ ...props })}</WideEvent>
+        ),
       },
     ],
   },
@@ -67,7 +71,9 @@ export const april: singleDay[] = [
       {
         ...events.Special,
         time: Times.WholeDay,
-        label: () => <WideEvent>{events.Special.label()}</WideEvent>,
+        label: (props) => (
+          <WideEvent>{events.Special.label({ ...props })}</WideEvent>
+        ),
       },
     ],
   },
@@ -80,7 +86,9 @@ export const april: singleDay[] = [
       {
         ...events.Special,
         time: Times.WholeDay,
-        label: () => <WideEvent>{events.Special.label()}</WideEvent>,
+        label: (props) => (
+          <WideEvent>{events.Special.label({ ...props })}</WideEvent>
+        ),
       },
     ],
   },
@@ -93,7 +101,9 @@ export const april: singleDay[] = [
       {
         ...events.Special,
         time: Times.WholeDay,
-        label: () => <WideEvent>{events.Special.label()}</WideEvent>,
+        label: (props) => (
+          <WideEvent>{events.Special.label({ ...props })}</WideEvent>
+        ),
       },
     ],
   },
@@ -106,7 +116,9 @@ export const april: singleDay[] = [
       {
         ...events.Special,
         time: Times.WholeDay,
-        label: () => <WideEvent>{events.Special.label()}</WideEvent>,
+        label: (props) => (
+          <WideEvent>{events.Special.label({ ...props })}</WideEvent>
+        ),
       },
     ],
   },
@@ -119,7 +131,9 @@ export const april: singleDay[] = [
       {
         ...events.Special,
         time: Times.WholeDay,
-        label: () => <WideEvent>{events.Special.label()}</WideEvent>,
+        label: (props) => (
+          <WideEvent>{events.Special.label({ ...props })}</WideEvent>
+        ),
       },
     ],
   },
@@ -132,7 +146,9 @@ export const april: singleDay[] = [
       {
         ...events.Special,
         time: Times.WholeDay,
-        label: () => <WideEvent>{events.Special.label()}</WideEvent>,
+        label: (props) => (
+          <WideEvent>{events.Special.label({ ...props })}</WideEvent>
+        ),
       },
     ],
   },
@@ -145,7 +161,9 @@ export const april: singleDay[] = [
       {
         ...events.Special,
         time: Times.WholeDay,
-        label: () => <WideEvent>{events.Special.label()}</WideEvent>,
+        label: (props) => (
+          <WideEvent>{events.Special.label({ ...props })}</WideEvent>
+        ),
       },
     ],
   },
@@ -158,7 +176,9 @@ export const april: singleDay[] = [
       {
         ...events.Special,
         time: Times.WholeDay,
-        label: () => <WideEvent>{events.Special.label()}</WideEvent>,
+        label: (props) => (
+          <WideEvent>{events.Special.label({ ...props })}</WideEvent>
+        ),
       },
     ],
   },
@@ -196,7 +216,9 @@ export const april: singleDay[] = [
       {
         ...events.Special,
         time: Times.WholeDay,
-        label: () => <WideEvent>{events.Special.label()}</WideEvent>,
+        label: (props) => (
+          <WideEvent>{events.Special.label({ ...props })}</WideEvent>
+        ),
       },
     ],
   },
@@ -210,7 +232,9 @@ export const april: singleDay[] = [
         ...events.Special,
         time: Times.WholeDay,
         category: Categories.Tartarus,
-        label: () => <WideEvent>{events.Special.label()}</WideEvent>,
+        label: (props) => (
+          <WideEvent>{events.Special.label({ ...props })}</WideEvent>
+        ),
       },
       { ...events.Fool, time: Times.DarkHour },
     ],

@@ -1,9 +1,11 @@
 import { SocialLinkNames } from "../../constants/socialLinks/types";
 import { Categories } from "../../constants/events/types";
 import { socialLinks } from "../../constants/socialLinks";
+import BadgeTooltip from "./BadgeTooltip";
 import classnames from "classnames/bind";
 import { DayEventProps } from "./types";
 import * as style from "./style.scss";
+import { Tooltip } from "../tootlip";
 import { Badge } from "../badge";
 import Card from "../card/Card";
 
@@ -35,7 +37,23 @@ function LinkBadge(props: DayEventProps) {
     }).points
       ? "green"
       : "yellow";
-  return <Badge color={color} value={props.links[linkName].level} />;
+
+  return (
+    <Tooltip
+      tooltip={
+        <BadgeTooltip
+          points={props.links[linkName].points}
+          nextLevel={
+            socialLinks[linkName].getlevel({
+              ...props.links[linkName],
+            }).points
+          }
+        />
+      }
+    >
+      <Badge color={color} value={props.links[linkName].level} />
+    </Tooltip>
+  );
 }
 
 function DayEvent(props: DayEventProps) {
