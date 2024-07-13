@@ -113,7 +113,7 @@ export type upgradeResponse = {
 };
 
 export type LabelProps = {
-  card?: boolean;
+  arcanes: SocialLinkNames[];
 };
 
 export type Event = {
@@ -122,7 +122,7 @@ export type Event = {
   special?: boolean;
   upgrade: (props: upgradeProps) => upgradeResponse;
   available: (props: availableProps) => boolean;
-  label: (props?: LabelProps) => React.ReactNode;
+  label: (props: LabelProps) => React.ReactNode;
   name: allEventsNames;
   linkName?: SocialLinkNames;
 };

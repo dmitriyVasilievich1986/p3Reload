@@ -17,7 +17,7 @@ function EventsList(props: {
         <div className={cx("events-wrapper")}>
           {props.events.map((e) => (
             <div onClick={() => props.onClick({ event: e })} key={e.name}>
-              {e.label()}
+              {e.label({ arcanes: [] })}
             </div>
           ))}
         </div>

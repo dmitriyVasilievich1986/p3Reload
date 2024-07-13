@@ -19,7 +19,7 @@ export const linkEvents: {
         name="Kenji Tomochika"
         place="Classroom 2F"
         head="Magician"
-        card={props?.card}
+        card={props.arcanes.includes(SocialLinkNames.Magician)}
       />
     ),
     available: function ({ currentDate, currentTime }) {
@@ -42,7 +42,7 @@ export const linkEvents: {
         place="2nd Floor Hallway"
         name="Fuuka Yamagishi"
         head="Priestess"
-        card={props?.card}
+        card={props.arcanes.includes(SocialLinkNames.Priestess)}
       />
     ),
     available: function ({
@@ -78,7 +78,7 @@ export const linkEvents: {
         head="Priestess(Romance)"
         place="2nd Floor Hallway"
         name="Fuuka Yamagishi"
-        card={props?.card}
+        card={props.arcanes.includes(SocialLinkNames.Priestess)}
       />
     ),
     available: function ({
@@ -114,7 +114,7 @@ export const linkEvents: {
         place="Faculty Office Entrance"
         name="Mitsuru Kirijo"
         head="Empress"
-        card={props?.card}
+        card={props.arcanes.includes(SocialLinkNames.Empress)}
       />
     ),
     available: function ({
@@ -155,7 +155,7 @@ export const linkEvents: {
         place="Faculty Office Entrance"
         head="Empress(Romance)"
         name="Mitsuru Kirijo"
-        card={props?.card}
+        card={props.arcanes.includes(SocialLinkNames.Empress)}
       />
     ),
     available: function ({
@@ -195,7 +195,7 @@ export const linkEvents: {
         place="Student Council Room"
         name="Hidetoshi Odagiri"
         head="Emperor"
-        card={props?.card}
+        card={props.arcanes.includes(SocialLinkNames.Emperor)}
       />
     ),
     available: function ({ currentDate, currentTime }) {
@@ -221,7 +221,7 @@ export const linkEvents: {
         place="Bookworms Used Books"
         name="Bunkichi and Mitsuko"
         head="Hierophant"
-        card={props?.card}
+        card={props.arcanes.includes(SocialLinkNames.Hierophant)}
       />
     ),
     available: function ({ currentDate, currentTime }) {
@@ -250,7 +250,7 @@ export const linkEvents: {
         name="Yukari Takeba"
         place="Classroom 2F"
         head="Lovers"
-        card={props?.card}
+        card={props.arcanes.includes(SocialLinkNames.Lovers)}
       />
     ),
     available: function ({
@@ -290,7 +290,7 @@ export const linkEvents: {
         head="Lovers(Romance)"
         name="Yukari Takeba"
         place="Classroom 2F"
-        card={props?.card}
+        card={props.arcanes.includes(SocialLinkNames.Lovers)}
       />
     ),
     available: function ({
@@ -329,7 +329,7 @@ export const linkEvents: {
         name="Kazushi Miyamoto"
         place="Classroom 2F"
         head="Chariot"
-        card={props?.card}
+        card={props.arcanes.includes(SocialLinkNames.Chariot)}
       />
     ),
     available: function ({ currentDate, currentTime }) {
@@ -357,7 +357,7 @@ export const linkEvents: {
         place="2nd Floor Hallway"
         name="Chihiro Fushimi"
         head="Justice"
-        card={props?.card}
+        card={props.arcanes.includes(SocialLinkNames.Justice)}
       />
     ),
     available: function ({
@@ -392,7 +392,7 @@ export const linkEvents: {
         place="2nd Floor Hallway"
         head="Justice(Romance)"
         name="Chihiro Fushimi"
-        card={props?.card}
+        card={props.arcanes.includes(SocialLinkNames.Justice)}
       />
     ),
     upgrade: function (props) {
@@ -438,7 +438,7 @@ export const linkEvents: {
         place="Laptop at the Protagonist's room"
         head="Hermit"
         name="Maya"
-        card={props?.card}
+        card={props.arcanes.includes(SocialLinkNames.Hermit)}
       />
     ),
     available: function ({ currentDate, currentTime }) {
@@ -462,7 +462,7 @@ export const linkEvents: {
         name="Keisuke Hiraga"
         place="Art Club Room"
         head="Fortune"
-        card={props?.card}
+        card={props.arcanes.includes(SocialLinkNames.Fortune)}
       />
     ),
     available: function ({ currentDate, currentTime }) {
@@ -484,7 +484,7 @@ export const linkEvents: {
         place="2F Classroom Hallway"
         name="Yuko Nishiwaki"
         head="Strength"
-        card={props?.card}
+        card={props.arcanes.includes(SocialLinkNames.Strength)}
       />
     ),
     available: function ({
@@ -520,7 +520,7 @@ export const linkEvents: {
         place="2F Classroom Hallway"
         head="Strength(Romance)"
         name="Yuko Nishiwaki"
-        card={props?.card}
+        card={props.arcanes.includes(SocialLinkNames.Strength)}
       />
     ),
     upgrade: function ({ currentLinks, ...props }) {
@@ -568,7 +568,7 @@ export const linkEvents: {
         place="Naganaki Shrine"
         name="Maiko Oohashi"
         head="Hanged Man"
-        card={props?.card}
+        card={props.arcanes.includes(SocialLinkNames.HangedMan)}
       />
     ),
     available: function ({ currentDate, currentTime }) {
@@ -590,7 +590,7 @@ export const linkEvents: {
         place="2F Classroom Hallway / 1F Laboratory Hallway (Home Economics Room)"
         name='André Laurent Jean "Bebe" Geraux'
         head="Temperance"
-        card={props?.card}
+        card={props.arcanes.includes(SocialLinkNames.Temperance)}
       />
     ),
     available: function ({ currentDate, currentTime, previousDay }) {
@@ -615,7 +615,7 @@ export const linkEvents: {
         name="President Tanaka"
         place="Paulownia Mall"
         head="Devil"
-        card={props?.card}
+        card={props.arcanes.includes(SocialLinkNames.Devil)}
       />
     ),
     available: function ({ currentDate, currentTime, previousDay }) {
@@ -640,7 +640,7 @@ export const linkEvents: {
         place="Club Escapade"
         name="Mutatsu"
         head="Tower"
-        card={props?.card}
+        card={props.arcanes.includes(SocialLinkNames.Tower)}
       />
     ),
     available: function ({ currentDate, currentTime, previousDay }) {
@@ -670,7 +670,7 @@ export const linkEvents: {
         place="Iwatodai Station Strip Mall 1F"
         name="Mamoru Hayase"
         head="Star"
-        card={props?.card}
+        card={props.arcanes.includes(SocialLinkNames.Star)}
       />
     ),
     available: function ({ currentDate, currentTime, previousDay }) {
@@ -694,7 +694,7 @@ export const linkEvents: {
         name="Nozomi Suemitsu"
         place="Paulownia Mall"
         head="Moon"
-        card={props?.card}
+        card={props.arcanes.includes(SocialLinkNames.Moon)}
       />
     ),
     available: function ({ currentDate, currentTime, previousDay }) {
@@ -717,7 +717,7 @@ export const linkEvents: {
         place="Naganaki Shrine"
         name="Akinari Kamiki"
         head="Sun"
-        card={props?.card}
+        card={props.arcanes.includes(SocialLinkNames.Sun)}
       />
     ),
     available: function ({ currentDate, currentTime, previousDay }) {
@@ -741,7 +741,7 @@ export const linkEvents: {
         place="Classroom 2F"
         name="Aigis"
         head="Aeon"
-        card={props?.card}
+        card={props.arcanes.includes(SocialLinkNames.Aeon)}
       />
     ),
     available: function ({
@@ -782,7 +782,7 @@ export const linkEvents: {
         place="Classroom 2F"
         name="Aigis"
         head="Aeon"
-        card={props?.card}
+        card={props.arcanes.includes(SocialLinkNames.Aeon)}
       />
     ),
     available: function ({
@@ -819,14 +819,7 @@ export const linkEvents: {
     name: SocialLinkNames.Fool,
     linkName: SocialLinkNames.Fool,
     special: true,
-    label: (props) => (
-      <EventCard
-        place="Tartarus"
-        name="S.E.E.S."
-        head="Fool"
-        card={props?.card}
-      />
-    ),
+    label: () => <EventCard place="Tartarus" name="S.E.E.S." head="Fool" />,
     available: () => false,
   },
 };
