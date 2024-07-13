@@ -33,7 +33,27 @@
 .stat {
     margin-top: 1rem;
 
-    &>div>label {
-        font-weight: bold;
+    &>.stat-item {
+        align-items: center;
+        display: flex;
+        margin: 3px 0;
+
+        &>label {
+            font-weight: bolder;
+            margin: 0 5px;
+        }
+    }
+}
+
+.stats-tooltip-wrapper {
+    width: 130px;
+
+    &>div {
+        display: flex;
+
+        &>label {
+            margin-right: 5px;
+            font-weight: bold;
+        }
     }
 }
