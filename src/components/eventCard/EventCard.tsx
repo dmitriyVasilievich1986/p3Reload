@@ -3,6 +3,7 @@ import classnames from "classnames/bind";
 import * as style from "./style.scss";
 import { Tooltip } from "../tootlip";
 import tarotIcon from "./tarot.png";
+import bookIcon from "./book.png";
 
 const cx = classnames.bind(style);
 
@@ -29,6 +30,19 @@ export function Head(props: HeadProps) {
           }
         >
           <img src={tarotIcon} />
+        </Tooltip>
+      )}
+      {props?.multiplier && props.multiplier > 1 && (
+        <Tooltip
+          tooltip={
+            <p style={{ width: "130px", textAlign: "center" }}>
+              {props.multiplier === 1.51
+                ? "Top class multiplier"
+                : "Top 10 multiplier"}
+            </p>
+          }
+        >
+          <img src={bookIcon} />
         </Tooltip>
       )}
     </div>
