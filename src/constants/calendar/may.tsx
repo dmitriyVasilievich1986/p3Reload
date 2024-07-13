@@ -400,7 +400,7 @@ export const may: singleDay[] = [
       events.stayAwakeInClass,
       {
         ...events.Exams,
-        time: Times.Morning,
+        time: Times.AfterSchool,
         label: () => <EventCard head="Exam results" />,
         upgrade: function ({ currentStats, currentLinks, weekAgoStats }) {
           let newMultiplier = 1;
