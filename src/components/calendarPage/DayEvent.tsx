@@ -71,7 +71,11 @@ function DayEvent(props: DayEventProps) {
       onClick={clickHandler}
     >
       <div className={cx("flex-column")}>
-        {props.event.label({ arcanes: props.arcanes })}
+        {props.event.label({
+          arcanes: props.arcanes,
+          links: props.links,
+          stats: props.stats,
+        })}
         <LinkElement {...props} />
       </div>
     </Card>

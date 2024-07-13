@@ -113,7 +113,9 @@ export type upgradeResponse = {
 };
 
 export type LabelProps = {
+  stats?: CharStats;
   arcanes: SocialLinkNames[];
+  links?: SocialLinksStatsArray;
 };
 
 export type Event = {
