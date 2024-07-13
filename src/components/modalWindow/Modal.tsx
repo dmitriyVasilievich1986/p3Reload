@@ -6,6 +6,7 @@ import classnames from "classnames/bind";
 import { DayConstants } from "./types";
 import EventsList from "./EventsList";
 import * as style from "./style.scss";
+import React from "react";
 
 import {
   statsEventsAcademicsNames,
@@ -26,6 +27,7 @@ function Modal(props: {
   dayConstants: DayConstants | null;
   setCalendar: React.Dispatch<React.SetStateAction<singleDay[]>>;
 }) {
+  const [filter, setFilter] = React.useState<string>("");
   if (props.dayConstants === null) return null;
 
   const dayConstants = props.dayConstants as DayConstants;
@@ -97,14 +99,16 @@ function Modal(props: {
       >
         <div className={cx("wrapper")}>
           <EventsList
-            events={availableEvents.filter((e) => e.name in SpecialEventsNames)}
-            onClick={updateCalendar}
-            head="Special"
-          />
-          <EventsList
             events={availableEvents.filter((e) => e.linkName)}
             onClick={updateCalendar}
             head="Social Links"
+            setFilter={setFilter}
+            filter={filter}
+          />
+          <EventsList
+            events={availableEvents.filter((e) => e.name in SpecialEventsNames)}
+            onClick={updateCalendar}
+            head="Special"
           />
           <EventsList
             events={availableEvents.filter(
