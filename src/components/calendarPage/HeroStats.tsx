@@ -1,5 +1,6 @@
 import { StatsNames } from "../../constants/stats/types";
 import { stats } from "../../constants/stats";
+import BadgeTooltip from "./BadgeTooltip";
 import { HeroStatsProps } from "./types";
 import classnames from "classnames/bind";
 import * as style from "./style.scss";
@@ -33,16 +34,7 @@ function HeroStats(props: HeroStatsProps) {
   const StatsTooltip = ({ name }: { name: StatsNames }) => {
     const level = stats[name].getLevel(props.stats[name]);
     return (
-      <div className={cx("stats-tooltip-wrapper")}>
-        <div>
-          <label>Points:</label>
-          {props.stats[name]} pts.
-        </div>
-        <div>
-          <label>Next level:</label>
-          {level.nextLevel} pts.
-        </div>
-      </div>
+      <BadgeTooltip points={props.stats[name]} nextLevel={level.nextLevel} />
     );
   };
 
