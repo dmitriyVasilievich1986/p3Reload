@@ -19,6 +19,10 @@ export const linkEvents: {
         name="Kenji Tomochika"
         place="Classroom 2F"
         head="Magician"
+        multiplier={
+          props.links && props.links[SocialLinkNames.Magician].multiplier
+        }
+        charm={props?.stats && props.stats[stats.Charm.name] >= 100}
         card={props.arcanes.includes(SocialLinkNames.Magician)}
       />
     ),
@@ -42,6 +46,10 @@ export const linkEvents: {
         place="2nd Floor Hallway"
         name="Fuuka Yamagishi"
         head="Priestess"
+        multiplier={
+          props.links && props.links[SocialLinkNames.Priestess].multiplier
+        }
+        charm={props?.stats && props.stats[stats.Charm.name] >= 100}
         card={props.arcanes.includes(SocialLinkNames.Priestess)}
       />
     ),
@@ -78,6 +86,10 @@ export const linkEvents: {
         head="Priestess(Romance)"
         place="2nd Floor Hallway"
         name="Fuuka Yamagishi"
+        multiplier={
+          props.links && props.links[SocialLinkNames.Priestess].multiplier
+        }
+        charm={props?.stats && props.stats[stats.Charm.name] >= 100}
         card={props.arcanes.includes(SocialLinkNames.Priestess)}
       />
     ),
@@ -114,6 +126,10 @@ export const linkEvents: {
         place="Faculty Office Entrance"
         name="Mitsuru Kirijo"
         head="Empress"
+        multiplier={
+          props.links && props.links[SocialLinkNames.Empress].multiplier
+        }
+        charm={props?.stats && props.stats[stats.Charm.name] >= 100}
         card={props.arcanes.includes(SocialLinkNames.Empress)}
       />
     ),
@@ -155,6 +171,10 @@ export const linkEvents: {
         place="Faculty Office Entrance"
         head="Empress(Romance)"
         name="Mitsuru Kirijo"
+        multiplier={
+          props.links && props.links[SocialLinkNames.Empress].multiplier
+        }
+        charm={props?.stats && props.stats[stats.Charm.name] >= 100}
         card={props.arcanes.includes(SocialLinkNames.Empress)}
       />
     ),
@@ -195,6 +215,10 @@ export const linkEvents: {
         place="Student Council Room"
         name="Hidetoshi Odagiri"
         head="Emperor"
+        multiplier={
+          props.links && props.links[SocialLinkNames.Emperor].multiplier
+        }
+        charm={props?.stats && props.stats[stats.Charm.name] >= 100}
         card={props.arcanes.includes(SocialLinkNames.Emperor)}
       />
     ),
@@ -221,6 +245,10 @@ export const linkEvents: {
         place="Bookworms Used Books"
         name="Bunkichi and Mitsuko"
         head="Hierophant"
+        multiplier={
+          props.links && props.links[SocialLinkNames.Hierophant].multiplier
+        }
+        charm={props?.stats && props.stats[stats.Charm.name] >= 100}
         card={props.arcanes.includes(SocialLinkNames.Hierophant)}
       />
     ),
@@ -250,6 +278,10 @@ export const linkEvents: {
         name="Yukari Takeba"
         place="Classroom 2F"
         head="Lovers"
+        multiplier={
+          props.links && props.links[SocialLinkNames.Lovers].multiplier
+        }
+        charm={props?.stats && props.stats[stats.Charm.name] >= 100}
         card={props.arcanes.includes(SocialLinkNames.Lovers)}
       />
     ),
@@ -290,6 +322,10 @@ export const linkEvents: {
         head="Lovers(Romance)"
         name="Yukari Takeba"
         place="Classroom 2F"
+        multiplier={
+          props.links && props.links[SocialLinkNames.Lovers].multiplier
+        }
+        charm={props?.stats && props.stats[stats.Charm.name] >= 100}
         card={props.arcanes.includes(SocialLinkNames.Lovers)}
       />
     ),
@@ -329,6 +365,10 @@ export const linkEvents: {
         name="Kazushi Miyamoto"
         place="Classroom 2F"
         head="Chariot"
+        multiplier={
+          props.links && props.links[SocialLinkNames.Chariot].multiplier
+        }
+        charm={props?.stats && props.stats[stats.Charm.name] >= 100}
         card={props.arcanes.includes(SocialLinkNames.Chariot)}
       />
     ),
@@ -357,6 +397,10 @@ export const linkEvents: {
         place="2nd Floor Hallway"
         name="Chihiro Fushimi"
         head="Justice"
+        multiplier={
+          props.links && props.links[SocialLinkNames.Justice].multiplier
+        }
+        charm={props?.stats && props.stats[stats.Charm.name] >= 100}
         card={props.arcanes.includes(SocialLinkNames.Justice)}
       />
     ),
@@ -392,6 +436,10 @@ export const linkEvents: {
         place="2nd Floor Hallway"
         head="Justice(Romance)"
         name="Chihiro Fushimi"
+        multiplier={
+          props.links && props.links[SocialLinkNames.Justice].multiplier
+        }
+        charm={props?.stats && props.stats[stats.Charm.name] >= 100}
         card={props.arcanes.includes(SocialLinkNames.Justice)}
       />
     ),
@@ -438,6 +486,10 @@ export const linkEvents: {
         place="Laptop at the Protagonist's room"
         head="Hermit"
         name="Maya"
+        multiplier={
+          props.links && props.links[SocialLinkNames.Hermit].multiplier
+        }
+        charm={props?.stats && props.stats[stats.Charm.name] >= 100}
         card={props.arcanes.includes(SocialLinkNames.Hermit)}
       />
     ),
@@ -462,6 +514,10 @@ export const linkEvents: {
         name="Keisuke Hiraga"
         place="Art Club Room"
         head="Fortune"
+        multiplier={
+          props.links && props.links[SocialLinkNames.Fortune].multiplier
+        }
+        charm={props?.stats && props.stats[stats.Charm.name] >= 100}
         card={props.arcanes.includes(SocialLinkNames.Fortune)}
       />
     ),
@@ -484,6 +540,10 @@ export const linkEvents: {
         place="2F Classroom Hallway"
         name="Yuko Nishiwaki"
         head="Strength"
+        multiplier={
+          props.links && props.links[SocialLinkNames.Strength].multiplier
+        }
+        charm={props?.stats && props.stats[stats.Charm.name] >= 100}
         card={props.arcanes.includes(SocialLinkNames.Strength)}
       />
     ),
@@ -520,6 +580,10 @@ export const linkEvents: {
         place="2F Classroom Hallway"
         head="Strength(Romance)"
         name="Yuko Nishiwaki"
+        multiplier={
+          props.links && props.links[SocialLinkNames.Strength].multiplier
+        }
+        charm={props?.stats && props.stats[stats.Charm.name] >= 100}
         card={props.arcanes.includes(SocialLinkNames.Strength)}
       />
     ),
@@ -568,6 +632,10 @@ export const linkEvents: {
         place="Naganaki Shrine"
         name="Maiko Oohashi"
         head="Hanged Man"
+        multiplier={
+          props.links && props.links[SocialLinkNames.HangedMan].multiplier
+        }
+        charm={props?.stats && props.stats[stats.Charm.name] >= 100}
         card={props.arcanes.includes(SocialLinkNames.HangedMan)}
       />
     ),
@@ -590,6 +658,10 @@ export const linkEvents: {
         place="2F Classroom Hallway / 1F Laboratory Hallway (Home Economics Room)"
         name='André Laurent Jean "Bebe" Geraux'
         head="Temperance"
+        multiplier={
+          props.links && props.links[SocialLinkNames.Temperance].multiplier
+        }
+        charm={props?.stats && props.stats[stats.Charm.name] >= 100}
         card={props.arcanes.includes(SocialLinkNames.Temperance)}
       />
     ),
@@ -610,13 +682,8 @@ export const linkEvents: {
     time: Times.Evening,
     name: SocialLinkNames.Devil,
     linkName: SocialLinkNames.Devil,
-    label: (props) => (
-      <EventCard
-        name="President Tanaka"
-        place="Paulownia Mall"
-        head="Devil"
-        card={props.arcanes.includes(SocialLinkNames.Devil)}
-      />
+    label: () => (
+      <EventCard name="President Tanaka" place="Paulownia Mall" head="Devil" />
     ),
     available: function ({ currentDate, currentTime, previousDay }) {
       if (previousDay === undefined) return false;
@@ -640,6 +707,10 @@ export const linkEvents: {
         place="Club Escapade"
         name="Mutatsu"
         head="Tower"
+        multiplier={
+          props.links && props.links[SocialLinkNames.Tower].multiplier
+        }
+        charm={props?.stats && props.stats[stats.Charm.name] >= 100}
         card={props.arcanes.includes(SocialLinkNames.Tower)}
       />
     ),
@@ -670,6 +741,8 @@ export const linkEvents: {
         place="Iwatodai Station Strip Mall 1F"
         name="Mamoru Hayase"
         head="Star"
+        multiplier={props.links && props.links[SocialLinkNames.Star].multiplier}
+        charm={props?.stats && props.stats[stats.Charm.name] >= 100}
         card={props.arcanes.includes(SocialLinkNames.Star)}
       />
     ),
@@ -694,6 +767,8 @@ export const linkEvents: {
         name="Nozomi Suemitsu"
         place="Paulownia Mall"
         head="Moon"
+        multiplier={props.links && props.links[SocialLinkNames.Moon].multiplier}
+        charm={props?.stats && props.stats[stats.Charm.name] >= 100}
         card={props.arcanes.includes(SocialLinkNames.Moon)}
       />
     ),
@@ -712,13 +787,8 @@ export const linkEvents: {
     time: Times.Day,
     name: SocialLinkNames.Sun,
     linkName: SocialLinkNames.Sun,
-    label: (props) => (
-      <EventCard
-        place="Naganaki Shrine"
-        name="Akinari Kamiki"
-        head="Sun"
-        card={props.arcanes.includes(SocialLinkNames.Sun)}
-      />
+    label: () => (
+      <EventCard place="Naganaki Shrine" name="Akinari Kamiki" head="Sun" />
     ),
     available: function ({ currentDate, currentTime, previousDay }) {
       if (previousDay === undefined) return false;
@@ -741,6 +811,8 @@ export const linkEvents: {
         place="Classroom 2F"
         name="Aigis"
         head="Aeon"
+        multiplier={props.links && props.links[SocialLinkNames.Aeon].multiplier}
+        charm={props?.stats && props.stats[stats.Charm.name] >= 100}
         card={props.arcanes.includes(SocialLinkNames.Aeon)}
       />
     ),
@@ -782,6 +854,8 @@ export const linkEvents: {
         place="Classroom 2F"
         name="Aigis"
         head="Aeon"
+        multiplier={props.links && props.links[SocialLinkNames.Aeon].multiplier}
+        charm={props?.stats && props.stats[stats.Charm.name] >= 100}
         card={props.arcanes.includes(SocialLinkNames.Aeon)}
       />
     ),

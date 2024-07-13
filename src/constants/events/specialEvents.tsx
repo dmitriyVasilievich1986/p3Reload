@@ -13,7 +13,7 @@ export const specialEvents: { [key in SpecialEventsNames]: Event } = {
   },
   [SpecialEventsNames.NoControl]: {
     ...initialUpgrade,
-    time: Times.Day,
+    time: Times.Morning,
     special: true,
     name: SpecialEventsNames.NoControl,
     category: Categories.Empty,

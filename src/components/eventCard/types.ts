@@ -3,6 +3,8 @@ import React from "react";
 export type HeadProps = {
   head: string;
   card?: boolean;
+  charm?: boolean;
+  multiplier?: number;
 };
 
 export type EventProps = {

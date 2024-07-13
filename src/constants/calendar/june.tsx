@@ -13,7 +13,7 @@ export const june: singleDay[] = [
     singleTimeEvents: [],
     arcanes: [],
     activities: [
-      { ...events.NoControl, time: Times.Morning },
+      events.NoControl,
       events.DoNothing,
       { ...events.DoNothing, time: Times.Evening },
     ],
@@ -35,7 +35,7 @@ export const june: singleDay[] = [
     singleTimeEvents: [],
     arcanes: [],
     activities: [
-      { ...events.NoControl, time: Times.Morning },
+      events.NoControl,
       events.DoNothing,
       { ...events.DoNothing, time: Times.Evening },
     ],
@@ -46,7 +46,7 @@ export const june: singleDay[] = [
     singleTimeEvents: [],
     arcanes: [],
     activities: [
-      { ...events.NoControl, time: Times.Morning },
+      events.NoControl,
       events.DoNothing,
       { ...events.DoNothing, time: Times.Evening },
     ],
@@ -57,7 +57,7 @@ export const june: singleDay[] = [
     singleTimeEvents: [],
     arcanes: [],
     activities: [
-      { ...events.NoControl, time: Times.Morning },
+      events.NoControl,
       events.DoNothing,
       { ...events.DoNothing, time: Times.Evening },
     ],
@@ -68,7 +68,7 @@ export const june: singleDay[] = [
     singleTimeEvents: [],
     arcanes: [],
     activities: [
-      { ...events.NoControl, time: Times.Morning },
+      events.NoControl,
       events.DoNothing,
       { ...events.DoNothing, time: Times.Evening },
     ],
@@ -79,7 +79,7 @@ export const june: singleDay[] = [
     singleTimeEvents: [],
     arcanes: [],
     activities: [
-      { ...events.NoControl, time: Times.Morning },
+      events.NoControl,
       events.DoNothing,
       { ...events.DoNothing, time: Times.Evening },
     ],
@@ -110,7 +110,8 @@ export const june: singleDay[] = [
     singleTimeEvents: [],
     arcanes: [],
     activities: [
-      { ...events.NoControl, time: Times.Morning },
+      events.NoControl,
+      events.drinkMedicine,
       events.DoNothing,
       { ...events.DoNothing, time: Times.Evening },
     ],
@@ -132,7 +133,7 @@ export const june: singleDay[] = [
     singleTimeEvents: [],
     arcanes: [],
     activities: [
-      { ...events.NoControl, time: Times.Morning },
+      events.NoControl,
       events.DoNothing,
       { ...events.DoNothing, time: Times.Evening },
     ],
@@ -143,7 +144,7 @@ export const june: singleDay[] = [
     singleTimeEvents: [],
     arcanes: [],
     activities: [
-      { ...events.NoControl, time: Times.Morning },
+      events.NoControl,
       events.DoNothing,
       { ...events.DoNothing, time: Times.Evening },
     ],
@@ -154,9 +155,13 @@ export const june: singleDay[] = [
     singleTimeEvents: [],
     arcanes: [],
     activities: [
-      { ...events.NoControl, time: Times.Morning },
+      events.NoControl,
       events.DoNothing,
-      { ...events.DoNothing, time: Times.Evening },
+      {
+        ...events.Special,
+        time: Times.Evening,
+        label: () => <EventCard head="Theurgy Tutorial" place="Tartarus" />,
+      },
     ],
   },
   {
@@ -165,7 +170,7 @@ export const june: singleDay[] = [
     singleTimeEvents: [],
     arcanes: [],
     activities: [
-      { ...events.NoControl, time: Times.Morning },
+      events.NoControl,
       events.DoNothing,
       { ...events.DoNothing, time: Times.Evening },
     ],
@@ -178,7 +183,6 @@ export const june: singleDay[] = [
     activities: [
       {
         ...events.schoolQuestionCharm,
-        time: Times.Morning,
         label: () => (
           <Choices
             label={
@@ -199,7 +203,7 @@ export const june: singleDay[] = [
     singleTimeEvents: [],
     arcanes: [],
     activities: [
-      { ...events.NoControl, time: Times.Morning },
+      events.NoControl,
       events.DoNothing,
       { ...events.DoNothing, time: Times.Evening },
     ],
@@ -212,7 +216,6 @@ export const june: singleDay[] = [
     activities: [
       {
         ...events.schoolQuestionCharm,
-        time: Times.Morning,
         label: () => (
           <Choices
             label={"What early religious practice was the origin of magic?"}
@@ -231,7 +234,7 @@ export const june: singleDay[] = [
     singleTimeEvents: [],
     arcanes: [],
     activities: [
-      { ...events.NoControl, time: Times.Morning },
+      events.NoControl,
       events.DoNothing,
       { ...events.DoNothing, time: Times.Evening },
     ],
@@ -242,7 +245,7 @@ export const june: singleDay[] = [
     singleTimeEvents: [],
     arcanes: [],
     activities: [
-      { ...events.NoControl, time: Times.Morning },
+      events.NoControl,
       events.DoNothing,
       { ...events.DoNothing, time: Times.Evening },
     ],
@@ -253,8 +256,11 @@ export const june: singleDay[] = [
     singleTimeEvents: [],
     arcanes: [],
     activities: [
-      { ...events.NoControl, time: Times.Morning },
-      events.DoNothing,
+      events.NoControl,
+      {
+        ...events.Special,
+        label: () => <EventCard head="Koromaru Introduction" />,
+      },
       { ...events.DoNothing, time: Times.Evening },
     ],
   },
@@ -264,7 +270,7 @@ export const june: singleDay[] = [
     singleTimeEvents: [],
     arcanes: [],
     activities: [
-      { ...events.NoControl, time: Times.Morning },
+      events.NoControl,
       events.DoNothing,
       { ...events.DoNothing, time: Times.Evening },
     ],
@@ -277,7 +283,6 @@ export const june: singleDay[] = [
     activities: [
       {
         ...events.schoolQuestionCharm,
-        time: Times.Morning,
         label: () => (
           <Choices label={"What else do people call this curve?"}>
             <Choice label="Witch of Agnesi" points={15} />
@@ -294,7 +299,7 @@ export const june: singleDay[] = [
     singleTimeEvents: [],
     arcanes: [],
     activities: [
-      { ...events.NoControl, time: Times.Morning },
+      events.NoControl,
       events.DoNothing,
       { ...events.DoNothing, time: Times.Evening },
     ],
@@ -305,7 +310,7 @@ export const june: singleDay[] = [
     singleTimeEvents: [],
     arcanes: [],
     activities: [
-      { ...events.NoControl, time: Times.Morning },
+      events.NoControl,
       events.DoNothing,
       { ...events.DoNothing, time: Times.Evening },
     ],
@@ -318,7 +323,6 @@ export const june: singleDay[] = [
     activities: [
       {
         ...events.schoolQuestionCharm,
-        time: Times.Morning,
         label: () => (
           <Choices
             label={
@@ -339,7 +343,7 @@ export const june: singleDay[] = [
     singleTimeEvents: [],
     arcanes: [],
     activities: [
-      { ...events.NoControl, time: Times.Morning },
+      events.NoControl,
       events.DoNothing,
       { ...events.DoNothing, time: Times.Evening },
     ],
@@ -350,7 +354,7 @@ export const june: singleDay[] = [
     singleTimeEvents: [],
     arcanes: [],
     activities: [
-      { ...events.NoControl, time: Times.Morning },
+      events.NoControl,
       events.DoNothing,
       { ...events.DoNothing, time: Times.Evening },
     ],
@@ -361,7 +365,7 @@ export const june: singleDay[] = [
     singleTimeEvents: [],
     arcanes: [],
     activities: [
-      { ...events.NoControl, time: Times.Morning },
+      events.NoControl,
       events.DoNothing,
       { ...events.DoNothing, time: Times.Evening },
     ],
@@ -374,7 +378,6 @@ export const june: singleDay[] = [
     activities: [
       {
         ...events.schoolQuestionCharm,
-        time: Times.Morning,
         label: () => (
           <Choices
             label={"What form of natural magic is used to find water sources?"}
@@ -393,7 +396,7 @@ export const june: singleDay[] = [
     singleTimeEvents: [],
     arcanes: [],
     activities: [
-      { ...events.NoControl, time: Times.Morning },
+      events.NoControl,
       events.DoNothing,
       { ...events.DoNothing, time: Times.Evening },
     ],
