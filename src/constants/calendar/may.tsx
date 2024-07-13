@@ -265,7 +265,9 @@ export const may: singleDay[] = [
     activities: [
       {
         ...events.Exams,
-        label: () => <WideEvent>{events.Exams.label()}</WideEvent>,
+        label: (props) => (
+          <WideEvent>{events.Exams.label({ ...props })}</WideEvent>
+        ),
       },
     ],
   },
