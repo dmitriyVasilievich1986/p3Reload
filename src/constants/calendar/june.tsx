@@ -111,6 +111,7 @@ export const june: singleDay[] = [
     arcanes: [],
     activities: [
       { ...events.NoControl, time: Times.Morning },
+      events.drinkMedicine,
       events.DoNothing,
       { ...events.DoNothing, time: Times.Evening },
     ],
@@ -156,7 +157,11 @@ export const june: singleDay[] = [
     activities: [
       { ...events.NoControl, time: Times.Morning },
       events.DoNothing,
-      { ...events.DoNothing, time: Times.Evening },
+      {
+        ...events.Special,
+        time: Times.Evening,
+        label: () => <EventCard head="Theurgy Tutorial" place="Tartarus" />,
+      },
     ],
   },
   {
@@ -254,7 +259,10 @@ export const june: singleDay[] = [
     arcanes: [],
     activities: [
       { ...events.NoControl, time: Times.Morning },
-      events.DoNothing,
+      {
+        ...events.Special,
+        label: () => <EventCard head="Koromaru Introduction" />,
+      },
       { ...events.DoNothing, time: Times.Evening },
     ],
   },
