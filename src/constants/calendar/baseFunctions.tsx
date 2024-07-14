@@ -60,6 +60,7 @@ export const classmates: SocialLinkNames[] = [
   SocialLinkNames.Chariot,
   SocialLinkNames.Lovers,
   SocialLinkNames.Emperor,
+  SocialLinkNames.Temperance,
   SocialLinkNames.Moon,
 ];
 
