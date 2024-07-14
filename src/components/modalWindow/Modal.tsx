@@ -13,6 +13,7 @@ import {
   statsEventsCourageNames,
   statsEventsCharmNames,
   SpecialEventsNames,
+  pcProgramsNames,
   allEventsNames,
   Event,
   Times,
@@ -119,6 +120,11 @@ function Modal(props: {
             )}
             onClick={updateCalendar}
             head="Stats"
+          />
+          <EventsList
+            events={availableEvents.filter((e) => e.name in pcProgramsNames)}
+            onClick={updateCalendar}
+            head="Lobby PC"
           />
         </div>
       </OutsideClick>
