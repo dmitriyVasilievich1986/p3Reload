@@ -30,22 +30,24 @@ function EventsList({
       )}
       <Card head={props.head}>
         <div className={cx("events-wrapper")}>
-          {props.events
-            .filter(
-              (e) =>
-                !props?.filter ||
-                props.filter === "" ||
-                e.name.toLowerCase().includes(props.filter.toLowerCase())
-            )
-            .map((e) => (
-              <div
-                onClick={() => available && props.onClick({ event: e })}
-                className={cx({ available })}
-                key={e.name}
-              >
-                {e.label({ arcanes: [] })}
-              </div>
-            ))}
+          <div>
+            {props.events
+              .filter(
+                (e) =>
+                  !props?.filter ||
+                  props.filter === "" ||
+                  e.name.toLowerCase().includes(props.filter.toLowerCase())
+              )
+              .map((e) => (
+                <div
+                  onClick={() => available && props.onClick({ event: e })}
+                  className={cx({ available })}
+                  key={e.name}
+                >
+                  {e.label({ arcanes: [] })}
+                </div>
+              ))}
+          </div>
         </div>
       </Card>
     </div>
