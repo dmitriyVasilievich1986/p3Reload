@@ -189,7 +189,9 @@ export const june: singleDay[] = [
               'Which phrase means, "able to see things for what they really are"?'
             }
           >
-            <Choice label="Keen eye" points={15} />
+            <Choice label="Keen eye." points={15} />
+            <Choice label="Mean eye." />
+            <Choice label="Bright eyes." />
           </Choices>
         ),
       },
@@ -220,7 +222,9 @@ export const june: singleDay[] = [
           <Choices
             label={"What early religious practice was the origin of magic?"}
           >
-            <Choice label="Shamanism" points={15} />
+            <Choice label="Totemism." />
+            <Choice label="Animism." />
+            <Choice label="Shamanism." points={15} />
           </Choices>
         ),
       },

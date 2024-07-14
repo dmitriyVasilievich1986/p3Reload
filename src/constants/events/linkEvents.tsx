@@ -655,8 +655,8 @@ export const linkEvents: {
     linkName: SocialLinkNames.Temperance,
     label: (props) => (
       <EventCard
-        place="2F Classroom Hallway / 1F Laboratory Hallway (Home Economics Room)"
         name='André Laurent Jean "Bebe" Geraux'
+        place="2F Classroom Hallway"
         head="Temperance"
         multiplier={
           props.links && props.links[SocialLinkNames.Temperance].multiplier
@@ -669,8 +669,8 @@ export const linkEvents: {
       if (previousDay === undefined) return false;
       const days = [DaysNames.tuesday, DaysNames.wednesday, DaysNames.friday];
       return (
-        currentDate.getTime() >= new Date(2009, 3, 8).getTime() &&
         previousDay.links[socialLinks.Hierophant.name].level >= 3 &&
+        currentDate.getTime() >= new Date(2009, 4, 8).getTime() &&
         previousDay.stats[stats.Academics.name] >= 20 &&
         days.includes(currentDate.getDay()) &&
         currentTime === Times.Day

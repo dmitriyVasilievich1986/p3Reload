@@ -102,11 +102,10 @@ export const statsEventsCharm: {
       />
     ),
     available: function ({ currentDate, currentTime }) {
-      const days = [DaysNames.monday, DaysNames.tuesday, DaysNames.wednesday];
+      const days = [DaysNames.monday, DaysNames.tuesday];
       return (
-        (currentDate.getDay() === DaysNames.friday &&
-          currentTime === Times.Day) ||
-        (currentTime === Times.Evening && days.includes(currentDate.getDay()))
+        currentTime === Times.Evening ||
+        (currentTime === Times.Day && !days.includes(currentDate.getDay()))
       );
     },
     upgrade: getCharmUpgradeFunction(2),
@@ -133,9 +132,16 @@ export const statsEventsCharm: {
       />
     ),
     available: function ({ currentDate, currentTime }) {
+      const days = [
+        DaysNames.monday,
+        DaysNames.tuesday,
+        DaysNames.wednesday,
+        DaysNames.thursday,
+        DaysNames.friday,
+      ];
       return (
-        currentDate.getDay() !== DaysNames.sunday &&
-        [Times.Day, Times.Evening].includes(currentTime)
+        [Times.Day, Times.Evening].includes(currentTime) &&
+        days.includes(currentDate.getDay())
       );
     },
     upgrade: getCharmUpgradeFunction(3),
