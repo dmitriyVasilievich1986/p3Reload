@@ -17,6 +17,17 @@
         display: flex;
         gap: 1rem;
 
+        &>.filter-wrapper {
+            justify-content: center;
+            display: flex;
+
+            &>div {
+                background-color: white;
+                border-radius: 5px;
+                width: 300px;
+            }
+        }
+
         &>.close {
             justify-content: end;
             display: flex;

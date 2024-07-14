@@ -6,6 +6,7 @@ import classnames from "classnames/bind";
 import { DayConstants } from "./types";
 import EventsList from "./EventsList";
 import * as style from "./style.scss";
+import { Input } from "../input";
 import React from "react";
 
 import {
@@ -98,17 +99,27 @@ function Modal(props: {
         className={cx("inner-window")}
         clickHandler={() => props.setDayConstants(null)}
       >
+        <div className={cx("filter-wrapper")}>
+          <div>
+            <Input
+              placeholder="Event name"
+              onChange={setFilter}
+              value={filter}
+              label="filter"
+            />
+          </div>
+        </div>
         <div className={cx("wrapper")}>
           <EventsList
             events={availableEvents.filter((e) => e.linkName)}
             onClick={updateCalendar}
             head="Social Links"
-            setFilter={setFilter}
             filter={filter}
           />
           <EventsList
             events={availableEvents.filter((e) => e.name in SpecialEventsNames)}
             onClick={updateCalendar}
+            filter={filter}
             head="Special"
           />
           <EventsList
@@ -119,11 +130,13 @@ function Modal(props: {
                 e.name in statsEventsCharmNames
             )}
             onClick={updateCalendar}
+            filter={filter}
             head="Stats"
           />
           <EventsList
             events={availableEvents.filter((e) => e.name in pcProgramsNames)}
             onClick={updateCalendar}
+            filter={filter}
             head="Lobby PC"
           />
         </div>
