@@ -102,11 +102,10 @@ export const statsEventsCharm: {
       />
     ),
     available: function ({ currentDate, currentTime }) {
-      const days = [DaysNames.monday, DaysNames.tuesday, DaysNames.wednesday];
+      const days = [DaysNames.monday, DaysNames.tuesday];
       return (
-        (currentDate.getDay() === DaysNames.friday &&
-          currentTime === Times.Day) ||
-        (currentTime === Times.Evening && days.includes(currentDate.getDay()))
+        currentTime === Times.Evening ||
+        (currentTime === Times.Day && !days.includes(currentDate.getDay()))
       );
     },
     upgrade: getCharmUpgradeFunction(2),
