@@ -67,9 +67,12 @@ function Modal(props: {
             arcanes: [],
             activities: c.activities
               .filter((a) => a !== events.drinkMedicine)
-              .map((a) =>
-                a.special ? a : { ...events.DoNothing, time: a.time }
-              ),
+              .map((a) => {
+                if (a.special) return a;
+                else if (a.time === Times.Morning)
+                  return events.stayAwakeInClass;
+                return { ...events.DoNothing, time: a.time };
+              }),
           };
         return c;
       });
