@@ -44,18 +44,13 @@ export type SocialLinkLevel = SocialLinkLevelBase & {
 
 export type SocialLinkStats = {
   multiplier: number;
-  romance: boolean;
+  romance: Routes;
   points: number;
   level: number;
 };
 
 export type SocialLinksStatsArray = {
   [key in SocialLinkNames]: SocialLinkStats;
-};
-
-export type GetlevelProps = {
-  level: number;
-  romance?: boolean;
 };
 
 export type CalculateProps = {
@@ -67,7 +62,7 @@ export type CalculateProps = {
 export type SocialLinkTypeBase = {
   name: SocialLinkNames;
   maxLevel: number;
-  getlevel: (props: GetlevelProps) => SocialLinkLevel;
+  getlevel: (props: SocialLinkStats) => SocialLinkLevel;
   _calculate: (props: CalculateProps) => { links: SocialLinksStatsArray };
   calculate: (props: CalculateProps) => { links: SocialLinksStatsArray };
   getStaleLevel: () => React.ReactNode;

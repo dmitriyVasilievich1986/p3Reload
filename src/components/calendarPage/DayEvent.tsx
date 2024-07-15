@@ -1,4 +1,4 @@
-import { SocialLinkNames, Routes } from "../../constants/socialLinks/types";
+import { SocialLinkNames } from "../../constants/socialLinks/types";
 import { Categories } from "../../constants/events/types";
 import { socialLinks } from "../../constants/socialLinks";
 import BadgeTooltip from "./BadgeTooltip";
@@ -20,7 +20,7 @@ function LinkElement(props: DayEventProps) {
 
   return socialLinks[linkName]
     .getlevel({
-      romance: props.links[linkName].romance,
+      ...props.links[linkName],
       level: props.links[linkName].level - 1,
     })
     .element({ key: linkName });
@@ -30,12 +30,11 @@ function InvitationElement(props: DayEventProps) {
   if (props.event.category !== Categories.Invitation) return null;
 
   const linkName = props.event.linkName as SocialLinkNames;
-  const route = props.links[linkName].romance
-    ? Routes.Romantic
-    : Routes.Platonic;
   const level = props.links[linkName].level;
 
-  return socialLinks[linkName].invitations[level][route];
+  return socialLinks[linkName].invitations[level][
+    props.links[linkName].romance
+  ];
 }
 
 function LinkBadge(props: DayEventProps) {

@@ -1,4 +1,4 @@
-import { SocialLinkNames, Routes } from "../socialLinks/types";
+import { SocialLinkNames } from "../socialLinks/types";
 import { socialLinks } from "../socialLinks";
 
 import {
@@ -44,13 +44,10 @@ export const linkInvitationBaseFunctions = {
     currentTime,
     currentLinks,
   }: availableProps) {
-    const route = currentLinks[this.linkName].romance
-      ? Routes.Romantic
-      : Routes.Platonic;
     const isInInvitations =
       currentLinks[this.linkName].level in
         socialLinks[this.linkName].invitations &&
-      route in
+      currentLinks[this.linkName].romance in
         socialLinks[this.linkName].invitations[
           currentLinks[this.linkName].level
         ];

@@ -1,5 +1,5 @@
 import { linkInvitationBaseFunctions, linkBaseFunctions } from "./base";
-import { SocialLinkNames } from "../socialLinks/types";
+import { SocialLinkNames, Routes } from "../socialLinks/types";
 import { EventCard } from "../../components/eventCard";
 import { DaysNames, holidays } from "../monthsNames";
 import { socialLinks } from "../socialLinks";
@@ -94,7 +94,8 @@ export const linkEvents: {
         previousDay.links &&
         previousDay.links[SocialLinkNames.Priestess].level === 6;
       const isRomance =
-        !currentLinks[SocialLinkNames.Priestess].romance || isFork;
+        currentLinks[SocialLinkNames.Priestess].romance === Routes.Platonic ||
+        isFork;
       const days = [DaysNames.monday, DaysNames.friday, DaysNames.saturday];
       return (
         currentDate.getTime() >= new Date(2009, 5, 19).getTime() &&
@@ -134,7 +135,8 @@ export const linkEvents: {
         previousDay.links &&
         previousDay.links[SocialLinkNames.Priestess].level === 6;
       const isRomance =
-        currentLinks[SocialLinkNames.Priestess].romance || isFork;
+        currentLinks[SocialLinkNames.Priestess].romance === Routes.Romantic ||
+        isFork;
       const days = [DaysNames.monday, DaysNames.friday, DaysNames.saturday];
       return (
         currentDate.getTime() >= new Date(2009, 5, 19).getTime() &&
@@ -192,7 +194,8 @@ export const linkEvents: {
         previousDay.links &&
         previousDay.links[SocialLinkNames.Empress].level === 6;
       const isRomance =
-        !currentLinks[SocialLinkNames.Empress].romance || isFork;
+        currentLinks[SocialLinkNames.Empress].romance === Routes.Romantic ||
+        isFork;
       const days = [
         DaysNames.monday,
         DaysNames.tuesday,
@@ -203,9 +206,9 @@ export const linkEvents: {
       return (
         currentDate.getTime() >= new Date(2009, 10, 21).getTime() &&
         previousDay.stats[stats.Academics.name] >= 230 &&
-        isRomance &&
+        days.includes(currentDate.getDay()) &&
         currentTime === Times.Day &&
-        days.includes(currentDate.getDay())
+        isRomance
       );
     },
   },
@@ -236,7 +239,9 @@ export const linkEvents: {
       const isFork =
         previousDay.links &&
         previousDay.links[SocialLinkNames.Empress].level === 6;
-      const isRomance = currentLinks[SocialLinkNames.Empress].romance || isFork;
+      const isRomance =
+        currentLinks[SocialLinkNames.Empress].romance === Routes.Romantic ||
+        isFork;
       const days = [
         DaysNames.monday,
         DaysNames.tuesday,
@@ -247,9 +252,9 @@ export const linkEvents: {
       return (
         currentDate.getTime() >= new Date(2009, 10, 21).getTime() &&
         previousDay.stats[stats.Academics.name] >= 230 &&
-        isRomance &&
+        days.includes(currentDate.getDay()) &&
         currentTime === Times.Day &&
-        days.includes(currentDate.getDay())
+        isRomance
       );
     },
   },
@@ -356,7 +361,8 @@ export const linkEvents: {
         previousDay.links &&
         previousDay.links[SocialLinkNames.Empress].level === 6;
       const isRomance =
-        !currentLinks[SocialLinkNames.Empress].romance || isFork;
+        currentLinks[SocialLinkNames.Empress].romance === Routes.Platonic ||
+        isFork;
       const days = [
         DaysNames.monday,
         DaysNames.wednesday,
@@ -399,7 +405,9 @@ export const linkEvents: {
       const isFork =
         previousDay.links &&
         previousDay.links[SocialLinkNames.Empress].level === 6;
-      const isRomance = currentLinks[SocialLinkNames.Empress].romance || isFork;
+      const isRomance =
+        currentLinks[SocialLinkNames.Empress].romance === Routes.Romantic ||
+        isFork;
       const days = [
         DaysNames.monday,
         DaysNames.wednesday,
@@ -513,7 +521,8 @@ export const linkEvents: {
         previousDay.links &&
         previousDay.links[SocialLinkNames.Justice].level === 4;
       const isRomance =
-        !currentLinks[SocialLinkNames.Empress].romance || isFork;
+        currentLinks[SocialLinkNames.Empress].romance === Routes.Platonic ||
+        isFork;
       const days = [DaysNames.tuesday, DaysNames.thursday, DaysNames.saturday];
       return (
         currentDate.getTime() >= new Date(2009, 4, 7).getTime() &&
@@ -548,7 +557,7 @@ export const linkEvents: {
           ...props.currentLinks,
           [SocialLinkNames.Justice]: {
             ...props.currentLinks[SocialLinkNames.Justice],
-            romance: true,
+            romance: Routes.Romantic,
           },
         },
       });
@@ -563,7 +572,9 @@ export const linkEvents: {
       const isFork =
         previousDay.links &&
         previousDay.links[SocialLinkNames.Justice].level === 4;
-      const isRomance = currentLinks[SocialLinkNames.Empress].romance || isFork;
+      const isRomance =
+        currentLinks[SocialLinkNames.Empress].romance === Routes.Romantic ||
+        isFork;
       const days = [DaysNames.tuesday, DaysNames.thursday, DaysNames.saturday];
       return (
         currentDate.getTime() >= new Date(2009, 4, 7).getTime() &&
@@ -694,7 +705,8 @@ export const linkEvents: {
         previousDay.links &&
         previousDay.links[SocialLinkNames.Strength].level === 2;
       const isRomance =
-        !currentLinks[SocialLinkNames.Strength].romance || isFork;
+        currentLinks[SocialLinkNames.Strength].romance === Routes.Platonic ||
+        isFork;
       const days = [DaysNames.wednesday, DaysNames.saturday];
       return (
         currentDate.getTime() >= new Date(2009, 3, 24).getTime() &&
@@ -730,7 +742,7 @@ export const linkEvents: {
           ...currentLinks,
           [SocialLinkNames.Strength]: {
             ...currentLinks[SocialLinkNames.Strength],
-            romance: true,
+            romance: Routes.Romantic,
           },
         },
       });
@@ -746,7 +758,8 @@ export const linkEvents: {
         previousDay.links &&
         previousDay.links[SocialLinkNames.Strength].level === 2;
       const isRomance =
-        currentLinks[SocialLinkNames.Strength].romance || isFork;
+        currentLinks[SocialLinkNames.Strength].romance === Routes.Romantic ||
+        isFork;
       const days = [DaysNames.wednesday, DaysNames.saturday];
       return (
         currentDate.getTime() >= new Date(2009, 3, 24).getTime() &&
@@ -1006,7 +1019,8 @@ export const linkEvents: {
         previousDay.links &&
         previousDay.links[SocialLinkNames.Empress].level === 6;
       const isRomance =
-        !currentLinks[SocialLinkNames.Empress].romance || isFork;
+        currentLinks[SocialLinkNames.Empress].romance === Routes.Platonic ||
+        isFork;
       const days = [
         DaysNames.monday,
         DaysNames.tuesday,
@@ -1049,7 +1063,8 @@ export const linkEvents: {
         previousDay.links &&
         previousDay.links[SocialLinkNames.Empress].level === 6;
       const isRomance =
-        !currentLinks[SocialLinkNames.Empress].romance || isFork;
+        currentLinks[SocialLinkNames.Empress].romance === Routes.Romantic ||
+        isFork;
       const days = [
         DaysNames.monday,
         DaysNames.tuesday,

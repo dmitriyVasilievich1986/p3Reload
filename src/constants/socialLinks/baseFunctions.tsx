@@ -10,6 +10,7 @@ import {
   SocialLinkNames,
   CalculateProps,
   KeyProps,
+  Routes,
 } from "./types";
 
 export const mainCharName: string = "Protagonist";
@@ -69,8 +70,10 @@ export const baseSocialLinkCalculation: SocialLinkTypeBase = {
   name: SocialLinkNames.Aeon,
   invitations: [],
   maxLevel: 10,
-  getlevel: function ({ level, romance = false }) {
-    return romance ? this.levelsRomance[level] : this.levels[level];
+  getlevel: function ({ level, romance }) {
+    return romance === Routes.Romantic
+      ? this.levelsRomance[level]
+      : this.levels[level];
   },
   _calculate: function ({
     currentStats,
@@ -78,10 +81,7 @@ export const baseSocialLinkCalculation: SocialLinkTypeBase = {
     arcanes,
   }: CalculateProps) {
     const thisLink = currentLinks[this.name];
-    const currentLevel = this.getlevel({
-      level: thisLink.level,
-      romance: thisLink.romance,
-    });
+    const currentLevel = this.getlevel(thisLink);
     const isNewlevel =
       thisLink.level < this.maxLevel && thisLink.points >= currentLevel.points;
     const level = isNewlevel ? thisLink.level + 1 : thisLink.level;
@@ -89,7 +89,11 @@ export const baseSocialLinkCalculation: SocialLinkTypeBase = {
 
     if (isNewlevel) {
       let multiplier = thisLink.multiplier;
-      const newLevel = this.getlevel({ level, romance: thisLink.romance });
+      const newLevel = this.getlevel({
+        ...thisLink,
+        level,
+        romance: thisLink.romance,
+      });
       if (currentStats[StatsNames.Charm] >= 100) multiplier *= 1.51;
 
       if (arcanes.includes(this.name)) {
