@@ -1,74 +1,71 @@
+import { QuestionsWrapper, Question, Answer } from "../../components/choices";
+import { baseSocialLinkCalculation, mainCharName } from "./baseFunctions";
 import { SocialLinkNames, SocialLinkType, Routes } from "./types";
-import { Question, Answer } from "../../components/choices";
 import { EventCard } from "../../components/eventCard";
 
-import {
-  baseSocialLinkCalculation,
-  mainCharName,
-  LinkLevel,
-  choices,
-  choice,
-} from "./baseFunctions";
-
 const justiceLevels = [
-  LinkLevel(),
-  LinkLevel(0, [
-    choices("Sorry to drag you along while I go shopping...", [
-      choice({ label: "Don't worry about it.", points: 15 }),
-      choice({ label: "I was bored anyway." }),
-    ]),
-    choices(`...Um, do you read much, ${mainCharName}-san?`, [
-      choice({ label: "I read the classics.", points: 5 }),
-      choice({ label: "I read manga.", points: 5 }),
-      choice({ label: "I read fashion magazines." }),
-      choice({ label: "I don't read books." }),
-    ]),
-    choices(
-      "Is it boring for you to hang around with, um... someone like me?",
-      [
-        choice({ label: "I'm having fun.", points: 5 }),
-        choice({ label: "Yeah, it's a drag." }),
-        choice({ label: "I'm indifferent." }),
-      ]
-    ),
-    choices("But I'm always so scared, that all I can do is nod...", [
-      choice({ label: "Are you only like this with guys?" }),
-      choice({ label: "Why are you so afraid?" }),
-    ]),
-    choices(
-      "So... whenever I see a man now, all I can think of is that face...",
-      [
-        choice({ label: "I shouldn't have asked." }),
-        choice({ label: "I'm sorry." }),
-      ]
-    ),
-  ]),
-  LinkLevel(0, [
-    choices("...Do they not know where they are!?", [
-      choice({ label: "They have no shame.", points: 5 }),
-      choice({ label: "They're gonna...kiss?" }),
-      choice({ label: "Where did they go?" }),
-    ]),
-    choices(
-      "We should notify the student council president right away, and discuss this at our next meeting!",
-      [
-        choice({ label: "I agree.", points: 5 }),
-        choice({ label: "That's kind of extreme..." }),
-        choice({ label: "You don't like kissing?" }),
-      ]
-    ),
-  ]),
-  LinkLevel(22, [
-    choices(`${mainCharName}-san!`, [
-      choice({ label: "Get lost." }),
-      choice({ label: "...Hey." }),
-    ]),
-    choices("Why am I still shaking?", [
-      choice({ label: "Let's hold hands." }),
-      choice({ label: "I'm here for you.", points: 15 }),
-      choice({ label: "Take a deep breath." }),
-    ]),
-  ]),
+  {
+    points: 0,
+    maxPoints: 0,
+    element: () => <EventCard head="Create bond" />,
+  },
+  QuestionsWrapper({
+    points: 0,
+    element: [
+      <Question label="Sorry to drag you along while I go shopping...">
+        <Answer label="Don't worry about it." points={15} />
+        <Answer label="I was bored anyway." />
+      </Question>,
+      <Question label={`...Um, do you read much, ${mainCharName}-san?`}>
+        <Answer label="I read the classics." points={5} />
+        <Answer label="I read manga." points={5} />
+        <Answer label="I read fashion magazines." />
+        <Answer label="I don't read books." />
+      </Question>,
+      <Question label="Is it boring for you to hang around with, um... someone like me?">
+        <Answer label="I'm having fun." points={5} />
+        <Answer label="Yeah, it's a drag." />
+        <Answer label="I'm indifferent." />
+      </Question>,
+      <Question label="But I'm always so scared, that all I can do is nod...">
+        <Answer label="Are you only like this with guys?" />
+        <Answer label="Why are you so afraid?" />
+      </Question>,
+      <Question label="So... whenever I see a man now, all I can think of is that face...">
+        <Answer label="I shouldn't have asked." />
+        <Answer label="I'm sorry." />
+      </Question>,
+    ],
+  }),
+  QuestionsWrapper({
+    points: 0,
+    element: [
+      <Question label="...Do they not know where they are!?">
+        <Answer label="They have no shame." points={5} />
+        <Answer label="They're gonna...kiss?" />
+        <Answer label="Where did they go?" />
+      </Question>,
+      <Question label="We should notify the student council president right away, and discuss this at our next meeting!">
+        <Answer label="I agree." points={5} />
+        <Answer label="That's kind of extreme..." />
+        <Answer label="You don't like kissing?" />
+      </Question>,
+    ],
+  }),
+  QuestionsWrapper({
+    points: 22,
+    element: [
+      <Question label={`${mainCharName}-san!`}>
+        <Answer label="Get lost." />
+        <Answer label="...Hey." />
+      </Question>,
+      <Question label="Why am I still shaking?">
+        <Answer label="Let's hold hands." />
+        <Answer label="I'm here for you." points={15} />
+        <Answer label="Take a deep breath." />
+      </Question>,
+    ],
+  }),
 ];
 
 export const Justice: SocialLinkType = {
@@ -76,100 +73,109 @@ export const Justice: SocialLinkType = {
   name: SocialLinkNames.Justice,
   levels: [
     ...justiceLevels,
-    LinkLevel(22, [
-      choices("So, um... there was something I needed to ask you...", [
-        choice({ label: "I'm all ears.", points: 10 }),
-        choice({ label: "Something on your mind?" }),
-      ]),
-      choices("Is she in love right now!?", [
-        choice({ label: "Yeah, she's in love." }),
-        choice({
-          label: "You're jumping to conclusions.",
-          fork: true,
-          points: 5,
-        }),
-      ]),
-      choices("Sorry for asking you about such a weird topic.", [
-        choice({ label: "Happy to help.", points: 10 }),
-        choice({ label: "Don't worry about it." }),
-      ]),
-    ]),
-    LinkLevel(22, [
-      choices("Wh-What should I do...?", [
-        choice({ label: "Is it good?", points: 15 }),
-        choice({ label: "You're not buying it?" }),
-      ]),
-      choices("That is, until recently...", [
-        choice({ label: "What do you think now?" }),
-        choice({ label: "What do you mean?", points: 5 }),
-      ]),
-    ]),
-    LinkLevel(40, [
-      choices(`${mainCharName}-san...`, [
-        choice({ label: "Try to remember." }),
-        choice({ label: "It's gotta be a misunderstanding.", points: 5 }),
-      ]),
-      choices(
-        "I-I couldn't stand up to them, but I... I didn't take anything!",
-        [
-          choice({ label: "Don't worry." }),
-          choice({ label: "We have to do something...", points: 5 }),
-        ]
-      ),
-    ]),
-    LinkLevel(30, [
-      choices(
-        "See, how could it not be her!? And with such an innocent face, too...",
-        [
-          choice({ label: "That's all a misunderstanding." }),
-          choice({ label: "......" }),
-        ]
-      ),
-      choices("I don't really have anyone else I can count on...", [
-        choice({ label: "The rumors will stop soon." }),
-        choice({ label: "I know you're innocent.", points: 5 }),
-        choice({ label: "Be strong." }),
-      ]),
-    ]),
-    LinkLevel(30, [
-      choices("D-Don't tell me she thinks I stole the money too!", [
-        choice({ label: "Don't worry, she'll help us.", points: 5 }),
-        choice({ label: "Mitsuru's not like that." }),
-      ]),
-      choices("......", [
-        choice({ label: "Chihiro is innocent.", points: 5 }),
-        choice({ label: "You need to tell her yourself.", points: 5 }),
-      ]),
-      choices(`Give me a hand, will you, ${mainCharName}?`, [
-        choice({ label: "Why me?" }),
-        choice({ label: "All right." }),
-      ]),
-      choices("And I stood up to Mr. Takenozuka... An actual adult man!", [
-        choice({ label: "I saw the whole thing.", points: 5 }),
-        choice({ label: "What're you talking about?" }),
-      ]),
-    ]),
-    LinkLevel(40, [
-      choices("I wonder if this is going to be enough flyers...", [
-        choice({ label: "Looks tough." }),
-        choice({ label: "Where you forced into this?" }),
-      ]),
-      choices(
-        "Oh, but, um... I'd appreciate it if you could still help me every now and then, just like today.",
-        [
-          choice({ label: "You can do it.", points: 10 }),
-          choice({ label: "I believe in you, Chihiro.", points: 10 }),
-        ]
-      ),
-      choices("Could I asd that you be the first of those many readers?", [
-        choice({ label: "Thanks." }),
-        choice({ label: "I'll take it" }),
-      ]),
-      choices("I'll handle the rest by myself.", [
-        choice({ label: "I can tag along." }),
-        choice({ label: "Are you sure?" }),
-      ]),
-    ]),
+    QuestionsWrapper({
+      points: 22,
+      element: [
+        <Question label="So, um... there was something I needed to ask you...">
+          <Answer label="I'm all ears." points={10} />
+          <Answer label="Something on your mind?" />
+        </Question>,
+        <Question label="Is she in love right now!?">
+          <Answer label="Yeah, she's in love." />
+          <Answer
+            label="You're jumping to conclusions."
+            fork={true}
+            points={5}
+          />
+        </Question>,
+        <Question label="Sorry for asking you about such a weird topic.">
+          <Answer label="Happy to help." points={10} />
+          <Answer label="Don't worry about it." />
+        </Question>,
+      ],
+    }),
+    QuestionsWrapper({
+      points: 22,
+      element: [
+        <Question label="Wh-What should I do...?">
+          <Answer label="Is it good?" points={15} />
+          <Answer label="You're not buying it?" />
+        </Question>,
+        <Question label="That is, until recently...">
+          <Answer label="What do you think now?" />
+          <Answer label="What do you mean?" points={5} />
+        </Question>,
+      ],
+    }),
+    QuestionsWrapper({
+      points: 40,
+      element: [
+        <Question label={`${mainCharName}-san...`}>
+          <Answer label="Try to remember." />
+          <Answer label="It's gotta be a misunderstanding." points={5} />
+        </Question>,
+        <Question label="I-I couldn't stand up to them, but I... I didn't take anything!">
+          <Answer label="Don't worry." />
+          <Answer label="We have to do something..." points={5} />
+        </Question>,
+      ],
+    }),
+    QuestionsWrapper({
+      points: 30,
+      element: [
+        <Question label="See, how could it not be her!? And with such an innocent face, too...">
+          <Answer label="That's all a misunderstanding." />
+          <Answer label="......" />
+        </Question>,
+        <Question label="I don't really have anyone else I can count on...">
+          <Answer label="The rumors will stop soon." />
+          <Answer label="I know you're innocent." points={5} />
+          <Answer label="Be strong." />
+        </Question>,
+      ],
+    }),
+    QuestionsWrapper({
+      points: 30,
+      element: [
+        <Question label="D-Don't tell me she thinks I stole the money too!">
+          <Answer label="Don't worry, she'll help us." points={5} />
+          <Answer label="Mitsuru's not like that." />
+        </Question>,
+        <Question label="......">
+          <Answer label="Chihiro is innocent." points={5} />
+          <Answer label="You need to tell her yourself." points={5} />
+        </Question>,
+        <Question label={`Give me a hand, will you, ${mainCharName}?`}>
+          <Answer label="Why me?" />
+          <Answer label="All right." />
+        </Question>,
+        <Question label="And I stood up to Mr. Takenozuka... An actual adult man!">
+          <Answer label="I saw the whole thing." points={5} />
+          <Answer label="What're you talking about?" />
+        </Question>,
+      ],
+    }),
+    QuestionsWrapper({
+      points: 40,
+      element: [
+        <Question label="I wonder if this is going to be enough flyers...">
+          <Answer label="Looks tough." />
+          <Answer label="Where you forced into this?" />
+        </Question>,
+        <Question label="Oh, but, um... I'd appreciate it if you could still help me every now and then, just like today.">
+          <Answer label="You can do it." points={10} />
+          <Answer label="I believe in you, Chihiro." points={10} />
+        </Question>,
+        <Question label="Could I asd that you be the first of those many readers?">
+          <Answer label="Thanks." />
+          <Answer label="I'll take it" />
+        </Question>,
+        <Question label="I'll handle the rest by myself.">
+          <Answer label="I can tag along." />
+          <Answer label="Are you sure?" />
+        </Question>,
+      ],
+    }),
     {
       points: 0,
       maxPoints: 0,
@@ -178,98 +184,110 @@ export const Justice: SocialLinkType = {
   ],
   levelsRomance: [
     ...justiceLevels,
-    LinkLevel(22, [
-      choices("So, um... there was something I needed to ask you...", [
-        choice({ label: "I'm all ears.", points: 10 }),
-        choice({ label: "Something on your mind?" }),
-      ]),
-      choices("Is she in love right now!?", [
-        choice({ label: "Yeah, she's in love.", fork: true, points: 15 }),
-        choice({ label: "You're jumping to conclusions." }),
-      ]),
-      choices("Sorry for asking you about such a weird topic.", [
-        choice({ label: "Happy to help.", points: 10 }),
-        choice({ label: "Don't worry about it." }),
-      ]),
-      choices("What should i do...?", [
-        choice({ label: "Hold her hand", points: 15 }),
-        choice({ label: "Kiss her" }),
-        choice({ label: "Speak to her softly" }),
-      ]),
-    ]),
-    LinkLevel(22, [
-      choices("Wh-What should I do...?", [
-        choice({ label: "Is it good?", points: 15 }),
-        choice({ label: "You're not buying it?" }),
-      ]),
-      choices("That is, until recently...", [
-        choice({ label: "What do you think now?" }),
-        choice({ label: "What do you mean?", points: 5 }),
-      ]),
-    ]),
-    LinkLevel(40, [
-      choices(`${mainCharName}-san...`, [
-        choice({ label: "Try to remember." }),
-        choice({ label: "It's gotta be a misunderstanding.", points: 5 }),
-      ]),
-      choices(
-        "I-I couldn't stand up to them, but I... I didn't take anything!",
-        [
-          choice({ label: "Don't worry." }),
-          choice({ label: "We have to do something...", points: 5 }),
-        ]
-      ),
-    ]),
-    LinkLevel(30, [
-      choices(
-        "See, how could it not be her!? And with such an innocent face, too...",
-        [
-          choice({ label: "That's all a misunderstanding." }),
-          choice({ label: "......" }),
-        ]
-      ),
-      choices("I don't really have anyone else I can count on...", [
-        choice({ label: "The rumors will stop soon." }),
-        choice({ label: "I know you're innocent.", points: 5 }),
-        choice({ label: "Be strong." }),
-      ]),
-    ]),
-    LinkLevel(30, [
-      choices("D-Don't tell me she thinks I stole the money too!", [
-        choice({ label: "Don't worry, she'll help us.", points: 5 }),
-        choice({ label: "Mitsuru's not like that." }),
-      ]),
-      choices("......", [
-        choice({ label: "Chihiro is innocent.", points: 5 }),
-        choice({ label: "You need to tell her yourself.", points: 5 }),
-      ]),
-      choices(`Give me a hand, will you, ${mainCharName}?`, [
-        choice({ label: "Why me?" }),
-        choice({ label: "All right." }),
-      ]),
-      choices("Ehehehehe!", [
-        choice({ label: "What's gotten into you?", points: 5 }),
-        choice({ label: "So you ARE guilty." }),
-      ]),
-      choices("I love you!", [
-        choice({ label: "I feel the same, Chihiro.", fork: true }),
-        choice({ label: "I like working with you, but..." }),
-      ]),
-      choices("Huh? What did you say...?", [
-        choice({ label: "I said I feel the same." }),
-        choice({ label: "I love you" }),
-      ]),
-    ]),
-    LinkLevel(40, [
-      choices("Just promise to think of me when you read it…", [
-        choice({ label: "Thank you.", points: 15 }),
-        choice({ label: "I don't read shoujo manga." }),
-      ]),
-      choices("I-I don't have to spell it out, do I!?", [
-        choice({ label: "It's getting late..." }),
-        choice({ label: "Lock your doors." }),
-      ]),
-    ]),
+    QuestionsWrapper({
+      points: 22,
+      element: [
+        <Question label="So, um... there was something I needed to ask you...">
+          <Answer label="I'm all ears." points={10} />
+          <Answer label="Something on your mind?" />
+        </Question>,
+        <Question label="Is she in love right now!?">
+          <Answer label="Yeah, she's in love." fork={true} points={15} />
+          <Answer label="You're jumping to conclusions." />
+        </Question>,
+        <Question label="Sorry for asking you about such a weird topic.">
+          <Answer label="Happy to help." points={10} />
+          <Answer label="Don't worry about it." />
+        </Question>,
+        <Question label="What should i do...?">
+          <Answer label="Hold her hand" points={15} />
+          <Answer label="Kiss her" />
+          <Answer label="Speak to her softly" />
+        </Question>,
+      ],
+    }),
+    QuestionsWrapper({
+      points: 22,
+      element: [
+        <Question label="Wh-What should I do...?">
+          <Answer label="Is it good?" points={15} />
+          <Answer label="You're not buying it?" />
+        </Question>,
+        <Question label="That is, until recently...">
+          <Answer label="What do you think now?" />
+          <Answer label="What do you mean?" points={5} />
+        </Question>,
+      ],
+    }),
+    QuestionsWrapper({
+      points: 40,
+      element: [
+        <Question label={`${mainCharName}-san...`}>
+          <Answer label="Try to remember." />
+          <Answer label="It's gotta be a misunderstanding." points={5} />
+        </Question>,
+        <Question label="I-I couldn't stand up to them, but I... I didn't take anything!">
+          <Answer label="Don't worry." />
+          <Answer label="We have to do something..." points={5} />
+        </Question>,
+      ],
+    }),
+    QuestionsWrapper({
+      points: 30,
+      element: [
+        <Question label="See, how could it not be her!? And with such an innocent face, too...">
+          <Answer label="That's all a misunderstanding." />
+          <Answer label="......" />
+        </Question>,
+        <Question label="I don't really have anyone else I can count on...">
+          <Answer label="The rumors will stop soon." />
+          <Answer label="I know you're innocent." points={5} />
+          <Answer label="Be strong." />
+        </Question>,
+      ],
+    }),
+    QuestionsWrapper({
+      points: 30,
+      element: [
+        <Question label="D-Don't tell me she thinks I stole the money too!">
+          <Answer label="Don't worry, she'll help us." points={5} />
+          <Answer label="Mitsuru's not like that." />
+        </Question>,
+        <Question label="......">
+          <Answer label="Chihiro is innocent." points={5} />
+          <Answer label="You need to tell her yourself." points={5} />
+        </Question>,
+        <Question label={`Give me a hand, will you, ${mainCharName}?`}>
+          <Answer label="Why me?" />
+          <Answer label="All right." />
+        </Question>,
+        <Question label="Ehehehehe!">
+          <Answer label="What's gotten into you?" points={5} />
+          <Answer label="So you ARE guilty." />
+        </Question>,
+        <Question label="I love you!">
+          <Answer label="I feel the same, Chihiro." fork={true} />
+          <Answer label="I like working with you, but..." />
+        </Question>,
+        <Question label="Huh? What did you say...?">
+          <Answer label="I said I feel the same." />
+          <Answer label="I love you" />
+        </Question>,
+      ],
+    }),
+    QuestionsWrapper({
+      points: 40,
+      element: [
+        <Question label="Just promise to think of me when you read it…">
+          <Answer label="Thank you." points={15} />
+          <Answer label="I don't read shoujo manga." />
+        </Question>,
+        <Question label="I-I don't have to spell it out, do I!?">
+          <Answer label="It's getting late..." />
+          <Answer label="Lock your doors." />
+        </Question>,
+      ],
+    }),
     {
       points: 0,
       maxPoints: 0,

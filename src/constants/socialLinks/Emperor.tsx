@@ -1,100 +1,114 @@
+import { QuestionsWrapper, Question, Answer } from "../../components/choices";
+import { baseSocialLinkCalculation } from "./baseFunctions";
 import { SocialLinkNames, SocialLinkType } from "./types";
 import { EventCard } from "../../components/eventCard";
-
-import {
-  baseSocialLinkCalculation,
-  LinkLevel,
-  choices,
-  choice,
-} from "./baseFunctions";
 
 export const Emperor: SocialLinkType = {
   ...baseSocialLinkCalculation,
   name: SocialLinkNames.Emperor,
   levels: [
-    LinkLevel(),
-    LinkLevel(0, [
-      choices(
-        "Some students think the school uniform should be abolished, and they're recruiting supporters.",
-        [
-          choice({ label: "They've got a point." }),
-          choice({ label: "Sounds like nonsense.", points: 15 }),
-        ]
-      ),
-    ]),
-    LinkLevel(0, [
-      choices(
-        "What!? You can't decide something like that without talking to the president first.",
-        [
-          choice({ label: "What happened?", points: 5 }),
-          choice({ label: "No need to fight.", points: 5 }),
-        ]
-      ),
-    ]),
-    LinkLevel(0, [
-      choices("This guy looks like he's about to hit Odagiri!", [
-        choice({ label: "Knock it off!" }),
-        choice({ label: "..........." }),
-      ]),
-      choices("What is it? Did you need something from me?", [
-        choice({ label: "You went a little overboard." }),
-        choice({ label: "Looks like you're hard at work.", points: 15 }),
-      ]),
-    ]),
-    LinkLevel(15, [
-      choices("...Bunch of neanderthals", [
-        choice({ label: "They're the worst.", points: 15 }),
-        choice({ label: "You shouldn't accuse everyone." }),
-      ]),
-    ]),
-    LinkLevel(15, [
-      choices("It's nice not having those hyenas around.", [
-        choice({ label: "You're not going home yet?" }),
-        choice({ label: `"It's nice"?` }),
-      ]),
-      choices(
-        "So as you can see, we can't exactly hold a meeting right now. You can leave if you want.",
-        [
-          choice({ label: "But I just got here…", points: 15 }),
-          choice({ label: "I think I'll stick around.", points: 5 }),
-        ]
-      ),
-    ]),
-    LinkLevel(15, [
-      choices("About the smoker's punishment, I mean.", [
-        choice({ label: "It seems reasonable." }),
-        choice({ label: "It seems too harsh.", points: 15 }),
-      ]),
-    ]),
-    LinkLevel(15, [
-      choices("Um, did Odagiri-san do something?", [
-        choice({ label: "What do you mean?" }),
-        choice({ label: "Why? Is something wrong?" }),
-      ]),
-      choices("...So, you heard all that.", [
-        choice({ label: "It wasn't me.", points: 15 }),
-        choice({ label: "You stood up for me?", points: 5 }),
-      ]),
-    ]),
-    LinkLevel(22, [
-      choices(
-        "I rambled on about rules and fairness, but all I really proved was that I was desperate for power.",
-        [
-          choice({ label: "Don't blame yourself.", points: 15 }),
-          choice({ label: "What matters is you realized it.", points: 15 }),
-        ]
-      ),
-    ]),
-    LinkLevel(22, [
-      choices("So, how did I do? What'd everyone think?", [
-        choice({ label: "Not too shabby.", points: 15 }),
-        choice({ label: "You were great.", points: 5 }),
-      ]),
-      choices("That's why you should be the one to have it.", [
-        choice({ label: "I'll cherish it.", points: 15 }),
-        choice({ label: "I guess I'll take it.", points: 15 }),
-      ]),
-    ]),
+    {
+      points: 0,
+      maxPoints: 0,
+      element: () => <EventCard head="Create bond" />,
+    },
+    QuestionsWrapper({
+      points: 0,
+      element: [
+        <Question label="Some students think the school uniform should be abolished, and they're recruiting supporters.">
+          <Answer label="They've got a point." />
+          <Answer label="Sounds like nonsense." points={15} />
+        </Question>,
+      ],
+    }),
+    QuestionsWrapper({
+      points: 0,
+      element: [
+        <Question label="What!? You can't decide something like that without talking to the president first.">
+          <Answer label="What happened?" points={5} />
+          <Answer label="No need to fight." points={5} />
+        </Question>,
+      ],
+    }),
+    QuestionsWrapper({
+      points: 0,
+      element: [
+        <Question label="This guy looks like he's about to hit Odagiri!">
+          <Answer label="Knock it off!" />
+          <Answer label="..........." />
+        </Question>,
+        <Question label="What is it? Did you need something from me?">
+          <Answer label="You went a little overboard." />
+          <Answer label="Looks like you're hard at work." points={15} />
+        </Question>,
+      ],
+    }),
+    QuestionsWrapper({
+      points: 15,
+      element: [
+        <Question label="...Bunch of neanderthals">
+          <Answer label="They're the worst." points={15} />
+          <Answer label="You shouldn't accuse everyone." />
+        </Question>,
+      ],
+    }),
+    QuestionsWrapper({
+      points: 15,
+      element: [
+        <Question label="It's nice not having those hyenas around.">
+          <Answer label="You're not going home yet?" />
+          <Answer label={`"It's nice"?`} />
+        </Question>,
+        <Question label="So as you can see, we can't exactly hold a meeting right now. You can leave if you want.">
+          <Answer label="But I just got here…" points={15} />
+          <Answer label="I think I'll stick around." points={5} />
+        </Question>,
+      ],
+    }),
+    QuestionsWrapper({
+      points: 15,
+      element: [
+        <Question label="About the smoker's punishment, I mean.">
+          <Answer label="It seems reasonable." />
+          <Answer label="It seems too harsh." points={15} />
+        </Question>,
+      ],
+    }),
+    QuestionsWrapper({
+      points: 15,
+      element: [
+        <Question label="Um, did Odagiri-san do something?">
+          <Answer label="What do you mean?" />
+          <Answer label="Why? Is something wrong?" />
+        </Question>,
+        <Question label="...So, you heard all that.">
+          <Answer label="It wasn't me." points={15} />
+          <Answer label="You stood up for me?" points={5} />
+        </Question>,
+      ],
+    }),
+    QuestionsWrapper({
+      points: 22,
+      element: [
+        <Question label="I rambled on about rules and fairness, but all I really proved was that I was desperate for power.">
+          <Answer label="Don't blame yourself." points={15} />
+          <Answer label="What matters is you realized it." points={15} />
+        </Question>,
+      ],
+    }),
+    QuestionsWrapper({
+      points: 22,
+      element: [
+        <Question label="So, how did I do? What'd everyone think?">
+          <Answer label="Not too shabby." points={15} />
+          <Answer label="You were great." points={5} />
+        </Question>,
+        <Question label="That's why you should be the one to have it.">
+          <Answer label="I'll cherish it." points={15} />
+          <Answer label="I guess I'll take it." points={15} />
+        </Question>,
+      ],
+    }),
     {
       points: 0,
       maxPoints: 0,
