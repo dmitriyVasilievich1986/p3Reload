@@ -1,70 +1,14 @@
-import { ChoiceProps } from "../../components/choices/types";
-import { Question, Answer } from "../../components/choices";
 import { EventCard } from "../../components/eventCard";
 import { StatsNames } from "../stats/types";
 
 import {
-  SocialLinkLevelBase,
   SocialLinkTypeBase,
-  SocialLinkLevel,
   SocialLinkNames,
   CalculateProps,
-  KeyProps,
   Routes,
 } from "./types";
 
 export const mainCharName: string = "Protagonist";
-
-export function choice({
-  points = 0,
-  ...props
-}: ChoiceProps): SocialLinkLevelBase {
-  return {
-    points,
-    element: ({ key }: KeyProps) => (
-      <Answer key={key} points={points} {...props} />
-    ),
-  };
-}
-
-export function choices(
-  head: string,
-  choices: SocialLinkLevelBase[]
-): SocialLinkLevelBase {
-  const points = Math.max(...choices.map((c) => c.points));
-
-  return {
-    points,
-    element: ({ key }: KeyProps) => (
-      <Question key={key} label={head}>
-        {choices.map((c, i) => c.element({ key: i }))}
-      </Question>
-    ),
-  };
-}
-
-export function LinkLevel(
-  points: number = 0,
-  levels: SocialLinkLevelBase[] | null = null
-): SocialLinkLevel {
-  if (levels === null)
-    return {
-      points: 0,
-      maxPoints: 0,
-      element: () => <EventCard head="Create bond" />,
-    };
-  const maxPoints = levels.reduce((acc, level) => acc + level.points, 0);
-
-  return {
-    points,
-    maxPoints,
-    element: () => (
-      <div style={{ display: "flex", flexDirection: "column", gap: "2rem" }}>
-        {levels.map((level, i) => level.element({ key: i }))}
-      </div>
-    ),
-  };
-}
 
 export const baseSocialLinkCalculation: SocialLinkTypeBase = {
   name: SocialLinkNames.Aeon,

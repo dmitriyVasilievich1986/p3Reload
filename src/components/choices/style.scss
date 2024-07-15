@@ -38,3 +38,9 @@
         }
     }
 }
+
+.question-wrapper {
+    flex-direction: column;
+    display: flex;
+    gap: 2rem;
+}

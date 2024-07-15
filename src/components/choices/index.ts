@@ -1,3 +1,3 @@
-import { Question, Answer } from "./Choices";
+import { QuestionsWrapper, Question, Answer } from "./Choices";
 
-export { Question, Answer };
+export { QuestionsWrapper, Question, Answer };
