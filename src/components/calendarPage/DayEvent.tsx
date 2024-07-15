@@ -1,4 +1,4 @@
-import { SocialLinkNames } from "../../constants/socialLinks/types";
+import { SocialLinkNames, Routes } from "../../constants/socialLinks/types";
 import { Categories } from "../../constants/events/types";
 import { socialLinks } from "../../constants/socialLinks";
 import BadgeTooltip from "./BadgeTooltip";
@@ -26,8 +26,20 @@ function LinkElement(props: DayEventProps) {
     .element({ key: linkName });
 }
 
+function InvitationElement(props: DayEventProps) {
+  if (props.event.category !== Categories.Invitation) return null;
+
+  const linkName = props.event.linkName as SocialLinkNames;
+  const route = props.links[linkName].romance
+    ? Routes.Romantic
+    : Routes.Platonic;
+  const level = props.links[linkName].level;
+
+  return socialLinks[linkName].invitations[level][route];
+}
+
 function LinkBadge(props: DayEventProps) {
-  if (props.event.category !== Categories.Links) return null;
+  if (!props.event.linkName) return null;
 
   const linkName = props.event.linkName as SocialLinkNames;
   const color =
@@ -77,6 +89,7 @@ function DayEvent(props: DayEventProps) {
           stats: props.stats,
         })}
         <LinkElement {...props} />
+        <InvitationElement {...props} />
       </div>
     </Card>
   );

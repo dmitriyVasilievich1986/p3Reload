@@ -73,6 +73,9 @@ export type SocialLinkTypeBase = {
   getStaleLevel: () => React.ReactNode;
   levelsRomance: SocialLinkLevel[];
   levels: SocialLinkLevel[];
+  invitations: {
+    [key: number]: { [key in Routes]?: React.ReactNode };
+  };
 };
 
 export type SocialLinkType = SocialLinkTypeBase & {

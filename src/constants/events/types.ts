@@ -2,6 +2,7 @@ import { SocialLinksStatsArray, SocialLinkNames } from "../socialLinks/types";
 import { CharStats } from "../stats/types";
 
 export enum Categories {
+  Invitation = "Invitation",
   Tartarus = "Tartarus",
   Special = "Special",
   Links = "Links",
@@ -77,6 +78,18 @@ export enum socialLinkRomanceNames {
   AeonRomance = "AeonRomance",
 }
 
+export enum socialLinkInvitationNames {
+  TemperanceInvitation = "TemperanceInvitation",
+  PriestessInvitation = "PriestessInvitation",
+  MagicianInvitation = "MagicianInvitation",
+  StrengthInvitation = "StrengthInvitation",
+  JusticeInvitation = "JusticeInvitation",
+  ChariotInvitation = "ChariotInvitation",
+  FortuneInvitation = "FortuneInvitation",
+  EmpressInvitation = "EmpressInvitation",
+  LoversInvitation = "LoversInvitation",
+}
+
 const allNames = {
   ...SpecialEventsNames,
   ...pcProgramsNames,
@@ -85,11 +98,12 @@ const allNames = {
   ...statsEventsCourageNames,
   ...SocialLinkNames,
   ...socialLinkRomanceNames,
+  ...socialLinkInvitationNames,
 };
 
 export type allEventsNames = (typeof allNames)[keyof typeof allNames];
 
-type availableProps = {
+export type availableProps = {
   currentLinks: SocialLinksStatsArray;
   currentStats: CharStats;
   currentTime: Times;
@@ -127,4 +141,5 @@ export type Event = {
   label: (props: LabelProps) => React.ReactNode;
   name: allEventsNames;
   linkName?: SocialLinkNames;
+  _invitationsDates?: number[];
 };

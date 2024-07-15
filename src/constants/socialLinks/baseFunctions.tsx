@@ -67,6 +67,7 @@ export function LinkLevel(
 
 export const baseSocialLinkCalculation: SocialLinkTypeBase = {
   name: SocialLinkNames.Aeon,
+  invitations: [],
   maxLevel: 10,
   getlevel: function ({ level, romance = false }) {
     return romance ? this.levelsRomance[level] : this.levels[level];
