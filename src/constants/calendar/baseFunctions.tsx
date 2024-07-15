@@ -6,6 +6,7 @@ import {
   SocialLinksStatsArray,
   SocialLinkStats,
   SocialLinkNames,
+  Routes,
 } from "../socialLinks/types";
 
 const initialStats: CharStats = {
@@ -18,7 +19,7 @@ const zeroStats: SocialLinkStats = {
   level: 0,
   points: 0,
   multiplier: 1,
-  romance: false,
+  romance: Routes.Platonic,
 };
 const initialLinks: SocialLinksStatsArray = {
   [SocialLinkNames.Aeon]: { ...zeroStats },

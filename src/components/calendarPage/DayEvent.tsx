@@ -20,14 +20,25 @@ function LinkElement(props: DayEventProps) {
 
   return socialLinks[linkName]
     .getlevel({
-      romance: props.links[linkName].romance,
+      ...props.links[linkName],
       level: props.links[linkName].level - 1,
     })
     .element({ key: linkName });
 }
 
+function InvitationElement(props: DayEventProps) {
+  if (props.event.category !== Categories.Invitation) return null;
+
+  const linkName = props.event.linkName as SocialLinkNames;
+  const level = props.links[linkName].level;
+
+  return socialLinks[linkName].invitations[level][
+    props.links[linkName].romance
+  ];
+}
+
 function LinkBadge(props: DayEventProps) {
-  if (props.event.category !== Categories.Links) return null;
+  if (!props.event.linkName) return null;
 
   const linkName = props.event.linkName as SocialLinkNames;
   const color =
@@ -77,6 +88,7 @@ function DayEvent(props: DayEventProps) {
           stats: props.stats,
         })}
         <LinkElement {...props} />
+        <InvitationElement {...props} />
       </div>
     </Card>
   );

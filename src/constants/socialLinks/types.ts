@@ -24,6 +24,11 @@ export enum SocialLinkNames {
   Tower = "Tower",
 }
 
+export enum Routes {
+  Platonic = "Platonic",
+  Romantic = "Romantic",
+}
+
 export type KeyProps = {
   key: string | number;
 };
@@ -39,18 +44,13 @@ export type SocialLinkLevel = SocialLinkLevelBase & {
 
 export type SocialLinkStats = {
   multiplier: number;
-  romance: boolean;
+  romance: Routes;
   points: number;
   level: number;
 };
 
 export type SocialLinksStatsArray = {
   [key in SocialLinkNames]: SocialLinkStats;
-};
-
-export type GetlevelProps = {
-  level: number;
-  romance?: boolean;
 };
 
 export type CalculateProps = {
@@ -62,12 +62,15 @@ export type CalculateProps = {
 export type SocialLinkTypeBase = {
   name: SocialLinkNames;
   maxLevel: number;
-  getlevel: (props: GetlevelProps) => SocialLinkLevel;
+  getlevel: (props: SocialLinkStats) => SocialLinkLevel;
   _calculate: (props: CalculateProps) => { links: SocialLinksStatsArray };
   calculate: (props: CalculateProps) => { links: SocialLinksStatsArray };
   getStaleLevel: () => React.ReactNode;
   levelsRomance: SocialLinkLevel[];
   levels: SocialLinkLevel[];
+  invitations: {
+    [key: number]: { [key in Routes]?: React.ReactNode };
+  };
 };
 
 export type SocialLinkType = SocialLinkTypeBase & {
