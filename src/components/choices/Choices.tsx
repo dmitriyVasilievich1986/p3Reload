@@ -4,7 +4,7 @@ import * as style from "./style.scss";
 
 const cx = classnames.bind(style);
 
-export function Choice(props: ChoiceProps) {
+export function Answer(props: ChoiceProps) {
   const points = props?.points || 0;
   let backgroundColor = "inherit";
   if (props?.fork) {
@@ -26,7 +26,7 @@ export function Choice(props: ChoiceProps) {
   );
 }
 
-export function Choices(props: ChoicesProps) {
+export function Question(props: ChoicesProps) {
   return (
     <div className={cx("choices")}>
       <label>{props.label}</label>

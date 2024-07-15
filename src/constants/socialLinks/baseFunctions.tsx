@@ -1,5 +1,5 @@
 import { ChoiceProps } from "../../components/choices/types";
-import { Choices, Choice } from "../../components/choices";
+import { Question, Answer } from "../../components/choices";
 import { EventCard } from "../../components/eventCard";
 import { StatsNames } from "../stats/types";
 
@@ -22,7 +22,7 @@ export function choice({
   return {
     points,
     element: ({ key }: KeyProps) => (
-      <Choice key={key} points={points} {...props} />
+      <Answer key={key} points={points} {...props} />
     ),
   };
 }
@@ -36,9 +36,9 @@ export function choices(
   return {
     points,
     element: ({ key }: KeyProps) => (
-      <Choices key={key} label={head}>
+      <Question key={key} label={head}>
         {choices.map((c, i) => c.element({ key: i }))}
-      </Choices>
+      </Question>
     ),
   };
 }

@@ -1,5 +1,5 @@
 import { SocialLinkNames, SocialLinkType, Routes } from "./types";
-import { Choices, Choice } from "../../components/choices";
+import { Question, Answer } from "../../components/choices";
 import { EventCard } from "../../components/eventCard";
 
 import {
@@ -279,67 +279,67 @@ export const Justice: SocialLinkType = {
   invitations: {
     2: {
       [Routes.Platonic]: (
-        <Choices label={`I kept thinking, "What if he doesn't show up?"`}>
-          <Choice label="Try not to worry so much." points={30} />
-        </Choices>
+        <Question label={`I kept thinking, "What if he doesn't show up?"`}>
+          <Answer label="Try not to worry so much." points={30} />
+        </Question>
       ),
     },
     3: {
       [Routes.Platonic]: (
-        <Choices label="There's not much point in meeting up if we're both just going to read on our own, huh...?">
-          <Choice label="We'll do better next time." points={30} />
-        </Choices>
+        <Question label="There's not much point in meeting up if we're both just going to read on our own, huh...?">
+          <Answer label="We'll do better next time." points={30} />
+        </Question>
       ),
     },
     4: {
       [Routes.Platonic]: (
-        <Choices label="I-I was afraid that I might see that guy from before who tried to, um...">
-          <Choice label="I'd help you again." points={30} />
-        </Choices>
+        <Question label="I-I was afraid that I might see that guy from before who tried to, um...">
+          <Answer label="I'd help you again." points={30} />
+        </Question>
       ),
     },
     5: {
       [Routes.Platonic]: (
-        <Choices label="Um... Your coffee is going to get cold.">
-          <Choice label="Do you want sugar?" points={30} />
-        </Choices>
+        <Question label="Um... Your coffee is going to get cold.">
+          <Answer label="Do you want sugar?" points={30} />
+        </Question>
       ),
     },
     6: {
       [Routes.Platonic]: (
-        <Choices label="I... want to be like that too...">
-          <Choice label="You can do it." points={30} />
-        </Choices>
+        <Question label="I... want to be like that too...">
+          <Answer label="You can do it." points={30} />
+        </Question>
       ),
     },
     7: {
       [Routes.Platonic]: (
-        <Choices label="It's sad to think there might be a thief at our school...">
-          <Choice label="Don't worry, it wasn't a thief." points={30} />
-        </Choices>
+        <Question label="It's sad to think there might be a thief at our school...">
+          <Answer label="Don't worry, it wasn't a thief." points={30} />
+        </Question>
       ),
     },
     8: {
       [Routes.Platonic]: (
-        <Choices label="It's just... ever since that money went missing, I've been feeling anxious whenever I'm alone...">
-          <Choice label="I'm happy to help." points={30} />
-        </Choices>
+        <Question label="It's just... ever since that money went missing, I've been feeling anxious whenever I'm alone...">
+          <Answer label="I'm happy to help." points={30} />
+        </Question>
       ),
     },
     9: {
       [Routes.Platonic]: (
-        <Choices
+        <Question
           label={`What about you, ${mainCharName}-san? Are you planning to get a driver's license?`}
         >
-          <Choice label="I am." points={30} />
-        </Choices>
+          <Answer label="I am." points={30} />
+        </Question>
       ),
       [Routes.Romantic]: (
-        <Choices
+        <Question
           label={`What about you, ${mainCharName}-san? Are you planning to get a driver's license?`}
         >
-          <Choice label="I am." points={30} />
-        </Choices>
+          <Answer label="I am." points={30} />
+        </Question>
       ),
     },
   },

@@ -1,4 +1,4 @@
-import { Choices, Choice } from "../../components/choices";
+import { Question, Answer } from "../../components/choices";
 import { EventCard } from "../../components/eventCard";
 import { WideEvent } from "../../components/wideEvent";
 import { Categories, Times } from "../events/types";
@@ -32,15 +32,15 @@ export const april: singleDay[] = [
         ...events.schoolQuestionCharm,
         time: Times.Morning,
         label: () => (
-          <Choices
+          <Question
             label={
               'Among these phrases, "a rain of flower", "mystical mirage" and "vivid carp streamers" which one symbolizes summer?'
             }
           >
-            <Choice label="a rain of flower" />
-            <Choice label="mystical mirage" />
-            <Choice label="vivid carp streamers" points={15} />
-          </Choices>
+            <Answer label="a rain of flower" />
+            <Answer label="mystical mirage" />
+            <Answer label="vivid carp streamers" points={15} />
+          </Question>
         ),
       },
       events.Special,
@@ -191,15 +191,15 @@ export const april: singleDay[] = [
       {
         ...events.schoolQuestionCharm,
         label: () => (
-          <Choices
+          <Question
             label={
               "The places where people dumped their waste in the Jomon Period - What are they called nowadays?"
             }
           >
-            <Choice label="Boneyards" />
-            <Choice label="Middens" points={15} />
-            <Choice label="Hovels" />
-          </Choices>
+            <Answer label="Boneyards" />
+            <Answer label="Middens" points={15} />
+            <Answer label="Hovels" />
+          </Question>
         ),
       },
       events.Special,
@@ -330,16 +330,16 @@ export const april: singleDay[] = [
         time: Times.Morning,
         special: true,
         label: () => (
-          <Choices
+          <Question
             label={
               "Do you know which one's not an algebraic spiral or whatever?"
             }
           >
-            <Choice label="A." points={15} />
-            <Choice label="B." />
-            <Choice label="C." />
-            <Choice label="D." />
-          </Choices>
+            <Answer label="A." points={15} />
+            <Answer label="B." />
+            <Answer label="C." />
+            <Answer label="D." />
+          </Question>
         ),
       },
       events.Emperor,

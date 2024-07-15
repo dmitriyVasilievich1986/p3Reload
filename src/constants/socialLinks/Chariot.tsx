@@ -1,4 +1,4 @@
-import { Choices, Choice } from "../../components/choices";
+import { Question, Answer } from "../../components/choices";
 import { EventCard } from "../../components/eventCard";
 
 import {
@@ -185,58 +185,58 @@ export const Chariot: SocialLinkType = {
   invitations: {
     2: {
       [Routes.Platonic]: (
-        <Choices label="That way, I'm ready to go 24/7, y'know? That's real dedication, man.">
-          <Choice label="Impressive." points={30} />
-        </Choices>
+        <Question label="That way, I'm ready to go 24/7, y'know? That's real dedication, man.">
+          <Answer label="Impressive." points={30} />
+        </Question>
       ),
     },
     3: {
       [Routes.Platonic]: (
-        <Choices label="I'm trying to cut down on carbs.">
-          <Choice label="Are you on a diet?" points={30} />
-        </Choices>
+        <Question label="I'm trying to cut down on carbs.">
+          <Answer label="Are you on a diet?" points={30} />
+        </Question>
       ),
     },
     4: {
       [Routes.Platonic]: (
-        <Choices label="The more I want to win, I can just feel myself tense up...">
-          <Choice label="Winning isn't everything." points={30} />
-        </Choices>
+        <Question label="The more I want to win, I can just feel myself tense up...">
+          <Answer label="Winning isn't everything." points={30} />
+        </Question>
       ),
     },
     5: {
       [Routes.Platonic]: (
-        <Choices label="Anyway... Sorry about all of that.">
-          <Choice label="Gotta pick your battles." points={30} />
-        </Choices>
+        <Question label="Anyway... Sorry about all of that.">
+          <Answer label="Gotta pick your battles." points={30} />
+        </Question>
       ),
     },
     6: {
       [Routes.Platonic]: (
-        <Choices label="Any ideas?">
-          <Choice label="A video game." points={30} />
-        </Choices>
+        <Question label="Any ideas?">
+          <Answer label="A video game." points={30} />
+        </Question>
       ),
     },
     7: {
       [Routes.Platonic]: (
-        <Choices label="You know, that Apathy Syndrome thing.">
-          <Choice label="That's worrying." points={30} />
-        </Choices>
+        <Question label="You know, that Apathy Syndrome thing.">
+          <Answer label="That's worrying." points={30} />
+        </Question>
       ),
     },
     8: {
       [Routes.Platonic]: (
-        <Choices label="Man, why do I even bother anymore? What's the point of going through all this pain just to win...?">
-          <Choice label="That's just who you are." points={30} />
-        </Choices>
+        <Question label="Man, why do I even bother anymore? What's the point of going through all this pain just to win...?">
+          <Answer label="That's just who you are." points={30} />
+        </Question>
       ),
     },
     9: {
       [Routes.Platonic]: (
-        <Choices label="With everything that's happening to me right now... do you really think I can still win the regionals next year?">
-          <Choice label="Sounds impossible." points={30} />
-        </Choices>
+        <Question label="With everything that's happening to me right now... do you really think I can still win the regionals next year?">
+          <Answer label="Sounds impossible." points={30} />
+        </Question>
       ),
     },
   },

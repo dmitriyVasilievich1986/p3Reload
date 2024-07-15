@@ -1,5 +1,5 @@
 import { SocialLinkNames, SocialLinkType, Routes } from "./types";
-import { Choices, Choice } from "../../components/choices";
+import { Question, Answer } from "../../components/choices";
 import { EventCard } from "../../components/eventCard";
 
 import {
@@ -140,58 +140,58 @@ export const Fortune: SocialLinkType = {
   invitations: {
     2: {
       [Routes.Platonic]: (
-        <Choices label="I doubt I'd ever see something like a beef bowl on the dinner table at home...">
-          <Choice label="Let's eat here again, then." points={30} />
-        </Choices>
+        <Question label="I doubt I'd ever see something like a beef bowl on the dinner table at home...">
+          <Answer label="Let's eat here again, then." points={30} />
+        </Question>
       ),
     },
     3: {
       [Routes.Platonic]: (
-        <Choices label="D-Do you think it's okay for me to be in the finals?">
-          <Choice label="Yeah, you just did your best." points={30} />
-        </Choices>
+        <Question label="D-Do you think it's okay for me to be in the finals?">
+          <Answer label="Yeah, you just did your best." points={30} />
+        </Question>
       ),
     },
     4: {
       [Routes.Platonic]: (
-        <Choices label="Hey, we should organize an outdoor sketching session one of these days.">
-          <Choice label="That would be cool." points={30} />
-        </Choices>
+        <Question label="Hey, we should organize an outdoor sketching session one of these days.">
+          <Answer label="That would be cool." points={30} />
+        </Question>
       ),
     },
     5: {
       [Routes.Platonic]: (
-        <Choices label="What would I list as my occupation on a survey...?">
-          <Choice label="Entertainment industry." points={30} />
-        </Choices>
+        <Question label="What would I list as my occupation on a survey...?">
+          <Answer label="Entertainment industry." points={30} />
+        </Question>
       ),
     },
     6: {
       [Routes.Platonic]: (
-        <Choices label="This is all his fault! Why does he keep changing his mind!?">
-          <Choice label="You shouldn't blame others." points={30} />
-        </Choices>
+        <Question label="This is all his fault! Why does he keep changing his mind!?">
+          <Answer label="You shouldn't blame others." points={30} />
+        </Question>
       ),
     },
     7: {
       [Routes.Platonic]: (
-        <Choices label="I mean, I won't just be visiting; I'll be living there...">
-          <Choice label="Think of the new inspirations." points={30} />
-        </Choices>
+        <Question label="I mean, I won't just be visiting; I'll be living there...">
+          <Answer label="Think of the new inspirations." points={30} />
+        </Question>
       ),
     },
     8: {
       [Routes.Platonic]: (
-        <Choices label="So... I was wondering... what it'd be like if you called me something in that vein...">
-          <Choice label="Okay, Brother." points={30} />
-        </Choices>
+        <Question label="So... I was wondering... what it'd be like if you called me something in that vein...">
+          <Answer label="Okay, Brother." points={30} />
+        </Question>
       ),
     },
     9: {
       [Routes.Platonic]: (
-        <Choices label="Even if your life is predestined, I think you should give it your all while on that path.">
-          <Choice label="You have a point." points={30} />
-        </Choices>
+        <Question label="Even if your life is predestined, I think you should give it your all while on that path.">
+          <Answer label="You have a point." points={30} />
+        </Question>
       ),
     },
   },

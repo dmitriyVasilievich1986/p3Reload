@@ -1,3 +1,3 @@
-import { Choices, Choice } from "./Choices";
+import { Question, Answer } from "./Choices";
 
-export { Choices, Choice };
+export { Question, Answer };

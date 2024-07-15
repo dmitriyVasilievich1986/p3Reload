@@ -1,5 +1,5 @@
 import { SocialLinkNames, SocialLinkType, Routes } from "./types";
-import { Choices, Choice } from "../../components/choices";
+import { Question, Answer } from "../../components/choices";
 import { EventCard } from "../../components/eventCard";
 
 import {
@@ -304,70 +304,70 @@ export const Priestess: SocialLinkType = {
   invitations: {
     2: {
       [Routes.Platonic]: (
-        <Choices label={`Um, ${mainCharName}-kun. Do you like sweets?`}>
-          <Choice label="I do." points={30} />
-        </Choices>
+        <Question label={`Um, ${mainCharName}-kun. Do you like sweets?`}>
+          <Answer label="I do." points={30} />
+        </Question>
       ),
     },
     3: {
       [Routes.Platonic]: (
-        <Choices label="Which do you like more? Japanese food or western food?">
-          <Choice label="Japanese food." points={30} />
-        </Choices>
+        <Question label="Which do you like more? Japanese food or western food?">
+          <Answer label="Japanese food." points={30} />
+        </Question>
       ),
     },
     4: {
       [Routes.Platonic]: (
-        <Choices label="Do you prefer watching movies at the theater or at home on DVD?">
-          <Choice label="At home on DVD." points={30} />
-        </Choices>
+        <Question label="Do you prefer watching movies at the theater or at home on DVD?">
+          <Answer label="At home on DVD." points={30} />
+        </Question>
       ),
     },
     5: {
       [Routes.Platonic]: (
-        <Choices label="What do you usually do on your days off?">
-          <Choice label="Spend time with friends." points={30} />
-        </Choices>
+        <Question label="What do you usually do on your days off?">
+          <Answer label="Spend time with friends." points={30} />
+        </Question>
       ),
     },
     6: {
       [Routes.Platonic]: (
-        <Choices
+        <Question
           label={`Um... If I did make a dish with dried snake meat, would you still eat it, ${mainCharName}-kun?`}
         >
-          <Choice label="You don't have to." points={30} />
-        </Choices>
+          <Answer label="You don't have to." points={30} />
+        </Question>
       ),
     },
     7: {
       [Routes.Platonic]: (
-        <Choices label="Have you ever filleted a fish before?">
-          <Choice label="Yeah, I'm not too bad." points={30} />
-        </Choices>
+        <Question label="Have you ever filleted a fish before?">
+          <Answer label="Yeah, I'm not too bad." points={30} />
+        </Question>
       ),
     },
     8: {
       [Routes.Platonic]: (
-        <Choices label="Do you think it's possible to connect music to cooking in that same vein?">
-          <Choice label="Yeah, I think so." points={30} />
-        </Choices>
+        <Question label="Do you think it's possible to connect music to cooking in that same vein?">
+          <Answer label="Yeah, I think so." points={30} />
+        </Question>
       ),
       [Routes.Romantic]: (
-        <Choices label="Do you think it's possible to connect music to cooking in that same vein?">
-          <Choice label="Yeah, I think so." points={30} />
-        </Choices>
+        <Question label="Do you think it's possible to connect music to cooking in that same vein?">
+          <Answer label="Yeah, I think so." points={30} />
+        </Question>
       ),
     },
     9: {
       [Routes.Platonic]: (
-        <Choices label="You've been awfully friendly with different girls lately, haven't you?">
-          <Choice label="N-No, I haven't." points={30} />
-        </Choices>
+        <Question label="You've been awfully friendly with different girls lately, haven't you?">
+          <Answer label="N-No, I haven't." points={30} />
+        </Question>
       ),
       [Routes.Romantic]: (
-        <Choices label="You've been awfully friendly with different girls lately, haven't you?">
-          <Choice label="N-No, I haven't." points={30} />
-        </Choices>
+        <Question label="You've been awfully friendly with different girls lately, haven't you?">
+          <Answer label="N-No, I haven't." points={30} />
+        </Question>
       ),
     },
   },

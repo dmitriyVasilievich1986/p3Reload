@@ -1,5 +1,5 @@
 import { SocialLinkNames, SocialLinkType, Routes } from "./types";
-import { Choices, Choice } from "../../components/choices";
+import { Question, Answer } from "../../components/choices";
 import { EventCard } from "../../components/eventCard";
 
 import {
@@ -128,60 +128,60 @@ export const Temperance: SocialLinkType = {
   invitations: {
     2: {
       [Routes.Platonic]: (
-        <Choices label="...I know! We can go there now! It is just a train ride away, is it not?">
-          <Choice label="Sure, let's go." points={30} />
-        </Choices>
+        <Question label="...I know! We can go there now! It is just a train ride away, is it not?">
+          <Answer label="Sure, let's go." points={30} />
+        </Question>
       ),
     },
     3: {
       [Routes.Platonic]: (
-        <Choices label={`Do you like it, too, ${mainCharName}-dono?`}>
-          <Choice label="Yeah, I do." points={30} />
-        </Choices>
+        <Question label={`Do you like it, too, ${mainCharName}-dono?`}>
+          <Answer label="Yeah, I do." points={30} />
+        </Question>
       ),
     },
     4: {
       [Routes.Platonic]: (
-        <Choices label="Perhaps I am feeling homesick...">
-          <Choice label="You should stay in Japan." points={30} />
-        </Choices>
+        <Question label="Perhaps I am feeling homesick...">
+          <Answer label="You should stay in Japan." points={30} />
+        </Question>
       ),
     },
     5: {
       [Routes.Platonic]: (
-        <Choices label="He looked just like my scary uncle! I did not want to think about him...">
-          <Choice label="Don't worry about it." points={30} />
-        </Choices>
+        <Question label="He looked just like my scary uncle! I did not want to think about him...">
+          <Answer label="Don't worry about it." points={30} />
+        </Question>
       ),
     },
     6: {
       [Routes.Platonic]: (
-        <Choices label="Does no one play those games anymore?">
-          <Choice label="We do on New Year's." points={30} />
-        </Choices>
+        <Question label="Does no one play those games anymore?">
+          <Answer label="We do on New Year's." points={30} />
+        </Question>
       ),
     },
     7: {
       [Routes.Platonic]: (
-        <Choices label="I must hurry and complete the kimono.">
-          <Choice label="Just relax." points={30} />
-        </Choices>
+        <Question label="I must hurry and complete the kimono.">
+          <Answer label="Just relax." points={30} />
+        </Question>
       ),
     },
     8: {
       [Routes.Platonic]: (
-        <Choices label="What exactly is it? It just looks like the eggs of an insect to me.">
-          <Choice label="It's beans." points={30} />
-        </Choices>
+        <Question label="What exactly is it? It just looks like the eggs of an insect to me.">
+          <Answer label="It's beans." points={30} />
+        </Question>
       ),
     },
     9: {
       [Routes.Platonic]: (
-        <Choices
+        <Question
           label={`Speaking of rice... What is your favorite dish with it, ${mainCharName}-dono?`}
         >
-          <Choice label="Ochazuke." points={30} />
-        </Choices>
+          <Answer label="Ochazuke." points={30} />
+        </Question>
       ),
     },
   },

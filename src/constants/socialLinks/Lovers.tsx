@@ -1,5 +1,5 @@
 import { SocialLinkNames, SocialLinkType, Routes } from "./types";
-import { Choices, Choice } from "../../components/choices";
+import { Question, Answer } from "../../components/choices";
 import { EventCard } from "../../components/eventCard";
 
 import {
@@ -239,56 +239,56 @@ export const Lovers: SocialLinkType = {
   invitations: {
     2: {
       [Routes.Platonic]: (
-        <Choices label="Oh, speaking of music, what do you usually listen to?">
-          <Choice label="J-pop." points={30} />
-        </Choices>
+        <Question label="Oh, speaking of music, what do you usually listen to?">
+          <Answer label="J-pop." points={30} />
+        </Question>
       ),
     },
     3: {
       [Routes.Platonic]: (
-        <Choices label="Do YOU like azuki strawberry daifuku!?">
-          <Choice label="I love it." points={30} />
-        </Choices>
+        <Question label="Do YOU like azuki strawberry daifuku!?">
+          <Answer label="I love it." points={30} />
+        </Question>
       ),
     },
     4: {
       [Routes.Platonic]: (
-        <Choices label="Is it weird for me to be so hung up about my parents so much at my age?">
-          <Choice label="Leave the bags to me." points={30} />
-        </Choices>
+        <Question label="Is it weird for me to be so hung up about my parents so much at my age?">
+          <Answer label="Leave the bags to me." points={30} />
+        </Question>
       ),
     },
     6: {
       [Routes.Platonic]: (
-        <Choices label="I-I'm not trying to pry, or anything. I was just curious...">
-          <Choice label="Hang out with a friend." points={30} />
-        </Choices>
+        <Question label="I-I'm not trying to pry, or anything. I was just curious...">
+          <Answer label="Hang out with a friend." points={30} />
+        </Question>
       ),
     },
     7: {
       [Routes.Platonic]: (
-        <Choices label={`What's your favorite color, ${mainCharName}-kun?`}>
-          <Choice label="Green." points={30} />
-        </Choices>
+        <Question label={`What's your favorite color, ${mainCharName}-kun?`}>
+          <Answer label="Green." points={30} />
+        </Question>
       ),
     },
     8: {
       [Routes.Platonic]: (
-        <Choices label="Yeah, I have a pretty big appetite, huh? Haha...">
-          <Choice label="It's a healthy appetite." points={30} />
-        </Choices>
+        <Question label="Yeah, I have a pretty big appetite, huh? Haha...">
+          <Answer label="It's a healthy appetite." points={30} />
+        </Question>
       ),
     },
     9: {
       [Routes.Platonic]: (
-        <Choices label="But no one knows about us, huh... Just like a manga.">
-          <Choice label="Some people do." points={30} />
-        </Choices>
+        <Question label="But no one knows about us, huh... Just like a manga.">
+          <Answer label="Some people do." points={30} />
+        </Question>
       ),
       [Routes.Romantic]: (
-        <Choices label="But no one knows about us, huh... Just like a manga.">
-          <Choice label="Some people do." points={30} />
-        </Choices>
+        <Question label="But no one knows about us, huh... Just like a manga.">
+          <Answer label="Some people do." points={30} />
+        </Question>
       ),
     },
   },
