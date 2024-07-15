@@ -1,4 +1,4 @@
-import { Choices, Choice } from "../../components/choices";
+import { Question, Answer } from "../../components/choices";
 import { EventCard } from "../../components/eventCard";
 import { WideEvent } from "../../components/wideEvent";
 import { baseCalendar } from "./baseFunctions";
@@ -184,15 +184,15 @@ export const june: singleDay[] = [
       {
         ...events.schoolQuestionCharm,
         label: () => (
-          <Choices
+          <Question
             label={
               'Which phrase means, "able to see things for what they really are"?'
             }
           >
-            <Choice label="Keen eye." points={15} />
-            <Choice label="Mean eye." />
-            <Choice label="Bright eyes." />
-          </Choices>
+            <Answer label="Keen eye." points={15} />
+            <Answer label="Mean eye." />
+            <Answer label="Bright eyes." />
+          </Question>
         ),
       },
       events.DoNothing,
@@ -219,13 +219,13 @@ export const june: singleDay[] = [
       {
         ...events.schoolQuestionCharm,
         label: () => (
-          <Choices
+          <Question
             label={"What early religious practice was the origin of magic?"}
           >
-            <Choice label="Totemism." />
-            <Choice label="Animism." />
-            <Choice label="Shamanism." points={15} />
-          </Choices>
+            <Answer label="Totemism." />
+            <Answer label="Animism." />
+            <Answer label="Shamanism." points={15} />
+          </Question>
         ),
       },
       events.DoNothing,
@@ -288,9 +288,9 @@ export const june: singleDay[] = [
       {
         ...events.schoolQuestionCharm,
         label: () => (
-          <Choices label={"What else do people call this curve?"}>
-            <Choice label="Witch of Agnesi" points={15} />
-          </Choices>
+          <Question label={"What else do people call this curve?"}>
+            <Answer label="Witch of Agnesi" points={15} />
+          </Question>
         ),
       },
       events.DoNothing,
@@ -328,13 +328,13 @@ export const june: singleDay[] = [
       {
         ...events.schoolQuestionCharm,
         label: () => (
-          <Choices
+          <Question
             label={
               "What's it called when the air bubbles in a whirlpool bath hit you and make you vibrate?"
             }
           >
-            <Choice label="The flutter effect" points={15} />
-          </Choices>
+            <Answer label="The flutter effect" points={15} />
+          </Question>
         ),
       },
       events.DoNothing,
@@ -383,11 +383,11 @@ export const june: singleDay[] = [
       {
         ...events.schoolQuestionCharm,
         label: () => (
-          <Choices
+          <Question
             label={"What form of natural magic is used to find water sources?"}
           >
-            <Choice label="Dowsing" points={15} />
-          </Choices>
+            <Answer label="Dowsing" points={15} />
+          </Question>
         ),
       },
       events.DoNothing,

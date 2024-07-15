@@ -1,10 +1,11 @@
 import { ChoiceProps, ChoicesProps } from "./types";
 import classnames from "classnames/bind";
 import * as style from "./style.scss";
+import React from "react";
 
 const cx = classnames.bind(style);
 
-export function Choice(props: ChoiceProps) {
+export function Answer(props: ChoiceProps) {
   const points = props?.points || 0;
   let backgroundColor = "inherit";
   if (props?.fork) {
@@ -26,11 +27,38 @@ export function Choice(props: ChoiceProps) {
   );
 }
 
-export function Choices(props: ChoicesProps) {
+export function Question(props: ChoicesProps) {
   return (
     <div className={cx("choices")}>
       <label>{props.label}</label>
       <div className={cx("list")}>{props.children}</div>
     </div>
   );
+}
+
+export function QuestionsWrapper(props: {
+  element: React.ReactElement<ChoicesProps>[];
+  points: number;
+}) {
+  let maxPoints = 0;
+  props.element.forEach((q) => {
+    if (Array.isArray(q.props.children)) {
+      const points = q.props.children.map((c) => c.props.points || 0);
+      maxPoints += Math.max(...points);
+    } else if (React.isValidElement(q.props.children)) {
+      maxPoints += q.props.children.props.points || 0;
+    }
+  });
+
+  return {
+    ...props,
+    maxPoints,
+    element: () => (
+      <div className={cx("question-wrapper")}>
+        {props.element.map((e) =>
+          React.cloneElement(e, { key: e.props.label })
+        )}
+      </div>
+    ),
+  };
 }

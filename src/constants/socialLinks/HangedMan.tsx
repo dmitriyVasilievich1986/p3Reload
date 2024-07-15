@@ -1,117 +1,140 @@
+import { QuestionsWrapper, Question, Answer } from "../../components/choices";
+import { baseSocialLinkCalculation } from "./baseFunctions";
 import { SocialLinkNames, SocialLinkType } from "./types";
 import { EventCard } from "../../components/eventCard";
-
-import {
-  baseSocialLinkCalculation,
-  LinkLevel,
-  choices,
-  choice,
-} from "./baseFunctions";
 
 export const HangedMan: SocialLinkType = {
   ...baseSocialLinkCalculation,
   name: SocialLinkNames.HangedMan,
   levels: [
-    LinkLevel(),
-    LinkLevel(0, [
-      choices("My tummy's grumbling! Can we go to Wilduck?", [
-        choice({ label: "Sure, let's go.", points: 15 }),
-        choice({ label: "Let's keep playing." }),
-      ]),
-      choices("Why would they get a divorce?", [
-        choice({ label: "They fell out of love." }),
-        choice({ label: "It's probably your fault." }),
-        choice({ label: "I don't know." }),
-      ]),
-      choices("...She's sobbing loudly. What should I do?", [
-        choice({ label: "Calm her down" }),
-        choice({ label: "Wait for her to finish." }),
-      ]),
-    ]),
-    LinkLevel(0, [
-      choices("...And who are you?", [
-        choice({ label: "I'm Maiko's friend." }),
-        choice({ label: "Just a random passerby." }),
-      ]),
-      choices("Do you think he'll come home and see me?", [
-        choice({ label: "He'll probably forget." }),
-        choice({ label: "I really can't say." }),
-        choice({ label: "Don't worry, he'll be there.", points: 15 }),
-      ]),
-    ]),
-    LinkLevel(20, [
-      choices("They really do care about me!", [
-        choice({ label: "That's great news!", points: 15 }),
-        choice({ label: "Of course they care.", points: 15 }),
-        choice({ label: "Nah, they don't care." }),
-      ]),
-    ]),
-    LinkLevel(20, [
-      choices("He's so mean. It's not fair!", [
-        choice({ label: "That's awful.", points: 15 }),
-        choice({ label: "Why would he do that?" }),
-      ]),
-      choices("Do they just wish I would disappear?", [
-        choice({ label: "It's possible." }),
-        choice({ label: "They would never.", points: 5 }),
-      ]),
-    ]),
-    LinkLevel(20, [
-      choices("I made up my mind! I have to run away from home!", [
-        choice({ label: "Don't do it." }),
-        choice({ label: "Calm down.", points: 5 }),
-        choice({ label: "It's up to you.", points: 5 }),
-      ]),
-      choices("I need lots of snacks, right? And my...insurance card?", [
-        choice({ label: "That should be enough.", points: 15 }),
-        choice({ label: "It'll take more than that." }),
-      ]),
-    ]),
-    LinkLevel(40, [
-      choices("She's never done anything like this before!", [
-        choice({ label: "We should look for her." }),
-        choice({ label: "It's probably your fault." }),
-        choice({ label: "Just leave her alone." }),
-      ]),
-      choices(
-        "If you have any idea where she is, I'm begging you to tell us.",
-        [
-          choice({ label: "Maybe the music store." }),
-          choice({ label: "Maybe the takoyaki stand." }),
-        ]
-      ),
-    ]),
-    LinkLevel(15, [
-      choices("What do you wanna get?", [
-        choice({ label: "Hamburgers.", points: 5 }),
-        choice({ label: "Japanese food." }),
-      ]),
-      choices("It was sad, but I listened to the whole thing. Did I do good?", [
-        choice({ label: "You're a good girl.", points: 15 }),
-        choice({ label: "Not really." }),
-      ]),
-      choices("Who do you think I should pick?", [
-        choice({ label: "Your dad.", points: 15 }),
-        choice({ label: "Your mom." }),
-        choice({ label: "You decide." }),
-      ]),
-    ]),
-    LinkLevel(30, [
-      choices("Even if I'm gone... we'll still be friends, right?", [
-        choice({ label: "Friends forever.", points: 15 }),
-        choice({ label: "I might forget about you." }),
-      ]),
-    ]),
-    LinkLevel(30, [
-      choices("Do you think I'll have a family of my own one day?", [
-        choice({ label: "I'm sure you will.", points: 15 }),
-        choice({ label: "No idea." }),
-      ]),
-      choices("Can we get married?", [
-        choice({ label: "Sure.", points: 15 }),
-        choice({ label: "I'll think about it." }),
-      ]),
-    ]),
+    {
+      points: 0,
+      maxPoints: 0,
+      element: () => <EventCard head="Create bond" />,
+    },
+    QuestionsWrapper({
+      points: 0,
+      element: [
+        <Question label="My tummy's grumbling! Can we go to Wilduck?">
+          <Answer label="Sure, let's go." points={15} />
+          <Answer label="Let's keep playing." />
+        </Question>,
+        <Question label="Why would they get a divorce?">
+          <Answer label="They fell out of love." />
+          <Answer label="It's probably your fault." />
+          <Answer label="I don't know." />
+        </Question>,
+        <Question label="...She's sobbing loudly. What should I do?">
+          <Answer label="Calm her down" />
+          <Answer label="Wait for her to finish." />
+        </Question>,
+      ],
+    }),
+    QuestionsWrapper({
+      points: 0,
+      element: [
+        <Question label="...And who are you?">
+          <Answer label="I'm Maiko's friend." />
+          <Answer label="Just a random passerby." />
+        </Question>,
+        <Question label="Do you think he'll come home and see me?">
+          <Answer label="He'll probably forget." />
+          <Answer label="I really can't say." />
+          <Answer label="Don't worry, he'll be there." points={15} />
+        </Question>,
+      ],
+    }),
+    QuestionsWrapper({
+      points: 20,
+      element: [
+        <Question label="They really do care about me!">
+          <Answer label="That's great news!" points={15} />
+          <Answer label="Of course they care." points={15} />
+          <Answer label="Nah, they don't care." />
+        </Question>,
+      ],
+    }),
+    QuestionsWrapper({
+      points: 20,
+      element: [
+        <Question label="He's so mean. It's not fair!">
+          <Answer label="That's awful." points={15} />
+          <Answer label="Why would he do that?" />
+        </Question>,
+        <Question label="Do they just wish I would disappear?">
+          <Answer label="It's possible." />
+          <Answer label="They would never." points={5} />
+        </Question>,
+      ],
+    }),
+    QuestionsWrapper({
+      points: 20,
+      element: [
+        <Question label="I made up my mind! I have to run away from home!">
+          <Answer label="Don't do it." />
+          <Answer label="Calm down." points={5} />
+          <Answer label="It's up to you." points={5} />
+        </Question>,
+        <Question label="I need lots of snacks, right? And my...insurance card?">
+          <Answer label="That should be enough." points={15} />
+          <Answer label="It'll take more than that." />
+        </Question>,
+      ],
+    }),
+    QuestionsWrapper({
+      points: 40,
+      element: [
+        <Question label="She's never done anything like this before!">
+          <Answer label="We should look for her." />
+          <Answer label="It's probably your fault." />
+          <Answer label="Just leave her alone." />
+        </Question>,
+        <Question label="If you have any idea where she is, I'm begging you to tell us.">
+          <Answer label="Maybe the music store." />
+          <Answer label="Maybe the takoyaki stand." />
+        </Question>,
+      ],
+    }),
+    QuestionsWrapper({
+      points: 15,
+      element: [
+        <Question label="What do you wanna get?">
+          <Answer label="Hamburgers." points={5} />
+          <Answer label="Japanese food." />
+        </Question>,
+        <Question label="It was sad, but I listened to the whole thing. Did I do good?">
+          <Answer label="You're a good girl." points={15} />
+          <Answer label="Not really." />
+        </Question>,
+        <Question label="Who do you think I should pick?">
+          <Answer label="Your dad." points={15} />
+          <Answer label="Your mom." />
+          <Answer label="You decide." />
+        </Question>,
+      ],
+    }),
+    QuestionsWrapper({
+      points: 30,
+      element: [
+        <Question label="Even if I'm gone... we'll still be friends, right?">
+          <Answer label="Friends forever." points={15} />
+          <Answer label="I might forget about you." />
+        </Question>,
+      ],
+    }),
+    QuestionsWrapper({
+      points: 30,
+      element: [
+        <Question label="Do you think I'll have a family of my own one day?">
+          <Answer label="I'm sure you will." points={15} />
+          <Answer label="No idea." />
+        </Question>,
+        <Question label="Can we get married?">
+          <Answer label="Sure." points={15} />
+          <Answer label="I'll think about it." />
+        </Question>,
+      ],
+    }),
     {
       points: 0,
       maxPoints: 0,

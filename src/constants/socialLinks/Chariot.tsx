@@ -1,4 +1,5 @@
-import { Choices, Choice } from "../../components/choices";
+import { QuestionsWrapper, Question, Answer } from "../../components/choices";
+import { baseSocialLinkCalculation } from "./baseFunctions";
 import { EventCard } from "../../components/eventCard";
 
 import {
@@ -8,36 +9,29 @@ import {
   Routes,
 } from "./types";
 
-import {
-  baseSocialLinkCalculation,
-  LinkLevel,
-  choices,
-  choice,
-} from "./baseFunctions";
-
 function chariotStrength() {
-  const payload = LinkLevel(0, [
-    choices("M-My side is killing me... I might've overdone it a bit.", [
-      choice({ label: "Don't push yourself." }),
-      choice({ label: "Toughen up!", points: 5 }),
-    ]),
-    choices(
-      "You don't even look tired... Uh, what kind of training regimen do you have?",
-      [
-        choice({ label: "Just a normal routine." }),
-        choice({ label: "A very special routine." }),
-      ]
-    ),
-    choices("Let's get go- Argh!", [
-      choice({ label: "What's wrong?" }),
-      choice({ label: "Come on, hurry up." }),
-    ]),
-  ]);
+  const payload = QuestionsWrapper({
+    points: 0,
+    element: [
+      <Question label="M-My side is killing me... I might've overdone it a bit.">
+        <Answer label="Don't push yourself." />
+        <Answer label="Toughen up!" points={5} />
+      </Question>,
+      <Question label="You don't even look tired... Uh, what kind of training regimen do you have?">
+        <Answer label="Just a normal routine." />
+        <Answer label="A very special routine." />
+      </Question>,
+      <Question label="Let's get go- Argh!">
+        <Answer label="What's wrong?" />
+        <Answer label="Come on, hurry up." />
+      </Question>,
+    ],
+  });
   return {
     ...payload,
     element: () => (
       <>
-        {payload.element({ key: "chariotStrength" })}
+        {payload.element()}
         <EventCard
           place="2F Classroom Hallway"
           name="Yuko Nishiwaki"
@@ -70,112 +64,119 @@ export const Chariot: SocialLinkType = {
     return payload;
   },
   levels: [
-    LinkLevel(),
+    {
+      points: 0,
+      maxPoints: 0,
+      element: () => <EventCard head="Create bond" />,
+    },
     chariotStrength(),
-    LinkLevel(0, [
-      choices("It's just, um... my anemia's acting up.", [
-        choice({ label: "Sorry, that sounds awful!" }),
-        choice({ label: "Are you going to be okay?", points: 5 }),
-      ]),
-      choices(
-        "I tried medicine, I tried wrapping it, but the pain won't stop.",
-        [
-          choice({ label: "Will it heal?", points: 5 }),
-          choice({ label: "Take a break from practice." }),
-        ]
-      ),
-    ]),
-    LinkLevel(20, [
-      choices("Wh-What's up? I was just gonna sneak back into practice.", [
-        choice({ label: "Where have you been?" }),
-        choice({ label: "Did you ditch?" }),
-      ]),
-      choices(
-        "She made the appointment without telling me, so there was nothing I could do!",
-        [
-          choice({ label: "How did it go?" }),
-          choice({ label: "That really sucks.", points: 15 }),
-        ]
-      ),
-    ]),
-    LinkLevel(15, [
-      choices("Man... I keep running into you at the weirdest times.", [
-        choice({ label: "Back from the hospital?", points: 5 }),
-        choice({ label: "Did you ditched?" }),
-      ]),
-      choices("You gotta be kidding... Why can't I... stand up!?", [
-        choice({ label: "Take my shoulder!", points: 15 }),
-        choice({ label: "I'll carry you!", points: 5 }),
-        choice({ label: "I'll go get help!" }),
-      ]),
-    ]),
-    LinkLevel(15, [
-      choices("I want to win, so I have to practice.", [
-        choice({ label: "There's nothing you can do." }),
-        choice({ label: "Show some guts, man!", points: 5 }),
-      ]),
-      choices(
-        "I promised I'd win at next year's meet and become the number one athlete in Japan.",
-        [
-          choice({ label: "You promised?" }),
-          choice({ label: "Why go so far?", points: 5 }),
-        ]
-      ),
-      choices(
-        "That's why I have to win this meet-so I can make it to nationals!",
-        [
-          choice({ label: "Do you think you can win?" }),
-          choice({ label: "What about your knee?", points: 5 }),
-        ]
-      ),
-    ]),
-    LinkLevel(15, [
-      choices(
-        "I know you didn't say anything. I just think he can tell something's up.",
-        [
-          choice({ label: "How's your knee?", points: 5 }),
-          choice({ label: "Can you hide it?" }),
-        ]
-      ),
-      choices("Otherwise, I won't be able to keep my promise to my nephew!", [
-        choice({ label: "You need to get tougher.", points: 15 }),
-        choice({ label: "You can't win like this.", points: 5 }),
-        choice({ label: "You need to take a break." }),
-      ]),
-    ]),
-    LinkLevel(22, [
-      choices("You must know what's going on.", [
-        choice({ label: "I don't know anything." }),
-        choice({ label: "......", points: 5 }),
-      ]),
-    ]),
-    LinkLevel(22, [
-      choices("I'm sure you love lugging all this dead weight around, huh?", [
-        choice({ label: "I don't mind at all.", points: 15 }),
-        choice({ label: "No, not exactly." }),
-        choice({ label: "It's fine-I'm tough as hell.", points: 5 }),
-      ]),
-    ]),
-    LinkLevel(22, [
-      choices("There's something I wanna talk to you about.", [
-        choice({ label: "Okay, let's hear it." }),
-        choice({ label: "What is it about?" }),
-      ]),
-      choices(
-        "I've made up my mind. I'm going to have surgery to fix my knee.",
-        [
-          choice({ label: "What about the big meet?", points: 15 }),
-          choice({ label: "What about your promise?" }),
-        ]
-      ),
-      choices(
-        "I'm not gonna worry about winning races. I'm gonna focus on winning back my health instead.",
-        [
-          choice({ label: "You've got this!", points: 5 }),
-          choice({ label: "You've really grown up.", points: 5 }),
-        ]
-      ),
-    ]),
+    QuestionsWrapper({
+      points: 0,
+      element: [
+        <Question label="It's just, um... my anemia's acting up.">
+          <Answer label="Sorry, that sounds awful!" />
+          <Answer label="Are you going to be okay?" points={5} />
+        </Question>,
+        <Question label="I tried medicine, I tried wrapping it, but the pain won't stop.">
+          <Answer label="Will it heal?" points={5} />
+          <Answer label="Take a break from practice." />
+        </Question>,
+      ],
+    }),
+    QuestionsWrapper({
+      points: 20,
+      element: [
+        <Question label="Wh-What's up? I was just gonna sneak back into practice.">
+          <Answer label="Where have you been?" />
+          <Answer label="Did you ditch?" />
+        </Question>,
+        <Question label="She made the appointment without telling me, so there was nothing I could do!">
+          <Answer label="How did it go?" />
+          <Answer label="That really sucks." points={15} />
+        </Question>,
+      ],
+    }),
+    QuestionsWrapper({
+      points: 15,
+      element: [
+        <Question label="Man... I keep running into you at the weirdest times.">
+          <Answer label="Back from the hospital?" points={5} />
+          <Answer label="Did you ditched?" />
+        </Question>,
+        <Question label="You gotta be kidding... Why can't I... stand up!?">
+          <Answer label="Take my shoulder!" points={15} />
+          <Answer label="I'll carry you!" points={5} />
+          <Answer label="I'll go get help!" />
+        </Question>,
+      ],
+    }),
+    QuestionsWrapper({
+      points: 15,
+      element: [
+        <Question label="I want to win, so I have to practice.">
+          <Answer label="There's nothing you can do." />
+          <Answer label="Show some guts, man!" points={5} />
+        </Question>,
+        <Question label="I promised I'd win at next year's meet and become the number one athlete in Japan.">
+          <Answer label="You promised?" />
+          <Answer label="Why go so far?" points={5} />
+        </Question>,
+        <Question label="That's why I have to win this meet-so I can make it to nationals!">
+          <Answer label="Do you think you can win?" />
+          <Answer label="What about your knee?" points={5} />
+        </Question>,
+      ],
+    }),
+    QuestionsWrapper({
+      points: 15,
+      element: [
+        <Question label="I know you didn't say anything. I just think he can tell something's up.">
+          <Answer label="How's your knee?" points={5} />
+          <Answer label="Can you hide it?" />
+        </Question>,
+        <Question label="Otherwise, I won't be able to keep my promise to my nephew!">
+          <Answer label="You need to get tougher." points={15} />
+          <Answer label="You can't win like this." points={5} />
+          <Answer label="You need to take a break." />
+        </Question>,
+      ],
+    }),
+    QuestionsWrapper({
+      points: 22,
+      element: [
+        <Question label="You must know what's going on.">
+          <Answer label="I don't know anything." />
+          <Answer label="......" points={5} />
+        </Question>,
+      ],
+    }),
+    QuestionsWrapper({
+      points: 22,
+      element: [
+        <Question label="I'm sure you love lugging all this dead weight around, huh?">
+          <Answer label="I don't mind at all." points={15} />
+          <Answer label="No, not exactly." />
+          <Answer label="It's fine-I'm tough as hell." points={5} />
+        </Question>,
+      ],
+    }),
+    QuestionsWrapper({
+      points: 22,
+      element: [
+        <Question label="There's something I wanna talk to you about.">
+          <Answer label="Okay, let's hear it." />
+          <Answer label="What is it about?" />
+        </Question>,
+        <Question label="I've made up my mind. I'm going to have surgery to fix my knee.">
+          <Answer label="What about the big meet?" points={15} />
+          <Answer label="What about your promise?" />
+        </Question>,
+        <Question label="I'm not gonna worry about winning races. I'm gonna focus on winning back my health instead.">
+          <Answer label="You've got this!" points={5} />
+          <Answer label="You've really grown up." points={5} />
+        </Question>,
+      ],
+    }),
     {
       points: 0,
       maxPoints: 0,
@@ -185,58 +186,58 @@ export const Chariot: SocialLinkType = {
   invitations: {
     2: {
       [Routes.Platonic]: (
-        <Choices label="That way, I'm ready to go 24/7, y'know? That's real dedication, man.">
-          <Choice label="Impressive." points={30} />
-        </Choices>
+        <Question label="That way, I'm ready to go 24/7, y'know? That's real dedication, man.">
+          <Answer label="Impressive." points={30} />
+        </Question>
       ),
     },
     3: {
       [Routes.Platonic]: (
-        <Choices label="I'm trying to cut down on carbs.">
-          <Choice label="Are you on a diet?" points={30} />
-        </Choices>
+        <Question label="I'm trying to cut down on carbs.">
+          <Answer label="Are you on a diet?" points={30} />
+        </Question>
       ),
     },
     4: {
       [Routes.Platonic]: (
-        <Choices label="The more I want to win, I can just feel myself tense up...">
-          <Choice label="Winning isn't everything." points={30} />
-        </Choices>
+        <Question label="The more I want to win, I can just feel myself tense up...">
+          <Answer label="Winning isn't everything." points={30} />
+        </Question>
       ),
     },
     5: {
       [Routes.Platonic]: (
-        <Choices label="Anyway... Sorry about all of that.">
-          <Choice label="Gotta pick your battles." points={30} />
-        </Choices>
+        <Question label="Anyway... Sorry about all of that.">
+          <Answer label="Gotta pick your battles." points={30} />
+        </Question>
       ),
     },
     6: {
       [Routes.Platonic]: (
-        <Choices label="Any ideas?">
-          <Choice label="A video game." points={30} />
-        </Choices>
+        <Question label="Any ideas?">
+          <Answer label="A video game." points={30} />
+        </Question>
       ),
     },
     7: {
       [Routes.Platonic]: (
-        <Choices label="You know, that Apathy Syndrome thing.">
-          <Choice label="That's worrying." points={30} />
-        </Choices>
+        <Question label="You know, that Apathy Syndrome thing.">
+          <Answer label="That's worrying." points={30} />
+        </Question>
       ),
     },
     8: {
       [Routes.Platonic]: (
-        <Choices label="Man, why do I even bother anymore? What's the point of going through all this pain just to win...?">
-          <Choice label="That's just who you are." points={30} />
-        </Choices>
+        <Question label="Man, why do I even bother anymore? What's the point of going through all this pain just to win...?">
+          <Answer label="That's just who you are." points={30} />
+        </Question>
       ),
     },
     9: {
       [Routes.Platonic]: (
-        <Choices label="With everything that's happening to me right now... do you really think I can still win the regionals next year?">
-          <Choice label="Sounds impossible." points={30} />
-        </Choices>
+        <Question label="With everything that's happening to me right now... do you really think I can still win the regionals next year?">
+          <Answer label="Sounds impossible." points={30} />
+        </Question>
       ),
     },
   },
