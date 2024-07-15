@@ -24,6 +24,11 @@ export enum SocialLinkNames {
   Tower = "Tower",
 }
 
+export enum Routes {
+  Platonic = "Platonic",
+  Romantic = "Romantic",
+}
+
 export type KeyProps = {
   key: string | number;
 };
