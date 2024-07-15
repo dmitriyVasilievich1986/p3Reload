@@ -10,7 +10,7 @@ export function Choice(props: ChoiceProps) {
   if (props?.fork) {
     backgroundColor = "#004e98";
   } else if (points > 0) {
-    const adden = (15 - points) * 7;
+    const adden = Math.max(15 - points, 0) * 7;
     backgroundColor = `rgb(${49 + adden}, ${87 + adden}, ${44 + adden})`;
   }
 
