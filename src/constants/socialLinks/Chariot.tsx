@@ -1,5 +1,12 @@
-import { SocialLinkNames, SocialLinkType, CalculateProps } from "./types";
+import { Choices, Choice } from "../../components/choices";
 import { EventCard } from "../../components/eventCard";
+
+import {
+  SocialLinkNames,
+  SocialLinkType,
+  CalculateProps,
+  Routes,
+} from "./types";
 
 import {
   baseSocialLinkCalculation,
@@ -175,4 +182,62 @@ export const Chariot: SocialLinkType = {
       element: () => <EventCard head="Link Maxed" />,
     },
   ],
+  invitations: {
+    2: {
+      [Routes.Platonic]: (
+        <Choices label="That way, I'm ready to go 24/7, y'know? That's real dedication, man.">
+          <Choice label="Impressive." points={30} />
+        </Choices>
+      ),
+    },
+    3: {
+      [Routes.Platonic]: (
+        <Choices label="I'm trying to cut down on carbs.">
+          <Choice label="Are you on a diet?" points={30} />
+        </Choices>
+      ),
+    },
+    4: {
+      [Routes.Platonic]: (
+        <Choices label="The more I want to win, I can just feel myself tense up...">
+          <Choice label="Winning isn't everything." points={30} />
+        </Choices>
+      ),
+    },
+    5: {
+      [Routes.Platonic]: (
+        <Choices label="Anyway... Sorry about all of that.">
+          <Choice label="Gotta pick your battles." points={30} />
+        </Choices>
+      ),
+    },
+    6: {
+      [Routes.Platonic]: (
+        <Choices label="Any ideas?">
+          <Choice label="A video game." points={30} />
+        </Choices>
+      ),
+    },
+    7: {
+      [Routes.Platonic]: (
+        <Choices label="You know, that Apathy Syndrome thing.">
+          <Choice label="That's worrying." points={30} />
+        </Choices>
+      ),
+    },
+    8: {
+      [Routes.Platonic]: (
+        <Choices label="Man, why do I even bother anymore? What's the point of going through all this pain just to win...?">
+          <Choice label="That's just who you are." points={30} />
+        </Choices>
+      ),
+    },
+    9: {
+      [Routes.Platonic]: (
+        <Choices label="With everything that's happening to me right now... do you really think I can still win the regionals next year?">
+          <Choice label="Sounds impossible." points={30} />
+        </Choices>
+      ),
+    },
+  },
 };

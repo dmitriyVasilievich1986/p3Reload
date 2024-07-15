@@ -1,8 +1,10 @@
-import { SocialLinkNames, SocialLinkType } from "./types";
+import { SocialLinkNames, SocialLinkType, Routes } from "./types";
+import { Choices, Choice } from "../../components/choices";
 import { EventCard } from "../../components/eventCard";
 
 import {
   baseSocialLinkCalculation,
+  mainCharName,
   LinkLevel,
   choices,
   choice,
@@ -244,4 +246,74 @@ export const Empress: SocialLinkType = {
       element: () => <EventCard head="Link Maxed" />,
     },
   ],
+  invitations: {
+    2: {
+      [Routes.Platonic]: (
+        <Choices label="I didn't see many female customers there... Or was it just my imagination?">
+          <Choice label="Does it really matter?" points={30} />
+        </Choices>
+      ),
+    },
+    3: {
+      [Routes.Platonic]: (
+        <Choices label="How much does one of those arcade machines with a life-sized motorcycle cost?">
+          <Choice label="But you have a real one." points={30} />
+        </Choices>
+      ),
+    },
+    4: {
+      [Routes.Platonic]: (
+        <Choices label="Should we... head back now?">
+          <Choice label="You don't want to?" points={30} />
+        </Choices>
+      ),
+    },
+    5: {
+      [Routes.Platonic]: (
+        <Choices label="Would you mind telling me who your favorite musical artist is?">
+          <Choice label="Why?" points={30} />
+        </Choices>
+      ),
+    },
+    6: {
+      [Routes.Platonic]: (
+        <Choices label="It seems I have a tendency to spill all my thoughts when I'm with you. I wonder why.">
+          <Choice label="Don't worry about it." points={30} />
+        </Choices>
+      ),
+    },
+    7: {
+      [Routes.Platonic]: (
+        <Choices label="Since manga aren't that expensive, why don't people just buy them?">
+          <Choice label="Lack of storage space." points={30} />
+        </Choices>
+      ),
+    },
+    8: {
+      [Routes.Platonic]: (
+        <Choices label="Why did they give us this lemon on the side? I don't suppose it's dessert...">
+          <Choice label="Squeeze it over your food." points={30} />
+        </Choices>
+      ),
+      [Routes.Romantic]: (
+        <Choices label="...interested in anyone?">
+          <Choice label="Why do you ask?" points={30} />
+        </Choices>
+      ),
+    },
+    9: {
+      [Routes.Platonic]: (
+        <Choices label="Once everything is over... where would be a nice place to go?">
+          <Choice label="You don't need a destination." points={30} />
+        </Choices>
+      ),
+      [Routes.Romantic]: (
+        <Choices
+          label={`So, um, ${mainCharName}- Oh no, I mean ${mainCharName}...`}
+        >
+          <Choice label="You usually don't call me that." points={30} />
+        </Choices>
+      ),
+    },
+  },
 };

@@ -1,8 +1,10 @@
-import { SocialLinkNames, SocialLinkType } from "./types";
+import { SocialLinkNames, SocialLinkType, Routes } from "./types";
+import { Choices, Choice } from "../../components/choices";
 import { EventCard } from "../../components/eventCard";
 
 import {
   baseSocialLinkCalculation,
+  mainCharName,
   LinkLevel,
   choices,
   choice,
@@ -234,4 +236,60 @@ export const Lovers: SocialLinkType = {
       element: () => <EventCard head="Link Maxed" />,
     },
   ],
+  invitations: {
+    2: {
+      [Routes.Platonic]: (
+        <Choices label="Oh, speaking of music, what do you usually listen to?">
+          <Choice label="J-pop." points={30} />
+        </Choices>
+      ),
+    },
+    3: {
+      [Routes.Platonic]: (
+        <Choices label="Do YOU like azuki strawberry daifuku!?">
+          <Choice label="I love it." points={30} />
+        </Choices>
+      ),
+    },
+    4: {
+      [Routes.Platonic]: (
+        <Choices label="Is it weird for me to be so hung up about my parents so much at my age?">
+          <Choice label="Leave the bags to me." points={30} />
+        </Choices>
+      ),
+    },
+    6: {
+      [Routes.Platonic]: (
+        <Choices label="I-I'm not trying to pry, or anything. I was just curious...">
+          <Choice label="Hang out with a friend." points={30} />
+        </Choices>
+      ),
+    },
+    7: {
+      [Routes.Platonic]: (
+        <Choices label={`What's your favorite color, ${mainCharName}-kun?`}>
+          <Choice label="Green." points={30} />
+        </Choices>
+      ),
+    },
+    8: {
+      [Routes.Platonic]: (
+        <Choices label="Yeah, I have a pretty big appetite, huh? Haha...">
+          <Choice label="It's a healthy appetite." points={30} />
+        </Choices>
+      ),
+    },
+    9: {
+      [Routes.Platonic]: (
+        <Choices label="But no one knows about us, huh... Just like a manga.">
+          <Choice label="Some people do." points={30} />
+        </Choices>
+      ),
+      [Routes.Romantic]: (
+        <Choices label="But no one knows about us, huh... Just like a manga.">
+          <Choice label="Some people do." points={30} />
+        </Choices>
+      ),
+    },
+  },
 };

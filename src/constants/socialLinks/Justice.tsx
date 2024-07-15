@@ -1,4 +1,5 @@
-import { SocialLinkNames, SocialLinkType } from "./types";
+import { SocialLinkNames, SocialLinkType, Routes } from "./types";
+import { Choices, Choice } from "../../components/choices";
 import { EventCard } from "../../components/eventCard";
 
 import {
@@ -275,4 +276,71 @@ export const Justice: SocialLinkType = {
       element: () => <EventCard head="Link Maxed" />,
     },
   ],
+  invitations: {
+    2: {
+      [Routes.Platonic]: (
+        <Choices label={`I kept thinking, "What if he doesn't show up?"`}>
+          <Choice label="Try not to worry so much." points={30} />
+        </Choices>
+      ),
+    },
+    3: {
+      [Routes.Platonic]: (
+        <Choices label="There's not much point in meeting up if we're both just going to read on our own, huh...?">
+          <Choice label="We'll do better next time." points={30} />
+        </Choices>
+      ),
+    },
+    4: {
+      [Routes.Platonic]: (
+        <Choices label="I-I was afraid that I might see that guy from before who tried to, um...">
+          <Choice label="I'd help you again." points={30} />
+        </Choices>
+      ),
+    },
+    5: {
+      [Routes.Platonic]: (
+        <Choices label="Um... Your coffee is going to get cold.">
+          <Choice label="Do you want sugar?" points={30} />
+        </Choices>
+      ),
+    },
+    6: {
+      [Routes.Platonic]: (
+        <Choices label="I... want to be like that too...">
+          <Choice label="You can do it." points={30} />
+        </Choices>
+      ),
+    },
+    7: {
+      [Routes.Platonic]: (
+        <Choices label="It's sad to think there might be a thief at our school...">
+          <Choice label="Don't worry, it wasn't a thief." points={30} />
+        </Choices>
+      ),
+    },
+    8: {
+      [Routes.Platonic]: (
+        <Choices label="It's just... ever since that money went missing, I've been feeling anxious whenever I'm alone...">
+          <Choice label="I'm happy to help." points={30} />
+        </Choices>
+      ),
+    },
+    9: {
+      [Routes.Platonic]: (
+        <Choices
+          label={`What about you, ${mainCharName}-san? Are you planning to get a driver's license?`}
+        >
+          <Choice label="I am." points={30} />
+        </Choices>
+      ),
+      [Routes.Romantic]: (
+        <Choices
+          label={`What about you, ${mainCharName}-san? Are you planning to get a driver's license?`}
+        >
+          <Choice label="I am." points={30} />
+        </Choices>
+      ),
+    },
+  },
 };

@@ -1,13 +1,22 @@
-import { socialLinkRomanceNames, Times, Event } from "./types";
+import { linkInvitationBaseFunctions, linkBaseFunctions } from "./base";
 import { SocialLinkNames } from "../socialLinks/types";
 import { EventCard } from "../../components/eventCard";
 import { DaysNames, holidays } from "../monthsNames";
 import { socialLinks } from "../socialLinks";
-import { linkBaseFunctions } from "./base";
 import { stats } from "../stats/stats";
 
+import {
+  socialLinkInvitationNames,
+  socialLinkRomanceNames,
+  Times,
+  Event,
+} from "./types";
+
 export const linkEvents: {
-  [key in SocialLinkNames | socialLinkRomanceNames]: Event;
+  [key in
+    | SocialLinkNames
+    | socialLinkRomanceNames
+    | socialLinkInvitationNames]: Event;
 } = {
   [SocialLinkNames.Magician]: {
     ...linkBaseFunctions,
@@ -35,6 +44,27 @@ export const linkEvents: {
         currentTime === Times.Day
       );
     },
+  },
+  [socialLinkInvitationNames.MagicianInvitation]: {
+    ...linkInvitationBaseFunctions,
+    time: Times.Day,
+    name: socialLinkInvitationNames.MagicianInvitation,
+    linkName: SocialLinkNames.Magician,
+    label: () => (
+      <EventCard head="Magician(Invitation)" name="Kenji Tomochika" />
+    ),
+    _invitationsDates: [
+      new Date(2009, 3, 26).getTime(),
+      new Date(2009, 4, 5).getTime(),
+      new Date(2009, 4, 24).getTime(),
+      new Date(2009, 5, 14).getTime(),
+      new Date(2009, 7, 5).getTime(),
+      new Date(2009, 7, 26).getTime(),
+      new Date(2009, 8, 22).getTime(),
+      new Date(2009, 9, 18).getTime(),
+      new Date(2010, 0, 4).getTime(),
+      new Date(2010, 0, 11).getTime(),
+    ],
   },
   [SocialLinkNames.Priestess]: {
     ...linkBaseFunctions,
@@ -115,6 +145,24 @@ export const linkEvents: {
         days.includes(currentDate.getDay())
       );
     },
+  },
+  [socialLinkInvitationNames.PriestessInvitation]: {
+    ...linkInvitationBaseFunctions,
+    time: Times.Day,
+    name: socialLinkInvitationNames.PriestessInvitation,
+    linkName: SocialLinkNames.Priestess,
+    label: () => (
+      <EventCard head="Priestess(Invitation)" name="Fuuka Yamagishi" />
+    ),
+    _invitationsDates: [
+      new Date(2009, 5, 28).getTime(),
+      new Date(2009, 7, 4).getTime(),
+      new Date(2009, 8, 13).getTime(),
+      new Date(2009, 10, 15).getTime(),
+      new Date(2010, 0, 5).getTime(),
+      new Date(2010, 0, 17).getTime(),
+      new Date(2010, 0, 24).getTime(),
+    ],
   },
   [SocialLinkNames.Empress]: {
     ...linkBaseFunctions,
@@ -204,6 +252,18 @@ export const linkEvents: {
         days.includes(currentDate.getDay())
       );
     },
+  },
+  [socialLinkInvitationNames.EmpressInvitation]: {
+    ...linkInvitationBaseFunctions,
+    time: Times.Day,
+    name: socialLinkInvitationNames.EmpressInvitation,
+    linkName: SocialLinkNames.Empress,
+    label: () => <EventCard head="Empress(Invitation)" name="Mitsuru Kirijo" />,
+    _invitationsDates: [
+      new Date(2010, 1, 4).getTime(),
+      new Date(2010, 1, 7).getTime(),
+      new Date(2010, 1, 24).getTime(),
+    ],
   },
   [SocialLinkNames.Emperor]: {
     ...linkBaseFunctions,
@@ -355,6 +415,23 @@ export const linkEvents: {
       );
     },
   },
+  [socialLinkInvitationNames.LoversInvitation]: {
+    ...linkInvitationBaseFunctions,
+    time: Times.Day,
+    name: socialLinkInvitationNames.LoversInvitation,
+    linkName: SocialLinkNames.Lovers,
+    label: () => <EventCard head="Lovers(Invitation)" name="Yukari Takeba" />,
+    _invitationsDates: [
+      new Date(2009, 8, 13).getTime(),
+      new Date(2009, 8, 23).getTime(),
+      new Date(2009, 9, 25).getTime(),
+      new Date(2009, 10, 15).getTime(),
+      new Date(2010, 0, 7).getTime(),
+      new Date(2010, 0, 10).getTime(),
+      new Date(2010, 0, 17).getTime(),
+      new Date(2010, 0, 24).getTime(),
+    ],
+  },
   [SocialLinkNames.Chariot]: {
     ...linkBaseFunctions,
     time: Times.Day,
@@ -386,6 +463,27 @@ export const linkEvents: {
         currentTime === Times.Day
       );
     },
+  },
+  [socialLinkInvitationNames.ChariotInvitation]: {
+    ...linkInvitationBaseFunctions,
+    time: Times.Day,
+    name: socialLinkInvitationNames.ChariotInvitation,
+    linkName: SocialLinkNames.Chariot,
+    label: () => (
+      <EventCard name="Kazushi Miyamoto" head="Chariot(Invitation)" />
+    ),
+    _invitationsDates: [
+      new Date(2009, 4, 4).getTime(),
+      new Date(2009, 4, 24).getTime(),
+      new Date(2009, 5, 7).getTime(),
+      new Date(2009, 5, 14).getTime(),
+      new Date(2009, 7, 5).getTime(),
+      new Date(2009, 8, 27).getTime(),
+      new Date(2009, 9, 18).getTime(),
+      new Date(2009, 10, 8).getTime(),
+      new Date(2010, 0, 6).getTime(),
+      new Date(2010, 0, 10).getTime(),
+    ],
   },
   [SocialLinkNames.Justice]: {
     ...linkBaseFunctions,
@@ -476,6 +574,28 @@ export const linkEvents: {
       );
     },
   },
+  [socialLinkInvitationNames.JusticeInvitation]: {
+    ...linkInvitationBaseFunctions,
+    time: Times.Day,
+    name: socialLinkInvitationNames.JusticeInvitation,
+    linkName: SocialLinkNames.Justice,
+    label: () => (
+      <EventCard head="Justice(Invitation)" name="Chihiro Fushimi" />
+    ),
+    _invitationsDates: [
+      new Date(2009, 4, 31).getTime(),
+      new Date(2009, 5, 21).getTime(),
+      new Date(2009, 6, 5).getTime(),
+      new Date(2009, 6, 26).getTime(),
+      new Date(2009, 7, 9).getTime(),
+      new Date(2009, 7, 27).getTime(),
+      new Date(2009, 8, 27).getTime(),
+      new Date(2009, 9, 25).getTime(),
+      new Date(2009, 10, 29).getTime(),
+      new Date(2010, 0, 5).getTime(),
+      new Date(2010, 0, 10).getTime(),
+    ],
+  },
   [SocialLinkNames.Hermit]: {
     ...linkBaseFunctions,
     time: Times.Day,
@@ -529,6 +649,22 @@ export const linkEvents: {
         currentTime === Times.Day
       );
     },
+  },
+  [socialLinkInvitationNames.FortuneInvitation]: {
+    ...linkInvitationBaseFunctions,
+    time: Times.Day,
+    name: socialLinkInvitationNames.FortuneInvitation,
+    linkName: SocialLinkNames.Fortune,
+    label: () => <EventCard head="Fortune(Invitation)" name="Keisuke Hiraga" />,
+    _invitationsDates: [
+      new Date(2009, 7, 4).getTime(),
+      new Date(2009, 7, 7).getTime(),
+      new Date(2009, 8, 23).getTime(),
+      new Date(2009, 9, 18).getTime(),
+      new Date(2010, 0, 4).getTime(),
+      new Date(2010, 0, 10).getTime(),
+      new Date(2010, 0, 11).getTime(),
+    ],
   },
   [SocialLinkNames.Strength]: {
     ...linkBaseFunctions,
@@ -622,6 +758,26 @@ export const linkEvents: {
       );
     },
   },
+  [socialLinkInvitationNames.StrengthInvitation]: {
+    ...linkInvitationBaseFunctions,
+    time: Times.Day,
+    name: socialLinkInvitationNames.StrengthInvitation,
+    linkName: SocialLinkNames.Strength,
+    label: () => (
+      <EventCard head="Strength(Invitation)" name="Yuko Nishiwaki" />
+    ),
+    _invitationsDates: [
+      new Date(2009, 4, 31).getTime(),
+      new Date(2009, 6, 5).getTime(),
+      new Date(2009, 7, 4).getTime(),
+      new Date(2009, 7, 26).getTime(),
+      new Date(2009, 8, 22).getTime(),
+      new Date(2009, 9, 25).getTime(),
+      new Date(2009, 10, 15).getTime(),
+      new Date(2010, 0, 6).getTime(),
+      new Date(2010, 0, 17).getTime(),
+    ],
+  },
   [SocialLinkNames.HangedMan]: {
     ...linkBaseFunctions,
     time: Times.Day,
@@ -676,6 +832,29 @@ export const linkEvents: {
         currentTime === Times.Day
       );
     },
+  },
+  [socialLinkInvitationNames.TemperanceInvitation]: {
+    ...linkInvitationBaseFunctions,
+    time: Times.Day,
+    name: socialLinkInvitationNames.TemperanceInvitation,
+    linkName: SocialLinkNames.Temperance,
+    label: () => (
+      <EventCard
+        name='André Laurent Jean "Bebe" Geraux'
+        head="Temperance(Invitation)"
+      />
+    ),
+    _invitationsDates: [
+      new Date(2009, 5, 7).getTime(),
+      new Date(2009, 5, 21).getTime(),
+      new Date(2009, 6, 26).getTime(),
+      new Date(2009, 7, 7).getTime(),
+      new Date(2009, 7, 27).getTime(),
+      new Date(2009, 8, 27).getTime(),
+      new Date(2009, 10, 8).getTime(),
+      new Date(2009, 10, 29).getTime(),
+      new Date(2010, 0, 5).getTime(),
+    ],
   },
   [SocialLinkNames.Devil]: {
     ...linkBaseFunctions,

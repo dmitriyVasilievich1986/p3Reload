@@ -1,4 +1,5 @@
-import { SocialLinkNames, SocialLinkType } from "./types";
+import { SocialLinkNames, SocialLinkType, Routes } from "./types";
+import { Choices, Choice } from "../../components/choices";
 import { EventCard } from "../../components/eventCard";
 
 import {
@@ -146,4 +147,69 @@ export const Magician: SocialLinkType = {
       element: () => <EventCard head="Link Maxed" />,
     },
   ],
+  invitations: {
+    1: {
+      [Routes.Platonic]: (
+        <Choices label="Not bad... Not bad at all! But, there are some things you could do to look better...">
+          <Choice label="Like what?" points={30} />
+        </Choices>
+      ),
+    },
+    2: {
+      [Routes.Platonic]: (
+        <Choices label="By the way, are you picky about your food?">
+          <Choice label="I'm pretty picky." points={30} />
+        </Choices>
+      ),
+    },
+    3: {
+      [Routes.Platonic]: (
+        <Choices label="Well? Whaddaya think? Perfect plan, right?">
+          <Choice label="I've got a better plan..." points={30} />
+        </Choices>
+      ),
+    },
+    4: {
+      [Routes.Platonic]: (
+        <Choices label="D-don't laugh, ok...? But, uh, I wanted to know if, um... if you've ever kissed a girl before...">
+          <Choice label="I haven't." points={30} />
+        </Choices>
+      ),
+    },
+    5: {
+      [Routes.Platonic]: (
+        <Choices label="Maybe she's scared of catching it... Is it contagious?">
+          <Choice label="No, it's not." points={30} />
+        </Choices>
+      ),
+    },
+    6: {
+      [Routes.Platonic]: (
+        <Choices label="That was the last beef bowl I'm ever gonna eat!">
+          <Choice label="Why?" points={30} />
+        </Choices>
+      ),
+    },
+    7: {
+      [Routes.Platonic]: (
+        <Choices label="Do you think I can make her happy?">
+          <Choice label="Just do your best." points={30} />
+        </Choices>
+      ),
+    },
+    8: {
+      [Routes.Platonic]: (
+        <Choices label="Maybe I caught it or something...">
+          <Choice label="You shouldn't worry about it." points={30} />
+        </Choices>
+      ),
+    },
+    9: {
+      [Routes.Platonic]: (
+        <Choices label="Can you just... forget that ever happened?">
+          <Choice label="Sure." points={30} />
+        </Choices>
+      ),
+    },
+  },
 };
