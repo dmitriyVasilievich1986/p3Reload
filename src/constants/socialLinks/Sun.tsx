@@ -1,25 +1,31 @@
-import { SocialLinkNames, SocialLinkType } from "./types";
+import { SocialLinkNames, SocialLinkType, Routes } from "./types";
 import { EventCard } from "../../components/eventCard";
 import { alwaysLevelUp } from "./baseFunctions";
 
 export const Sun: SocialLinkType = {
   ...alwaysLevelUp,
   name: SocialLinkNames.Sun,
-  levels: [
-    {
-      points: 0,
-      maxPoints: 0,
-      element: () => <EventCard head="Create bond" />,
+  levels: {
+    0: {
+      [Routes.Platonic]: {
+        points: 0,
+        maxPoints: 0,
+        element: () => <EventCard head="Create bond" />,
+      },
     },
-    {
-      points: 0,
-      maxPoints: 0,
-      element: () => <EventCard head="Choose Any" />,
+    1: {
+      [Routes.Platonic]: {
+        points: 0,
+        maxPoints: 0,
+        element: () => <EventCard head="Choose Any" />,
+      },
     },
-    {
-      points: 0,
-      maxPoints: 0,
-      element: () => <EventCard head="Link Maxed" />,
+    10: {
+      [Routes.Platonic]: {
+        points: 0,
+        maxPoints: 0,
+        element: () => <EventCard head="Link Maxed" />,
+      },
     },
-  ],
+  },
 };

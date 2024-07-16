@@ -63,126 +63,146 @@ export const Chariot: SocialLinkType = {
     }
     return payload;
   },
-  levels: [
-    {
-      points: 0,
-      maxPoints: 0,
-      element: () => <EventCard head="Create bond" />,
+  levels: {
+    0: {
+      [Routes.Platonic]: {
+        points: 0,
+        maxPoints: 0,
+        element: () => <EventCard head="Create bond" />,
+      },
     },
-    chariotStrength(),
-    QuestionsWrapper({
-      points: 0,
-      element: [
-        <Question label="It's just, um... my anemia's acting up.">
-          <Answer label="Sorry, that sounds awful!" />
-          <Answer label="Are you going to be okay?" points={5} />
-        </Question>,
-        <Question label="I tried medicine, I tried wrapping it, but the pain won't stop.">
-          <Answer label="Will it heal?" points={5} />
-          <Answer label="Take a break from practice." />
-        </Question>,
-      ],
-    }),
-    QuestionsWrapper({
-      points: 20,
-      element: [
-        <Question label="Wh-What's up? I was just gonna sneak back into practice.">
-          <Answer label="Where have you been?" />
-          <Answer label="Did you ditch?" />
-        </Question>,
-        <Question label="She made the appointment without telling me, so there was nothing I could do!">
-          <Answer label="How did it go?" />
-          <Answer label="That really sucks." points={15} />
-        </Question>,
-      ],
-    }),
-    QuestionsWrapper({
-      points: 15,
-      element: [
-        <Question label="Man... I keep running into you at the weirdest times.">
-          <Answer label="Back from the hospital?" points={5} />
-          <Answer label="Did you ditched?" />
-        </Question>,
-        <Question label="You gotta be kidding... Why can't I... stand up!?">
-          <Answer label="Take my shoulder!" points={15} />
-          <Answer label="I'll carry you!" points={5} />
-          <Answer label="I'll go get help!" />
-        </Question>,
-      ],
-    }),
-    QuestionsWrapper({
-      points: 15,
-      element: [
-        <Question label="I want to win, so I have to practice.">
-          <Answer label="There's nothing you can do." />
-          <Answer label="Show some guts, man!" points={5} />
-        </Question>,
-        <Question label="I promised I'd win at next year's meet and become the number one athlete in Japan.">
-          <Answer label="You promised?" />
-          <Answer label="Why go so far?" points={5} />
-        </Question>,
-        <Question label="That's why I have to win this meet-so I can make it to nationals!">
-          <Answer label="Do you think you can win?" />
-          <Answer label="What about your knee?" points={5} />
-        </Question>,
-      ],
-    }),
-    QuestionsWrapper({
-      points: 15,
-      element: [
-        <Question label="I know you didn't say anything. I just think he can tell something's up.">
-          <Answer label="How's your knee?" points={5} />
-          <Answer label="Can you hide it?" />
-        </Question>,
-        <Question label="Otherwise, I won't be able to keep my promise to my nephew!">
-          <Answer label="You need to get tougher." points={15} />
-          <Answer label="You can't win like this." points={5} />
-          <Answer label="You need to take a break." />
-        </Question>,
-      ],
-    }),
-    QuestionsWrapper({
-      points: 22,
-      element: [
-        <Question label="You must know what's going on.">
-          <Answer label="I don't know anything." />
-          <Answer label="......" points={5} />
-        </Question>,
-      ],
-    }),
-    QuestionsWrapper({
-      points: 22,
-      element: [
-        <Question label="I'm sure you love lugging all this dead weight around, huh?">
-          <Answer label="I don't mind at all." points={15} />
-          <Answer label="No, not exactly." />
-          <Answer label="It's fine-I'm tough as hell." points={5} />
-        </Question>,
-      ],
-    }),
-    QuestionsWrapper({
-      points: 22,
-      element: [
-        <Question label="There's something I wanna talk to you about.">
-          <Answer label="Okay, let's hear it." />
-          <Answer label="What is it about?" />
-        </Question>,
-        <Question label="I've made up my mind. I'm going to have surgery to fix my knee.">
-          <Answer label="What about the big meet?" points={15} />
-          <Answer label="What about your promise?" />
-        </Question>,
-        <Question label="I'm not gonna worry about winning races. I'm gonna focus on winning back my health instead.">
-          <Answer label="You've got this!" points={5} />
-          <Answer label="You've really grown up." points={5} />
-        </Question>,
-      ],
-    }),
-    {
-      points: 0,
-      maxPoints: 0,
-      element: () => <EventCard head="Link Maxed" />,
+    1: { [Routes.Platonic]: chariotStrength() },
+    2: {
+      [Routes.Platonic]: QuestionsWrapper({
+        points: 0,
+        element: [
+          <Question label="It's just, um... my anemia's acting up.">
+            <Answer label="Sorry, that sounds awful!" />
+            <Answer label="Are you going to be okay?" points={5} />
+          </Question>,
+          <Question label="I tried medicine, I tried wrapping it, but the pain won't stop.">
+            <Answer label="Will it heal?" points={5} />
+            <Answer label="Take a break from practice." />
+          </Question>,
+        ],
+      }),
     },
-  ],
+    3: {
+      [Routes.Platonic]: QuestionsWrapper({
+        points: 20,
+        element: [
+          <Question label="Wh-What's up? I was just gonna sneak back into practice.">
+            <Answer label="Where have you been?" />
+            <Answer label="Did you ditch?" />
+          </Question>,
+          <Question label="She made the appointment without telling me, so there was nothing I could do!">
+            <Answer label="How did it go?" />
+            <Answer label="That really sucks." points={15} />
+          </Question>,
+        ],
+      }),
+    },
+    4: {
+      [Routes.Platonic]: QuestionsWrapper({
+        points: 15,
+        element: [
+          <Question label="Man... I keep running into you at the weirdest times.">
+            <Answer label="Back from the hospital?" points={5} />
+            <Answer label="Did you ditched?" />
+          </Question>,
+          <Question label="You gotta be kidding... Why can't I... stand up!?">
+            <Answer label="Take my shoulder!" points={15} />
+            <Answer label="I'll carry you!" points={5} />
+            <Answer label="I'll go get help!" />
+          </Question>,
+        ],
+      }),
+    },
+    5: {
+      [Routes.Platonic]: QuestionsWrapper({
+        points: 15,
+        element: [
+          <Question label="I want to win, so I have to practice.">
+            <Answer label="There's nothing you can do." />
+            <Answer label="Show some guts, man!" points={5} />
+          </Question>,
+          <Question label="I promised I'd win at next year's meet and become the number one athlete in Japan.">
+            <Answer label="You promised?" />
+            <Answer label="Why go so far?" points={5} />
+          </Question>,
+          <Question label="That's why I have to win this meet-so I can make it to nationals!">
+            <Answer label="Do you think you can win?" />
+            <Answer label="What about your knee?" points={5} />
+          </Question>,
+        ],
+      }),
+    },
+    6: {
+      [Routes.Platonic]: QuestionsWrapper({
+        points: 15,
+        element: [
+          <Question label="I know you didn't say anything. I just think he can tell something's up.">
+            <Answer label="How's your knee?" points={5} />
+            <Answer label="Can you hide it?" />
+          </Question>,
+          <Question label="Otherwise, I won't be able to keep my promise to my nephew!">
+            <Answer label="You need to get tougher." points={15} />
+            <Answer label="You can't win like this." points={5} />
+            <Answer label="You need to take a break." />
+          </Question>,
+        ],
+      }),
+    },
+    7: {
+      [Routes.Platonic]: QuestionsWrapper({
+        points: 22,
+        element: [
+          <Question label="You must know what's going on.">
+            <Answer label="I don't know anything." />
+            <Answer label="......" points={5} />
+          </Question>,
+        ],
+      }),
+    },
+    8: {
+      [Routes.Platonic]: QuestionsWrapper({
+        points: 22,
+        element: [
+          <Question label="I'm sure you love lugging all this dead weight around, huh?">
+            <Answer label="I don't mind at all." points={15} />
+            <Answer label="No, not exactly." />
+            <Answer label="It's fine-I'm tough as hell." points={5} />
+          </Question>,
+        ],
+      }),
+    },
+    9: {
+      [Routes.Platonic]: QuestionsWrapper({
+        points: 22,
+        element: [
+          <Question label="There's something I wanna talk to you about.">
+            <Answer label="Okay, let's hear it." />
+            <Answer label="What is it about?" />
+          </Question>,
+          <Question label="I've made up my mind. I'm going to have surgery to fix my knee.">
+            <Answer label="What about the big meet?" points={15} />
+            <Answer label="What about your promise?" />
+          </Question>,
+          <Question label="I'm not gonna worry about winning races. I'm gonna focus on winning back my health instead.">
+            <Answer label="You've got this!" points={5} />
+            <Answer label="You've really grown up." points={5} />
+          </Question>,
+        ],
+      }),
+    },
+    10: {
+      [Routes.Platonic]: {
+        points: 0,
+        maxPoints: 0,
+        element: () => <EventCard head="Link Maxed" />,
+      },
+    },
+  },
   invitations: {
     2: {
       [Routes.Platonic]: (
