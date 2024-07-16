@@ -3,9 +3,9 @@ import { StatsNames } from "../stats/types";
 
 import {
   SocialLinkTypeBase,
+  SocialLinkLevel,
   SocialLinkNames,
   CalculateProps,
-  Routes,
 } from "./types";
 
 export const mainCharName: string = "Protagonist";
@@ -15,9 +15,7 @@ export const baseSocialLinkCalculation: SocialLinkTypeBase = {
   invitations: [],
   maxLevel: 10,
   getlevel: function ({ level, romance }) {
-    return romance === Routes.Romantic
-      ? this.levelsRomance[level]
-      : this.levels[level];
+    return this.levels[level][romance] as SocialLinkLevel;
   },
   _calculate: function ({
     currentStats,
@@ -78,16 +76,15 @@ export const baseSocialLinkCalculation: SocialLinkTypeBase = {
   getStaleLevel: function () {
     return <EventCard head="Spending time" />;
   },
-  levelsRomance: [],
-  levels: [],
+  levels: {},
 };
 
 export const alwaysLevelUp: SocialLinkTypeBase = {
   ...baseSocialLinkCalculation,
   getlevel: function ({ level }) {
-    if (level === 10) return this.levels[2];
-    if (level === 0) return this.levels[0];
-    return this.levels[1];
+    if (level === 10) return this.levels[10].Platonic as SocialLinkLevel;
+    if (level === 0) return this.levels[0].Platonic as SocialLinkLevel;
+    return this.levels[1].Platonic as SocialLinkLevel;
   },
   calculate: function ({ currentLinks }) {
     const thisLink = currentLinks[this.name];
