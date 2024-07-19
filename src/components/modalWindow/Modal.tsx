@@ -11,6 +11,7 @@ import React from "react";
 
 import {
   statsEventsAcademicsNames,
+  JunpeiIoriEpisodesNames,
   statsEventsCourageNames,
   statsEventsCharmNames,
   SpecialEventsNames,
@@ -120,7 +121,11 @@ function Modal(props: {
             filter={filter}
           />
           <EventsList
-            events={availableEvents.filter((e) => e.name in SpecialEventsNames)}
+            events={availableEvents.filter(
+              (e) =>
+                e.name in JunpeiIoriEpisodesNames ||
+                e.name in SpecialEventsNames
+            )}
             onClick={updateCalendar}
             filter={filter}
             head="Special"

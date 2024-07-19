@@ -37,6 +37,15 @@ export enum pcProgramsNames {
   lobbyPCTypinGhoul = "lobbyPCTypinGhoul",
 }
 
+export enum JunpeiIoriEpisodesNames {
+  JunpeiIori1 = "JunpeiIori1",
+  JunpeiIori2 = "JunpeiIori2",
+  JunpeiIori3 = "JunpeiIori3",
+  JunpeiIori35 = "JunpeiIori35",
+  JunpeiIori4 = "JunpeiIori4",
+  JunpeiIori5 = "JunpeiIori5",
+}
+
 export enum statsEventsAcademicsNames {
   cinemaTheaterAcademics = "cinemaTheaterAcademics",
   wakatsuKitchenSpecial = "wakatsuKitchenSpecial",
@@ -93,6 +102,7 @@ export enum socialLinkInvitationNames {
 const allNames = {
   ...SpecialEventsNames,
   ...pcProgramsNames,
+  ...JunpeiIoriEpisodesNames,
   ...statsEventsAcademicsNames,
   ...statsEventsCharmNames,
   ...statsEventsCourageNames,

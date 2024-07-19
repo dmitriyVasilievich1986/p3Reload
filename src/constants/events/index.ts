@@ -1,5 +1,6 @@
 import { statsEventsAcademics } from "./statsEventsAcademics";
 import { statsEventsCourage } from "./statsEventsCourage";
+import { JunpeiIoriEpisodes } from "./JunpeiIoriEpisodes";
 import { statsEventsCharm } from "./statsEventsCharm";
 import { specialEvents } from "./specialEvents";
 import { pcPrograms } from "./pcPrograms";
@@ -12,4 +13,5 @@ export const events = {
   ...statsEventsAcademics,
   ...statsEventsCourage,
   ...statsEventsCharm,
+  ...JunpeiIoriEpisodes,
 };
