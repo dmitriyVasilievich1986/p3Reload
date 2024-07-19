@@ -6,7 +6,7 @@ import { DaysNames } from "../monthsNames";
 const ji1: Event = {
   name: JunpeiIoriEpisodesNames.JunpeiIori1,
   category: Categories.Stats,
-  time: Times.Evening,
+  time: Times.Day,
   label: () => <EventCard head="Junpei Iori Episode" name="Junpei Iori" />,
   available: function ({ currentTime, currentDate, singleTimeEvents }) {
     const days = [DaysNames.tuesday, DaysNames.friday];
