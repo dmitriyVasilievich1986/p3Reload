@@ -29,6 +29,7 @@ export const JunpeiIoriEpisodes: { [key in JunpeiIoriEpisodesNames]: Event } = {
   [JunpeiIoriEpisodesNames.JunpeiIori1]: ji1,
   [JunpeiIoriEpisodesNames.JunpeiIori2]: {
     ...ji1,
+    name: JunpeiIoriEpisodesNames.JunpeiIori2,
     label: () => (
       <EventCard
         head="Junpei Iori Episode"
@@ -65,6 +66,7 @@ export const JunpeiIoriEpisodes: { [key in JunpeiIoriEpisodesNames]: Event } = {
   },
   [JunpeiIoriEpisodesNames.JunpeiIori3]: {
     ...ji1,
+    name: JunpeiIoriEpisodesNames.JunpeiIori3,
     label: () => (
       <EventCard
         head="Junpei Iori Episode"
@@ -98,6 +100,7 @@ export const JunpeiIoriEpisodes: { [key in JunpeiIoriEpisodesNames]: Event } = {
   },
   [JunpeiIoriEpisodesNames.JunpeiIori35]: {
     ...ji1,
+    name: JunpeiIoriEpisodesNames.JunpeiIori35,
     available: function ({ currentTime, currentDate, singleTimeEvents }) {
       return (
         singleTimeEvents.includes(JunpeiIoriEpisodesNames.JunpeiIori3) &&
@@ -110,6 +113,7 @@ export const JunpeiIoriEpisodes: { [key in JunpeiIoriEpisodesNames]: Event } = {
   },
   [JunpeiIoriEpisodesNames.JunpeiIori4]: {
     ...ji1,
+    name: JunpeiIoriEpisodesNames.JunpeiIori4,
     label: () => (
       <EventCard
         head="Junpei Iori Episode"
@@ -143,6 +147,7 @@ export const JunpeiIoriEpisodes: { [key in JunpeiIoriEpisodesNames]: Event } = {
   },
   [JunpeiIoriEpisodesNames.JunpeiIori5]: {
     ...ji1,
+    name: JunpeiIoriEpisodesNames.JunpeiIori5,
     available: function ({ currentTime, currentDate, singleTimeEvents }) {
       const days = [
         new Date(2010, 0, 15).getTime(),
