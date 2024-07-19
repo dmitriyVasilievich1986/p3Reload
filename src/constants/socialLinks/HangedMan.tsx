@@ -1,7 +1,7 @@
 import { QuestionsWrapper, Question, Answer } from "../../components/choices";
 import { SocialLinkNames, SocialLinkType, Routes } from "./types";
 import { baseSocialLinkCalculation } from "./baseFunctions";
-import { EventCard } from "../../components/eventCard";
+import { CreateBond, LinkMaxed } from "./GenericCard";
 
 export const HangedMan: SocialLinkType = {
   ...baseSocialLinkCalculation,
@@ -11,7 +11,7 @@ export const HangedMan: SocialLinkType = {
       [Routes.Platonic]: {
         points: 0,
         maxPoints: 0,
-        element: () => <EventCard head="Create bond" />,
+        element: CreateBond,
       },
     },
     1: {
@@ -159,7 +159,7 @@ export const HangedMan: SocialLinkType = {
       [Routes.Platonic]: {
         points: 0,
         maxPoints: 0,
-        element: () => <EventCard head="Link Maxed" />,
+        element: LinkMaxed,
       },
     },
   },

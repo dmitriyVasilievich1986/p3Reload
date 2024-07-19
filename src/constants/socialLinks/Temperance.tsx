@@ -1,7 +1,7 @@
 import { QuestionsWrapper, Question, Answer } from "../../components/choices";
 import { baseSocialLinkCalculation, mainCharName } from "./baseFunctions";
 import { SocialLinkNames, SocialLinkType, Routes } from "./types";
-import { EventCard } from "../../components/eventCard";
+import { CreateBond, LinkMaxed } from "./GenericCard";
 
 export const Temperance: SocialLinkType = {
   ...baseSocialLinkCalculation,
@@ -11,7 +11,7 @@ export const Temperance: SocialLinkType = {
       [Routes.Platonic]: {
         points: 0,
         maxPoints: 0,
-        element: () => <EventCard head="Create bond" />,
+        element: CreateBond,
       },
     },
     1: {
@@ -154,7 +154,7 @@ export const Temperance: SocialLinkType = {
       [Routes.Platonic]: {
         points: 0,
         maxPoints: 0,
-        element: () => <EventCard head="Link Maxed" />,
+        element: LinkMaxed,
       },
     },
   },

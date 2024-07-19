@@ -1,5 +1,5 @@
+import { CreateBond, AutomaticLevelUp, LinkMaxed } from "./GenericCard";
 import { SocialLinkNames, SocialLinkType, Routes } from "./types";
-import { EventCard } from "../../components/eventCard";
 import { alwaysLevelUp } from "./baseFunctions";
 
 export const Fool: SocialLinkType = {
@@ -10,21 +10,21 @@ export const Fool: SocialLinkType = {
       [Routes.Platonic]: {
         points: 0,
         maxPoints: 0,
-        element: () => <EventCard head="Create bond" />,
+        element: CreateBond,
       },
     },
     1: {
       [Routes.Platonic]: {
         points: 0,
         maxPoints: 0,
-        element: () => <EventCard head="Automatic" />,
+        element: AutomaticLevelUp,
       },
     },
     10: {
       [Routes.Platonic]: {
         points: 0,
         maxPoints: 0,
-        element: () => <EventCard head="Link Maxed" />,
+        element: LinkMaxed,
       },
     },
   },

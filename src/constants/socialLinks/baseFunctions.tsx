@@ -1,4 +1,4 @@
-import { EventCard } from "../../components/eventCard";
+import { SpendingTime } from "./GenericCard";
 import { StatsNames } from "../stats/types";
 
 import {
@@ -73,9 +73,7 @@ export const baseSocialLinkCalculation: SocialLinkTypeBase = {
   calculate: function (props: CalculateProps) {
     return this._calculate(props);
   },
-  getStaleLevel: function () {
-    return <EventCard head="Spending time" />;
-  },
+  getStaleLevel: SpendingTime,
   levels: {},
 };
 

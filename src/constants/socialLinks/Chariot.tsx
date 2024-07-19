@@ -1,6 +1,7 @@
 import { QuestionsWrapper, Question, Answer } from "../../components/choices";
 import { baseSocialLinkCalculation } from "./baseFunctions";
 import { EventCard } from "../../components/eventCard";
+import { CreateBond, LinkMaxed } from "./GenericCard";
 
 import {
   SocialLinkNames,
@@ -37,7 +38,7 @@ function chariotStrength() {
           name="Yuko Nishiwaki"
           head="Strength"
         >
-          <EventCard head="Create bond" />
+          <CreateBond />
         </EventCard>
       </>
     ),
@@ -68,7 +69,7 @@ export const Chariot: SocialLinkType = {
       [Routes.Platonic]: {
         points: 0,
         maxPoints: 0,
-        element: () => <EventCard head="Create bond" />,
+        element: CreateBond,
       },
     },
     1: { [Routes.Platonic]: chariotStrength() },
@@ -199,7 +200,7 @@ export const Chariot: SocialLinkType = {
       [Routes.Platonic]: {
         points: 0,
         maxPoints: 0,
-        element: () => <EventCard head="Link Maxed" />,
+        element: LinkMaxed,
       },
     },
   },

@@ -1,4 +1,4 @@
-import { EventCard } from "../../components/eventCard";
+import { CreateBond, ChooseAny } from "./GenericCard";
 import { alwaysLevelUp } from "./baseFunctions";
 
 import {
@@ -12,7 +12,6 @@ export const Death: SocialLinkType = {
   ...alwaysLevelUp,
   name: SocialLinkNames.Death,
   getlevel: function ({ level }) {
-    if (level === 10) return this.levels[10].Platonic as SocialLinkLevel;
     if (level <= 1) return this.levels[0].Platonic as SocialLinkLevel;
     return this.levels[1].Platonic as SocialLinkLevel;
   },
@@ -33,21 +32,14 @@ export const Death: SocialLinkType = {
       [Routes.Platonic]: {
         points: 0,
         maxPoints: 0,
-        element: () => <EventCard head="Create bond" />,
+        element: CreateBond,
       },
     },
     1: {
       [Routes.Platonic]: {
         points: 0,
         maxPoints: 0,
-        element: () => <EventCard head="Choose any" />,
-      },
-    },
-    10: {
-      [Routes.Platonic]: {
-        points: 0,
-        maxPoints: 0,
-        element: () => <EventCard head="Link Maxed" />,
+        element: ChooseAny,
       },
     },
   },
