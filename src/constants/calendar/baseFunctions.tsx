@@ -42,6 +42,7 @@ const initialLinks: SocialLinksStatsArray = {
   [SocialLinkNames.Sun]: { ...zeroStats },
   [SocialLinkNames.Temperance]: { ...zeroStats },
   [SocialLinkNames.Tower]: { ...zeroStats },
+  [SocialLinkNames.Death]: { ...zeroStats },
 };
 
 export const baseCalendar = {

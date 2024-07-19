@@ -15,6 +15,7 @@ import { Lovers } from "./Lovers";
 import { Hermit } from "./Hermit";
 import { Tower } from "./Tower";
 import { Devil } from "./Devil";
+import { Death } from "./Death";
 import { Aeon } from "./Aeon";
 import { Fool } from "./Fool";
 import { Moon } from "./Moon";
@@ -42,4 +43,5 @@ export const socialLinks: { [key in SocialLinkNames]: SocialLinkType } = {
   Strength,
   Temperance,
   Tower,
+  Death,
 };

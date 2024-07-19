@@ -22,6 +22,7 @@ export enum SocialLinkNames {
   Sun = "Sun",
   Temperance = "Temperance",
   Tower = "Tower",
+  Death = "Death",
 }
 
 export enum Routes {
