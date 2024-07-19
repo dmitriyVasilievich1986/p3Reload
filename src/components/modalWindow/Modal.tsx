@@ -15,6 +15,7 @@ import {
   JunpeiIoriEpisodesNames,
   statsEventsCourageNames,
   statsEventsCharmNames,
+  KoromaruEpisodesNames,
   SpecialEventsNames,
   pcProgramsNames,
   allEventsNames,
@@ -126,6 +127,7 @@ function Modal(props: {
               (e) =>
                 e.name in AkihikoSanadaEpisodesNames ||
                 e.name in JunpeiIoriEpisodesNames ||
+                e.name in KoromaruEpisodesNames ||
                 e.name in SpecialEventsNames
             )}
             onClick={updateCalendar}

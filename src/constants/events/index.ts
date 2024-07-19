@@ -3,6 +3,7 @@ import { statsEventsAcademics } from "./statsEventsAcademics";
 import { statsEventsCourage } from "./statsEventsCourage";
 import { JunpeiIoriEpisodes } from "./JunpeiIoriEpisodes";
 import { statsEventsCharm } from "./statsEventsCharm";
+import { KoromaruEpisodes } from "./KoromaruEpisodes";
 import { specialEvents } from "./specialEvents";
 import { pcPrograms } from "./pcPrograms";
 import { linkEvents } from "./linkEvents";
@@ -16,4 +17,5 @@ export const events = {
   ...statsEventsCharm,
   ...JunpeiIoriEpisodes,
   ...AkihikoSanadaEpisodes,
+  ...KoromaruEpisodes,
 };
