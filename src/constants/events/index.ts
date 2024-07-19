@@ -1,3 +1,4 @@
+import { AkihikoSanadaEpisodes } from "./AkihikoSanadaEpisodes";
 import { statsEventsAcademics } from "./statsEventsAcademics";
 import { statsEventsCourage } from "./statsEventsCourage";
 import { JunpeiIoriEpisodes } from "./JunpeiIoriEpisodes";
@@ -14,4 +15,5 @@ export const events = {
   ...statsEventsCourage,
   ...statsEventsCharm,
   ...JunpeiIoriEpisodes,
+  ...AkihikoSanadaEpisodes,
 };

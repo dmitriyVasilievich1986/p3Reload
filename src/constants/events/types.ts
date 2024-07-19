@@ -45,6 +45,13 @@ export enum JunpeiIoriEpisodesNames {
   JunpeiIori4 = "JunpeiIori4",
   JunpeiIori5 = "JunpeiIori5",
 }
+export enum AkihikoSanadaEpisodesNames {
+  AkihikoSanada1 = "AkihikoSanada1",
+  AkihikoSanada2 = "AkihikoSanada2",
+  AkihikoSanada3 = "AkihikoSanada3",
+  AkihikoSanada4 = "AkihikoSanada4",
+  AkihikoSanada5 = "AkihikoSanada5",
+}
 
 export enum statsEventsAcademicsNames {
   cinemaTheaterAcademics = "cinemaTheaterAcademics",
@@ -103,6 +110,7 @@ const allNames = {
   ...SpecialEventsNames,
   ...pcProgramsNames,
   ...JunpeiIoriEpisodesNames,
+  ...AkihikoSanadaEpisodesNames,
   ...statsEventsAcademicsNames,
   ...statsEventsCharmNames,
   ...statsEventsCourageNames,

@@ -10,6 +10,7 @@ import { Input } from "../input";
 import React from "react";
 
 import {
+  AkihikoSanadaEpisodesNames,
   statsEventsAcademicsNames,
   JunpeiIoriEpisodesNames,
   statsEventsCourageNames,
@@ -17,9 +18,9 @@ import {
   SpecialEventsNames,
   pcProgramsNames,
   allEventsNames,
+  Categories,
   Event,
   Times,
-  Categories,
 } from "../../constants/events/types";
 
 const cx = classnames.bind(style);
@@ -123,6 +124,7 @@ function Modal(props: {
           <EventsList
             events={availableEvents.filter(
               (e) =>
+                e.name in AkihikoSanadaEpisodesNames ||
                 e.name in JunpeiIoriEpisodesNames ||
                 e.name in SpecialEventsNames
             )}
