@@ -17,7 +17,7 @@ const ji1: Event = {
       currentDate.getTime() <= new Date(2009, 6, 10).getTime() &&
       !singleTimeEvents.includes(this.name) &&
       days.includes(currentDate.getDay()) &&
-      currentTime === Times.Day
+      currentTime === Times.Evening
     );
   },
   upgrade: function ({ singleTimeEvents }) {
@@ -49,7 +49,7 @@ export const AkihikoSanadaEpisodes: {
         currentDate.getTime() <= new Date(2009, 7, 31).getTime() &&
         !singleTimeEvents.includes(this.name) &&
         days.includes(currentDate.getDay()) &&
-        currentTime === Times.Day
+        currentTime === Times.Evening
       );
     },
     upgrade: function ({ currentStats, singleTimeEvents }) {
@@ -80,7 +80,7 @@ export const AkihikoSanadaEpisodes: {
         currentDate.getTime() >= new Date(2009, 9, 9).getTime() &&
         !singleTimeEvents.includes(this.name) &&
         days.includes(currentDate.getDay()) &&
-        currentTime === Times.Day
+        currentTime === Times.Evening
       );
     },
     upgrade: function ({ currentStats, singleTimeEvents }) {
@@ -104,7 +104,7 @@ export const AkihikoSanadaEpisodes: {
         currentDate.getTime() <= new Date(2009, 11, 26).getTime() &&
         !singleTimeEvents.includes(this.name) &&
         days.includes(currentDate.getDay()) &&
-        currentTime === Times.Day
+        currentTime === Times.Evening
       );
     },
   },
@@ -119,7 +119,7 @@ export const AkihikoSanadaEpisodes: {
         currentDate.getTime() >= new Date(2010, 0, 4).getTime() &&
         !singleTimeEvents.includes(this.name) &&
         days.includes(currentDate.getDay()) &&
-        currentTime === Times.Day
+        currentTime === Times.Evening
       );
     },
   },
