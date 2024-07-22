@@ -125,9 +125,12 @@ export const statsEventsCourage: {
         price={1200}
       />
     ),
-    available: function ({ currentDate, currentTime }) {
+    available: function ({ singleTimeEvents, currentDate, currentTime }) {
       const days = [DaysNames.saturday, DaysNames.sunday];
       return (
+        singleTimeEvents.includes(
+          statsEventsCourageNames.wilduckBigEaterChallenge
+        ) &&
         [Times.Day, Times.Evening].includes(currentTime) &&
         days.includes(currentDate.getDay())
       );
@@ -151,5 +154,41 @@ export const statsEventsCourage: {
       return days.includes(currentDate.getDay()) && currentTime === Times.Day;
     },
     upgrade: getCourageUpgradeFunction(4),
+  },
+  [statsEventsCourageNames.wilduckBigEaterChallenge]: {
+    name: statsEventsCourageNames.wilduckBigEaterChallenge,
+    category: Categories.Stats,
+    time: Times.Evening,
+    label: () => (
+      <EventCard
+        stats="Academics +4 | Courage +4 | Charm +4"
+        head="Wilduck Burger(Big Eater Challenge)"
+        place="Iwatodai Strip Mall"
+        price={1800}
+      />
+    ),
+    available: function ({
+      singleTimeEvents,
+      currentDate,
+      currentStats,
+      currentTime,
+    }) {
+      return (
+        currentDate.getTime() >= new Date(2009, 4, 10).getTime() &&
+        !singleTimeEvents.includes(this.name) &&
+        currentTime === Times.Evening &&
+        currentStats.Courage >= 45
+      );
+    },
+    upgrade: function ({ singleTimeEvents, currentStats }: upgradeProps) {
+      return {
+        singleTimeEvents: [...singleTimeEvents, this.name],
+        stats: {
+          [StatsNames.Academics]: currentStats[StatsNames.Academics] + 4,
+          [StatsNames.Courage]: currentStats[StatsNames.Courage] + 4,
+          [StatsNames.Charm]: currentStats[StatsNames.Charm] + 4,
+        },
+      };
+    },
   },
 };

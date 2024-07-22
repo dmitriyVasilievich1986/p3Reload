@@ -113,6 +113,7 @@ export enum statsEventsCharmNames {
 export enum statsEventsCourageNames {
   wilduckBurgeWeekendWilduckSet = "wilduckBurgeWeekendWilduckSet",
   wilduckBurgeMysteryBurger = "wilduckBurgeMysteryBurger",
+  wilduckBigEaterChallenge = "wilduckBigEaterChallenge",
   cinemaTheaterCourage = "cinemaTheaterCourage",
   gameParadeCourage = "gameParadeCourage",
   sleepDuringClass = "sleepDuringClass",
