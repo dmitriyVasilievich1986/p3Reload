@@ -1,25 +1,31 @@
-import { SocialLinkNames, SocialLinkType } from "./types";
-import { EventCard } from "../../components/eventCard";
+import { SocialLinkNames, SocialLinkType, Routes } from "./types";
+import { CreateBond, ChooseAny, LinkMaxed } from "./GenericCard";
 import { alwaysLevelUp } from "./baseFunctions";
 
 export const Devil: SocialLinkType = {
   ...alwaysLevelUp,
   name: SocialLinkNames.Devil,
-  levels: [
-    {
-      points: 0,
-      maxPoints: 0,
-      element: () => <EventCard head="Create bond" />,
+  levels: {
+    0: {
+      [Routes.Platonic]: {
+        points: 0,
+        maxPoints: 0,
+        element: CreateBond,
+      },
     },
-    {
-      points: 0,
-      maxPoints: 0,
-      element: () => <EventCard head="Choose Any" />,
+    1: {
+      [Routes.Platonic]: {
+        points: 0,
+        maxPoints: 0,
+        element: ChooseAny,
+      },
     },
-    {
-      points: 0,
-      maxPoints: 0,
-      element: () => <EventCard head="Link Maxed" />,
+    10: {
+      [Routes.Platonic]: {
+        points: 0,
+        maxPoints: 0,
+        element: LinkMaxed,
+      },
     },
-  ],
+  },
 };

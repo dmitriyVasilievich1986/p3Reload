@@ -42,6 +42,7 @@ const initialLinks: SocialLinksStatsArray = {
   [SocialLinkNames.Sun]: { ...zeroStats },
   [SocialLinkNames.Temperance]: { ...zeroStats },
   [SocialLinkNames.Tower]: { ...zeroStats },
+  [SocialLinkNames.Death]: { ...zeroStats },
 };
 
 export const baseCalendar = {
@@ -62,6 +63,7 @@ export const classmates: SocialLinkNames[] = [
   SocialLinkNames.Lovers,
   SocialLinkNames.Emperor,
   SocialLinkNames.Temperance,
+  SocialLinkNames.Justice,
   SocialLinkNames.Moon,
 ];
 

@@ -2,40 +2,41 @@ import { pcProgramsNames, Categories, Times, Event } from "./types";
 import { EventCard } from "../../components/eventCard";
 import { StatsNames } from "../stats/types";
 
-export const pcPrograms: { [key in pcProgramsNames]: Event } = {
-  [pcProgramsNames.lobbyPCLanguageMadeEasy]: {
-    name: pcProgramsNames.lobbyPCLanguageMadeEasy,
-    category: Categories.Stats,
-    time: Times.Evening,
-    label: () => (
-      <EventCard
-        head="Lobby PC(Language Made Easy)"
-        stats="Academics +4"
-        place="Dorm"
-        price={1200}
-      />
-    ),
-    available: function ({ currentTime, currentDate, singleTimeEvents }) {
-      return (
-        currentDate.getTime() >= new Date(2009, 3, 29).getTime() &&
-        [Times.Day, Times.Evening].includes(currentTime) &&
-        !singleTimeEvents.includes(this.name)
-      );
-    },
-    upgrade: function ({ currentStats, singleTimeEvents }) {
-      return {
-        singleTimeEvents: [...singleTimeEvents, this.name],
-        stats: {
-          ...currentStats,
-          [StatsNames.Academics]: currentStats[StatsNames.Academics] + 4,
-        },
-      };
-    },
+const pcProgramBase: Event = {
+  name: pcProgramsNames.lobbyPCLanguageMadeEasy,
+  category: Categories.Stats,
+  time: Times.Evening,
+  label: () => (
+    <EventCard
+      head="Lobby PC(Language Made Easy)"
+      stats="Academics +4"
+      place="Dorm"
+      price={1200}
+    />
+  ),
+  available: function ({ currentTime, currentDate, singleTimeEvents }) {
+    return (
+      currentDate.getTime() >= new Date(2009, 3, 29).getTime() &&
+      [Times.Day, Times.Evening].includes(currentTime) &&
+      !singleTimeEvents.includes(this.name)
+    );
   },
+  upgrade: function ({ currentStats, singleTimeEvents }) {
+    return {
+      singleTimeEvents: [...singleTimeEvents, this.name],
+      stats: {
+        ...currentStats,
+        [StatsNames.Academics]: currentStats[StatsNames.Academics] + 4,
+      },
+    };
+  },
+};
+
+export const pcPrograms: { [key in pcProgramsNames]: Event } = {
+  [pcProgramsNames.lobbyPCLanguageMadeEasy]: pcProgramBase,
   [pcProgramsNames.lobbyPCDigitalCramSchool]: {
+    ...pcProgramBase,
     name: pcProgramsNames.lobbyPCDigitalCramSchool,
-    category: Categories.Stats,
-    time: Times.Evening,
     label: () => (
       <EventCard
         head="Lobby PC(Digital Cram School)"
@@ -43,27 +44,10 @@ export const pcPrograms: { [key in pcProgramsNames]: Event } = {
         place="Dorm"
       />
     ),
-    available: function ({ currentTime, currentDate, singleTimeEvents }) {
-      return (
-        currentDate.getTime() >= new Date(2009, 3, 29).getTime() &&
-        [Times.Day, Times.Evening].includes(currentTime) &&
-        !singleTimeEvents.includes(this.name)
-      );
-    },
-    upgrade: function ({ currentStats, singleTimeEvents }) {
-      return {
-        singleTimeEvents: [...singleTimeEvents, this.name],
-        stats: {
-          ...currentStats,
-          [StatsNames.Academics]: currentStats[StatsNames.Academics] + 4,
-        },
-      };
-    },
   },
   [pcProgramsNames.lobbyPCAnimalOthello]: {
+    ...pcProgramBase,
     name: pcProgramsNames.lobbyPCAnimalOthello,
-    category: Categories.Stats,
-    time: Times.Evening,
     label: () => (
       <EventCard
         head="Lobby PC(Animal Othello)"
@@ -72,13 +56,6 @@ export const pcPrograms: { [key in pcProgramsNames]: Event } = {
         price={1200}
       />
     ),
-    available: function ({ currentTime, currentDate, singleTimeEvents }) {
-      return (
-        currentDate.getTime() >= new Date(2009, 3, 29).getTime() &&
-        [Times.Day, Times.Evening].includes(currentTime) &&
-        !singleTimeEvents.includes(this.name)
-      );
-    },
     upgrade: function ({ currentStats, singleTimeEvents }) {
       return {
         singleTimeEvents: [...singleTimeEvents, this.name],
@@ -90,9 +67,8 @@ export const pcPrograms: { [key in pcProgramsNames]: Event } = {
     },
   },
   [pcProgramsNames.lobbyPCTypinGhoul]: {
+    ...pcProgramBase,
     name: pcProgramsNames.lobbyPCTypinGhoul,
-    category: Categories.Stats,
-    time: Times.Evening,
     label: () => (
       <EventCard
         head="Lobby PC(Typin Ghoul)"
@@ -101,13 +77,6 @@ export const pcPrograms: { [key in pcProgramsNames]: Event } = {
         price={1200}
       />
     ),
-    available: function ({ currentTime, currentDate, singleTimeEvents }) {
-      return (
-        currentDate.getTime() >= new Date(2009, 3, 29).getTime() &&
-        [Times.Day, Times.Evening].includes(currentTime) &&
-        !singleTimeEvents.includes(this.name)
-      );
-    },
     upgrade: function ({ currentStats, singleTimeEvents }) {
       return {
         singleTimeEvents: [...singleTimeEvents, this.name],
@@ -119,9 +88,8 @@ export const pcPrograms: { [key in pcProgramsNames]: Event } = {
     },
   },
   [pcProgramsNames.lobbyPCLessonsInEtiquette]: {
+    ...pcProgramBase,
     name: pcProgramsNames.lobbyPCLessonsInEtiquette,
-    category: Categories.Stats,
-    time: Times.Evening,
     label: () => (
       <EventCard
         head="Lobby PC(Lessons in Etiquette)"
@@ -130,13 +98,6 @@ export const pcPrograms: { [key in pcProgramsNames]: Event } = {
         price={1200}
       />
     ),
-    available: function ({ currentTime, currentDate, singleTimeEvents }) {
-      return (
-        currentDate.getTime() >= new Date(2009, 3, 29).getTime() &&
-        [Times.Day, Times.Evening].includes(currentTime) &&
-        !singleTimeEvents.includes(this.name)
-      );
-    },
     upgrade: function ({ currentStats, singleTimeEvents }) {
       return {
         singleTimeEvents: [...singleTimeEvents, this.name],
@@ -148,9 +109,8 @@ export const pcPrograms: { [key in pcProgramsNames]: Event } = {
     },
   },
   [pcProgramsNames.lobbyPCVirtualDiet]: {
+    ...pcProgramBase,
     name: pcProgramsNames.lobbyPCVirtualDiet,
-    category: Categories.Stats,
-    time: Times.Evening,
     label: () => (
       <EventCard
         head="Lobby PC(Virtual Diet)"
@@ -159,13 +119,6 @@ export const pcPrograms: { [key in pcProgramsNames]: Event } = {
         price={1200}
       />
     ),
-    available: function ({ currentTime, currentDate, singleTimeEvents }) {
-      return (
-        currentDate.getTime() >= new Date(2009, 3, 29).getTime() &&
-        [Times.Day, Times.Evening].includes(currentTime) &&
-        !singleTimeEvents.includes(this.name)
-      );
-    },
     upgrade: function ({ currentStats, singleTimeEvents }) {
       return {
         singleTimeEvents: [...singleTimeEvents, this.name],

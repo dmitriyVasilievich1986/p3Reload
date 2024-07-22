@@ -22,6 +22,7 @@ export enum SocialLinkNames {
   Sun = "Sun",
   Temperance = "Temperance",
   Tower = "Tower",
+  Death = "Death",
 }
 
 export enum Routes {
@@ -66,8 +67,7 @@ export type SocialLinkTypeBase = {
   _calculate: (props: CalculateProps) => { links: SocialLinksStatsArray };
   calculate: (props: CalculateProps) => { links: SocialLinksStatsArray };
   getStaleLevel: () => React.ReactNode;
-  levelsRomance: SocialLinkLevel[];
-  levels: SocialLinkLevel[];
+  levels: { [key: number]: { [key in Routes]?: SocialLinkLevel } };
   invitations: {
     [key: number]: { [key in Routes]?: React.ReactNode };
   };

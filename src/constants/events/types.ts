@@ -37,6 +37,56 @@ export enum pcProgramsNames {
   lobbyPCTypinGhoul = "lobbyPCTypinGhoul",
 }
 
+export enum JunpeiIoriEpisodesNames {
+  JunpeiIori1 = "JunpeiIori1",
+  JunpeiIori2 = "JunpeiIori2",
+  JunpeiIori3 = "JunpeiIori3",
+  JunpeiIori35 = "JunpeiIori35",
+  JunpeiIori4 = "JunpeiIori4",
+  JunpeiIori5 = "JunpeiIori5",
+}
+
+export enum ShinjiroAragakiEpisodesNames {
+  ShinjiroAragaki1 = "ShinjiroAragaki1",
+  ShinjiroAragaki2 = "ShinjiroAragaki2",
+  ShinjiroAragaki3 = "ShinjiroAragaki3",
+  ShinjiroAragaki35 = "ShinjiroAragaki35",
+  ShinjiroAragaki4 = "ShinjiroAragaki4",
+  ShinjiroAragaki5 = "ShinjiroAragaki5",
+}
+
+export enum AkihikoSanadaEpisodesNames {
+  AkihikoSanada1 = "AkihikoSanada1",
+  AkihikoSanada2 = "AkihikoSanada2",
+  AkihikoSanada3 = "AkihikoSanada3",
+  AkihikoSanada4 = "AkihikoSanada4",
+  AkihikoSanada5 = "AkihikoSanada5",
+}
+
+export enum KoromaruEpisodesNames {
+  Koromaru1 = "Koromaru1",
+  Koromaru2 = "Koromaru2",
+  Koromaru3 = "Koromaru3",
+  Koromaru4 = "Koromaru4",
+  Koromaru5 = "Koromaru5",
+}
+
+export enum KenAmadaEpisodesNames {
+  KenAmada1 = "KenAmada1",
+  KenAmada2 = "KenAmada2",
+  KenAmada3 = "KenAmada3",
+  KenAmada4 = "KenAmada4",
+  KenAmada5 = "KenAmada5",
+}
+
+export enum RyojiMochizukiEpisodesNames {
+  RyojiMochizuki1 = "RyojiMochizuki1",
+  RyojiMochizuki2 = "RyojiMochizuki2",
+  RyojiMochizuki3 = "RyojiMochizuki3",
+  RyojiMochizuki4 = "RyojiMochizuki4",
+  RyojiMochizuki5 = "RyojiMochizuki5",
+}
+
 export enum statsEventsAcademicsNames {
   cinemaTheaterAcademics = "cinemaTheaterAcademics",
   wakatsuKitchenSpecial = "wakatsuKitchenSpecial",
@@ -63,6 +113,7 @@ export enum statsEventsCharmNames {
 export enum statsEventsCourageNames {
   wilduckBurgeWeekendWilduckSet = "wilduckBurgeWeekendWilduckSet",
   wilduckBurgeMysteryBurger = "wilduckBurgeMysteryBurger",
+  wilduckBigEaterChallenge = "wilduckBigEaterChallenge",
   cinemaTheaterCourage = "cinemaTheaterCourage",
   gameParadeCourage = "gameParadeCourage",
   sleepDuringClass = "sleepDuringClass",
@@ -93,6 +144,12 @@ export enum socialLinkInvitationNames {
 const allNames = {
   ...SpecialEventsNames,
   ...pcProgramsNames,
+  ...JunpeiIoriEpisodesNames,
+  ...AkihikoSanadaEpisodesNames,
+  ...KoromaruEpisodesNames,
+  ...KenAmadaEpisodesNames,
+  ...RyojiMochizukiEpisodesNames,
+  ...ShinjiroAragakiEpisodesNames,
   ...statsEventsAcademicsNames,
   ...statsEventsCharmNames,
   ...statsEventsCourageNames,
