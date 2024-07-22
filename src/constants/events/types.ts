@@ -61,6 +61,14 @@ export enum KoromaruEpisodesNames {
   Koromaru5 = "Koromaru5",
 }
 
+export enum KenAmadaEpisodesNames {
+  KenAmada1 = "KenAmada1",
+  KenAmada2 = "KenAmada2",
+  KenAmada3 = "KenAmada3",
+  KenAmada4 = "KenAmada4",
+  KenAmada5 = "KenAmada5",
+}
+
 export enum statsEventsAcademicsNames {
   cinemaTheaterAcademics = "cinemaTheaterAcademics",
   wakatsuKitchenSpecial = "wakatsuKitchenSpecial",
@@ -120,6 +128,7 @@ const allNames = {
   ...JunpeiIoriEpisodesNames,
   ...AkihikoSanadaEpisodesNames,
   ...KoromaruEpisodesNames,
+  ...KenAmadaEpisodesNames,
   ...statsEventsAcademicsNames,
   ...statsEventsCharmNames,
   ...statsEventsCourageNames,
