@@ -162,5 +162,10 @@ export const KoromaruEpisodes: {
         isDay
       );
     },
+    upgrade: function ({ singleTimeEvents }) {
+      return {
+        singleTimeEvents: [...singleTimeEvents, this.name],
+      };
+    },
   },
 };
