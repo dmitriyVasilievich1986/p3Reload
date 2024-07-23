@@ -293,7 +293,7 @@ export const april: singleDay[] = [
     arcanes: [],
     activities: [
       { ...events.Special, time: Times.Morning },
-      events.Magician,
+      events.Chariot,
       events.gameParadeCourage,
     ],
   },
@@ -304,7 +304,7 @@ export const april: singleDay[] = [
     arcanes: [],
     activities: [
       { ...events.Special, time: Times.Morning },
-      events.Hierophant,
+      events.Strength,
       events.gameParadeAcademics,
     ],
   },
@@ -365,7 +365,7 @@ export const april: singleDay[] = [
           />
         ),
       },
-      events.Chariot,
+      events.Magician,
       events.gameParadeCourage,
     ],
   },
