@@ -1,4 +1,5 @@
 import { EventCard } from "../../components/eventCard";
+import { WideEvent } from "../../components/wideEvent";
 import { StatsNames } from "../stats/types";
 import { DaysNames } from "../monthsNames";
 
@@ -65,6 +66,24 @@ export const statsEventsAcademics: {
       return currentTime === Times.Day;
     },
     upgrade: getAcademicsUpgradeFunction(2),
+  },
+  [statsEventsAcademicsNames.summerSchool]: {
+    name: statsEventsAcademicsNames.summerSchool,
+    category: Categories.Stats,
+    time: Times.WholeDay,
+    label: () => (
+      <WideEvent>
+        <EventCard
+          place="Gekkoukan High School"
+          head="Summer School"
+          stats="Academics +3"
+        />
+      </WideEvent>
+    ),
+    available: function () {
+      return false;
+    },
+    upgrade: getAcademicsUpgradeFunction(3),
   },
   [statsEventsAcademicsNames.wakatsuKitchenDay]: {
     name: statsEventsAcademicsNames.wakatsuKitchenDay,
