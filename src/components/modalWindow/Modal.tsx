@@ -94,6 +94,7 @@ function Modal(props: {
     currentTime: dayConstants.time,
     currentDate: dayConstants.day,
     isDayOff: currentDay.isDayOff,
+    exams: currentDay.exams,
     previousDay,
   };
   const availableEvents = (Object.keys(events) as Array<allEventsNames>)

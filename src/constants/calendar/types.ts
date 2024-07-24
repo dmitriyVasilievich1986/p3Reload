@@ -8,6 +8,7 @@ export type singleDay = {
   stats: CharStats;
   date: Date;
   isDayOff?: boolean;
+  exams?: boolean;
   getId: () => string;
   activities: Event[];
   singleTimeEvents: allEventsNames[];

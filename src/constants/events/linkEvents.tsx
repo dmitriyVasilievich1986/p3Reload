@@ -35,13 +35,14 @@ export const linkEvents: {
         card={props.arcanes.includes(SocialLinkNames.Magician)}
       />
     ),
-    available: function ({ currentDate, currentTime, isDayOff }) {
+    available: function ({ currentDate, currentTime, isDayOff, exams }) {
       const days = [DaysNames.tuesday, DaysNames.thursday, DaysNames.friday];
       return (
         currentDate.getTime() >= new Date(2009, 3, 22).getTime() &&
         days.includes(currentDate.getDay()) &&
         currentTime === Times.Day &&
-        !isDayOff
+        !isDayOff &&
+        !exams
       );
     },
   },
@@ -89,6 +90,7 @@ export const linkEvents: {
       currentLinks,
       previousDay,
       isDayOff,
+      exams,
     }) {
       if (previousDay === undefined) return false;
       const isFork =
@@ -104,8 +106,9 @@ export const linkEvents: {
         previousDay.stats[stats.Courage.name] >= 80 &&
         days.includes(currentDate.getDay()) &&
         currentTime === Times.Day &&
+        isRomance &&
         !isDayOff &&
-        isRomance
+        !exams
       );
     },
   },
@@ -132,6 +135,7 @@ export const linkEvents: {
       currentLinks,
       previousDay,
       isDayOff,
+      exams,
     }) {
       if (previousDay === undefined) return false;
       const isFork =
@@ -147,8 +151,9 @@ export const linkEvents: {
         previousDay.stats[stats.Courage.name] >= 80 &&
         days.includes(currentDate.getDay()) &&
         currentTime === Times.Day &&
+        isRomance &&
         !isDayOff &&
-        isRomance
+        !exams
       );
     },
   },
@@ -193,6 +198,7 @@ export const linkEvents: {
       currentLinks,
       previousDay,
       isDayOff,
+      exams,
     }) {
       if (previousDay === undefined) return false;
       const isFork =
@@ -213,8 +219,9 @@ export const linkEvents: {
         previousDay.stats[stats.Academics.name] >= 230 &&
         days.includes(currentDate.getDay()) &&
         currentTime === Times.Day &&
+        isRomance &&
         !isDayOff &&
-        isRomance
+        !exams
       );
     },
   },
@@ -241,6 +248,7 @@ export const linkEvents: {
       currentLinks,
       previousDay,
       isDayOff,
+      exams,
     }) {
       if (previousDay === undefined) return false;
       const isFork =
@@ -261,8 +269,9 @@ export const linkEvents: {
         previousDay.stats[stats.Academics.name] >= 230 &&
         days.includes(currentDate.getDay()) &&
         currentTime === Times.Day &&
+        isRomance &&
         !isDayOff &&
-        isRomance
+        !exams
       );
     },
   },
@@ -295,7 +304,7 @@ export const linkEvents: {
         card={props.arcanes.includes(SocialLinkNames.Emperor)}
       />
     ),
-    available: function ({ currentDate, currentTime, isDayOff }) {
+    available: function ({ currentDate, currentTime, isDayOff, exams }) {
       const days = [DaysNames.monday, DaysNames.wednesday, DaysNames.friday];
       const isToday =
         currentDate.getTime() >= new Date(2010, 0, 1).getTime() ||
@@ -304,7 +313,8 @@ export const linkEvents: {
         currentDate.getTime() >= new Date(2009, 3, 27).getTime() &&
         currentTime === Times.Day &&
         !isDayOff &&
-        isToday
+        isToday &&
+        !exams
       );
     },
   },
@@ -364,6 +374,7 @@ export const linkEvents: {
       currentLinks,
       previousDay,
       isDayOff,
+      exams,
     }) {
       if (previousDay === undefined) return false;
       const isFork =
@@ -383,8 +394,9 @@ export const linkEvents: {
         previousDay.stats[stats.Charm.name] >= 100 &&
         days.includes(currentDate.getDay()) &&
         currentTime === Times.Day &&
+        isRomance &&
         !isDayOff &&
-        isRomance
+        !exams
       );
     },
   },
@@ -411,6 +423,7 @@ export const linkEvents: {
       currentLinks,
       previousDay,
       isDayOff,
+      exams,
     }) {
       if (previousDay === undefined) return false;
       const isFork =
@@ -430,8 +443,9 @@ export const linkEvents: {
         previousDay.stats[stats.Charm.name] >= 100 &&
         days.includes(currentDate.getDay()) &&
         currentTime === Times.Day &&
+        isRomance &&
         !isDayOff &&
-        isRomance
+        !exams
       );
     },
   },
@@ -469,7 +483,7 @@ export const linkEvents: {
         card={props.arcanes.includes(SocialLinkNames.Chariot)}
       />
     ),
-    available: function ({ currentDate, currentTime, isDayOff }) {
+    available: function ({ currentDate, currentTime, isDayOff, exams }) {
       const days = [
         DaysNames.monday,
         DaysNames.tuesday,
@@ -480,7 +494,8 @@ export const linkEvents: {
         currentDate.getTime() >= new Date(2009, 3, 23).getTime() &&
         days.includes(currentDate.getDay()) &&
         currentTime === Times.Day &&
-        !isDayOff
+        !isDayOff &&
+        !exams
       );
     },
   },
@@ -528,6 +543,7 @@ export const linkEvents: {
       currentLinks,
       previousDay,
       isDayOff,
+      exams,
     }) {
       if (previousDay === undefined) return false;
       const isFork =
@@ -542,8 +558,9 @@ export const linkEvents: {
         previousDay.links[SocialLinkNames.Emperor].level > 0 &&
         days.includes(currentDate.getDay()) &&
         currentTime === Times.Day &&
+        isRomance &&
         !isDayOff &&
-        isRomance
+        !exams
       );
     },
   },
@@ -582,6 +599,7 @@ export const linkEvents: {
       currentLinks,
       previousDay,
       isDayOff,
+      exams,
     }) {
       if (previousDay === undefined) return false;
       const isFork =
@@ -596,8 +614,9 @@ export const linkEvents: {
         previousDay.links[SocialLinkNames.Emperor].level > 0 &&
         days.includes(currentDate.getDay()) &&
         currentTime === Times.Day &&
+        isRomance &&
         !isDayOff &&
-        isRomance
+        !exams
       );
     },
   },
@@ -665,13 +684,14 @@ export const linkEvents: {
         card={props.arcanes.includes(SocialLinkNames.Fortune)}
       />
     ),
-    available: function ({ currentDate, currentTime, isDayOff }) {
+    available: function ({ currentDate, currentTime, isDayOff, exams }) {
       const days = [DaysNames.tuesday, DaysNames.wednesday, DaysNames.thursday];
       return (
         currentDate.getTime() >= new Date(2009, 5, 17).getTime() &&
         days.includes(currentDate.getDay()) &&
         currentTime === Times.Day &&
-        !isDayOff
+        !isDayOff &&
+        !exams
       );
     },
   },
@@ -714,6 +734,7 @@ export const linkEvents: {
       currentLinks,
       previousDay,
       isDayOff,
+      exams,
     }) {
       if (previousDay === undefined) return false;
       const isFork =
@@ -728,8 +749,9 @@ export const linkEvents: {
         previousDay.links[SocialLinkNames.Chariot].level >= 2 &&
         days.includes(currentDate.getDay()) &&
         currentTime === Times.Day &&
+        isRomance &&
         !isDayOff &&
-        isRomance
+        !exams
       );
     },
   },
@@ -768,6 +790,7 @@ export const linkEvents: {
       currentLinks,
       previousDay,
       isDayOff,
+      exams,
     }) {
       if (previousDay === undefined) return false;
       const isFork =
@@ -782,8 +805,9 @@ export const linkEvents: {
         previousDay.links[SocialLinkNames.Chariot].level >= 2 &&
         days.includes(currentDate.getDay()) &&
         currentTime === Times.Day &&
+        isRomance &&
         !isDayOff &&
-        isRomance
+        !exams
       );
     },
   },
@@ -850,7 +874,13 @@ export const linkEvents: {
         card={props.arcanes.includes(SocialLinkNames.Temperance)}
       />
     ),
-    available: function ({ currentDate, currentTime, previousDay, isDayOff }) {
+    available: function ({
+      currentDate,
+      currentTime,
+      previousDay,
+      isDayOff,
+      exams,
+    }) {
       if (previousDay === undefined) return false;
       const days = [DaysNames.tuesday, DaysNames.wednesday, DaysNames.friday];
       return (
@@ -859,7 +889,8 @@ export const linkEvents: {
         previousDay.stats[stats.Academics.name] >= 20 &&
         days.includes(currentDate.getDay()) &&
         currentTime === Times.Day &&
-        !isDayOff
+        !isDayOff &&
+        !exams
       );
     },
   },

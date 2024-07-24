@@ -9,12 +9,16 @@ import Card from "../card/Card";
 
 const cx = classnames.bind(style);
 
-function CurrentDate({ isDayOff, date }: CalendarProps) {
+function CurrentDate({ isDayOff, exams, date }: CalendarProps) {
   const dayName = DaysNamesIndex[date.getDay()];
   const month = MonthNames[date.getMonth()];
   const day = date.getDate();
 
-  return <h1 className={cx({ isDayOff })}>{`${month} ${day} (${dayName})`}</h1>;
+  return (
+    <h1
+      className={cx({ isDayOff, exams })}
+    >{`${month} ${day} (${dayName})`}</h1>
+  );
 }
 
 function Calendar(props: CalendarProps) {

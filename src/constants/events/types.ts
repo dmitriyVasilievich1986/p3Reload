@@ -167,6 +167,7 @@ export type availableProps = {
   currentDate: Date;
   previousDay: any;
   isDayOff?: boolean;
+  exams?: boolean;
   singleTimeEvents: allEventsNames[];
 };
 
