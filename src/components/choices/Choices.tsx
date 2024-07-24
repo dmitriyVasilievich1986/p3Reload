@@ -40,13 +40,13 @@ export function QuestionsWrapper(props: {
   element: React.ReactElement<ChoicesProps>[];
   points: number;
 }) {
-  let maxPoints = 0;
+  let maxPoints: number[] = [];
   props.element.forEach((q) => {
     if (Array.isArray(q.props.children)) {
       const points = q.props.children.map((c) => c.props.points || 0);
-      maxPoints += Math.max(...points);
+      maxPoints.push(Math.max(...points));
     } else if (React.isValidElement(q.props.children)) {
-      maxPoints += q.props.children.props.points || 0;
+      maxPoints = [q.props.children.props.points || 0];
     }
   });
 

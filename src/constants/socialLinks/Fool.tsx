@@ -1,31 +1,24 @@
-import { CreateBond, AutomaticLevelUp, LinkMaxed } from "./GenericCard";
 import { SocialLinkNames, SocialLinkType, Routes } from "./types";
 import { alwaysLevelUp } from "./baseFunctions";
+
+import {
+  AutomaticLevelUpObject,
+  createBondObject,
+  LinkMaxedObject,
+} from "./GenericCard";
 
 export const Fool: SocialLinkType = {
   ...alwaysLevelUp,
   name: SocialLinkNames.Fool,
   levels: {
     0: {
-      [Routes.Platonic]: {
-        points: 0,
-        maxPoints: 0,
-        element: CreateBond,
-      },
+      [Routes.Platonic]: createBondObject,
     },
     1: {
-      [Routes.Platonic]: {
-        points: 0,
-        maxPoints: 0,
-        element: AutomaticLevelUp,
-      },
+      [Routes.Platonic]: AutomaticLevelUpObject,
     },
     10: {
-      [Routes.Platonic]: {
-        points: 0,
-        maxPoints: 0,
-        element: LinkMaxed,
-      },
+      [Routes.Platonic]: LinkMaxedObject,
     },
   },
 };

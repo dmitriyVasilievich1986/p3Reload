@@ -10,6 +10,10 @@ import {
 
 export const mainCharName: string = "Protagonist";
 
+function calculateMaxPoints(maxPoints: number[], multiplier: number): number {
+  return maxPoints.reduce((a, b) => a + Math.floor(b * multiplier), 0);
+}
+
 export const baseSocialLinkCalculation: SocialLinkTypeBase = {
   name: SocialLinkNames.Aeon,
   invitations: [],
@@ -42,19 +46,24 @@ export const baseSocialLinkCalculation: SocialLinkTypeBase = {
         multiplier *= 1.51;
       } else if (
         Math.floor(
-          (newLevel.points - currentLevel.maxPoints * multiplier * 1.51) / 10 +
+          (newLevel.points -
+            calculateMaxPoints(currentLevel.maxPoints, multiplier * 1.51)) /
+            10 +
             0.99
         ) <
           Math.floor(
-            (newLevel.points - currentLevel.maxPoints * multiplier) / 10 + 0.99
+            (newLevel.points -
+              calculateMaxPoints(currentLevel.maxPoints, multiplier)) /
+              10 +
+              0.99
           ) &&
-        Math.floor(currentLevel.maxPoints * multiplier) < newLevel.points
+        calculateMaxPoints(currentLevel.maxPoints, multiplier) < newLevel.points
       ) {
         multiplier *= 1.51;
         arcanes.push(this.name);
       }
 
-      points = Math.floor(currentLevel.maxPoints * multiplier);
+      points = calculateMaxPoints(currentLevel.maxPoints, multiplier);
     } else {
       points = thisLink.points + 10;
     }

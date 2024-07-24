@@ -1,7 +1,7 @@
+import { createBondObject, LinkMaxedObject, CreateBond } from "./GenericCard";
 import { QuestionsWrapper, Question, Answer } from "../../components/choices";
 import { baseSocialLinkCalculation } from "./baseFunctions";
 import { EventCard } from "../../components/eventCard";
-import { CreateBond, LinkMaxed } from "./GenericCard";
 
 import {
   SocialLinkNames,
@@ -66,11 +66,7 @@ export const Chariot: SocialLinkType = {
   },
   levels: {
     0: {
-      [Routes.Platonic]: {
-        points: 0,
-        maxPoints: 0,
-        element: CreateBond,
-      },
+      [Routes.Platonic]: createBondObject,
     },
     1: { [Routes.Platonic]: chariotStrength() },
     2: {
@@ -197,11 +193,7 @@ export const Chariot: SocialLinkType = {
       }),
     },
     10: {
-      [Routes.Platonic]: {
-        points: 0,
-        maxPoints: 0,
-        element: LinkMaxed,
-      },
+      [Routes.Platonic]: LinkMaxedObject,
     },
   },
   invitations: {

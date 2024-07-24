@@ -1,18 +1,14 @@
 import { QuestionsWrapper, Question, Answer } from "../../components/choices";
 import { baseSocialLinkCalculation, mainCharName } from "./baseFunctions";
 import { SocialLinkNames, SocialLinkType, Routes } from "./types";
-import { CreateBond, LinkMaxed } from "./GenericCard";
+import { createBondObject, LinkMaxedObject } from "./GenericCard";
 
 export const Moon: SocialLinkType = {
   ...baseSocialLinkCalculation,
   name: SocialLinkNames.Moon,
   levels: {
     0: {
-      [Routes.Platonic]: {
-        points: 0,
-        maxPoints: 0,
-        element: CreateBond,
-      },
+      [Routes.Platonic]: createBondObject,
     },
     1: {
       [Routes.Platonic]: QuestionsWrapper({
@@ -128,11 +124,7 @@ export const Moon: SocialLinkType = {
       }),
     },
     10: {
-      [Routes.Platonic]: {
-        points: 0,
-        maxPoints: 0,
-        element: LinkMaxed,
-      },
+      [Routes.Platonic]: LinkMaxedObject,
     },
   },
 };

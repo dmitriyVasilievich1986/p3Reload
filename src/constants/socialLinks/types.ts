@@ -40,7 +40,7 @@ export type SocialLinkLevelBase = {
 };
 
 export type SocialLinkLevel = SocialLinkLevelBase & {
-  maxPoints: number;
+  maxPoints: number[];
 };
 
 export type SocialLinkStats = {

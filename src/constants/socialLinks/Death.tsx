@@ -1,4 +1,4 @@
-import { CreateBond, ChooseAny } from "./GenericCard";
+import { createBondObject, ChooseAnyObject } from "./GenericCard";
 import { alwaysLevelUp } from "./baseFunctions";
 
 import {
@@ -29,18 +29,10 @@ export const Death: SocialLinkType = {
   },
   levels: {
     0: {
-      [Routes.Platonic]: {
-        points: 0,
-        maxPoints: 0,
-        element: CreateBond,
-      },
+      [Routes.Platonic]: createBondObject,
     },
     1: {
-      [Routes.Platonic]: {
-        points: 0,
-        maxPoints: 0,
-        element: ChooseAny,
-      },
+      [Routes.Platonic]: ChooseAnyObject,
     },
   },
 };
