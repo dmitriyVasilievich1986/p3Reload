@@ -17,7 +17,7 @@ export const Death: SocialLinkType = {
   },
   calculate: function ({ currentLinks }) {
     const thisLink = currentLinks[SocialLinkNames.Death];
-    const level = [0, 2, 5, 7].includes(thisLink.level)
+    const level = [1, 3, 6, 8].includes(thisLink.level)
       ? thisLink.level + 2
       : thisLink.level + 1;
     return {
