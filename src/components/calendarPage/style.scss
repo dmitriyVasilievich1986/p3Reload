@@ -7,8 +7,11 @@
     display: flex;
     gap: 10px;
 
-    &>h1 {
+    &>.date {
+        align-items: center;
         color: inherit;
+        display: flex;
+        gap: 10px;
 
         &.exams {
             color: #390099;
@@ -16,6 +19,15 @@
         
         &.isDayOff {
             color: #9d0208;
+        }
+        
+        &.foolMoon {
+            color: #ff9f1c;
+        }
+
+        &>img {
+            height: 35px;
+            width: 35px;
         }
     }
 }

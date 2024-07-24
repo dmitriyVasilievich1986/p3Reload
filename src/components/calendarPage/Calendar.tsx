@@ -5,19 +5,21 @@ import SocialLinks from "./SocialLinks";
 import * as style from "./style.scss";
 import HeroStats from "./HeroStats";
 import DayEvent from "./DayEvent";
+import moonIcon from "./moon.png";
 import Card from "../card/Card";
 
 const cx = classnames.bind(style);
 
-function CurrentDate({ isDayOff, exams, date }: CalendarProps) {
+function CurrentDate({ foolMoon, isDayOff, exams, date }: CalendarProps) {
   const dayName = DaysNamesIndex[date.getDay()];
   const month = MonthNames[date.getMonth()];
   const day = date.getDate();
 
   return (
-    <h1
-      className={cx({ isDayOff, exams })}
-    >{`${month} ${day} (${dayName})`}</h1>
+    <div className={cx("date", { foolMoon, isDayOff, exams })}>
+      <h1>{`${month} ${day} (${dayName})`}</h1>
+      {!!foolMoon && <img src={moonIcon} />}
+    </div>
   );
 }
 

@@ -9,6 +9,7 @@ export type singleDay = {
   date: Date;
   isDayOff?: boolean;
   exams?: boolean;
+  foolMoon?: boolean;
   getId: () => string;
   activities: Event[];
   singleTimeEvents: allEventsNames[];
