@@ -36,6 +36,9 @@ function Modal(props: {
   if (props.dayConstants === null) return null;
 
   const dayConstants = props.dayConstants as DayConstants;
+  const currentDay = props.calendar.find(
+    (c) => c.date.getTime() === dayConstants.day.getTime()
+  ) as singleDay;
   const previousDay = props.calendar.find(
     (c) => c.date.getTime() === dayConstants.day.getTime() - 86400000
   ) as singleDay;
@@ -84,15 +87,13 @@ function Modal(props: {
     props.setDayConstants(null);
   };
 
-  const currentDay = props.calendar.find(
-    (c) => c.date.getTime() === dayConstants.day.getTime()
-  ) as singleDay;
   const availableParams = {
     singleTimeEvents: currentDay.singleTimeEvents,
     currentStats: currentDay.stats,
     currentLinks: currentDay.links,
     currentTime: dayConstants.time,
     currentDate: dayConstants.day,
+    isDayOff: currentDay.isDayOff,
     previousDay,
   };
   const availableEvents = (Object.keys(events) as Array<allEventsNames>)

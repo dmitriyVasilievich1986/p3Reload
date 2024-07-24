@@ -166,6 +166,7 @@ export type availableProps = {
   currentTime: Times;
   currentDate: Date;
   previousDay: any;
+  isDayOff?: boolean;
   singleTimeEvents: allEventsNames[];
 };
 
