@@ -9,7 +9,12 @@ function MonthBlock(props: MonthBlockProps) {
   return (
     <div className={cx("month-wrapper")}>
       <div className={cx("month-name")}>
-        {MonthNames[props.days[0].date.getMonth()]}
+        <div className="name-capital">
+          {MonthNames[props.days[0].date.getMonth()][0]}
+        </div>
+        <div className="name-rest">
+          {MonthNames[props.days[0].date.getMonth()].slice(1)}
+        </div>
       </div>
       <div className={cx("dates")}>
         <div>

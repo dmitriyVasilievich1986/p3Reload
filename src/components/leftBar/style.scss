@@ -5,14 +5,30 @@
     padding: 2rem 0;
     height: 100vh;
     z-index: 10;
-    width: 50px;
+    width: 25px;
     left: 0;
     top: 0;
 
     transition: width 0.5s;
 
+    & .name-rest {
+        display: none;
+    }
+
+    & .name-capital {
+        font-weight: bolder;
+    }
+
     &:hover {
         width: 200px;
+
+        & .name-rest {
+            display: block;
+        }
+
+        & .name-capital {
+            font-weight: inherit;
+        }
     }
 }
 
@@ -21,7 +37,9 @@
     margin: 1rem 0;
 
     &>.month-name {
+        justify-content: center;
         text-align: center;
+        display: flex;
         width: 100%;
     }
 
@@ -37,8 +55,9 @@
         display: grid;
         
         &>div {
-            overflow-y: hidden;
             flex-flow: column;
+            max-height: 150px;
+            overflow-y: auto;
             margin-top: 10px;
             display: flex;
 
@@ -47,10 +66,10 @@
 
                 &:hover {
                     background-color: #f5ebe0;
-                    padding: 5px 10px 5px 1rem;
                     font-weight: bolder;
                     color: #001d3d;
                     cursor: pointer;
+                    padding: 10px 0 10px 2rem;
                 }
             }
         }
