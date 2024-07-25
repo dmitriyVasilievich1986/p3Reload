@@ -1,6 +1,7 @@
 import { ChoiceProps, ChoicesProps } from "./types";
 import classnames from "classnames/bind";
 import * as style from "./style.scss";
+import { Tooltip } from "../tootlip";
 import React from "react";
 
 const cx = classnames.bind(style);
@@ -17,12 +18,20 @@ export function Answer(props: ChoiceProps) {
 
   return (
     <div className={cx("choice")}>
-      <div
-        style={{ backgroundColor }}
-        className={cx({ selected: points > 0 || props.fork })}
+      <Tooltip
+        tooltip={
+          <div style={{ width: "90px", textAlign: "center" }}>
+            Points: {points}
+          </div>
+        }
       >
-        {props.label}
-      </div>
+        <div
+          style={{ backgroundColor }}
+          className={cx({ selected: points > 0 || props.fork })}
+        >
+          {props.label}
+        </div>
+      </Tooltip>
     </div>
   );
 }
