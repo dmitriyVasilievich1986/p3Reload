@@ -96,7 +96,7 @@ export const Fortune: SocialLinkType = {
       [Routes.Platonic]: QuestionsWrapper({
         points: 15,
         element: [
-          <Question label="Can you remember my name?">
+          <Question label="Can you remember your name?">
             <Answer label="It's okay, I'm fine." points={15} />
             <Answer label="Of course. It's Keisuke." />
             <Answer label="......" />
@@ -105,9 +105,9 @@ export const Fortune: SocialLinkType = {
             <Answer label="I do." />
             <Answer label="I don't." />
           </Question>,
-          <Question label="I'm not a doctor.">
+          <Question label="I'm not a doctor...">
             <Answer label="Do you think you want to be one?" />
-            <Answer label="Don't beat yourself up for it." />
+            <Answer label="Don't beat yourself up about it." />
           </Question>,
         ],
       }),
@@ -124,7 +124,7 @@ export const Fortune: SocialLinkType = {
             <Answer label="What happened?" />
             <Answer label="...You should just go." />
           </Question>,
-          <Question label="My train's about to leave... Wh-What should I do...?">
+          <Question label="My train's about to leave! Wh-What should I do?">
             <Answer label="Leave this to me!" />
             <Answer label="You can't abandon your trip!" />
           </Question>,
@@ -147,12 +147,12 @@ export const Fortune: SocialLinkType = {
         element: [
           <Question label="That's why I want you to have it.">
             <Answer label="I understand." points={15} />
-            <Answer label="Why?" points={15} />
-            <Answer label="Stop relying on others." points={15} />
+            <Answer label="But why?" points={5} />
+            <Answer label="Stop relying on others." points={5} />
           </Question>,
           <Question label="I-I'm not coming off as arrogant, am I?">
-            <Answer label="No, not really." points={15} />
-            <Answer label="Yeah." points={15} />
+            <Answer label="Not at all." points={15} />
+            <Answer label="You kinda are." points={5} />
           </Question>,
         ],
       }),
