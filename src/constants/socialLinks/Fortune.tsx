@@ -1,18 +1,14 @@
 import { QuestionsWrapper, Question, Answer } from "../../components/choices";
 import { SocialLinkNames, SocialLinkType, Routes } from "./types";
+import { createBondObject, LinkMaxedObject } from "./GenericCard";
 import { baseSocialLinkCalculation } from "./baseFunctions";
-import { CreateBond, LinkMaxed } from "./GenericCard";
 
 export const Fortune: SocialLinkType = {
   ...baseSocialLinkCalculation,
   name: SocialLinkNames.Fortune,
   levels: {
     0: {
-      [Routes.Platonic]: {
-        points: 0,
-        maxPoints: 0,
-        element: CreateBond,
-      },
+      [Routes.Platonic]: createBondObject,
     },
     1: {
       [Routes.Platonic]: QuestionsWrapper({
@@ -23,7 +19,7 @@ export const Fortune: SocialLinkType = {
             <Answer label="Do you need some rest?" />
           </Question>,
           <Question label="Yamagishi-san won't be going anywhere for a while.">
-            <Answer label="'Strikes again'?" />
+            <Answer label='"Strikes again"?' />
             <Answer label="Is that a problem?" />
           </Question>,
         ],
@@ -34,7 +30,7 @@ export const Fortune: SocialLinkType = {
         points: 0,
         element: [
           <Question label="It really helped apply the paint to the canvas, so I'm sure that's the only reason the judges even noticed.">
-            <Answer label="You've got talent!" points={15} />
+            <Answer label="You've got talent." points={15} />
             <Answer label="You got lucky." />
           </Question>,
           <Question label="I recommend adding more shellfish to your diet, like oyster and abalone. They're packed with iron and easy to cook.">
@@ -64,8 +60,8 @@ export const Fortune: SocialLinkType = {
         points: 15,
         element: [
           <Question label="Wait. Then... that means...">
-            <Answer label="You should tell your dad." points={15} />
-            <Answer label="Now you don't have to quit." points={5} />
+            <Answer label="You should tell your dad!" points={15} />
+            <Answer label="Now you don't have to quit." points={15} />
           </Question>,
         ],
       }),
@@ -74,12 +70,12 @@ export const Fortune: SocialLinkType = {
       [Routes.Platonic]: QuestionsWrapper({
         points: 15,
         element: [
-          <Question label="Everyone is working so hard...">
+          <Question label="Everyone's working so hard...">
             <Answer label="So are you." />
             <Answer label="What's the matter?" />
           </Question>,
           <Question label="I just don't know what to think.">
-            <Answer label="Will you study abroad?" />
+            <Answer label="Will you study abroad?" points={5} />
             <Answer label="It's your choice now." points={15} />
           </Question>,
         ],
@@ -100,7 +96,7 @@ export const Fortune: SocialLinkType = {
       [Routes.Platonic]: QuestionsWrapper({
         points: 15,
         element: [
-          <Question label="Can you remember my name?">
+          <Question label="Can you remember your name?">
             <Answer label="It's okay, I'm fine." points={15} />
             <Answer label="Of course. It's Keisuke." />
             <Answer label="......" />
@@ -109,9 +105,9 @@ export const Fortune: SocialLinkType = {
             <Answer label="I do." />
             <Answer label="I don't." />
           </Question>,
-          <Question label="I'm not a doctor.">
+          <Question label="I'm not a doctor...">
             <Answer label="Do you think you want to be one?" />
-            <Answer label="Don't beat yourself up for it." />
+            <Answer label="Don't beat yourself up about it." />
           </Question>,
         ],
       }),
@@ -128,7 +124,7 @@ export const Fortune: SocialLinkType = {
             <Answer label="What happened?" />
             <Answer label="...You should just go." />
           </Question>,
-          <Question label="My train's about to leave... Wh-What should I do...?">
+          <Question label="My train's about to leave! Wh-What should I do?">
             <Answer label="Leave this to me!" />
             <Answer label="You can't abandon your trip!" />
           </Question>,
@@ -151,22 +147,18 @@ export const Fortune: SocialLinkType = {
         element: [
           <Question label="That's why I want you to have it.">
             <Answer label="I understand." points={15} />
-            <Answer label="Why?" points={15} />
-            <Answer label="Stop relying on others." points={15} />
+            <Answer label="But why?" points={5} />
+            <Answer label="Stop relying on others." points={5} />
           </Question>,
           <Question label="I-I'm not coming off as arrogant, am I?">
-            <Answer label="No, not really." points={15} />
-            <Answer label="Yeah." points={15} />
+            <Answer label="Not at all." points={15} />
+            <Answer label="You kinda are." points={5} />
           </Question>,
         ],
       }),
     },
     10: {
-      [Routes.Platonic]: {
-        points: 0,
-        maxPoints: 0,
-        element: LinkMaxed,
-      },
+      [Routes.Platonic]: LinkMaxedObject,
     },
   },
   invitations: {

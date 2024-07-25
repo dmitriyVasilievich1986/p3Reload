@@ -37,7 +37,6 @@ function App() {
       <LeftBar calendarRef={calendarRef} />
       <div className={cx("App")}>
         <div ref={calendarRef}>
-          <div />
           {calendar.map((c, i) => (
             <Calendar
               key={c.date.getTime()}
@@ -48,7 +47,6 @@ function App() {
               {...c}
             />
           ))}
-          <div />
         </div>
       </div>
     </React.Fragment>

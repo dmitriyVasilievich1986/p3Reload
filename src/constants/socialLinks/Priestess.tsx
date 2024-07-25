@@ -1,24 +1,22 @@
 import { QuestionsWrapper, Question, Answer } from "../../components/choices";
 import { baseSocialLinkCalculation, mainCharName } from "./baseFunctions";
 import { SocialLinkNames, SocialLinkType, Routes } from "./types";
-import { CreateBond, LinkMaxed } from "./GenericCard";
+import { createBondObject, LinkMaxedObject } from "./GenericCard";
 
 export const Priestess: SocialLinkType = {
   ...baseSocialLinkCalculation,
   name: SocialLinkNames.Priestess,
   levels: {
     0: {
-      [Routes.Platonic]: {
-        points: 0,
-        maxPoints: 0,
-        element: CreateBond,
-      },
+      [Routes.Platonic]: createBondObject,
     },
     1: {
       [Routes.Platonic]: QuestionsWrapper({
         points: 0,
         element: [
-          <Question label="Maybe I should give him some food. What do you think, Makoto-kun?">
+          <Question
+            label={`Maybe I should give him some food. What do you think, ${mainCharName}-kun?`}
+          >
             <Answer label="Sure." points={15} />
             <Answer label="Don't do it." />
           </Question>,
@@ -37,7 +35,9 @@ export const Priestess: SocialLinkType = {
       [Routes.Platonic]: QuestionsWrapper({
         points: 0,
         element: [
-          <Question label="I still don't have a feel for how much salt to add. How do you do it, Makoto-kun?">
+          <Question
+            label={`I still don't have a feel for how much salt to add. How do you do it, ${mainCharName}-kun?`}
+          >
             <Answer label="Just a dash or two." points={15} />
             <Answer label="I don't add salt." />
             <Answer label="Just dump it a ton." points={5} />
@@ -70,7 +70,7 @@ export const Priestess: SocialLinkType = {
           <Question label="Not to mention that I'm kind of embarrassed about it all. I mean, it's not a very feminine hobby.">
             <Answer label="That's not true." points={15} />
             <Answer label="Maybe you're right." />
-            <Answer label="Why do you think that?" />
+            <Answer label="Why do you think that?" points={5} />
           </Question>,
         ],
       }),
@@ -83,14 +83,14 @@ export const Priestess: SocialLinkType = {
             <Answer label="It's good." points={5} />
             <Answer label="You did a great job." points={15} />
           </Question>,
-          <Question label="Because I don't think I could have made it this far without you.">
+          <Question label="Because, I don't think I could have made it this far without you.">
             <Answer label="I'm glad I could help." points={5} />
             <Answer label="I didn't do anything." />
           </Question>,
           <Question label="That might be the reason why I made such good rice balls. Because I was thinking about who was going to eat them.">
-            <Answer label="Thank you." />
+            <Answer label="Thank you." points={5} />
             <Answer label="I think I get it." />
-            <Answer label="Can you make me more sometime?" points={15} />
+            <Answer label="Can you make more sometime?" points={15} />
           </Question>,
         ],
       }),
@@ -270,11 +270,7 @@ export const Priestess: SocialLinkType = {
       }),
     },
     10: {
-      [Routes.Platonic]: {
-        points: 0,
-        maxPoints: 0,
-        element: LinkMaxed,
-      },
+      [Routes.Platonic]: LinkMaxedObject,
     },
   },
   invitations: {

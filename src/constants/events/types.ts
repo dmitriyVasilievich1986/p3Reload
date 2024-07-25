@@ -97,6 +97,7 @@ export enum statsEventsAcademicsNames {
   stayAwakeInClass = "stayAwakeInClass",
   studyAtLibrary = "studyAtLibrary",
   wakatsuKitchen = "wakatsuKitchen",
+  summerSchool = "summerSchool",
   studyAtHome = "studyAtHome",
 }
 
@@ -166,6 +167,8 @@ export type availableProps = {
   currentTime: Times;
   currentDate: Date;
   previousDay: any;
+  isDayOff?: boolean;
+  exams?: boolean;
   singleTimeEvents: allEventsNames[];
 };
 

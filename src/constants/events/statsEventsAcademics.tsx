@@ -1,4 +1,5 @@
 import { EventCard } from "../../components/eventCard";
+import { WideEvent } from "../../components/wideEvent";
 import { StatsNames } from "../stats/types";
 import { DaysNames } from "../monthsNames";
 
@@ -65,6 +66,24 @@ export const statsEventsAcademics: {
       return currentTime === Times.Day;
     },
     upgrade: getAcademicsUpgradeFunction(2),
+  },
+  [statsEventsAcademicsNames.summerSchool]: {
+    name: statsEventsAcademicsNames.summerSchool,
+    category: Categories.Stats,
+    time: Times.WholeDay,
+    label: () => (
+      <WideEvent>
+        <EventCard
+          place="Gekkoukan High School"
+          head="Summer School"
+          stats="Academics +3"
+        />
+      </WideEvent>
+    ),
+    available: function () {
+      return false;
+    },
+    upgrade: getAcademicsUpgradeFunction(3),
   },
   [statsEventsAcademicsNames.wakatsuKitchenDay]: {
     name: statsEventsAcademicsNames.wakatsuKitchenDay,
@@ -217,6 +236,8 @@ export const statsEventsAcademics: {
       const dates = [
         new Date(2009, 4, 15).getTime(),
         new Date(2009, 4, 16).getTime(),
+        new Date(2009, 6, 9).getTime(),
+        new Date(2009, 6, 10).getTime(),
       ];
       return (
         dates.includes(currentDate.getTime()) && currentTime === Times.Evening
@@ -236,7 +257,10 @@ export const statsEventsAcademics: {
       />
     ),
     available: ({ currentDate, currentTime }) => {
-      const dates = [new Date(2009, 4, 17).getTime()];
+      const dates = [
+        new Date(2009, 4, 17).getTime(),
+        new Date(2009, 6, 13).getTime(),
+      ];
       return (
         dates.includes(currentDate.getTime()) && currentTime === Times.Evening
       );

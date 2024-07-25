@@ -1,18 +1,14 @@
 import { QuestionsWrapper, Question, Answer } from "../../components/choices";
 import { SocialLinkNames, SocialLinkType, Routes } from "./types";
+import { createBondObject, LinkMaxedObject } from "./GenericCard";
 import { baseSocialLinkCalculation } from "./baseFunctions";
-import { CreateBond, LinkMaxed } from "./GenericCard";
 
 export const Emperor: SocialLinkType = {
   ...baseSocialLinkCalculation,
   name: SocialLinkNames.Emperor,
   levels: {
     0: {
-      [Routes.Platonic]: {
-        points: 0,
-        maxPoints: 0,
-        element: CreateBond,
-      },
+      [Routes.Platonic]: createBondObject,
     },
     1: {
       [Routes.Platonic]: QuestionsWrapper({
@@ -130,11 +126,7 @@ export const Emperor: SocialLinkType = {
       }),
     },
     10: {
-      [Routes.Platonic]: {
-        points: 0,
-        maxPoints: 0,
-        element: LinkMaxed,
-      },
+      [Routes.Platonic]: LinkMaxedObject,
     },
   },
 };

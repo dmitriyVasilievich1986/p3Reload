@@ -39,7 +39,7 @@ export const may: singleDay[] = [
           />
         ),
       },
-      events.Strength,
+      events.Hierophant,
       events.gameParadeAcademics,
     ],
   },
@@ -72,7 +72,7 @@ export const may: singleDay[] = [
     arcanes: [],
     activities: [
       { ...events.Special, time: Times.Morning },
-      events.Hierophant,
+      events.Hermit,
       events.lobbyPCVirtualDiet,
     ],
   },
@@ -155,7 +155,7 @@ export const may: singleDay[] = [
     arcanes: [],
     activities: [
       { ...events.Special, time: Times.Morning },
-      events.Hermit,
+      events.Hierophant,
       events.Tartarus,
     ],
   },
@@ -178,7 +178,7 @@ export const may: singleDay[] = [
     arcanes: [],
     activities: [
       { ...events.Special, time: Times.Morning },
-      events.DoNothing,
+      events.JunpeiIori1,
       events.lobbyPCTypinGhoul,
     ],
   },
@@ -231,7 +231,7 @@ export const may: singleDay[] = [
           </Question>
         ),
       },
-      events.Hierophant,
+      events.Moon,
       events.dormExamStudyingGroup,
     ],
   },
@@ -253,7 +253,7 @@ export const may: singleDay[] = [
     arcanes: [],
     activities: [
       { ...events.Special, time: Times.Morning },
-      events.Hermit,
+      events.Moon,
       events.dormExamStudyingTeam,
     ],
   },
@@ -376,8 +376,8 @@ export const may: singleDay[] = [
     arcanes: [],
     activities: [
       { ...events.Exams, time: Times.Morning },
-      events.DoNothing,
-      { ...events.DoNothing, time: Times.Evening },
+      events.HangedMan,
+      events.gameParadeAcademics,
     ],
   },
   {
@@ -387,8 +387,8 @@ export const may: singleDay[] = [
     arcanes: [],
     activities: [
       { ...events.Special, time: Times.Morning },
-      events.DoNothing,
-      { ...events.DoNothing, time: Times.Evening },
+      events.Moon,
+      events.wakatsuKitchenSpecial,
     ],
   },
   {
@@ -435,8 +435,8 @@ export const may: singleDay[] = [
           };
         },
       },
-      events.DoNothing,
-      { ...events.DoNothing, time: Times.Evening },
+      events.Emperor,
+      events.wakatsuKitchenSpecial,
     ],
   },
   {
@@ -446,8 +446,8 @@ export const may: singleDay[] = [
     arcanes: [],
     activities: [
       { ...events.Special, time: Times.Morning },
-      events.DoNothing,
-      { ...events.DoNothing, time: Times.Evening },
+      events.Chariot,
+      events.gameParadeCourage,
     ],
   },
   {
@@ -457,8 +457,8 @@ export const may: singleDay[] = [
     arcanes: [],
     activities: [
       { ...events.Special, time: Times.Morning },
-      events.DoNothing,
-      { ...events.DoNothing, time: Times.Evening },
+      events.Temperance,
+      events.hagakureRamenSpecial,
     ],
   },
   {
@@ -468,8 +468,8 @@ export const may: singleDay[] = [
     arcanes: [],
     activities: [
       events.stayAwakeInClass,
-      events.DoNothing,
-      { ...events.DoNothing, time: Times.Evening },
+      events.Chariot,
+      events.wakatsuKitchenSpecial,
     ],
   },
   {
@@ -479,8 +479,8 @@ export const may: singleDay[] = [
     arcanes: [],
     activities: [
       events.stayAwakeInClass,
-      events.DoNothing,
-      { ...events.DoNothing, time: Times.Evening },
+      events.Temperance,
+      events.gameParadeCourage,
     ],
   },
   {
@@ -490,8 +490,8 @@ export const may: singleDay[] = [
     arcanes: [],
     activities: [
       events.NoControl,
-      events.DoNothing,
-      { ...events.DoNothing, time: Times.Evening },
+      events.HangedMan,
+      events.gameParadeAcademics,
     ],
   },
   {
@@ -499,10 +499,6 @@ export const may: singleDay[] = [
     date: new Date(2009, 4, 31),
     singleTimeEvents: [],
     arcanes: [],
-    activities: [
-      events.NoControl,
-      events.DoNothing,
-      { ...events.DoNothing, time: Times.Evening },
-    ],
+    activities: [events.NoControl, events.Moon, events.wakatsuKitchenSpecial],
   },
 ];

@@ -12,11 +12,7 @@ export const june: singleDay[] = [
     date: new Date(2009, 5, 1),
     singleTimeEvents: [],
     arcanes: [],
-    activities: [
-      events.NoControl,
-      events.DoNothing,
-      { ...events.DoNothing, time: Times.Evening },
-    ],
+    activities: [events.NoControl, events.Emperor, events.AkihikoSanada1],
   },
   {
     ...baseCalendar,
@@ -25,8 +21,8 @@ export const june: singleDay[] = [
     arcanes: [],
     activities: [
       events.stayAwakeInClass,
-      events.DoNothing,
-      { ...events.DoNothing, time: Times.Evening },
+      events.Temperance,
+      events.gameParadeCourage,
     ],
   },
   {
@@ -36,8 +32,8 @@ export const june: singleDay[] = [
     arcanes: [],
     activities: [
       events.NoControl,
-      events.DoNothing,
-      { ...events.DoNothing, time: Times.Evening },
+      events.Temperance,
+      events.hagakureRamenSpecial,
     ],
   },
   {
@@ -47,8 +43,8 @@ export const june: singleDay[] = [
     arcanes: [],
     activities: [
       events.NoControl,
-      events.DoNothing,
-      { ...events.DoNothing, time: Times.Evening },
+      events.Chariot,
+      events.wakatsuKitchenSpecial,
     ],
   },
   {
@@ -56,11 +52,7 @@ export const june: singleDay[] = [
     date: new Date(2009, 5, 5),
     singleTimeEvents: [],
     arcanes: [],
-    activities: [
-      events.NoControl,
-      events.DoNothing,
-      { ...events.DoNothing, time: Times.Evening },
-    ],
+    activities: [events.NoControl, events.Emperor, events.gameParadeCourage],
   },
   {
     ...baseCalendar,
@@ -69,8 +61,8 @@ export const june: singleDay[] = [
     arcanes: [],
     activities: [
       events.NoControl,
-      events.DoNothing,
-      { ...events.DoNothing, time: Times.Evening },
+      events.Justice,
+      events.wilduckBigEaterChallenge,
     ],
   },
   {
@@ -78,11 +70,7 @@ export const june: singleDay[] = [
     date: new Date(2009, 5, 7),
     singleTimeEvents: [],
     arcanes: [],
-    activities: [
-      events.NoControl,
-      events.DoNothing,
-      { ...events.DoNothing, time: Times.Evening },
-    ],
+    activities: [events.NoControl, events.Moon, events.wakatsuKitchenSpecial],
   },
   {
     ...baseCalendar,
@@ -112,8 +100,8 @@ export const june: singleDay[] = [
     activities: [
       events.NoControl,
       events.drinkMedicine,
-      events.DoNothing,
-      { ...events.DoNothing, time: Times.Evening },
+      events.Temperance,
+      events.hagakureRamenSpecial,
     ],
   },
   {
@@ -123,8 +111,8 @@ export const june: singleDay[] = [
     arcanes: [],
     activities: [
       events.stayAwakeInClass,
-      events.DoNothing,
-      { ...events.DoNothing, time: Times.Evening },
+      events.Emperor,
+      events.hagakureRamenSpecial,
     ],
   },
   {
@@ -134,8 +122,8 @@ export const june: singleDay[] = [
     arcanes: [],
     activities: [
       events.NoControl,
-      events.DoNothing,
-      { ...events.DoNothing, time: Times.Evening },
+      events.Chariot,
+      events.wakatsuKitchenSpecial,
     ],
   },
   {
@@ -145,8 +133,9 @@ export const june: singleDay[] = [
     arcanes: [],
     activities: [
       events.NoControl,
-      events.DoNothing,
-      { ...events.DoNothing, time: Times.Evening },
+      events.Magician,
+      events.hagakureRamenSpecial,
+      events.Death,
     ],
   },
   {
@@ -156,7 +145,7 @@ export const june: singleDay[] = [
     arcanes: [],
     activities: [
       events.NoControl,
-      events.DoNothing,
+      events.Justice,
       {
         ...events.Special,
         time: Times.Evening,
@@ -171,8 +160,8 @@ export const june: singleDay[] = [
     arcanes: [],
     activities: [
       events.NoControl,
-      events.DoNothing,
-      { ...events.DoNothing, time: Times.Evening },
+      events.Moon,
+      events.wilduckBurgeWeekendWilduckSet,
     ],
   },
   {
@@ -195,8 +184,8 @@ export const june: singleDay[] = [
           </Question>
         ),
       },
-      events.DoNothing,
-      { ...events.DoNothing, time: Times.Evening },
+      events.Emperor,
+      events.wakatsuKitchenSpecial,
     ],
   },
   {
@@ -206,8 +195,8 @@ export const june: singleDay[] = [
     arcanes: [],
     activities: [
       events.NoControl,
-      events.DoNothing,
-      { ...events.DoNothing, time: Times.Evening },
+      events.Temperance,
+      events.hagakureRamenSpecial,
     ],
   },
   {
@@ -228,8 +217,8 @@ export const june: singleDay[] = [
           </Question>
         ),
       },
-      events.DoNothing,
-      { ...events.DoNothing, time: Times.Evening },
+      events.Fortune,
+      events.hagakureRamenSpecial,
     ],
   },
   {
@@ -239,8 +228,8 @@ export const june: singleDay[] = [
     arcanes: [],
     activities: [
       events.NoControl,
-      events.DoNothing,
-      { ...events.DoNothing, time: Times.Evening },
+      events.Fortune,
+      events.wakatsuKitchenSpecial,
     ],
   },
   {
@@ -250,8 +239,8 @@ export const june: singleDay[] = [
     arcanes: [],
     activities: [
       events.NoControl,
-      events.DoNothing,
-      { ...events.DoNothing, time: Times.Evening },
+      events.Temperance,
+      events.hagakureRamenSpecial,
     ],
   },
   {
@@ -265,7 +254,7 @@ export const june: singleDay[] = [
         ...events.Special,
         label: () => <EventCard head="Koromaru Introduction" />,
       },
-      { ...events.DoNothing, time: Times.Evening },
+      events.wilduckBurgeWeekendWilduckSet,
     ],
   },
   {
@@ -275,8 +264,8 @@ export const june: singleDay[] = [
     arcanes: [],
     activities: [
       events.NoControl,
-      events.DoNothing,
-      { ...events.DoNothing, time: Times.Evening },
+      events.Moon,
+      events.wilduckBurgeWeekendWilduckSet,
     ],
   },
   {
@@ -293,8 +282,8 @@ export const june: singleDay[] = [
           </Question>
         ),
       },
-      events.DoNothing,
-      { ...events.DoNothing, time: Times.Evening },
+      events.Emperor,
+      events.wakatsuKitchenSpecial,
     ],
   },
   {
@@ -302,22 +291,14 @@ export const june: singleDay[] = [
     date: new Date(2009, 5, 23),
     singleTimeEvents: [],
     arcanes: [],
-    activities: [
-      events.NoControl,
-      events.DoNothing,
-      { ...events.DoNothing, time: Times.Evening },
-    ],
+    activities: [events.NoControl, events.Fortune, events.hagakureRamenSpecial],
   },
   {
     ...baseCalendar,
     date: new Date(2009, 5, 24),
     singleTimeEvents: [],
     arcanes: [],
-    activities: [
-      events.NoControl,
-      events.DoNothing,
-      { ...events.DoNothing, time: Times.Evening },
-    ],
+    activities: [events.NoControl, events.Fortune, events.hagakureRamenSpecial],
   },
   {
     ...baseCalendar,
@@ -337,8 +318,8 @@ export const june: singleDay[] = [
           </Question>
         ),
       },
-      events.DoNothing,
-      { ...events.DoNothing, time: Times.Evening },
+      events.Chariot,
+      events.wakatsuKitchenSpecial,
     ],
   },
   {
@@ -348,8 +329,8 @@ export const june: singleDay[] = [
     arcanes: [],
     activities: [
       events.NoControl,
-      events.DoNothing,
-      { ...events.DoNothing, time: Times.Evening },
+      events.Magician,
+      events.hagakureRamenSpecial,
     ],
   },
   {
@@ -359,8 +340,8 @@ export const june: singleDay[] = [
     arcanes: [],
     activities: [
       events.NoControl,
-      events.DoNothing,
-      { ...events.DoNothing, time: Times.Evening },
+      events.Justice,
+      events.wilduckBurgeWeekendWilduckSet,
     ],
   },
   {
@@ -370,8 +351,8 @@ export const june: singleDay[] = [
     arcanes: [],
     activities: [
       events.NoControl,
-      events.DoNothing,
-      { ...events.DoNothing, time: Times.Evening },
+      events.Moon,
+      events.wilduckBurgeWeekendWilduckSet,
     ],
   },
   {
@@ -390,8 +371,8 @@ export const june: singleDay[] = [
           </Question>
         ),
       },
-      events.DoNothing,
-      { ...events.DoNothing, time: Times.Evening },
+      events.Emperor,
+      events.wakatsuKitchenSpecial,
     ],
   },
   {
@@ -401,8 +382,8 @@ export const june: singleDay[] = [
     arcanes: [],
     activities: [
       events.NoControl,
-      events.DoNothing,
-      { ...events.DoNothing, time: Times.Evening },
+      events.Magician,
+      events.hagakureRamenSpecial,
     ],
   },
 ];
