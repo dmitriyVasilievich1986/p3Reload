@@ -236,6 +236,8 @@ export const statsEventsAcademics: {
       const dates = [
         new Date(2009, 4, 15).getTime(),
         new Date(2009, 4, 16).getTime(),
+        new Date(2009, 6, 9).getTime(),
+        new Date(2009, 6, 10).getTime(),
       ];
       return (
         dates.includes(currentDate.getTime()) && currentTime === Times.Evening
@@ -255,7 +257,10 @@ export const statsEventsAcademics: {
       />
     ),
     available: ({ currentDate, currentTime }) => {
-      const dates = [new Date(2009, 4, 17).getTime()];
+      const dates = [
+        new Date(2009, 4, 17).getTime(),
+        new Date(2009, 6, 13).getTime(),
+      ];
       return (
         dates.includes(currentDate.getTime()) && currentTime === Times.Evening
       );
