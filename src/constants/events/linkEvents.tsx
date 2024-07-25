@@ -659,11 +659,19 @@ export const linkEvents: {
         card={props.arcanes.includes(SocialLinkNames.Hermit)}
       />
     ),
-    available: function ({ currentDate, currentTime, isDayOff }) {
+    available: function ({ currentDate, currentTime }) {
+      const days = [
+        new Date(2009, 3, 29).getTime(),
+        new Date(2009, 4, 4).getTime(),
+        new Date(2009, 4, 5).getTime(),
+      ];
+      const isToday =
+        currentDate.getDay() === DaysNames.sunday ||
+        days.includes(currentDate.getTime());
       return (
         currentDate.getTime() >= new Date(2009, 3, 29).getTime() &&
         currentTime === Times.Day &&
-        !!isDayOff
+        isToday
       );
     },
   },
