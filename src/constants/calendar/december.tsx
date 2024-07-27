@@ -1,5 +1,4 @@
 import { Question, Answer } from "../../components/choices";
-import { mainCharName } from "../socialLinks/baseFunctions";
 import { baseCalendar, classmates } from "./baseFunctions";
 import { EventCard } from "../../components/eventCard";
 import { WideEvent } from "../../components/wideEvent";
@@ -9,10 +8,10 @@ import { Times } from "../events/types";
 import { singleDay } from "./types";
 import { events } from "../events";
 
-export const july: singleDay[] = [
+export const december: singleDay[] = [
   {
     ...baseCalendar,
-    date: new Date(2009, 6, 1),
+    date: new Date(2009, 11, 1),
     singleTimeEvents: [],
     arcanes: [],
     activities: [
@@ -22,7 +21,7 @@ export const july: singleDay[] = [
   },
   {
     ...baseCalendar,
-    date: new Date(2009, 6, 2),
+    date: new Date(2009, 11, 2),
     singleTimeEvents: [],
     arcanes: [],
     activities: [
@@ -32,29 +31,14 @@ export const july: singleDay[] = [
   },
   {
     ...baseCalendar,
-    date: new Date(2009, 6, 3),
+    date: new Date(2009, 11, 3),
     singleTimeEvents: [],
     arcanes: [],
-    activities: [
-      {
-        ...events.schoolQuestionCharm,
-        label: () => (
-          <Question
-            label={`H-Hey, lend me a hand here, ${mainCharName}. What kinda tale is he talkin' about?`}
-          >
-            <Answer label="About a peaceful world." />
-            <Answer label="About public opinion." />
-            <Answer label="About romance." points={15} />
-          </Question>
-        ),
-      },
-      events.DoNothing,
-      { ...events.DoNothing, time: Times.Evening },
-    ],
+    activities: [{ ...events.DoNothing, time: Times.Evening }],
   },
   {
     ...baseCalendar,
-    date: new Date(2009, 6, 4),
+    date: new Date(2009, 11, 4),
     singleTimeEvents: [],
     arcanes: [],
     activities: [
@@ -64,7 +48,17 @@ export const july: singleDay[] = [
   },
   {
     ...baseCalendar,
-    date: new Date(2009, 6, 5),
+    date: new Date(2009, 11, 5),
+    singleTimeEvents: [],
+    arcanes: [],
+    activities: [
+      events.DoNothing,
+      { ...events.DoNothing, time: Times.Evening },
+    ],
+  },
+  {
+    ...baseCalendar,
+    date: new Date(2009, 11, 6),
     isDayOff: true,
     singleTimeEvents: [],
     arcanes: [],
@@ -75,40 +69,7 @@ export const july: singleDay[] = [
   },
   {
     ...baseCalendar,
-    date: new Date(2009, 6, 6),
-    singleTimeEvents: [],
-    arcanes: [],
-    activities: [
-      events.DoNothing,
-      { ...events.DoNothing, time: Times.Evening },
-    ],
-  },
-  {
-    ...baseCalendar,
-    date: new Date(2009, 6, 7),
-    foolMoon: true,
-    exams: true,
-    singleTimeEvents: [],
-    arcanes: [],
-    activities: [
-      {
-        ...events.Special,
-        time: Times.WholeDay,
-        label: () => (
-          <WideEvent>
-            <EventCard
-              head="Hierophant and Lovers Boss Fight"
-              place="Tartarus"
-            />
-          </WideEvent>
-        ),
-      },
-      events.Fool,
-    ],
-  },
-  {
-    ...baseCalendar,
-    date: new Date(2009, 6, 8),
+    date: new Date(2009, 11, 7),
     exams: true,
     singleTimeEvents: [],
     arcanes: [],
@@ -116,38 +77,8 @@ export const july: singleDay[] = [
       {
         ...events.schoolQuestionCharm,
         label: () => (
-          <Question
-            label={`"Because it is 10:30 right now, we will not reach the theater in time, it's already started, to my dismay."`}
-          >
-            <Answer label='Between "now" and "we."' />
-            <Answer label={`Between "time" and "it's."`} points={15} />
-            <Answer label='Between "started" and "to."' />
-          </Question>
-        ),
-      },
-      events.drinkMedicine,
-      events.DoNothing,
-      { ...events.DoNothing, time: Times.Evening },
-    ],
-  },
-  {
-    ...baseCalendar,
-    date: new Date(2009, 6, 9),
-    exams: true,
-    singleTimeEvents: [],
-    arcanes: [],
-    activities: [
-      {
-        ...events.schoolQuestionCharm,
-        label: () => (
-          <Question
-            label={
-              "At the same time, a serious problem arose for the farmers. Do you remember what that was?"
-            }
-          >
-            <Answer label="Land invasion." />
-            <Answer label="Environmental destruction." />
-            <Answer label="Social Disparity" points={15} />
+          <Question label="What's the name of the stratospheric layer of molecules comprised of three oxygen atoms?">
+            <Answer label="The ozone layer." points={15} />
           </Question>
         ),
       },
@@ -157,7 +88,18 @@ export const july: singleDay[] = [
   },
   {
     ...baseCalendar,
-    date: new Date(2009, 6, 10),
+    date: new Date(2009, 11, 8),
+    exams: true,
+    singleTimeEvents: [],
+    arcanes: [],
+    activities: [
+      events.DoNothing,
+      { ...events.DoNothing, time: Times.Evening },
+    ],
+  },
+  {
+    ...baseCalendar,
+    date: new Date(2009, 11, 9),
     exams: true,
     singleTimeEvents: [],
     arcanes: [],
@@ -165,12 +107,8 @@ export const july: singleDay[] = [
       {
         ...events.schoolQuestionCharm,
         label: () => (
-          <Question
-            label={"What is the esoteric study of Jewish texts called?"}
-          >
-            <Answer label="Lemegeton." />
-            <Answer label="Gnosticism." />
-            <Answer label="Kabbalah" points={15} />
+          <Question label="What sorcery was Himiko said to have used?">
+            <Answer label="Kido." points={15} />
           </Question>
         ),
       },
@@ -180,7 +118,18 @@ export const july: singleDay[] = [
   },
   {
     ...baseCalendar,
-    date: new Date(2009, 6, 11),
+    date: new Date(2009, 11, 10),
+    exams: true,
+    singleTimeEvents: [],
+    arcanes: [],
+    activities: [
+      events.DoNothing,
+      { ...events.DoNothing, time: Times.Evening },
+    ],
+  },
+  {
+    ...baseCalendar,
+    date: new Date(2009, 11, 11),
     exams: true,
     singleTimeEvents: [],
     arcanes: [],
@@ -188,14 +137,8 @@ export const july: singleDay[] = [
       {
         ...events.schoolQuestionCharm,
         label: () => (
-          <Question
-            label={
-              "Now, what do you think that item was? It's something every samurai needs"
-            }
-          >
-            <Answer label="The katana" points={15} />
-            <Answer label="Armor." />
-            <Answer label="The rifle." />
+          <Question label="Did you catch what she said? Do you know the answer?">
+            <Answer label="Lives." points={15} />
           </Question>
         ),
       },
@@ -205,20 +148,7 @@ export const july: singleDay[] = [
   },
   {
     ...baseCalendar,
-    date: new Date(2009, 6, 12),
-    exams: true,
-    isDayOff: true,
-    singleTimeEvents: [],
-    arcanes: [],
-    activities: [
-      events.DoNothing,
-      { ...events.DoNothing, time: Times.Evening },
-      events.Death,
-    ],
-  },
-  {
-    ...baseCalendar,
-    date: new Date(2009, 6, 13),
+    date: new Date(2009, 11, 12),
     exams: true,
     singleTimeEvents: [],
     arcanes: [],
@@ -230,7 +160,19 @@ export const july: singleDay[] = [
   },
   {
     ...baseCalendar,
-    date: new Date(2009, 6, 14),
+    date: new Date(2009, 11, 13),
+    isDayOff: true,
+    exams: true,
+    singleTimeEvents: [],
+    arcanes: [],
+    activities: [
+      events.DoNothing,
+      { ...events.DoNothing, time: Times.Evening },
+    ],
+  },
+  {
+    ...baseCalendar,
+    date: new Date(2009, 11, 14),
     exams: true,
     singleTimeEvents: [],
     arcanes: [],
@@ -239,13 +181,8 @@ export const july: singleDay[] = [
         ...events.Exams,
         label: () => (
           <WideEvent>
-            <Question
-              label={"Which form of magic is used to find water sources?"}
-            >
-              <Answer label="Scrying" />
-              <Answer label="Dowsing" points={15} />
-              <Answer label="Channeling" />
-              <Answer label="Summoning" />
+            <Question label="Which of the following originated in India?">
+              <Answer label="The number zero" points={15} />
             </Question>
           </WideEvent>
         ),
@@ -254,7 +191,7 @@ export const july: singleDay[] = [
   },
   {
     ...baseCalendar,
-    date: new Date(2009, 6, 15),
+    date: new Date(2009, 11, 15),
     exams: true,
     singleTimeEvents: [],
     arcanes: [],
@@ -263,15 +200,8 @@ export const july: singleDay[] = [
         ...events.Exams,
         label: () => (
           <WideEvent>
-            <Question
-              label={
-                "How did the Witch of Agnesi gain the first half of its name?"
-              }
-            >
-              <Answer label="The shape is bewitching" />
-              <Answer label="Its enchanting formula" />
-              <Answer label="An error in translation" points={15} />
-              <Answer label="A witch invented it" />
+            <Question label="When heated, the beta-amylase enzymes in sweet potatoes react with the starch present to produce which disaccharide?">
+              <Answer label="Maltose" points={15} />
             </Question>
           </WideEvent>
         ),
@@ -280,7 +210,7 @@ export const july: singleDay[] = [
   },
   {
     ...baseCalendar,
-    date: new Date(2009, 6, 16),
+    date: new Date(2009, 11, 16),
     exams: true,
     singleTimeEvents: [],
     arcanes: [],
@@ -289,11 +219,8 @@ export const july: singleDay[] = [
         ...events.Exams,
         label: () => (
           <WideEvent>
-            <Question label={"Who designed the prototype for the katana?"}>
-              <Answer label="Taira no Masakado" points={15} />
-              <Answer label="Yoshinobu Tokugava" />
-              <Answer label="Prince Shotoku" />
-              <Answer label="Tokimune Hojo" />
+            <Question label="Which Roman goddess has been theorized as the namesake for the month of April?">
+              <Answer label="Venus" points={15} />
             </Question>
           </WideEvent>
         ),
@@ -302,7 +229,7 @@ export const july: singleDay[] = [
   },
   {
     ...baseCalendar,
-    date: new Date(2009, 6, 17),
+    date: new Date(2009, 11, 17),
     exams: true,
     singleTimeEvents: [],
     arcanes: [],
@@ -311,13 +238,8 @@ export const july: singleDay[] = [
         ...events.Exams,
         label: () => (
           <WideEvent>
-            <Question
-              label={"There's an error in this sentence, what kind is it?"}
-            >
-              <Answer label="Incorrect apostrophe" />
-              <Answer label="Comma splice" points={15} />
-              <Answer label="Missing subject" />
-              <Answer label="Misspelling" />
+            <Question label="In The Tale of Genji, who does Hikaru Genji compare to cherry blossoms?">
+              <Answer label="Murasaki-no-Ue" points={15} />
             </Question>
           </WideEvent>
         ),
@@ -326,21 +248,37 @@ export const july: singleDay[] = [
   },
   {
     ...baseCalendar,
-    date: new Date(2009, 6, 18),
+    date: new Date(2009, 11, 18),
+    exams: true,
+    singleTimeEvents: [],
+    arcanes: [],
+    activities: [
+      {
+        ...events.Exams,
+        label: () => (
+          <WideEvent>
+            <Question label="Which of the following words is not in the correct plural form?">
+              <Answer label="Geeses" points={15} />
+            </Question>
+          </WideEvent>
+        ),
+      },
+    ],
+  },
+  {
+    ...baseCalendar,
+    date: new Date(2009, 11, 19),
     singleTimeEvents: [],
     arcanes: [],
     activities: [
       { ...events.Exams, time: Times.Morning },
-      {
-        ...events.Special,
-        label: () => <EventCard head="Introduction to Ken" />,
-      },
+      events.DoNothing,
       { ...events.DoNothing, time: Times.Evening },
     ],
   },
   {
     ...baseCalendar,
-    date: new Date(2009, 6, 19),
+    date: new Date(2009, 11, 20),
     isDayOff: true,
     singleTimeEvents: [],
     arcanes: [],
@@ -351,73 +289,7 @@ export const july: singleDay[] = [
   },
   {
     ...baseCalendar,
-    date: new Date(2009, 6, 20),
-    isDayOff: true,
-    singleTimeEvents: [],
-    arcanes: [],
-    activities: [
-      {
-        ...events.Special,
-        time: Times.WholeDay,
-        label: () => (
-          <WideEvent>
-            <EventCard head="School Trip" />
-          </WideEvent>
-        ),
-      },
-    ],
-  },
-  {
-    ...baseCalendar,
-    date: new Date(2009, 6, 21),
-    isDayOff: true,
-    singleTimeEvents: [],
-    arcanes: [],
-    activities: [
-      {
-        ...events.Special,
-        time: Times.WholeDay,
-        label: () => (
-          <WideEvent>
-            <EventCard head="School Trip" />
-          </WideEvent>
-        ),
-      },
-    ],
-  },
-  {
-    ...baseCalendar,
-    date: new Date(2009, 6, 22),
-    isDayOff: true,
-    singleTimeEvents: [],
-    arcanes: [],
-    activities: [
-      {
-        ...events.Special,
-        time: Times.WholeDay,
-        label: () => (
-          <WideEvent>
-            <EventCard head="School Trip" />
-          </WideEvent>
-        ),
-      },
-      { ...events.Fool, time: Times.Evening },
-    ],
-  },
-  {
-    ...baseCalendar,
-    date: new Date(2009, 6, 23),
-    isDayOff: true,
-    singleTimeEvents: [],
-    arcanes: [],
-    activities: [
-      events.DoNothing,
-      { ...events.DoNothing, time: Times.Evening },
-    ],
-  },
-  {
-    ...baseCalendar,
-    date: new Date(2009, 6, 24),
+    date: new Date(2009, 11, 21),
     singleTimeEvents: [],
     arcanes: [],
     activities: [
@@ -464,7 +336,55 @@ export const july: singleDay[] = [
   },
   {
     ...baseCalendar,
-    date: new Date(2009, 6, 25),
+    date: new Date(2009, 11, 22),
+    singleTimeEvents: [],
+    arcanes: [],
+    activities: [
+      {
+        ...events.schoolQuestionCharm,
+        label: () => (
+          <Question label="What do we call the feeling of joy that comes from a near-death experience?">
+            <Answer label="Euphoria." points={15} />
+          </Question>
+        ),
+      },
+      events.DoNothing,
+      { ...events.DoNothing, time: Times.Evening },
+    ],
+  },
+  {
+    ...baseCalendar,
+    date: new Date(2009, 11, 23),
+    singleTimeEvents: [],
+    arcanes: [],
+    activities: [
+      events.DoNothing,
+      { ...events.DoNothing, time: Times.Evening },
+    ],
+  },
+  {
+    ...baseCalendar,
+    date: new Date(2009, 11, 24),
+    singleTimeEvents: [],
+    arcanes: [],
+    activities: [
+      events.stayAwakeInClass,
+      { ...events.Special, time: Times.WholeDay },
+    ],
+  },
+  {
+    ...baseCalendar,
+    date: new Date(2009, 11, 25),
+    singleTimeEvents: [],
+    arcanes: [],
+    activities: [
+      events.DoNothing,
+      { ...events.DoNothing, time: Times.Evening },
+    ],
+  },
+  {
+    ...baseCalendar,
+    date: new Date(2009, 11, 26),
     singleTimeEvents: [],
     arcanes: [],
     activities: [
@@ -475,7 +395,7 @@ export const july: singleDay[] = [
   },
   {
     ...baseCalendar,
-    date: new Date(2009, 6, 26),
+    date: new Date(2009, 11, 27),
     isDayOff: true,
     singleTimeEvents: [],
     arcanes: [],
@@ -486,52 +406,39 @@ export const july: singleDay[] = [
   },
   {
     ...baseCalendar,
-    date: new Date(2009, 6, 27),
+    date: new Date(2009, 11, 28),
     singleTimeEvents: [],
     arcanes: [],
     activities: [
-      { ...events.Special },
+      events.DoNothing,
       { ...events.DoNothing, time: Times.Evening },
     ],
   },
   {
     ...baseCalendar,
-    date: new Date(2009, 6, 28),
+    date: new Date(2009, 11, 29),
     singleTimeEvents: [],
     arcanes: [],
     activities: [
-      { ...events.Special },
+      events.DoNothing,
       { ...events.DoNothing, time: Times.Evening },
     ],
   },
   {
     ...baseCalendar,
-    date: new Date(2009, 6, 29),
+    date: new Date(2009, 11, 30),
     singleTimeEvents: [],
     arcanes: [],
     activities: [
-      { ...events.Special },
+      events.DoNothing,
       { ...events.DoNothing, time: Times.Evening },
     ],
   },
   {
     ...baseCalendar,
-    date: new Date(2009, 6, 30),
+    date: new Date(2009, 11, 31),
     singleTimeEvents: [],
     arcanes: [],
-    activities: [
-      { ...events.Special },
-      { ...events.DoNothing, time: Times.Evening },
-    ],
-  },
-  {
-    ...baseCalendar,
-    date: new Date(2009, 6, 31),
-    singleTimeEvents: [],
-    arcanes: [],
-    activities: [
-      { ...events.Special },
-      { ...events.DoNothing, time: Times.Evening },
-    ],
+    activities: [events.DoNothing, { ...events.Fool, time: Times.Evening }],
   },
 ];

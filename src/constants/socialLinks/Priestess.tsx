@@ -106,7 +106,7 @@ export const Priestess: SocialLinkType = {
           <Question label="I know I don't seem very reliable, but I want to make myself a useful member of the team.">
             <Answer label="That's the spirit." points={15} />
             <Answer label="Don't get too carried away." />
-            <Answer label="You're already plenty useful." />
+            <Answer label="You're already plenty useful." points={5} />
           </Question>,
         ],
       }),
@@ -123,7 +123,7 @@ export const Priestess: SocialLinkType = {
             <Answer label="Yeah, I remember." />
             <Answer label="But we were just in one..." />
           </Question>,
-          <Question label="She even threatened to show my parents.">
+          <Question label="She even threatened to show my parents...">
             <Answer label="You did nothing wrong." />
             <Answer label="......" />
             <Answer label="That's messed up." points={5} />
@@ -145,14 +145,14 @@ export const Priestess: SocialLinkType = {
             <Answer label="Yeah, I remember." />
             <Answer label="But we were just in one..." />
           </Question>,
-          <Question label="She even threatened to show my parents.">
+          <Question label="She even threatened to show my parents...">
             <Answer label="You did nothing wrong." />
             <Answer label="......" />
             <Answer label="That's messed up." points={5} />
           </Question>,
           <Question label="I'm sure it's because you're our leader. That's why I depend on you so much.">
-            <Answer label="Is that the only reason?" />
-            <Answer label="That's probably it." fork={true} />
+            <Answer label="Is that the only reason?" fork={true} />
+            <Answer label="That's probably it." />
           </Question>,
         ],
       }),
@@ -161,27 +161,31 @@ export const Priestess: SocialLinkType = {
       [Routes.Platonic]: QuestionsWrapper({
         points: 35,
         element: [
-          <Question label="How are you able to tell yourself that everything will work out in the end?">
-            <Answer label="I believe in myself." points={5} />
-            <Answer label="It's just my personality." points={5} />
-            <Answer label="I've never thought about it." points={5} />
+          <Question label="I am curious about that one, but it sounds like a lot of food.">
+            <Answer label="Probably." />
+            <Answer label="You'd better not order that." />
+            <Answer label="I'll eat your ramen for you." points={5} />
           </Question>,
-          <Question label="Will that be the end of us spending time together like this?">
-            <Answer label="Not at all." />
-            <Answer label="We'll see each other in the dorm." points={5} />
+          <Question label="And whenever we ate, that's all we'd talk about. My upcoming tests, my post-graduation plans...">
+            <Answer label="Sounds suffocating." />
+            <Answer label="They're big on education, huh?" />
+          </Question>,
+          <Question label="Oh, but I'm not quite ready for that yet. I'd probably make so many mistakes.">
+            <Answer label="I think it'd be fine." points={5} />
+            <Answer label="You're worrying too much." points={5} />
           </Question>,
         ],
       }),
       [Routes.Romantic]: QuestionsWrapper({
         points: 35,
         element: [
-          <Question label="How are you able to tell yourself that everything will work out in the end?">
+          <Question label="How are you able to tell yourself that things will work out in the end?">
             <Answer label="I believe in myself." points={5} />
             <Answer label="It's just my personality." points={5} />
             <Answer label="I've never thought about it." points={5} />
           </Question>,
           <Question label="Will that be the end of us spending time together like this?">
-            <Answer label="Not at all." />
+            <Answer label="Not at all." points={5} />
             <Answer label="We'll see each other in the dorm." points={5} />
           </Question>,
         ],
@@ -191,28 +195,28 @@ export const Priestess: SocialLinkType = {
       [Routes.Platonic]: QuestionsWrapper({
         points: 40,
         element: [
-          <Question label="She said, 'When you're friends, you don't keep score.'">
+          <Question
+            label={`She said, "When you're friends, you don't keep score."`}
+          >
             <Answer label="She's right." />
             <Answer label="Ahaha! That's funny." />
           </Question>,
-          <Question label="I want to be together with you, forever.">
-            <Answer label="I feel the same way." />
-            <Answer label="Me too." />
+          <Question label="I hope you and I can continue to be friends.">
+            <Answer label="Of course." points={5} />
+            <Answer label="Here's to us." />
           </Question>,
-          <Question label="......">
-            <Answer label="I love you, Fuuka." points={15} />
-            <Answer label="We'll always be friends." />
-          </Question>,
-          <Question label="...!?">
-            <Answer label="We'll be together forever." />
-            <Answer label="I'll treat you right." />
+          <Question label="I've never asked because I assumed I'd be wasting your time, but I've always wanted to try cooking with a friend.">
+            <Answer label="Sure thing." points={10} />
+            <Answer label="I'm not very good at it." />
           </Question>,
         ],
       }),
       [Routes.Romantic]: QuestionsWrapper({
         points: 40,
         element: [
-          <Question label="She said, 'When you're friends, you don't keep score.'">
+          <Question
+            label={`She said, "When you're friends, you don't keep score."`}
+          >
             <Answer label="She's right." />
             <Answer label="Ahaha! That's funny." />
           </Question>,
@@ -221,7 +225,7 @@ export const Priestess: SocialLinkType = {
             <Answer label="Me too." />
           </Question>,
           <Question label="......">
-            <Answer label="I love you, Fuuka." points={15} />
+            <Answer label="I love you, Fuuka." points={15} fork={true} />
             <Answer label="We'll always be friends." />
           </Question>,
           <Question label="...!?">
@@ -240,7 +244,9 @@ export const Priestess: SocialLinkType = {
             <Answer label="Is that safe?" />
             <Answer label="But I like meat..." />
           </Question>,
-          <Question label="You just seem more at ease now. Or maybe it's more confidence? Don't you think so?">
+          <Question
+            label={`You just seem more at ease now. Or maybe it's more confidence? Don't you think so, ${mainCharName}-kun?`}
+          >
             <Answer label="I agree." />
             <Answer label="You haven't seen anything just yet." />
           </Question>,
@@ -253,24 +259,24 @@ export const Priestess: SocialLinkType = {
       [Routes.Romantic]: QuestionsWrapper({
         points: 55,
         element: [
-          <Question label="I thought it might be nice to add some texture, so I made sure there's plenty of vegetables mixed in.">
-            <Answer label="How bold." />
-            <Answer label="Is that safe?" />
-            <Answer label="But I like meat..." />
+          <Question label="Sorry, I don't know what I'm talking about...">
+            <Answer label="Are you nervous?" />
+            <Answer label="You seem like your usual self." />
           </Question>,
-          <Question label="You just seem more at ease now. Or maybe it's more confidence? Don't you think so?">
-            <Answer label="I agree." />
-            <Answer label="You haven't seen anything just yet." />
+          <Question label="As long as I have you... I don't think I'll lose my way.">
+            <Answer label="Glad to hear it." points={5} />
+            <Answer label="I'm always here for you." points={15} />
           </Question>,
-          <Question label="Remeber how I told you I was pretty good with machines? Well, how are they?">
+          <Question label="So... what do you think?">
             <Answer label="I love them!" points={15} />
-            <Answer label="My mind is blown." points={5} />
+            <Answer label="Your skills are impressive." points={5} />
           </Question>,
         ],
       }),
     },
     10: {
       [Routes.Platonic]: LinkMaxedObject,
+      [Routes.Romantic]: LinkMaxedObject,
     },
   },
   invitations: {
@@ -315,6 +321,8 @@ export const Priestess: SocialLinkType = {
       [Routes.Platonic]: (
         <Question label="Have you ever filleted a fish before?">
           <Answer label="Yeah, I'm not too bad." points={30} />
+          <Answer label="I've never tried before." />
+          <Answer label="Not interested." />
         </Question>
       ),
     },
@@ -322,11 +330,15 @@ export const Priestess: SocialLinkType = {
       [Routes.Platonic]: (
         <Question label="Do you think it's possible to connect music to cooking in that same vein?">
           <Answer label="Yeah, I think so." points={30} />
+          <Answer label="I can't imagine so." />
+          <Answer label="Not interested." />
         </Question>
       ),
       [Routes.Romantic]: (
         <Question label="Do you think it's possible to connect music to cooking in that same vein?">
           <Answer label="Yeah, I think so." points={30} />
+          <Answer label="I can't imagine so." />
+          <Answer label="Not interested." />
         </Question>
       ),
     },
