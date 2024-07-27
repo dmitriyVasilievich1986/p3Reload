@@ -229,5 +229,3 @@ export const Magician: SocialLinkType = {
     },
   },
 };
-
-console.log("Magician", Magician);
