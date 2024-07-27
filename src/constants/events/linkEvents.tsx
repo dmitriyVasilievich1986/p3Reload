@@ -129,6 +129,18 @@ export const linkEvents: {
         card={props.arcanes.includes(SocialLinkNames.Priestess)}
       />
     ),
+    upgrade: function (props) {
+      return socialLinks[SocialLinkNames.Priestess].calculate({
+        ...props,
+        currentLinks: {
+          ...props.currentLinks,
+          [SocialLinkNames.Priestess]: {
+            ...props.currentLinks[SocialLinkNames.Priestess],
+            romance: Routes.Romantic,
+          },
+        },
+      });
+    },
     available: function ({
       currentDate,
       currentTime,
