@@ -68,13 +68,11 @@ export const classmates: SocialLinkNames[] = [
 ];
 
 export function initialCalculataion(calendar: singleDay[]) {
-  (Object.values(calendar) as Array<singleDay>).forEach((c) => {
-    const previousDay: singleDay | undefined = calendar.find(
-      (d) => d.date.getTime() === c.date.getTime() - 86400000
-    );
-    const weekAgoStats = calendar.find(
-      (d) => d.date.getTime() === c.date.getTime() - 86400000 * 7
-    )?.stats || { ...initialStats };
+  (Object.values(calendar) as Array<singleDay>).forEach((c, i, cArray) => {
+    const previousDay: singleDay | undefined = cArray?.[i - 1];
+    const weekAgoDay: singleDay | undefined = cArray?.[i - 1];
+    const weekAgoStats = weekAgoDay?.stats || { ...initialStats };
+
     let currentStats = previousDay?.stats || { ...initialStats };
     let currentLinks = previousDay?.links || { ...initialLinks };
     let singleTimeEvents = previousDay?.singleTimeEvents || [];
