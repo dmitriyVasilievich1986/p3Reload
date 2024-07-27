@@ -95,6 +95,7 @@ export const april: singleDay[] = [
   {
     ...baseCalendar,
     date: new Date(2009, 3, 12),
+    isDayOff: true,
     singleTimeEvents: [],
     arcanes: [],
     activities: [
@@ -210,6 +211,7 @@ export const april: singleDay[] = [
   {
     ...baseCalendar,
     date: new Date(2009, 3, 19),
+    isDayOff: true,
     singleTimeEvents: [],
     arcanes: [],
     activities: [
@@ -257,7 +259,6 @@ export const april: singleDay[] = [
     singleTimeEvents: [],
     arcanes: [],
     activities: [
-      { ...events.Special, time: Times.Morning },
       { ...events.Magician, special: true },
       {
         ...events.Tartarus,
@@ -279,45 +280,29 @@ export const april: singleDay[] = [
     date: new Date(2009, 3, 23),
     singleTimeEvents: [],
     arcanes: [],
-    activities: [
-      { ...events.Special, time: Times.Morning },
-      events.drinkMedicine,
-      events.Chariot,
-      events.gameParadeCharm,
-    ],
+    activities: [events.drinkMedicine, events.Chariot, events.gameParadeCharm],
   },
   {
     ...baseCalendar,
     date: new Date(2009, 3, 24),
     singleTimeEvents: [],
     arcanes: [],
-    activities: [
-      { ...events.Special, time: Times.Morning },
-      events.Chariot,
-      events.gameParadeCourage,
-    ],
+    activities: [events.Chariot, events.gameParadeCourage],
   },
   {
     ...baseCalendar,
     date: new Date(2009, 3, 25),
     singleTimeEvents: [],
     arcanes: [],
-    activities: [
-      { ...events.Special, time: Times.Morning },
-      events.Strength,
-      events.gameParadeAcademics,
-    ],
+    activities: [events.Strength, events.gameParadeAcademics],
   },
   {
     ...baseCalendar,
     date: new Date(2009, 3, 26),
+    isDayOff: true,
     singleTimeEvents: [],
     arcanes: [],
-    activities: [
-      { ...events.Special, time: Times.Morning },
-      events.Hierophant,
-      events.wakatsuKitchen,
-    ],
+    activities: [events.Hierophant, events.wakatsuKitchen],
   },
   {
     ...baseCalendar,
@@ -352,7 +337,6 @@ export const april: singleDay[] = [
     singleTimeEvents: [],
     arcanes: [],
     activities: [
-      { ...events.Special, time: Times.Morning },
       {
         ...events.Special,
         time: Times.AfterSchool,
@@ -372,13 +356,10 @@ export const april: singleDay[] = [
   {
     ...baseCalendar,
     date: new Date(2009, 3, 29),
+    isDayOff: true,
     singleTimeEvents: [],
     arcanes: [],
-    activities: [
-      { ...events.Special, time: Times.Morning },
-      events.Hermit,
-      events.gameParadeAcademics,
-    ],
+    activities: [events.Hermit, events.gameParadeAcademics],
   },
   {
     ...baseCalendar,

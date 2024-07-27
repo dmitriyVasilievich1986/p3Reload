@@ -14,11 +14,7 @@ export const may: singleDay[] = [
     date: new Date(2009, 4, 1),
     singleTimeEvents: [],
     arcanes: [],
-    activities: [
-      { ...events.Special, time: Times.Morning },
-      events.Special,
-      events.lobbyPCLessonsInEtiquette,
-    ],
+    activities: [events.Special, events.lobbyPCLessonsInEtiquette],
   },
   {
     ...baseCalendar,
@@ -26,7 +22,6 @@ export const may: singleDay[] = [
     singleTimeEvents: [],
     arcanes: [],
     activities: [
-      { ...events.Special, time: Times.Morning },
       {
         ...events.Special,
         time: Times.AfterSchool,
@@ -46,35 +41,26 @@ export const may: singleDay[] = [
   {
     ...baseCalendar,
     date: new Date(2009, 4, 3),
+    isDayOff: true,
     singleTimeEvents: [],
     arcanes: [],
-    activities: [
-      { ...events.Special, time: Times.Morning },
-      events.Hermit,
-      events.lobbyPCDigitalCramSchool,
-    ],
+    activities: [events.Hermit, events.lobbyPCDigitalCramSchool],
   },
   {
     ...baseCalendar,
     date: new Date(2009, 4, 4),
+    isDayOff: true,
     singleTimeEvents: [],
     arcanes: [],
-    activities: [
-      { ...events.Special, time: Times.Morning },
-      events.Hermit,
-      events.gameParadeCharm,
-    ],
+    activities: [events.Hermit, events.gameParadeCharm],
   },
   {
     ...baseCalendar,
     date: new Date(2009, 4, 5),
+    isDayOff: true,
     singleTimeEvents: [],
     arcanes: [],
-    activities: [
-      { ...events.Special, time: Times.Morning },
-      events.Hermit,
-      events.lobbyPCVirtualDiet,
-    ],
+    activities: [events.Hermit, events.lobbyPCVirtualDiet],
   },
   {
     ...baseCalendar,
@@ -117,26 +103,19 @@ export const may: singleDay[] = [
     date: new Date(2009, 4, 7),
     singleTimeEvents: [],
     arcanes: [],
-    activities: [
-      { ...events.Special, time: Times.Morning },
-      events.Justice,
-      events.wakatsuKitchenSpecial,
-    ],
+    activities: [events.Justice, events.wakatsuKitchenSpecial],
   },
   {
     ...baseCalendar,
     date: new Date(2009, 4, 8),
     singleTimeEvents: [],
     arcanes: [],
-    activities: [
-      { ...events.Special, time: Times.Morning },
-      events.Magician,
-      events.wakatsuKitchenSpecial,
-    ],
+    activities: [events.Magician, events.wakatsuKitchenSpecial],
   },
   {
     ...baseCalendar,
     date: new Date(2009, 4, 9),
+    foolMoon: true,
     singleTimeEvents: [],
     arcanes: [],
     activities: [
@@ -151,17 +130,15 @@ export const may: singleDay[] = [
   {
     ...baseCalendar,
     date: new Date(2009, 4, 10),
+    isDayOff: true,
     singleTimeEvents: [],
     arcanes: [],
-    activities: [
-      { ...events.Special, time: Times.Morning },
-      events.Hierophant,
-      events.Tartarus,
-    ],
+    activities: [events.Hierophant, events.Tartarus],
   },
   {
     ...baseCalendar,
     date: new Date(2009, 4, 11),
+    exams: true,
     singleTimeEvents: [],
     arcanes: [],
     activities: [
@@ -174,17 +151,15 @@ export const may: singleDay[] = [
   {
     ...baseCalendar,
     date: new Date(2009, 4, 12),
+    exams: true,
     singleTimeEvents: [],
     arcanes: [],
-    activities: [
-      { ...events.Special, time: Times.Morning },
-      events.JunpeiIori1,
-      events.lobbyPCTypinGhoul,
-    ],
+    activities: [events.JunpeiIori1, events.lobbyPCTypinGhoul],
   },
   {
     ...baseCalendar,
     date: new Date(2009, 4, 13),
+    exams: true,
     singleTimeEvents: [],
     arcanes: [],
     activities: [
@@ -205,17 +180,15 @@ export const may: singleDay[] = [
   {
     ...baseCalendar,
     date: new Date(2009, 4, 14),
+    exams: true,
     singleTimeEvents: [],
     arcanes: [],
-    activities: [
-      { ...events.Special, time: Times.Morning },
-      events.Hierophant,
-      events.wakatsuKitchenSpecial,
-    ],
+    activities: [events.Hierophant, events.wakatsuKitchenSpecial],
   },
   {
     ...baseCalendar,
     date: new Date(2009, 4, 15),
+    exams: true,
     singleTimeEvents: [],
     arcanes: [],
     activities: [
@@ -238,6 +211,7 @@ export const may: singleDay[] = [
   {
     ...baseCalendar,
     date: new Date(2009, 4, 16),
+    exams: true,
     singleTimeEvents: [],
     arcanes: [],
     activities: [
@@ -249,17 +223,16 @@ export const may: singleDay[] = [
   {
     ...baseCalendar,
     date: new Date(2009, 4, 17),
+    isDayOff: true,
+    exams: true,
     singleTimeEvents: [],
     arcanes: [],
-    activities: [
-      { ...events.Special, time: Times.Morning },
-      events.Moon,
-      events.dormExamStudyingTeam,
-    ],
+    activities: [events.Moon, events.dormExamStudyingTeam],
   },
   {
     ...baseCalendar,
     date: new Date(2009, 4, 18),
+    exams: true,
     singleTimeEvents: [],
     arcanes: [],
     activities: [
@@ -274,6 +247,7 @@ export const may: singleDay[] = [
   {
     ...baseCalendar,
     date: new Date(2009, 4, 19),
+    exams: true,
     singleTimeEvents: [],
     arcanes: [],
     activities: [
@@ -299,6 +273,7 @@ export const may: singleDay[] = [
   {
     ...baseCalendar,
     date: new Date(2009, 4, 20),
+    exams: true,
     singleTimeEvents: [],
     arcanes: [],
     activities: [
@@ -324,6 +299,7 @@ export const may: singleDay[] = [
   {
     ...baseCalendar,
     date: new Date(2009, 4, 21),
+    exams: true,
     singleTimeEvents: [],
     arcanes: [],
     activities: [
@@ -347,6 +323,7 @@ export const may: singleDay[] = [
   {
     ...baseCalendar,
     date: new Date(2009, 4, 22),
+    exams: true,
     singleTimeEvents: [],
     arcanes: [],
     activities: [
@@ -383,13 +360,10 @@ export const may: singleDay[] = [
   {
     ...baseCalendar,
     date: new Date(2009, 4, 24),
+    isDayOff: true,
     singleTimeEvents: [],
     arcanes: [],
-    activities: [
-      { ...events.Special, time: Times.Morning },
-      events.Moon,
-      events.wakatsuKitchenSpecial,
-    ],
+    activities: [events.Moon, events.wakatsuKitchenSpecial],
   },
   {
     ...baseCalendar,
@@ -444,22 +418,14 @@ export const may: singleDay[] = [
     date: new Date(2009, 4, 26),
     singleTimeEvents: [],
     arcanes: [],
-    activities: [
-      { ...events.Special, time: Times.Morning },
-      events.Chariot,
-      events.gameParadeCourage,
-    ],
+    activities: [events.Chariot, events.gameParadeCourage],
   },
   {
     ...baseCalendar,
     date: new Date(2009, 4, 27),
     singleTimeEvents: [],
     arcanes: [],
-    activities: [
-      { ...events.Special, time: Times.Morning },
-      events.Temperance,
-      events.hagakureRamenSpecial,
-    ],
+    activities: [events.Temperance, events.hagakureRamenSpecial],
   },
   {
     ...baseCalendar,
@@ -488,17 +454,14 @@ export const may: singleDay[] = [
     date: new Date(2009, 4, 30),
     singleTimeEvents: [],
     arcanes: [],
-    activities: [
-      events.NoControl,
-      events.HangedMan,
-      events.gameParadeAcademics,
-    ],
+    activities: [events.HangedMan, events.gameParadeAcademics],
   },
   {
     ...baseCalendar,
     date: new Date(2009, 4, 31),
+    isDayOff: true,
     singleTimeEvents: [],
     arcanes: [],
-    activities: [events.NoControl, events.Moon, events.wakatsuKitchenSpecial],
+    activities: [events.Moon, events.wakatsuKitchenSpecial],
   },
 ];

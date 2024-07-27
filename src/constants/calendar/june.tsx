@@ -2,6 +2,7 @@ import { Question, Answer } from "../../components/choices";
 import { EventCard } from "../../components/eventCard";
 import { WideEvent } from "../../components/wideEvent";
 import { baseCalendar } from "./baseFunctions";
+import { StatsNames } from "../stats/types";
 import { Times } from "../events/types";
 import { singleDay } from "./types";
 import { events } from "../events";
@@ -12,7 +13,7 @@ export const june: singleDay[] = [
     date: new Date(2009, 5, 1),
     singleTimeEvents: [],
     arcanes: [],
-    activities: [events.NoControl, events.Emperor, events.AkihikoSanada1],
+    activities: [events.Emperor, events.AkihikoSanada1],
   },
   {
     ...baseCalendar,
@@ -30,51 +31,41 @@ export const june: singleDay[] = [
     date: new Date(2009, 5, 3),
     singleTimeEvents: [],
     arcanes: [],
-    activities: [
-      events.NoControl,
-      events.Temperance,
-      events.hagakureRamenSpecial,
-    ],
+    activities: [events.Temperance, events.hagakureRamenSpecial],
   },
   {
     ...baseCalendar,
     date: new Date(2009, 5, 4),
     singleTimeEvents: [],
     arcanes: [],
-    activities: [
-      events.NoControl,
-      events.Chariot,
-      events.wakatsuKitchenSpecial,
-    ],
+    activities: [events.Chariot, events.wakatsuKitchenSpecial],
   },
   {
     ...baseCalendar,
     date: new Date(2009, 5, 5),
     singleTimeEvents: [],
     arcanes: [],
-    activities: [events.NoControl, events.Emperor, events.gameParadeCourage],
+    activities: [events.Emperor, events.gameParadeCourage],
   },
   {
     ...baseCalendar,
     date: new Date(2009, 5, 6),
     singleTimeEvents: [],
     arcanes: [],
-    activities: [
-      events.NoControl,
-      events.Justice,
-      events.wilduckBigEaterChallenge,
-    ],
+    activities: [events.Justice, events.wilduckBigEaterChallenge],
   },
   {
     ...baseCalendar,
     date: new Date(2009, 5, 7),
+    isDayOff: true,
     singleTimeEvents: [],
     arcanes: [],
-    activities: [events.NoControl, events.Moon, events.wakatsuKitchenSpecial],
+    activities: [events.Moon, events.wakatsuKitchenSpecial],
   },
   {
     ...baseCalendar,
     date: new Date(2009, 5, 8),
+    foolMoon: true,
     singleTimeEvents: [],
     arcanes: [],
     activities: [
@@ -98,7 +89,6 @@ export const june: singleDay[] = [
     singleTimeEvents: [],
     arcanes: [],
     activities: [
-      events.NoControl,
       events.drinkMedicine,
       events.Temperance,
       events.hagakureRamenSpecial,
@@ -120,23 +110,14 @@ export const june: singleDay[] = [
     date: new Date(2009, 5, 11),
     singleTimeEvents: [],
     arcanes: [],
-    activities: [
-      events.NoControl,
-      events.Chariot,
-      events.wakatsuKitchenSpecial,
-    ],
+    activities: [events.Chariot, events.wakatsuKitchenSpecial],
   },
   {
     ...baseCalendar,
     date: new Date(2009, 5, 12),
     singleTimeEvents: [],
     arcanes: [],
-    activities: [
-      events.NoControl,
-      events.Magician,
-      events.hagakureRamenSpecial,
-      events.Death,
-    ],
+    activities: [events.Magician, events.hagakureRamenSpecial, events.Death],
   },
   {
     ...baseCalendar,
@@ -144,7 +125,6 @@ export const june: singleDay[] = [
     singleTimeEvents: [],
     arcanes: [],
     activities: [
-      events.NoControl,
       events.Justice,
       {
         ...events.Special,
@@ -156,13 +136,10 @@ export const june: singleDay[] = [
   {
     ...baseCalendar,
     date: new Date(2009, 5, 14),
+    isDayOff: true,
     singleTimeEvents: [],
     arcanes: [],
-    activities: [
-      events.NoControl,
-      events.Moon,
-      events.wilduckBurgeWeekendWilduckSet,
-    ],
+    activities: [events.Moon, events.wilduckBurgeWeekendWilduckSet],
   },
   {
     ...baseCalendar,
@@ -193,11 +170,7 @@ export const june: singleDay[] = [
     date: new Date(2009, 5, 16),
     singleTimeEvents: [],
     arcanes: [],
-    activities: [
-      events.NoControl,
-      events.Temperance,
-      events.hagakureRamenSpecial,
-    ],
+    activities: [events.Temperance, events.hagakureRamenSpecial],
   },
   {
     ...baseCalendar,
@@ -226,22 +199,14 @@ export const june: singleDay[] = [
     date: new Date(2009, 5, 18),
     singleTimeEvents: [],
     arcanes: [],
-    activities: [
-      events.NoControl,
-      events.Fortune,
-      events.wakatsuKitchenSpecial,
-    ],
+    activities: [events.Fortune, events.wakatsuKitchenSpecial],
   },
   {
     ...baseCalendar,
     date: new Date(2009, 5, 19),
     singleTimeEvents: [],
     arcanes: [],
-    activities: [
-      events.NoControl,
-      events.Temperance,
-      events.hagakureRamenSpecial,
-    ],
+    activities: [events.Temperance, events.hagakureRamenSpecial],
   },
   {
     ...baseCalendar,
@@ -249,7 +214,6 @@ export const june: singleDay[] = [
     singleTimeEvents: [],
     arcanes: [],
     activities: [
-      events.NoControl,
       {
         ...events.Special,
         label: () => <EventCard head="Koromaru Introduction" />,
@@ -260,13 +224,10 @@ export const june: singleDay[] = [
   {
     ...baseCalendar,
     date: new Date(2009, 5, 21),
+    isDayOff: true,
     singleTimeEvents: [],
     arcanes: [],
-    activities: [
-      events.NoControl,
-      events.Moon,
-      events.wilduckBurgeWeekendWilduckSet,
-    ],
+    activities: [events.Moon, events.wilduckBurgeWeekendWilduckSet],
   },
   {
     ...baseCalendar,
@@ -278,7 +239,9 @@ export const june: singleDay[] = [
         ...events.schoolQuestionCharm,
         label: () => (
           <Question label={"What else do people call this curve?"}>
-            <Answer label="Witch of Agnesi" points={15} />
+            <Answer label="Orthogonal curves." />
+            <Answer label="Fermat's spiral." />
+            <Answer label="Witch of Agnesi." points={15} />
           </Question>
         ),
       },
@@ -291,14 +254,14 @@ export const june: singleDay[] = [
     date: new Date(2009, 5, 23),
     singleTimeEvents: [],
     arcanes: [],
-    activities: [events.NoControl, events.Fortune, events.hagakureRamenSpecial],
+    activities: [events.Fortune, events.hagakureRamenSpecial],
   },
   {
     ...baseCalendar,
     date: new Date(2009, 5, 24),
     singleTimeEvents: [],
     arcanes: [],
-    activities: [events.NoControl, events.Fortune, events.hagakureRamenSpecial],
+    activities: [events.Fortune, events.hagakureRamenSpecial],
   },
   {
     ...baseCalendar,
@@ -314,7 +277,9 @@ export const june: singleDay[] = [
               "What's it called when the air bubbles in a whirlpool bath hit you and make you vibrate?"
             }
           >
+            <Answer label="The anchor effect." />
             <Answer label="The flutter effect" points={15} />
+            <Answer label="The bubble jet phenomenon." />
           </Question>
         ),
       },
@@ -327,32 +292,36 @@ export const june: singleDay[] = [
     date: new Date(2009, 5, 26),
     singleTimeEvents: [],
     arcanes: [],
-    activities: [
-      events.NoControl,
-      events.Magician,
-      events.hagakureRamenSpecial,
-    ],
+    activities: [events.Magician, events.hagakureRamenSpecial],
   },
   {
     ...baseCalendar,
     date: new Date(2009, 5, 27),
     singleTimeEvents: [],
     arcanes: [],
-    activities: [
-      events.NoControl,
-      events.Justice,
-      events.wilduckBurgeWeekendWilduckSet,
-    ],
+    activities: [events.Justice, events.wilduckBurgeWeekendWilduckSet],
   },
   {
     ...baseCalendar,
     date: new Date(2009, 5, 28),
+    isDayOff: true,
     singleTimeEvents: [],
     arcanes: [],
     activities: [
-      events.NoControl,
       events.Moon,
       events.wilduckBurgeWeekendWilduckSet,
+      {
+        ...events.Special,
+        upgrade: function ({ currentStats }) {
+          return {
+            stats: {
+              ...currentStats,
+              [StatsNames.Charm]: 0,
+              [StatsNames.Courage]: 100,
+            },
+          };
+        },
+      },
     ],
   },
   {
@@ -367,7 +336,9 @@ export const june: singleDay[] = [
           <Question
             label={"What form of natural magic is used to find water sources?"}
           >
-            <Answer label="Dowsing" points={15} />
+            <Answer label="Dowsing." points={15} />
+            <Answer label="Divining." />
+            <Answer label="Channeling." />
           </Question>
         ),
       },
@@ -380,10 +351,6 @@ export const june: singleDay[] = [
     date: new Date(2009, 5, 30),
     singleTimeEvents: [],
     arcanes: [],
-    activities: [
-      events.NoControl,
-      events.Magician,
-      events.hagakureRamenSpecial,
-    ],
+    activities: [events.Magician, events.hagakureRamenSpecial],
   },
 ];
