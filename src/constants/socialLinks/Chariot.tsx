@@ -201,6 +201,8 @@ export const Chariot: SocialLinkType = {
       [Routes.Platonic]: (
         <Question label="That way, I'm ready to go 24/7, y'know? That's real dedication, man.">
           <Answer label="Impressive." points={30} />
+          <Answer label="I don't really care." />
+          <Answer label="You need to chill." />
         </Question>
       ),
     },
