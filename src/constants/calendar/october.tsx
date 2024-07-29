@@ -92,7 +92,9 @@ export const october: singleDay[] = [
         ...events.schoolQuestionCharm,
         label: () => (
           <Question label="Which hormone is the one in your brain that provides a sense of achievement?">
+            <Answer label="Melatonin." />
             <Answer label="Dopamine." points={15} />
+            <Answer label="Histamine." />
           </Question>
         ),
       },
@@ -134,7 +136,9 @@ export const october: singleDay[] = [
         ...events.schoolQuestionCharm,
         label: () => (
           <Question label="Who was the founder of Theosophy, a group that gave rise to many other magical societies?">
+            <Answer label="Éliphas Lévi." />
             <Answer label="Helena Blavatsky." points={15} />
+            <Answer label="Aleister Crowley." />
           </Question>
         ),
       },
@@ -157,6 +161,7 @@ export const october: singleDay[] = [
   {
     ...baseCalendar,
     date: new Date(2009, 9, 12),
+    isDayOff: true,
     exams: true,
     singleTimeEvents: [],
     arcanes: [],
@@ -176,8 +181,11 @@ export const october: singleDay[] = [
         ...events.Exams,
         label: () => (
           <WideEvent>
-            <Question label="The hormone dopamine is related to our sense of accomplishment. Name a symptom of its over-production.">
+            <Question label="The hormone dopamine is related to our sense of accomplishment. Name a symptom of its overproduction.">
+              <Answer label="Excesive ego" />
+              <Answer label="Self-glorification" />
               <Answer label="Addiction" points={15} />
+              <Answer label="Apathy Syndrome" />
             </Question>
           </WideEvent>
         ),
@@ -197,6 +205,9 @@ export const october: singleDay[] = [
           <WideEvent>
             <Question label="Who is considered by many to be the first numerologist, whose name lives on today in a mathematical theorem?">
               <Answer label="Pythagoras" points={15} />
+              <Answer label="Euclid" />
+              <Answer label="Hypatia" />
+              <Answer label="Turing" />
             </Question>
           </WideEvent>
         ),
@@ -215,7 +226,10 @@ export const october: singleDay[] = [
         label: () => (
           <WideEvent>
             <Question label="What happens when electrical resistance reaches zero? Hint: It was the word I used to confess my love to someone...">
+              <Answer label="Superelectricity" />
+              <Answer label="Superelasticity" />
               <Answer label="Superconductivity" points={15} />
+              <Answer label="Supertransformativity" />
             </Question>
           </WideEvent>
         ),
@@ -233,8 +247,11 @@ export const october: singleDay[] = [
         ...events.Exams,
         label: () => (
           <WideEvent>
-            <Question label='What is the meaning of the phrase "to spill the beans?"'>
+            <Question label='What is the meaning of the phrase "to spill the beans"?'>
+              <Answer label="To be noisy" />
+              <Answer label="To break into smile" />
               <Answer label="To reveal a secret" points={15} />
+              <Answer label="To clarify your point" />
             </Question>
           </WideEvent>
         ),
@@ -303,6 +320,16 @@ export const october: singleDay[] = [
           };
         },
       },
+      {
+        ...events.schoolQuestionCharm,
+        label: () => (
+          <Question label='We used the number "zero" a lot. Do you know where it originally came from, though?'>
+            <Answer label="Egypt." />
+            <Answer label="India." points={15} />
+            <Answer label="Rome." />
+          </Question>
+        ),
+      },
       events.DoNothing,
       { ...events.DoNothing, time: Times.Evening },
     ],
@@ -337,6 +364,8 @@ export const october: singleDay[] = [
         ...events.schoolQuestionCharm,
         label: () => (
           <Question label="Which Roman goddess has been theorized as the namesake for the month of April?">
+            <Answer label="Diana." />
+            <Answer label="Minerva." />
             <Answer label="Venus." points={15} />
           </Question>
         ),
