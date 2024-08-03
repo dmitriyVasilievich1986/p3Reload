@@ -35,14 +35,14 @@ export const linkEvents: {
         card={props.arcanes.includes(SocialLinkNames.Magician)}
       />
     ),
-    available: function ({ currentDate, currentTime, isDayOff, exams }) {
+    available: function ({ currentDay, time }) {
       const days = [DaysNames.tuesday, DaysNames.thursday, DaysNames.friday];
       return (
-        currentDate.getTime() >= new Date(2009, 3, 22).getTime() &&
-        days.includes(currentDate.getDay()) &&
-        currentTime === Times.Day &&
-        !isDayOff &&
-        !exams
+        currentDay.date.getTime() >= new Date(2009, 3, 22).getTime() &&
+        days.includes(currentDay.date.getDay()) &&
+        time === Times.Day &&
+        !currentDay.isDayOff &&
+        !currentDay.exams
       );
     },
   },
@@ -84,31 +84,22 @@ export const linkEvents: {
         card={props.arcanes.includes(SocialLinkNames.Priestess)}
       />
     ),
-    available: function ({
-      currentDate,
-      currentTime,
-      currentLinks,
-      previousDay,
-      isDayOff,
-      exams,
-    }) {
+    available: function ({ previousDay, currentDay, time }) {
       if (previousDay === undefined) return false;
-      const isFork =
-        previousDay.links &&
-        previousDay.links[SocialLinkNames.Priestess].level === 6;
       const isRomance =
-        currentLinks[SocialLinkNames.Priestess].romance === Routes.Platonic ||
-        isFork;
+        currentDay.links[SocialLinkNames.Priestess].romance ===
+          Routes.Platonic ||
+        previousDay.links[SocialLinkNames.Priestess].level === 6;
       const days = [DaysNames.monday, DaysNames.friday, DaysNames.saturday];
       return (
-        currentDate.getTime() >= new Date(2009, 5, 19).getTime() &&
+        currentDay.date.getTime() >= new Date(2009, 5, 19).getTime() &&
         previousDay.links[SocialLinkNames.Fortune].level > 0 &&
         previousDay.stats[stats.Courage.name] >= 80 &&
-        days.includes(currentDate.getDay()) &&
-        currentTime === Times.Day &&
-        isRomance &&
-        !isDayOff &&
-        !exams
+        days.includes(currentDay.date.getDay()) &&
+        !currentDay.isDayOff &&
+        time === Times.Day &&
+        !currentDay.exams &&
+        isRomance
       );
     },
   },
@@ -141,31 +132,22 @@ export const linkEvents: {
         },
       });
     },
-    available: function ({
-      currentDate,
-      currentTime,
-      currentLinks,
-      previousDay,
-      isDayOff,
-      exams,
-    }) {
+    available: function ({ previousDay, currentDay, time }) {
       if (previousDay === undefined) return false;
-      const isFork =
-        previousDay.links &&
-        previousDay.links[SocialLinkNames.Priestess].level === 6;
       const isRomance =
-        currentLinks[SocialLinkNames.Priestess].romance === Routes.Romantic ||
-        isFork;
+        currentDay.links[SocialLinkNames.Priestess].romance ===
+          Routes.Romantic ||
+        previousDay.links[SocialLinkNames.Priestess].level === 6;
       const days = [DaysNames.monday, DaysNames.friday, DaysNames.saturday];
       return (
-        currentDate.getTime() >= new Date(2009, 5, 19).getTime() &&
+        currentDay.date.getTime() >= new Date(2009, 5, 19).getTime() &&
         previousDay.links[SocialLinkNames.Fortune].level > 0 &&
         previousDay.stats[stats.Courage.name] >= 80 &&
-        days.includes(currentDate.getDay()) &&
-        currentTime === Times.Day &&
-        isRomance &&
-        !isDayOff &&
-        !exams
+        days.includes(currentDay.date.getDay()) &&
+        !currentDay.isDayOff &&
+        time === Times.Day &&
+        !currentDay.exams &&
+        isRomance
       );
     },
   },
@@ -204,21 +186,11 @@ export const linkEvents: {
         card={props.arcanes.includes(SocialLinkNames.Empress)}
       />
     ),
-    available: function ({
-      currentDate,
-      currentTime,
-      currentLinks,
-      previousDay,
-      isDayOff,
-      exams,
-    }) {
+    available: function ({ previousDay, currentDay, time }) {
       if (previousDay === undefined) return false;
-      const isFork =
-        previousDay.links &&
-        previousDay.links[SocialLinkNames.Empress].level === 6;
       const isRomance =
-        currentLinks[SocialLinkNames.Empress].romance === Routes.Romantic ||
-        isFork;
+        currentDay.links[SocialLinkNames.Empress].romance === Routes.Romantic ||
+        previousDay.links[SocialLinkNames.Empress].level === 6;
       const days = [
         DaysNames.monday,
         DaysNames.tuesday,
@@ -227,13 +199,13 @@ export const linkEvents: {
         DaysNames.saturday,
       ];
       return (
-        currentDate.getTime() >= new Date(2009, 10, 21).getTime() &&
+        currentDay.date.getTime() >= new Date(2009, 10, 21).getTime() &&
         previousDay.stats[stats.Academics.name] >= 230 &&
-        days.includes(currentDate.getDay()) &&
-        currentTime === Times.Day &&
-        isRomance &&
-        !isDayOff &&
-        !exams
+        days.includes(currentDay.date.getDay()) &&
+        !currentDay.isDayOff &&
+        time === Times.Day &&
+        !currentDay.exams &&
+        isRomance
       );
     },
   },
@@ -254,21 +226,11 @@ export const linkEvents: {
         card={props.arcanes.includes(SocialLinkNames.Empress)}
       />
     ),
-    available: function ({
-      currentDate,
-      currentTime,
-      currentLinks,
-      previousDay,
-      isDayOff,
-      exams,
-    }) {
+    available: function ({ previousDay, currentDay, time }) {
       if (previousDay === undefined) return false;
-      const isFork =
-        previousDay.links &&
-        previousDay.links[SocialLinkNames.Empress].level === 6;
       const isRomance =
-        currentLinks[SocialLinkNames.Empress].romance === Routes.Romantic ||
-        isFork;
+        currentDay.links[SocialLinkNames.Empress].romance === Routes.Romantic ||
+        previousDay.links[SocialLinkNames.Empress].level === 6;
       const days = [
         DaysNames.monday,
         DaysNames.tuesday,
@@ -277,13 +239,13 @@ export const linkEvents: {
         DaysNames.saturday,
       ];
       return (
-        currentDate.getTime() >= new Date(2009, 10, 21).getTime() &&
+        currentDay.date.getTime() >= new Date(2009, 10, 21).getTime() &&
         previousDay.stats[stats.Academics.name] >= 230 &&
-        days.includes(currentDate.getDay()) &&
-        currentTime === Times.Day &&
-        isRomance &&
-        !isDayOff &&
-        !exams
+        days.includes(currentDay.date.getDay()) &&
+        !currentDay.isDayOff &&
+        time === Times.Day &&
+        !currentDay.exams &&
+        isRomance
       );
     },
   },
@@ -316,17 +278,17 @@ export const linkEvents: {
         card={props.arcanes.includes(SocialLinkNames.Emperor)}
       />
     ),
-    available: function ({ currentDate, currentTime, isDayOff, exams }) {
+    available: function ({ currentDay, time }) {
       const days = [DaysNames.monday, DaysNames.wednesday, DaysNames.friday];
       const isToday =
-        currentDate.getTime() >= new Date(2010, 0, 1).getTime() ||
-        days.includes(currentDate.getDay());
+        currentDay.date.getTime() >= new Date(2010, 0, 1).getTime() ||
+        days.includes(currentDay.date.getDay());
       return (
-        currentDate.getTime() >= new Date(2009, 3, 27).getTime() &&
-        currentTime === Times.Day &&
-        !isDayOff &&
-        isToday &&
-        !exams
+        currentDay.date.getTime() >= new Date(2009, 3, 27).getTime() &&
+        !currentDay.isDayOff &&
+        time === Times.Day &&
+        !currentDay.exams &&
+        isToday
       );
     },
   },
@@ -347,7 +309,7 @@ export const linkEvents: {
         card={props.arcanes.includes(SocialLinkNames.Hierophant)}
       />
     ),
-    available: function ({ currentDate, currentTime }) {
+    available: function ({ currentDay, time }) {
       const days = [
         DaysNames.tuesday,
         DaysNames.wednesday,
@@ -357,9 +319,9 @@ export const linkEvents: {
         DaysNames.sunday,
       ];
       return (
-        currentDate.getTime() >= new Date(2009, 3, 25).getTime() &&
-        days.includes(currentDate.getDay()) &&
-        currentTime === Times.Day
+        currentDay.date.getTime() >= new Date(2009, 3, 25).getTime() &&
+        days.includes(currentDay.date.getDay()) &&
+        time === Times.Day
       );
     },
   },
@@ -380,21 +342,11 @@ export const linkEvents: {
         card={props.arcanes.includes(SocialLinkNames.Lovers)}
       />
     ),
-    available: function ({
-      currentDate,
-      currentTime,
-      currentLinks,
-      previousDay,
-      isDayOff,
-      exams,
-    }) {
+    available: function ({ previousDay, currentDay, time }) {
       if (previousDay === undefined) return false;
-      const isFork =
-        previousDay.links &&
-        previousDay.links[SocialLinkNames.Empress].level === 6;
       const isRomance =
-        currentLinks[SocialLinkNames.Empress].romance === Routes.Platonic ||
-        isFork;
+        currentDay.links[SocialLinkNames.Lovers].romance === Routes.Platonic ||
+        previousDay.links[SocialLinkNames.Lovers].level === 6;
       const days = [
         DaysNames.monday,
         DaysNames.wednesday,
@@ -402,13 +354,13 @@ export const linkEvents: {
         DaysNames.saturday,
       ];
       return (
-        currentDate.getTime() >= new Date(2009, 6, 25).getTime() &&
+        currentDay.date.getTime() >= new Date(2009, 6, 25).getTime() &&
         previousDay.stats[stats.Charm.name] >= 100 &&
-        days.includes(currentDate.getDay()) &&
-        currentTime === Times.Day &&
-        isRomance &&
-        !isDayOff &&
-        !exams
+        days.includes(currentDay.date.getDay()) &&
+        !currentDay.isDayOff &&
+        time === Times.Day &&
+        !currentDay.exams &&
+        isRomance
       );
     },
   },
@@ -429,21 +381,23 @@ export const linkEvents: {
         card={props.arcanes.includes(SocialLinkNames.Lovers)}
       />
     ),
-    available: function ({
-      currentDate,
-      currentTime,
-      currentLinks,
-      previousDay,
-      isDayOff,
-      exams,
-    }) {
+    upgrade: function (props) {
+      return socialLinks[SocialLinkNames.Lovers].calculate({
+        ...props,
+        currentLinks: {
+          ...props.currentLinks,
+          [SocialLinkNames.Lovers]: {
+            ...props.currentLinks[SocialLinkNames.Lovers],
+            romance: Routes.Romantic,
+          },
+        },
+      });
+    },
+    available: function ({ previousDay, currentDay, time }) {
       if (previousDay === undefined) return false;
-      const isFork =
-        previousDay.links &&
-        previousDay.links[SocialLinkNames.Empress].level === 6;
       const isRomance =
-        currentLinks[SocialLinkNames.Empress].romance === Routes.Romantic ||
-        isFork;
+        currentDay.links[SocialLinkNames.Lovers].romance === Routes.Romantic ||
+        previousDay.links[SocialLinkNames.Lovers].level === 6;
       const days = [
         DaysNames.monday,
         DaysNames.wednesday,
@@ -451,13 +405,13 @@ export const linkEvents: {
         DaysNames.saturday,
       ];
       return (
-        currentDate.getTime() >= new Date(2009, 6, 25).getTime() &&
+        currentDay.date.getTime() >= new Date(2009, 6, 25).getTime() &&
         previousDay.stats[stats.Charm.name] >= 100 &&
-        days.includes(currentDate.getDay()) &&
-        currentTime === Times.Day &&
-        isRomance &&
-        !isDayOff &&
-        !exams
+        days.includes(currentDay.date.getDay()) &&
+        !currentDay.isDayOff &&
+        time === Times.Day &&
+        !currentDay.exams &&
+        isRomance
       );
     },
   },
@@ -495,7 +449,7 @@ export const linkEvents: {
         card={props.arcanes.includes(SocialLinkNames.Chariot)}
       />
     ),
-    available: function ({ currentDate, currentTime, isDayOff, exams }) {
+    available: function ({ currentDay, time }) {
       const days = [
         DaysNames.monday,
         DaysNames.tuesday,
@@ -503,11 +457,11 @@ export const linkEvents: {
         DaysNames.friday,
       ];
       return (
-        currentDate.getTime() >= new Date(2009, 3, 23).getTime() &&
-        days.includes(currentDate.getDay()) &&
-        currentTime === Times.Day &&
-        !isDayOff &&
-        !exams
+        currentDay.date.getTime() >= new Date(2009, 3, 23).getTime() &&
+        days.includes(currentDay.date.getDay()) &&
+        !currentDay.isDayOff &&
+        time === Times.Day &&
+        !currentDay.exams
       );
     },
   },
@@ -549,30 +503,20 @@ export const linkEvents: {
         card={props.arcanes.includes(SocialLinkNames.Justice)}
       />
     ),
-    available: function ({
-      currentDate,
-      currentTime,
-      currentLinks,
-      previousDay,
-      isDayOff,
-      exams,
-    }) {
+    available: function ({ previousDay, currentDay, time }) {
       if (previousDay === undefined) return false;
-      const isFork =
-        previousDay.links &&
-        previousDay.links[SocialLinkNames.Justice].level === 4;
       const isRomance =
-        currentLinks[SocialLinkNames.Empress].romance === Routes.Platonic ||
-        isFork;
+        currentDay.links[SocialLinkNames.Empress].romance === Routes.Platonic ||
+        previousDay.links[SocialLinkNames.Justice].level === 4;
       const days = [DaysNames.tuesday, DaysNames.thursday, DaysNames.saturday];
       return (
-        currentDate.getTime() >= new Date(2009, 4, 7).getTime() &&
+        currentDay.date.getTime() >= new Date(2009, 4, 7).getTime() &&
         previousDay.links[SocialLinkNames.Emperor].level > 0 &&
-        days.includes(currentDate.getDay()) &&
-        currentTime === Times.Day &&
-        isRomance &&
-        !isDayOff &&
-        !exams
+        days.includes(currentDay.date.getDay()) &&
+        !currentDay.isDayOff &&
+        time === Times.Day &&
+        !currentDay.exams &&
+        isRomance
       );
     },
   },
@@ -605,30 +549,20 @@ export const linkEvents: {
         },
       });
     },
-    available: function ({
-      currentDate,
-      currentTime,
-      currentLinks,
-      previousDay,
-      isDayOff,
-      exams,
-    }) {
+    available: function ({ previousDay, currentDay, time }) {
       if (previousDay === undefined) return false;
-      const isFork =
-        previousDay.links &&
-        previousDay.links[SocialLinkNames.Justice].level === 4;
       const isRomance =
-        currentLinks[SocialLinkNames.Empress].romance === Routes.Romantic ||
-        isFork;
+        currentDay.links[SocialLinkNames.Empress].romance === Routes.Romantic ||
+        previousDay.links[SocialLinkNames.Justice].level === 4;
       const days = [DaysNames.tuesday, DaysNames.thursday, DaysNames.saturday];
       return (
-        currentDate.getTime() >= new Date(2009, 4, 7).getTime() &&
+        currentDay.date.getTime() >= new Date(2009, 4, 7).getTime() &&
         previousDay.links[SocialLinkNames.Emperor].level > 0 &&
-        days.includes(currentDate.getDay()) &&
-        currentTime === Times.Day &&
-        isRomance &&
-        !isDayOff &&
-        !exams
+        days.includes(currentDay.date.getDay()) &&
+        !currentDay.isDayOff &&
+        time === Times.Day &&
+        !currentDay.exams &&
+        isRomance
       );
     },
   },
@@ -671,7 +605,7 @@ export const linkEvents: {
         card={props.arcanes.includes(SocialLinkNames.Hermit)}
       />
     ),
-    available: function ({ currentDate, currentTime }) {
+    available: function ({ currentDay, time }) {
       const days = [
         new Date(2009, 3, 29).getTime(),
         new Date(2009, 4, 4).getTime(),
@@ -682,11 +616,11 @@ export const linkEvents: {
         new Date(2009, 9, 12).getTime(),
       ];
       const isToday =
-        currentDate.getDay() === DaysNames.sunday ||
-        days.includes(currentDate.getTime());
+        currentDay.date.getDay() === DaysNames.sunday ||
+        days.includes(currentDay.date.getTime());
       return (
-        currentDate.getTime() >= new Date(2009, 3, 29).getTime() &&
-        currentTime === Times.Day &&
+        currentDay.date.getTime() >= new Date(2009, 3, 29).getTime() &&
+        time === Times.Day &&
         isToday
       );
     },
@@ -708,14 +642,14 @@ export const linkEvents: {
         card={props.arcanes.includes(SocialLinkNames.Fortune)}
       />
     ),
-    available: function ({ currentDate, currentTime, isDayOff, exams }) {
+    available: function ({ currentDay, time }) {
       const days = [DaysNames.tuesday, DaysNames.wednesday, DaysNames.thursday];
       return (
-        currentDate.getTime() >= new Date(2009, 5, 17).getTime() &&
-        days.includes(currentDate.getDay()) &&
-        currentTime === Times.Day &&
-        !isDayOff &&
-        !exams
+        currentDay.date.getTime() >= new Date(2009, 5, 17).getTime() &&
+        days.includes(currentDay.date.getDay()) &&
+        !currentDay.isDayOff &&
+        time === Times.Day &&
+        !currentDay.exams
       );
     },
   },
@@ -752,30 +686,21 @@ export const linkEvents: {
         card={props.arcanes.includes(SocialLinkNames.Strength)}
       />
     ),
-    available: function ({
-      currentDate,
-      currentTime,
-      currentLinks,
-      previousDay,
-      isDayOff,
-      exams,
-    }) {
+    available: function ({ previousDay, currentDay, time }) {
       if (previousDay === undefined) return false;
-      const isFork =
-        previousDay.links &&
-        previousDay.links[SocialLinkNames.Strength].level === 2;
       const isRomance =
-        currentLinks[SocialLinkNames.Strength].romance === Routes.Platonic ||
-        isFork;
+        currentDay.links[SocialLinkNames.Strength].romance ===
+          Routes.Platonic ||
+        previousDay.links[SocialLinkNames.Strength].level === 2;
       const days = [DaysNames.wednesday, DaysNames.saturday];
       return (
-        currentDate.getTime() >= new Date(2009, 3, 24).getTime() &&
+        currentDay.date.getTime() >= new Date(2009, 3, 24).getTime() &&
         previousDay.links[SocialLinkNames.Chariot].level >= 2 &&
-        days.includes(currentDate.getDay()) &&
-        currentTime === Times.Day &&
-        isRomance &&
-        !isDayOff &&
-        !exams
+        days.includes(currentDay.date.getDay()) &&
+        !currentDay.isDayOff &&
+        time === Times.Day &&
+        !currentDay.exams &&
+        isRomance
       );
     },
   },
@@ -808,30 +733,21 @@ export const linkEvents: {
         },
       });
     },
-    available: function ({
-      currentDate,
-      currentTime,
-      currentLinks,
-      previousDay,
-      isDayOff,
-      exams,
-    }) {
+    available: function ({ previousDay, currentDay, time }) {
       if (previousDay === undefined) return false;
-      const isFork =
-        previousDay.links &&
-        previousDay.links[SocialLinkNames.Strength].level === 2;
       const isRomance =
-        currentLinks[SocialLinkNames.Strength].romance === Routes.Romantic ||
-        isFork;
+        currentDay.links[SocialLinkNames.Strength].romance ===
+          Routes.Romantic ||
+        previousDay.links[SocialLinkNames.Strength].level === 2;
       const days = [DaysNames.wednesday, DaysNames.saturday];
       return (
-        currentDate.getTime() >= new Date(2009, 3, 24).getTime() &&
+        currentDay.date.getTime() >= new Date(2009, 3, 24).getTime() &&
         previousDay.links[SocialLinkNames.Chariot].level >= 2 &&
-        days.includes(currentDate.getDay()) &&
-        currentTime === Times.Day &&
-        isRomance &&
-        !isDayOff &&
-        !exams
+        days.includes(currentDay.date.getDay()) &&
+        !currentDay.isDayOff &&
+        time === Times.Day &&
+        !currentDay.exams &&
+        isRomance
       );
     },
   },
@@ -872,12 +788,12 @@ export const linkEvents: {
         card={props.arcanes.includes(SocialLinkNames.HangedMan)}
       />
     ),
-    available: function ({ currentDate, currentTime }) {
+    available: function ({ currentDay, time }) {
       const days = [DaysNames.monday, DaysNames.wednesday, DaysNames.saturday];
       return (
-        currentDate.getTime() >= new Date(2009, 4, 6).getTime() &&
-        days.includes(currentDate.getDay()) &&
-        currentTime === Times.Day
+        currentDay.date.getTime() >= new Date(2009, 4, 6).getTime() &&
+        days.includes(currentDay.date.getDay()) &&
+        time === Times.Day
       );
     },
   },
@@ -898,23 +814,17 @@ export const linkEvents: {
         card={props.arcanes.includes(SocialLinkNames.Temperance)}
       />
     ),
-    available: function ({
-      currentDate,
-      currentTime,
-      previousDay,
-      isDayOff,
-      exams,
-    }) {
+    available: function ({ previousDay, currentDay, time }) {
       if (previousDay === undefined) return false;
       const days = [DaysNames.tuesday, DaysNames.wednesday, DaysNames.friday];
       return (
         previousDay.links[socialLinks.Hierophant.name].level >= 3 &&
-        currentDate.getTime() >= new Date(2009, 4, 8).getTime() &&
+        currentDay.date.getTime() >= new Date(2009, 4, 8).getTime() &&
         previousDay.stats[stats.Academics.name] >= 20 &&
-        days.includes(currentDate.getDay()) &&
-        currentTime === Times.Day &&
-        !isDayOff &&
-        !exams
+        days.includes(currentDay.date.getDay()) &&
+        !currentDay.isDayOff &&
+        time === Times.Day &&
+        !currentDay.exams
       );
     },
   },
@@ -949,15 +859,15 @@ export const linkEvents: {
     label: () => (
       <EventCard name="President Tanaka" place="Paulownia Mall" head="Devil" />
     ),
-    available: function ({ currentDate, currentTime, previousDay }) {
+    available: function ({ previousDay, currentDay, time }) {
       if (previousDay === undefined) return false;
       const days = [DaysNames.tuesday, DaysNames.saturday];
       return (
-        currentDate.getTime() >= new Date(2009, 4, 16).getTime() &&
+        currentDay.date.getTime() >= new Date(2009, 4, 16).getTime() &&
         previousDay.links[socialLinks.Hermit.name].level >= 4 &&
         previousDay.stats[stats.Charm.name] >= 45 &&
-        days.includes(currentDate.getDay()) &&
-        currentTime === Times.Evening
+        days.includes(currentDay.date.getDay()) &&
+        time === Times.Evening
       );
     },
   },
@@ -978,7 +888,7 @@ export const linkEvents: {
         card={props.arcanes.includes(SocialLinkNames.Tower)}
       />
     ),
-    available: function ({ currentDate, currentTime, previousDay }) {
+    available: function ({ previousDay, currentDay, time }) {
       if (previousDay === undefined) return false;
       const days = [
         DaysNames.thursday,
@@ -987,11 +897,11 @@ export const linkEvents: {
         DaysNames.sunday,
       ];
       return (
-        currentDate.getTime() >= new Date(2009, 4, 23).getTime() &&
+        currentDay.date.getTime() >= new Date(2009, 4, 23).getTime() &&
         previousDay.links[SocialLinkNames.Strength].level >= 4 &&
         previousDay.stats[stats.Courage.name] >= 15 &&
-        days.includes(currentDate.getDay()) &&
-        currentTime === Times.Evening
+        days.includes(currentDay.date.getDay()) &&
+        time === Times.Evening
       );
     },
   },
@@ -1010,14 +920,14 @@ export const linkEvents: {
         card={props.arcanes.includes(SocialLinkNames.Star)}
       />
     ),
-    available: function ({ currentDate, currentTime, previousDay }) {
+    available: function ({ previousDay, currentDay, time }) {
       if (previousDay === undefined) return false;
       const days = [DaysNames.wednesday, DaysNames.friday, DaysNames.sunday];
       return (
-        currentDate.getTime() >= new Date(2009, 7, 5).getTime() &&
+        currentDay.date.getTime() >= new Date(2009, 7, 5).getTime() &&
         previousDay.stats[stats.Courage.name] >= 45 &&
-        days.includes(currentDate.getDay()) &&
-        currentTime === Times.Day
+        days.includes(currentDay.date.getDay()) &&
+        time === Times.Day
       );
     },
   },
@@ -1036,13 +946,13 @@ export const linkEvents: {
         card={props.arcanes.includes(SocialLinkNames.Moon)}
       />
     ),
-    available: function ({ currentDate, currentTime, previousDay }) {
+    available: function ({ previousDay, currentDay, time }) {
       if (previousDay === undefined) return false;
       return (
-        currentDate.getTime() >= new Date(2009, 3, 28).getTime() &&
+        currentDay.date.getTime() >= new Date(2009, 3, 28).getTime() &&
         previousDay.links[socialLinks.Magician.name].level >= 3 &&
         previousDay.stats[stats.Charm.name] >= 15 &&
-        currentTime === Times.Day
+        time === Times.Day
       );
     },
   },
@@ -1054,14 +964,14 @@ export const linkEvents: {
     label: () => (
       <EventCard place="Naganaki Shrine" name="Akinari Kamiki" head="Sun" />
     ),
-    available: function ({ currentDate, currentTime, previousDay }) {
+    available: function ({ previousDay, currentDay, time }) {
       if (previousDay === undefined) return false;
       return (
-        currentDate.getTime() >= new Date(2009, 7, 9).getTime() &&
+        currentDay.date.getTime() >= new Date(2009, 7, 9).getTime() &&
         previousDay.links[socialLinks.HangedMan.name].level >= 3 &&
         previousDay.stats[stats.Academics.name] >= 100 &&
-        currentDate.getDay() == DaysNames.sunday &&
-        currentTime === Times.Day
+        currentDay.date.getDay() == DaysNames.sunday &&
+        time === Times.Day
       );
     },
   },
@@ -1080,19 +990,11 @@ export const linkEvents: {
         card={props.arcanes.includes(SocialLinkNames.Aeon)}
       />
     ),
-    available: function ({
-      currentDate,
-      currentTime,
-      currentLinks,
-      previousDay,
-    }) {
+    available: function ({ previousDay, currentDay, time }) {
       if (previousDay === undefined) return false;
-      const isFork =
-        previousDay.links &&
-        previousDay.links[SocialLinkNames.Empress].level === 6;
       const isRomance =
-        currentLinks[SocialLinkNames.Empress].romance === Routes.Platonic ||
-        isFork;
+        currentDay.links[SocialLinkNames.Empress].romance === Routes.Platonic ||
+        previousDay.links[SocialLinkNames.Empress].level === 6;
       const days = [
         DaysNames.monday,
         DaysNames.tuesday,
@@ -1102,9 +1004,9 @@ export const linkEvents: {
         DaysNames.saturday,
       ];
       return (
-        currentDate.getTime() >= new Date(2010, 0, 8).getTime() &&
-        days.includes(currentDate.getDay()) &&
-        currentTime === Times.Day &&
+        currentDay.date.getTime() >= new Date(2010, 0, 8).getTime() &&
+        days.includes(currentDay.date.getDay()) &&
+        time === Times.Day &&
         isRomance
       );
     },
@@ -1124,18 +1026,13 @@ export const linkEvents: {
         card={props.arcanes.includes(SocialLinkNames.Aeon)}
       />
     ),
-    available: function ({
-      currentDate,
-      currentTime,
-      currentLinks,
-      previousDay,
-    }) {
+    available: function ({ previousDay, currentDay, time }) {
       if (previousDay === undefined) return false;
       const isFork =
         previousDay.links &&
         previousDay.links[SocialLinkNames.Empress].level === 6;
       const isRomance =
-        currentLinks[SocialLinkNames.Empress].romance === Routes.Romantic ||
+        currentDay.links[SocialLinkNames.Empress].romance === Routes.Romantic ||
         isFork;
       const days = [
         DaysNames.monday,
@@ -1146,9 +1043,9 @@ export const linkEvents: {
         DaysNames.saturday,
       ];
       return (
-        currentDate.getTime() >= new Date(2010, 0, 8).getTime() &&
-        days.includes(currentDate.getDay()) &&
-        currentTime === Times.Day &&
+        currentDay.date.getTime() >= new Date(2010, 0, 8).getTime() &&
+        days.includes(currentDay.date.getDay()) &&
+        time === Times.Day &&
         isRomance
       );
     },

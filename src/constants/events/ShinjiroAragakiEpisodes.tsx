@@ -20,7 +20,7 @@ const ji1: Event = {
       stats="Courage +2"
     />
   ),
-  available: function ({ currentTime, currentDate, singleTimeEvents }) {
+  available: function ({ currentDay, time }) {
     const days = [
       DaysNames.monday,
       DaysNames.tuesday,
@@ -30,11 +30,11 @@ const ji1: Event = {
       DaysNames.sunday,
     ];
     return (
-      currentDate.getTime() >= new Date(2009, 8, 4).getTime() &&
-      currentDate.getTime() <= new Date(2009, 9, 2).getTime() &&
-      !singleTimeEvents.includes(this.name) &&
-      days.includes(currentDate.getDay()) &&
-      currentTime === Times.Day
+      currentDay.date.getTime() >= new Date(2009, 8, 4).getTime() &&
+      currentDay.date.getTime() <= new Date(2009, 9, 2).getTime() &&
+      !currentDay.singleTimeEvents.includes(this.name) &&
+      days.includes(currentDay.date.getDay()) &&
+      time === Times.Day
     );
   },
   upgrade: function ({ currentStats, singleTimeEvents }) {
@@ -62,7 +62,7 @@ export const ShinjiroAragakiEpisodes: {
         stats="Charm +2"
       />
     ),
-    available: function ({ currentTime, currentDate, singleTimeEvents }) {
+    available: function ({ currentDay, time }) {
       const days = [
         DaysNames.monday,
         DaysNames.tuesday,
@@ -72,14 +72,14 @@ export const ShinjiroAragakiEpisodes: {
         DaysNames.sunday,
       ];
       return (
-        singleTimeEvents.includes(
+        currentDay.singleTimeEvents.includes(
           ShinjiroAragakiEpisodesNames.ShinjiroAragaki1
         ) &&
-        currentDate.getTime() >= new Date(2009, 8, 11).getTime() &&
-        currentDate.getTime() <= new Date(2009, 9, 2).getTime() &&
-        !singleTimeEvents.includes(this.name) &&
-        days.includes(currentDate.getDay()) &&
-        currentTime === Times.Day
+        currentDay.date.getTime() >= new Date(2009, 8, 11).getTime() &&
+        currentDay.date.getTime() <= new Date(2009, 9, 2).getTime() &&
+        !currentDay.singleTimeEvents.includes(this.name) &&
+        days.includes(currentDay.date.getDay()) &&
+        time === Times.Day
       );
     },
     upgrade: function ({ currentStats, singleTimeEvents }) {
@@ -102,7 +102,7 @@ export const ShinjiroAragakiEpisodes: {
         stats="Academics +2"
       />
     ),
-    available: function ({ currentTime, currentDate, singleTimeEvents }) {
+    available: function ({ currentDay, time }) {
       const days = [
         DaysNames.monday,
         DaysNames.tuesday,
@@ -112,14 +112,14 @@ export const ShinjiroAragakiEpisodes: {
         DaysNames.sunday,
       ];
       return (
-        singleTimeEvents.includes(
+        currentDay.singleTimeEvents.includes(
           ShinjiroAragakiEpisodesNames.ShinjiroAragaki2
         ) &&
-        currentDate.getTime() >= new Date(2009, 8, 13).getTime() &&
-        currentDate.getTime() <= new Date(2009, 9, 2).getTime() &&
-        !singleTimeEvents.includes(this.name) &&
-        days.includes(currentDate.getDay()) &&
-        currentTime === Times.Day
+        currentDay.date.getTime() >= new Date(2009, 8, 13).getTime() &&
+        currentDay.date.getTime() <= new Date(2009, 9, 2).getTime() &&
+        !currentDay.singleTimeEvents.includes(this.name) &&
+        days.includes(currentDay.date.getDay()) &&
+        time === Times.Day
       );
     },
     upgrade: function ({ currentStats, singleTimeEvents }) {
@@ -138,15 +138,15 @@ export const ShinjiroAragakiEpisodes: {
     label: () => (
       <EventCard head="Shinjiro Aragaki Episode" name="Shinjiro Aragaki" />
     ),
-    available: function ({ currentTime, currentDate, singleTimeEvents }) {
+    available: function ({ currentDay, time }) {
       return (
-        singleTimeEvents.includes(
+        currentDay.singleTimeEvents.includes(
           ShinjiroAragakiEpisodesNames.ShinjiroAragaki3
         ) &&
-        currentDate.getTime() >= new Date(2009, 8, 14).getTime() &&
-        currentDate.getTime() <= new Date(2009, 9, 2).getTime() &&
-        !singleTimeEvents.includes(this.name) &&
-        currentTime === Times.Day
+        currentDay.date.getTime() >= new Date(2009, 8, 14).getTime() &&
+        currentDay.date.getTime() <= new Date(2009, 9, 2).getTime() &&
+        !currentDay.singleTimeEvents.includes(this.name) &&
+        time === Times.Day
       );
     },
     upgrade: function ({ singleTimeEvents }) {
@@ -163,7 +163,7 @@ export const ShinjiroAragakiEpisodes: {
         stats="Courage +2"
       />
     ),
-    available: function ({ currentTime, currentDate, singleTimeEvents }) {
+    available: function ({ currentDay, time }) {
       const days = [
         DaysNames.monday,
         DaysNames.tuesday,
@@ -172,14 +172,14 @@ export const ShinjiroAragakiEpisodes: {
         DaysNames.saturday,
       ];
       return (
-        singleTimeEvents.includes(
+        currentDay.singleTimeEvents.includes(
           ShinjiroAragakiEpisodesNames.ShinjiroAragaki35
         ) &&
-        currentDate.getTime() >= new Date(2009, 8, 14).getTime() &&
-        currentDate.getTime() <= new Date(2009, 9, 2).getTime() &&
-        !singleTimeEvents.includes(this.name) &&
-        days.includes(currentDate.getDay()) &&
-        currentTime === Times.Day
+        currentDay.date.getTime() >= new Date(2009, 8, 14).getTime() &&
+        currentDay.date.getTime() <= new Date(2009, 9, 2).getTime() &&
+        !currentDay.singleTimeEvents.includes(this.name) &&
+        days.includes(currentDay.date.getDay()) &&
+        time === Times.Day
       );
     },
     upgrade: function ({ currentStats, singleTimeEvents }) {
@@ -195,15 +195,15 @@ export const ShinjiroAragakiEpisodes: {
   [ShinjiroAragakiEpisodesNames.ShinjiroAragaki5]: {
     ...ji1,
     name: ShinjiroAragakiEpisodesNames.ShinjiroAragaki5,
-    available: function ({ currentTime, currentDate, singleTimeEvents }) {
+    available: function ({ currentDay, time }) {
       return (
-        singleTimeEvents.includes(
+        currentDay.singleTimeEvents.includes(
           ShinjiroAragakiEpisodesNames.ShinjiroAragaki4
         ) &&
-        currentDate.getTime() >= new Date(2009, 9, 5).getTime() &&
-        currentDate.getTime() <= new Date(2009, 9, 31).getTime() &&
-        !singleTimeEvents.includes(this.name) &&
-        currentTime === Times.Day
+        currentDay.date.getTime() >= new Date(2009, 9, 5).getTime() &&
+        currentDay.date.getTime() <= new Date(2009, 9, 31).getTime() &&
+        !currentDay.singleTimeEvents.includes(this.name) &&
+        time === Times.Day
       );
     },
   },

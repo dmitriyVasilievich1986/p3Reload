@@ -36,9 +36,9 @@ export const statsEventsCourage: {
         stats="Courage +2"
       />
     ),
-    available: function ({ currentDate, currentTime }) {
+    available: function ({ currentDay, time }) {
       const days = [DaysNames.tuesday, DaysNames.friday];
-      return currentTime === Times.Day && days.includes(currentDate.getDay());
+      return time === Times.Day && days.includes(currentDay.date.getDay());
     },
     upgrade: getCourageUpgradeFunction(2),
   },
@@ -47,8 +47,8 @@ export const statsEventsCourage: {
     category: Categories.Stats,
     time: Times.Morning,
     label: () => <EventCard head="Sleep During Class" stats="Courage +2" />,
-    available: function ({ currentTime }) {
-      return currentTime === Times.Morning;
+    available: function ({ time }) {
+      return time === Times.Morning;
     },
     upgrade: getCourageUpgradeFunction(2),
   },
@@ -64,10 +64,10 @@ export const statsEventsCourage: {
         price={800}
       />
     ),
-    available: function ({ currentDate, currentTime }) {
+    available: function ({ currentDay, time }) {
       return (
-        [Times.Day, Times.Evening].includes(currentTime) &&
-        currentDate.getDay() !== DaysNames.sunday
+        [Times.Day, Times.Evening].includes(time) &&
+        currentDay.date.getDay() !== DaysNames.sunday
       );
     },
     upgrade: getCourageUpgradeFunction(2),
@@ -84,10 +84,10 @@ export const statsEventsCourage: {
         price={1000}
       />
     ),
-    available: function ({ currentDate, currentTime }) {
+    available: function ({ currentDay, time }) {
       return (
-        [Times.Day, Times.Evening].includes(currentTime) &&
-        currentDate.getDay() !== DaysNames.thursday
+        [Times.Day, Times.Evening].includes(time) &&
+        currentDay.date.getDay() !== DaysNames.thursday
       );
     },
     upgrade: getCourageUpgradeFunction(3),
@@ -104,11 +104,11 @@ export const statsEventsCourage: {
         price={3000}
       />
     ),
-    available: function ({ currentDate, currentTime }) {
+    available: function ({ currentDay, time }) {
       const days = [DaysNames.tuesday, DaysNames.friday];
       return (
-        [Times.Day, Times.Evening].includes(currentTime) &&
-        days.includes(currentDate.getDay())
+        [Times.Day, Times.Evening].includes(time) &&
+        days.includes(currentDay.date.getDay())
       );
     },
     upgrade: getCourageUpgradeFunction(4),
@@ -125,14 +125,14 @@ export const statsEventsCourage: {
         price={1200}
       />
     ),
-    available: function ({ singleTimeEvents, currentDate, currentTime }) {
+    available: function ({ currentDay, time }) {
       const days = [DaysNames.saturday, DaysNames.sunday];
       return (
-        singleTimeEvents.includes(
+        currentDay.singleTimeEvents.includes(
           statsEventsCourageNames.wilduckBigEaterChallenge
         ) &&
-        [Times.Day, Times.Evening].includes(currentTime) &&
-        days.includes(currentDate.getDay())
+        [Times.Day, Times.Evening].includes(time) &&
+        days.includes(currentDay.date.getDay())
       );
     },
     upgrade: getCourageUpgradeFunction(4),
@@ -149,9 +149,9 @@ export const statsEventsCourage: {
         price={1500}
       />
     ),
-    available: function ({ currentDate, currentTime }) {
+    available: function ({ currentDay, time }) {
       const days = [DaysNames.monday, DaysNames.thursday];
-      return days.includes(currentDate.getDay()) && currentTime === Times.Day;
+      return days.includes(currentDay.date.getDay()) && time === Times.Day;
     },
     upgrade: getCourageUpgradeFunction(4),
   },
@@ -167,17 +167,12 @@ export const statsEventsCourage: {
         price={1800}
       />
     ),
-    available: function ({
-      singleTimeEvents,
-      currentDate,
-      currentStats,
-      currentTime,
-    }) {
+    available: function ({ currentDay, time }) {
       return (
-        currentDate.getTime() >= new Date(2009, 4, 10).getTime() &&
-        !singleTimeEvents.includes(this.name) &&
-        currentTime === Times.Evening &&
-        currentStats.Courage >= 45
+        currentDay.date.getTime() >= new Date(2009, 4, 10).getTime() &&
+        !currentDay.singleTimeEvents.includes(this.name) &&
+        currentDay.stats.Courage >= 45 &&
+        time === Times.Evening
       );
     },
     upgrade: function ({ singleTimeEvents, currentStats }: upgradeProps) {

@@ -37,7 +37,7 @@ export const statsEventsCharm: {
         receive={3500}
       />
     ),
-    available: function ({ currentDate, currentTime }) {
+    available: function ({ currentDay, time }) {
       const days = [
         DaysNames.monday,
         DaysNames.tuesday,
@@ -46,9 +46,9 @@ export const statsEventsCharm: {
         DaysNames.friday,
       ];
       return (
-        currentDate.getTime() >= new Date(2009, 6, 22).getTime() &&
-        days.includes(currentDate.getDay()) &&
-        currentTime === Times.Day
+        currentDay.date.getTime() >= new Date(2009, 6, 22).getTime() &&
+        days.includes(currentDay.date.getDay()) &&
+        time === Times.Day
       );
     },
     upgrade: function ({ currentStats }) {
@@ -73,11 +73,9 @@ export const statsEventsCharm: {
         receive={2500}
       />
     ),
-    available: function ({ currentDate, currentTime }) {
+    available: function ({ currentDay, time }) {
       const days = [DaysNames.monday, DaysNames.tuesday, DaysNames.wednesday];
-      return (
-        currentTime === Times.Evening && days.includes(currentDate.getDay())
-      );
+      return time === Times.Evening && days.includes(currentDay.date.getDay());
     },
     upgrade: function ({ currentStats }) {
       return {
@@ -101,11 +99,11 @@ export const statsEventsCharm: {
         price={500}
       />
     ),
-    available: function ({ currentDate, currentTime }) {
+    available: function ({ currentDay, time }) {
       const days = [DaysNames.monday, DaysNames.tuesday];
       return (
-        currentTime === Times.Evening ||
-        (currentTime === Times.Day && !days.includes(currentDate.getDay()))
+        time === Times.Evening ||
+        (time === Times.Day && !days.includes(currentDay.date.getDay()))
       );
     },
     upgrade: getCharmUpgradeFunction(2),
@@ -131,7 +129,7 @@ export const statsEventsCharm: {
         price={900}
       />
     ),
-    available: function ({ currentDate, currentTime }) {
+    available: function ({ currentDay, time }) {
       const days = [
         DaysNames.monday,
         DaysNames.tuesday,
@@ -140,8 +138,8 @@ export const statsEventsCharm: {
         DaysNames.friday,
       ];
       return (
-        [Times.Day, Times.Evening].includes(currentTime) &&
-        days.includes(currentDate.getDay())
+        [Times.Day, Times.Evening].includes(time) &&
+        days.includes(currentDay.date.getDay())
       );
     },
     upgrade: getCharmUpgradeFunction(3),
@@ -158,9 +156,9 @@ export const statsEventsCharm: {
         price={1500}
       />
     ),
-    available: function ({ currentDate, currentTime }) {
+    available: function ({ currentDay, time }) {
       const days = [DaysNames.tuesday, DaysNames.friday];
-      return days.includes(currentDate.getDay()) && currentTime === Times.Day;
+      return days.includes(currentDay.date.getDay()) && time === Times.Day;
     },
     upgrade: getCharmUpgradeFunction(4),
   },
@@ -176,12 +174,12 @@ export const statsEventsCharm: {
         price={1200}
       />
     ),
-    available: function ({ currentDate, currentTime, currentStats }) {
+    available: function ({ currentDay, time }) {
       const days = [DaysNames.tuesday, DaysNames.wednesday, DaysNames.friday];
       return (
-        currentStats[StatsNames.Courage] >= stats.Courage.levels[2].value &&
-        [Times.Day, Times.Evening].includes(currentTime) &&
-        days.includes(currentDate.getDay())
+        currentDay.stats[StatsNames.Courage] >= stats.Courage.levels[2].value &&
+        [Times.Day, Times.Evening].includes(time) &&
+        days.includes(currentDay.date.getDay())
       );
     },
     upgrade: getCharmUpgradeFunction(4),
@@ -198,11 +196,11 @@ export const statsEventsCharm: {
         price={1500}
       />
     ),
-    available: function ({ currentDate, currentTime }) {
+    available: function ({ currentDay, time }) {
       const days = [DaysNames.monday, DaysNames.thursday];
       return (
-        [Times.Day, Times.Evening].includes(currentTime) &&
-        days.includes(currentDate.getDay())
+        [Times.Day, Times.Evening].includes(time) &&
+        days.includes(currentDay.date.getDay())
       );
     },
     upgrade: getCharmUpgradeFunction(4),

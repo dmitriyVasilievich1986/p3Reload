@@ -30,8 +30,8 @@ export const statsEventsAcademics: {
     category: Categories.Stats,
     time: Times.Morning,
     label: () => <EventCard head="Stay Awake in Class" stats="Academics +2" />,
-    available: function ({ currentTime }) {
-      return currentTime === Times.Morning;
+    available: function ({ time }) {
+      return time === Times.Morning;
     },
     upgrade: getAcademicsUpgradeFunction(2),
   },
@@ -46,8 +46,8 @@ export const statsEventsAcademics: {
         place="Your Room"
       />
     ),
-    available: function ({ currentTime }) {
-      return currentTime === Times.Evening;
+    available: function ({ time }) {
+      return time === Times.Evening;
     },
     upgrade: getAcademicsUpgradeFunction(2),
   },
@@ -62,8 +62,8 @@ export const statsEventsAcademics: {
         stats="Academics +2"
       />
     ),
-    available: function ({ currentTime }) {
-      return currentTime === Times.Day;
+    available: function ({ time }) {
+      return time === Times.Day;
     },
     upgrade: getAcademicsUpgradeFunction(2),
   },
@@ -97,14 +97,14 @@ export const statsEventsAcademics: {
         price={680}
       />
     ),
-    available: function ({ currentDate, currentTime }) {
+    available: function ({ currentDay, time }) {
       const days = [
         DaysNames.thursday,
         DaysNames.friday,
         DaysNames.saturday,
         DaysNames.sunday,
       ];
-      return days.includes(currentDate.getDay()) && currentTime == Times.Day;
+      return days.includes(currentDay.date.getDay()) && time == Times.Day;
     },
     upgrade: getAcademicsUpgradeFunction(3),
   },
@@ -120,16 +120,14 @@ export const statsEventsAcademics: {
         price={680}
       />
     ),
-    available: function ({ currentDate, currentTime }) {
+    available: function ({ currentDay, time }) {
       const days = [
         DaysNames.thursday,
         DaysNames.friday,
         DaysNames.saturday,
         DaysNames.sunday,
       ];
-      return (
-        days.includes(currentDate.getDay()) && currentTime == Times.Evening
-      );
+      return days.includes(currentDay.date.getDay()) && time == Times.Evening;
     },
     upgrade: function ({ currentStats, singleTimeEvents }: upgradeProps) {
       if (
@@ -161,9 +159,9 @@ export const statsEventsAcademics: {
         price={1500}
       />
     ),
-    available: function ({ currentDate, currentTime }) {
+    available: function ({ currentDay, time }) {
       const days = [DaysNames.wednesday, DaysNames.saturday];
-      return currentTime === Times.Day && days.includes(currentDate.getDay());
+      return time === Times.Day && days.includes(currentDay.date.getDay());
     },
     upgrade: getAcademicsUpgradeFunction(4),
   },
@@ -179,12 +177,8 @@ export const statsEventsAcademics: {
         price={900}
       />
     ),
-    available: function ({
-      currentDate,
-      currentTime,
-      previousDay,
-      singleTimeEvents,
-    }) {
+    available: function ({ previousDay, currentDay, time }) {
+      if (!previousDay) return false;
       const days = [
         DaysNames.monday,
         DaysNames.thursday,
@@ -192,10 +186,12 @@ export const statsEventsAcademics: {
         DaysNames.sunday,
       ];
       return (
-        singleTimeEvents.includes(statsEventsAcademicsNames.wakatsuKitchen) &&
-        previousDay?.stats[StatsNames.Charm] >= 30 &&
-        days.includes(currentDate.getDay()) &&
-        currentTime == Times.Evening
+        currentDay.singleTimeEvents.includes(
+          statsEventsAcademicsNames.wakatsuKitchen
+        ) &&
+        previousDay.stats[StatsNames.Charm] >= 30 &&
+        days.includes(currentDay.date.getDay()) &&
+        time == Times.Evening
       );
     },
     upgrade: getAcademicsUpgradeFunction(4),
@@ -212,11 +208,11 @@ export const statsEventsAcademics: {
         price={3000}
       />
     ),
-    available: function ({ currentDate, currentTime }) {
+    available: function ({ currentDay, time }) {
       const days = [DaysNames.wednesday, DaysNames.saturday];
       return (
-        [Times.Day, Times.Evening].includes(currentTime) &&
-        days.includes(currentDate.getDay())
+        [Times.Day, Times.Evening].includes(time) &&
+        days.includes(currentDay.date.getDay())
       );
     },
     upgrade: getAcademicsUpgradeFunction(4),
@@ -232,7 +228,7 @@ export const statsEventsAcademics: {
         place="Dorm"
       />
     ),
-    available: ({ currentDate, currentTime }) => {
+    available: function ({ currentDay, time }) {
       const dates = [
         new Date(2009, 4, 15).getTime(),
         new Date(2009, 4, 16).getTime(),
@@ -240,7 +236,7 @@ export const statsEventsAcademics: {
         new Date(2009, 6, 10).getTime(),
       ];
       return (
-        dates.includes(currentDate.getTime()) && currentTime === Times.Evening
+        dates.includes(currentDay.date.getTime()) && time === Times.Evening
       );
     },
     upgrade: getAcademicsUpgradeFunction(4),
@@ -256,13 +252,13 @@ export const statsEventsAcademics: {
         place="Dorm"
       />
     ),
-    available: ({ currentDate, currentTime }) => {
+    available: function ({ currentDay, time }) {
       const dates = [
         new Date(2009, 4, 17).getTime(),
         new Date(2009, 6, 13).getTime(),
       ];
       return (
-        dates.includes(currentDate.getTime()) && currentTime === Times.Evening
+        dates.includes(currentDay.date.getTime()) && time === Times.Evening
       );
     },
     upgrade: getAcademicsUpgradeFunction(5),

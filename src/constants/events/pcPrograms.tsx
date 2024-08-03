@@ -14,11 +14,11 @@ const pcProgramBase: Event = {
       price={1200}
     />
   ),
-  available: function ({ currentTime, currentDate, singleTimeEvents }) {
+  available: function ({ currentDay, time }) {
     return (
-      currentDate.getTime() >= new Date(2009, 3, 29).getTime() &&
-      [Times.Day, Times.Evening].includes(currentTime) &&
-      !singleTimeEvents.includes(this.name)
+      currentDay.date.getTime() >= new Date(2009, 3, 29).getTime() &&
+      !currentDay.singleTimeEvents.includes(this.name) &&
+      [Times.Day, Times.Evening].includes(time)
     );
   },
   upgrade: function ({ currentStats, singleTimeEvents }) {

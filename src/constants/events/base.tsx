@@ -1,13 +1,7 @@
+import { upgradeResponse, upgradeProps, Categories, Times } from "./types";
 import { SocialLinkNames } from "../socialLinks/types";
+import { singleDay } from "../calendar/types";
 import { socialLinks } from "../socialLinks";
-
-import {
-  upgradeResponse,
-  availableProps,
-  upgradeProps,
-  Categories,
-  Times,
-} from "./types";
 
 export const initialUpgrade = {
   upgrade: function (props: upgradeProps): upgradeResponse {
@@ -40,23 +34,26 @@ export const linkInvitationBaseFunctions = {
     };
   },
   available: function ({
-    currentDate,
-    currentTime,
-    currentLinks,
-  }: availableProps) {
+    currentDay,
+    time,
+  }: {
+    previousDay?: singleDay;
+    currentDay: singleDay;
+    time: Times;
+  }) {
     const isInInvitations =
-      currentLinks[this.linkName].level in
+      currentDay.links[this.linkName].level in
         socialLinks[this.linkName].invitations &&
-      currentLinks[this.linkName].romance in
+      currentDay.links[this.linkName].romance in
         socialLinks[this.linkName].invitations[
-          currentLinks[this.linkName].level
+          currentDay.links[this.linkName].level
         ];
 
     return (
       (this._invitationsDates as Array<number>).includes(
-        currentDate.getTime()
+        currentDay.date.getTime()
       ) &&
-      currentTime === Times.Day &&
+      time === Times.Day &&
       isInInvitations
     );
   },

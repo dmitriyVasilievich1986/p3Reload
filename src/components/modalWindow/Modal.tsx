@@ -89,14 +89,9 @@ function Modal(props: {
   };
 
   const availableParams = {
-    singleTimeEvents: currentDay.singleTimeEvents,
-    currentStats: currentDay.stats,
-    currentLinks: currentDay.links,
-    currentTime: dayConstants.time,
-    currentDate: dayConstants.day,
-    isDayOff: currentDay.isDayOff,
-    exams: currentDay.exams,
+    time: dayConstants.time,
     previousDay,
+    currentDay,
   };
   const availableEvents = (Object.keys(events) as Array<allEventsNames>)
     .map((e) => events[e])

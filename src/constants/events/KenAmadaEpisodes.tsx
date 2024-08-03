@@ -10,14 +10,14 @@ const ji1: Event = {
   label: () => (
     <EventCard head="Ken Amada Episode" name="Ken Amada" stats="Academics +2" />
   ),
-  available: function ({ currentTime, currentDate, singleTimeEvents }) {
+  available: function ({ currentDay, time }) {
     const days = [DaysNames.tuesday, DaysNames.wednesday];
     return (
-      currentDate.getTime() >= new Date(2009, 8, 8).getTime() &&
-      currentDate.getTime() <= new Date(2009, 8, 30).getTime() &&
-      !singleTimeEvents.includes(this.name) &&
-      days.includes(currentDate.getDay()) &&
-      currentTime === Times.Evening
+      currentDay.date.getTime() >= new Date(2009, 8, 8).getTime() &&
+      currentDay.date.getTime() <= new Date(2009, 8, 30).getTime() &&
+      !currentDay.singleTimeEvents.includes(this.name) &&
+      days.includes(currentDay.date.getDay()) &&
+      time === Times.Evening
     );
   },
   upgrade: function ({ currentStats, singleTimeEvents }) {
@@ -41,15 +41,15 @@ export const KenAmadaEpisodes: {
     label: () => (
       <EventCard head="Ken Amada Episode" name="Ken Amada" stats="Courage +2" />
     ),
-    available: function ({ currentTime, currentDate, singleTimeEvents }) {
+    available: function ({ currentDay, time }) {
       const days = [DaysNames.tuesday, DaysNames.wednesday];
       return (
-        singleTimeEvents.includes(KenAmadaEpisodesNames.KenAmada1) &&
-        currentDate.getTime() >= new Date(2009, 8, 8).getTime() &&
-        currentDate.getTime() <= new Date(2009, 8, 30).getTime() &&
-        !singleTimeEvents.includes(this.name) &&
-        days.includes(currentDate.getDay()) &&
-        currentTime === Times.Evening
+        currentDay.singleTimeEvents.includes(KenAmadaEpisodesNames.KenAmada1) &&
+        currentDay.date.getTime() >= new Date(2009, 8, 8).getTime() &&
+        currentDay.date.getTime() <= new Date(2009, 8, 30).getTime() &&
+        !currentDay.singleTimeEvents.includes(this.name) &&
+        days.includes(currentDay.date.getDay()) &&
+        time === Times.Evening
       );
     },
     upgrade: function ({ currentStats, singleTimeEvents }) {
@@ -68,15 +68,15 @@ export const KenAmadaEpisodes: {
     label: () => (
       <EventCard head="Ken Amada Episode" name="Ken Amada" stats="Charm +2" />
     ),
-    available: function ({ currentTime, currentDate, singleTimeEvents }) {
+    available: function ({ currentDay, time }) {
       const days = [DaysNames.tuesday, DaysNames.wednesday];
       return (
-        singleTimeEvents.includes(KenAmadaEpisodesNames.KenAmada2) &&
-        currentDate.getTime() >= new Date(2009, 10, 10).getTime() &&
-        currentDate.getTime() <= new Date(2009, 11, 2).getTime() &&
-        !singleTimeEvents.includes(this.name) &&
-        days.includes(currentDate.getDay()) &&
-        currentTime === Times.Evening
+        currentDay.singleTimeEvents.includes(KenAmadaEpisodesNames.KenAmada2) &&
+        currentDay.date.getTime() >= new Date(2009, 10, 10).getTime() &&
+        currentDay.date.getTime() <= new Date(2009, 11, 2).getTime() &&
+        !currentDay.singleTimeEvents.includes(this.name) &&
+        days.includes(currentDay.date.getDay()) &&
+        time === Times.Evening
       );
     },
     upgrade: function ({ currentStats, singleTimeEvents }) {
@@ -93,7 +93,7 @@ export const KenAmadaEpisodes: {
     ...ji1,
     name: KenAmadaEpisodesNames.KenAmada4,
     label: () => <EventCard head="Ken Amada Episode" name="Ken Amada" />,
-    available: function ({ currentTime, currentDate, singleTimeEvents }) {
+    available: function ({ currentDay, time }) {
       const days = [
         DaysNames.monday,
         DaysNames.tuesday,
@@ -102,27 +102,27 @@ export const KenAmadaEpisodes: {
         DaysNames.saturday,
       ];
       return (
-        singleTimeEvents.includes(KenAmadaEpisodesNames.KenAmada3) &&
-        currentDate.getTime() >= new Date(2009, 11, 22).getTime() &&
-        currentDate.getTime() <= new Date(2009, 11, 30).getTime() &&
-        !singleTimeEvents.includes(this.name) &&
-        days.includes(currentDate.getDay()) &&
-        currentTime === Times.Evening
+        currentDay.singleTimeEvents.includes(KenAmadaEpisodesNames.KenAmada3) &&
+        currentDay.date.getTime() >= new Date(2009, 11, 22).getTime() &&
+        currentDay.date.getTime() <= new Date(2009, 11, 30).getTime() &&
+        !currentDay.singleTimeEvents.includes(this.name) &&
+        days.includes(currentDay.date.getDay()) &&
+        time === Times.Evening
       );
     },
   },
   [KenAmadaEpisodesNames.KenAmada5]: {
     ...ji1,
     name: KenAmadaEpisodesNames.KenAmada5,
-    available: function ({ currentTime, currentDate, singleTimeEvents }) {
+    available: function ({ currentDay, time }) {
       const days = [DaysNames.tuesday, DaysNames.wednesday];
       return (
-        singleTimeEvents.includes(KenAmadaEpisodesNames.KenAmada4) &&
-        currentDate.getTime() >= new Date(2010, 0, 19).getTime() &&
-        currentDate.getTime() <= new Date(2010, 0, 27).getTime() &&
-        !singleTimeEvents.includes(this.name) &&
-        days.includes(currentDate.getDay()) &&
-        currentTime === Times.Evening
+        currentDay.singleTimeEvents.includes(KenAmadaEpisodesNames.KenAmada4) &&
+        currentDay.date.getTime() >= new Date(2010, 0, 19).getTime() &&
+        currentDay.date.getTime() <= new Date(2010, 0, 27).getTime() &&
+        !currentDay.singleTimeEvents.includes(this.name) &&
+        days.includes(currentDay.date.getDay()) &&
+        time === Times.Evening
       );
     },
   },
