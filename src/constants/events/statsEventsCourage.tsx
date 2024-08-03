@@ -1,21 +1,15 @@
+import { statsEventsCourageNames, Categories, Times, Event } from "./types";
 import { EventCard } from "../../components/eventCard";
+import { singleDay } from "../calendar/types";
 import { StatsNames } from "../stats/types";
 import { DaysNames } from "../monthsNames";
 
-import {
-  statsEventsCourageNames,
-  upgradeProps,
-  Categories,
-  Times,
-  Event,
-} from "./types";
-
 const getCourageUpgradeFunction = (value: number) => {
-  return function ({ currentStats }: upgradeProps) {
+  return function (currentDay: singleDay) {
     return {
       stats: {
-        ...currentStats,
-        [StatsNames.Courage]: currentStats[StatsNames.Courage] + value,
+        ...currentDay.stats,
+        [StatsNames.Courage]: currentDay.stats[StatsNames.Courage] + value,
       },
     };
   };
@@ -175,13 +169,13 @@ export const statsEventsCourage: {
         time === Times.Evening
       );
     },
-    upgrade: function ({ singleTimeEvents, currentStats }: upgradeProps) {
+    upgrade: function (currentDay: singleDay) {
       return {
-        singleTimeEvents: [...singleTimeEvents, this.name],
+        singleTimeEvents: [...currentDay.singleTimeEvents, this.name],
         stats: {
-          [StatsNames.Academics]: currentStats[StatsNames.Academics] + 4,
-          [StatsNames.Courage]: currentStats[StatsNames.Courage] + 4,
-          [StatsNames.Charm]: currentStats[StatsNames.Charm] + 4,
+          [StatsNames.Academics]: currentDay.stats[StatsNames.Academics] + 4,
+          [StatsNames.Courage]: currentDay.stats[StatsNames.Courage] + 4,
+          [StatsNames.Charm]: currentDay.stats[StatsNames.Charm] + 4,
         },
       };
     },

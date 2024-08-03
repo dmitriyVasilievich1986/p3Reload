@@ -186,7 +186,7 @@ export type Event = {
   time: Times;
   category: Categories;
   special?: boolean;
-  upgrade: (props: upgradeProps) => upgradeResponse;
+  upgrade: (currentDay: singleDay, previousWeek?: singleDay) => upgradeResponse;
   label: (props: LabelProps) => React.ReactNode;
   name: allEventsNames;
   linkName?: SocialLinkNames;

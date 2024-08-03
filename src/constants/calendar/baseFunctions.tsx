@@ -71,21 +71,14 @@ export const classmates: SocialLinkNames[] = [
 export function initialCalculataion(calendar: singleDay[]) {
   (Object.values(calendar) as Array<singleDay>).forEach((c, i, cArray) => {
     const previousDay: singleDay = cArray?.[i - 1] || baseCalendar;
-    const weekAgoDay: singleDay | undefined = cArray?.[i - 1];
-    const weekAgoStats = weekAgoDay?.stats || { ...initialStats };
+    const previousWeek: singleDay | undefined = cArray?.[i - 1];
 
     c.singleTimeEvents = previousDay.singleTimeEvents;
     c.stats = previousDay.stats;
     c.links = previousDay.links;
 
     c.activities.forEach((activity) => {
-      const response = activity.upgrade({
-        singleTimeEvents: c.singleTimeEvents,
-        weekAgoStats: weekAgoStats,
-        currentStats: c.stats,
-        currentLinks: c.links,
-        arcanes: c.arcanes,
-      });
+      const response = activity.upgrade(c, previousWeek);
       c.singleTimeEvents = response?.singleTimeEvents || c.singleTimeEvents;
       c.stats = response?.stats || c.stats;
       c.links = response?.links || c.links;

@@ -120,13 +120,13 @@ export const linkEvents: {
         card={props.arcanes.includes(SocialLinkNames.Priestess)}
       />
     ),
-    upgrade: function (props) {
+    upgrade: function (currentDay) {
       return socialLinks[SocialLinkNames.Priestess].calculate({
-        ...props,
-        currentLinks: {
-          ...props.currentLinks,
+        ...currentDay,
+        links: {
+          ...currentDay.links,
           [SocialLinkNames.Priestess]: {
-            ...props.currentLinks[SocialLinkNames.Priestess],
+            ...currentDay.links[SocialLinkNames.Priestess],
             romance: Routes.Romantic,
           },
         },
@@ -381,13 +381,13 @@ export const linkEvents: {
         card={props.arcanes.includes(SocialLinkNames.Lovers)}
       />
     ),
-    upgrade: function (props) {
+    upgrade: function (currentDay) {
       return socialLinks[SocialLinkNames.Lovers].calculate({
-        ...props,
-        currentLinks: {
-          ...props.currentLinks,
+        ...currentDay,
+        links: {
+          ...currentDay.links,
           [SocialLinkNames.Lovers]: {
-            ...props.currentLinks[SocialLinkNames.Lovers],
+            ...currentDay.links[SocialLinkNames.Lovers],
             romance: Routes.Romantic,
           },
         },
@@ -537,13 +537,13 @@ export const linkEvents: {
         card={props.arcanes.includes(SocialLinkNames.Justice)}
       />
     ),
-    upgrade: function (props) {
+    upgrade: function (currentDay) {
       return socialLinks[SocialLinkNames.Justice].calculate({
-        ...props,
-        currentLinks: {
-          ...props.currentLinks,
+        ...currentDay,
+        links: {
+          ...currentDay.links,
           [SocialLinkNames.Justice]: {
-            ...props.currentLinks[SocialLinkNames.Justice],
+            ...currentDay.links[SocialLinkNames.Justice],
             romance: Routes.Romantic,
           },
         },
@@ -721,13 +721,13 @@ export const linkEvents: {
         card={props.arcanes.includes(SocialLinkNames.Strength)}
       />
     ),
-    upgrade: function ({ currentLinks, ...props }) {
+    upgrade: function (currentDay) {
       return socialLinks[SocialLinkNames.Strength].calculate({
-        ...props,
-        currentLinks: {
-          ...currentLinks,
+        ...currentDay,
+        links: {
+          ...currentDay.links,
           [SocialLinkNames.Strength]: {
-            ...currentLinks[SocialLinkNames.Strength],
+            ...currentDay.links[SocialLinkNames.Strength],
             romance: Routes.Romantic,
           },
         },

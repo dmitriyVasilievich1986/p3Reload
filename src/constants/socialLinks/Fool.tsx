@@ -1,5 +1,6 @@
 import { SocialLinkNames, SocialLinkType, Routes } from "./types";
 import { alwaysLevelUp } from "./baseFunctions";
+import { singleDay } from "../calendar/types";
 
 import {
   AutomaticLevelUpObject,
@@ -10,13 +11,13 @@ import {
 export const Fool: SocialLinkType = {
   ...alwaysLevelUp,
   name: SocialLinkNames.Fool,
-  calculate: function ({ currentLinks }) {
-    const thisLink = currentLinks[SocialLinkNames.Fool];
+  calculate: function (currentDay: singleDay) {
+    const thisLink = currentDay.links[SocialLinkNames.Fool];
     const level =
       thisLink.level === 7 ? thisLink.level + 2 : thisLink.level + 1;
     return {
       links: {
-        ...currentLinks,
+        ...currentDay.links,
         [SocialLinkNames.Fool]: { ...thisLink, level },
       },
     };

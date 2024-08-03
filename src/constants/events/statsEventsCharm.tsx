@@ -1,22 +1,16 @@
+import { statsEventsCharmNames, Categories, Times, Event } from "./types";
 import { EventCard } from "../../components/eventCard";
+import { singleDay } from "../calendar/types";
 import { StatsNames } from "../stats/types";
 import { DaysNames } from "../monthsNames";
 import { stats } from "../stats/stats";
 
-import {
-  statsEventsCharmNames,
-  upgradeProps,
-  Categories,
-  Times,
-  Event,
-} from "./types";
-
 const getCharmUpgradeFunction = (value: number) => {
-  return function ({ currentStats }: upgradeProps) {
+  return function (currentDay: singleDay) {
     return {
       stats: {
-        ...currentStats,
-        [StatsNames.Charm]: currentStats[StatsNames.Charm] + value,
+        ...currentDay.stats,
+        [StatsNames.Charm]: currentDay.stats[StatsNames.Charm] + value,
       },
     };
   };
@@ -51,12 +45,12 @@ export const statsEventsCharm: {
         time === Times.Day
       );
     },
-    upgrade: function ({ currentStats }) {
+    upgrade: function (currentDay: singleDay) {
       return {
         stats: {
-          ...currentStats,
-          [StatsNames.Academics]: currentStats[StatsNames.Academics] + 1,
-          [StatsNames.Charm]: currentStats[StatsNames.Charm] + 1,
+          ...currentDay.stats,
+          [StatsNames.Academics]: currentDay.stats[StatsNames.Academics] + 1,
+          [StatsNames.Charm]: currentDay.stats[StatsNames.Charm] + 1,
         },
       };
     },
@@ -77,12 +71,12 @@ export const statsEventsCharm: {
       const days = [DaysNames.monday, DaysNames.tuesday, DaysNames.wednesday];
       return time === Times.Evening && days.includes(currentDay.date.getDay());
     },
-    upgrade: function ({ currentStats }) {
+    upgrade: function (currentDay: singleDay) {
       return {
         stats: {
-          ...currentStats,
-          [StatsNames.Courage]: currentStats[StatsNames.Courage] + 1,
-          [StatsNames.Charm]: currentStats[StatsNames.Charm] + 1,
+          ...currentDay.stats,
+          [StatsNames.Courage]: currentDay.stats[StatsNames.Courage] + 1,
+          [StatsNames.Charm]: currentDay.stats[StatsNames.Charm] + 1,
         },
       };
     },

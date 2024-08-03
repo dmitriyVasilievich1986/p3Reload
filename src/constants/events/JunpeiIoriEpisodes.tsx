@@ -18,9 +18,9 @@ const ji1: Event = {
       time === Times.Day
     );
   },
-  upgrade: function ({ singleTimeEvents }) {
+  upgrade: function (currentDay) {
     return {
-      singleTimeEvents: [...singleTimeEvents, this.name],
+      singleTimeEvents: [...currentDay.singleTimeEvents, this.name],
     };
   },
 };
@@ -56,12 +56,12 @@ export const JunpeiIoriEpisodes: { [key in JunpeiIoriEpisodesNames]: Event } = {
         time === Times.Day
       );
     },
-    upgrade: function ({ currentStats, singleTimeEvents }) {
+    upgrade: function (currentDay) {
       return {
-        singleTimeEvents: [...singleTimeEvents, this.name],
+        singleTimeEvents: [...currentDay.singleTimeEvents, this.name],
         stats: {
-          ...currentStats,
-          [StatsNames.Charm]: currentStats[StatsNames.Charm] + 2,
+          ...currentDay.stats,
+          [StatsNames.Charm]: currentDay.stats[StatsNames.Charm] + 2,
         },
       };
     },
@@ -92,12 +92,12 @@ export const JunpeiIoriEpisodes: { [key in JunpeiIoriEpisodesNames]: Event } = {
         time === Times.Day
       );
     },
-    upgrade: function ({ currentStats, singleTimeEvents }) {
+    upgrade: function (currentDay) {
       return {
-        singleTimeEvents: [...singleTimeEvents, this.name],
+        singleTimeEvents: [...currentDay.singleTimeEvents, this.name],
         stats: {
-          ...currentStats,
-          [StatsNames.Academics]: currentStats[StatsNames.Academics] + 2,
+          ...currentDay.stats,
+          [StatsNames.Academics]: currentDay.stats[StatsNames.Academics] + 2,
         },
       };
     },
@@ -143,12 +143,12 @@ export const JunpeiIoriEpisodes: { [key in JunpeiIoriEpisodesNames]: Event } = {
         time === Times.Day
       );
     },
-    upgrade: function ({ currentStats, singleTimeEvents }) {
+    upgrade: function (currentDay) {
       return {
-        singleTimeEvents: [...singleTimeEvents, this.name],
+        singleTimeEvents: [...currentDay.singleTimeEvents, this.name],
         stats: {
-          ...currentStats,
-          [StatsNames.Courage]: currentStats[StatsNames.Courage] + 2,
+          ...currentDay.stats,
+          [StatsNames.Courage]: currentDay.stats[StatsNames.Courage] + 2,
         },
       };
     },

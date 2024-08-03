@@ -20,9 +20,9 @@ const ji1: Event = {
       time === Times.Evening
     );
   },
-  upgrade: function ({ singleTimeEvents }) {
+  upgrade: function (currentDay) {
     return {
-      singleTimeEvents: [...singleTimeEvents, this.name],
+      singleTimeEvents: [...currentDay.singleTimeEvents, this.name],
     };
   },
 };
@@ -54,12 +54,12 @@ export const AkihikoSanadaEpisodes: {
         time === Times.Evening
       );
     },
-    upgrade: function ({ currentStats, singleTimeEvents }) {
+    upgrade: function (currentDay) {
       return {
-        singleTimeEvents: [...singleTimeEvents, this.name],
+        singleTimeEvents: [...currentDay.singleTimeEvents, this.name],
         stats: {
-          ...currentStats,
-          [StatsNames.Charm]: currentStats[StatsNames.Charm] + 2,
+          ...currentDay.stats,
+          [StatsNames.Charm]: currentDay.stats[StatsNames.Charm] + 2,
         },
       };
     },
@@ -87,12 +87,12 @@ export const AkihikoSanadaEpisodes: {
         time === Times.Evening
       );
     },
-    upgrade: function ({ currentStats, singleTimeEvents }) {
+    upgrade: function (currentDay) {
       return {
-        singleTimeEvents: [...singleTimeEvents, this.name],
+        singleTimeEvents: [...currentDay.singleTimeEvents, this.name],
         stats: {
-          ...currentStats,
-          [StatsNames.Charm]: currentStats[StatsNames.Charm] + 2,
+          ...currentDay.stats,
+          [StatsNames.Charm]: currentDay.stats[StatsNames.Charm] + 2,
         },
       };
     },

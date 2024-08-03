@@ -21,12 +21,12 @@ const pcProgramBase: Event = {
       [Times.Day, Times.Evening].includes(time)
     );
   },
-  upgrade: function ({ currentStats, singleTimeEvents }) {
+  upgrade: function (currentDay) {
     return {
-      singleTimeEvents: [...singleTimeEvents, this.name],
+      singleTimeEvents: [...currentDay.singleTimeEvents, this.name],
       stats: {
-        ...currentStats,
-        [StatsNames.Academics]: currentStats[StatsNames.Academics] + 4,
+        ...currentDay.stats,
+        [StatsNames.Academics]: currentDay.stats[StatsNames.Academics] + 4,
       },
     };
   },
@@ -56,12 +56,12 @@ export const pcPrograms: { [key in pcProgramsNames]: Event } = {
         price={1200}
       />
     ),
-    upgrade: function ({ currentStats, singleTimeEvents }) {
+    upgrade: function (currentDay) {
       return {
-        singleTimeEvents: [...singleTimeEvents, this.name],
+        singleTimeEvents: [...currentDay.singleTimeEvents, this.name],
         stats: {
-          ...currentStats,
-          [StatsNames.Courage]: currentStats[StatsNames.Courage] + 4,
+          ...currentDay.stats,
+          [StatsNames.Courage]: currentDay.stats[StatsNames.Courage] + 4,
         },
       };
     },
@@ -77,12 +77,12 @@ export const pcPrograms: { [key in pcProgramsNames]: Event } = {
         price={1200}
       />
     ),
-    upgrade: function ({ currentStats, singleTimeEvents }) {
+    upgrade: function (currentDay) {
       return {
-        singleTimeEvents: [...singleTimeEvents, this.name],
+        singleTimeEvents: [...currentDay.singleTimeEvents, this.name],
         stats: {
-          ...currentStats,
-          [StatsNames.Courage]: currentStats[StatsNames.Courage] + 4,
+          ...currentDay.stats,
+          [StatsNames.Courage]: currentDay.stats[StatsNames.Courage] + 4,
         },
       };
     },
@@ -98,12 +98,12 @@ export const pcPrograms: { [key in pcProgramsNames]: Event } = {
         price={1200}
       />
     ),
-    upgrade: function ({ currentStats, singleTimeEvents }) {
+    upgrade: function (currentDay) {
       return {
-        singleTimeEvents: [...singleTimeEvents, this.name],
+        singleTimeEvents: [...currentDay.singleTimeEvents, this.name],
         stats: {
-          ...currentStats,
-          [StatsNames.Charm]: currentStats[StatsNames.Charm] + 4,
+          ...currentDay.stats,
+          [StatsNames.Charm]: currentDay.stats[StatsNames.Charm] + 4,
         },
       };
     },
@@ -119,12 +119,12 @@ export const pcPrograms: { [key in pcProgramsNames]: Event } = {
         price={1200}
       />
     ),
-    upgrade: function ({ currentStats, singleTimeEvents }) {
+    upgrade: function (currentDay) {
       return {
-        singleTimeEvents: [...singleTimeEvents, this.name],
+        singleTimeEvents: [...currentDay.singleTimeEvents, this.name],
         stats: {
-          ...currentStats,
-          [StatsNames.Charm]: currentStats[StatsNames.Charm] + 4,
+          ...currentDay.stats,
+          [StatsNames.Charm]: currentDay.stats[StatsNames.Charm] + 4,
         },
       };
     },

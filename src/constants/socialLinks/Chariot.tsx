@@ -1,14 +1,9 @@
 import { createBondObject, LinkMaxedObject, CreateBond } from "./GenericCard";
 import { QuestionsWrapper, Question, Answer } from "../../components/choices";
+import { SocialLinkNames, SocialLinkType, Routes } from "./types";
 import { baseSocialLinkCalculation } from "./baseFunctions";
 import { EventCard } from "../../components/eventCard";
-
-import {
-  SocialLinkNames,
-  SocialLinkType,
-  CalculateProps,
-  Routes,
-} from "./types";
+import { singleDay } from "../calendar/types";
 
 function chariotStrength() {
   const payload = QuestionsWrapper({
@@ -48,15 +43,15 @@ function chariotStrength() {
 export const Chariot: SocialLinkType = {
   ...baseSocialLinkCalculation,
   name: SocialLinkNames.Chariot,
-  calculate: function (props: CalculateProps) {
-    const payload = this._calculate(props);
-    const thisLink = props.currentLinks[SocialLinkNames.Chariot];
+  calculate: function (currentDay: singleDay) {
+    const payload = this._calculate(currentDay);
+    const thisLink = currentDay.links[SocialLinkNames.Chariot];
     if (thisLink.level === 1) {
       return {
         links: {
           ...payload.links,
           [SocialLinkNames.Strength]: {
-            ...props.currentLinks[SocialLinkNames.Strength],
+            ...currentDay.links[SocialLinkNames.Strength],
             level: 1,
           },
         },

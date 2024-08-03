@@ -1,11 +1,11 @@
-import { upgradeResponse, upgradeProps, Categories, Times } from "./types";
+import { upgradeResponse, Categories, Times } from "./types";
 import { SocialLinkNames } from "../socialLinks/types";
 import { singleDay } from "../calendar/types";
 import { socialLinks } from "../socialLinks";
 
 export const initialUpgrade = {
-  upgrade: function (props: upgradeProps): upgradeResponse {
-    return { stats: props.currentStats, links: props.currentLinks };
+  upgrade: function (currentDay: singleDay): upgradeResponse {
+    return { ...currentDay };
   },
 };
 
@@ -13,8 +13,8 @@ export const linkBaseFunctions = {
   name: SocialLinkNames.Aeon,
   linkName: SocialLinkNames.Aeon,
   category: Categories.Links,
-  upgrade: function (props: upgradeProps): upgradeResponse {
-    return socialLinks[this.linkName].calculate({ ...props });
+  upgrade: function (currentDay: singleDay): upgradeResponse {
+    return socialLinks[this.linkName].calculate({ ...currentDay });
   },
 };
 
@@ -22,13 +22,13 @@ export const linkInvitationBaseFunctions = {
   ...linkBaseFunctions,
   category: Categories.Invitation,
   _invitationsDates: [],
-  upgrade: function (props: upgradeProps): upgradeResponse {
+  upgrade: function (currentDay: singleDay): upgradeResponse {
     return {
       links: {
-        ...props.currentLinks,
+        ...currentDay.links,
         [this.linkName]: {
-          ...props.currentLinks[this.linkName],
-          points: props.currentLinks[this.linkName].points + 30,
+          ...currentDay.links[this.linkName],
+          points: currentDay.links[this.linkName].points + 30,
         },
       },
     };

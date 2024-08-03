@@ -1,22 +1,16 @@
+import { statsEventsAcademicsNames, Categories, Times, Event } from "./types";
 import { EventCard } from "../../components/eventCard";
 import { WideEvent } from "../../components/wideEvent";
+import { singleDay } from "../calendar/types";
 import { StatsNames } from "../stats/types";
 import { DaysNames } from "../monthsNames";
 
-import {
-  statsEventsAcademicsNames,
-  upgradeProps,
-  Categories,
-  Times,
-  Event,
-} from "./types";
-
 const getAcademicsUpgradeFunction = (value: number) => {
-  return function ({ currentStats }: upgradeProps) {
+  return function (currentDay: singleDay) {
     return {
       stats: {
-        ...currentStats,
-        [StatsNames.Academics]: currentStats[StatsNames.Academics] + value,
+        ...currentDay.stats,
+        [StatsNames.Academics]: currentDay.stats[StatsNames.Academics] + value,
       },
     };
   };
@@ -129,20 +123,25 @@ export const statsEventsAcademics: {
       ];
       return days.includes(currentDay.date.getDay()) && time == Times.Evening;
     },
-    upgrade: function ({ currentStats, singleTimeEvents }: upgradeProps) {
+    upgrade: function (currentDay: singleDay) {
       if (
-        !singleTimeEvents.includes(statsEventsAcademicsNames.wakatsuKitchen)
+        !currentDay.singleTimeEvents.includes(
+          statsEventsAcademicsNames.wakatsuKitchen
+        )
       ) {
       }
       return {
-        singleTimeEvents: singleTimeEvents.includes(
+        singleTimeEvents: currentDay.singleTimeEvents.includes(
           statsEventsAcademicsNames.wakatsuKitchen
         )
-          ? singleTimeEvents
-          : [...singleTimeEvents, statsEventsAcademicsNames.wakatsuKitchen],
+          ? currentDay.singleTimeEvents
+          : [
+              ...currentDay.singleTimeEvents,
+              statsEventsAcademicsNames.wakatsuKitchen,
+            ],
         stats: {
-          ...currentStats,
-          [StatsNames.Academics]: currentStats[StatsNames.Academics] + 3,
+          ...currentDay.stats,
+          [StatsNames.Academics]: currentDay.stats[StatsNames.Academics] + 3,
         },
       };
     },
