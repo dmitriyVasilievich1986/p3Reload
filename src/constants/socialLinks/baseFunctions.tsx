@@ -1,12 +1,8 @@
+import { singleDay } from "../calendar/types";
 import { SpendingTime } from "./GenericCard";
 import { StatsNames } from "../stats/types";
 
-import {
-  SocialLinkTypeBase,
-  SocialLinkLevel,
-  SocialLinkNames,
-  CalculateProps,
-} from "./types";
+import { SocialLinkTypeBase, SocialLinkLevel, SocialLinkNames } from "./types";
 
 export const mainCharName: string = "Protagonist";
 
@@ -21,12 +17,8 @@ export const baseSocialLinkCalculation: SocialLinkTypeBase = {
   getlevel: function ({ level, romance }) {
     return this.levels[level][romance] as SocialLinkLevel;
   },
-  _calculate: function ({
-    currentStats,
-    currentLinks,
-    arcanes,
-  }: CalculateProps) {
-    const thisLink = currentLinks[this.name];
+  _calculate: function (props: singleDay) {
+    const thisLink = props.links[this.name];
     const currentLevel = this.getlevel(thisLink);
     const isNewlevel =
       thisLink.level < this.maxLevel && thisLink.points >= currentLevel.points;
@@ -40,9 +32,9 @@ export const baseSocialLinkCalculation: SocialLinkTypeBase = {
         level,
         romance: thisLink.romance,
       });
-      if (currentStats[StatsNames.Charm] >= 100) multiplier *= 1.51;
+      if (props.stats[StatsNames.Charm] >= 100) multiplier *= 1.51;
 
-      if (arcanes.includes(this.name)) {
+      if (props.arcanes.includes(this.name)) {
         multiplier *= 1.51;
       } else if (
         Math.floor(
@@ -60,7 +52,7 @@ export const baseSocialLinkCalculation: SocialLinkTypeBase = {
         calculateMaxPoints(currentLevel.maxPoints, multiplier) < newLevel.points
       ) {
         multiplier *= 1.51;
-        arcanes.push(this.name);
+        props.arcanes.push(this.name);
       }
 
       points = calculateMaxPoints(currentLevel.maxPoints, multiplier);
@@ -70,7 +62,7 @@ export const baseSocialLinkCalculation: SocialLinkTypeBase = {
 
     return {
       links: {
-        ...currentLinks,
+        ...props.links,
         [this.name]: {
           ...thisLink,
           points,
@@ -79,7 +71,7 @@ export const baseSocialLinkCalculation: SocialLinkTypeBase = {
       },
     };
   },
-  calculate: function (props: CalculateProps) {
+  calculate: function (props: singleDay) {
     return this._calculate(props);
   },
   getStaleLevel: SpendingTime,
@@ -93,12 +85,12 @@ export const alwaysLevelUp: SocialLinkTypeBase = {
     if (level === 0) return this.levels[0].Platonic as SocialLinkLevel;
     return this.levels[1].Platonic as SocialLinkLevel;
   },
-  calculate: function ({ currentLinks }) {
-    const thisLink = currentLinks[this.name];
+  calculate: function (props: singleDay) {
+    const thisLink = props.links[this.name];
     const isNewlevel = thisLink.level < this.maxLevel;
     return {
       links: {
-        ...currentLinks,
+        ...props.links,
         [this.name]: {
           ...thisLink,
           level: isNewlevel ? thisLink.level + 1 : thisLink.level,

@@ -55,7 +55,7 @@ export const Tower: SocialLinkType = {
             <Answer label="I have enough." points={5} />
             <Answer label="I am not NOT struggling..." />
           </Question>,
-          <Question label='...And I mean something you can buy with money. Not some crap like "love" or "a sense of humor".'>
+          <Question label='...And I mean something you can buy with money. Not some crap like "love" or "a sense of humor."'>
             <Answer label="Yes." points={5} />
             <Answer label="No." points={15} />
           </Question>,
@@ -70,7 +70,7 @@ export const Tower: SocialLinkType = {
             <Answer label="Are you okay?" />
             <Answer label="You should go home." points={15} />
           </Question>,
-          <Question label="It's times like these... ah... when it's hardest to be alone...">
+          <Question label="It's always in times like these... ah... when it's hardest to be alone...">
             <Answer label="You live by yourself?" />
             <Answer label="Do you have any coworkers?" points={5} />
           </Question>,
@@ -90,7 +90,7 @@ export const Tower: SocialLinkType = {
     },
     7: {
       [Routes.Platonic]: QuestionsWrapper({
-        points: 30,
+        points: 32,
         element: [
           <Question label="Didn't dad tell you not to do that, huh?">
             <Answer label="Dad?" points={15} />
@@ -103,7 +103,7 @@ export const Tower: SocialLinkType = {
             <Answer label="None of your business." points={5} />
           </Question>,
           <Question label="I wonder if they felt the same way I did, when I was waiting for you earlier...">
-            <Answer label="Who's 'they'?" />
+            <Answer label={`Who's "they"?`} />
             <Answer label="What're you talking about?" />
           </Question>,
           <Question label="…Now when I go home, I don't know what to do with myself, so I just come here and drink every night.">
@@ -136,9 +136,11 @@ export const Tower: SocialLinkType = {
       [Routes.Platonic]: QuestionsWrapper({
         points: 40,
         element: [
-          <Question label="…Well? How's that sound?">
-            <Answer label="That's awesome!" points={15} />
-            <Answer label="It's missing something." />
+          <Question
+            label={`I'm gonna say, "I wanna recite the sutras with you by my side, for the rest of my life." ... Well? How's that sound?`}
+          >
+            <Answer label="That's awesome." points={15} />
+            <Answer label="It's missing something." points={15} />
           </Question>,
         ],
       }),

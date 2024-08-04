@@ -376,35 +376,35 @@ export const may: singleDay[] = [
         ...events.Exams,
         time: Times.AfterSchool,
         label: () => <EventCard head="Exam results" />,
-        upgrade: function ({ currentStats, currentLinks, weekAgoStats }) {
+        upgrade: function (currentDay: singleDay, previousWeek?: singleDay) {
           let newMultiplier = 1;
           let charmAddendum = 2;
-          if (weekAgoStats[StatsNames.Academics] >= 55) {
+          if (previousWeek!.stats[StatsNames.Academics] >= 55) {
             newMultiplier = 1.51;
             charmAddendum = 4;
-          } else if (weekAgoStats[StatsNames.Academics] >= 20) {
+          } else if (previousWeek!.stats[StatsNames.Academics] >= 20) {
             newMultiplier = 1.21;
             charmAddendum = 3;
           }
 
           const newLinks = Object.fromEntries(
-            (Object.keys(currentLinks) as Array<SocialLinkNames>)
+            (Object.keys(currentDay.links) as Array<SocialLinkNames>)
               .filter((k) => classmates.includes(k))
               .map((k) => [
                 k,
-                { ...currentLinks[k], multiplier: newMultiplier },
+                { ...currentDay.links[k], multiplier: newMultiplier },
               ])
           );
 
           return {
             links: {
-              ...currentLinks,
+              ...currentDay.links,
               ...newLinks,
             },
             stats: {
-              ...currentStats,
+              ...currentDay.stats,
               [StatsNames.Charm]:
-                currentStats[StatsNames.Charm] + charmAddendum,
+                currentDay.stats[StatsNames.Charm] + charmAddendum,
             },
           };
         },

@@ -36,66 +36,62 @@ function Modal(props: {
   if (props.dayConstants === null) return null;
 
   const dayConstants = props.dayConstants as DayConstants;
-  const currentDay = props.calendar.find(
+  const currentDayIndex: number = props.calendar.findIndex(
     (c) => c.date.getTime() === dayConstants.day.getTime()
-  ) as singleDay;
-  const previousDay = props.calendar.find(
-    (c) => c.date.getTime() === dayConstants.day.getTime() - 86400000
-  ) as singleDay;
+  );
+  const currentDay = props.calendar[currentDayIndex];
+  const previousDay = props.calendar?.[currentDayIndex - 1];
 
   const updateCalendar = ({ event }: { event: Event }) => {
     props.setCalendar((prev: singleDay[]) => {
-      const newCalendar: singleDay[] = (prev as Array<singleDay>).map((c) => {
-        if (c.date.getTime() === dayConstants.day.getTime()) {
-          return {
-            ...c,
-            activities: c.activities.map((a) =>
-              a.time === dayConstants.time
-                ? { ...event, time: props.dayConstants?.time as Times }
-                : a
-            ),
-          };
-        } else if (
-          c.date.getTime() === dayConstants.day.getTime() + 86400000 &&
-          event.category === Categories.Tartarus
-        ) {
-          const activities = c.activities
-            .filter((a) => a !== events.drinkMedicine)
-            .map((a) =>
-              a.special ? a : { ...events.DoNothing, time: a.time }
-            );
-          activities.splice(1, 0, events.drinkMedicine);
-
-          return { ...c, activities };
-        } else if (c.date.getTime() > dayConstants.day.getTime())
-          return {
-            ...c,
-            arcanes: [],
-            activities: c.activities
+      const newCalendar: singleDay[] = (prev as Array<singleDay>).map(
+        (c, i) => {
+          if (i === currentDayIndex) {
+            return {
+              ...c,
+              activities: c.activities.map((a) =>
+                a.time === dayConstants.time
+                  ? { ...event, time: props.dayConstants?.time as Times }
+                  : a
+              ),
+            };
+          } else if (
+            i > currentDayIndex &&
+            event.category === Categories.Tartarus
+          ) {
+            const activities = c.activities
               .filter((a) => a !== events.drinkMedicine)
-              .map((a) => {
-                if (a.special) return a;
-                else if (a.time === Times.Morning)
-                  return events.stayAwakeInClass;
-                return { ...events.DoNothing, time: a.time };
-              }),
-          };
-        return c;
-      });
+              .map((a) =>
+                a.special ? a : { ...events.DoNothing, time: a.time }
+              );
+            activities.splice(1, 0, events.drinkMedicine);
+
+            return { ...c, activities };
+          } else if (i > currentDayIndex)
+            return {
+              ...c,
+              arcanes: [],
+              activities: c.activities
+                .filter((a) => a !== events.drinkMedicine)
+                .map((a) => {
+                  if (a.special) return a;
+                  else if (a.time === Times.Morning)
+                    return events.stayAwakeInClass;
+                  return { ...events.DoNothing, time: a.time };
+                }),
+            };
+          return c;
+        }
+      );
       return initialCalculataion(newCalendar);
     });
     props.setDayConstants(null);
   };
 
   const availableParams = {
-    singleTimeEvents: currentDay.singleTimeEvents,
-    currentStats: currentDay.stats,
-    currentLinks: currentDay.links,
-    currentTime: dayConstants.time,
-    currentDate: dayConstants.day,
-    isDayOff: currentDay.isDayOff,
-    exams: currentDay.exams,
+    time: dayConstants.time,
     previousDay,
+    currentDay,
   };
   const availableEvents = (Object.keys(events) as Array<allEventsNames>)
     .map((e) => events[e])

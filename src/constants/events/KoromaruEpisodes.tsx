@@ -10,7 +10,7 @@ const ji1: Event = {
   label: () => (
     <EventCard head="Koromaru Episode" name="Koromaru" stats="Charm +2" />
   ),
-  available: function ({ currentTime, currentDate, singleTimeEvents }) {
+  available: function ({ currentDay, time }) {
     const days = [DaysNames.tuesday, DaysNames.wednesday, DaysNames.friday];
     const additionalDays = [
       new Date(2010, 0, 23).getTime(),
@@ -18,22 +18,22 @@ const ji1: Event = {
       new Date(2010, 0, 30).getTime(),
     ];
     const isDay =
-      (currentDate.getTime() >= new Date(2009, 7, 22).getTime() &&
-        currentDate.getTime() <= new Date(2010, 0, 30).getTime() &&
-        days.includes(currentDate.getDay())) ||
-      additionalDays.includes(currentDate.getTime());
+      (currentDay.date.getTime() >= new Date(2009, 7, 22).getTime() &&
+        currentDay.date.getTime() <= new Date(2010, 0, 30).getTime() &&
+        days.includes(currentDay.date.getDay())) ||
+      additionalDays.includes(currentDay.date.getTime());
     return (
-      !singleTimeEvents.includes(this.name) &&
-      currentTime === Times.Day &&
+      !currentDay.singleTimeEvents.includes(this.name) &&
+      time === Times.Day &&
       isDay
     );
   },
-  upgrade: function ({ currentStats, singleTimeEvents }) {
+  upgrade: function (currentDay) {
     return {
-      singleTimeEvents: [...singleTimeEvents, this.name],
+      singleTimeEvents: [...currentDay.singleTimeEvents, this.name],
       stats: {
-        ...currentStats,
-        [StatsNames.Charm]: currentStats[StatsNames.Charm] + 2,
+        ...currentDay.stats,
+        [StatsNames.Charm]: currentDay.stats[StatsNames.Charm] + 2,
       },
     };
   },
@@ -49,30 +49,30 @@ export const KoromaruEpisodes: {
     label: () => (
       <EventCard head="Koromaru Episode" name="Koromaru" stats="Courage +2" />
     ),
-    available: function ({ currentTime, currentDate, singleTimeEvents }) {
+    available: function ({ currentDay, time }) {
       const days = [DaysNames.tuesday, DaysNames.wednesday, DaysNames.friday];
       const additionalDays = [
         new Date(2010, 0, 28).getTime(),
         new Date(2010, 0, 30).getTime(),
       ];
       const isDay =
-        (currentDate.getTime() >= new Date(2009, 8, 4).getTime() &&
-          currentDate.getTime() <= new Date(2010, 0, 30).getTime() &&
-          days.includes(currentDate.getDay())) ||
-        additionalDays.includes(currentDate.getTime());
+        (currentDay.date.getTime() >= new Date(2009, 8, 4).getTime() &&
+          currentDay.date.getTime() <= new Date(2010, 0, 30).getTime() &&
+          days.includes(currentDay.date.getDay())) ||
+        additionalDays.includes(currentDay.date.getTime());
       return (
-        singleTimeEvents.includes(KoromaruEpisodesNames.Koromaru1) &&
-        !singleTimeEvents.includes(this.name) &&
-        currentTime === Times.Day &&
+        currentDay.singleTimeEvents.includes(KoromaruEpisodesNames.Koromaru1) &&
+        !currentDay.singleTimeEvents.includes(this.name) &&
+        time === Times.Day &&
         isDay
       );
     },
-    upgrade: function ({ currentStats, singleTimeEvents }) {
+    upgrade: function (currentDay) {
       return {
-        singleTimeEvents: [...singleTimeEvents, this.name],
+        singleTimeEvents: [...currentDay.singleTimeEvents, this.name],
         stats: {
-          ...currentStats,
-          [StatsNames.Courage]: currentStats[StatsNames.Courage] + 2,
+          ...currentDay.stats,
+          [StatsNames.Courage]: currentDay.stats[StatsNames.Courage] + 2,
         },
       };
     },
@@ -81,27 +81,27 @@ export const KoromaruEpisodes: {
     ...ji1,
     name: KoromaruEpisodesNames.Koromaru3,
     label: () => <EventCard head="Koromaru Episode" name="Koromaru" />,
-    available: function ({ currentTime, currentDate, singleTimeEvents }) {
+    available: function ({ currentDay, time }) {
       const days = [DaysNames.tuesday, DaysNames.wednesday, DaysNames.friday];
       const additionalDays = [
         new Date(2010, 0, 28).getTime(),
         new Date(2010, 0, 30).getTime(),
       ];
       const isDay =
-        (currentDate.getTime() >= new Date(2009, 8, 15).getTime() &&
-          currentDate.getTime() <= new Date(2010, 0, 30).getTime() &&
-          days.includes(currentDate.getDay())) ||
-        additionalDays.includes(currentDate.getTime());
+        (currentDay.date.getTime() >= new Date(2009, 8, 15).getTime() &&
+          currentDay.date.getTime() <= new Date(2010, 0, 30).getTime() &&
+          days.includes(currentDay.date.getDay())) ||
+        additionalDays.includes(currentDay.date.getTime());
       return (
-        singleTimeEvents.includes(KoromaruEpisodesNames.Koromaru2) &&
-        !singleTimeEvents.includes(this.name) &&
-        currentTime === Times.Day &&
+        currentDay.singleTimeEvents.includes(KoromaruEpisodesNames.Koromaru2) &&
+        !currentDay.singleTimeEvents.includes(this.name) &&
+        time === Times.Day &&
         isDay
       );
     },
-    upgrade: function ({ singleTimeEvents }) {
+    upgrade: function (currentDay) {
       return {
-        singleTimeEvents: [...singleTimeEvents, this.name],
+        singleTimeEvents: [...currentDay.singleTimeEvents, this.name],
       };
     },
   },
@@ -111,30 +111,30 @@ export const KoromaruEpisodes: {
     label: () => (
       <EventCard head="Koromaru Episode" name="Koromaru" stats="Courage +2" />
     ),
-    available: function ({ currentTime, currentDate, singleTimeEvents }) {
+    available: function ({ currentDay, time }) {
       const days = [DaysNames.tuesday, DaysNames.wednesday, DaysNames.friday];
       const additionalDays = [
         new Date(2010, 0, 28).getTime(),
         new Date(2010, 0, 30).getTime(),
       ];
       const isDay =
-        (currentDate.getTime() >= new Date(2009, 8, 16).getTime() &&
-          currentDate.getTime() <= new Date(2010, 0, 30).getTime() &&
-          days.includes(currentDate.getDay())) ||
-        additionalDays.includes(currentDate.getTime());
+        (currentDay.date.getTime() >= new Date(2009, 8, 16).getTime() &&
+          currentDay.date.getTime() <= new Date(2010, 0, 30).getTime() &&
+          days.includes(currentDay.date.getDay())) ||
+        additionalDays.includes(currentDay.date.getTime());
       return (
-        singleTimeEvents.includes(KoromaruEpisodesNames.Koromaru3) &&
-        !singleTimeEvents.includes(this.name) &&
-        currentTime === Times.Day &&
+        currentDay.singleTimeEvents.includes(KoromaruEpisodesNames.Koromaru3) &&
+        !currentDay.singleTimeEvents.includes(this.name) &&
+        time === Times.Day &&
         isDay
       );
     },
-    upgrade: function ({ currentStats, singleTimeEvents }) {
+    upgrade: function (currentDay) {
       return {
-        singleTimeEvents: [...singleTimeEvents, this.name],
+        singleTimeEvents: [...currentDay.singleTimeEvents, this.name],
         stats: {
-          ...currentStats,
-          [StatsNames.Courage]: currentStats[StatsNames.Courage] + 2,
+          ...currentDay.stats,
+          [StatsNames.Courage]: currentDay.stats[StatsNames.Courage] + 2,
         },
       };
     },
@@ -143,7 +143,7 @@ export const KoromaruEpisodes: {
     ...ji1,
     name: KoromaruEpisodesNames.Koromaru5,
     label: () => <EventCard head="Koromaru Episode" name="Koromaru" />,
-    available: function ({ currentTime, currentDate, singleTimeEvents }) {
+    available: function ({ currentDay, time }) {
       const days = [DaysNames.tuesday, DaysNames.wednesday];
       const additionalDays = [
         new Date(2010, 0, 28).getTime(),
@@ -151,20 +151,20 @@ export const KoromaruEpisodes: {
         new Date(2010, 0, 30).getTime(),
       ];
       const isDay =
-        (currentDate.getTime() >= new Date(2010, 0, 5).getTime() &&
-          currentDate.getTime() <= new Date(2010, 0, 30).getTime() &&
-          days.includes(currentDate.getDay())) ||
-        additionalDays.includes(currentDate.getTime());
+        (currentDay.date.getTime() >= new Date(2010, 0, 5).getTime() &&
+          currentDay.date.getTime() <= new Date(2010, 0, 30).getTime() &&
+          days.includes(currentDay.date.getDay())) ||
+        additionalDays.includes(currentDay.date.getTime());
       return (
-        singleTimeEvents.includes(KoromaruEpisodesNames.Koromaru4) &&
-        !singleTimeEvents.includes(this.name) &&
-        currentTime === Times.Day &&
+        currentDay.singleTimeEvents.includes(KoromaruEpisodesNames.Koromaru4) &&
+        !currentDay.singleTimeEvents.includes(this.name) &&
+        time === Times.Day &&
         isDay
       );
     },
-    upgrade: function ({ singleTimeEvents }) {
+    upgrade: function (currentDay) {
       return {
-        singleTimeEvents: [...singleTimeEvents, this.name],
+        singleTimeEvents: [...currentDay.singleTimeEvents, this.name],
       };
     },
   },

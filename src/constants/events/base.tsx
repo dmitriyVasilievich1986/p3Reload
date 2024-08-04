@@ -1,17 +1,11 @@
+import { upgradeResponse, Categories, Times } from "./types";
 import { SocialLinkNames } from "../socialLinks/types";
+import { singleDay } from "../calendar/types";
 import { socialLinks } from "../socialLinks";
 
-import {
-  upgradeResponse,
-  availableProps,
-  upgradeProps,
-  Categories,
-  Times,
-} from "./types";
-
 export const initialUpgrade = {
-  upgrade: function (props: upgradeProps): upgradeResponse {
-    return { stats: props.currentStats, links: props.currentLinks };
+  upgrade: function (currentDay: singleDay): upgradeResponse {
+    return { ...currentDay };
   },
 };
 
@@ -19,8 +13,8 @@ export const linkBaseFunctions = {
   name: SocialLinkNames.Aeon,
   linkName: SocialLinkNames.Aeon,
   category: Categories.Links,
-  upgrade: function (props: upgradeProps): upgradeResponse {
-    return socialLinks[this.linkName].calculate({ ...props });
+  upgrade: function (currentDay: singleDay): upgradeResponse {
+    return socialLinks[this.linkName].calculate({ ...currentDay });
   },
 };
 
@@ -28,35 +22,38 @@ export const linkInvitationBaseFunctions = {
   ...linkBaseFunctions,
   category: Categories.Invitation,
   _invitationsDates: [],
-  upgrade: function (props: upgradeProps): upgradeResponse {
+  upgrade: function (currentDay: singleDay): upgradeResponse {
     return {
       links: {
-        ...props.currentLinks,
+        ...currentDay.links,
         [this.linkName]: {
-          ...props.currentLinks[this.linkName],
-          points: props.currentLinks[this.linkName].points + 30,
+          ...currentDay.links[this.linkName],
+          points: currentDay.links[this.linkName].points + 30,
         },
       },
     };
   },
   available: function ({
-    currentDate,
-    currentTime,
-    currentLinks,
-  }: availableProps) {
+    currentDay,
+    time,
+  }: {
+    previousDay?: singleDay;
+    currentDay: singleDay;
+    time: Times;
+  }) {
     const isInInvitations =
-      currentLinks[this.linkName].level in
+      currentDay.links[this.linkName].level in
         socialLinks[this.linkName].invitations &&
-      currentLinks[this.linkName].romance in
+      currentDay.links[this.linkName].romance in
         socialLinks[this.linkName].invitations[
-          currentLinks[this.linkName].level
+          currentDay.links[this.linkName].level
         ];
 
     return (
       (this._invitationsDates as Array<number>).includes(
-        currentDate.getTime()
+        currentDay.date.getTime()
       ) &&
-      currentTime === Times.Day &&
+      time === Times.Day &&
       isInInvitations
     );
   },

@@ -49,6 +49,7 @@ export const baseCalendar = {
   date: new Date(),
   links: initialLinks,
   stats: initialStats,
+  singleTimeEvents: [],
   getId: function () {
     const month = MonthNames[this.date.getMonth()];
     const day = this.date.getDate();
@@ -68,34 +69,20 @@ export const classmates: SocialLinkNames[] = [
 ];
 
 export function initialCalculataion(calendar: singleDay[]) {
-  (Object.values(calendar) as Array<singleDay>).forEach((c) => {
-    const previousDay: singleDay | undefined = calendar.find(
-      (d) => d.date.getTime() === c.date.getTime() - 86400000
-    );
-    const weekAgoStats = calendar.find(
-      (d) => d.date.getTime() === c.date.getTime() - 86400000 * 7
-    )?.stats || { ...initialStats };
-    let currentStats = previousDay?.stats || { ...initialStats };
-    let currentLinks = previousDay?.links || { ...initialLinks };
-    let singleTimeEvents = previousDay?.singleTimeEvents || [];
-    let response = null;
+  (Object.values(calendar) as Array<singleDay>).forEach((c, i, cArray) => {
+    const previousDay: singleDay = cArray?.[i - 1] || baseCalendar;
+    const previousWeek: singleDay | undefined = cArray?.[i - 1];
+
+    c.singleTimeEvents = previousDay.singleTimeEvents;
+    c.stats = previousDay.stats;
+    c.links = previousDay.links;
 
     c.activities.forEach((activity) => {
-      response = activity.upgrade({
-        singleTimeEvents: singleTimeEvents,
-        weekAgoStats: weekAgoStats,
-        currentStats: currentStats,
-        currentLinks: currentLinks,
-        arcanes: c.arcanes,
-      });
-      singleTimeEvents = response?.singleTimeEvents || singleTimeEvents;
-      currentStats = response?.stats || currentStats;
-      currentLinks = response?.links || currentLinks;
+      const response = activity.upgrade(c, previousWeek);
+      c.singleTimeEvents = response?.singleTimeEvents || c.singleTimeEvents;
+      c.stats = response?.stats || c.stats;
+      c.links = response?.links || c.links;
     });
-
-    c.singleTimeEvents = [...singleTimeEvents];
-    c.stats = currentStats;
-    c.links = currentLinks;
   });
 
   return calendar;

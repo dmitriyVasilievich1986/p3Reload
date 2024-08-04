@@ -8,7 +8,7 @@ export const specialEvents: { [key in SpecialEventsNames]: Event } = {
     time: Times.Day,
     name: SpecialEventsNames.DoNothing,
     category: Categories.Empty,
-    available: ({ currentTime }) => currentTime !== Times.Morning,
+    available: ({ time }) => time !== Times.Morning,
     label: () => <EventCard head="Free Time" />,
   },
   [SpecialEventsNames.NoControl]: {
@@ -34,7 +34,7 @@ export const specialEvents: { [key in SpecialEventsNames]: Event } = {
     time: Times.Evening,
     name: SpecialEventsNames.Tartarus,
     category: Categories.Tartarus,
-    available: ({ currentTime }) => currentTime !== Times.Morning,
+    available: ({ time }) => time !== Times.Morning,
     label: () => <EventCard head="Tartarus" />,
   },
   [SpecialEventsNames.Exams]: {

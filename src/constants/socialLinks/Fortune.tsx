@@ -186,7 +186,9 @@ export const Fortune: SocialLinkType = {
     5: {
       [Routes.Platonic]: (
         <Question label="What would I list as my occupation on a survey...?">
+          <Answer label="Artist." />
           <Answer label="Entertainment industry." points={30} />
+          <Answer label="Unemployed." />
         </Question>
       ),
     },

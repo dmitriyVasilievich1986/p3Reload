@@ -2,7 +2,6 @@ import { Question, Answer } from "../../components/choices";
 import { EventCard } from "../../components/eventCard";
 import { WideEvent } from "../../components/wideEvent";
 import { baseCalendar } from "./baseFunctions";
-import { StatsNames } from "../stats/types";
 import { Times } from "../events/types";
 import { singleDay } from "./types";
 import { events } from "../events";
@@ -307,22 +306,7 @@ export const june: singleDay[] = [
     isDayOff: true,
     singleTimeEvents: [],
     arcanes: [],
-    activities: [
-      events.Moon,
-      events.wilduckBurgeWeekendWilduckSet,
-      {
-        ...events.Special,
-        upgrade: function ({ currentStats }) {
-          return {
-            stats: {
-              ...currentStats,
-              [StatsNames.Charm]: 0,
-              [StatsNames.Courage]: 100,
-            },
-          };
-        },
-      },
-    ],
+    activities: [events.Moon, events.wilduckBurgeWeekendWilduckSet],
   },
   {
     ...baseCalendar,

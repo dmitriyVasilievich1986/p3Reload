@@ -181,6 +181,8 @@ export const Magician: SocialLinkType = {
     3: {
       [Routes.Platonic]: (
         <Question label="Well? Whaddaya think? Perfect plan, right?">
+          <Answer label="That's not gonna work." />
+          <Answer label="Yeah, it's perfect!" />
           <Answer label="I've got a better plan..." points={30} />
         </Question>
       ),

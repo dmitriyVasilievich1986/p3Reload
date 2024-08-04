@@ -31,7 +31,7 @@ export const Lovers: SocialLinkType = {
       [Routes.Platonic]: QuestionsWrapper({
         points: 0,
         element: [
-          <Question label="I guess my mom's no different.">
+          <Question label="I guess my own mom's no different.">
             <Answer label="What makes you say that?" />
             <Answer label="......" />
           </Question>,
