@@ -1,8 +1,14 @@
 import { singleDay } from "../calendar/types";
-import { SpendingTime } from "./GenericCard";
 import { StatsNames } from "../stats/types";
 
-import { SocialLinkTypeBase, SocialLinkLevel, SocialLinkNames } from "./types";
+import {
+  SocialLinkStats,
+  SocialLinkLevel,
+  SocialLinkNames,
+  InvitationsType,
+  LinkDetailsType,
+  LevelsType,
+} from "./types";
 
 export const mainCharName: string = "Protagonist";
 
@@ -10,31 +16,56 @@ function calculateMaxPoints(maxPoints: number[], multiplier: number): number {
   return maxPoints.reduce((a, b) => a + Math.floor(b * multiplier), 0);
 }
 
-export const baseSocialLinkCalculation: SocialLinkTypeBase = {
-  name: SocialLinkNames.Aeon,
-  invitations: [],
-  maxLevel: 10,
-  getlevel: function ({ level, romance }) {
+export class SocialLink {
+  readonly invitations?: InvitationsType;
+  readonly linkDetails: LinkDetailsType;
+  readonly linkName: SocialLinkNames;
+  readonly levels: LevelsType;
+
+  readonly maxLevel: number = 10;
+
+  constructor(
+    linkName: SocialLinkNames,
+    linkDetails: LinkDetailsType,
+    levels: LevelsType,
+    invitations?: InvitationsType,
+    maxLevel?: number
+  ) {
+    this.maxLevel = maxLevel || this.maxLevel;
+    this.linkDetails = linkDetails;
+    this.invitations = invitations;
+    this.linkName = linkName;
+    this.levels = levels;
+  }
+
+  getLevel({ romance, level }: SocialLinkStats) {
     return this.levels[level][romance] as SocialLinkLevel;
-  },
-  _calculate: function (props: singleDay) {
-    const thisLink = props.links[this.name];
-    const currentLevel = this.getlevel(thisLink);
-    const isNewlevel =
-      thisLink.level < this.maxLevel && thisLink.points >= currentLevel.points;
+  }
+
+  isNewLevel(thisLink: SocialLinkStats) {
+    const currentLevel = this.getLevel(thisLink);
+    return (
+      thisLink.level < this.maxLevel && thisLink.points >= currentLevel.points
+    );
+  }
+
+  calculate(props: singleDay) {
+    const thisLink = props.links[this.linkName];
+    const currentLevel = this.getLevel(thisLink);
+    const isNewlevel = this.isNewLevel(thisLink);
     const level = isNewlevel ? thisLink.level + 1 : thisLink.level;
     let points;
 
     if (isNewlevel) {
       let multiplier = thisLink.multiplier;
-      const newLevel = this.getlevel({
+      const newLevel = this.getLevel({
         ...thisLink,
         level,
         romance: thisLink.romance,
       });
       if (props.stats[StatsNames.Charm] >= 100) multiplier *= 1.51;
 
-      if (props.arcanes.includes(this.name)) {
+      if (props.arcanes.includes(this.linkName)) {
         multiplier *= 1.51;
       } else if (
         Math.floor(
@@ -52,7 +83,7 @@ export const baseSocialLinkCalculation: SocialLinkTypeBase = {
         calculateMaxPoints(currentLevel.maxPoints, multiplier) < newLevel.points
       ) {
         multiplier *= 1.51;
-        props.arcanes.push(this.name);
+        props.arcanes.push(this.linkName);
       }
 
       points = calculateMaxPoints(currentLevel.maxPoints, multiplier);
@@ -63,39 +94,34 @@ export const baseSocialLinkCalculation: SocialLinkTypeBase = {
     return {
       links: {
         ...props.links,
-        [this.name]: {
+        [this.linkName]: {
           ...thisLink,
           points,
           level,
         },
       },
     };
-  },
-  calculate: function (props: singleDay) {
-    return this._calculate(props);
-  },
-  getStaleLevel: SpendingTime,
-  levels: {},
-};
+  }
+}
 
-export const alwaysLevelUp: SocialLinkTypeBase = {
-  ...baseSocialLinkCalculation,
-  getlevel: function ({ level }) {
+export class SocialLinkAlwaysLevelUp extends SocialLink {
+  getLevel({ level }: SocialLinkStats) {
     if (level === 10) return this.levels[10].Platonic as SocialLinkLevel;
     if (level === 0) return this.levels[0].Platonic as SocialLinkLevel;
     return this.levels[1].Platonic as SocialLinkLevel;
-  },
-  calculate: function (props: singleDay) {
-    const thisLink = props.links[this.name];
+  }
+
+  calculate(props: singleDay) {
+    const thisLink = props.links[this.linkName];
     const isNewlevel = thisLink.level < this.maxLevel;
     return {
       links: {
         ...props.links,
-        [this.name]: {
+        [this.linkName]: {
           ...thisLink,
           level: isNewlevel ? thisLink.level + 1 : thisLink.level,
         },
       },
     };
-  },
-};
+  }
+}

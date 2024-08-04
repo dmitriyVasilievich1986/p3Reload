@@ -1,12 +1,12 @@
 import { QuestionsWrapper, Question, Answer } from "../../components/choices";
-import { SocialLinkNames, SocialLinkType, Routes } from "./types";
 import { createBondObject, LinkMaxedObject } from "./GenericCard";
-import { baseSocialLinkCalculation } from "./baseFunctions";
+import { SocialLinkNames, Routes } from "./types";
+import { SocialLink } from "./baseFunctions";
 
-export const Star: SocialLinkType = {
-  ...baseSocialLinkCalculation,
-  name: SocialLinkNames.Star,
-  levels: {
+export const Star = new SocialLink(
+  SocialLinkNames.Star,
+  { name: "Mamoru Hayase", place: "Iwatodai Station Strip Mall 1F" },
+  {
     0: {
       [Routes.Platonic]: createBondObject,
     },
@@ -180,5 +180,5 @@ export const Star: SocialLinkType = {
     10: {
       [Routes.Platonic]: LinkMaxedObject,
     },
-  },
-};
+  }
+);

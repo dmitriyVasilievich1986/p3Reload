@@ -1,12 +1,12 @@
 import { QuestionsWrapper, Question, Answer } from "../../components/choices";
-import { SocialLinkNames, SocialLinkType, Routes } from "./types";
 import { createBondObject, LinkMaxedObject } from "./GenericCard";
-import { baseSocialLinkCalculation } from "./baseFunctions";
+import { SocialLinkNames, Routes } from "./types";
+import { SocialLink } from "./baseFunctions";
 
-export const Fortune: SocialLinkType = {
-  ...baseSocialLinkCalculation,
-  name: SocialLinkNames.Fortune,
-  levels: {
+export const Fortune = new SocialLink(
+  SocialLinkNames.Fortune,
+  { name: "Keisuke Hiraga", place: "Art Club Room" },
+  {
     0: {
       [Routes.Platonic]: createBondObject,
     },
@@ -161,7 +161,7 @@ export const Fortune: SocialLinkType = {
       [Routes.Platonic]: LinkMaxedObject,
     },
   },
-  invitations: {
+  {
     2: {
       [Routes.Platonic]: (
         <Question label="I doubt I'd ever see something like a beef bowl on the dinner table at home...">
@@ -220,5 +220,5 @@ export const Fortune: SocialLinkType = {
         </Question>
       ),
     },
-  },
-};
+  }
+);

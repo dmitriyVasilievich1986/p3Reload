@@ -1,12 +1,12 @@
 import { QuestionsWrapper, Question, Answer } from "../../components/choices";
-import { SocialLinkNames, SocialLinkType, Routes } from "./types";
 import { createBondObject, LinkMaxedObject } from "./GenericCard";
-import { baseSocialLinkCalculation } from "./baseFunctions";
+import { SocialLinkNames, Routes } from "./types";
+import { SocialLink } from "./baseFunctions";
 
-export const Aeon: SocialLinkType = {
-  ...baseSocialLinkCalculation,
-  name: SocialLinkNames.Aeon,
-  levels: {
+export const Aeon = new SocialLink(
+  SocialLinkNames.Aeon,
+  { name: "Aigis", place: "Classroom 2F" },
+  {
     0: {
       [Routes.Platonic]: createBondObject,
     },
@@ -220,5 +220,5 @@ export const Aeon: SocialLinkType = {
       [Routes.Platonic]: LinkMaxedObject,
       [Routes.Romantic]: LinkMaxedObject,
     },
-  },
-};
+  }
+);

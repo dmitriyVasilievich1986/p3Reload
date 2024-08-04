@@ -1,5 +1,5 @@
-import { SocialLinkNames, SocialLinkType, Routes } from "./types";
-import { alwaysLevelUp } from "./baseFunctions";
+import { SocialLinkAlwaysLevelUp } from "./baseFunctions";
+import { SocialLinkNames, Routes } from "./types";
 import { singleDay } from "../calendar/types";
 
 import {
@@ -8,10 +8,8 @@ import {
   LinkMaxedObject,
 } from "./GenericCard";
 
-export const Fool: SocialLinkType = {
-  ...alwaysLevelUp,
-  name: SocialLinkNames.Fool,
-  calculate: function (currentDay: singleDay) {
+class SocialLinkFool extends SocialLinkAlwaysLevelUp {
+  calculate(currentDay: singleDay) {
     const thisLink = currentDay.links[SocialLinkNames.Fool];
     const level =
       thisLink.level === 7 ? thisLink.level + 2 : thisLink.level + 1;
@@ -21,8 +19,13 @@ export const Fool: SocialLinkType = {
         [SocialLinkNames.Fool]: { ...thisLink, level },
       },
     };
-  },
-  levels: {
+  }
+}
+
+export const Fool = new SocialLinkFool(
+  SocialLinkNames.Fool,
+  { name: "S.E.E.S.", place: "Tartarus" },
+  {
     0: {
       [Routes.Platonic]: createBondObject,
     },
@@ -32,5 +35,5 @@ export const Fool: SocialLinkType = {
     10: {
       [Routes.Platonic]: LinkMaxedObject,
     },
-  },
-};
+  }
+);

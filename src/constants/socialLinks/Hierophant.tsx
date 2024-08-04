@@ -1,12 +1,12 @@
 import { QuestionsWrapper, Question, Answer } from "../../components/choices";
-import { baseSocialLinkCalculation, mainCharName } from "./baseFunctions";
-import { SocialLinkNames, SocialLinkType, Routes } from "./types";
 import { createBondObject, LinkMaxedObject } from "./GenericCard";
+import { SocialLink, mainCharName } from "./baseFunctions";
+import { SocialLinkNames, Routes } from "./types";
 
-export const Hierophant: SocialLinkType = {
-  ...baseSocialLinkCalculation,
-  name: SocialLinkNames.Hierophant,
-  levels: {
+export const Hierophant = new SocialLink(
+  SocialLinkNames.Hierophant,
+  { name: "Bunkichi and Mitsuko", place: "Bookworms Used Books" },
+  {
     0: {
       [Routes.Platonic]: createBondObject,
     },
@@ -205,5 +205,5 @@ export const Hierophant: SocialLinkType = {
     10: {
       [Routes.Platonic]: LinkMaxedObject,
     },
-  },
-};
+  }
+);

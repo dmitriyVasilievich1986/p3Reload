@@ -1,12 +1,12 @@
 import { QuestionsWrapper, Question, Answer } from "../../components/choices";
-import { SocialLinkNames, SocialLinkType, Routes } from "./types";
 import { createBondObject, LinkMaxedObject } from "./GenericCard";
-import { baseSocialLinkCalculation } from "./baseFunctions";
+import { SocialLinkNames, Routes } from "./types";
+import { SocialLink } from "./baseFunctions";
 
-export const Tower: SocialLinkType = {
-  ...baseSocialLinkCalculation,
-  name: SocialLinkNames.Tower,
-  levels: {
+export const Tower = new SocialLink(
+  SocialLinkNames.Tower,
+  { name: "Mutatsu", place: "Club Escapade" },
+  {
     0: {
       [Routes.Platonic]: createBondObject,
     },
@@ -148,5 +148,5 @@ export const Tower: SocialLinkType = {
     10: {
       [Routes.Platonic]: LinkMaxedObject,
     },
-  },
-};
+  }
+);

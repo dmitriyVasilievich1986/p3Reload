@@ -818,7 +818,7 @@ export const linkEvents: {
       if (previousDay === undefined) return false;
       const days = [DaysNames.tuesday, DaysNames.wednesday, DaysNames.friday];
       return (
-        previousDay.links[socialLinks.Hierophant.name].level >= 3 &&
+        previousDay.links[socialLinks.Hierophant.linkName].level >= 3 &&
         currentDay.date.getTime() >= new Date(2009, 4, 8).getTime() &&
         previousDay.stats[stats.Academics.name] >= 20 &&
         days.includes(currentDay.date.getDay()) &&
@@ -864,7 +864,7 @@ export const linkEvents: {
       const days = [DaysNames.tuesday, DaysNames.saturday];
       return (
         currentDay.date.getTime() >= new Date(2009, 4, 16).getTime() &&
-        previousDay.links[socialLinks.Hermit.name].level >= 4 &&
+        previousDay.links[socialLinks.Hermit.linkName].level >= 4 &&
         previousDay.stats[stats.Charm.name] >= 45 &&
         days.includes(currentDay.date.getDay()) &&
         time === Times.Evening
@@ -950,7 +950,7 @@ export const linkEvents: {
       if (previousDay === undefined) return false;
       return (
         currentDay.date.getTime() >= new Date(2009, 3, 28).getTime() &&
-        previousDay.links[socialLinks.Magician.name].level >= 3 &&
+        previousDay.links[socialLinks.Magician.linkName].level >= 3 &&
         previousDay.stats[stats.Charm.name] >= 15 &&
         time === Times.Day
       );
@@ -968,7 +968,7 @@ export const linkEvents: {
       if (previousDay === undefined) return false;
       return (
         currentDay.date.getTime() >= new Date(2009, 7, 9).getTime() &&
-        previousDay.links[socialLinks.HangedMan.name].level >= 3 &&
+        previousDay.links[socialLinks.HangedMan.linkName].level >= 3 &&
         previousDay.stats[stats.Academics.name] >= 100 &&
         currentDay.date.getDay() == DaysNames.sunday &&
         time === Times.Day

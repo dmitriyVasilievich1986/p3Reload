@@ -13,7 +13,7 @@ function SocialLinks(props: SocialLinksProps) {
     if (props.links[name].level >= socialLinks[name].maxLevel)
       return "max level";
     return `${props.links[name].level} (${props.links[name].points}/${
-      socialLinks[name].getlevel({
+      socialLinks[name].getLevel({
         ...props.links[name],
       }).points
     } pts.)`;

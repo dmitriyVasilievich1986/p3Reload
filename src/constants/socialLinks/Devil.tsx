@@ -1,5 +1,5 @@
-import { SocialLinkNames, SocialLinkType, Routes } from "./types";
-import { alwaysLevelUp } from "./baseFunctions";
+import { SocialLinkAlwaysLevelUp } from "./baseFunctions";
+import { SocialLinkNames, Routes } from "./types";
 
 import {
   createBondObject,
@@ -7,10 +7,10 @@ import {
   LinkMaxedObject,
 } from "./GenericCard";
 
-export const Devil: SocialLinkType = {
-  ...alwaysLevelUp,
-  name: SocialLinkNames.Devil,
-  levels: {
+export const Devil = new SocialLinkAlwaysLevelUp(
+  SocialLinkNames.Devil,
+  { name: "President Tanaka", place: "Paulownia Mall" },
+  {
     0: {
       [Routes.Platonic]: createBondObject,
     },
@@ -20,5 +20,5 @@ export const Devil: SocialLinkType = {
     10: {
       [Routes.Platonic]: LinkMaxedObject,
     },
-  },
-};
+  }
+);

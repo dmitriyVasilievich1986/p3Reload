@@ -1,4 +1,7 @@
-import { SocialLinkNames } from "../../constants/socialLinks/types";
+import {
+  SocialLinkNames,
+  InvitationsType,
+} from "../../constants/socialLinks/types";
 import { Categories } from "../../constants/events/types";
 import { socialLinks } from "../../constants/socialLinks";
 import BadgeTooltip from "./BadgeTooltip";
@@ -16,10 +19,10 @@ function LinkElement(props: DayEventProps) {
 
   const linkName = props.event.linkName as SocialLinkNames;
   if (props.previousDay.links[linkName].level === props.links[linkName].level)
-    return socialLinks[linkName].getStaleLevel();
+    return <h1>time spending</h1>;
 
   return socialLinks[linkName]
-    .getlevel({
+    .getLevel({
       ...props.links[linkName],
       level: props.links[linkName].level - 1,
     })
@@ -32,7 +35,7 @@ function InvitationElement(props: DayEventProps) {
   const linkName = props.event.linkName as SocialLinkNames;
   const level = props.links[linkName].level;
 
-  return socialLinks[linkName].invitations[level][
+  return (socialLinks[linkName].invitations as InvitationsType)[level][
     props.links[linkName].romance
   ];
 }
@@ -43,7 +46,7 @@ function LinkBadge(props: DayEventProps) {
   const linkName = props.event.linkName as SocialLinkNames;
   const color =
     props.links[linkName].points >=
-    socialLinks[linkName].getlevel({
+    socialLinks[linkName].getLevel({
       ...props.links[linkName],
     }).points
       ? "green"
@@ -55,7 +58,7 @@ function LinkBadge(props: DayEventProps) {
         <BadgeTooltip
           points={props.links[linkName].points}
           nextLevel={
-            socialLinks[linkName].getlevel({
+            socialLinks[linkName].getLevel({
               ...props.links[linkName],
             }).points
           }

@@ -1,5 +1,5 @@
-import { SocialLinkNames, SocialLinkType, Routes } from "./types";
-import { alwaysLevelUp } from "./baseFunctions";
+import { SocialLinkAlwaysLevelUp } from "./baseFunctions";
+import { SocialLinkNames, Routes } from "./types";
 
 import {
   createBondObject,
@@ -7,10 +7,10 @@ import {
   LinkMaxedObject,
 } from "./GenericCard";
 
-export const Sun: SocialLinkType = {
-  ...alwaysLevelUp,
-  name: SocialLinkNames.Sun,
-  levels: {
+export const Sun = new SocialLinkAlwaysLevelUp(
+  SocialLinkNames.Sun,
+  { name: "Akinari Kamiki", place: "Naganaki Shrine" },
+  {
     0: {
       [Routes.Platonic]: createBondObject,
     },
@@ -20,5 +20,5 @@ export const Sun: SocialLinkType = {
     10: {
       [Routes.Platonic]: LinkMaxedObject,
     },
-  },
-};
+  }
+);

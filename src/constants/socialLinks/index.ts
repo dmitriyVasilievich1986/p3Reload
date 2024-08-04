@@ -1,4 +1,5 @@
-import { SocialLinkNames, SocialLinkType } from "./types";
+import { SocialLink } from "./baseFunctions";
+import { SocialLinkNames } from "./types";
 
 import { Hierophant } from "./Hierophant";
 import { Temperance } from "./Temperance";
@@ -22,7 +23,7 @@ import { Moon } from "./Moon";
 import { Star } from "./Star";
 import { Sun } from "./Sun";
 
-export const socialLinks: { [key in SocialLinkNames]: SocialLinkType } = {
+export const socialLinks: { [key in SocialLinkNames]: SocialLink } = {
   Aeon,
   Chariot,
   Devil,

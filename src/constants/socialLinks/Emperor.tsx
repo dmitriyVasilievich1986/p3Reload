@@ -1,12 +1,12 @@
 import { QuestionsWrapper, Question, Answer } from "../../components/choices";
-import { SocialLinkNames, SocialLinkType, Routes } from "./types";
 import { createBondObject, LinkMaxedObject } from "./GenericCard";
-import { baseSocialLinkCalculation } from "./baseFunctions";
+import { SocialLinkNames, Routes } from "./types";
+import { SocialLink } from "./baseFunctions";
 
-export const Emperor: SocialLinkType = {
-  ...baseSocialLinkCalculation,
-  name: SocialLinkNames.Emperor,
-  levels: {
+export const Emperor = new SocialLink(
+  SocialLinkNames.Emperor,
+  { name: "Hidetoshi Odagiri", place: "Student Council Room" },
+  {
     0: {
       [Routes.Platonic]: createBondObject,
     },
@@ -128,5 +128,5 @@ export const Emperor: SocialLinkType = {
     10: {
       [Routes.Platonic]: LinkMaxedObject,
     },
-  },
-};
+  }
+);
