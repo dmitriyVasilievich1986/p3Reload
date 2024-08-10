@@ -1,6 +1,7 @@
 import { linkInvitationBaseFunctions, linkBaseFunctions } from "../base";
 import { SocialLinkNames, Routes } from "../../socialLinks/types";
 import { EventCard } from "../../../components/eventCard";
+import { SingleDay } from "../../calendar/SingleDay";
 import { socialLinks } from "../../socialLinks";
 import { DaysNames } from "../../monthsNames";
 import { stats } from "../../stats/stats";
@@ -69,16 +70,18 @@ export const justiceEvents: {
       />
     ),
     upgrade: function (currentDay) {
-      return socialLinks[SocialLinkNames.Justice].calculate({
-        ...currentDay,
-        links: {
-          ...currentDay.links,
-          [SocialLinkNames.Justice]: {
-            ...currentDay.links[SocialLinkNames.Justice],
-            romance: Routes.Romantic,
+      return socialLinks[SocialLinkNames.Justice].calculate(
+        new SingleDay({
+          ...currentDay,
+          links: {
+            ...currentDay.links,
+            [SocialLinkNames.Justice]: {
+              ...currentDay.links[SocialLinkNames.Justice],
+              romance: Routes.Romantic,
+            },
           },
-        },
-      });
+        })
+      );
     },
     available: function ({ previousDay, currentDay, time }) {
       if (previousDay === undefined) return false;

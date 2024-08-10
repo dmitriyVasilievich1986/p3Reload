@@ -1,35 +1,26 @@
 import { Question, Answer } from "../../components/choices";
 import { EventCard } from "../../components/eventCard";
 import { WideEvent } from "../../components/wideEvent";
-import { baseCalendar } from "./baseFunctions";
 import { Times } from "../events/types";
-import { singleDay } from "./types";
+import { SingleDay } from "./SingleDay";
 import { events } from "../events";
 
-export const november: singleDay[] = [
-  {
-    ...baseCalendar,
+export const november: SingleDay[] = [
+  new SingleDay({
     date: new Date(2009, 10, 1),
     isDayOff: true,
-    singleTimeEvents: [],
-    arcanes: [],
     activities: [
       events.DoNothing,
       { ...events.DoNothing, time: Times.Evening },
     ],
-  },
-  {
-    ...baseCalendar,
+  }),
+  new SingleDay({
     date: new Date(2009, 10, 2),
-    singleTimeEvents: [],
-    arcanes: [],
     activities: [events.DoNothing, { ...events.Fool, time: Times.Evening }],
-  },
-  {
-    ...baseCalendar,
+  }),
+  new SingleDay({
     date: new Date(2009, 10, 3),
-    singleTimeEvents: [],
-    arcanes: [],
+    foolMoon: true,
     activities: [
       {
         ...events.Special,
@@ -44,42 +35,30 @@ export const november: singleDay[] = [
         ),
       },
     ],
-  },
-  {
-    ...baseCalendar,
+  }),
+  new SingleDay({
     date: new Date(2009, 10, 4),
-    singleTimeEvents: [],
-    arcanes: [],
     activities: [
       { ...events.Death, time: Times.Day },
       { ...events.Fool, time: Times.Evening },
     ],
-  },
-  {
-    ...baseCalendar,
+  }),
+  new SingleDay({
     date: new Date(2009, 10, 5),
-    singleTimeEvents: [],
-    arcanes: [],
     activities: [
       events.DoNothing,
       { ...events.DoNothing, time: Times.Evening },
     ],
-  },
-  {
-    ...baseCalendar,
+  }),
+  new SingleDay({
     date: new Date(2009, 10, 6),
-    singleTimeEvents: [],
-    arcanes: [],
     activities: [
       events.DoNothing,
       { ...events.DoNothing, time: Times.Evening },
     ],
-  },
-  {
-    ...baseCalendar,
+  }),
+  new SingleDay({
     date: new Date(2009, 10, 7),
-    singleTimeEvents: [],
-    arcanes: [],
     activities: [
       {
         ...events.schoolQuestionCharm,
@@ -92,54 +71,39 @@ export const november: singleDay[] = [
       events.DoNothing,
       { ...events.DoNothing, time: Times.Evening },
     ],
-  },
-  {
-    ...baseCalendar,
+  }),
+  new SingleDay({
     date: new Date(2009, 10, 8),
     isDayOff: true,
-    singleTimeEvents: [],
-    arcanes: [],
     activities: [
       events.DoNothing,
       { ...events.DoNothing, time: Times.Evening },
     ],
-  },
-  {
-    ...baseCalendar,
+  }),
+  new SingleDay({
     date: new Date(2009, 10, 9),
-    singleTimeEvents: [],
-    arcanes: [],
     activities: [
       events.stayAwakeInClass,
       events.DoNothing,
       { ...events.DoNothing, time: Times.Evening },
     ],
-  },
-  {
-    ...baseCalendar,
+  }),
+  new SingleDay({
     date: new Date(2009, 10, 10),
-    singleTimeEvents: [],
-    arcanes: [],
     activities: [
       events.DoNothing,
       { ...events.DoNothing, time: Times.Evening },
     ],
-  },
-  {
-    ...baseCalendar,
+  }),
+  new SingleDay({
     date: new Date(2009, 10, 11),
-    singleTimeEvents: [],
-    arcanes: [],
     activities: [
       events.DoNothing,
       { ...events.DoNothing, time: Times.Evening },
     ],
-  },
-  {
-    ...baseCalendar,
+  }),
+  new SingleDay({
     date: new Date(2009, 10, 12),
-    singleTimeEvents: [],
-    arcanes: [],
     activities: [
       {
         ...events.schoolQuestionCharm,
@@ -152,95 +116,65 @@ export const november: singleDay[] = [
       events.DoNothing,
       { ...events.DoNothing, time: Times.Evening },
     ],
-  },
-  {
-    ...baseCalendar,
+  }),
+  new SingleDay({
     date: new Date(2009, 10, 13),
-    singleTimeEvents: [],
-    arcanes: [],
     activities: [
       events.DoNothing,
       { ...events.DoNothing, time: Times.Evening },
     ],
-  },
-  {
-    ...baseCalendar,
+  }),
+  new SingleDay({
     date: new Date(2009, 10, 14),
-    singleTimeEvents: [],
-    arcanes: [],
     activities: [
       events.stayAwakeInClass,
       events.DoNothing,
       { ...events.DoNothing, time: Times.Evening },
     ],
-  },
-  {
-    ...baseCalendar,
+  }),
+  new SingleDay({
     date: new Date(2009, 10, 15),
     isDayOff: true,
-    singleTimeEvents: [],
-    arcanes: [],
     activities: [
       events.DoNothing,
       { ...events.DoNothing, time: Times.Evening },
     ],
-  },
-  {
-    ...baseCalendar,
+  }),
+  new SingleDay({
     date: new Date(2009, 10, 16),
-    singleTimeEvents: [],
-    arcanes: [],
     activities: [
       events.stayAwakeInClass,
       events.DoNothing,
       { ...events.DoNothing, time: Times.Evening },
     ],
-  },
-  {
-    ...baseCalendar,
+  }),
+  new SingleDay({
     date: new Date(2009, 10, 17),
-    singleTimeEvents: [],
-    arcanes: [],
     activities: [{ ...events.Special, time: Times.WholeDay }],
-  },
-  {
-    ...baseCalendar,
+  }),
+  new SingleDay({
     date: new Date(2009, 10, 18),
-    singleTimeEvents: [],
-    arcanes: [],
     activities: [{ ...events.Special, time: Times.WholeDay }],
-  },
-  {
-    ...baseCalendar,
+  }),
+  new SingleDay({
     date: new Date(2009, 10, 19),
-    singleTimeEvents: [],
-    arcanes: [],
     activities: [{ ...events.Special, time: Times.WholeDay }],
-  },
-  {
-    ...baseCalendar,
+  }),
+  new SingleDay({
     date: new Date(2009, 10, 20),
-    singleTimeEvents: [],
-    arcanes: [],
     activities: [{ ...events.DoNothing, time: Times.Evening }],
-  },
-  {
-    ...baseCalendar,
+  }),
+  new SingleDay({
     date: new Date(2009, 10, 21),
-    singleTimeEvents: [],
-    arcanes: [],
     activities: [
       events.stayAwakeInClass,
       events.DoNothing,
       { ...events.DoNothing, time: Times.Evening },
     ],
-  },
-  {
-    ...baseCalendar,
+  }),
+  new SingleDay({
     date: new Date(2009, 10, 22),
     isDayOff: true,
-    singleTimeEvents: [],
-    arcanes: [],
     activities: [
       events.DoNothing,
       { ...events.DoNothing, time: Times.Evening },
@@ -250,72 +184,48 @@ export const november: singleDay[] = [
         label: () => <EventCard head="Chidori Boss Fight" place="Tartarus" />,
       },
     ],
-  },
-  {
-    ...baseCalendar,
+  }),
+  new SingleDay({
     date: new Date(2009, 10, 23),
-    singleTimeEvents: [],
-    arcanes: [],
     activities: [
       events.DoNothing,
       { ...events.DoNothing, time: Times.Evening },
     ],
-  },
-  {
-    ...baseCalendar,
+  }),
+  new SingleDay({
     date: new Date(2009, 10, 24),
-    singleTimeEvents: [],
-    arcanes: [],
     activities: [{ ...events.Special, time: Times.WholeDay }],
-  },
-  {
-    ...baseCalendar,
+  }),
+  new SingleDay({
     date: new Date(2009, 10, 25),
-    singleTimeEvents: [],
-    arcanes: [],
     activities: [{ ...events.Special, time: Times.WholeDay }],
-  },
-  {
-    ...baseCalendar,
+  }),
+  new SingleDay({
     date: new Date(2009, 10, 26),
-    singleTimeEvents: [],
-    arcanes: [],
     activities: [{ ...events.Special, time: Times.WholeDay }],
-  },
-  {
-    ...baseCalendar,
+  }),
+  new SingleDay({
     date: new Date(2009, 10, 27),
-    singleTimeEvents: [],
-    arcanes: [],
     activities: [{ ...events.DoNothing, time: Times.Evening }],
-  },
-  {
-    ...baseCalendar,
+  }),
+  new SingleDay({
     date: new Date(2009, 10, 28),
-    singleTimeEvents: [],
-    arcanes: [],
     activities: [
       events.DoNothing,
       { ...events.DoNothing, time: Times.Evening },
       events.Fool,
     ],
-  },
-  {
-    ...baseCalendar,
+  }),
+  new SingleDay({
     date: new Date(2009, 10, 29),
     isDayOff: true,
-    singleTimeEvents: [],
-    arcanes: [],
     activities: [
       events.DoNothing,
       { ...events.DoNothing, time: Times.Evening },
     ],
-  },
-  {
-    ...baseCalendar,
+  }),
+  new SingleDay({
     date: new Date(2009, 10, 30),
-    singleTimeEvents: [],
-    arcanes: [],
     activities: [
       {
         ...events.schoolQuestionCharm,
@@ -328,5 +238,5 @@ export const november: singleDay[] = [
       events.DoNothing,
       { ...events.DoNothing, time: Times.Evening },
     ],
-  },
+  }),
 ];
