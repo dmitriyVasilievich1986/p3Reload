@@ -1,12 +1,12 @@
 import { QuestionsWrapper, Question, Answer } from "../../components/choices";
-import { SocialLinkNames, SocialLinkType, Routes } from "./types";
 import { createBondObject, LinkMaxedObject } from "./GenericCard";
-import { baseSocialLinkCalculation } from "./baseFunctions";
+import { SocialLinkNames, Routes } from "./types";
+import { SocialLink } from "./baseFunctions";
 
-export const HangedMan: SocialLinkType = {
-  ...baseSocialLinkCalculation,
-  name: SocialLinkNames.HangedMan,
-  levels: {
+export const HangedMan = new SocialLink(
+  SocialLinkNames.HangedMan,
+  { name: "Maiko Oohashi", place: "Naganaki Shrine" },
+  {
     0: {
       [Routes.Platonic]: createBondObject,
     },
@@ -154,5 +154,5 @@ export const HangedMan: SocialLinkType = {
     10: {
       [Routes.Platonic]: LinkMaxedObject,
     },
-  },
-};
+  }
+);

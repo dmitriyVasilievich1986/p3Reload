@@ -1,12 +1,12 @@
 import { QuestionsWrapper, Question, Answer } from "../../components/choices";
-import { baseSocialLinkCalculation, mainCharName } from "./baseFunctions";
-import { SocialLinkNames, SocialLinkType, Routes } from "./types";
 import { createBondObject, LinkMaxedObject } from "./GenericCard";
+import { SocialLink, mainCharName } from "./baseFunctions";
+import { SocialLinkNames, Routes } from "./types";
 
-export const Lovers: SocialLinkType = {
-  ...baseSocialLinkCalculation,
-  name: SocialLinkNames.Lovers,
-  levels: {
+export const Lovers = new SocialLink(
+  SocialLinkNames.Lovers,
+  { name: "Yukari Takeba", place: "Classroom 2F" },
+  {
     0: {
       [Routes.Platonic]: createBondObject,
     },
@@ -217,7 +217,7 @@ export const Lovers: SocialLinkType = {
       [Routes.Romantic]: LinkMaxedObject,
     },
   },
-  invitations: {
+  {
     2: {
       [Routes.Platonic]: (
         <Question label="Oh, speaking of music, what do you usually listen to?">
@@ -272,5 +272,5 @@ export const Lovers: SocialLinkType = {
         </Question>
       ),
     },
-  },
-};
+  }
+);

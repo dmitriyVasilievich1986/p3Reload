@@ -1,5 +1,5 @@
+import { SocialLinkNames, InvitationsType } from "../socialLinks/types";
 import { upgradeResponse, Categories, Times } from "./types";
-import { SocialLinkNames } from "../socialLinks/types";
 import { singleDay } from "../calendar/types";
 import { socialLinks } from "../socialLinks";
 
@@ -43,9 +43,9 @@ export const linkInvitationBaseFunctions = {
   }) {
     const isInInvitations =
       currentDay.links[this.linkName].level in
-        socialLinks[this.linkName].invitations &&
+        (socialLinks[this.linkName].invitations as InvitationsType) &&
       currentDay.links[this.linkName].romance in
-        socialLinks[this.linkName].invitations[
+        (socialLinks[this.linkName].invitations as InvitationsType)[
           currentDay.links[this.linkName].level
         ];
 

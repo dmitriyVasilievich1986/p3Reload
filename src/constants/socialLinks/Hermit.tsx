@@ -1,12 +1,12 @@
 import { QuestionsWrapper, Question, Answer } from "../../components/choices";
-import { SocialLinkNames, SocialLinkType, Routes } from "./types";
 import { createBondObject, LinkMaxedObject } from "./GenericCard";
-import { baseSocialLinkCalculation } from "./baseFunctions";
+import { SocialLinkNames, Routes } from "./types";
+import { SocialLink } from "./baseFunctions";
 
-export const Hermit: SocialLinkType = {
-  ...baseSocialLinkCalculation,
-  name: SocialLinkNames.Hermit,
-  levels: {
+export const Hermit = new SocialLink(
+  SocialLinkNames.Hermit,
+  { name: "Maya", place: "Laptop at the Protagonist's room" },
+  {
     0: {
       [Routes.Platonic]: createBondObject,
     },
@@ -155,5 +155,5 @@ export const Hermit: SocialLinkType = {
     10: {
       [Routes.Platonic]: LinkMaxedObject,
     },
-  },
-};
+  }
+);

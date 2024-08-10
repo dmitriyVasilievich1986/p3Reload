@@ -1,4 +1,3 @@
-import { singleDay } from "../calendar/types";
 import React from "react";
 
 export enum SocialLinkNames {
@@ -54,19 +53,15 @@ export type SocialLinksStatsArray = {
   [key in SocialLinkNames]: SocialLinkStats;
 };
 
-export type SocialLinkTypeBase = {
-  name: SocialLinkNames;
-  maxLevel: number;
-  getlevel: (props: SocialLinkStats) => SocialLinkLevel;
-  _calculate: (props: singleDay) => { links: SocialLinksStatsArray };
-  calculate: (props: singleDay) => { links: SocialLinksStatsArray };
-  getStaleLevel: () => React.ReactNode;
-  levels: { [key: number]: { [key in Routes]?: SocialLinkLevel } };
-  invitations: {
-    [key: number]: { [key in Routes]?: React.ReactNode };
-  };
+export type InvitationsType = {
+  [key: number]: { [key in Routes]?: React.ReactNode };
 };
 
-export type SocialLinkType = SocialLinkTypeBase & {
-  name: SocialLinkNames;
+export type LevelsType = {
+  [key: number]: { [key in Routes]?: SocialLinkLevel };
+};
+
+export type LinkDetailsType = {
+  name: string;
+  place: string;
 };

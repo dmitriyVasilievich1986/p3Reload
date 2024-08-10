@@ -1,9 +1,8 @@
 import { createBondObject, LinkMaxedObject, CreateBond } from "./GenericCard";
 import { QuestionsWrapper, Question, Answer } from "../../components/choices";
-import { SocialLinkNames, SocialLinkType, Routes } from "./types";
-import { baseSocialLinkCalculation } from "./baseFunctions";
 import { EventCard } from "../../components/eventCard";
-import { singleDay } from "../calendar/types";
+import { SocialLinkNames, Routes } from "./types";
+import { SocialLink } from "./baseFunctions";
 
 function chariotStrength() {
   const payload = QuestionsWrapper({
@@ -40,26 +39,10 @@ function chariotStrength() {
   };
 }
 
-export const Chariot: SocialLinkType = {
-  ...baseSocialLinkCalculation,
-  name: SocialLinkNames.Chariot,
-  calculate: function (currentDay: singleDay) {
-    const payload = this._calculate(currentDay);
-    const thisLink = currentDay.links[SocialLinkNames.Chariot];
-    if (thisLink.level === 1) {
-      return {
-        links: {
-          ...payload.links,
-          [SocialLinkNames.Strength]: {
-            ...currentDay.links[SocialLinkNames.Strength],
-            level: 1,
-          },
-        },
-      };
-    }
-    return payload;
-  },
-  levels: {
+export const Chariot = new SocialLink(
+  SocialLinkNames.Chariot,
+  { name: "Kazushi Miyamoto", place: "Classroom 2F" },
+  {
     0: {
       [Routes.Platonic]: createBondObject,
     },
@@ -191,7 +174,7 @@ export const Chariot: SocialLinkType = {
       [Routes.Platonic]: LinkMaxedObject,
     },
   },
-  invitations: {
+  {
     2: {
       [Routes.Platonic]: (
         <Question label="That way, I'm ready to go 24/7, y'know? That's real dedication, man.">
@@ -250,5 +233,5 @@ export const Chariot: SocialLinkType = {
         </Question>
       ),
     },
-  },
-};
+  }
+);
