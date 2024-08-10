@@ -1,4 +1,4 @@
-import { singleDay } from "../calendar/types";
+import { SingleDay } from "../calendar/SingleDay";
 import { StatsNames } from "../stats/types";
 
 import {
@@ -49,7 +49,7 @@ export class SocialLink {
     );
   }
 
-  calculate(props: singleDay) {
+  calculate(props: SingleDay) {
     const thisLink = props.links[this.linkName];
     const currentLevel = this.getLevel(thisLink);
     const isNewlevel = this.isNewLevel(thisLink);
@@ -111,7 +111,7 @@ export class SocialLinkAlwaysLevelUp extends SocialLink {
     return this.levels[1].Platonic as SocialLinkLevel;
   }
 
-  calculate(props: singleDay) {
+  calculate(props: SingleDay) {
     const thisLink = props.links[this.linkName];
     const isNewlevel = thisLink.level < this.maxLevel;
     return {

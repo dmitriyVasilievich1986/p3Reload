@@ -1,5 +1,5 @@
 import { DayConstants } from "./components/modalWindow/types";
-import { singleDay } from "./constants/calendar/types";
+import { SingleDay } from "./constants/calendar/SingleDay";
 import { Calendar } from "./components/calendarPage";
 import { Modal } from "./components/modalWindow";
 import { LeftBar } from "./components/leftBar";
@@ -16,7 +16,7 @@ import { Times } from "./constants/events/types";
 const cx = classnames.bind(style);
 
 function App() {
-  const [calendar, setCalendar] = React.useState<singleDay[]>([]);
+  const [calendar, setCalendar] = React.useState<SingleDay[]>([]);
   const calendarRef = React.useRef<HTMLDivElement>(null);
   const [dayConstants, setDayConstants] = React.useState<DayConstants | null>(
     null
@@ -39,12 +39,12 @@ function App() {
         <div ref={calendarRef}>
           {calendar.map((c, i) => (
             <Calendar
-              key={c.date.getTime()}
               previousDay={calendar?.[i - 1]}
+              key={c.date.getTime()}
+              currentDay={c}
               setDayConstants={(time: Times) =>
                 setDayConstants({ time, day: c.date })
               }
-              {...c}
             />
           ))}
         </div>

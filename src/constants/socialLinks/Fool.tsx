@@ -1,6 +1,6 @@
 import { SocialLinkAlwaysLevelUp } from "./baseFunctions";
 import { SocialLinkNames, Routes } from "./types";
-import { singleDay } from "../calendar/types";
+import { SingleDay } from "../calendar/SingleDay";
 
 import {
   AutomaticLevelUpObject,
@@ -9,7 +9,7 @@ import {
 } from "./GenericCard";
 
 class SocialLinkFool extends SocialLinkAlwaysLevelUp {
-  calculate(currentDay: singleDay) {
+  calculate(currentDay: SingleDay) {
     const thisLink = currentDay.links[SocialLinkNames.Fool];
     const level =
       thisLink.level === 7 ? thisLink.level + 2 : thisLink.level + 1;

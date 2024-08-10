@@ -1,10 +1,10 @@
 import { SocialLinkNames, InvitationsType } from "../socialLinks/types";
 import { upgradeResponse, Categories, Times } from "./types";
-import { singleDay } from "../calendar/types";
+import { SingleDay } from "../calendar/SingleDay";
 import { socialLinks } from "../socialLinks";
 
 export const initialUpgrade = {
-  upgrade: function (currentDay: singleDay): upgradeResponse {
+  upgrade: function (currentDay: SingleDay): upgradeResponse {
     return { ...currentDay };
   },
 };
@@ -13,8 +13,8 @@ export const linkBaseFunctions = {
   name: SocialLinkNames.Aeon,
   linkName: SocialLinkNames.Aeon,
   category: Categories.Links,
-  upgrade: function (currentDay: singleDay): upgradeResponse {
-    return socialLinks[this.linkName].calculate({ ...currentDay });
+  upgrade: function (currentDay: SingleDay): upgradeResponse {
+    return socialLinks[this.linkName].calculate(currentDay);
   },
 };
 
@@ -22,7 +22,7 @@ export const linkInvitationBaseFunctions = {
   ...linkBaseFunctions,
   category: Categories.Invitation,
   _invitationsDates: [],
-  upgrade: function (currentDay: singleDay): upgradeResponse {
+  upgrade: function (currentDay: SingleDay): upgradeResponse {
     return {
       links: {
         ...currentDay.links,
@@ -37,8 +37,8 @@ export const linkInvitationBaseFunctions = {
     currentDay,
     time,
   }: {
-    previousDay?: singleDay;
-    currentDay: singleDay;
+    previousDay?: SingleDay;
+    currentDay: SingleDay;
     time: Times;
   }) {
     const isInInvitations =

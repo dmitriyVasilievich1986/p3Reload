@@ -1,8 +1,8 @@
-import { singleDay } from "../../constants/calendar/types";
+import { SingleDay } from "../../constants/calendar/SingleDay";
 
 export type MonthBlockProps = {
   clickHandler: (id: string) => void;
-  days: singleDay[];
+  days: SingleDay[];
 };
 
 export type LeftBarProps = {

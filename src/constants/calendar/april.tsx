@@ -2,16 +2,12 @@ import { Question, Answer } from "../../components/choices";
 import { EventCard } from "../../components/eventCard";
 import { WideEvent } from "../../components/wideEvent";
 import { Categories, Times } from "../events/types";
-import { baseCalendar } from "./baseFunctions";
-import { singleDay } from "./types";
+import { SingleDay } from "./SingleDay";
 import { events } from "../events";
 
-export const april: singleDay[] = [
-  {
-    ...baseCalendar,
+export const april: SingleDay[] = [
+  new SingleDay({
     date: new Date(2009, 3, 7),
-    singleTimeEvents: [],
-    arcanes: [],
     activities: [
       {
         ...events.Special,
@@ -21,12 +17,9 @@ export const april: singleDay[] = [
         ),
       },
     ],
-  },
-  {
-    ...baseCalendar,
+  }),
+  new SingleDay({
     date: new Date(2009, 3, 8),
-    singleTimeEvents: [],
-    arcanes: [],
     activities: [
       {
         ...events.schoolQuestionCharm,
@@ -46,12 +39,9 @@ export const april: singleDay[] = [
       events.Special,
       { ...events.Special, time: Times.Evening },
     ],
-  },
-  {
-    ...baseCalendar,
+  }),
+  new SingleDay({
     date: new Date(2009, 3, 9),
-    singleTimeEvents: [],
-    arcanes: [],
     activities: [
       {
         ...events.Special,
@@ -61,12 +51,9 @@ export const april: singleDay[] = [
         ),
       },
     ],
-  },
-  {
-    ...baseCalendar,
+  }),
+  new SingleDay({
     date: new Date(2009, 3, 10),
-    singleTimeEvents: [],
-    arcanes: [],
     activities: [
       {
         ...events.Special,
@@ -76,12 +63,9 @@ export const april: singleDay[] = [
         ),
       },
     ],
-  },
-  {
-    ...baseCalendar,
+  }),
+  new SingleDay({
     date: new Date(2009, 3, 11),
-    singleTimeEvents: [],
-    arcanes: [],
     activities: [
       {
         ...events.Special,
@@ -91,13 +75,10 @@ export const april: singleDay[] = [
         ),
       },
     ],
-  },
-  {
-    ...baseCalendar,
+  }),
+  new SingleDay({
     date: new Date(2009, 3, 12),
     isDayOff: true,
-    singleTimeEvents: [],
-    arcanes: [],
     activities: [
       {
         ...events.Special,
@@ -107,12 +88,9 @@ export const april: singleDay[] = [
         ),
       },
     ],
-  },
-  {
-    ...baseCalendar,
+  }),
+  new SingleDay({
     date: new Date(2009, 3, 13),
-    singleTimeEvents: [],
-    arcanes: [],
     activities: [
       {
         ...events.Special,
@@ -122,12 +100,9 @@ export const april: singleDay[] = [
         ),
       },
     ],
-  },
-  {
-    ...baseCalendar,
+  }),
+  new SingleDay({
     date: new Date(2009, 3, 14),
-    singleTimeEvents: [],
-    arcanes: [],
     activities: [
       {
         ...events.Special,
@@ -137,12 +112,9 @@ export const april: singleDay[] = [
         ),
       },
     ],
-  },
-  {
-    ...baseCalendar,
+  }),
+  new SingleDay({
     date: new Date(2009, 3, 15),
-    singleTimeEvents: [],
-    arcanes: [],
     activities: [
       {
         ...events.Special,
@@ -152,12 +124,9 @@ export const april: singleDay[] = [
         ),
       },
     ],
-  },
-  {
-    ...baseCalendar,
+  }),
+  new SingleDay({
     date: new Date(2009, 3, 16),
-    singleTimeEvents: [],
-    arcanes: [],
     activities: [
       {
         ...events.Special,
@@ -167,12 +136,9 @@ export const april: singleDay[] = [
         ),
       },
     ],
-  },
-  {
-    ...baseCalendar,
+  }),
+  new SingleDay({
     date: new Date(2009, 3, 17),
-    singleTimeEvents: [],
-    arcanes: [],
     activities: [
       {
         ...events.Special,
@@ -182,12 +148,9 @@ export const april: singleDay[] = [
         ),
       },
     ],
-  },
-  {
-    ...baseCalendar,
+  }),
+  new SingleDay({
     date: new Date(2009, 3, 18),
-    singleTimeEvents: [],
-    arcanes: [],
     activities: [
       {
         ...events.schoolQuestionCharm,
@@ -207,13 +170,10 @@ export const april: singleDay[] = [
       { ...events.Special, time: Times.Evening },
       { ...events.Fool, time: Times.DarkHour },
     ],
-  },
-  {
-    ...baseCalendar,
+  }),
+  new SingleDay({
     date: new Date(2009, 3, 19),
     isDayOff: true,
-    singleTimeEvents: [],
-    arcanes: [],
     activities: [
       {
         ...events.Special,
@@ -223,12 +183,9 @@ export const april: singleDay[] = [
         ),
       },
     ],
-  },
-  {
-    ...baseCalendar,
+  }),
+  new SingleDay({
     date: new Date(2009, 3, 20),
-    singleTimeEvents: [],
-    arcanes: [],
     activities: [
       {
         ...events.Special,
@@ -240,24 +197,18 @@ export const april: singleDay[] = [
       },
       { ...events.Fool, time: Times.DarkHour },
     ],
-  },
-  {
-    ...baseCalendar,
+  }),
+  new SingleDay({
     date: new Date(2009, 3, 21),
-    singleTimeEvents: [],
-    arcanes: [],
     activities: [
       events.stayAwakeInClass,
       events.drinkMedicine,
       { ...events.gameParadeCourage, time: Times.Day },
       events.gameParadeCourage,
     ],
-  },
-  {
-    ...baseCalendar,
+  }),
+  new SingleDay({
     date: new Date(2009, 3, 22),
-    singleTimeEvents: [],
-    arcanes: [],
     activities: [
       { ...events.Magician, special: true },
       {
@@ -274,41 +225,26 @@ export const april: singleDay[] = [
         ),
       },
     ],
-  },
-  {
-    ...baseCalendar,
+  }),
+  new SingleDay({
     date: new Date(2009, 3, 23),
-    singleTimeEvents: [],
-    arcanes: [],
     activities: [events.drinkMedicine, events.Chariot, events.gameParadeCharm],
-  },
-  {
-    ...baseCalendar,
+  }),
+  new SingleDay({
     date: new Date(2009, 3, 24),
-    singleTimeEvents: [],
-    arcanes: [],
     activities: [events.Chariot, events.gameParadeCourage],
-  },
-  {
-    ...baseCalendar,
+  }),
+  new SingleDay({
     date: new Date(2009, 3, 25),
-    singleTimeEvents: [],
-    arcanes: [],
     activities: [events.Strength, events.gameParadeAcademics],
-  },
-  {
-    ...baseCalendar,
+  }),
+  new SingleDay({
     date: new Date(2009, 3, 26),
     isDayOff: true,
-    singleTimeEvents: [],
-    arcanes: [],
     activities: [events.Hierophant, events.wakatsuKitchen],
-  },
-  {
-    ...baseCalendar,
+  }),
+  new SingleDay({
     date: new Date(2009, 3, 27),
-    singleTimeEvents: [],
-    arcanes: [],
     activities: [
       {
         ...events.schoolQuestionCharm,
@@ -330,12 +266,9 @@ export const april: singleDay[] = [
       events.Emperor,
       events.gameParadeCharm,
     ],
-  },
-  {
-    ...baseCalendar,
+  }),
+  new SingleDay({
     date: new Date(2009, 3, 28),
-    singleTimeEvents: [],
-    arcanes: [],
     activities: [
       {
         ...events.Special,
@@ -352,20 +285,13 @@ export const april: singleDay[] = [
       events.Magician,
       events.gameParadeCourage,
     ],
-  },
-  {
-    ...baseCalendar,
+  }),
+  new SingleDay({
     date: new Date(2009, 3, 29),
-    isDayOff: true,
-    singleTimeEvents: [],
-    arcanes: [],
     activities: [events.Hermit, events.gameParadeAcademics],
-  },
-  {
-    ...baseCalendar,
+  }),
+  new SingleDay({
     date: new Date(2009, 3, 30),
-    singleTimeEvents: [],
-    arcanes: [],
     activities: [
       events.stayAwakeInClass,
       {
@@ -383,5 +309,5 @@ export const april: singleDay[] = [
       events.Magician,
       events.gameParadeCharm,
     ],
-  },
+  }),
 ];
