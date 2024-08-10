@@ -37,7 +37,7 @@ export const november: singleDay[] = [
         label: () => (
           <WideEvent>
             <EventCard
-              head="Hierophant and Lovers Boss Fight"
+              head="Strega and Hanged Man Boss Fight"
               place="Tartarus"
             />
           </WideEvent>
