@@ -1,8 +1,8 @@
-import { SocialLinkNames } from "../../socialLinks/types";
-import { EventCard } from "../../../components/eventCard";
-import { DaysNames } from "../../monthsNames";
+import { SocialLinkNames } from "@/constants/socialLinks";
+import { CardWithMultiplier } from "./genericCards";
+import { DaysNames } from "@/constants/monthsNames";
 import { linkBaseFunctions } from "../base";
-import { stats } from "../../stats/stats";
+import { stats } from "@/constants/stats";
 import { Times, Event } from "../types";
 
 export const starEvents: {
@@ -13,16 +13,7 @@ export const starEvents: {
     time: Times.Day,
     name: SocialLinkNames.Star,
     linkName: SocialLinkNames.Star,
-    label: (props) => (
-      <EventCard
-        place="Iwatodai Station Strip Mall 1F"
-        name="Mamoru Hayase"
-        head="Star"
-        multiplier={props.links && props.links[SocialLinkNames.Star].multiplier}
-        charm={props?.stats && props.stats[stats.Charm.name] >= 100}
-        card={props.arcanes.includes(SocialLinkNames.Star)}
-      />
-    ),
+    label: CardWithMultiplier,
     available: function ({ previousDay, currentDay, time }) {
       if (previousDay === undefined) return false;
       const days = [DaysNames.wednesday, DaysNames.friday, DaysNames.sunday];

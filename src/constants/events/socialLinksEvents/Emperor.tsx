@@ -1,8 +1,7 @@
-import { SocialLinkNames } from "../../socialLinks/types";
-import { EventCard } from "../../../components/eventCard";
-import { DaysNames } from "../../monthsNames";
+import { SocialLinkNames } from "@/constants/socialLinks";
+import { CardWithMultiplier } from "./genericCards";
+import { DaysNames } from "@/constants/monthsNames";
 import { linkBaseFunctions } from "../base";
-import { stats } from "../../stats/stats";
 import { Times, Event } from "../types";
 
 export const emperorEvents: {
@@ -13,18 +12,7 @@ export const emperorEvents: {
     time: Times.Day,
     name: SocialLinkNames.Emperor,
     linkName: SocialLinkNames.Emperor,
-    label: (props) => (
-      <EventCard
-        place="Student Council Room"
-        name="Hidetoshi Odagiri"
-        head="Emperor"
-        multiplier={
-          props.links && props.links[SocialLinkNames.Emperor].multiplier
-        }
-        charm={props?.stats && props.stats[stats.Charm.name] >= 100}
-        card={props.arcanes.includes(SocialLinkNames.Emperor)}
-      />
-    ),
+    label: CardWithMultiplier,
     available: function ({ currentDay, time }) {
       const days = [DaysNames.monday, DaysNames.wednesday, DaysNames.friday];
       const isToday =

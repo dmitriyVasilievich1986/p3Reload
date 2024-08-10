@@ -1,5 +1,5 @@
-import { Categories } from "../../constants/events/types";
-import { socialLinks } from "../../constants/socialLinks";
+import { socialLinks } from "@/constants/socialLinks";
+import { Categories } from "@/constants/events";
 import BadgeTooltip from "./BadgeTooltip";
 import classnames from "classnames/bind";
 import { DayEventProps } from "./types";

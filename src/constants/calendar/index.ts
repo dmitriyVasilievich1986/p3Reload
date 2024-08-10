@@ -1,5 +1,6 @@
 import { initialCalculataion } from "./baseFunctions";
 import { SingleDay } from "./SingleDay";
+
 import { september } from "./september";
 import { december } from "./december";
 import { november } from "./november";
@@ -11,7 +12,7 @@ import { july } from "./july";
 import { june } from "./june";
 import { may } from "./may";
 
-export const calendar: SingleDay[] = [
+const calendar: SingleDay[] = [
   ...april,
   ...may,
   ...june,
@@ -24,4 +25,4 @@ export const calendar: SingleDay[] = [
   ...january,
 ];
 
-export { initialCalculataion };
+export { initialCalculataion, SingleDay, calendar };

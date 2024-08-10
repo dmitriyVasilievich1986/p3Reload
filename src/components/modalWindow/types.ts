@@ -1,4 +1,4 @@
-import { Times } from "../../constants/events/types";
+import { Times } from "@/constants/events";
 
 export type DayConstants = {
   time: Times;

@@ -1,5 +1,5 @@
-import { SocialLinkNames } from "../../socialLinks/types";
-import { EventCard } from "../../../components/eventCard";
+import { SocialLinkNames } from "@/constants/socialLinks";
+import { CardWithoutMultiplier } from "./genericCards";
 import { linkBaseFunctions } from "../base";
 import { Times, Event } from "../types";
 
@@ -12,7 +12,7 @@ export const foolEvents: {
     name: SocialLinkNames.Fool,
     linkName: SocialLinkNames.Fool,
     special: true,
-    label: () => <EventCard place="Tartarus" name="S.E.E.S." head="Fool" />,
+    label: CardWithoutMultiplier,
     available: () => false,
   },
 };

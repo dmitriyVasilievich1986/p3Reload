@@ -1,5 +1,5 @@
-import { SingleDay } from "../../constants/calendar/SingleDay";
-import { Times, Event } from "../../constants/events/types";
+import { Times, Event } from "@/constants/events/types";
+import { SingleDay } from "@/constants/calendar";
 
 export type DateProps = {
   date: Date;

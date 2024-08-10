@@ -1,8 +1,6 @@
-import { EventCard } from "../../components/eventCard";
-import { WideEvent } from "../../components/wideEvent";
-import { Times } from "../events/types";
+import { EventCard, WideEvent } from "@/components";
+import { events, Times } from "@/constants/events";
 import { SingleDay } from "./SingleDay";
-import { events } from "../events";
 
 export const august: SingleDay[] = [
   new SingleDay({

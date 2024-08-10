@@ -1,8 +1,7 @@
-import { DayConstants } from "./components/modalWindow/types";
-import { SingleDay } from "./constants/calendar/SingleDay";
-import { Calendar } from "./components/calendarPage";
-import { Modal } from "./components/modalWindow";
-import { LeftBar } from "./components/leftBar";
+import { DayConstants } from "@/components/modalWindow/types";
+import { Calendar, LeftBar, Modal } from "@/components";
+import { SingleDay } from "@/constants/calendar";
+import { Times } from "@/constants/events";
 import classnames from "classnames/bind";
 import * as style from "./App.scss";
 import React from "react";
@@ -10,8 +9,7 @@ import React from "react";
 import {
   initialCalculataion,
   calendar as initialCalendar,
-} from "./constants/calendar";
-import { Times } from "./constants/events/types";
+} from "@/constants/calendar";
 
 const cx = classnames.bind(style);
 

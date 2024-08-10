@@ -1,5 +1,5 @@
-import { SocialLinkNames } from "../../socialLinks/types";
-import { EventCard } from "../../../components/eventCard";
+import { SocialLinkNames } from "@/constants/socialLinks";
+import { CardWithoutMultiplier } from "./genericCards";
 import { linkBaseFunctions } from "../base";
 import { Times, Event } from "../types";
 
@@ -12,7 +12,7 @@ export const deathEvents: {
     name: SocialLinkNames.Death,
     linkName: SocialLinkNames.Death,
     special: true,
-    label: () => <EventCard name="Pharos" head="Death" />,
+    label: CardWithoutMultiplier,
     available: () => false,
   },
 };

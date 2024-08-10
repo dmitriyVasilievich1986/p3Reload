@@ -1,7 +1,6 @@
-import { initialCalculataion } from "../../constants/calendar";
-import { SingleDay } from "../../constants/calendar/SingleDay";
+import { initialCalculataion, SingleDay } from "@/constants/calendar";
 import { OutsideClick } from "../supportComponents";
-import { events } from "../../constants/events";
+import { events } from "@/constants/events";
 import classnames from "classnames/bind";
 import { DayConstants } from "./types";
 import EventsList from "./EventsList";
@@ -22,7 +21,7 @@ import {
   Categories,
   Event,
   Times,
-} from "../../constants/events/types";
+} from "@/constants/events/types";
 
 const cx = classnames.bind(style);
 

@@ -1,9 +1,8 @@
-import { SocialLinkNames } from "../../socialLinks/types";
-import { EventCard } from "../../../components/eventCard";
-import { socialLinks } from "../../socialLinks";
-import { DaysNames } from "../../monthsNames";
+import { SocialLinkNames, socialLinks } from "@/constants/socialLinks";
+import { CardWithMultiplier } from "./genericCards";
+import { DaysNames } from "@/constants/monthsNames";
 import { linkBaseFunctions } from "../base";
-import { stats } from "../../stats/stats";
+import { stats } from "@/constants/stats";
 import { Times, Event } from "../types";
 
 export const sunEvents: {
@@ -14,9 +13,7 @@ export const sunEvents: {
     time: Times.Day,
     name: SocialLinkNames.Sun,
     linkName: SocialLinkNames.Sun,
-    label: () => (
-      <EventCard place="Naganaki Shrine" name="Akinari Kamiki" head="Sun" />
-    ),
+    label: CardWithMultiplier,
     available: function ({ previousDay, currentDay, time }) {
       if (previousDay === undefined) return false;
       return (

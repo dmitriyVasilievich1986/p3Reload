@@ -123,24 +123,24 @@ export enum statsEventsCourageNames {
   Mandragora = "Mandragora",
 }
 export enum socialLinkRomanceNames {
-  PriestessRomance = "PriestessRomance",
-  StrengthRomance = "StrengthRomance",
-  EmpressRomance = "EmpressRomance",
-  JusticeRomance = "JusticeRomance",
-  LoversRomance = "LoversRomance",
-  AeonRomance = "AeonRomance",
+  PriestessRomance = "Priestess (Romance)",
+  StrengthRomance = "Strength (Romance)",
+  EmpressRomance = "Empress (Romance)",
+  JusticeRomance = "Justice (Romance)",
+  LoversRomance = "Lovers (Romance)",
+  AeonRomance = "Aeon (Romance)",
 }
 
 export enum socialLinkInvitationNames {
-  TemperanceInvitation = "TemperanceInvitation",
-  PriestessInvitation = "PriestessInvitation",
-  MagicianInvitation = "MagicianInvitation",
-  StrengthInvitation = "StrengthInvitation",
-  JusticeInvitation = "JusticeInvitation",
-  ChariotInvitation = "ChariotInvitation",
-  FortuneInvitation = "FortuneInvitation",
-  EmpressInvitation = "EmpressInvitation",
-  LoversInvitation = "LoversInvitation",
+  TemperanceInvitation = "Temperance (Invitation)",
+  PriestessInvitation = "Priestess (Invitation)",
+  MagicianInvitation = "Magician (Invitation)",
+  StrengthInvitation = "Strength (Invitation)",
+  JusticeInvitation = "Justice (Invitation)",
+  ChariotInvitation = "Chariot (Invitation)",
+  FortuneInvitation = "Fortune (Invitation)",
+  EmpressInvitation = "Empress (Invitation)",
+  LoversInvitation = "Lovers (Invitation)",
 }
 
 const allNames = {

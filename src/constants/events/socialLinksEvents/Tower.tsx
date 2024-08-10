@@ -1,8 +1,8 @@
-import { SocialLinkNames } from "../../socialLinks/types";
-import { EventCard } from "../../../components/eventCard";
-import { DaysNames } from "../../monthsNames";
+import { SocialLinkNames } from "@/constants/socialLinks";
+import { CardWithMultiplier } from "./genericCards";
+import { DaysNames } from "@/constants/monthsNames";
 import { linkBaseFunctions } from "../base";
-import { stats } from "../../stats/stats";
+import { stats } from "@/constants/stats";
 import { Times, Event } from "../types";
 
 export const towerEvents: {
@@ -13,18 +13,7 @@ export const towerEvents: {
     time: Times.Evening,
     name: SocialLinkNames.Tower,
     linkName: SocialLinkNames.Tower,
-    label: (props) => (
-      <EventCard
-        place="Club Escapade"
-        name="Mutatsu"
-        head="Tower"
-        multiplier={
-          props.links && props.links[SocialLinkNames.Tower].multiplier
-        }
-        charm={props?.stats && props.stats[stats.Charm.name] >= 100}
-        card={props.arcanes.includes(SocialLinkNames.Tower)}
-      />
-    ),
+    label: CardWithMultiplier,
     available: function ({ previousDay, currentDay, time }) {
       if (previousDay === undefined) return false;
       const days = [

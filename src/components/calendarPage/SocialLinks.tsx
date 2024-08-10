@@ -1,6 +1,5 @@
-import { SocialLinkNames } from "../../constants/socialLinks/types";
-import { SingleDay } from "../../constants/calendar/SingleDay";
-import { socialLinks } from "../../constants/socialLinks";
+import { SocialLinkNames, socialLinks } from "@/constants/socialLinks";
+import { SingleDay } from "@/constants/calendar";
 import classnames from "classnames/bind";
 import * as style from "./style.scss";
 import { Card } from "../card";

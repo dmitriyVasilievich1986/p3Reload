@@ -1,8 +1,7 @@
-import { SocialLinkNames } from "../../socialLinks/types";
-import { EventCard } from "../../../components/eventCard";
-import { socialLinks } from "../../socialLinks";
+import { SocialLinkNames, socialLinks } from "@/constants/socialLinks";
+import { CardWithMultiplier } from "./genericCards";
 import { linkBaseFunctions } from "../base";
-import { stats } from "../../stats/stats";
+import { stats } from "@/constants/stats";
 import { Times, Event } from "../types";
 
 export const moonEvents: {
@@ -13,16 +12,7 @@ export const moonEvents: {
     time: Times.Day,
     name: SocialLinkNames.Moon,
     linkName: SocialLinkNames.Moon,
-    label: (props) => (
-      <EventCard
-        name="Nozomi Suemitsu"
-        place="Paulownia Mall"
-        head="Moon"
-        multiplier={props.links && props.links[SocialLinkNames.Moon].multiplier}
-        charm={props?.stats && props.stats[stats.Charm.name] >= 100}
-        card={props.arcanes.includes(SocialLinkNames.Moon)}
-      />
-    ),
+    label: CardWithMultiplier,
     available: function ({ previousDay, currentDay, time }) {
       if (previousDay === undefined) return false;
       return (

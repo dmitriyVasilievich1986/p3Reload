@@ -1,10 +1,7 @@
-import { Question, Answer } from "../../components/choices";
-import { mainCharName } from "../socialLinks/baseFunctions";
-import { EventCard } from "../../components/eventCard";
-import { WideEvent } from "../../components/wideEvent";
-import { Times } from "../events/types";
+import { EventCard, WideEvent, Question, Answer } from "@/components";
+import { mainCharName } from "@/constants/socialLinks";
+import { events, Times } from "@/constants/events";
 import { SingleDay } from "./SingleDay";
-import { events } from "../events";
 
 export const september: SingleDay[] = [
   new SingleDay({

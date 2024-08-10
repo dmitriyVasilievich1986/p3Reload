@@ -1,5 +1,6 @@
-import { SocialLink } from "./baseFunctions";
-import { SocialLinkNames } from "./types";
+import { CardNeededCalculator } from "./calculationFunctions";
+import { mainCharName, SocialLink } from "./baseFunctions";
+import { SocialLinkNames, Routes } from "./types";
 
 import { Hierophant } from "./Hierophant";
 import { Temperance } from "./Temperance";
@@ -23,7 +24,7 @@ import { Moon } from "./Moon";
 import { Star } from "./Star";
 import { Sun } from "./Sun";
 
-export const socialLinks: { [key in SocialLinkNames]: SocialLink } = {
+const socialLinks: { [key in SocialLinkNames]: SocialLink } = {
   Aeon,
   Chariot,
   Devil,
@@ -45,4 +46,13 @@ export const socialLinks: { [key in SocialLinkNames]: SocialLink } = {
   Temperance,
   Tower,
   Death,
+};
+
+export {
+  CardNeededCalculator,
+  SocialLinkNames,
+  mainCharName,
+  socialLinks,
+  SocialLink,
+  Routes,
 };

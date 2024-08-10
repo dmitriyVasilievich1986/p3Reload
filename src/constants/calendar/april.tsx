@@ -1,9 +1,6 @@
-import { Question, Answer } from "../../components/choices";
-import { EventCard } from "../../components/eventCard";
-import { WideEvent } from "../../components/wideEvent";
-import { Categories, Times } from "../events/types";
+import { EventCard, WideEvent, Question, Answer } from "@/components";
+import { Categories, events, Times } from "@/constants/events";
 import { SingleDay } from "./SingleDay";
-import { events } from "../events";
 
 export const april: SingleDay[] = [
   new SingleDay({
