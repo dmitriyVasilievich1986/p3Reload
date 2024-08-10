@@ -1,6 +1,7 @@
 import { linkInvitationBaseFunctions, linkBaseFunctions } from "../base";
 import { SocialLinkNames, Routes } from "../../socialLinks/types";
 import { EventCard } from "../../../components/eventCard";
+import { SingleDay } from "../../calendar/SingleDay";
 import { socialLinks } from "../../socialLinks";
 import { DaysNames } from "../../monthsNames";
 import { stats } from "../../stats/stats";
@@ -70,16 +71,18 @@ export const strengthEvents: {
       />
     ),
     upgrade: function (currentDay) {
-      return socialLinks[SocialLinkNames.Strength].calculate({
-        ...currentDay,
-        links: {
-          ...currentDay.links,
-          [SocialLinkNames.Strength]: {
-            ...currentDay.links[SocialLinkNames.Strength],
-            romance: Routes.Romantic,
+      return socialLinks[SocialLinkNames.Strength].calculate(
+        new SingleDay({
+          ...currentDay,
+          links: {
+            ...currentDay.links,
+            [SocialLinkNames.Strength]: {
+              ...currentDay.links[SocialLinkNames.Strength],
+              romance: Routes.Romantic,
+            },
           },
-        },
-      });
+        })
+      );
     },
     available: function ({ previousDay, currentDay, time }) {
       if (previousDay === undefined) return false;

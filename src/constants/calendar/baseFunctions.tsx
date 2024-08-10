@@ -1,61 +1,5 @@
-import { StatsNames, CharStats } from "../stats/types";
-import { MonthNames } from "../monthsNames";
-import { singleDay } from "./types";
-
-import {
-  SocialLinksStatsArray,
-  SocialLinkStats,
-  SocialLinkNames,
-  Routes,
-} from "../socialLinks/types";
-
-const initialStats: CharStats = {
-  [StatsNames.Academics]: 0,
-  [StatsNames.Charm]: 0,
-  [StatsNames.Courage]: 0,
-};
-
-const zeroStats: SocialLinkStats = {
-  level: 0,
-  points: 0,
-  multiplier: 1,
-  romance: Routes.Platonic,
-};
-const initialLinks: SocialLinksStatsArray = {
-  [SocialLinkNames.Aeon]: { ...zeroStats },
-  [SocialLinkNames.Chariot]: { ...zeroStats },
-  [SocialLinkNames.Devil]: { ...zeroStats },
-  [SocialLinkNames.Emperor]: { ...zeroStats },
-  [SocialLinkNames.Empress]: { ...zeroStats },
-  [SocialLinkNames.Fool]: { ...zeroStats },
-  [SocialLinkNames.Fortune]: { ...zeroStats },
-  [SocialLinkNames.HangedMan]: { ...zeroStats },
-  [SocialLinkNames.Hermit]: { ...zeroStats },
-  [SocialLinkNames.Hierophant]: { ...zeroStats },
-  [SocialLinkNames.Justice]: { ...zeroStats },
-  [SocialLinkNames.Lovers]: { ...zeroStats },
-  [SocialLinkNames.Magician]: { ...zeroStats },
-  [SocialLinkNames.Moon]: { ...zeroStats },
-  [SocialLinkNames.Priestess]: { ...zeroStats },
-  [SocialLinkNames.Star]: { ...zeroStats },
-  [SocialLinkNames.Strength]: { ...zeroStats },
-  [SocialLinkNames.Sun]: { ...zeroStats },
-  [SocialLinkNames.Temperance]: { ...zeroStats },
-  [SocialLinkNames.Tower]: { ...zeroStats },
-  [SocialLinkNames.Death]: { ...zeroStats },
-};
-
-export const baseCalendar = {
-  date: new Date(),
-  links: initialLinks,
-  stats: initialStats,
-  singleTimeEvents: [],
-  getId: function () {
-    const month = MonthNames[this.date.getMonth()];
-    const day = this.date.getDate();
-    return `${month}_${day}`;
-  },
-};
+import { SocialLinkNames } from "../socialLinks/types";
+import { SingleDay } from "./SingleDay";
 
 export const classmates: SocialLinkNames[] = [
   SocialLinkNames.Magician,
@@ -68,10 +12,10 @@ export const classmates: SocialLinkNames[] = [
   SocialLinkNames.Moon,
 ];
 
-export function initialCalculataion(calendar: singleDay[]) {
-  (Object.values(calendar) as Array<singleDay>).forEach((c, i, cArray) => {
-    const previousDay: singleDay = cArray?.[i - 1] || baseCalendar;
-    const previousWeek: singleDay | undefined = cArray?.[i - 1];
+export function initialCalculataion(calendar: SingleDay[]) {
+  (Object.values(calendar) as Array<SingleDay>).forEach((c, i, cArray) => {
+    const previousDay: SingleDay = cArray?.[i - 1] || new SingleDay();
+    const previousWeek: SingleDay | undefined = cArray?.[i - 1];
 
     c.singleTimeEvents = previousDay.singleTimeEvents;
     c.stats = previousDay.stats;

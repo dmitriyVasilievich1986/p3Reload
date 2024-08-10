@@ -1,72 +1,47 @@
 import { Question, Answer } from "../../components/choices";
 import { EventCard } from "../../components/eventCard";
 import { WideEvent } from "../../components/wideEvent";
-import { baseCalendar } from "./baseFunctions";
 import { Times } from "../events/types";
-import { singleDay } from "./types";
+import { SingleDay } from "./SingleDay";
 import { events } from "../events";
 
-export const june: singleDay[] = [
-  {
-    ...baseCalendar,
+export const june: SingleDay[] = [
+  new SingleDay({
     date: new Date(2009, 5, 1),
-    singleTimeEvents: [],
-    arcanes: [],
     activities: [events.Emperor, events.AkihikoSanada1],
-  },
-  {
-    ...baseCalendar,
+  }),
+  new SingleDay({
     date: new Date(2009, 5, 2),
-    singleTimeEvents: [],
-    arcanes: [],
     activities: [
       events.stayAwakeInClass,
       events.Temperance,
       events.gameParadeCourage,
     ],
-  },
-  {
-    ...baseCalendar,
+  }),
+  new SingleDay({
     date: new Date(2009, 5, 3),
-    singleTimeEvents: [],
-    arcanes: [],
     activities: [events.Temperance, events.hagakureRamenSpecial],
-  },
-  {
-    ...baseCalendar,
+  }),
+  new SingleDay({
     date: new Date(2009, 5, 4),
-    singleTimeEvents: [],
-    arcanes: [],
     activities: [events.Chariot, events.wakatsuKitchenSpecial],
-  },
-  {
-    ...baseCalendar,
+  }),
+  new SingleDay({
     date: new Date(2009, 5, 5),
-    singleTimeEvents: [],
-    arcanes: [],
     activities: [events.Emperor, events.gameParadeCourage],
-  },
-  {
-    ...baseCalendar,
+  }),
+  new SingleDay({
     date: new Date(2009, 5, 6),
-    singleTimeEvents: [],
-    arcanes: [],
     activities: [events.Justice, events.wilduckBigEaterChallenge],
-  },
-  {
-    ...baseCalendar,
+  }),
+  new SingleDay({
     date: new Date(2009, 5, 7),
     isDayOff: true,
-    singleTimeEvents: [],
-    arcanes: [],
     activities: [events.Moon, events.wakatsuKitchenSpecial],
-  },
-  {
-    ...baseCalendar,
+  }),
+  new SingleDay({
     date: new Date(2009, 5, 8),
     foolMoon: true,
-    singleTimeEvents: [],
-    arcanes: [],
     activities: [
       {
         ...events.Special,
@@ -81,48 +56,33 @@ export const june: singleDay[] = [
         ),
       },
     ],
-  },
-  {
-    ...baseCalendar,
+  }),
+  new SingleDay({
     date: new Date(2009, 5, 9),
-    singleTimeEvents: [],
-    arcanes: [],
     activities: [
       events.drinkMedicine,
       events.Temperance,
       events.hagakureRamenSpecial,
     ],
-  },
-  {
-    ...baseCalendar,
+  }),
+  new SingleDay({
     date: new Date(2009, 5, 10),
-    singleTimeEvents: [],
-    arcanes: [],
     activities: [
       events.stayAwakeInClass,
       events.Emperor,
       events.hagakureRamenSpecial,
     ],
-  },
-  {
-    ...baseCalendar,
+  }),
+  new SingleDay({
     date: new Date(2009, 5, 11),
-    singleTimeEvents: [],
-    arcanes: [],
     activities: [events.Chariot, events.wakatsuKitchenSpecial],
-  },
-  {
-    ...baseCalendar,
+  }),
+  new SingleDay({
     date: new Date(2009, 5, 12),
-    singleTimeEvents: [],
-    arcanes: [],
     activities: [events.Magician, events.hagakureRamenSpecial, events.Death],
-  },
-  {
-    ...baseCalendar,
+  }),
+  new SingleDay({
     date: new Date(2009, 5, 13),
-    singleTimeEvents: [],
-    arcanes: [],
     activities: [
       events.Justice,
       {
@@ -131,20 +91,14 @@ export const june: singleDay[] = [
         label: () => <EventCard head="Theurgy Tutorial" place="Tartarus" />,
       },
     ],
-  },
-  {
-    ...baseCalendar,
+  }),
+  new SingleDay({
     date: new Date(2009, 5, 14),
     isDayOff: true,
-    singleTimeEvents: [],
-    arcanes: [],
     activities: [events.Moon, events.wilduckBurgeWeekendWilduckSet],
-  },
-  {
-    ...baseCalendar,
+  }),
+  new SingleDay({
     date: new Date(2009, 5, 15),
-    singleTimeEvents: [],
-    arcanes: [],
     activities: [
       {
         ...events.schoolQuestionCharm,
@@ -163,19 +117,13 @@ export const june: singleDay[] = [
       events.Emperor,
       events.wakatsuKitchenSpecial,
     ],
-  },
-  {
-    ...baseCalendar,
+  }),
+  new SingleDay({
     date: new Date(2009, 5, 16),
-    singleTimeEvents: [],
-    arcanes: [],
     activities: [events.Temperance, events.hagakureRamenSpecial],
-  },
-  {
-    ...baseCalendar,
+  }),
+  new SingleDay({
     date: new Date(2009, 5, 17),
-    singleTimeEvents: [],
-    arcanes: [],
     activities: [
       {
         ...events.schoolQuestionCharm,
@@ -192,26 +140,17 @@ export const june: singleDay[] = [
       events.Fortune,
       events.hagakureRamenSpecial,
     ],
-  },
-  {
-    ...baseCalendar,
+  }),
+  new SingleDay({
     date: new Date(2009, 5, 18),
-    singleTimeEvents: [],
-    arcanes: [],
     activities: [events.Fortune, events.wakatsuKitchenSpecial],
-  },
-  {
-    ...baseCalendar,
+  }),
+  new SingleDay({
     date: new Date(2009, 5, 19),
-    singleTimeEvents: [],
-    arcanes: [],
     activities: [events.Temperance, events.hagakureRamenSpecial],
-  },
-  {
-    ...baseCalendar,
+  }),
+  new SingleDay({
     date: new Date(2009, 5, 20),
-    singleTimeEvents: [],
-    arcanes: [],
     activities: [
       {
         ...events.Special,
@@ -219,20 +158,14 @@ export const june: singleDay[] = [
       },
       events.wilduckBurgeWeekendWilduckSet,
     ],
-  },
-  {
-    ...baseCalendar,
+  }),
+  new SingleDay({
     date: new Date(2009, 5, 21),
     isDayOff: true,
-    singleTimeEvents: [],
-    arcanes: [],
     activities: [events.Moon, events.wilduckBurgeWeekendWilduckSet],
-  },
-  {
-    ...baseCalendar,
+  }),
+  new SingleDay({
     date: new Date(2009, 5, 22),
-    singleTimeEvents: [],
-    arcanes: [],
     activities: [
       {
         ...events.schoolQuestionCharm,
@@ -247,26 +180,17 @@ export const june: singleDay[] = [
       events.Emperor,
       events.wakatsuKitchenSpecial,
     ],
-  },
-  {
-    ...baseCalendar,
+  }),
+  new SingleDay({
     date: new Date(2009, 5, 23),
-    singleTimeEvents: [],
-    arcanes: [],
     activities: [events.Fortune, events.hagakureRamenSpecial],
-  },
-  {
-    ...baseCalendar,
+  }),
+  new SingleDay({
     date: new Date(2009, 5, 24),
-    singleTimeEvents: [],
-    arcanes: [],
     activities: [events.Fortune, events.hagakureRamenSpecial],
-  },
-  {
-    ...baseCalendar,
+  }),
+  new SingleDay({
     date: new Date(2009, 5, 25),
-    singleTimeEvents: [],
-    arcanes: [],
     activities: [
       {
         ...events.schoolQuestionCharm,
@@ -285,34 +209,22 @@ export const june: singleDay[] = [
       events.Chariot,
       events.wakatsuKitchenSpecial,
     ],
-  },
-  {
-    ...baseCalendar,
+  }),
+  new SingleDay({
     date: new Date(2009, 5, 26),
-    singleTimeEvents: [],
-    arcanes: [],
     activities: [events.Magician, events.hagakureRamenSpecial],
-  },
-  {
-    ...baseCalendar,
+  }),
+  new SingleDay({
     date: new Date(2009, 5, 27),
-    singleTimeEvents: [],
-    arcanes: [],
     activities: [events.Justice, events.wilduckBurgeWeekendWilduckSet],
-  },
-  {
-    ...baseCalendar,
+  }),
+  new SingleDay({
     date: new Date(2009, 5, 28),
     isDayOff: true,
-    singleTimeEvents: [],
-    arcanes: [],
     activities: [events.Moon, events.wilduckBurgeWeekendWilduckSet],
-  },
-  {
-    ...baseCalendar,
+  }),
+  new SingleDay({
     date: new Date(2009, 5, 29),
-    singleTimeEvents: [],
-    arcanes: [],
     activities: [
       {
         ...events.schoolQuestionCharm,
@@ -329,12 +241,9 @@ export const june: singleDay[] = [
       events.Emperor,
       events.wakatsuKitchenSpecial,
     ],
-  },
-  {
-    ...baseCalendar,
+  }),
+  new SingleDay({
     date: new Date(2009, 5, 30),
-    singleTimeEvents: [],
-    arcanes: [],
     activities: [events.Magician, events.hagakureRamenSpecial],
-  },
+  }),
 ];

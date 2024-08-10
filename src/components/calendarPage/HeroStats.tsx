@@ -1,7 +1,7 @@
+import { SingleDay } from "../../constants/calendar/SingleDay";
 import { StatsNames } from "../../constants/stats/types";
 import { stats } from "../../constants/stats";
 import BadgeTooltip from "./BadgeTooltip";
-import { HeroStatsProps } from "./types";
 import classnames from "classnames/bind";
 import * as style from "./style.scss";
 import { Tooltip } from "../tootlip";
@@ -10,9 +10,9 @@ import Card from "../card/Card";
 
 const cx = classnames.bind(style);
 
-function HeroStats(props: HeroStatsProps) {
+function HeroStats(props: { currentDay: SingleDay; previousDay: SingleDay }) {
   const getLevel = (name: StatsNames) => {
-    const currentName = stats[name].getLevel(props.stats[name]).name;
+    const currentName = stats[name].getLevel(props.currentDay.stats[name]).name;
     const previousName = props.previousDay
       ? stats[name].getLevel(props.previousDay.stats[name]).name
       : stats[name].levels[0].name;
@@ -22,7 +22,7 @@ function HeroStats(props: HeroStatsProps) {
   };
 
   const getBadge = (name: StatsNames) => {
-    const levelName = stats[name].getLevel(props.stats[name]).name;
+    const levelName = stats[name].getLevel(props.currentDay.stats[name]).name;
     const previousName = props.previousDay
       ? stats[name].getLevel(props.previousDay.stats[name]).name
       : stats[name].levels[0].name;
@@ -32,9 +32,12 @@ function HeroStats(props: HeroStatsProps) {
   };
 
   const StatsTooltip = ({ name }: { name: StatsNames }) => {
-    const level = stats[name].getLevel(props.stats[name]);
+    const level = stats[name].getLevel(props.currentDay.stats[name]);
     return (
-      <BadgeTooltip points={props.stats[name]} nextLevel={level.nextLevel} />
+      <BadgeTooltip
+        points={props.currentDay.stats[name]}
+        nextLevel={level.nextLevel}
+      />
     );
   };
 

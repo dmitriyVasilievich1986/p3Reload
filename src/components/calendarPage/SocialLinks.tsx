@@ -1,20 +1,20 @@
 import { SocialLinkNames } from "../../constants/socialLinks/types";
+import { SingleDay } from "../../constants/calendar/SingleDay";
 import { socialLinks } from "../../constants/socialLinks";
-import { SocialLinksProps } from "./types";
 import classnames from "classnames/bind";
 import * as style from "./style.scss";
 import { Card } from "../card";
 
 const cx = classnames.bind(style);
 
-function SocialLinks(props: SocialLinksProps) {
+function SocialLinks({ currentDay }: { currentDay: SingleDay }) {
   const getLevel = (name: SocialLinkNames) => {
-    if (props.links[name].level === 0) return "not established";
-    if (props.links[name].level >= socialLinks[name].maxLevel)
+    if (currentDay.links[name].level === 0) return "not established";
+    if (currentDay.links[name].level >= socialLinks[name].maxLevel)
       return "max level";
-    return `${props.links[name].level} (${props.links[name].points}/${
+    return `${currentDay.links[name].level} (${currentDay.links[name].points}/${
       socialLinks[name].getLevel({
-        ...props.links[name],
+        ...currentDay.links[name],
       }).points
     } pts.)`;
   };
@@ -22,7 +22,7 @@ function SocialLinks(props: SocialLinksProps) {
   return (
     <Card head="Links" color="primary">
       <div className={cx("stat")}>
-        {(Object.keys(props.links) as Array<SocialLinkNames>).map((l) => (
+        {(Object.keys(currentDay.links) as Array<SocialLinkNames>).map((l) => (
           <div key={l}>
             <label>{l}</label>: {getLevel(l)}
           </div>

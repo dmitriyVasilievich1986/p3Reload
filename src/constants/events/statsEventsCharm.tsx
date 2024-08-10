@@ -1,12 +1,12 @@
 import { statsEventsCharmNames, Categories, Times, Event } from "./types";
 import { EventCard } from "../../components/eventCard";
-import { singleDay } from "../calendar/types";
+import { SingleDay } from "../calendar/SingleDay";
 import { StatsNames } from "../stats/types";
 import { DaysNames } from "../monthsNames";
 import { stats } from "../stats/stats";
 
 const getCharmUpgradeFunction = (value: number) => {
-  return function (currentDay: singleDay) {
+  return function (currentDay: SingleDay) {
     return {
       stats: {
         ...currentDay.stats,
@@ -45,7 +45,7 @@ export const statsEventsCharm: {
         time === Times.Day
       );
     },
-    upgrade: function (currentDay: singleDay) {
+    upgrade: function (currentDay: SingleDay) {
       return {
         stats: {
           ...currentDay.stats,
@@ -71,7 +71,7 @@ export const statsEventsCharm: {
       const days = [DaysNames.monday, DaysNames.tuesday, DaysNames.wednesday];
       return time === Times.Evening && days.includes(currentDay.date.getDay());
     },
-    upgrade: function (currentDay: singleDay) {
+    upgrade: function (currentDay: SingleDay) {
       return {
         stats: {
           ...currentDay.stats,

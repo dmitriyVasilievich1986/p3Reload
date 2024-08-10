@@ -1,5 +1,5 @@
 import { initialCalculataion } from "../../constants/calendar";
-import { singleDay } from "../../constants/calendar/types";
+import { SingleDay } from "../../constants/calendar/SingleDay";
 import { OutsideClick } from "../supportComponents";
 import { events } from "../../constants/events";
 import classnames from "classnames/bind";
@@ -27,10 +27,10 @@ import {
 const cx = classnames.bind(style);
 
 function Modal(props: {
-  calendar: singleDay[];
+  calendar: SingleDay[];
   setDayConstants: (dayConstants: DayConstants | null) => void;
   dayConstants: DayConstants | null;
-  setCalendar: React.Dispatch<React.SetStateAction<singleDay[]>>;
+  setCalendar: React.Dispatch<React.SetStateAction<SingleDay[]>>;
 }) {
   const [filter, setFilter] = React.useState<string>("");
   if (props.dayConstants === null) return null;
@@ -43,18 +43,18 @@ function Modal(props: {
   const previousDay = props.calendar?.[currentDayIndex - 1];
 
   const updateCalendar = ({ event }: { event: Event }) => {
-    props.setCalendar((prev: singleDay[]) => {
-      const newCalendar: singleDay[] = (prev as Array<singleDay>).map(
+    props.setCalendar((prev: SingleDay[]) => {
+      const newCalendar: SingleDay[] = (prev as Array<SingleDay>).map(
         (c, i) => {
           if (i === currentDayIndex) {
-            return {
+            return new SingleDay({
               ...c,
               activities: c.activities.map((a) =>
                 a.time === dayConstants.time
                   ? { ...event, time: props.dayConstants?.time as Times }
                   : a
               ),
-            };
+            });
           } else if (
             i > currentDayIndex &&
             event.category === Categories.Tartarus
@@ -66,9 +66,9 @@ function Modal(props: {
               );
             activities.splice(1, 0, events.drinkMedicine);
 
-            return { ...c, activities };
+            return new SingleDay({ ...c, activities });
           } else if (i > currentDayIndex)
-            return {
+            return new SingleDay({
               ...c,
               arcanes: [],
               activities: c.activities
@@ -79,7 +79,7 @@ function Modal(props: {
                     return events.stayAwakeInClass;
                   return { ...events.DoNothing, time: a.time };
                 }),
-            };
+            });
           return c;
         }
       );

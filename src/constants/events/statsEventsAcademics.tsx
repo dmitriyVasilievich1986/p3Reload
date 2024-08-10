@@ -1,12 +1,12 @@
 import { statsEventsAcademicsNames, Categories, Times, Event } from "./types";
 import { EventCard } from "../../components/eventCard";
 import { WideEvent } from "../../components/wideEvent";
-import { singleDay } from "../calendar/types";
+import { SingleDay } from "../calendar/SingleDay";
 import { StatsNames } from "../stats/types";
 import { DaysNames } from "../monthsNames";
 
 const getAcademicsUpgradeFunction = (value: number) => {
-  return function (currentDay: singleDay) {
+  return function (currentDay: SingleDay) {
     return {
       stats: {
         ...currentDay.stats,
@@ -123,7 +123,7 @@ export const statsEventsAcademics: {
       ];
       return days.includes(currentDay.date.getDay()) && time == Times.Evening;
     },
-    upgrade: function (currentDay: singleDay) {
+    upgrade: function (currentDay: SingleDay) {
       if (
         !currentDay.singleTimeEvents.includes(
           statsEventsAcademicsNames.wakatsuKitchen

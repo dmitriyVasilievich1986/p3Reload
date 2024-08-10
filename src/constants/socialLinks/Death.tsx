@@ -1,5 +1,5 @@
 import { createBondObject, ChooseAnyObject } from "./GenericCard";
-import { singleDay } from "../calendar/types";
+import { SingleDay } from "../calendar/SingleDay";
 import { SocialLink } from "./baseFunctions";
 
 import {
@@ -15,7 +15,7 @@ class SocialLinkDeath extends SocialLink {
     return this.levels[1].Platonic as SocialLinkLevel;
   }
 
-  calculate(currentDay: singleDay) {
+  calculate(currentDay: SingleDay) {
     const thisLink = currentDay.links[SocialLinkNames.Death];
     const level = [1, 3, 6, 8].includes(thisLink.level)
       ? thisLink.level + 2

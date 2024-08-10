@@ -1,4 +1,5 @@
 import { MonthNames, DaysNamesIndex } from "../../constants/monthsNames";
+import { SingleDay } from "../../constants/calendar/SingleDay";
 import classnames from "classnames/bind";
 import { CalendarProps } from "./types";
 import SocialLinks from "./SocialLinks";
@@ -11,13 +12,13 @@ import Card from "../card/Card";
 
 const cx = classnames.bind(style);
 
-function CurrentDate({ foolMoon, isDayOff, exams, date }: CalendarProps) {
-  const dayName = DaysNamesIndex[date.getDay()];
-  const month = MonthNames[date.getMonth()];
-  const day = date.getDate();
+function CurrentDate({ currentDay }: { currentDay: SingleDay }) {
+  const dayName = DaysNamesIndex[currentDay.date.getDay()];
+  const month = MonthNames[currentDay.date.getMonth()];
+  const day = currentDay.date.getDate();
 
   return (
-    <div className={cx("date", { foolMoon, isDayOff, exams })}>
+    <div className={cx("date", { ...currentDay })}>
       <h1>{`${month} ${day} (${dayName})`}</h1>
       <Tooltip
         position="bottom"
@@ -25,7 +26,7 @@ function CurrentDate({ foolMoon, isDayOff, exams, date }: CalendarProps) {
           <div style={{ width: "70px", textAlign: "center" }}>Full Moon</div>
         }
       >
-        {!!foolMoon && <img src={moonIcon} />}
+        {!!currentDay.foolMoon && <img src={moonIcon} />}
       </Tooltip>
     </div>
   );
@@ -33,11 +34,11 @@ function CurrentDate({ foolMoon, isDayOff, exams, date }: CalendarProps) {
 
 function Calendar(props: CalendarProps) {
   return (
-    <div className={cx("calendar")} id={props.getId()}>
+    <div className={cx("calendar")} id={props.currentDay.getId()}>
       <Card color="primary">
         <div className={cx("flex-column")}>
           <CurrentDate {...props} />
-          {props.activities.map((activity, i) => (
+          {props.currentDay.activities.map((activity, i) => (
             <DayEvent
               onClick={props.setDayConstants}
               event={activity}
