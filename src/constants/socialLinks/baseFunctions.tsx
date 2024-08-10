@@ -1,3 +1,4 @@
+import { CardNeededCalculator } from "./calculationFunctions";
 import { SingleDay } from "../calendar/SingleDay";
 import { StatsNames } from "../stats/types";
 
@@ -11,10 +12,6 @@ import {
 } from "./types";
 
 export const mainCharName: string = "Protagonist";
-
-function calculateMaxPoints(maxPoints: number[], multiplier: number): number {
-  return maxPoints.reduce((a, b) => a + Math.floor(b * multiplier), 0);
-}
 
 export class SocialLink {
   readonly invitations?: InvitationsType;
@@ -65,28 +62,23 @@ export class SocialLink {
       });
       if (props.stats[StatsNames.Charm] >= 100) multiplier *= 1.51;
 
+      const cardNeeded = new CardNeededCalculator({
+        maxPoints: currentLevel.maxPoints,
+        nextLevelPoints: newLevel.points,
+        multiplier: multiplier,
+      });
+
       if (props.arcanes.includes(this.linkName)) {
         multiplier *= 1.51;
-      } else if (
-        Math.floor(
-          (newLevel.points -
-            calculateMaxPoints(currentLevel.maxPoints, multiplier * 1.51)) /
-            10 +
-            0.99
-        ) <
-          Math.floor(
-            (newLevel.points -
-              calculateMaxPoints(currentLevel.maxPoints, multiplier)) /
-              10 +
-              0.99
-          ) &&
-        calculateMaxPoints(currentLevel.maxPoints, multiplier) < newLevel.points
-      ) {
+      } else if (cardNeeded.isCardNeeded()) {
         multiplier *= 1.51;
         props.arcanes.push(this.linkName);
       }
 
-      points = calculateMaxPoints(currentLevel.maxPoints, multiplier);
+      points = CardNeededCalculator.maxPointsSum(
+        currentLevel.maxPoints,
+        multiplier
+      );
     } else {
       points = thisLink.points + 10;
     }
