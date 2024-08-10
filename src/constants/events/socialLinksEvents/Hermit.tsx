@@ -1,8 +1,8 @@
-import { SocialLinkNames } from "../../socialLinks/types";
-import { EventCard } from "../../../components/eventCard";
-import { DaysNames } from "../../monthsNames";
+import { SocialLinkNames, socialLinks } from "@/constants/socialLinks";
+import { DaysNames } from "@/constants/monthsNames";
 import { linkBaseFunctions } from "../base";
-import { stats } from "../../stats/stats";
+import { stats } from "@/constants/stats";
+import { EventCard } from "@/components";
 import { Times, Event } from "../types";
 
 export const hermitEvents: {
@@ -13,18 +13,19 @@ export const hermitEvents: {
     time: Times.Day,
     name: SocialLinkNames.Hermit,
     linkName: SocialLinkNames.Hermit,
-    label: (props) => (
-      <EventCard
-        place="Laptop at the Protagonist's room"
-        head="Hermit"
-        name="Maya"
-        multiplier={
-          props.links && props.links[SocialLinkNames.Hermit].multiplier
-        }
-        charm={props?.stats && props.stats[stats.Charm.name] >= 100}
-        card={props.arcanes.includes(SocialLinkNames.Hermit)}
-      />
-    ),
+    label: function (props) {
+      return (
+        <EventCard
+          multiplier={
+            props.links && props.links[SocialLinkNames.Hermit].multiplier
+          }
+          charm={props?.stats && props.stats[stats.Charm.name] >= 100}
+          card={props.arcanes.includes(SocialLinkNames.Hermit)}
+          {...socialLinks.Hermit.linkDetails}
+          head={this.name}
+        />
+      );
+    },
     available: function ({ currentDay, time }) {
       const days = [
         new Date(2009, 3, 29).getTime(),

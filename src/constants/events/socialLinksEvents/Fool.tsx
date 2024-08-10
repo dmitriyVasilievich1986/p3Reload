@@ -1,6 +1,6 @@
-import { SocialLinkNames } from "../../socialLinks/types";
-import { EventCard } from "../../../components/eventCard";
+import { SocialLinkNames, socialLinks } from "@/constants/socialLinks";
 import { linkBaseFunctions } from "../base";
+import { EventCard } from "@/components";
 import { Times, Event } from "../types";
 
 export const foolEvents: {
@@ -12,7 +12,9 @@ export const foolEvents: {
     name: SocialLinkNames.Fool,
     linkName: SocialLinkNames.Fool,
     special: true,
-    label: () => <EventCard place="Tartarus" name="S.E.E.S." head="Fool" />,
+    label: function () {
+      return <EventCard {...socialLinks.Fool.linkDetails} head={this.name} />;
+    },
     available: () => false,
   },
 };

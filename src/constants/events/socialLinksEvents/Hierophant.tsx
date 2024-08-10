@@ -1,8 +1,8 @@
-import { SocialLinkNames } from "../../socialLinks/types";
-import { EventCard } from "../../../components/eventCard";
-import { DaysNames } from "../../monthsNames";
+import { SocialLinkNames, socialLinks } from "@/constants/socialLinks";
+import { DaysNames } from "@/constants/monthsNames";
 import { linkBaseFunctions } from "../base";
-import { stats } from "../../stats/stats";
+import { stats } from "@/constants/stats";
+import { EventCard } from "@/components";
 import { Times, Event } from "../types";
 
 export const hierophantEvents: {
@@ -13,18 +13,19 @@ export const hierophantEvents: {
     time: Times.Day,
     name: SocialLinkNames.Hierophant,
     linkName: SocialLinkNames.Hierophant,
-    label: (props) => (
-      <EventCard
-        place="Bookworms Used Books"
-        name="Bunkichi and Mitsuko"
-        head="Hierophant"
-        multiplier={
-          props.links && props.links[SocialLinkNames.Hierophant].multiplier
-        }
-        charm={props?.stats && props.stats[stats.Charm.name] >= 100}
-        card={props.arcanes.includes(SocialLinkNames.Hierophant)}
-      />
-    ),
+    label: function (props) {
+      return (
+        <EventCard
+          multiplier={
+            props.links && props.links[SocialLinkNames.Hierophant].multiplier
+          }
+          charm={props?.stats && props.stats[stats.Charm.name] >= 100}
+          card={props.arcanes.includes(SocialLinkNames.Hierophant)}
+          {...socialLinks.Hierophant.linkDetails}
+          head={this.name}
+        />
+      );
+    },
     available: function ({ currentDay, time }) {
       const days = [
         DaysNames.tuesday,

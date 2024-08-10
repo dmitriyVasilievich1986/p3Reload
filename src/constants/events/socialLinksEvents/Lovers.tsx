@@ -1,10 +1,9 @@
+import { SocialLinkNames, socialLinks, Routes } from "@/constants/socialLinks";
 import { linkInvitationBaseFunctions, linkBaseFunctions } from "../base";
-import { SocialLinkNames, Routes } from "../../socialLinks/types";
-import { EventCard } from "../../../components/eventCard";
-import { SingleDay } from "../../calendar/SingleDay";
-import { socialLinks } from "../../socialLinks";
-import { DaysNames } from "../../monthsNames";
-import { stats } from "../../stats/stats";
+import { DaysNames } from "@/constants/monthsNames";
+import { SingleDay } from "@/constants/calendar";
+import { stats } from "@/constants/stats";
+import { EventCard } from "@/components";
 
 import {
   socialLinkInvitationNames,
@@ -13,67 +12,68 @@ import {
   Event,
 } from "../types";
 
+function available(route: Routes) {
+  return function ({
+    previousDay,
+    currentDay,
+    time,
+  }: {
+    previousDay?: SingleDay;
+    currentDay: SingleDay;
+    time: Times;
+  }) {
+    if (previousDay === undefined) return false;
+    const isRomance =
+      currentDay.links[SocialLinkNames.Lovers].romance === route ||
+      previousDay.links[SocialLinkNames.Lovers].level === 6;
+    const days = [
+      DaysNames.monday,
+      DaysNames.wednesday,
+      DaysNames.thursday,
+      DaysNames.saturday,
+    ];
+    return (
+      currentDay.date.getTime() >= new Date(2009, 6, 25).getTime() &&
+      previousDay.stats[stats.Charm.name] >= 100 &&
+      days.includes(currentDay.date.getDay()) &&
+      !currentDay.isDayOff &&
+      time === Times.Day &&
+      !currentDay.exams &&
+      isRomance
+    );
+  };
+}
+
+const loversBase: Event = {
+  ...linkBaseFunctions,
+  time: Times.Day,
+  name: SocialLinkNames.Lovers,
+  linkName: SocialLinkNames.Lovers,
+  label: function (props) {
+    return (
+      <EventCard
+        multiplier={
+          props.links && props.links[SocialLinkNames.Lovers].multiplier
+        }
+        charm={props?.stats && props.stats[stats.Charm.name] >= 100}
+        card={props.arcanes.includes(SocialLinkNames.Lovers)}
+        {...socialLinks.Lovers.linkDetails}
+        head={this.name}
+      />
+    );
+  },
+  available: available(Routes.Platonic),
+};
+
 export const loversEvents: {
   [SocialLinkNames.Lovers]: Event;
   [socialLinkRomanceNames.LoversRomance]: Event;
   [socialLinkInvitationNames.LoversInvitation]: Event;
 } = {
-  [SocialLinkNames.Lovers]: {
-    ...linkBaseFunctions,
-    time: Times.Day,
-    name: SocialLinkNames.Lovers,
-    linkName: SocialLinkNames.Lovers,
-    label: (props) => (
-      <EventCard
-        name="Yukari Takeba"
-        place="Classroom 2F"
-        head="Lovers"
-        multiplier={
-          props.links && props.links[SocialLinkNames.Lovers].multiplier
-        }
-        charm={props?.stats && props.stats[stats.Charm.name] >= 100}
-        card={props.arcanes.includes(SocialLinkNames.Lovers)}
-      />
-    ),
-    available: function ({ previousDay, currentDay, time }) {
-      if (previousDay === undefined) return false;
-      const isRomance =
-        currentDay.links[SocialLinkNames.Lovers].romance === Routes.Platonic ||
-        previousDay.links[SocialLinkNames.Lovers].level === 6;
-      const days = [
-        DaysNames.monday,
-        DaysNames.wednesday,
-        DaysNames.thursday,
-        DaysNames.saturday,
-      ];
-      return (
-        currentDay.date.getTime() >= new Date(2009, 6, 25).getTime() &&
-        previousDay.stats[stats.Charm.name] >= 100 &&
-        days.includes(currentDay.date.getDay()) &&
-        !currentDay.isDayOff &&
-        time === Times.Day &&
-        !currentDay.exams &&
-        isRomance
-      );
-    },
-  },
+  [SocialLinkNames.Lovers]: loversBase,
   [socialLinkRomanceNames.LoversRomance]: {
-    ...linkBaseFunctions,
-    time: Times.Day,
+    ...loversBase,
     name: socialLinkRomanceNames.LoversRomance,
-    linkName: SocialLinkNames.Lovers,
-    label: (props) => (
-      <EventCard
-        head="Lovers(Romance)"
-        name="Yukari Takeba"
-        place="Classroom 2F"
-        multiplier={
-          props.links && props.links[SocialLinkNames.Lovers].multiplier
-        }
-        charm={props?.stats && props.stats[stats.Charm.name] >= 100}
-        card={props.arcanes.includes(SocialLinkNames.Lovers)}
-      />
-    ),
     upgrade: function (currentDay) {
       return socialLinks[SocialLinkNames.Lovers].calculate(
         new SingleDay({
@@ -88,34 +88,20 @@ export const loversEvents: {
         })
       );
     },
-    available: function ({ previousDay, currentDay, time }) {
-      if (previousDay === undefined) return false;
-      const isRomance =
-        currentDay.links[SocialLinkNames.Lovers].romance === Routes.Romantic ||
-        previousDay.links[SocialLinkNames.Lovers].level === 6;
-      const days = [
-        DaysNames.monday,
-        DaysNames.wednesday,
-        DaysNames.thursday,
-        DaysNames.saturday,
-      ];
-      return (
-        currentDay.date.getTime() >= new Date(2009, 6, 25).getTime() &&
-        previousDay.stats[stats.Charm.name] >= 100 &&
-        days.includes(currentDay.date.getDay()) &&
-        !currentDay.isDayOff &&
-        time === Times.Day &&
-        !currentDay.exams &&
-        isRomance
-      );
-    },
   },
   [socialLinkInvitationNames.LoversInvitation]: {
     ...linkInvitationBaseFunctions,
     time: Times.Day,
-    name: socialLinkInvitationNames.LoversInvitation,
     linkName: SocialLinkNames.Lovers,
-    label: () => <EventCard head="Lovers(Invitation)" name="Yukari Takeba" />,
+    name: socialLinkInvitationNames.LoversInvitation,
+    label: function () {
+      return (
+        <EventCard
+          name={socialLinks.Lovers.linkDetails.name}
+          head={this.name}
+        />
+      );
+    },
     _invitationsDates: [
       new Date(2009, 8, 13).getTime(),
       new Date(2009, 8, 23).getTime(),

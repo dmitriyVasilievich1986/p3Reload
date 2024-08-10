@@ -1,9 +1,8 @@
-import { SocialLinkNames } from "../../socialLinks/types";
-import { EventCard } from "../../../components/eventCard";
-import { socialLinks } from "../../socialLinks";
-import { DaysNames } from "../../monthsNames";
+import { SocialLinkNames, socialLinks } from "@/constants/socialLinks";
+import { DaysNames } from "@/constants/monthsNames";
 import { linkBaseFunctions } from "../base";
-import { stats } from "../../stats/stats";
+import { stats } from "@/constants/stats";
+import { EventCard } from "@/components";
 import { Times, Event } from "../types";
 
 export const devilEvents: {
@@ -14,9 +13,9 @@ export const devilEvents: {
     time: Times.Evening,
     name: SocialLinkNames.Devil,
     linkName: SocialLinkNames.Devil,
-    label: () => (
-      <EventCard name="President Tanaka" place="Paulownia Mall" head="Devil" />
-    ),
+    label: function () {
+      return <EventCard {...socialLinks.Devil.linkDetails} head={this.name} />;
+    },
     available: function ({ previousDay, currentDay, time }) {
       if (previousDay === undefined) return false;
       const days = [DaysNames.tuesday, DaysNames.saturday];

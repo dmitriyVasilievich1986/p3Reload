@@ -1,10 +1,9 @@
 import { linkInvitationBaseFunctions, linkBaseFunctions } from "../base";
+import { SocialLinkNames, socialLinks } from "@/constants/socialLinks";
 import { socialLinkInvitationNames, Times, Event } from "../types";
-import { SocialLinkNames } from "../../socialLinks/types";
-import { EventCard } from "../../../components/eventCard";
-import { socialLinks } from "../../socialLinks";
-import { DaysNames } from "../../monthsNames";
-import { stats } from "../../stats/stats";
+import { DaysNames } from "@/constants/monthsNames";
+import { stats } from "@/constants/stats";
+import { EventCard } from "@/components";
 
 export const TemperanceEvents: {
   [SocialLinkNames.Temperance]: Event;
@@ -15,18 +14,19 @@ export const TemperanceEvents: {
     time: Times.Day,
     name: SocialLinkNames.Temperance,
     linkName: SocialLinkNames.Temperance,
-    label: (props) => (
-      <EventCard
-        name='André Laurent Jean "Bebe" Geraux'
-        place="2F Classroom Hallway"
-        head="Temperance"
-        multiplier={
-          props.links && props.links[SocialLinkNames.Temperance].multiplier
-        }
-        charm={props?.stats && props.stats[stats.Charm.name] >= 100}
-        card={props.arcanes.includes(SocialLinkNames.Temperance)}
-      />
-    ),
+    label: function (props) {
+      return (
+        <EventCard
+          multiplier={
+            props.links && props.links[SocialLinkNames.Temperance].multiplier
+          }
+          charm={props?.stats && props.stats[stats.Charm.name] >= 100}
+          card={props.arcanes.includes(SocialLinkNames.Temperance)}
+          {...socialLinks.Temperance.linkDetails}
+          head={this.name}
+        />
+      );
+    },
     available: function ({ previousDay, currentDay, time }) {
       if (previousDay === undefined) return false;
       const days = [DaysNames.tuesday, DaysNames.wednesday, DaysNames.friday];
@@ -44,14 +44,16 @@ export const TemperanceEvents: {
   [socialLinkInvitationNames.TemperanceInvitation]: {
     ...linkInvitationBaseFunctions,
     time: Times.Day,
-    name: socialLinkInvitationNames.TemperanceInvitation,
     linkName: SocialLinkNames.Temperance,
-    label: () => (
-      <EventCard
-        name='André Laurent Jean "Bebe" Geraux'
-        head="Temperance(Invitation)"
-      />
-    ),
+    name: socialLinkInvitationNames.TemperanceInvitation,
+    label: function () {
+      return (
+        <EventCard
+          name={socialLinks.Temperance.linkDetails.name}
+          head={this.name}
+        />
+      );
+    },
     _invitationsDates: [
       new Date(2009, 5, 7).getTime(),
       new Date(2009, 5, 21).getTime(),

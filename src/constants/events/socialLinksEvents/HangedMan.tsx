@@ -1,8 +1,8 @@
-import { SocialLinkNames } from "../../socialLinks/types";
-import { EventCard } from "../../../components/eventCard";
-import { DaysNames } from "../../monthsNames";
+import { SocialLinkNames, socialLinks } from "@/constants/socialLinks";
+import { DaysNames } from "@/constants/monthsNames";
 import { linkBaseFunctions } from "../base";
-import { stats } from "../../stats/stats";
+import { stats } from "@/constants/stats";
+import { EventCard } from "@/components";
 import { Times, Event } from "../types";
 
 export const hangedManEvents: {
@@ -13,18 +13,19 @@ export const hangedManEvents: {
     time: Times.Day,
     name: SocialLinkNames.HangedMan,
     linkName: SocialLinkNames.HangedMan,
-    label: (props) => (
-      <EventCard
-        place="Naganaki Shrine"
-        name="Maiko Oohashi"
-        head="Hanged Man"
-        multiplier={
-          props.links && props.links[SocialLinkNames.HangedMan].multiplier
-        }
-        charm={props?.stats && props.stats[stats.Charm.name] >= 100}
-        card={props.arcanes.includes(SocialLinkNames.HangedMan)}
-      />
-    ),
+    label: function (props) {
+      return (
+        <EventCard
+          multiplier={
+            props.links && props.links[SocialLinkNames.HangedMan].multiplier
+          }
+          charm={props?.stats && props.stats[stats.Charm.name] >= 100}
+          card={props.arcanes.includes(SocialLinkNames.HangedMan)}
+          {...socialLinks.HangedMan.linkDetails}
+          head={this.name}
+        />
+      );
+    },
     available: function ({ currentDay, time }) {
       const days = [DaysNames.monday, DaysNames.wednesday, DaysNames.saturday];
       return (
