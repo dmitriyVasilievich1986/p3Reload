@@ -7,11 +7,12 @@ import { JunpeiIoriEpisodes } from "./JunpeiIoriEpisodes";
 import { statsEventsCharm } from "./statsEventsCharm";
 import { KoromaruEpisodes } from "./KoromaruEpisodes";
 import { KenAmadaEpisodes } from "./KenAmadaEpisodes";
+import { linkEvents } from "./socialLinksEvents";
 import { specialEvents } from "./specialEvents";
+import { allEventsNames, Event } from "./types";
 import { pcPrograms } from "./pcPrograms";
-import { linkEvents } from "./linkEvents";
 
-export const events = {
+export const events: { [key in allEventsNames]: Event } = {
   ...linkEvents,
   ...specialEvents,
   ...pcPrograms,

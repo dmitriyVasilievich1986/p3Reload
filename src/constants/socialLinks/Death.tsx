@@ -1,22 +1,21 @@
 import { createBondObject, ChooseAnyObject } from "./GenericCard";
-import { alwaysLevelUp } from "./baseFunctions";
 import { singleDay } from "../calendar/types";
+import { SocialLink } from "./baseFunctions";
 
 import {
+  SocialLinkStats,
   SocialLinkNames,
   SocialLinkLevel,
-  SocialLinkType,
   Routes,
 } from "./types";
 
-export const Death: SocialLinkType = {
-  ...alwaysLevelUp,
-  name: SocialLinkNames.Death,
-  getlevel: function ({ level }) {
+class SocialLinkDeath extends SocialLink {
+  getLevel({ level }: SocialLinkStats) {
     if (level <= 1) return this.levels[0].Platonic as SocialLinkLevel;
     return this.levels[1].Platonic as SocialLinkLevel;
-  },
-  calculate: function (currentDay: singleDay) {
+  }
+
+  calculate(currentDay: singleDay) {
     const thisLink = currentDay.links[SocialLinkNames.Death];
     const level = [1, 3, 6, 8].includes(thisLink.level)
       ? thisLink.level + 2
@@ -27,13 +26,18 @@ export const Death: SocialLinkType = {
         [SocialLinkNames.Death]: { ...thisLink, level },
       },
     };
-  },
-  levels: {
+  }
+}
+
+export const Death = new SocialLinkDeath(
+  SocialLinkNames.Death,
+  { name: "Pharos", place: "Main character room" },
+  {
     0: {
       [Routes.Platonic]: createBondObject,
     },
     1: {
       [Routes.Platonic]: ChooseAnyObject,
     },
-  },
-};
+  }
+);

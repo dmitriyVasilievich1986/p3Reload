@@ -1,12 +1,12 @@
 import { QuestionsWrapper, Question, Answer } from "../../components/choices";
-import { baseSocialLinkCalculation, mainCharName } from "./baseFunctions";
-import { SocialLinkNames, SocialLinkType, Routes } from "./types";
 import { createBondObject, LinkMaxedObject } from "./GenericCard";
+import { SocialLink, mainCharName } from "./baseFunctions";
+import { SocialLinkNames, Routes } from "./types";
 
-export const Justice: SocialLinkType = {
-  ...baseSocialLinkCalculation,
-  name: SocialLinkNames.Justice,
-  levels: {
+export const Justice = new SocialLink(
+  SocialLinkNames.Justice,
+  { name: "Chihiro Fushimi", place: "2nd Floor Hallway" },
+  {
     0: {
       [Routes.Platonic]: createBondObject,
     },
@@ -297,7 +297,7 @@ export const Justice: SocialLinkType = {
       [Routes.Romantic]: LinkMaxedObject,
     },
   },
-  invitations: {
+  {
     2: {
       [Routes.Platonic]: (
         <Question label={`I kept thinking, "What if he doesn't show up?"`}>
@@ -363,5 +363,5 @@ export const Justice: SocialLinkType = {
         </Question>
       ),
     },
-  },
-};
+  }
+);

@@ -1,12 +1,12 @@
 import { QuestionsWrapper, Question, Answer } from "../../components/choices";
-import { baseSocialLinkCalculation, mainCharName } from "./baseFunctions";
-import { SocialLinkNames, SocialLinkType, Routes } from "./types";
 import { createBondObject, LinkMaxedObject } from "./GenericCard";
+import { SocialLink, mainCharName } from "./baseFunctions";
+import { SocialLinkNames, Routes } from "./types";
 
-export const Priestess: SocialLinkType = {
-  ...baseSocialLinkCalculation,
-  name: SocialLinkNames.Priestess,
-  levels: {
+export const Priestess = new SocialLink(
+  SocialLinkNames.Priestess,
+  { name: "Fuuka Yamagishi", place: "2nd Floor Hallway" },
+  {
     0: {
       [Routes.Platonic]: createBondObject,
     },
@@ -279,7 +279,7 @@ export const Priestess: SocialLinkType = {
       [Routes.Romantic]: LinkMaxedObject,
     },
   },
-  invitations: {
+  {
     2: {
       [Routes.Platonic]: (
         <Question label={`Um, ${mainCharName}-kun. Do you like sweets?`}>
@@ -354,5 +354,5 @@ export const Priestess: SocialLinkType = {
         </Question>
       ),
     },
-  },
-};
+  }
+);

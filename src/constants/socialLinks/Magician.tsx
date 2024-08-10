@@ -1,12 +1,12 @@
 import { QuestionsWrapper, Question, Answer } from "../../components/choices";
-import { baseSocialLinkCalculation, mainCharName } from "./baseFunctions";
-import { SocialLinkNames, SocialLinkType, Routes } from "./types";
 import { createBondObject, LinkMaxedObject } from "./GenericCard";
+import { SocialLink, mainCharName } from "./baseFunctions";
+import { SocialLinkNames, Routes } from "./types";
 
-export const Magician: SocialLinkType = {
-  ...baseSocialLinkCalculation,
-  name: SocialLinkNames.Magician,
-  levels: {
+export const Magician = new SocialLink(
+  SocialLinkNames.Magician,
+  { name: "Kenji Tomochika", place: "Classroom 2F" },
+  {
     0: {
       [Routes.Platonic]: createBondObject,
     },
@@ -163,7 +163,7 @@ export const Magician: SocialLinkType = {
       [Routes.Platonic]: LinkMaxedObject,
     },
   },
-  invitations: {
+  {
     1: {
       [Routes.Platonic]: (
         <Question label="Not bad... Not bad at all! But, there are some things you could do to look better...">
@@ -229,5 +229,5 @@ export const Magician: SocialLinkType = {
         </Question>
       ),
     },
-  },
-};
+  }
+);

@@ -1,12 +1,12 @@
 import { QuestionsWrapper, Question, Answer } from "../../components/choices";
-import { baseSocialLinkCalculation, mainCharName } from "./baseFunctions";
-import { SocialLinkNames, SocialLinkType, Routes } from "./types";
 import { createBondObject, LinkMaxedObject } from "./GenericCard";
+import { SocialLink, mainCharName } from "./baseFunctions";
+import { SocialLinkNames, Routes } from "./types";
 
-export const Strength: SocialLinkType = {
-  ...baseSocialLinkCalculation,
-  name: SocialLinkNames.Strength,
-  levels: {
+export const Strength = new SocialLink(
+  SocialLinkNames.Strength,
+  { name: "Yuko Nishiwaki", place: "2F Classroom Hallway" },
+  {
     0: {
       [Routes.Platonic]: createBondObject,
     },
@@ -344,7 +344,7 @@ export const Strength: SocialLinkType = {
       [Routes.Romantic]: LinkMaxedObject,
     },
   },
-  invitations: {
+  {
     2: {
       [Routes.Platonic]: (
         <Question label="Take me, for example. How's my outfit?">
@@ -415,5 +415,5 @@ export const Strength: SocialLinkType = {
         </Question>
       ),
     },
-  },
-};
+  }
+);

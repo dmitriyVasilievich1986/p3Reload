@@ -1,12 +1,12 @@
 import { QuestionsWrapper, Question, Answer } from "../../components/choices";
-import { baseSocialLinkCalculation, mainCharName } from "./baseFunctions";
-import { SocialLinkNames, SocialLinkType, Routes } from "./types";
 import { createBondObject, LinkMaxedObject } from "./GenericCard";
+import { SocialLink, mainCharName } from "./baseFunctions";
+import { SocialLinkNames, Routes } from "./types";
 
-export const Empress: SocialLinkType = {
-  ...baseSocialLinkCalculation,
-  name: SocialLinkNames.Empress,
-  levels: {
+export const Empress = new SocialLink(
+  SocialLinkNames.Empress,
+  { name: "Mitsuru Kirijo", place: "Faculty Office Entrance" },
+  {
     0: {
       [Routes.Platonic]: createBondObject,
     },
@@ -252,7 +252,7 @@ export const Empress: SocialLinkType = {
       [Routes.Romantic]: LinkMaxedObject,
     },
   },
-  invitations: {
+  {
     2: {
       [Routes.Platonic]: (
         <Question label="I didn't see many female customers there... Or was it just my imagination?">
@@ -321,5 +321,5 @@ export const Empress: SocialLinkType = {
         </Question>
       ),
     },
-  },
-};
+  }
+);

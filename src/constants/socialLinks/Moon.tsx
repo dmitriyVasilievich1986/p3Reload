@@ -1,12 +1,12 @@
 import { QuestionsWrapper, Question, Answer } from "../../components/choices";
-import { baseSocialLinkCalculation, mainCharName } from "./baseFunctions";
-import { SocialLinkNames, SocialLinkType, Routes } from "./types";
 import { createBondObject, LinkMaxedObject } from "./GenericCard";
+import { SocialLink, mainCharName } from "./baseFunctions";
+import { SocialLinkNames, Routes } from "./types";
 
-export const Moon: SocialLinkType = {
-  ...baseSocialLinkCalculation,
-  name: SocialLinkNames.Moon,
-  levels: {
+export const Moon = new SocialLink(
+  SocialLinkNames.Moon,
+  { name: "Nozomi Suemitsu", place: "Paulownia Mall" },
+  {
     0: {
       [Routes.Platonic]: createBondObject,
     },
@@ -126,5 +126,5 @@ export const Moon: SocialLinkType = {
     10: {
       [Routes.Platonic]: LinkMaxedObject,
     },
-  },
-};
+  }
+);
