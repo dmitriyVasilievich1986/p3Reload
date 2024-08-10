@@ -1,9 +1,9 @@
-import { SocialLinkNames, socialLinks, Routes } from "@/constants/socialLinks";
+import { CardWithoutMultiplier, CardWithMultiplier } from "./genericCards";
 import { linkInvitationBaseFunctions, linkBaseFunctions } from "../base";
+import { SocialLinkNames, Routes } from "@/constants/socialLinks";
 import { SingleDay } from "@/constants/calendar/SingleDay";
 import { DaysNames } from "@/constants/monthsNames";
 import { stats } from "@/constants/stats";
-import { EventCard } from "@/components";
 
 import {
   socialLinkInvitationNames,
@@ -50,19 +50,7 @@ const empressBase: Event = {
   time: Times.Day,
   name: SocialLinkNames.Empress,
   linkName: SocialLinkNames.Empress,
-  label: function (props) {
-    return (
-      <EventCard
-        multiplier={
-          props.links && props.links[SocialLinkNames.Empress].multiplier
-        }
-        charm={props?.stats && props.stats[stats.Charm.name] >= 100}
-        card={props.arcanes.includes(SocialLinkNames.Empress)}
-        {...socialLinks.Empress.linkDetails}
-        head={this.name}
-      />
-    );
-  },
+  label: CardWithMultiplier,
   available: available(Routes.Platonic),
 };
 
@@ -82,14 +70,7 @@ export const empressEvents: {
     time: Times.Day,
     linkName: SocialLinkNames.Empress,
     name: socialLinkInvitationNames.EmpressInvitation,
-    label: function () {
-      return (
-        <EventCard
-          name={socialLinks.Empress.linkDetails.name}
-          head={this.name}
-        />
-      );
-    },
+    label: CardWithoutMultiplier,
     _invitationsDates: [
       new Date(2010, 1, 4).getTime(),
       new Date(2010, 1, 7).getTime(),

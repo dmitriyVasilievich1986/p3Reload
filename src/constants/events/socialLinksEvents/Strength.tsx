@@ -1,9 +1,8 @@
 import { SocialLinkNames, socialLinks, Routes } from "@/constants/socialLinks";
+import { CardWithoutMultiplier, CardWithMultiplier } from "./genericCards";
 import { linkInvitationBaseFunctions, linkBaseFunctions } from "../base";
 import { SingleDay } from "@/constants/calendar/SingleDay";
 import { DaysNames } from "@/constants/monthsNames";
-import { stats } from "@/constants/stats";
-import { EventCard } from "@/components";
 
 import {
   socialLinkInvitationNames,
@@ -44,19 +43,7 @@ const strengthBase: Event = {
   time: Times.Day,
   name: SocialLinkNames.Strength,
   linkName: SocialLinkNames.Strength,
-  label: function (props) {
-    return (
-      <EventCard
-        multiplier={
-          props.links && props.links[SocialLinkNames.Strength].multiplier
-        }
-        charm={props?.stats && props.stats[stats.Charm.name] >= 100}
-        card={props.arcanes.includes(SocialLinkNames.Strength)}
-        {...socialLinks.Strength.linkDetails}
-        head={this.name}
-      />
-    );
-  },
+  label: CardWithMultiplier,
   available: available(Routes.Platonic),
 };
 
@@ -90,14 +77,7 @@ export const strengthEvents: {
     time: Times.Day,
     linkName: SocialLinkNames.Strength,
     name: socialLinkInvitationNames.StrengthInvitation,
-    label: function () {
-      return (
-        <EventCard
-          name={socialLinks.Strength.linkDetails.name}
-          head={this.name}
-        />
-      );
-    },
+    label: CardWithoutMultiplier,
     _invitationsDates: [
       new Date(2009, 4, 31).getTime(),
       new Date(2009, 6, 5).getTime(),

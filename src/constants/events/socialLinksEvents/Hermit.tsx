@@ -1,8 +1,7 @@
-import { SocialLinkNames, socialLinks } from "@/constants/socialLinks";
+import { SocialLinkNames } from "@/constants/socialLinks";
+import { CardWithMultiplier } from "./genericCards";
 import { DaysNames } from "@/constants/monthsNames";
 import { linkBaseFunctions } from "../base";
-import { stats } from "@/constants/stats";
-import { EventCard } from "@/components";
 import { Times, Event } from "../types";
 
 export const hermitEvents: {
@@ -13,19 +12,7 @@ export const hermitEvents: {
     time: Times.Day,
     name: SocialLinkNames.Hermit,
     linkName: SocialLinkNames.Hermit,
-    label: function (props) {
-      return (
-        <EventCard
-          multiplier={
-            props.links && props.links[SocialLinkNames.Hermit].multiplier
-          }
-          charm={props?.stats && props.stats[stats.Charm.name] >= 100}
-          card={props.arcanes.includes(SocialLinkNames.Hermit)}
-          {...socialLinks.Hermit.linkDetails}
-          head={this.name}
-        />
-      );
-    },
+    label: CardWithMultiplier,
     available: function ({ currentDay, time }) {
       const days = [
         new Date(2009, 3, 29).getTime(),

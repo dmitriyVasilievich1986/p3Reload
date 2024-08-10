@@ -1,9 +1,8 @@
+import { CardWithoutMultiplier, CardWithMultiplier } from "./genericCards";
 import { linkInvitationBaseFunctions, linkBaseFunctions } from "../base";
-import { SocialLinkNames, socialLinks } from "@/constants/socialLinks";
 import { socialLinkInvitationNames, Times, Event } from "../types";
+import { SocialLinkNames } from "@/constants/socialLinks";
 import { DaysNames } from "@/constants/monthsNames";
-import { stats } from "@/constants/stats";
-import { EventCard } from "@/components";
 
 export const chariotEvents: {
   [SocialLinkNames.Chariot]: Event;
@@ -14,19 +13,7 @@ export const chariotEvents: {
     time: Times.Day,
     name: SocialLinkNames.Chariot,
     linkName: SocialLinkNames.Chariot,
-    label: function (props) {
-      return (
-        <EventCard
-          multiplier={
-            props.links && props.links[SocialLinkNames.Chariot].multiplier
-          }
-          charm={props?.stats && props.stats[stats.Charm.name] >= 100}
-          card={props.arcanes.includes(SocialLinkNames.Chariot)}
-          {...socialLinks.Chariot.linkDetails}
-          head={this.name}
-        />
-      );
-    },
+    label: CardWithMultiplier,
     available: function ({ currentDay, time }) {
       const days = [
         DaysNames.monday,
@@ -48,14 +35,7 @@ export const chariotEvents: {
     time: Times.Day,
     linkName: SocialLinkNames.Chariot,
     name: socialLinkInvitationNames.ChariotInvitation,
-    label: function () {
-      return (
-        <EventCard
-          name={socialLinks.Chariot.linkDetails.name}
-          head={this.name}
-        />
-      );
-    },
+    label: CardWithoutMultiplier,
     _invitationsDates: [
       new Date(2009, 4, 4).getTime(),
       new Date(2009, 4, 24).getTime(),

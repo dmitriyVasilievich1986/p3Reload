@@ -1,9 +1,9 @@
 import { SocialLinkNames, socialLinks, Routes } from "@/constants/socialLinks";
+import { CardWithoutMultiplier, CardWithMultiplier } from "./genericCards";
 import { linkInvitationBaseFunctions, linkBaseFunctions } from "../base";
 import { SingleDay } from "@/constants/calendar/SingleDay";
 import { DaysNames } from "@/constants/monthsNames";
 import { stats } from "@/constants/stats";
-import { EventCard } from "@/components";
 
 import {
   socialLinkInvitationNames,
@@ -49,19 +49,7 @@ const loversBase: Event = {
   time: Times.Day,
   name: SocialLinkNames.Lovers,
   linkName: SocialLinkNames.Lovers,
-  label: function (props) {
-    return (
-      <EventCard
-        multiplier={
-          props.links && props.links[SocialLinkNames.Lovers].multiplier
-        }
-        charm={props?.stats && props.stats[stats.Charm.name] >= 100}
-        card={props.arcanes.includes(SocialLinkNames.Lovers)}
-        {...socialLinks.Lovers.linkDetails}
-        head={this.name}
-      />
-    );
-  },
+  label: CardWithMultiplier,
   available: available(Routes.Platonic),
 };
 
@@ -94,14 +82,7 @@ export const loversEvents: {
     time: Times.Day,
     linkName: SocialLinkNames.Lovers,
     name: socialLinkInvitationNames.LoversInvitation,
-    label: function () {
-      return (
-        <EventCard
-          name={socialLinks.Lovers.linkDetails.name}
-          head={this.name}
-        />
-      );
-    },
+    label: CardWithoutMultiplier,
     _invitationsDates: [
       new Date(2009, 8, 13).getTime(),
       new Date(2009, 8, 23).getTime(),

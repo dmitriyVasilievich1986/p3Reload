@@ -1,10 +1,9 @@
-import { SocialLinkNames, socialLinks, Routes } from "@/constants/socialLinks";
+import { SocialLinkNames, Routes } from "@/constants/socialLinks";
 import { socialLinkRomanceNames, Times, Event } from "../types";
 import { SingleDay } from "@/constants/calendar/SingleDay";
+import { CardWithMultiplier } from "./genericCards";
 import { DaysNames } from "@/constants/monthsNames";
 import { linkBaseFunctions } from "../base";
-import { stats } from "@/constants/stats";
-import { EventCard } from "@/components";
 
 function available(route: Routes) {
   return function ({
@@ -42,17 +41,7 @@ const aeonBase: Event = {
   time: Times.Day,
   name: SocialLinkNames.Aeon,
   linkName: SocialLinkNames.Aeon,
-  label: function (props) {
-    return (
-      <EventCard
-        multiplier={props.links && props.links[SocialLinkNames.Aeon].multiplier}
-        charm={props?.stats && props.stats[stats.Charm.name] >= 100}
-        card={props.arcanes.includes(SocialLinkNames.Aeon)}
-        {...socialLinks.Aeon.linkDetails}
-        head={this.name}
-      />
-    );
-  },
+  label: CardWithMultiplier,
   available: available(Routes.Platonic),
 };
 

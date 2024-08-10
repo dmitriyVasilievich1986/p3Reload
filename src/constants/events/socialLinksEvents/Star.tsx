@@ -1,8 +1,8 @@
-import { SocialLinkNames, socialLinks } from "@/constants/socialLinks";
+import { SocialLinkNames } from "@/constants/socialLinks";
+import { CardWithMultiplier } from "./genericCards";
 import { DaysNames } from "@/constants/monthsNames";
 import { linkBaseFunctions } from "../base";
 import { stats } from "@/constants/stats";
-import { EventCard } from "@/components";
 import { Times, Event } from "../types";
 
 export const starEvents: {
@@ -13,19 +13,7 @@ export const starEvents: {
     time: Times.Day,
     name: SocialLinkNames.Star,
     linkName: SocialLinkNames.Star,
-    label: function (props) {
-      return (
-        <EventCard
-          multiplier={
-            props.links && props.links[SocialLinkNames.Star].multiplier
-          }
-          charm={props?.stats && props.stats[stats.Charm.name] >= 100}
-          card={props.arcanes.includes(SocialLinkNames.Star)}
-          {...socialLinks.Star.linkDetails}
-          head={this.name}
-        />
-      );
-    },
+    label: CardWithMultiplier,
     available: function ({ previousDay, currentDay, time }) {
       if (previousDay === undefined) return false;
       const days = [DaysNames.wednesday, DaysNames.friday, DaysNames.sunday];

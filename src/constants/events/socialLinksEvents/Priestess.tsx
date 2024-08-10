@@ -1,9 +1,9 @@
 import { SocialLinkNames, socialLinks, Routes } from "@/constants/socialLinks";
+import { CardWithoutMultiplier, CardWithMultiplier } from "./genericCards";
 import { linkInvitationBaseFunctions, linkBaseFunctions } from "../base";
 import { SingleDay } from "@/constants/calendar/SingleDay";
 import { DaysNames } from "@/constants/monthsNames";
 import { stats } from "@/constants/stats";
-import { EventCard } from "@/components";
 
 import {
   socialLinkInvitationNames,
@@ -45,19 +45,7 @@ const priestessBase: Event = {
   time: Times.Day,
   name: SocialLinkNames.Priestess,
   linkName: SocialLinkNames.Priestess,
-  label: function (props) {
-    return (
-      <EventCard
-        multiplier={
-          props.links && props.links[SocialLinkNames.Priestess].multiplier
-        }
-        charm={props?.stats && props.stats[stats.Charm.name] >= 100}
-        card={props.arcanes.includes(SocialLinkNames.Priestess)}
-        {...socialLinks.Priestess.linkDetails}
-        head={this.name}
-      />
-    );
-  },
+  label: CardWithMultiplier,
   available: available(Routes.Platonic),
 };
 
@@ -90,14 +78,7 @@ export const priestessEvents: {
     time: Times.Day,
     linkName: SocialLinkNames.Priestess,
     name: socialLinkInvitationNames.PriestessInvitation,
-    label: function () {
-      return (
-        <EventCard
-          name={socialLinks.Priestess.linkDetails.name}
-          head={this.name}
-        />
-      );
-    },
+    label: CardWithoutMultiplier,
     _invitationsDates: [
       new Date(2009, 5, 28).getTime(),
       new Date(2009, 7, 4).getTime(),
