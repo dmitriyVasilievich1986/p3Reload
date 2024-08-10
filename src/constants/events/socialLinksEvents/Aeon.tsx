@@ -1,7 +1,7 @@
 import { SocialLinkNames, socialLinks, Routes } from "@/constants/socialLinks";
 import { socialLinkRomanceNames, Times, Event } from "../types";
+import { SingleDay } from "@/constants/calendar/SingleDay";
 import { DaysNames } from "@/constants/monthsNames";
-import { SingleDay } from "@/constants/calendar";
 import { linkBaseFunctions } from "../base";
 import { stats } from "@/constants/stats";
 import { EventCard } from "@/components";
