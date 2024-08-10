@@ -1,4 +1,4 @@
-import { MonthNames } from "../../constants/monthsNames";
+import { MonthNames } from "@/constants/monthsNames";
 import { MonthBlockProps } from "./types";
 import classnames from "classnames/bind";
 import * as style from "./style.scss";

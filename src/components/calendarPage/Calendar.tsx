@@ -1,5 +1,5 @@
-import { MonthNames, DaysNamesIndex } from "../../constants/monthsNames";
-import { SingleDay } from "../../constants/calendar/SingleDay";
+import { MonthNames, DaysNamesIndex } from "@/constants/monthsNames";
+import { SingleDay } from "@/constants/calendar";
 import classnames from "classnames/bind";
 import { CalendarProps } from "./types";
 import SocialLinks from "./SocialLinks";

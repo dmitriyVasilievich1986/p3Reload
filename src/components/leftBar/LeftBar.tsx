@@ -1,4 +1,4 @@
-import { calendar } from "../../constants/calendar";
+import { calendar } from "@/constants/calendar";
 import classnames from "classnames/bind";
 import { LeftBarProps } from "./types";
 import * as style from "./style.scss";

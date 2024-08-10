@@ -1,4 +1,4 @@
-import { SingleDay } from "../../constants/calendar/SingleDay";
+import { SingleDay } from "@/constants/calendar";
 
 export type MonthBlockProps = {
   clickHandler: (id: string) => void;

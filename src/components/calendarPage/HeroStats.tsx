@@ -1,6 +1,5 @@
-import { SingleDay } from "../../constants/calendar/SingleDay";
-import { StatsNames } from "../../constants/stats/types";
-import { stats } from "../../constants/stats";
+import { StatsNames, stats } from "@/constants/stats";
+import { SingleDay } from "@/constants/calendar";
 import BadgeTooltip from "./BadgeTooltip";
 import classnames from "classnames/bind";
 import * as style from "./style.scss";

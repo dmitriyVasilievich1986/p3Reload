@@ -1,4 +1,4 @@
-import { Event } from "../../constants/events/types";
+import { Event } from "@/constants/events/types";
 import classnames from "classnames/bind";
 import * as style from "./style.scss";
 import { Card } from "../card";

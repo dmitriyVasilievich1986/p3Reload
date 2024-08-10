@@ -1,4 +1,4 @@
-import { SocialLinkNames } from "../socialLinks/types";
+import { SocialLinkNames } from "@/constants/socialLinks";
 import { SingleDay } from "./SingleDay";
 
 export const classmates: SocialLinkNames[] = [
