@@ -287,40 +287,6 @@ export const october: singleDay[] = [
     arcanes: [],
     activities: [
       {
-        ...events.Exams,
-        time: Times.AfterSchool,
-        label: () => <EventCard head="Exam results" />,
-        upgrade: function ({ currentStats, currentLinks, weekAgoStats }) {
-          let newMultiplier = 1;
-          let charmAddendum = 2;
-          if (weekAgoStats[StatsNames.Academics] >= 230) {
-            newMultiplier = 1.51;
-            charmAddendum = 4;
-          }
-
-          const newLinks = Object.fromEntries(
-            (Object.keys(currentLinks) as Array<SocialLinkNames>)
-              .filter((k) => classmates.includes(k))
-              .map((k) => [
-                k,
-                { ...currentLinks[k], multiplier: newMultiplier },
-              ])
-          );
-
-          return {
-            links: {
-              ...currentLinks,
-              ...newLinks,
-            },
-            stats: {
-              ...currentStats,
-              [StatsNames.Charm]:
-                currentStats[StatsNames.Charm] + charmAddendum,
-            },
-          };
-        },
-      },
-      {
         ...events.schoolQuestionCharm,
         label: () => (
           <Question label='We used the number "zero" a lot. Do you know where it originally came from, though?'>
@@ -329,6 +295,40 @@ export const october: singleDay[] = [
             <Answer label="Rome." />
           </Question>
         ),
+      },
+      {
+        ...events.Exams,
+        time: Times.AfterSchool,
+        label: () => <EventCard head="Exam results" />,
+        upgrade: function (currentDay: singleDay, previousWeek?: singleDay) {
+          let newMultiplier = 1;
+          let charmAddendum = 2;
+          if (previousWeek!.stats[StatsNames.Academics] >= 230) {
+            newMultiplier = 1.51;
+            charmAddendum = 4;
+          }
+
+          const newLinks = Object.fromEntries(
+            (Object.keys(currentDay.links) as Array<SocialLinkNames>)
+              .filter((k) => classmates.includes(k))
+              .map((k) => [
+                k,
+                { ...currentDay.links[k], multiplier: newMultiplier },
+              ])
+          );
+
+          return {
+            links: {
+              ...currentDay.links,
+              ...newLinks,
+            },
+            stats: {
+              ...currentDay.stats,
+              [StatsNames.Charm]:
+                currentDay.stats[StatsNames.Charm] + charmAddendum,
+            },
+          };
+        },
       },
       events.DoNothing,
       { ...events.DoNothing, time: Times.Evening },
