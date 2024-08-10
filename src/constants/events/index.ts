@@ -9,10 +9,11 @@ import { KoromaruEpisodes } from "./KoromaruEpisodes";
 import { KenAmadaEpisodes } from "./KenAmadaEpisodes";
 import { linkEvents } from "./socialLinksEvents";
 import { specialEvents } from "./specialEvents";
-import { allEventsNames, Event } from "./types";
 import { pcPrograms } from "./pcPrograms";
 
-export const events: { [key in allEventsNames]: Event } = {
+import { allEventsNames, Categories, Times, Event } from "./types";
+
+const events: { [key in allEventsNames]: Event } = {
   ...linkEvents,
   ...specialEvents,
   ...pcPrograms,
@@ -26,3 +27,5 @@ export const events: { [key in allEventsNames]: Event } = {
   ...RyojiMochizukiEpisodes,
   ...ShinjiroAragakiEpisodes,
 };
+
+export { Categories, Times, events };
