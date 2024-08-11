@@ -1,3 +1,4 @@
+import { SingleDay } from "@/constants/calendar";
 import { Event } from "@/constants/events/types";
 import classnames from "classnames/bind";
 import * as style from "./style.scss";
@@ -12,6 +13,7 @@ function EventsList({
   head: string;
   events: Event[];
   available?: boolean;
+  currentDay: SingleDay;
   onClick: (props: { event: Event }) => void;
   filter?: string;
 }) {
@@ -34,7 +36,7 @@ function EventsList({
                   className={cx({ available })}
                   key={e.name}
                 >
-                  {e.label({ arcanes: [] })}
+                  {e.label({ currentDay: props.currentDay })}
                 </div>
               ))}
           </div>

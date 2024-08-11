@@ -169,9 +169,7 @@ export type upgradeResponse = {
 };
 
 export type LabelProps = {
-  stats?: CharStats;
-  arcanes: SocialLinkNames[];
-  links?: SocialLinksStatsArray;
+  currentDay: SingleDay;
 };
 
 export type Event = {

@@ -90,9 +90,7 @@ function DayEvent(props: DayEventProps) {
     >
       <div className={cx("flex-column")}>
         {props.event.label({
-          arcanes: props.currentDay.arcanes,
-          links: props.currentDay.links,
-          stats: props.currentDay.stats,
+          currentDay: props.currentDay,
         })}
         <LinkElement {...props} />
         <InvitationElement {...props} />
