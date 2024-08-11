@@ -1,5 +1,5 @@
+import { SocialLinkNames } from "../../constants/socialLinks/types";
 import { socialLinks } from "@/constants/socialLinks";
-import { Categories } from "@/constants/events";
 import BadgeTooltip from "./BadgeTooltip";
 import classnames from "classnames/bind";
 import { DayEventProps } from "./types";
@@ -8,41 +8,7 @@ import { Tooltip } from "../tootlip";
 import { Badge } from "../badge";
 import Card from "../card/Card";
 
-import {
-  SocialLinkNames,
-  InvitationsType,
-} from "../../constants/socialLinks/types";
-
 const cx = classnames.bind(style);
-
-function LinkElement(props: DayEventProps) {
-  if (props.event.category !== Categories.Links) return null;
-
-  const linkName = props.event.linkName as SocialLinkNames;
-  if (
-    props.previousDay.links[linkName].level ===
-    props.currentDay.links[linkName].level
-  )
-    return <h1>time spending</h1>;
-
-  return socialLinks[linkName]
-    .getLevel({
-      ...props.currentDay.links[linkName],
-      level: props.currentDay.links[linkName].level - 1,
-    })
-    .element({ key: linkName });
-}
-
-function InvitationElement(props: DayEventProps) {
-  if (props.event.category !== Categories.Invitation) return null;
-
-  const linkName = props.event.linkName as SocialLinkNames;
-  const level = props.currentDay.links[linkName].level;
-
-  return (socialLinks[linkName].invitations as InvitationsType)[level][
-    props.currentDay.links[linkName].romance
-  ];
-}
 
 function LinkBadge(props: DayEventProps) {
   if (!props.event.linkName) return null;
@@ -91,9 +57,8 @@ function DayEvent(props: DayEventProps) {
       <div className={cx("flex-column")}>
         {props.event.label({
           currentDay: props.currentDay,
+          fullCard: true,
         })}
-        <LinkElement {...props} />
-        <InvitationElement {...props} />
       </div>
     </Card>
   );

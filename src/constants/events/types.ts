@@ -170,6 +170,7 @@ export type upgradeResponse = {
 
 export type LabelProps = {
   currentDay: SingleDay;
+  fullCard?: boolean;
 };
 
 export type Event = {

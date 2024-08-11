@@ -1,4 +1,4 @@
-import { CardWithoutMultiplier, CardWithMultiplier } from "./genericCards";
+import { CardWithMultiplier, InvitationCard } from "./genericCards";
 import { socialLinks, Routes } from "@/constants/socialLinks";
 import { SingleDay } from "@/constants/calendar/SingleDay";
 import { Categories, Times, Event } from "../types";
@@ -41,7 +41,7 @@ const socialLinkRomanceEventBase: Event = {
 
 const socialLinkInvitationEventBase: Event = {
   ...socialLinkEventBase,
-  label: CardWithoutMultiplier,
+  label: InvitationCard,
   upgrade: function (currentDay) {
     const linkName = this.linkName as SocialLinkNames;
     return {
