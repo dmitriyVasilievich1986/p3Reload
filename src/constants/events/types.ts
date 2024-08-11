@@ -176,13 +176,12 @@ export type LabelProps = {
 
 export type Event = {
   time: Times;
-  category: Categories;
   special?: boolean;
+  name: allEventsNames;
+  category: Categories;
+  linkName?: SocialLinkNames;
   upgrade: (currentDay: SingleDay, previousWeek?: SingleDay) => upgradeResponse;
   label: (props: LabelProps) => React.ReactNode;
-  name: allEventsNames;
-  linkName?: SocialLinkNames;
-  _invitationsDates?: number[];
   available: (props: {
     previousDay?: SingleDay;
     currentDay: SingleDay;
