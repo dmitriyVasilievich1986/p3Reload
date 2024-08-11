@@ -162,14 +162,6 @@ const allNames = {
 
 export type allEventsNames = (typeof allNames)[keyof typeof allNames];
 
-export type upgradeProps = {
-  currentLinks: SocialLinksStatsArray;
-  arcanes: SocialLinkNames[];
-  currentStats: CharStats;
-  weekAgoStats: CharStats;
-  singleTimeEvents: allEventsNames[];
-};
-
 export type upgradeResponse = {
   stats?: CharStats;
   links?: SocialLinksStatsArray;
