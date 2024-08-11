@@ -1,18 +1,15 @@
+import { socialLinkEventBase } from "./socialLinkEventsBase";
 import { SocialLinkNames } from "@/constants/socialLinks";
-import { CardWithMultiplier } from "./genericCards";
 import { DaysNames } from "@/constants/monthsNames";
-import { linkBaseFunctions } from "../base";
 import { Times, Event } from "../types";
 
 export const emperorEvents: {
   [SocialLinkNames.Emperor]: Event;
 } = {
   [SocialLinkNames.Emperor]: {
-    ...linkBaseFunctions,
-    time: Times.Day,
+    ...socialLinkEventBase,
     name: SocialLinkNames.Emperor,
     linkName: SocialLinkNames.Emperor,
-    label: CardWithMultiplier,
     available: function ({ currentDay, time }) {
       const days = [DaysNames.monday, DaysNames.wednesday, DaysNames.friday];
       const isToday =

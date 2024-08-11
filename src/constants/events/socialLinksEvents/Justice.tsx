@@ -1,8 +1,13 @@
-import { SocialLinkNames, socialLinks, Routes } from "@/constants/socialLinks";
-import { CardWithoutMultiplier, CardWithMultiplier } from "./genericCards";
-import { linkInvitationBaseFunctions, linkBaseFunctions } from "../base";
+import { SocialLinkNames, Routes } from "@/constants/socialLinks";
 import { SingleDay } from "@/constants/calendar/SingleDay";
 import { DaysNames } from "@/constants/monthsNames";
+
+import {
+  socialLinkInvitationEventBase,
+  socialLinkRomanceEventBase,
+  invitationAvailable,
+  socialLinkEventBase,
+} from "./socialLinkEventsBase";
 
 import {
   socialLinkInvitationNames,
@@ -38,47 +43,28 @@ function available(route: Routes) {
   };
 }
 
-const justiceBase: Event = {
-  ...linkBaseFunctions,
-  time: Times.Day,
-  name: SocialLinkNames.Justice,
-  linkName: SocialLinkNames.Justice,
-  label: CardWithMultiplier,
-  available: available(Routes.Platonic),
-};
-
 export const justiceEvents: {
   [SocialLinkNames.Justice]: Event;
   [socialLinkRomanceNames.JusticeRomance]: Event;
   [socialLinkInvitationNames.JusticeInvitation]: Event;
 } = {
-  [SocialLinkNames.Justice]: justiceBase,
+  [SocialLinkNames.Justice]: {
+    ...socialLinkEventBase,
+    name: SocialLinkNames.Justice,
+    linkName: SocialLinkNames.Justice,
+    available: available(Routes.Platonic),
+  },
   [socialLinkRomanceNames.JusticeRomance]: {
-    ...justiceBase,
+    ...socialLinkRomanceEventBase,
+    linkName: SocialLinkNames.Justice,
     name: socialLinkRomanceNames.JusticeRomance,
     available: available(Routes.Romantic),
-    upgrade: function (currentDay) {
-      return socialLinks[SocialLinkNames.Justice].calculate(
-        new SingleDay({
-          ...currentDay,
-          links: {
-            ...currentDay.links,
-            [SocialLinkNames.Justice]: {
-              ...currentDay.links[SocialLinkNames.Justice],
-              romance: Routes.Romantic,
-            },
-          },
-        })
-      );
-    },
   },
   [socialLinkInvitationNames.JusticeInvitation]: {
-    ...linkInvitationBaseFunctions,
-    time: Times.Day,
-    name: socialLinkInvitationNames.JusticeInvitation,
+    ...socialLinkInvitationEventBase,
     linkName: SocialLinkNames.Justice,
-    label: CardWithoutMultiplier,
-    _invitationsDates: [
+    name: socialLinkInvitationNames.JusticeInvitation,
+    available: invitationAvailable([
       new Date(2009, 4, 31).getTime(),
       new Date(2009, 5, 21).getTime(),
       new Date(2009, 6, 5).getTime(),
@@ -90,6 +76,6 @@ export const justiceEvents: {
       new Date(2009, 10, 29).getTime(),
       new Date(2010, 0, 5).getTime(),
       new Date(2010, 0, 10).getTime(),
-    ],
+    ]),
   },
 };

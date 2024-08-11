@@ -1,18 +1,15 @@
+import { socialLinkEventBase } from "./socialLinkEventsBase";
 import { SocialLinkNames } from "@/constants/socialLinks";
-import { CardWithMultiplier } from "./genericCards";
 import { DaysNames } from "@/constants/monthsNames";
-import { linkBaseFunctions } from "../base";
 import { Times, Event } from "../types";
 
 export const hierophantEvents: {
   [SocialLinkNames.Hierophant]: Event;
 } = {
   [SocialLinkNames.Hierophant]: {
-    ...linkBaseFunctions,
-    time: Times.Day,
+    ...socialLinkEventBase,
     name: SocialLinkNames.Hierophant,
     linkName: SocialLinkNames.Hierophant,
-    label: CardWithMultiplier,
     available: function ({ currentDay, time }) {
       const days = [
         DaysNames.tuesday,

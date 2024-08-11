@@ -1,7 +1,6 @@
 import { SocialLinkNames, socialLinks } from "@/constants/socialLinks";
-import { CardWithMultiplier } from "./genericCards";
+import { socialLinkEventBase } from "./socialLinkEventsBase";
 import { DaysNames } from "@/constants/monthsNames";
-import { linkBaseFunctions } from "../base";
 import { stats } from "@/constants/stats";
 import { Times, Event } from "../types";
 
@@ -9,11 +8,9 @@ export const sunEvents: {
   [SocialLinkNames.Sun]: Event;
 } = {
   [SocialLinkNames.Sun]: {
-    ...linkBaseFunctions,
-    time: Times.Day,
+    ...socialLinkEventBase,
     name: SocialLinkNames.Sun,
     linkName: SocialLinkNames.Sun,
-    label: CardWithMultiplier,
     available: function ({ previousDay, currentDay, time }) {
       if (previousDay === undefined) return false;
       return (

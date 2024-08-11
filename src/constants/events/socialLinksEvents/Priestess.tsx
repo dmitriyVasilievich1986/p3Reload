@@ -1,9 +1,14 @@
-import { SocialLinkNames, socialLinks, Routes } from "@/constants/socialLinks";
-import { CardWithoutMultiplier, CardWithMultiplier } from "./genericCards";
-import { linkInvitationBaseFunctions, linkBaseFunctions } from "../base";
+import { SocialLinkNames, Routes } from "@/constants/socialLinks";
 import { SingleDay } from "@/constants/calendar/SingleDay";
 import { DaysNames } from "@/constants/monthsNames";
 import { stats } from "@/constants/stats";
+
+import {
+  socialLinkInvitationEventBase,
+  socialLinkRomanceEventBase,
+  invitationAvailable,
+  socialLinkEventBase,
+} from "./socialLinkEventsBase";
 
 import {
   socialLinkInvitationNames,
@@ -40,46 +45,28 @@ function available(route: Routes) {
   };
 }
 
-const priestessBase: Event = {
-  ...linkBaseFunctions,
-  time: Times.Day,
-  name: SocialLinkNames.Priestess,
-  linkName: SocialLinkNames.Priestess,
-  label: CardWithMultiplier,
-  available: available(Routes.Platonic),
-};
-
 export const priestessEvents: {
   [SocialLinkNames.Priestess]: Event;
   [socialLinkRomanceNames.PriestessRomance]: Event;
   [socialLinkInvitationNames.PriestessInvitation]: Event;
 } = {
-  [SocialLinkNames.Priestess]: priestessBase,
+  [SocialLinkNames.Priestess]: {
+    ...socialLinkEventBase,
+    name: SocialLinkNames.Priestess,
+    linkName: SocialLinkNames.Priestess,
+    available: available(Routes.Platonic),
+  },
   [socialLinkRomanceNames.PriestessRomance]: {
-    ...priestessBase,
+    ...socialLinkRomanceEventBase,
+    linkName: SocialLinkNames.Priestess,
     name: socialLinkRomanceNames.PriestessRomance,
-    upgrade: function (currentDay) {
-      return socialLinks[SocialLinkNames.Priestess].calculate(
-        new SingleDay({
-          ...currentDay,
-          links: {
-            ...currentDay.links,
-            [SocialLinkNames.Priestess]: {
-              ...currentDay.links[SocialLinkNames.Priestess],
-              romance: Routes.Romantic,
-            },
-          },
-        })
-      );
-    },
+    available: available(Routes.Romantic),
   },
   [socialLinkInvitationNames.PriestessInvitation]: {
-    ...linkInvitationBaseFunctions,
-    time: Times.Day,
+    ...socialLinkInvitationEventBase,
     linkName: SocialLinkNames.Priestess,
     name: socialLinkInvitationNames.PriestessInvitation,
-    label: CardWithoutMultiplier,
-    _invitationsDates: [
+    available: invitationAvailable([
       new Date(2009, 5, 28).getTime(),
       new Date(2009, 7, 4).getTime(),
       new Date(2009, 8, 13).getTime(),
@@ -87,6 +74,6 @@ export const priestessEvents: {
       new Date(2010, 0, 5).getTime(),
       new Date(2010, 0, 17).getTime(),
       new Date(2010, 0, 24).getTime(),
-    ],
+    ]),
   },
 };
