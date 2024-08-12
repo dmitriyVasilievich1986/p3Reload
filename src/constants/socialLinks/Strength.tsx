@@ -356,6 +356,8 @@ export const Strength = new SocialLink(
       [Routes.Platonic]: (
         <Question label="What!? No way! That's such bull! This has to be rigged or something!">
           <Answer label="Let's just calm down first." points={30} />
+          <Answer label="Man, you suck." />
+          <Answer label="Want me to give it a shot?" />
         </Question>
       ),
     },
