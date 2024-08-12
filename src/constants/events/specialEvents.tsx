@@ -1,6 +1,19 @@
-import { SpecialEventsNames, Categories, Times, Event } from "./types";
-import { EventCard } from "../../components/eventCard";
-import { initialUpgrade } from "./base";
+import { SingleDay } from "@/constants/calendar/SingleDay";
+import { EventCard } from "@/components/eventCard";
+
+import {
+  SpecialEventsNames,
+  upgradeResponse,
+  Categories,
+  Times,
+  Event,
+} from "./types";
+
+const initialUpgrade = {
+  upgrade: function (currentDay: SingleDay): upgradeResponse {
+    return { ...currentDay };
+  },
+};
 
 export const specialEvents: { [key in SpecialEventsNames]: Event } = {
   [SpecialEventsNames.DoNothing]: {

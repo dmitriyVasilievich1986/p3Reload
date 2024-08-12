@@ -1,9 +1,14 @@
-import { CardWithoutMultiplier, CardWithMultiplier } from "./genericCards";
-import { linkInvitationBaseFunctions, linkBaseFunctions } from "../base";
 import { SocialLinkNames, Routes } from "@/constants/socialLinks";
 import { SingleDay } from "@/constants/calendar/SingleDay";
 import { DaysNames } from "@/constants/monthsNames";
 import { stats } from "@/constants/stats";
+
+import {
+  socialLinkInvitationEventBase,
+  socialLinkRomanceEventBase,
+  invitationAvailable,
+  socialLinkEventBase,
+} from "./socialLinkEventsBase";
 
 import {
   socialLinkInvitationNames,
@@ -45,36 +50,31 @@ function available(route: Routes) {
   };
 }
 
-const empressBase: Event = {
-  ...linkBaseFunctions,
-  time: Times.Day,
-  name: SocialLinkNames.Empress,
-  linkName: SocialLinkNames.Empress,
-  label: CardWithMultiplier,
-  available: available(Routes.Platonic),
-};
-
 export const empressEvents: {
   [SocialLinkNames.Empress]: Event;
   [socialLinkRomanceNames.EmpressRomance]: Event;
   [socialLinkInvitationNames.EmpressInvitation]: Event;
 } = {
-  [SocialLinkNames.Empress]: empressBase,
+  [SocialLinkNames.Empress]: {
+    ...socialLinkEventBase,
+    name: SocialLinkNames.Empress,
+    linkName: SocialLinkNames.Empress,
+    available: available(Routes.Platonic),
+  },
   [socialLinkRomanceNames.EmpressRomance]: {
-    ...empressBase,
+    ...socialLinkRomanceEventBase,
+    linkName: SocialLinkNames.Empress,
     name: socialLinkRomanceNames.EmpressRomance,
     available: available(Routes.Romantic),
   },
   [socialLinkInvitationNames.EmpressInvitation]: {
-    ...linkInvitationBaseFunctions,
-    time: Times.Day,
+    ...socialLinkInvitationEventBase,
     linkName: SocialLinkNames.Empress,
     name: socialLinkInvitationNames.EmpressInvitation,
-    label: CardWithoutMultiplier,
-    _invitationsDates: [
+    available: invitationAvailable([
       new Date(2010, 1, 4).getTime(),
       new Date(2010, 1, 7).getTime(),
       new Date(2010, 1, 24).getTime(),
-    ],
+    ]),
   },
 };

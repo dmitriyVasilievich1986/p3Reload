@@ -1,19 +1,21 @@
-import { CardWithoutMultiplier, CardWithMultiplier } from "./genericCards";
-import { linkInvitationBaseFunctions, linkBaseFunctions } from "../base";
 import { socialLinkInvitationNames, Times, Event } from "../types";
 import { SocialLinkNames } from "@/constants/socialLinks";
 import { DaysNames } from "@/constants/monthsNames";
+
+import {
+  socialLinkInvitationEventBase,
+  invitationAvailable,
+  socialLinkEventBase,
+} from "./socialLinkEventsBase";
 
 export const chariotEvents: {
   [SocialLinkNames.Chariot]: Event;
   [socialLinkInvitationNames.ChariotInvitation]: Event;
 } = {
   [SocialLinkNames.Chariot]: {
-    ...linkBaseFunctions,
-    time: Times.Day,
+    ...socialLinkEventBase,
     name: SocialLinkNames.Chariot,
     linkName: SocialLinkNames.Chariot,
-    label: CardWithMultiplier,
     available: function ({ currentDay, time }) {
       const days = [
         DaysNames.monday,
@@ -31,12 +33,10 @@ export const chariotEvents: {
     },
   },
   [socialLinkInvitationNames.ChariotInvitation]: {
-    ...linkInvitationBaseFunctions,
-    time: Times.Day,
+    ...socialLinkInvitationEventBase,
     linkName: SocialLinkNames.Chariot,
     name: socialLinkInvitationNames.ChariotInvitation,
-    label: CardWithoutMultiplier,
-    _invitationsDates: [
+    available: invitationAvailable([
       new Date(2009, 4, 4).getTime(),
       new Date(2009, 4, 24).getTime(),
       new Date(2009, 5, 7).getTime(),
@@ -47,6 +47,6 @@ export const chariotEvents: {
       new Date(2009, 10, 8).getTime(),
       new Date(2010, 0, 6).getTime(),
       new Date(2010, 0, 10).getTime(),
-    ],
+    ]),
   },
 };

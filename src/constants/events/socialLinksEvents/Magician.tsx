@@ -1,19 +1,21 @@
-import { CardWithoutMultiplier, CardWithMultiplier } from "./genericCards";
-import { linkInvitationBaseFunctions, linkBaseFunctions } from "../base";
 import { socialLinkInvitationNames, Times, Event } from "../types";
 import { SocialLinkNames } from "@/constants/socialLinks";
 import { DaysNames } from "@/constants/monthsNames";
+
+import {
+  socialLinkInvitationEventBase,
+  invitationAvailable,
+  socialLinkEventBase,
+} from "./socialLinkEventsBase";
 
 export const magicianEvents: {
   [SocialLinkNames.Magician]: Event;
   [socialLinkInvitationNames.MagicianInvitation]: Event;
 } = {
   [SocialLinkNames.Magician]: {
-    ...linkBaseFunctions,
-    time: Times.Day,
+    ...socialLinkEventBase,
     name: SocialLinkNames.Magician,
     linkName: SocialLinkNames.Magician,
-    label: CardWithMultiplier,
     available: function ({ currentDay, time }) {
       const days = [DaysNames.tuesday, DaysNames.thursday, DaysNames.friday];
       return (
@@ -26,12 +28,10 @@ export const magicianEvents: {
     },
   },
   [socialLinkInvitationNames.MagicianInvitation]: {
-    ...linkInvitationBaseFunctions,
-    time: Times.Day,
+    ...socialLinkInvitationEventBase,
     linkName: SocialLinkNames.Magician,
     name: socialLinkInvitationNames.MagicianInvitation,
-    label: CardWithoutMultiplier,
-    _invitationsDates: [
+    available: invitationAvailable([
       new Date(2009, 3, 26).getTime(),
       new Date(2009, 4, 5).getTime(),
       new Date(2009, 4, 24).getTime(),
@@ -42,6 +42,6 @@ export const magicianEvents: {
       new Date(2009, 9, 18).getTime(),
       new Date(2010, 0, 4).getTime(),
       new Date(2010, 0, 11).getTime(),
-    ],
+    ]),
   },
 };

@@ -1,9 +1,12 @@
 import { SocialLinkNames, Routes } from "@/constants/socialLinks";
 import { socialLinkRomanceNames, Times, Event } from "../types";
 import { SingleDay } from "@/constants/calendar/SingleDay";
-import { CardWithMultiplier } from "./genericCards";
 import { DaysNames } from "@/constants/monthsNames";
-import { linkBaseFunctions } from "../base";
+
+import {
+  socialLinkRomanceEventBase,
+  socialLinkEventBase,
+} from "./socialLinkEventsBase";
 
 function available(route: Routes) {
   return function ({
@@ -36,22 +39,20 @@ function available(route: Routes) {
   };
 }
 
-const aeonBase: Event = {
-  ...linkBaseFunctions,
-  time: Times.Day,
-  name: SocialLinkNames.Aeon,
-  linkName: SocialLinkNames.Aeon,
-  label: CardWithMultiplier,
-  available: available(Routes.Platonic),
-};
-
 export const aeonEvents: {
   [SocialLinkNames.Aeon]: Event;
   [socialLinkRomanceNames.AeonRomance]: Event;
 } = {
-  [SocialLinkNames.Aeon]: aeonBase,
+  [SocialLinkNames.Aeon]: {
+    ...socialLinkEventBase,
+    name: SocialLinkNames.Aeon,
+    linkName: SocialLinkNames.Aeon,
+    available: available(Routes.Platonic),
+  },
   [socialLinkRomanceNames.AeonRomance]: {
-    ...aeonBase,
+    ...socialLinkRomanceEventBase,
+    name: SocialLinkNames.Aeon,
+    linkName: SocialLinkNames.Aeon,
     available: available(Routes.Romantic),
   },
 };

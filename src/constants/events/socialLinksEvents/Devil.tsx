@@ -1,7 +1,7 @@
 import { SocialLinkNames, socialLinks } from "@/constants/socialLinks";
+import { socialLinkEventBase } from "./socialLinkEventsBase";
 import { CardWithoutMultiplier } from "./genericCards";
 import { DaysNames } from "@/constants/monthsNames";
-import { linkBaseFunctions } from "../base";
 import { stats } from "@/constants/stats";
 import { Times, Event } from "../types";
 
@@ -9,7 +9,7 @@ export const devilEvents: {
   [SocialLinkNames.Devil]: Event;
 } = {
   [SocialLinkNames.Devil]: {
-    ...linkBaseFunctions,
+    ...socialLinkEventBase,
     time: Times.Evening,
     name: SocialLinkNames.Devil,
     linkName: SocialLinkNames.Devil,

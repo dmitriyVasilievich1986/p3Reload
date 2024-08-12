@@ -1,18 +1,15 @@
+import { socialLinkEventBase } from "./socialLinkEventsBase";
 import { SocialLinkNames } from "@/constants/socialLinks";
-import { CardWithMultiplier } from "./genericCards";
 import { DaysNames } from "@/constants/monthsNames";
-import { linkBaseFunctions } from "../base";
 import { Times, Event } from "../types";
 
 export const hangedManEvents: {
   [SocialLinkNames.HangedMan]: Event;
 } = {
   [SocialLinkNames.HangedMan]: {
-    ...linkBaseFunctions,
-    time: Times.Day,
+    ...socialLinkEventBase,
     name: SocialLinkNames.HangedMan,
     linkName: SocialLinkNames.HangedMan,
-    label: CardWithMultiplier,
     available: function ({ currentDay, time }) {
       const days = [DaysNames.monday, DaysNames.wednesday, DaysNames.saturday];
       return (

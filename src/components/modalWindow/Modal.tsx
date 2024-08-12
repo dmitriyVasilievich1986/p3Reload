@@ -116,6 +116,7 @@ function Modal(props: {
           <EventsList
             events={availableEvents.filter((e) => e.linkName)}
             onClick={updateCalendar}
+            currentDay={currentDay}
             head="Social Links"
             filter={filter}
           />
@@ -128,6 +129,7 @@ function Modal(props: {
                 e.name in SpecialEventsNames
             )}
             onClick={updateCalendar}
+            currentDay={currentDay}
             filter={filter}
             head="Special"
           />
@@ -139,12 +141,14 @@ function Modal(props: {
                 e.name in statsEventsCharmNames
             )}
             onClick={updateCalendar}
+            currentDay={currentDay}
             filter={filter}
             head="Stats"
           />
           <EventsList
             events={availableEvents.filter((e) => e.name in pcProgramsNames)}
             onClick={updateCalendar}
+            currentDay={currentDay}
             filter={filter}
             head="Lobby PC"
           />

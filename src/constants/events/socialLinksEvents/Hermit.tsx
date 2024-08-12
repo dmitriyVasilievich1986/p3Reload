@@ -1,18 +1,15 @@
+import { socialLinkEventBase } from "./socialLinkEventsBase";
 import { SocialLinkNames } from "@/constants/socialLinks";
-import { CardWithMultiplier } from "./genericCards";
 import { DaysNames } from "@/constants/monthsNames";
-import { linkBaseFunctions } from "../base";
 import { Times, Event } from "../types";
 
 export const hermitEvents: {
   [SocialLinkNames.Hermit]: Event;
 } = {
   [SocialLinkNames.Hermit]: {
-    ...linkBaseFunctions,
-    time: Times.Day,
+    ...socialLinkEventBase,
     name: SocialLinkNames.Hermit,
     linkName: SocialLinkNames.Hermit,
-    label: CardWithMultiplier,
     available: function ({ currentDay, time }) {
       const days = [
         new Date(2009, 3, 29).getTime(),

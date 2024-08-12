@@ -162,14 +162,6 @@ const allNames = {
 
 export type allEventsNames = (typeof allNames)[keyof typeof allNames];
 
-export type upgradeProps = {
-  currentLinks: SocialLinksStatsArray;
-  arcanes: SocialLinkNames[];
-  currentStats: CharStats;
-  weekAgoStats: CharStats;
-  singleTimeEvents: allEventsNames[];
-};
-
 export type upgradeResponse = {
   stats?: CharStats;
   links?: SocialLinksStatsArray;
@@ -177,20 +169,18 @@ export type upgradeResponse = {
 };
 
 export type LabelProps = {
-  stats?: CharStats;
-  arcanes: SocialLinkNames[];
-  links?: SocialLinksStatsArray;
+  currentDay: SingleDay;
+  fullCard?: boolean;
 };
 
 export type Event = {
   time: Times;
-  category: Categories;
   special?: boolean;
+  name: allEventsNames;
+  category: Categories;
+  linkName?: SocialLinkNames;
   upgrade: (currentDay: SingleDay, previousWeek?: SingleDay) => upgradeResponse;
   label: (props: LabelProps) => React.ReactNode;
-  name: allEventsNames;
-  linkName?: SocialLinkNames;
-  _invitationsDates?: number[];
   available: (props: {
     previousDay?: SingleDay;
     currentDay: SingleDay;

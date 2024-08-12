@@ -1,9 +1,14 @@
-import { SocialLinkNames, socialLinks, Routes } from "@/constants/socialLinks";
-import { CardWithoutMultiplier, CardWithMultiplier } from "./genericCards";
-import { linkInvitationBaseFunctions, linkBaseFunctions } from "../base";
+import { SocialLinkNames, Routes } from "@/constants/socialLinks";
 import { SingleDay } from "@/constants/calendar/SingleDay";
 import { DaysNames } from "@/constants/monthsNames";
 import { stats } from "@/constants/stats";
+
+import {
+  socialLinkInvitationEventBase,
+  socialLinkRomanceEventBase,
+  invitationAvailable,
+  socialLinkEventBase,
+} from "./socialLinkEventsBase";
 
 import {
   socialLinkInvitationNames,
@@ -44,46 +49,28 @@ function available(route: Routes) {
   };
 }
 
-const loversBase: Event = {
-  ...linkBaseFunctions,
-  time: Times.Day,
-  name: SocialLinkNames.Lovers,
-  linkName: SocialLinkNames.Lovers,
-  label: CardWithMultiplier,
-  available: available(Routes.Platonic),
-};
-
 export const loversEvents: {
   [SocialLinkNames.Lovers]: Event;
   [socialLinkRomanceNames.LoversRomance]: Event;
   [socialLinkInvitationNames.LoversInvitation]: Event;
 } = {
-  [SocialLinkNames.Lovers]: loversBase,
+  [SocialLinkNames.Lovers]: {
+    ...socialLinkEventBase,
+    name: SocialLinkNames.Lovers,
+    linkName: SocialLinkNames.Lovers,
+    available: available(Routes.Platonic),
+  },
   [socialLinkRomanceNames.LoversRomance]: {
-    ...loversBase,
+    ...socialLinkRomanceEventBase,
+    linkName: SocialLinkNames.Lovers,
     name: socialLinkRomanceNames.LoversRomance,
-    upgrade: function (currentDay) {
-      return socialLinks[SocialLinkNames.Lovers].calculate(
-        new SingleDay({
-          ...currentDay,
-          links: {
-            ...currentDay.links,
-            [SocialLinkNames.Lovers]: {
-              ...currentDay.links[SocialLinkNames.Lovers],
-              romance: Routes.Romantic,
-            },
-          },
-        })
-      );
-    },
+    available: available(Routes.Romantic),
   },
   [socialLinkInvitationNames.LoversInvitation]: {
-    ...linkInvitationBaseFunctions,
-    time: Times.Day,
+    ...socialLinkInvitationEventBase,
     linkName: SocialLinkNames.Lovers,
     name: socialLinkInvitationNames.LoversInvitation,
-    label: CardWithoutMultiplier,
-    _invitationsDates: [
+    available: invitationAvailable([
       new Date(2009, 8, 13).getTime(),
       new Date(2009, 8, 23).getTime(),
       new Date(2009, 9, 25).getTime(),
@@ -92,6 +79,6 @@ export const loversEvents: {
       new Date(2010, 0, 10).getTime(),
       new Date(2010, 0, 17).getTime(),
       new Date(2010, 0, 24).getTime(),
-    ],
+    ]),
   },
 };
