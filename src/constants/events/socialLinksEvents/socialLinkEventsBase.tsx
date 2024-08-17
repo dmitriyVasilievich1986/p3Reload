@@ -103,17 +103,18 @@ const socialLinkSpendTimeEventBase: Event = {
 const socialLinkInvitationEventBase: Event = {
   ...socialLinkEventBase,
   label: InvitationCard,
-  upgrade: function (currentDay) {
+  upgrade: function (currentDay: SingleDay) {
     const linkName = this.linkName as SocialLinkNames;
-    return {
-      links: {
-        ...currentDay.links,
-        [linkName]: {
-          ...currentDay.links[linkName],
-          points: currentDay.links[linkName].points + 30,
-        },
-      },
-    };
+
+    return socialLinks[linkName].calculate({
+      examMultiplier: currentDay.links[linkName].multiplier,
+      points: currentDay.links[linkName].points,
+      level: currentDay.links[linkName].level,
+      maxCharmMultiplier: 1.51,
+      cardMultiplier: 1.51,
+      maxPoints: [30],
+      currentDay,
+    });
   },
 };
 
