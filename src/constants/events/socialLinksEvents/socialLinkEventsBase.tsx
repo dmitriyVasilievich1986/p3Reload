@@ -6,6 +6,7 @@ import {
   CardWithMultiplier,
   InvitationCard,
   CardSpendTime,
+  CardShrine,
 } from "./genericCards";
 
 import {
@@ -53,6 +54,7 @@ const socialLinkRomanceEventBase: Event = {
 
 const socialLinkShrineEventBase: Event = {
   ...socialLinkEventBase,
+  label: CardShrine,
   available: function ({
     currentDay,
     time,
