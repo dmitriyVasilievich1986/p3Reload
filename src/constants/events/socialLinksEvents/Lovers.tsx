@@ -1,10 +1,11 @@
-import { SocialLinkNames, Routes } from "@/constants/socialLinks";
+import { SocialLinkNames, socialLinks, Routes } from "@/constants/socialLinks";
 import { SingleDay } from "@/constants/calendar/SingleDay";
 import { DaysNames } from "@/constants/monthsNames";
-import { stats } from "@/constants/stats";
+import { StatsNames } from "@/constants/stats";
 
 import {
   socialLinkInvitationEventBase,
+  socialLinkSpendTimeEventBase,
   socialLinkRomanceEventBase,
   invitationAvailable,
   socialLinkEventBase,
@@ -12,25 +13,33 @@ import {
 
 import {
   socialLinkInvitationNames,
+  socialLinkSpendTimeNames,
   socialLinkRomanceNames,
   Times,
   Event,
 } from "../types";
 
-function available(route: Routes) {
-  return function ({
-    previousDay,
-    currentDay,
-    time,
-  }: {
-    previousDay?: SingleDay;
-    currentDay: SingleDay;
-    time: Times;
-  }) {
+function available(route: Routes | null, shouldLevelUp: boolean = true) {
+  return function (
+    this: Event,
+    {
+      previousDay,
+      currentDay,
+      time,
+    }: {
+      previousDay?: SingleDay;
+      currentDay: SingleDay;
+      time: Times;
+    }
+  ) {
     if (previousDay === undefined) return false;
+    const link = this.linkName as SocialLinkNames;
+    const thisLink = currentDay.links[link];
+    const isNewLevel = socialLinks[link].isNewLevel(thisLink);
     const isRomance =
-      currentDay.links[SocialLinkNames.Lovers].romance === route ||
-      previousDay.links[SocialLinkNames.Lovers].level === 6;
+      previousDay.links[link].level === 6 ||
+      thisLink.romance === route ||
+      route === null;
     const days = [
       DaysNames.monday,
       DaysNames.wednesday,
@@ -39,8 +48,9 @@ function available(route: Routes) {
     ];
     return (
       currentDay.date.getTime() >= new Date(2009, 6, 25).getTime() &&
-      previousDay.stats[stats.Charm.name] >= 100 &&
+      previousDay.stats[StatsNames.Charm] >= 100 &&
       days.includes(currentDay.date.getDay()) &&
+      isNewLevel === shouldLevelUp &&
       !currentDay.isDayOff &&
       time === Times.Day &&
       !currentDay.exams &&
@@ -52,6 +62,7 @@ function available(route: Routes) {
 export const loversEvents: {
   [SocialLinkNames.Lovers]: Event;
   [socialLinkRomanceNames.LoversRomance]: Event;
+  [socialLinkSpendTimeNames.LoversSpendTime]: Event;
   [socialLinkInvitationNames.LoversInvitation]: Event;
 } = {
   [SocialLinkNames.Lovers]: {
@@ -65,6 +76,12 @@ export const loversEvents: {
     linkName: SocialLinkNames.Lovers,
     name: socialLinkRomanceNames.LoversRomance,
     available: available(Routes.Romantic),
+  },
+  [socialLinkSpendTimeNames.LoversSpendTime]: {
+    ...socialLinkSpendTimeEventBase,
+    linkName: SocialLinkNames.Lovers,
+    name: socialLinkSpendTimeNames.LoversSpendTime,
+    available: available(null, false),
   },
   [socialLinkInvitationNames.LoversInvitation]: {
     ...socialLinkInvitationEventBase,

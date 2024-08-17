@@ -1,31 +1,64 @@
-import { socialLinkInvitationNames, Times, Event } from "../types";
-import { SocialLinkNames } from "@/constants/socialLinks";
+import { SocialLinkNames, socialLinks } from "@/constants/socialLinks";
 import { DaysNames } from "@/constants/monthsNames";
+import { SingleDay } from "@/constants/calendar";
+
+import {
+  socialLinkInvitationNames,
+  socialLinkSpendTimeNames,
+  Times,
+  Event,
+} from "../types";
 
 import {
   socialLinkInvitationEventBase,
+  socialLinkSpendTimeEventBase,
   invitationAvailable,
   socialLinkEventBase,
 } from "./socialLinkEventsBase";
 
+function available(shouldLevelUp: boolean) {
+  return function (
+    this: Event,
+    {
+      currentDay,
+      time,
+    }: {
+      previousDay?: SingleDay;
+      currentDay: SingleDay;
+      time: Times;
+    }
+  ) {
+    const days = [DaysNames.tuesday, DaysNames.thursday, DaysNames.friday];
+    const link = this.linkName as SocialLinkNames;
+    const thisLink = currentDay.links[link];
+    const isNewLevel = socialLinks[link].isNewLevel(thisLink);
+    return (
+      currentDay.date.getTime() >= new Date(2009, 3, 22).getTime() &&
+      days.includes(currentDay.date.getDay()) &&
+      isNewLevel === shouldLevelUp &&
+      !currentDay.isDayOff &&
+      time === Times.Day &&
+      !currentDay.exams
+    );
+  };
+}
+
 export const magicianEvents: {
   [SocialLinkNames.Magician]: Event;
+  [socialLinkSpendTimeNames.MagicianSpendTime]: Event;
   [socialLinkInvitationNames.MagicianInvitation]: Event;
 } = {
   [SocialLinkNames.Magician]: {
     ...socialLinkEventBase,
     name: SocialLinkNames.Magician,
     linkName: SocialLinkNames.Magician,
-    available: function ({ currentDay, time }) {
-      const days = [DaysNames.tuesday, DaysNames.thursday, DaysNames.friday];
-      return (
-        currentDay.date.getTime() >= new Date(2009, 3, 22).getTime() &&
-        days.includes(currentDay.date.getDay()) &&
-        time === Times.Day &&
-        !currentDay.isDayOff &&
-        !currentDay.exams
-      );
-    },
+    available: available(true),
+  },
+  [socialLinkSpendTimeNames.MagicianSpendTime]: {
+    ...socialLinkSpendTimeEventBase,
+    linkName: SocialLinkNames.Magician,
+    name: socialLinkSpendTimeNames.MagicianSpendTime,
+    available: available(false),
   },
   [socialLinkInvitationNames.MagicianInvitation]: {
     ...socialLinkInvitationEventBase,

@@ -1,7 +1,12 @@
-import { CardWithMultiplier, InvitationCard } from "./genericCards";
 import { socialLinks, Routes } from "@/constants/socialLinks";
 import { SingleDay } from "@/constants/calendar/SingleDay";
 import { Categories, Times, Event } from "../types";
+
+import {
+  CardWithMultiplier,
+  InvitationCard,
+  CardSpendTime,
+} from "./genericCards";
 
 import {
   SocialLinkNames,
@@ -37,6 +42,11 @@ const socialLinkRomanceEventBase: Event = {
       })
     );
   },
+};
+
+const socialLinkSpendTimeEventBase: Event = {
+  ...socialLinkEventBase,
+  label: CardSpendTime,
 };
 
 const socialLinkInvitationEventBase: Event = {
@@ -85,6 +95,7 @@ function invitationAvailable(invitationsDates: number[]) {
 
 export {
   socialLinkInvitationEventBase,
+  socialLinkSpendTimeEventBase,
   socialLinkRomanceEventBase,
   invitationAvailable,
   socialLinkEventBase,

@@ -1,9 +1,10 @@
-import { SocialLinkNames, Routes } from "@/constants/socialLinks";
+import { SocialLinkNames, socialLinks, Routes } from "@/constants/socialLinks";
 import { SingleDay } from "@/constants/calendar/SingleDay";
 import { DaysNames } from "@/constants/monthsNames";
 
 import {
   socialLinkInvitationEventBase,
+  socialLinkSpendTimeEventBase,
   socialLinkRomanceEventBase,
   invitationAvailable,
   socialLinkEventBase,
@@ -11,30 +12,39 @@ import {
 
 import {
   socialLinkInvitationNames,
+  socialLinkSpendTimeNames,
   socialLinkRomanceNames,
   Times,
   Event,
 } from "../types";
 
-function available(route: Routes) {
-  return function ({
-    previousDay,
-    currentDay,
-    time,
-  }: {
-    previousDay?: SingleDay;
-    currentDay: SingleDay;
-    time: Times;
-  }) {
+function available(route: Routes | null, shouldLevelUp: boolean = true) {
+  return function (
+    this: Event,
+    {
+      previousDay,
+      currentDay,
+      time,
+    }: {
+      previousDay?: SingleDay;
+      currentDay: SingleDay;
+      time: Times;
+    }
+  ) {
     if (previousDay === undefined) return false;
-    const isRomance =
-      currentDay.links[SocialLinkNames.Justice].romance === route ||
-      previousDay.links[SocialLinkNames.Justice].level === 4;
     const days = [DaysNames.tuesday, DaysNames.thursday, DaysNames.saturday];
+    const link = this.linkName as SocialLinkNames;
+    const thisLink = currentDay.links[link];
+    const isNewLevel = socialLinks[link].isNewLevel(thisLink);
+    const isRomance =
+      previousDay.links[link].level === 4 ||
+      thisLink.romance === route ||
+      route === null;
     return (
       currentDay.date.getTime() >= new Date(2009, 4, 7).getTime() &&
       previousDay.links[SocialLinkNames.Emperor].level > 0 &&
       days.includes(currentDay.date.getDay()) &&
+      isNewLevel === shouldLevelUp &&
       !currentDay.isDayOff &&
       time === Times.Day &&
       !currentDay.exams &&
@@ -46,6 +56,7 @@ function available(route: Routes) {
 export const justiceEvents: {
   [SocialLinkNames.Justice]: Event;
   [socialLinkRomanceNames.JusticeRomance]: Event;
+  [socialLinkSpendTimeNames.JusticeSpendTime]: Event;
   [socialLinkInvitationNames.JusticeInvitation]: Event;
 } = {
   [SocialLinkNames.Justice]: {
@@ -59,6 +70,12 @@ export const justiceEvents: {
     linkName: SocialLinkNames.Justice,
     name: socialLinkRomanceNames.JusticeRomance,
     available: available(Routes.Romantic),
+  },
+  [socialLinkSpendTimeNames.JusticeSpendTime]: {
+    ...socialLinkSpendTimeEventBase,
+    linkName: SocialLinkNames.Justice,
+    name: socialLinkSpendTimeNames.JusticeSpendTime,
+    available: available(null, false),
   },
   [socialLinkInvitationNames.JusticeInvitation]: {
     ...socialLinkInvitationEventBase,

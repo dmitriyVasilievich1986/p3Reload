@@ -143,6 +143,26 @@ export enum socialLinkInvitationNames {
   LoversInvitation = "Lovers (Invitation)",
 }
 
+export enum socialLinkSpendTimeNames {
+  HierophantSpendTime = "Hierophant (Spending Time)",
+  TemperanceSpendTime = "Temperance (Spending Time)",
+  HangedManSpendTime = "Hanged Man (Spending Time)",
+  PriestessSpendTime = "Priestess (Spending Time)",
+  MagicianSpendTime = "Magician (Spending Time)",
+  StrengthSpendTime = "Strength (Spending Time)",
+  JusticeSpendTime = "Justice (Spending Time)",
+  FortuneSpendTime = "Fortune (Spending Time)",
+  EmpressSpendTime = "Empress (Spending Time)",
+  ChariotSpendTime = "Chariot (Spending Time)",
+  EmperorSpendTime = "Emperor (Spending Time)",
+  LoversSpendTime = "Lovers (Spending Time)",
+  HermitSpendTime = "Hermit (Spending Time)",
+  TowerSpendTime = "Tower (Spending Time)",
+  AeonSpendTime = "Aeon (Spending Time)",
+  MoonSpendTime = "Moon (Spending Time)",
+  StarSpendTime = "Star (Spending Time)",
+}
+
 const allNames = {
   ...SpecialEventsNames,
   ...pcProgramsNames,
@@ -158,6 +178,7 @@ const allNames = {
   ...SocialLinkNames,
   ...socialLinkRomanceNames,
   ...socialLinkInvitationNames,
+  ...socialLinkSpendTimeNames,
 };
 
 export type allEventsNames = (typeof allNames)[keyof typeof allNames];

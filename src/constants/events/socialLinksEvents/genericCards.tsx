@@ -1,8 +1,30 @@
 import { SocialLinkNames, socialLinks } from "@/constants/socialLinks";
 import { InvitationsType } from "@/constants/socialLinks/types";
+import { StatsNames } from "@/constants/stats";
 import { Event, LabelProps } from "../types";
-import { stats } from "@/constants/stats";
 import { EventCard } from "@/components";
+
+function CardSpendTime(this: Event, { currentDay, fullCard }: LabelProps) {
+  const linkName = this.linkName as SocialLinkNames;
+
+  return (
+    <EventCard
+      charm={
+        fullCard &&
+        currentDay?.stats &&
+        currentDay.stats[StatsNames.Charm] >= 100
+      }
+      multiplier={
+        fullCard
+          ? currentDay.links && currentDay.links[linkName].multiplier
+          : undefined
+      }
+      card={fullCard && currentDay.arcanes.includes(linkName)}
+      {...socialLinks[linkName].linkDetails}
+      head={this.name}
+    />
+  );
+}
 
 function CardWithMultiplier(this: Event, { currentDay, fullCard }: LabelProps) {
   const linkName = this.linkName as SocialLinkNames;
@@ -22,7 +44,7 @@ function CardWithMultiplier(this: Event, { currentDay, fullCard }: LabelProps) {
         charm={
           fullCard &&
           currentDay?.stats &&
-          currentDay.stats[stats.Charm.name] >= 100
+          currentDay.stats[StatsNames.Charm] >= 100
         }
         multiplier={
           fullCard
@@ -68,4 +90,9 @@ function InvitationCard(this: Event, { currentDay, fullCard }: LabelProps) {
   );
 }
 
-export { CardWithoutMultiplier, CardWithMultiplier, InvitationCard };
+export {
+  CardWithoutMultiplier,
+  CardWithMultiplier,
+  InvitationCard,
+  CardSpendTime,
+};

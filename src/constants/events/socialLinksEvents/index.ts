@@ -24,6 +24,7 @@ import { SocialLinkNames } from "../../socialLinks/types";
 
 import {
   socialLinkInvitationNames,
+  socialLinkSpendTimeNames,
   socialLinkRomanceNames,
   Event,
 } from "../types";
@@ -32,6 +33,7 @@ export const linkEvents: {
   [key in
     | SocialLinkNames
     | socialLinkRomanceNames
+    | socialLinkSpendTimeNames
     | socialLinkInvitationNames]: Event;
 } = {
   ...magicianEvents,
