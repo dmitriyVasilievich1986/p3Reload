@@ -80,7 +80,28 @@ export class SocialLink {
         multiplier
       );
     } else {
-      points = thisLink.points + 10;
+      let multiplier = thisLink.multiplier > 1 ? 1.31 : 1;
+      const newLevel = this.getLevel({
+        ...thisLink,
+        level,
+        romance: thisLink.romance,
+      });
+      if (props.stats[StatsNames.Charm] >= 100) multiplier *= 1.31;
+
+      const cardNeeded = new CardNeededCalculator({
+        maxPoints: currentLevel.maxPoints,
+        nextLevelPoints: newLevel.points,
+        multiplier: multiplier,
+      });
+
+      if (props.arcanes.includes(this.linkName)) {
+        multiplier *= 1.31;
+      } else if (cardNeeded.isCardNeeded()) {
+        multiplier *= 1.31;
+        props.arcanes.push(this.linkName);
+      }
+
+      points = thisLink.points + 10 * multiplier;
     }
 
     return {
