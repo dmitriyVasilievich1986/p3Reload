@@ -9,7 +9,17 @@ import {
 } from "./GenericCard";
 
 class SocialLinkFool extends SocialLinkAlwaysLevelUp {
-  calculate(currentDay: SingleDay) {
+  calculate({
+    currentDay,
+  }: {
+    currentDay: SingleDay;
+    level: number;
+    points: number;
+    maxPoints: number[];
+    cardMultiplier: number;
+    examMultiplier: number;
+    maxCharmMultiplier: number;
+  }) {
     const thisLink = currentDay.links[SocialLinkNames.Fool];
     const level =
       thisLink.level === 7 ? thisLink.level + 2 : thisLink.level + 1;

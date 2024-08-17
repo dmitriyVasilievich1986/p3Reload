@@ -1,10 +1,11 @@
-import { SocialLinkNames, Routes } from "@/constants/socialLinks";
+import { SocialLinkNames, socialLinks, Routes } from "@/constants/socialLinks";
 import { SingleDay } from "@/constants/calendar/SingleDay";
 import { DaysNames } from "@/constants/monthsNames";
 
 import {
   socialLinkInvitationEventBase,
   socialLinkRomanceEventBase,
+  socialLinkShrineEventBase,
   invitationAvailable,
   socialLinkEventBase,
 } from "./socialLinkEventsBase";
@@ -12,24 +13,30 @@ import {
 import {
   socialLinkInvitationNames,
   socialLinkRomanceNames,
+  socialLinkShrineNames,
   Times,
   Event,
 } from "../types";
 
 function available(route: Routes) {
-  return function ({
-    previousDay,
-    currentDay,
-    time,
-  }: {
-    previousDay?: SingleDay;
-    currentDay: SingleDay;
-    time: Times;
-  }) {
+  return function (
+    this: Event,
+    {
+      previousDay,
+      currentDay,
+      time,
+    }: {
+      previousDay?: SingleDay;
+      currentDay: SingleDay;
+      time: Times;
+    }
+  ) {
     if (previousDay === undefined) return false;
+    const link = this.linkName as SocialLinkNames;
+    const thisLink = currentDay.links[link];
+    const isNewLevel = socialLinks[link].isNewLevel(thisLink);
     const isRomance =
-      currentDay.links[SocialLinkNames.Strength].romance === route ||
-      previousDay.links[SocialLinkNames.Strength].level === 2;
+      previousDay.links[link].level === 2 || thisLink.romance === route;
     const days = [DaysNames.wednesday, DaysNames.saturday];
     return (
       currentDay.date.getTime() >= new Date(2009, 3, 24).getTime() &&
@@ -38,6 +45,7 @@ function available(route: Routes) {
       !currentDay.isDayOff &&
       time === Times.Day &&
       !currentDay.exams &&
+      isNewLevel &&
       isRomance
     );
   };
@@ -46,6 +54,7 @@ function available(route: Routes) {
 export const strengthEvents: {
   [SocialLinkNames.Strength]: Event;
   [socialLinkRomanceNames.StrengthRomance]: Event;
+  [socialLinkShrineNames.StrengthShrineTime]: Event;
   [socialLinkInvitationNames.StrengthInvitation]: Event;
 } = {
   [SocialLinkNames.Strength]: {
@@ -59,6 +68,11 @@ export const strengthEvents: {
     linkName: SocialLinkNames.Strength,
     name: socialLinkRomanceNames.StrengthRomance,
     available: available(Routes.Romantic),
+  },
+  [socialLinkShrineNames.StrengthShrineTime]: {
+    ...socialLinkShrineEventBase,
+    linkName: SocialLinkNames.Strength,
+    name: socialLinkShrineNames.StrengthShrineTime,
   },
   [socialLinkInvitationNames.StrengthInvitation]: {
     ...socialLinkInvitationEventBase,

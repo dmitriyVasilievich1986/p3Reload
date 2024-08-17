@@ -15,7 +15,17 @@ class SocialLinkDeath extends SocialLink {
     return this.levels[1].Platonic as SocialLinkLevel;
   }
 
-  calculate(currentDay: SingleDay) {
+  calculate({
+    currentDay,
+  }: {
+    currentDay: SingleDay;
+    level: number;
+    points: number;
+    maxPoints: number[];
+    cardMultiplier: number;
+    examMultiplier: number;
+    maxCharmMultiplier: number;
+  }) {
     const thisLink = currentDay.links[SocialLinkNames.Death];
     const level = [1, 3, 6, 8].includes(thisLink.level)
       ? thisLink.level + 2

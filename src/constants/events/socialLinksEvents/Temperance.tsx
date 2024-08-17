@@ -1,35 +1,61 @@
 import { SocialLinkNames, socialLinks } from "@/constants/socialLinks";
-import { socialLinkInvitationNames, Times, Event } from "../types";
 import { DaysNames } from "@/constants/monthsNames";
-import { stats } from "@/constants/stats";
+import { SingleDay } from "@/constants/calendar";
+import { StatsNames } from "@/constants/stats";
+
+import {
+  socialLinkInvitationNames,
+  socialLinkShrineNames,
+  Times,
+  Event,
+} from "../types";
 
 import {
   socialLinkInvitationEventBase,
+  socialLinkShrineEventBase,
   invitationAvailable,
   socialLinkEventBase,
 } from "./socialLinkEventsBase";
 
 export const TemperanceEvents: {
   [SocialLinkNames.Temperance]: Event;
+  [socialLinkShrineNames.TemperanceShrineTime]: Event;
   [socialLinkInvitationNames.TemperanceInvitation]: Event;
 } = {
   [SocialLinkNames.Temperance]: {
     ...socialLinkEventBase,
     name: SocialLinkNames.Temperance,
     linkName: SocialLinkNames.Temperance,
-    available: function ({ previousDay, currentDay, time }) {
+    available: function ({
+      previousDay,
+      currentDay,
+      time,
+    }: {
+      previousDay?: SingleDay;
+      currentDay: SingleDay;
+      time: Times;
+    }) {
       if (previousDay === undefined) return false;
       const days = [DaysNames.tuesday, DaysNames.wednesday, DaysNames.friday];
+      const link = this.linkName as SocialLinkNames;
+      const thisLink = currentDay.links[link];
+      const isNewLevel = socialLinks[link].isNewLevel(thisLink);
       return (
-        previousDay.links[socialLinks.Hierophant.linkName].level >= 3 &&
         currentDay.date.getTime() >= new Date(2009, 4, 8).getTime() &&
-        previousDay.stats[stats.Academics.name] >= 20 &&
+        previousDay.links[SocialLinkNames.Hierophant].level >= 3 &&
+        previousDay.stats[StatsNames.Academics] >= 20 &&
         days.includes(currentDay.date.getDay()) &&
         !currentDay.isDayOff &&
         time === Times.Day &&
-        !currentDay.exams
+        !currentDay.exams &&
+        isNewLevel
       );
     },
+  },
+  [socialLinkShrineNames.TemperanceShrineTime]: {
+    ...socialLinkShrineEventBase,
+    linkName: SocialLinkNames.Temperance,
+    name: socialLinkShrineNames.TemperanceShrineTime,
   },
   [socialLinkInvitationNames.TemperanceInvitation]: {
     ...socialLinkInvitationEventBase,

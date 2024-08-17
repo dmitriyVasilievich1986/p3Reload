@@ -1,8 +1,8 @@
-import { SocialLinkNames, socialLinks } from "@/constants/socialLinks";
 import { socialLinkEventBase } from "./socialLinkEventsBase";
+import { SocialLinkNames } from "@/constants/socialLinks";
 import { CardWithoutMultiplier } from "./genericCards";
 import { DaysNames } from "@/constants/monthsNames";
-import { stats } from "@/constants/stats";
+import { StatsNames } from "@/constants/stats";
 import { Times, Event } from "../types";
 
 export const devilEvents: {
@@ -19,8 +19,8 @@ export const devilEvents: {
       const days = [DaysNames.tuesday, DaysNames.saturday];
       return (
         currentDay.date.getTime() >= new Date(2009, 4, 16).getTime() &&
-        previousDay.links[socialLinks.Hermit.linkName].level >= 4 &&
-        previousDay.stats[stats.Charm.name] >= 45 &&
+        previousDay.links[SocialLinkNames.Hermit].level >= 4 &&
+        previousDay.stats[StatsNames.Charm] >= 45 &&
         days.includes(currentDay.date.getDay()) &&
         time === Times.Evening
       );

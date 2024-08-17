@@ -1,11 +1,12 @@
-import { SocialLinkNames, Routes } from "@/constants/socialLinks";
+import { SocialLinkNames, socialLinks, Routes } from "@/constants/socialLinks";
 import { SingleDay } from "@/constants/calendar/SingleDay";
 import { DaysNames } from "@/constants/monthsNames";
-import { stats } from "@/constants/stats";
+import { StatsNames } from "@/constants/stats";
 
 import {
   socialLinkInvitationEventBase,
   socialLinkRomanceEventBase,
+  socialLinkShrineEventBase,
   invitationAvailable,
   socialLinkEventBase,
 } from "./socialLinkEventsBase";
@@ -13,24 +14,30 @@ import {
 import {
   socialLinkInvitationNames,
   socialLinkRomanceNames,
+  socialLinkShrineNames,
   Times,
   Event,
 } from "../types";
 
 function available(route: Routes) {
-  return function ({
-    previousDay,
-    currentDay,
-    time,
-  }: {
-    previousDay?: SingleDay;
-    currentDay: SingleDay;
-    time: Times;
-  }) {
+  return function (
+    this: Event,
+    {
+      previousDay,
+      currentDay,
+      time,
+    }: {
+      previousDay?: SingleDay;
+      currentDay: SingleDay;
+      time: Times;
+    }
+  ) {
     if (previousDay === undefined) return false;
+    const link = this.linkName as SocialLinkNames;
+    const thisLink = currentDay.links[link];
+    const isNewLevel = socialLinks[link].isNewLevel(thisLink);
     const isRomance =
-      currentDay.links[SocialLinkNames.Lovers].romance === route ||
-      previousDay.links[SocialLinkNames.Lovers].level === 6;
+      previousDay.links[link].level === 6 || thisLink.romance === route;
     const days = [
       DaysNames.monday,
       DaysNames.wednesday,
@@ -39,11 +46,12 @@ function available(route: Routes) {
     ];
     return (
       currentDay.date.getTime() >= new Date(2009, 6, 25).getTime() &&
-      previousDay.stats[stats.Charm.name] >= 100 &&
+      previousDay.stats[StatsNames.Charm] >= 100 &&
       days.includes(currentDay.date.getDay()) &&
       !currentDay.isDayOff &&
       time === Times.Day &&
       !currentDay.exams &&
+      isNewLevel &&
       isRomance
     );
   };
@@ -52,6 +60,7 @@ function available(route: Routes) {
 export const loversEvents: {
   [SocialLinkNames.Lovers]: Event;
   [socialLinkRomanceNames.LoversRomance]: Event;
+  [socialLinkShrineNames.LoversShrineTime]: Event;
   [socialLinkInvitationNames.LoversInvitation]: Event;
 } = {
   [SocialLinkNames.Lovers]: {
@@ -65,6 +74,11 @@ export const loversEvents: {
     linkName: SocialLinkNames.Lovers,
     name: socialLinkRomanceNames.LoversRomance,
     available: available(Routes.Romantic),
+  },
+  [socialLinkShrineNames.LoversShrineTime]: {
+    ...socialLinkShrineEventBase,
+    linkName: SocialLinkNames.Lovers,
+    name: socialLinkShrineNames.LoversShrineTime,
   },
   [socialLinkInvitationNames.LoversInvitation]: {
     ...socialLinkInvitationEventBase,

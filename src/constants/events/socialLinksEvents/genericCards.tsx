@@ -1,8 +1,44 @@
 import { SocialLinkNames, socialLinks } from "@/constants/socialLinks";
 import { InvitationsType } from "@/constants/socialLinks/types";
+import { StatsNames } from "@/constants/stats";
 import { Event, LabelProps } from "../types";
-import { stats } from "@/constants/stats";
 import { EventCard } from "@/components";
+
+function EventCardBase({
+  showPlace = true,
+  currentDay,
+  fullCard,
+  ...props
+}: Event & LabelProps & { showPlace?: boolean }) {
+  const linkName = props.linkName as SocialLinkNames;
+
+  return (
+    <EventCard
+      charm={
+        fullCard &&
+        currentDay?.stats &&
+        currentDay.stats[StatsNames.Charm] >= 100
+      }
+      multiplier={
+        fullCard
+          ? currentDay.links && currentDay.links[linkName].multiplier
+          : undefined
+      }
+      place={showPlace ? socialLinks[linkName].linkDetails.place : undefined}
+      card={fullCard && currentDay.arcanes.includes(linkName)}
+      name={socialLinks[linkName].linkDetails.name}
+      head={props.name}
+    />
+  );
+}
+
+function CardSpendTime(this: Event, props: LabelProps) {
+  return <EventCardBase {...this} {...props} />;
+}
+
+function CardShrine(this: Event, props: LabelProps) {
+  return <EventCardBase {...this} {...props} showPlace={false} />;
+}
 
 function CardWithMultiplier(this: Event, { currentDay, fullCard }: LabelProps) {
   const linkName = this.linkName as SocialLinkNames;
@@ -18,25 +54,14 @@ function CardWithMultiplier(this: Event, { currentDay, fullCard }: LabelProps) {
 
   return (
     <div>
-      <EventCard
-        charm={currentDay?.stats && currentDay.stats[stats.Charm.name] >= 100}
-        multiplier={currentDay.links && currentDay.links[linkName].multiplier}
-        card={currentDay.arcanes.includes(linkName)}
-        {...socialLinks[linkName].linkDetails}
-        head={this.name}
-      />
+      <EventCardBase {...this} fullCard={fullCard} currentDay={currentDay} />
       {fullCard && <LevelUp />}
     </div>
   );
 }
 
-function CardWithoutMultiplier(this: Event) {
-  return (
-    <EventCard
-      name={socialLinks[this.linkName as SocialLinkNames].linkDetails.name}
-      head={this.name}
-    />
-  );
+function CardWithoutMultiplier(this: Event, { currentDay }: LabelProps) {
+  return <EventCardBase currentDay={currentDay} fullCard={false} {...this} />;
 }
 
 function InvitationCard(this: Event, { currentDay, fullCard }: LabelProps) {
@@ -51,13 +76,21 @@ function InvitationCard(this: Event, { currentDay, fullCard }: LabelProps) {
 
   return (
     <div>
-      <EventCard
-        name={socialLinks[this.linkName as SocialLinkNames].linkDetails.name}
-        head={this.name}
+      <EventCardBase
+        currentDay={currentDay}
+        fullCard={fullCard}
+        showPlace={false}
+        {...this}
       />
       {fullCard && <Invitation />}
     </div>
   );
 }
 
-export { CardWithoutMultiplier, CardWithMultiplier, InvitationCard };
+export {
+  CardWithoutMultiplier,
+  CardWithMultiplier,
+  InvitationCard,
+  CardSpendTime,
+  CardShrine,
+};
