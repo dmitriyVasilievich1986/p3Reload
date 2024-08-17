@@ -19,9 +19,17 @@ function CardWithMultiplier(this: Event, { currentDay, fullCard }: LabelProps) {
   return (
     <div>
       <EventCard
-        charm={currentDay?.stats && currentDay.stats[stats.Charm.name] >= 100}
-        multiplier={currentDay.links && currentDay.links[linkName].multiplier}
-        card={currentDay.arcanes.includes(linkName)}
+        charm={
+          fullCard &&
+          currentDay?.stats &&
+          currentDay.stats[stats.Charm.name] >= 100
+        }
+        multiplier={
+          fullCard
+            ? currentDay.links && currentDay.links[linkName].multiplier
+            : undefined
+        }
+        card={fullCard && currentDay.arcanes.includes(linkName)}
         {...socialLinks[linkName].linkDetails}
         head={this.name}
       />
