@@ -4,21 +4,21 @@ import { DaysNames } from "@/constants/monthsNames";
 
 import {
   socialLinkInvitationEventBase,
-  socialLinkSpendTimeEventBase,
   socialLinkRomanceEventBase,
+  socialLinkShrineEventBase,
   invitationAvailable,
   socialLinkEventBase,
 } from "./socialLinkEventsBase";
 
 import {
   socialLinkInvitationNames,
-  socialLinkSpendTimeNames,
   socialLinkRomanceNames,
+  socialLinkShrineNames,
   Times,
   Event,
 } from "../types";
 
-function available(route: Routes | null, shouldLevelUp: boolean = true) {
+function available(route: Routes) {
   return function (
     this: Event,
     {
@@ -37,17 +37,15 @@ function available(route: Routes | null, shouldLevelUp: boolean = true) {
     const thisLink = currentDay.links[link];
     const isNewLevel = socialLinks[link].isNewLevel(thisLink);
     const isRomance =
-      previousDay.links[link].level === 4 ||
-      thisLink.romance === route ||
-      route === null;
+      previousDay.links[link].level === 4 || thisLink.romance === route;
     return (
       currentDay.date.getTime() >= new Date(2009, 4, 7).getTime() &&
       previousDay.links[SocialLinkNames.Emperor].level > 0 &&
       days.includes(currentDay.date.getDay()) &&
-      isNewLevel === shouldLevelUp &&
       !currentDay.isDayOff &&
       time === Times.Day &&
       !currentDay.exams &&
+      isNewLevel &&
       isRomance
     );
   };
@@ -56,7 +54,7 @@ function available(route: Routes | null, shouldLevelUp: boolean = true) {
 export const justiceEvents: {
   [SocialLinkNames.Justice]: Event;
   [socialLinkRomanceNames.JusticeRomance]: Event;
-  [socialLinkSpendTimeNames.JusticeSpendTime]: Event;
+  [socialLinkShrineNames.JusticeShrineTime]: Event;
   [socialLinkInvitationNames.JusticeInvitation]: Event;
 } = {
   [SocialLinkNames.Justice]: {
@@ -71,11 +69,10 @@ export const justiceEvents: {
     name: socialLinkRomanceNames.JusticeRomance,
     available: available(Routes.Romantic),
   },
-  [socialLinkSpendTimeNames.JusticeSpendTime]: {
-    ...socialLinkSpendTimeEventBase,
+  [socialLinkShrineNames.JusticeShrineTime]: {
+    ...socialLinkShrineEventBase,
     linkName: SocialLinkNames.Justice,
-    name: socialLinkSpendTimeNames.JusticeSpendTime,
-    available: available(null, false),
+    name: socialLinkShrineNames.JusticeShrineTime,
   },
   [socialLinkInvitationNames.JusticeInvitation]: {
     ...socialLinkInvitationEventBase,

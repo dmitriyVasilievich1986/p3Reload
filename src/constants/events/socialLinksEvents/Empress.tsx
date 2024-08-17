@@ -5,21 +5,21 @@ import { StatsNames } from "@/constants/stats";
 
 import {
   socialLinkInvitationEventBase,
-  socialLinkSpendTimeEventBase,
   socialLinkRomanceEventBase,
+  socialLinkShrineEventBase,
   invitationAvailable,
   socialLinkEventBase,
 } from "./socialLinkEventsBase";
 
 import {
   socialLinkInvitationNames,
-  socialLinkSpendTimeNames,
   socialLinkRomanceNames,
+  socialLinkShrineNames,
   Times,
   Event,
 } from "../types";
 
-function available(route: Routes | null, shouldLevelUp: boolean = true) {
+function available(route: Routes) {
   return function (
     this: Event,
     {
@@ -37,9 +37,7 @@ function available(route: Routes | null, shouldLevelUp: boolean = true) {
     const thisLink = currentDay.links[link];
     const isNewLevel = socialLinks[link].isNewLevel(thisLink);
     const isRomance =
-      previousDay.links[link].level === 6 ||
-      thisLink.romance === route ||
-      route === null;
+      previousDay.links[link].level === 6 || thisLink.romance === route;
     const days = [
       DaysNames.monday,
       DaysNames.tuesday,
@@ -51,10 +49,10 @@ function available(route: Routes | null, shouldLevelUp: boolean = true) {
       currentDay.date.getTime() >= new Date(2009, 10, 21).getTime() &&
       previousDay.stats[StatsNames.Academics] >= 230 &&
       days.includes(currentDay.date.getDay()) &&
-      isNewLevel === shouldLevelUp &&
       !currentDay.isDayOff &&
       time === Times.Day &&
       !currentDay.exams &&
+      isNewLevel &&
       isRomance
     );
   };
@@ -63,8 +61,8 @@ function available(route: Routes | null, shouldLevelUp: boolean = true) {
 export const empressEvents: {
   [SocialLinkNames.Empress]: Event;
   [socialLinkRomanceNames.EmpressRomance]: Event;
+  [socialLinkShrineNames.EmpressShrineTime]: Event;
   [socialLinkInvitationNames.EmpressInvitation]: Event;
-  [socialLinkSpendTimeNames.EmpressSpendTime]: Event;
 } = {
   [SocialLinkNames.Empress]: {
     ...socialLinkEventBase,
@@ -78,11 +76,10 @@ export const empressEvents: {
     name: socialLinkRomanceNames.EmpressRomance,
     available: available(Routes.Romantic),
   },
-  [socialLinkSpendTimeNames.EmpressSpendTime]: {
-    ...socialLinkSpendTimeEventBase,
+  [socialLinkShrineNames.EmpressShrineTime]: {
+    ...socialLinkShrineEventBase,
     linkName: SocialLinkNames.Empress,
-    name: socialLinkSpendTimeNames.EmpressSpendTime,
-    available: available(null, false),
+    name: socialLinkShrineNames.EmpressShrineTime,
   },
   [socialLinkInvitationNames.EmpressInvitation]: {
     ...socialLinkInvitationEventBase,

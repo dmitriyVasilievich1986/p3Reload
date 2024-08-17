@@ -5,21 +5,21 @@ import { StatsNames } from "@/constants/stats";
 
 import {
   socialLinkInvitationEventBase,
-  socialLinkSpendTimeEventBase,
   socialLinkRomanceEventBase,
+  socialLinkShrineEventBase,
   invitationAvailable,
   socialLinkEventBase,
 } from "./socialLinkEventsBase";
 
 import {
   socialLinkInvitationNames,
-  socialLinkSpendTimeNames,
   socialLinkRomanceNames,
+  socialLinkShrineNames,
   Times,
   Event,
 } from "../types";
 
-function available(route: Routes | null, shouldLevelUp: boolean = true) {
+function available(route: Routes) {
   return function (
     this: Event,
     {
@@ -37,19 +37,17 @@ function available(route: Routes | null, shouldLevelUp: boolean = true) {
     const thisLink = currentDay.links[link];
     const isNewLevel = socialLinks[link].isNewLevel(thisLink);
     const isRomance =
-      previousDay.links[link].level === 6 ||
-      thisLink.romance === route ||
-      route === null;
+      previousDay.links[link].level === 6 || thisLink.romance === route;
     const days = [DaysNames.monday, DaysNames.friday, DaysNames.saturday];
     return (
       currentDay.date.getTime() >= new Date(2009, 5, 19).getTime() &&
       previousDay.links[SocialLinkNames.Fortune].level > 0 &&
       previousDay.stats[StatsNames.Courage] >= 80 &&
       days.includes(currentDay.date.getDay()) &&
-      isNewLevel === shouldLevelUp &&
       !currentDay.isDayOff &&
       time === Times.Day &&
       !currentDay.exams &&
+      isNewLevel &&
       isRomance
     );
   };
@@ -58,7 +56,7 @@ function available(route: Routes | null, shouldLevelUp: boolean = true) {
 export const priestessEvents: {
   [SocialLinkNames.Priestess]: Event;
   [socialLinkRomanceNames.PriestessRomance]: Event;
-  [socialLinkSpendTimeNames.PriestessSpendTime]: Event;
+  [socialLinkShrineNames.PriestessShrineTime]: Event;
   [socialLinkInvitationNames.PriestessInvitation]: Event;
 } = {
   [SocialLinkNames.Priestess]: {
@@ -73,11 +71,10 @@ export const priestessEvents: {
     name: socialLinkRomanceNames.PriestessRomance,
     available: available(Routes.Romantic),
   },
-  [socialLinkSpendTimeNames.PriestessSpendTime]: {
-    ...socialLinkSpendTimeEventBase,
+  [socialLinkShrineNames.PriestessShrineTime]: {
+    ...socialLinkShrineEventBase,
     linkName: SocialLinkNames.Priestess,
-    name: socialLinkSpendTimeNames.PriestessSpendTime,
-    available: available(null, false),
+    name: socialLinkShrineNames.PriestessShrineTime,
   },
   [socialLinkInvitationNames.PriestessInvitation]: {
     ...socialLinkInvitationEventBase,

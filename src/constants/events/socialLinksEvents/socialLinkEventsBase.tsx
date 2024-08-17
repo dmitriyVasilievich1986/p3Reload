@@ -47,7 +47,39 @@ const socialLinkEventBase: Event = {
 
 const socialLinkRomanceEventBase: Event = {
   ...socialLinkEventBase,
+  label: CardSpendTime,
   upgrade: upgrade(Routes.Romantic),
+};
+
+const socialLinkShrineEventBase: Event = {
+  ...socialLinkEventBase,
+  available: function ({
+    currentDay,
+    time,
+  }: {
+    previousDay?: SingleDay;
+    currentDay: SingleDay;
+    time: Times;
+  }) {
+    const link = this.linkName as SocialLinkNames;
+    const thisLink = currentDay.links[link];
+    const isNewLevel = socialLinks[link].isNewLevel(thisLink);
+
+    return time === Times.Day && !isNewLevel;
+  },
+  upgrade: function (currentDay: SingleDay) {
+    const linkName = this.linkName as SocialLinkNames;
+
+    return socialLinks[linkName].calculate({
+      examMultiplier: currentDay.links[linkName].multiplier,
+      points: currentDay.links[linkName].points,
+      level: currentDay.links[linkName].level,
+      maxCharmMultiplier: 1.51,
+      cardMultiplier: 1.51,
+      maxPoints: [10],
+      currentDay,
+    });
+  },
 };
 
 const socialLinkSpendTimeEventBase: Event = {
@@ -116,6 +148,7 @@ export {
   socialLinkInvitationEventBase,
   socialLinkSpendTimeEventBase,
   socialLinkRomanceEventBase,
+  socialLinkShrineEventBase,
   invitationAvailable,
   socialLinkEventBase,
 };

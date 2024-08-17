@@ -4,66 +4,58 @@ import { SingleDay } from "@/constants/calendar";
 
 import {
   socialLinkInvitationNames,
-  socialLinkSpendTimeNames,
+  socialLinkShrineNames,
   Times,
   Event,
 } from "../types";
 
 import {
   socialLinkInvitationEventBase,
-  socialLinkSpendTimeEventBase,
+  socialLinkShrineEventBase,
   invitationAvailable,
   socialLinkEventBase,
 } from "./socialLinkEventsBase";
 
-function available(shouldLevelUp: boolean) {
-  return function (
-    this: Event,
-    {
-      currentDay,
-      time,
-    }: {
-      previousDay?: SingleDay;
-      currentDay: SingleDay;
-      time: Times;
-    }
-  ) {
-    const days = [
-      DaysNames.monday,
-      DaysNames.tuesday,
-      DaysNames.thursday,
-      DaysNames.friday,
-    ];
-    const link = this.linkName as SocialLinkNames;
-    const thisLink = currentDay.links[link];
-    const isNewLevel = socialLinks[link].isNewLevel(thisLink);
-    return (
-      currentDay.date.getTime() >= new Date(2009, 3, 23).getTime() &&
-      days.includes(currentDay.date.getDay()) &&
-      isNewLevel === shouldLevelUp &&
-      !currentDay.isDayOff &&
-      time === Times.Day &&
-      !currentDay.exams
-    );
-  };
-}
-
 export const chariotEvents: {
   [SocialLinkNames.Chariot]: Event;
-  [socialLinkSpendTimeNames.ChariotSpendTime]: Event;
+  [socialLinkShrineNames.ChariotShrineTime]: Event;
   [socialLinkInvitationNames.ChariotInvitation]: Event;
 } = {
   [SocialLinkNames.Chariot]: {
     ...socialLinkEventBase,
     name: SocialLinkNames.Chariot,
     linkName: SocialLinkNames.Chariot,
-    available: available(true),
+    available: function ({
+      currentDay,
+      time,
+    }: {
+      previousDay?: SingleDay;
+      currentDay: SingleDay;
+      time: Times;
+    }) {
+      const days = [
+        DaysNames.monday,
+        DaysNames.tuesday,
+        DaysNames.thursday,
+        DaysNames.friday,
+      ];
+      const link = this.linkName as SocialLinkNames;
+      const thisLink = currentDay.links[link];
+      const isNewLevel = socialLinks[link].isNewLevel(thisLink);
+      return (
+        currentDay.date.getTime() >= new Date(2009, 3, 23).getTime() &&
+        days.includes(currentDay.date.getDay()) &&
+        !currentDay.isDayOff &&
+        time === Times.Day &&
+        !currentDay.exams &&
+        isNewLevel
+      );
+    },
   },
-  [socialLinkSpendTimeNames.ChariotSpendTime]: {
-    ...socialLinkSpendTimeEventBase,
+  [socialLinkShrineNames.ChariotShrineTime]: {
+    ...socialLinkShrineEventBase,
     linkName: SocialLinkNames.Chariot,
-    name: socialLinkSpendTimeNames.ChariotSpendTime,
-    available: available(false),
+    name: socialLinkShrineNames.ChariotShrineTime,
   },
   [socialLinkInvitationNames.ChariotInvitation]: {
     ...socialLinkInvitationEventBase,

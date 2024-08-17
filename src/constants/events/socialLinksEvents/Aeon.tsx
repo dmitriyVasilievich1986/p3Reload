@@ -3,19 +3,19 @@ import { SingleDay } from "@/constants/calendar/SingleDay";
 import { DaysNames } from "@/constants/monthsNames";
 
 import {
-  socialLinkSpendTimeNames,
   socialLinkRomanceNames,
+  socialLinkShrineNames,
   Times,
   Event,
 } from "../types";
 
 import {
-  socialLinkSpendTimeEventBase,
   socialLinkRomanceEventBase,
+  socialLinkShrineEventBase,
   socialLinkEventBase,
 } from "./socialLinkEventsBase";
 
-function available(route: Routes | null, shouldLevelUp: boolean = true) {
+function available(route: Routes) {
   return function (
     this: Event,
     {
@@ -33,9 +33,7 @@ function available(route: Routes | null, shouldLevelUp: boolean = true) {
     const thisLink = currentDay.links[link];
     const isNewLevel = socialLinks[link].isNewLevel(thisLink);
     const isRomance =
-      previousDay.links[link].level === 6 ||
-      thisLink.romance === route ||
-      route === null;
+      previousDay.links[link].level === 6 || thisLink.romance === route;
     const days = [
       DaysNames.monday,
       DaysNames.tuesday,
@@ -47,8 +45,8 @@ function available(route: Routes | null, shouldLevelUp: boolean = true) {
     return (
       currentDay.date.getTime() >= new Date(2010, 0, 8).getTime() &&
       days.includes(currentDay.date.getDay()) &&
-      isNewLevel === shouldLevelUp &&
       time === Times.Day &&
+      isNewLevel &&
       isRomance
     );
   };
@@ -57,7 +55,7 @@ function available(route: Routes | null, shouldLevelUp: boolean = true) {
 export const aeonEvents: {
   [SocialLinkNames.Aeon]: Event;
   [socialLinkRomanceNames.AeonRomance]: Event;
-  [socialLinkSpendTimeNames.AeonSpendTime]: Event;
+  [socialLinkShrineNames.AeonShrineTime]: Event;
 } = {
   [SocialLinkNames.Aeon]: {
     ...socialLinkEventBase,
@@ -71,10 +69,9 @@ export const aeonEvents: {
     linkName: SocialLinkNames.Aeon,
     available: available(Routes.Romantic),
   },
-  [socialLinkSpendTimeNames.AeonSpendTime]: {
-    ...socialLinkSpendTimeEventBase,
+  [socialLinkShrineNames.AeonShrineTime]: {
+    ...socialLinkShrineEventBase,
     linkName: SocialLinkNames.Aeon,
-    name: socialLinkSpendTimeNames.AeonSpendTime,
-    available: available(null, false),
+    name: socialLinkShrineNames.AeonShrineTime,
   },
 };

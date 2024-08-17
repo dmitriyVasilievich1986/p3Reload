@@ -1,17 +1,22 @@
 import { SocialLinkNames, socialLinks } from "@/constants/socialLinks";
-import { socialLinkSpendTimeNames, Times, Event } from "../types";
+import { socialLinkShrineNames, Times, Event } from "../types";
 import { SingleDay } from "@/constants/calendar";
 import { StatsNames } from "@/constants/stats";
 
 import {
-  socialLinkSpendTimeEventBase,
+  socialLinkShrineEventBase,
   socialLinkEventBase,
 } from "./socialLinkEventsBase";
 
-function available(shouldLevelUp: boolean) {
-  return function (
-    this: Event,
-    {
+export const moonEvents: {
+  [SocialLinkNames.Moon]: Event;
+  [socialLinkShrineNames.MoonShrineTime]: Event;
+} = {
+  [SocialLinkNames.Moon]: {
+    ...socialLinkEventBase,
+    name: SocialLinkNames.Moon,
+    linkName: SocialLinkNames.Moon,
+    available: function ({
       previousDay,
       currentDay,
       time,
@@ -19,36 +24,23 @@ function available(shouldLevelUp: boolean) {
       previousDay?: SingleDay;
       currentDay: SingleDay;
       time: Times;
-    }
-  ) {
-    if (previousDay === undefined) return false;
-    const link = this.linkName as SocialLinkNames;
-    const thisLink = currentDay.links[link];
-    const isNewLevel = socialLinks[link].isNewLevel(thisLink);
-    return (
-      currentDay.date.getTime() >= new Date(2009, 3, 28).getTime() &&
-      previousDay.links[SocialLinkNames.Magician].level >= 3 &&
-      previousDay.stats[StatsNames.Charm] >= 15 &&
-      isNewLevel === shouldLevelUp &&
-      time === Times.Day
-    );
-  };
-}
-
-export const moonEvents: {
-  [SocialLinkNames.Moon]: Event;
-  [socialLinkSpendTimeNames.MoonSpendTime]: Event;
-} = {
-  [SocialLinkNames.Moon]: {
-    ...socialLinkEventBase,
-    name: SocialLinkNames.Moon,
-    linkName: SocialLinkNames.Moon,
-    available: available(true),
+    }) {
+      if (previousDay === undefined) return false;
+      const link = this.linkName as SocialLinkNames;
+      const thisLink = currentDay.links[link];
+      const isNewLevel = socialLinks[link].isNewLevel(thisLink);
+      return (
+        currentDay.date.getTime() >= new Date(2009, 3, 28).getTime() &&
+        previousDay.links[SocialLinkNames.Magician].level >= 3 &&
+        previousDay.stats[StatsNames.Charm] >= 15 &&
+        time === Times.Day &&
+        isNewLevel
+      );
+    },
   },
-  [socialLinkSpendTimeNames.MoonSpendTime]: {
-    ...socialLinkSpendTimeEventBase,
+  [socialLinkShrineNames.MoonShrineTime]: {
+    ...socialLinkShrineEventBase,
     linkName: SocialLinkNames.Moon,
-    name: socialLinkSpendTimeNames.MoonSpendTime,
-    available: available(false),
+    name: socialLinkShrineNames.MoonShrineTime,
   },
 };

@@ -26,12 +26,14 @@ import {
   socialLinkInvitationNames,
   socialLinkSpendTimeNames,
   socialLinkRomanceNames,
+  socialLinkShrineNames,
   Event,
 } from "../types";
 
 export const linkEvents: {
   [key in
     | SocialLinkNames
+    | socialLinkShrineNames
     | socialLinkRomanceNames
     | socialLinkSpendTimeNames
     | socialLinkInvitationNames]: Event;

@@ -4,61 +4,53 @@ import { SingleDay } from "@/constants/calendar";
 
 import {
   socialLinkInvitationNames,
-  socialLinkSpendTimeNames,
+  socialLinkShrineNames,
   Times,
   Event,
 } from "../types";
 
 import {
   socialLinkInvitationEventBase,
-  socialLinkSpendTimeEventBase,
+  socialLinkShrineEventBase,
   invitationAvailable,
   socialLinkEventBase,
 } from "./socialLinkEventsBase";
 
-function available(shouldLevelUp: boolean) {
-  return function (
-    this: Event,
-    {
-      currentDay,
-      time,
-    }: {
-      previousDay?: SingleDay;
-      currentDay: SingleDay;
-      time: Times;
-    }
-  ) {
-    const days = [DaysNames.tuesday, DaysNames.thursday, DaysNames.friday];
-    const link = this.linkName as SocialLinkNames;
-    const thisLink = currentDay.links[link];
-    const isNewLevel = socialLinks[link].isNewLevel(thisLink);
-    return (
-      currentDay.date.getTime() >= new Date(2009, 3, 22).getTime() &&
-      days.includes(currentDay.date.getDay()) &&
-      isNewLevel === shouldLevelUp &&
-      !currentDay.isDayOff &&
-      time === Times.Day &&
-      !currentDay.exams
-    );
-  };
-}
-
 export const magicianEvents: {
   [SocialLinkNames.Magician]: Event;
-  [socialLinkSpendTimeNames.MagicianSpendTime]: Event;
+  [socialLinkShrineNames.MagicianShrineTime]: Event;
   [socialLinkInvitationNames.MagicianInvitation]: Event;
 } = {
   [SocialLinkNames.Magician]: {
     ...socialLinkEventBase,
     name: SocialLinkNames.Magician,
     linkName: SocialLinkNames.Magician,
-    available: available(true),
+    available: function ({
+      currentDay,
+      time,
+    }: {
+      previousDay?: SingleDay;
+      currentDay: SingleDay;
+      time: Times;
+    }) {
+      const days = [DaysNames.tuesday, DaysNames.thursday, DaysNames.friday];
+      const link = this.linkName as SocialLinkNames;
+      const thisLink = currentDay.links[link];
+      const isNewLevel = socialLinks[link].isNewLevel(thisLink);
+      return (
+        currentDay.date.getTime() >= new Date(2009, 3, 22).getTime() &&
+        days.includes(currentDay.date.getDay()) &&
+        !currentDay.isDayOff &&
+        time === Times.Day &&
+        !currentDay.exams &&
+        isNewLevel
+      );
+    },
   },
-  [socialLinkSpendTimeNames.MagicianSpendTime]: {
-    ...socialLinkSpendTimeEventBase,
+  [socialLinkShrineNames.MagicianShrineTime]: {
+    ...socialLinkShrineEventBase,
     linkName: SocialLinkNames.Magician,
-    name: socialLinkSpendTimeNames.MagicianSpendTime,
-    available: available(false),
+    name: socialLinkShrineNames.MagicianShrineTime,
   },
   [socialLinkInvitationNames.MagicianInvitation]: {
     ...socialLinkInvitationEventBase,

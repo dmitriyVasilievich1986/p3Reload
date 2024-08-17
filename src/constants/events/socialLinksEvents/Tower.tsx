@@ -1,11 +1,18 @@
 import { SocialLinkNames, socialLinks } from "@/constants/socialLinks";
-import { socialLinkSpendTimeNames, Times, Event } from "../types";
 import { DaysNames } from "@/constants/monthsNames";
 import { SingleDay } from "@/constants/calendar";
 import { StatsNames } from "@/constants/stats";
 
 import {
+  socialLinkSpendTimeNames,
+  socialLinkShrineNames,
+  Times,
+  Event,
+} from "../types";
+
+import {
   socialLinkSpendTimeEventBase,
+  socialLinkShrineEventBase,
   socialLinkEventBase,
 } from "./socialLinkEventsBase";
 
@@ -45,6 +52,7 @@ function available(shouldLevelUp: boolean) {
 
 export const towerEvents: {
   [SocialLinkNames.Tower]: Event;
+  [socialLinkShrineNames.TowerShrineTime]: Event;
   [socialLinkSpendTimeNames.TowerSpendTime]: Event;
 } = {
   [SocialLinkNames.Tower]: {
@@ -60,5 +68,10 @@ export const towerEvents: {
     name: SocialLinkNames.Tower,
     linkName: SocialLinkNames.Tower,
     available: available(false),
+  },
+  [socialLinkShrineNames.TowerShrineTime]: {
+    ...socialLinkShrineEventBase,
+    linkName: SocialLinkNames.Tower,
+    name: socialLinkShrineNames.TowerShrineTime,
   },
 };

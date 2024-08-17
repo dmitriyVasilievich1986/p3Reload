@@ -5,22 +5,28 @@ import { StatsNames } from "@/constants/stats";
 
 import {
   socialLinkInvitationNames,
-  socialLinkSpendTimeNames,
+  socialLinkShrineNames,
   Times,
   Event,
 } from "../types";
 
 import {
   socialLinkInvitationEventBase,
-  socialLinkSpendTimeEventBase,
+  socialLinkShrineEventBase,
   invitationAvailable,
   socialLinkEventBase,
 } from "./socialLinkEventsBase";
 
-function available(shouldLevelUp: boolean) {
-  return function (
-    this: Event,
-    {
+export const TemperanceEvents: {
+  [SocialLinkNames.Temperance]: Event;
+  [socialLinkShrineNames.TemperanceShrineTime]: Event;
+  [socialLinkInvitationNames.TemperanceInvitation]: Event;
+} = {
+  [SocialLinkNames.Temperance]: {
+    ...socialLinkEventBase,
+    name: SocialLinkNames.Temperance,
+    linkName: SocialLinkNames.Temperance,
+    available: function ({
       previousDay,
       currentDay,
       time,
@@ -28,42 +34,28 @@ function available(shouldLevelUp: boolean) {
       previousDay?: SingleDay;
       currentDay: SingleDay;
       time: Times;
-    }
-  ) {
-    if (previousDay === undefined) return false;
-    const days = [DaysNames.tuesday, DaysNames.wednesday, DaysNames.friday];
-    const link = this.linkName as SocialLinkNames;
-    const thisLink = currentDay.links[link];
-    const isNewLevel = socialLinks[link].isNewLevel(thisLink);
-    return (
-      currentDay.date.getTime() >= new Date(2009, 4, 8).getTime() &&
-      previousDay.links[SocialLinkNames.Hierophant].level >= 3 &&
-      previousDay.stats[StatsNames.Academics] >= 20 &&
-      days.includes(currentDay.date.getDay()) &&
-      isNewLevel === shouldLevelUp &&
-      !currentDay.isDayOff &&
-      time === Times.Day &&
-      !currentDay.exams
-    );
-  };
-}
-
-export const TemperanceEvents: {
-  [SocialLinkNames.Temperance]: Event;
-  [socialLinkSpendTimeNames.TemperanceSpendTime]: Event;
-  [socialLinkInvitationNames.TemperanceInvitation]: Event;
-} = {
-  [SocialLinkNames.Temperance]: {
-    ...socialLinkEventBase,
-    name: SocialLinkNames.Temperance,
-    linkName: SocialLinkNames.Temperance,
-    available: available(true),
+    }) {
+      if (previousDay === undefined) return false;
+      const days = [DaysNames.tuesday, DaysNames.wednesday, DaysNames.friday];
+      const link = this.linkName as SocialLinkNames;
+      const thisLink = currentDay.links[link];
+      const isNewLevel = socialLinks[link].isNewLevel(thisLink);
+      return (
+        currentDay.date.getTime() >= new Date(2009, 4, 8).getTime() &&
+        previousDay.links[SocialLinkNames.Hierophant].level >= 3 &&
+        previousDay.stats[StatsNames.Academics] >= 20 &&
+        days.includes(currentDay.date.getDay()) &&
+        !currentDay.isDayOff &&
+        time === Times.Day &&
+        !currentDay.exams &&
+        isNewLevel
+      );
+    },
   },
-  [socialLinkSpendTimeNames.TemperanceSpendTime]: {
-    ...socialLinkSpendTimeEventBase,
+  [socialLinkShrineNames.TemperanceShrineTime]: {
+    ...socialLinkShrineEventBase,
     linkName: SocialLinkNames.Temperance,
-    name: socialLinkSpendTimeNames.TemperanceSpendTime,
-    available: available(false),
+    name: socialLinkShrineNames.TemperanceShrineTime,
   },
   [socialLinkInvitationNames.TemperanceInvitation]: {
     ...socialLinkInvitationEventBase,

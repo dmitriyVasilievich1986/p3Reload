@@ -5,21 +5,21 @@ import { StatsNames } from "@/constants/stats";
 
 import {
   socialLinkInvitationEventBase,
-  socialLinkSpendTimeEventBase,
   socialLinkRomanceEventBase,
+  socialLinkShrineEventBase,
   invitationAvailable,
   socialLinkEventBase,
 } from "./socialLinkEventsBase";
 
 import {
   socialLinkInvitationNames,
-  socialLinkSpendTimeNames,
   socialLinkRomanceNames,
+  socialLinkShrineNames,
   Times,
   Event,
 } from "../types";
 
-function available(route: Routes | null, shouldLevelUp: boolean = true) {
+function available(route: Routes) {
   return function (
     this: Event,
     {
@@ -37,9 +37,7 @@ function available(route: Routes | null, shouldLevelUp: boolean = true) {
     const thisLink = currentDay.links[link];
     const isNewLevel = socialLinks[link].isNewLevel(thisLink);
     const isRomance =
-      previousDay.links[link].level === 6 ||
-      thisLink.romance === route ||
-      route === null;
+      previousDay.links[link].level === 6 || thisLink.romance === route;
     const days = [
       DaysNames.monday,
       DaysNames.wednesday,
@@ -50,10 +48,10 @@ function available(route: Routes | null, shouldLevelUp: boolean = true) {
       currentDay.date.getTime() >= new Date(2009, 6, 25).getTime() &&
       previousDay.stats[StatsNames.Charm] >= 100 &&
       days.includes(currentDay.date.getDay()) &&
-      isNewLevel === shouldLevelUp &&
       !currentDay.isDayOff &&
       time === Times.Day &&
       !currentDay.exams &&
+      isNewLevel &&
       isRomance
     );
   };
@@ -62,7 +60,7 @@ function available(route: Routes | null, shouldLevelUp: boolean = true) {
 export const loversEvents: {
   [SocialLinkNames.Lovers]: Event;
   [socialLinkRomanceNames.LoversRomance]: Event;
-  [socialLinkSpendTimeNames.LoversSpendTime]: Event;
+  [socialLinkShrineNames.LoversShrineTime]: Event;
   [socialLinkInvitationNames.LoversInvitation]: Event;
 } = {
   [SocialLinkNames.Lovers]: {
@@ -77,11 +75,10 @@ export const loversEvents: {
     name: socialLinkRomanceNames.LoversRomance,
     available: available(Routes.Romantic),
   },
-  [socialLinkSpendTimeNames.LoversSpendTime]: {
-    ...socialLinkSpendTimeEventBase,
+  [socialLinkShrineNames.LoversShrineTime]: {
+    ...socialLinkShrineEventBase,
     linkName: SocialLinkNames.Lovers,
-    name: socialLinkSpendTimeNames.LoversSpendTime,
-    available: available(null, false),
+    name: socialLinkShrineNames.LoversShrineTime,
   },
   [socialLinkInvitationNames.LoversInvitation]: {
     ...socialLinkInvitationEventBase,

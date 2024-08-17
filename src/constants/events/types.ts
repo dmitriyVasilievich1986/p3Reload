@@ -144,23 +144,27 @@ export enum socialLinkInvitationNames {
 }
 
 export enum socialLinkSpendTimeNames {
-  HierophantSpendTime = "Hierophant (Spending Time)",
-  TemperanceSpendTime = "Temperance (Spending Time)",
-  HangedManSpendTime = "Hanged Man (Spending Time)",
-  PriestessSpendTime = "Priestess (Spending Time)",
-  MagicianSpendTime = "Magician (Spending Time)",
-  StrengthSpendTime = "Strength (Spending Time)",
-  JusticeSpendTime = "Justice (Spending Time)",
-  FortuneSpendTime = "Fortune (Spending Time)",
-  EmpressSpendTime = "Empress (Spending Time)",
-  ChariotSpendTime = "Chariot (Spending Time)",
-  EmperorSpendTime = "Emperor (Spending Time)",
-  LoversSpendTime = "Lovers (Spending Time)",
-  HermitSpendTime = "Hermit (Spending Time)",
   TowerSpendTime = "Tower (Spending Time)",
-  AeonSpendTime = "Aeon (Spending Time)",
-  MoonSpendTime = "Moon (Spending Time)",
-  StarSpendTime = "Star (Spending Time)",
+}
+
+export enum socialLinkShrineNames {
+  HierophantShrineTime = "Hierophant (Naganaki shrine)",
+  TemperanceShrineTime = "Temperance (Naganaki shrine)",
+  HangedManShrineTime = "Hanged Man (Naganaki shrine)",
+  PriestessShrineTime = "Priestess (Naganaki shrine)",
+  StrengthShrineTime = "Strength (Naganaki shrine)",
+  MagicianShrineTime = "Magician (Naganaki shrine)",
+  EmpressShrineTime = "Empress (Naganaki shrine)",
+  ChariotShrineTime = "Chariot (Naganaki shrine)",
+  EmperorShrineTime = "Emperor (Naganaki shrine)",
+  FortuneShrineTime = "Fortune (Naganaki shrine)",
+  JusticeShrineTime = "Justice (Naganaki shrine)",
+  LoversShrineTime = "Lovers (Naganaki shrine)",
+  HermitShrineTime = "Hermit (Naganaki shrine)",
+  TowerShrineTime = "Tower (Naganaki shrine)",
+  AeonShrineTime = "Aeon (Naganaki shrine)",
+  MoonShrineTime = "Moon (Naganaki shrine)",
+  StarShrineTime = "Star (Naganaki shrine)",
 }
 
 const allNames = {
@@ -179,6 +183,7 @@ const allNames = {
   ...socialLinkRomanceNames,
   ...socialLinkInvitationNames,
   ...socialLinkSpendTimeNames,
+  ...socialLinkShrineNames,
 };
 
 export type allEventsNames = (typeof allNames)[keyof typeof allNames];

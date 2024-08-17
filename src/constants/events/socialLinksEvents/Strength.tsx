@@ -4,21 +4,21 @@ import { DaysNames } from "@/constants/monthsNames";
 
 import {
   socialLinkInvitationEventBase,
-  socialLinkSpendTimeEventBase,
   socialLinkRomanceEventBase,
+  socialLinkShrineEventBase,
   invitationAvailable,
   socialLinkEventBase,
 } from "./socialLinkEventsBase";
 
 import {
   socialLinkInvitationNames,
-  socialLinkSpendTimeNames,
   socialLinkRomanceNames,
+  socialLinkShrineNames,
   Times,
   Event,
 } from "../types";
 
-function available(route: Routes | null, shouldLevelUp: boolean = true) {
+function available(route: Routes) {
   return function (
     this: Event,
     {
@@ -36,18 +36,16 @@ function available(route: Routes | null, shouldLevelUp: boolean = true) {
     const thisLink = currentDay.links[link];
     const isNewLevel = socialLinks[link].isNewLevel(thisLink);
     const isRomance =
-      previousDay.links[link].level === 2 ||
-      thisLink.romance === route ||
-      route === null;
+      previousDay.links[link].level === 2 || thisLink.romance === route;
     const days = [DaysNames.wednesday, DaysNames.saturday];
     return (
       currentDay.date.getTime() >= new Date(2009, 3, 24).getTime() &&
       previousDay.links[SocialLinkNames.Chariot].level >= 2 &&
       days.includes(currentDay.date.getDay()) &&
-      isNewLevel === shouldLevelUp &&
       !currentDay.isDayOff &&
       time === Times.Day &&
       !currentDay.exams &&
+      isNewLevel &&
       isRomance
     );
   };
@@ -56,7 +54,7 @@ function available(route: Routes | null, shouldLevelUp: boolean = true) {
 export const strengthEvents: {
   [SocialLinkNames.Strength]: Event;
   [socialLinkRomanceNames.StrengthRomance]: Event;
-  [socialLinkSpendTimeNames.StrengthSpendTime]: Event;
+  [socialLinkShrineNames.StrengthShrineTime]: Event;
   [socialLinkInvitationNames.StrengthInvitation]: Event;
 } = {
   [SocialLinkNames.Strength]: {
@@ -71,11 +69,10 @@ export const strengthEvents: {
     name: socialLinkRomanceNames.StrengthRomance,
     available: available(Routes.Romantic),
   },
-  [socialLinkSpendTimeNames.StrengthSpendTime]: {
-    ...socialLinkSpendTimeEventBase,
+  [socialLinkShrineNames.StrengthShrineTime]: {
+    ...socialLinkShrineEventBase,
     linkName: SocialLinkNames.Strength,
-    name: socialLinkSpendTimeNames.StrengthSpendTime,
-    available: available(null, false),
+    name: socialLinkShrineNames.StrengthShrineTime,
   },
   [socialLinkInvitationNames.StrengthInvitation]: {
     ...socialLinkInvitationEventBase,
