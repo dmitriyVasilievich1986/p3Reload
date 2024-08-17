@@ -13,6 +13,28 @@ import {
   InvitationsType,
 } from "@/constants/socialLinks/types";
 
+function upgrade(romance: Routes) {
+  return function (this: Event, currentDay: SingleDay) {
+    const linkName = this.linkName as SocialLinkNames;
+    const level = currentDay.links[linkName].level + 1;
+
+    return socialLinks[linkName].calculate({
+      examMultiplier: currentDay.links[linkName].multiplier,
+      maxCharmMultiplier: 1.51,
+      cardMultiplier: 1.51,
+      points: 0,
+      level,
+      currentDay: new SingleDay({
+        ...currentDay,
+        links: {
+          ...currentDay.links,
+          [linkName]: { ...currentDay.links[linkName], romance },
+        },
+      }),
+    });
+  };
+}
+
 const socialLinkEventBase: Event = {
   linkName: SocialLinkNames.Aeon,
   name: SocialLinkNames.Aeon,
@@ -20,33 +42,30 @@ const socialLinkEventBase: Event = {
   time: Times.Day,
   label: CardWithMultiplier,
   available: () => false,
-  upgrade: function (currentDay) {
-    return socialLinks[this.linkName as SocialLinkNames].calculate(currentDay);
-  },
+  upgrade: upgrade(Routes.Platonic),
 };
 
 const socialLinkRomanceEventBase: Event = {
   ...socialLinkEventBase,
-  upgrade: function (currentDay) {
-    const linkName = this.linkName as SocialLinkNames;
-    return socialLinks[linkName].calculate(
-      new SingleDay({
-        ...currentDay,
-        links: {
-          ...currentDay.links,
-          [linkName]: {
-            ...currentDay.links[linkName],
-            romance: Routes.Romantic,
-          },
-        },
-      })
-    );
-  },
+  upgrade: upgrade(Routes.Romantic),
 };
 
 const socialLinkSpendTimeEventBase: Event = {
   ...socialLinkEventBase,
   label: CardSpendTime,
+  upgrade: function (currentDay: SingleDay) {
+    const linkName = this.linkName as SocialLinkNames;
+
+    return socialLinks[linkName].calculate({
+      examMultiplier: currentDay.links[linkName].multiplier > 1 ? 1.31 : 1,
+      points: currentDay.links[linkName].points,
+      level: currentDay.links[linkName].level,
+      maxCharmMultiplier: 1.31,
+      cardMultiplier: 1.31,
+      maxPoints: [10],
+      currentDay,
+    });
+  },
 };
 
 const socialLinkInvitationEventBase: Event = {

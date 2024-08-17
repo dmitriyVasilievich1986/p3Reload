@@ -46,71 +46,52 @@ export class SocialLink {
     );
   }
 
-  calculate(props: SingleDay) {
-    const thisLink = props.links[this.linkName];
+  calculate(props: {
+    currentDay: SingleDay;
+    level: number;
+    points: number;
+    maxPoints?: number[];
+    cardMultiplier: number;
+    examMultiplier: number;
+    maxCharmMultiplier: number;
+  }) {
+    const thisLink = props.currentDay.links[this.linkName];
     const currentLevel = this.getLevel(thisLink);
-    const isNewlevel = this.isNewLevel(thisLink);
-    const level = isNewlevel ? thisLink.level + 1 : thisLink.level;
-    let points;
+    const maxPoints = props.maxPoints || currentLevel.maxPoints;
+    let points = props.points;
 
-    if (isNewlevel) {
-      let multiplier = thisLink.multiplier;
-      const newLevel = this.getLevel({
-        ...thisLink,
-        level,
-        romance: thisLink.romance,
-      });
-      if (props.stats[StatsNames.Charm] >= 100) multiplier *= 1.51;
+    let multiplier = props.examMultiplier;
+    const newLevel = this.getLevel({
+      ...thisLink,
+      level: props.level,
+      romance: thisLink.romance,
+    });
+    if (props.currentDay.stats[StatsNames.Charm] >= 100)
+      multiplier *= props.maxCharmMultiplier;
 
-      const cardNeeded = new CardNeededCalculator({
-        maxPoints: currentLevel.maxPoints,
-        nextLevelPoints: newLevel.points,
-        multiplier: multiplier,
-      });
+    const cardNeeded = new CardNeededCalculator({
+      nextLevelPoints: newLevel.points - points,
+      cardMultiplier: props.cardMultiplier,
+      multiplier,
+      maxPoints,
+    });
 
-      if (props.arcanes.includes(this.linkName)) {
-        multiplier *= 1.51;
-      } else if (cardNeeded.isCardNeeded()) {
-        multiplier *= 1.51;
-        props.arcanes.push(this.linkName);
-      }
-
-      points = CardNeededCalculator.maxPointsSum(
-        currentLevel.maxPoints,
-        multiplier
-      );
-    } else {
-      let multiplier = thisLink.multiplier > 1 ? 1.31 : 1;
-      const newLevel = this.getLevel({
-        ...thisLink,
-        level,
-        romance: thisLink.romance,
-      });
-      if (props.stats[StatsNames.Charm] >= 100) multiplier *= 1.31;
-
-      const cardNeeded = new CardNeededCalculator({
-        maxPoints: currentLevel.maxPoints,
-        nextLevelPoints: newLevel.points,
-        multiplier: multiplier,
-      });
-
-      if (props.arcanes.includes(this.linkName)) {
-        multiplier *= 1.31;
-      } else if (cardNeeded.isCardNeeded()) {
-        multiplier *= 1.31;
-        props.arcanes.push(this.linkName);
-      }
-
-      points = thisLink.points + 10 * multiplier;
+    if (props.currentDay.arcanes.includes(this.linkName)) {
+      multiplier *= props.cardMultiplier;
+    } else if (cardNeeded.isCardNeeded()) {
+      multiplier *= props.cardMultiplier;
+      props.currentDay.arcanes.push(this.linkName);
     }
+
+    points += CardNeededCalculator.maxPointsSum(maxPoints, multiplier);
 
     return {
       links: {
-        ...props.links,
+        ...props.currentDay.links,
         [this.linkName]: {
           ...thisLink,
+          level: props.level,
           points,
-          level,
         },
       },
     };
@@ -124,16 +105,23 @@ export class SocialLinkAlwaysLevelUp extends SocialLink {
     return this.levels[1].Platonic as SocialLinkLevel;
   }
 
-  calculate(props: SingleDay) {
-    const thisLink = props.links[this.linkName];
-    const isNewlevel = thisLink.level < this.maxLevel;
+  calculate({
+    currentDay,
+    level,
+  }: {
+    currentDay: SingleDay;
+    level: number;
+    points: number;
+    maxPoints: number[];
+    cardMultiplier: number;
+    examMultiplier: number;
+    maxCharmMultiplier: number;
+  }) {
+    const thisLink = currentDay.links[this.linkName];
     return {
       links: {
-        ...props.links,
-        [this.linkName]: {
-          ...thisLink,
-          level: isNewlevel ? thisLink.level + 1 : thisLink.level,
-        },
+        ...currentDay.links,
+        [this.linkName]: { ...thisLink, level },
       },
     };
   }
