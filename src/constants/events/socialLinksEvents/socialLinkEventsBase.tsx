@@ -67,7 +67,11 @@ const socialLinkShrineEventBase: Event = {
     const thisLink = currentDay.links[link];
     const isNewLevel = socialLinks[link].isNewLevel(thisLink);
 
-    return time === Times.Day && !isNewLevel;
+    return (
+      thisLink.level < socialLinks[link].maxLevel &&
+      time === Times.Day &&
+      !isNewLevel
+    );
   },
   upgrade: function (currentDay: SingleDay) {
     const linkName = this.linkName as SocialLinkNames;
