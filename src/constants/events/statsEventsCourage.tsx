@@ -1,5 +1,5 @@
 import { statsEventsCourageNames, Categories, Times, Event } from "./types";
-import { EventCard } from "../../components/eventCard";
+import { EventCard, Question, Answer } from "@/components";
 import { SingleDay } from "../calendar/SingleDay";
 import { StatsNames } from "../stats/types";
 import { DaysNames } from "../monthsNames";
@@ -163,21 +163,49 @@ export const statsEventsCourage: {
     name: statsEventsCourageNames.wilduckBigEaterChallenge,
     category: Categories.Stats,
     time: Times.Evening,
-    label: function () {
+    label: function ({ fullCard }) {
+      const RightAnswers = () => {
+        if (!fullCard) {
+          return null;
+        }
+        return (
+          <div>
+            <Question label="No matter how much I eat, the amount of burgers doesn't seem to decrease...">
+              <Answer label="Focus on single burger" />
+              <Answer label="Look away from the burgers" points={15} />
+              <Answer label="Glance at the pile of burgers" />
+            </Question>
+            <Question label="I feel like I'm making progress, but I shouldn't get ahead of myself...">
+              <Answer label="Eat without stopping" points={15} />
+              <Answer label="Take breaks in between bites" />
+              <Answer label="Wash it down with soda " />
+            </Question>
+            <Question label="It's the final stretch... How can I keep this up and complete the chalenge...?">
+              <Answer label="Savor the flavors" />
+              <Answer label="Imagine something sour" points={15} />
+              <Answer label="Chew properly and slowly" />
+            </Question>
+          </div>
+        );
+      };
       return (
-        <EventCard
-          head={this.name}
-          stats="Academics +4 | Courage +4 | Charm +4"
-          place="Iwatodai Strip Mall"
-          price={1800}
-        />
+        <div>
+          <EventCard
+            head={this.name}
+            stats="Academics +4 | Courage +4 | Charm +4"
+            place="Iwatodai Strip Mall"
+            price={1800}
+          />
+          <RightAnswers />
+        </div>
       );
     },
-    available: function ({ currentDay, time }) {
+    available: function ({ previousDay, currentDay, time }) {
+      if (previousDay === undefined) return false;
       return (
         currentDay.date.getTime() >= new Date(2009, 4, 10).getTime() &&
-        !currentDay.singleTimeEvents.includes(this.name) &&
-        currentDay.stats[StatsNames.Courage] >= 45 &&
+        !previousDay.singleTimeEvents.includes(this.name) &&
+        previousDay.stats[StatsNames.Courage] >= 45 &&
         time === Times.Evening
       );
     },
