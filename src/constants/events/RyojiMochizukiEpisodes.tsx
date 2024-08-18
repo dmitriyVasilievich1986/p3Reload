@@ -23,14 +23,15 @@ export const RyojiMochizukiEpisodes: {
   [RyojiMochizukiEpisodesNames.RyojiMochizuki2]: {
     ...ji1,
     name: RyojiMochizukiEpisodesNames.RyojiMochizuki2,
-    available: function ({ currentDay, time }) {
+    available: function ({ previousDay, currentDay, time }) {
+      if (!previousDay) return false;
       const days = [
         new Date(2009, 10, 12).getTime(),
         new Date(2009, 10, 14).getTime(),
         new Date(2009, 10, 16).getTime(),
       ];
       return (
-        !currentDay.singleTimeEvents.includes(this.name) &&
+        !previousDay.singleTimeEvents.includes(this.name) &&
         days.includes(currentDay.date.getTime()) &&
         time === Times.Day
       );
@@ -39,13 +40,14 @@ export const RyojiMochizukiEpisodes: {
   [RyojiMochizukiEpisodesNames.RyojiMochizuki3]: {
     ...ji1,
     name: RyojiMochizukiEpisodesNames.RyojiMochizuki3,
-    available: function ({ currentDay, time }) {
+    available: function ({ previousDay, currentDay, time }) {
+      if (!previousDay) return false;
       return (
-        currentDay.singleTimeEvents.includes(
+        previousDay.singleTimeEvents.includes(
           RyojiMochizukiEpisodesNames.RyojiMochizuki2
         ) &&
         currentDay.date.getTime() === new Date(2009, 10, 18).getTime() &&
-        !currentDay.singleTimeEvents.includes(this.name) &&
+        !previousDay.singleTimeEvents.includes(this.name) &&
         time === Times.Day
       );
     },
@@ -53,13 +55,14 @@ export const RyojiMochizukiEpisodes: {
   [RyojiMochizukiEpisodesNames.RyojiMochizuki4]: {
     ...ji1,
     name: RyojiMochizukiEpisodesNames.RyojiMochizuki4,
-    available: function ({ currentDay, time }) {
+    available: function ({ previousDay, currentDay, time }) {
+      if (!previousDay) return false;
       return (
-        currentDay.singleTimeEvents.includes(
+        previousDay.singleTimeEvents.includes(
           RyojiMochizukiEpisodesNames.RyojiMochizuki3
         ) &&
         currentDay.date.getTime() === new Date(2009, 11, 1).getTime() &&
-        !currentDay.singleTimeEvents.includes(this.name) &&
+        !previousDay.singleTimeEvents.includes(this.name) &&
         time === Times.Day
       );
     },
@@ -67,13 +70,14 @@ export const RyojiMochizukiEpisodes: {
   [RyojiMochizukiEpisodesNames.RyojiMochizuki5]: {
     ...ji1,
     name: RyojiMochizukiEpisodesNames.RyojiMochizuki5,
-    available: function ({ currentDay, time }) {
+    available: function ({ previousDay, currentDay, time }) {
+      if (!previousDay) return false;
       return (
-        currentDay.singleTimeEvents.includes(
+        previousDay.singleTimeEvents.includes(
           RyojiMochizukiEpisodesNames.RyojiMochizuki4
         ) &&
         currentDay.date.getTime() === new Date(2009, 11, 31).getTime() &&
-        !currentDay.singleTimeEvents.includes(this.name) &&
+        !previousDay.singleTimeEvents.includes(this.name) &&
         time === Times.Day
       );
     },

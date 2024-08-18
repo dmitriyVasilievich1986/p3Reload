@@ -10,7 +10,8 @@ const ji1: Event = {
   label: function () {
     return <EventCard head={this.name} name="Koromaru" stats="Charm +2" />;
   },
-  available: function ({ currentDay, time }) {
+  available: function ({ previousDay, currentDay, time }) {
+    if (!previousDay) return false;
     const days = [DaysNames.tuesday, DaysNames.wednesday, DaysNames.friday];
     const additionalDays = [
       new Date(2010, 0, 23).getTime(),
@@ -23,7 +24,7 @@ const ji1: Event = {
         days.includes(currentDay.date.getDay())) ||
       additionalDays.includes(currentDay.date.getTime());
     return (
-      !currentDay.singleTimeEvents.includes(this.name) &&
+      !previousDay.singleTimeEvents.includes(this.name) &&
       time === Times.Day &&
       isDay
     );
@@ -49,7 +50,8 @@ export const KoromaruEpisodes: {
     label: function () {
       return <EventCard head={this.name} name="Koromaru" stats="Courage +2" />;
     },
-    available: function ({ currentDay, time }) {
+    available: function ({ previousDay, currentDay, time }) {
+      if (!previousDay) return false;
       const days = [DaysNames.tuesday, DaysNames.wednesday, DaysNames.friday];
       const additionalDays = [
         new Date(2010, 0, 28).getTime(),
@@ -61,8 +63,10 @@ export const KoromaruEpisodes: {
           days.includes(currentDay.date.getDay())) ||
         additionalDays.includes(currentDay.date.getTime());
       return (
-        currentDay.singleTimeEvents.includes(KoromaruEpisodesNames.Koromaru1) &&
-        !currentDay.singleTimeEvents.includes(this.name) &&
+        previousDay.singleTimeEvents.includes(
+          KoromaruEpisodesNames.Koromaru1
+        ) &&
+        !previousDay.singleTimeEvents.includes(this.name) &&
         time === Times.Day &&
         isDay
       );
@@ -83,7 +87,8 @@ export const KoromaruEpisodes: {
     label: function () {
       return <EventCard head={this.name} name="Koromaru" />;
     },
-    available: function ({ currentDay, time }) {
+    available: function ({ previousDay, currentDay, time }) {
+      if (!previousDay) return false;
       const days = [DaysNames.tuesday, DaysNames.wednesday, DaysNames.friday];
       const additionalDays = [
         new Date(2010, 0, 28).getTime(),
@@ -95,8 +100,10 @@ export const KoromaruEpisodes: {
           days.includes(currentDay.date.getDay())) ||
         additionalDays.includes(currentDay.date.getTime());
       return (
-        currentDay.singleTimeEvents.includes(KoromaruEpisodesNames.Koromaru2) &&
-        !currentDay.singleTimeEvents.includes(this.name) &&
+        previousDay.singleTimeEvents.includes(
+          KoromaruEpisodesNames.Koromaru2
+        ) &&
+        !previousDay.singleTimeEvents.includes(this.name) &&
         time === Times.Day &&
         isDay
       );
@@ -113,7 +120,8 @@ export const KoromaruEpisodes: {
     label: function () {
       return <EventCard head={this.name} name="Koromaru" stats="Courage +2" />;
     },
-    available: function ({ currentDay, time }) {
+    available: function ({ previousDay, currentDay, time }) {
+      if (!previousDay) return false;
       const days = [DaysNames.tuesday, DaysNames.wednesday, DaysNames.friday];
       const additionalDays = [
         new Date(2010, 0, 28).getTime(),
@@ -125,8 +133,10 @@ export const KoromaruEpisodes: {
           days.includes(currentDay.date.getDay())) ||
         additionalDays.includes(currentDay.date.getTime());
       return (
-        currentDay.singleTimeEvents.includes(KoromaruEpisodesNames.Koromaru3) &&
-        !currentDay.singleTimeEvents.includes(this.name) &&
+        previousDay.singleTimeEvents.includes(
+          KoromaruEpisodesNames.Koromaru3
+        ) &&
+        !previousDay.singleTimeEvents.includes(this.name) &&
         time === Times.Day &&
         isDay
       );
@@ -147,7 +157,8 @@ export const KoromaruEpisodes: {
     label: function () {
       return <EventCard head={this.name} name="Koromaru" />;
     },
-    available: function ({ currentDay, time }) {
+    available: function ({ previousDay, currentDay, time }) {
+      if (!previousDay) return false;
       const days = [DaysNames.tuesday, DaysNames.wednesday];
       const additionalDays = [
         new Date(2010, 0, 28).getTime(),
@@ -160,8 +171,10 @@ export const KoromaruEpisodes: {
           days.includes(currentDay.date.getDay())) ||
         additionalDays.includes(currentDay.date.getTime());
       return (
-        currentDay.singleTimeEvents.includes(KoromaruEpisodesNames.Koromaru4) &&
-        !currentDay.singleTimeEvents.includes(this.name) &&
+        previousDay.singleTimeEvents.includes(
+          KoromaruEpisodesNames.Koromaru4
+        ) &&
+        !previousDay.singleTimeEvents.includes(this.name) &&
         time === Times.Day &&
         isDay
       );

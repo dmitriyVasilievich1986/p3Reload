@@ -1,7 +1,7 @@
 import { statsEventsCourageNames, Categories, Times, Event } from "./types";
 import { EventCard, Question, Answer } from "@/components";
 import { SingleDay } from "../calendar/SingleDay";
-import { StatsNames } from "../stats/types";
+import { StatsNames, stats } from "../stats";
 import { DaysNames } from "../monthsNames";
 
 const getCourageUpgradeFunction = (value: number) => {
@@ -202,10 +202,11 @@ export const statsEventsCourage: {
     },
     available: function ({ previousDay, currentDay, time }) {
       if (previousDay === undefined) return false;
+      const courageLevel = stats[StatsNames.Courage].levels[3].value;
       return (
         currentDay.date.getTime() >= new Date(2009, 4, 10).getTime() &&
+        previousDay.stats[StatsNames.Courage] >= courageLevel &&
         !previousDay.singleTimeEvents.includes(this.name) &&
-        previousDay.stats[StatsNames.Courage] >= 45 &&
         time === Times.Evening
       );
     },

@@ -180,10 +180,12 @@ export const statsEventsCharm: {
         />
       );
     },
-    available: function ({ currentDay, time }) {
+    available: function ({ previousDay, currentDay, time }) {
+      if (!previousDay) return false;
       const days = [DaysNames.tuesday, DaysNames.wednesday, DaysNames.friday];
+      const courageLevel = stats[StatsNames.Courage].levels[2].value;
       return (
-        currentDay.stats[StatsNames.Courage] >= stats.Courage.levels[2].value &&
+        previousDay.stats[StatsNames.Courage] >= courageLevel &&
         [Times.Day, Times.Evening].includes(time) &&
         days.includes(currentDay.date.getDay())
       );

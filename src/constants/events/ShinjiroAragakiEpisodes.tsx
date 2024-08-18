@@ -18,7 +18,8 @@ const ji1: Event = {
       <EventCard head={this.name} name="Shinjiro Aragaki" stats="Courage +2" />
     );
   },
-  available: function ({ currentDay, time }) {
+  available: function ({ previousDay, currentDay, time }) {
+    if (!previousDay) return false;
     const days = [
       DaysNames.monday,
       DaysNames.tuesday,
@@ -30,7 +31,7 @@ const ji1: Event = {
     return (
       currentDay.date.getTime() >= new Date(2009, 8, 4).getTime() &&
       currentDay.date.getTime() <= new Date(2009, 9, 2).getTime() &&
-      !currentDay.singleTimeEvents.includes(this.name) &&
+      !previousDay.singleTimeEvents.includes(this.name) &&
       days.includes(currentDay.date.getDay()) &&
       time === Times.Day
     );
@@ -58,7 +59,8 @@ export const ShinjiroAragakiEpisodes: {
         <EventCard head={this.name} name="Shinjiro Aragaki" stats="Charm +2" />
       );
     },
-    available: function ({ currentDay, time }) {
+    available: function ({ previousDay, currentDay, time }) {
+      if (!previousDay) return false;
       const days = [
         DaysNames.monday,
         DaysNames.tuesday,
@@ -68,12 +70,12 @@ export const ShinjiroAragakiEpisodes: {
         DaysNames.sunday,
       ];
       return (
-        currentDay.singleTimeEvents.includes(
+        previousDay.singleTimeEvents.includes(
           ShinjiroAragakiEpisodesNames.ShinjiroAragaki1
         ) &&
         currentDay.date.getTime() >= new Date(2009, 8, 11).getTime() &&
         currentDay.date.getTime() <= new Date(2009, 9, 2).getTime() &&
-        !currentDay.singleTimeEvents.includes(this.name) &&
+        !previousDay.singleTimeEvents.includes(this.name) &&
         days.includes(currentDay.date.getDay()) &&
         time === Times.Day
       );
@@ -100,7 +102,8 @@ export const ShinjiroAragakiEpisodes: {
         />
       );
     },
-    available: function ({ currentDay, time }) {
+    available: function ({ previousDay, currentDay, time }) {
+      if (!previousDay) return false;
       const days = [
         DaysNames.monday,
         DaysNames.tuesday,
@@ -110,12 +113,12 @@ export const ShinjiroAragakiEpisodes: {
         DaysNames.sunday,
       ];
       return (
-        currentDay.singleTimeEvents.includes(
+        previousDay.singleTimeEvents.includes(
           ShinjiroAragakiEpisodesNames.ShinjiroAragaki2
         ) &&
         currentDay.date.getTime() >= new Date(2009, 8, 13).getTime() &&
         currentDay.date.getTime() <= new Date(2009, 9, 2).getTime() &&
-        !currentDay.singleTimeEvents.includes(this.name) &&
+        !previousDay.singleTimeEvents.includes(this.name) &&
         days.includes(currentDay.date.getDay()) &&
         time === Times.Day
       );
@@ -136,14 +139,15 @@ export const ShinjiroAragakiEpisodes: {
     label: function () {
       return <EventCard head={this.name} name="Shinjiro Aragaki" />;
     },
-    available: function ({ currentDay, time }) {
+    available: function ({ previousDay, currentDay, time }) {
+      if (!previousDay) return false;
       return (
-        currentDay.singleTimeEvents.includes(
+        previousDay.singleTimeEvents.includes(
           ShinjiroAragakiEpisodesNames.ShinjiroAragaki3
         ) &&
         currentDay.date.getTime() >= new Date(2009, 8, 14).getTime() &&
         currentDay.date.getTime() <= new Date(2009, 9, 2).getTime() &&
-        !currentDay.singleTimeEvents.includes(this.name) &&
+        !previousDay.singleTimeEvents.includes(this.name) &&
         time === Times.Day
       );
     },
@@ -163,7 +167,8 @@ export const ShinjiroAragakiEpisodes: {
         />
       );
     },
-    available: function ({ currentDay, time }) {
+    available: function ({ previousDay, currentDay, time }) {
+      if (!previousDay) return false;
       const days = [
         DaysNames.monday,
         DaysNames.tuesday,
@@ -172,12 +177,12 @@ export const ShinjiroAragakiEpisodes: {
         DaysNames.saturday,
       ];
       return (
-        currentDay.singleTimeEvents.includes(
+        previousDay.singleTimeEvents.includes(
           ShinjiroAragakiEpisodesNames.ShinjiroAragaki35
         ) &&
         currentDay.date.getTime() >= new Date(2009, 8, 14).getTime() &&
         currentDay.date.getTime() <= new Date(2009, 9, 2).getTime() &&
-        !currentDay.singleTimeEvents.includes(this.name) &&
+        !previousDay.singleTimeEvents.includes(this.name) &&
         days.includes(currentDay.date.getDay()) &&
         time === Times.Day
       );
@@ -195,14 +200,15 @@ export const ShinjiroAragakiEpisodes: {
   [ShinjiroAragakiEpisodesNames.ShinjiroAragaki5]: {
     ...ji1,
     name: ShinjiroAragakiEpisodesNames.ShinjiroAragaki5,
-    available: function ({ currentDay, time }) {
+    available: function ({ previousDay, currentDay, time }) {
+      if (!previousDay) return false;
       return (
-        currentDay.singleTimeEvents.includes(
+        previousDay.singleTimeEvents.includes(
           ShinjiroAragakiEpisodesNames.ShinjiroAragaki4
         ) &&
         currentDay.date.getTime() >= new Date(2009, 9, 5).getTime() &&
         currentDay.date.getTime() <= new Date(2009, 9, 31).getTime() &&
-        !currentDay.singleTimeEvents.includes(this.name) &&
+        !previousDay.singleTimeEvents.includes(this.name) &&
         time === Times.Day
       );
     },

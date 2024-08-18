@@ -10,12 +10,13 @@ const ji1: Event = {
   label: function () {
     return <EventCard head={this.name} name="Junpei Iori" />;
   },
-  available: function ({ currentDay, time }) {
+  available: function ({ previousDay, currentDay, time }) {
+    if (!previousDay) return false;
     const days = [DaysNames.tuesday, DaysNames.friday];
     return (
       currentDay.date.getTime() >= new Date(2009, 4, 12).getTime() &&
       currentDay.date.getTime() <= new Date(2009, 6, 3).getTime() &&
-      !currentDay.singleTimeEvents.includes(this.name) &&
+      !previousDay.singleTimeEvents.includes(this.name) &&
       days.includes(currentDay.date.getDay()) &&
       time === Times.Day
     );
@@ -35,7 +36,8 @@ export const JunpeiIoriEpisodes: { [key in JunpeiIoriEpisodesNames]: Event } = {
     label: function () {
       return <EventCard head={this.name} name="Junpei Iori" stats="Charm +2" />;
     },
-    available: function ({ currentDay, time }) {
+    available: function ({ previousDay, currentDay, time }) {
+      if (!previousDay) return false;
       const days = [
         new Date(2009, 7, 9).getTime(),
         new Date(2009, 7, 11).getTime(),
@@ -46,10 +48,10 @@ export const JunpeiIoriEpisodes: { [key in JunpeiIoriEpisodesNames]: Event } = {
         new Date(2009, 7, 28).getTime(),
       ];
       return (
-        currentDay.singleTimeEvents.includes(
+        previousDay.singleTimeEvents.includes(
           JunpeiIoriEpisodesNames.JunpeiIori1
         ) &&
-        !currentDay.singleTimeEvents.includes(this.name) &&
+        !previousDay.singleTimeEvents.includes(this.name) &&
         days.includes(currentDay.date.getTime()) &&
         time === Times.Day
       );
@@ -72,7 +74,8 @@ export const JunpeiIoriEpisodes: { [key in JunpeiIoriEpisodesNames]: Event } = {
         <EventCard head={this.name} stats="Academics +2" name="Junpei Iori" />
       );
     },
-    available: function ({ currentDay, time }) {
+    available: function ({ previousDay, currentDay, time }) {
+      if (!previousDay) return false;
       const days = [
         new Date(2009, 10, 7).getTime(),
         new Date(2009, 10, 10).getTime(),
@@ -80,10 +83,10 @@ export const JunpeiIoriEpisodes: { [key in JunpeiIoriEpisodesNames]: Event } = {
         new Date(2009, 10, 13).getTime(),
       ];
       return (
-        currentDay.singleTimeEvents.includes(
+        previousDay.singleTimeEvents.includes(
           JunpeiIoriEpisodesNames.JunpeiIori2
         ) &&
-        !currentDay.singleTimeEvents.includes(this.name) &&
+        !previousDay.singleTimeEvents.includes(this.name) &&
         days.includes(currentDay.date.getTime()) &&
         time === Times.Day
       );
@@ -101,14 +104,15 @@ export const JunpeiIoriEpisodes: { [key in JunpeiIoriEpisodesNames]: Event } = {
   [JunpeiIoriEpisodesNames.JunpeiIori35]: {
     ...ji1,
     name: JunpeiIoriEpisodesNames.JunpeiIori35,
-    available: function ({ currentDay, time }) {
+    available: function ({ previousDay, currentDay, time }) {
+      if (!previousDay) return false;
       return (
-        currentDay.singleTimeEvents.includes(
+        previousDay.singleTimeEvents.includes(
           JunpeiIoriEpisodesNames.JunpeiIori3
         ) &&
         currentDay.date.getTime() <= new Date(2009, 10, 20).getTime() &&
         currentDay.date.getTime() >= new Date(2009, 10, 8).getTime() &&
-        !currentDay.singleTimeEvents.includes(this.name) &&
+        !previousDay.singleTimeEvents.includes(this.name) &&
         time === Times.Day
       );
     },
@@ -121,7 +125,8 @@ export const JunpeiIoriEpisodes: { [key in JunpeiIoriEpisodesNames]: Event } = {
         <EventCard head={this.name} name="Junpei Iori" stats="Courage +2" />
       );
     },
-    available: function ({ currentDay, time }) {
+    available: function ({ previousDay, currentDay, time }) {
+      if (!previousDay) return false;
       const days = [
         new Date(2009, 11, 19).getTime(),
         new Date(2009, 11, 22).getTime(),
@@ -129,10 +134,10 @@ export const JunpeiIoriEpisodes: { [key in JunpeiIoriEpisodesNames]: Event } = {
         new Date(2009, 11, 26).getTime(),
       ];
       return (
-        currentDay.singleTimeEvents.includes(
+        previousDay.singleTimeEvents.includes(
           JunpeiIoriEpisodesNames.JunpeiIori3
         ) &&
-        !currentDay.singleTimeEvents.includes(this.name) &&
+        !previousDay.singleTimeEvents.includes(this.name) &&
         days.includes(currentDay.date.getTime()) &&
         time === Times.Day
       );
@@ -150,7 +155,8 @@ export const JunpeiIoriEpisodes: { [key in JunpeiIoriEpisodesNames]: Event } = {
   [JunpeiIoriEpisodesNames.JunpeiIori5]: {
     ...ji1,
     name: JunpeiIoriEpisodesNames.JunpeiIori5,
-    available: function ({ currentDay, time }) {
+    available: function ({ previousDay, currentDay, time }) {
+      if (!previousDay) return false;
       const days = [
         new Date(2010, 0, 15).getTime(),
         new Date(2010, 0, 18).getTime(),
@@ -162,10 +168,10 @@ export const JunpeiIoriEpisodes: { [key in JunpeiIoriEpisodesNames]: Event } = {
         new Date(2010, 0, 29).getTime(),
       ];
       return (
-        currentDay.singleTimeEvents.includes(
+        previousDay.singleTimeEvents.includes(
           JunpeiIoriEpisodesNames.JunpeiIori4
         ) &&
-        !currentDay.singleTimeEvents.includes(this.name) &&
+        !previousDay.singleTimeEvents.includes(this.name) &&
         days.includes(currentDay.date.getTime()) &&
         time === Times.Day
       );

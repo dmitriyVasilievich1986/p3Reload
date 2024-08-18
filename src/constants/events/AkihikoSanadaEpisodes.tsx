@@ -10,12 +10,13 @@ const ji1: Event = {
   label: function () {
     return <EventCard head={this.name} name="Akihiko Sanada" />;
   },
-  available: function ({ currentDay, time }) {
+  available: function ({ previousDay, currentDay, time }) {
+    if (!previousDay) return false;
     const days = [DaysNames.monday, DaysNames.friday];
     return (
       currentDay.date.getTime() >= new Date(2009, 4, 29).getTime() &&
       currentDay.date.getTime() <= new Date(2009, 6, 10).getTime() &&
-      !currentDay.singleTimeEvents.includes(this.name) &&
+      !previousDay.singleTimeEvents.includes(this.name) &&
       days.includes(currentDay.date.getDay()) &&
       time === Times.Evening
     );
@@ -39,15 +40,16 @@ export const AkihikoSanadaEpisodes: {
         <EventCard head={this.name} name="Akihiko Sanada" stats="Charm +2" />
       );
     },
-    available: function ({ currentDay, time }) {
+    available: function ({ previousDay, currentDay, time }) {
+      if (!previousDay) return false;
       const days = [DaysNames.monday, DaysNames.friday];
       return (
-        currentDay.singleTimeEvents.includes(
+        previousDay.singleTimeEvents.includes(
           AkihikoSanadaEpisodesNames.AkihikoSanada1
         ) &&
         currentDay.date.getTime() >= new Date(2009, 6, 24).getTime() &&
         currentDay.date.getTime() <= new Date(2009, 7, 31).getTime() &&
-        !currentDay.singleTimeEvents.includes(this.name) &&
+        !previousDay.singleTimeEvents.includes(this.name) &&
         days.includes(currentDay.date.getDay()) &&
         time === Times.Evening
       );
@@ -70,15 +72,16 @@ export const AkihikoSanadaEpisodes: {
         <EventCard head={this.name} name="Akihiko Sanada" stats="Charm +2" />
       );
     },
-    available: function ({ currentDay, time }) {
+    available: function ({ previousDay, currentDay, time }) {
+      if (!previousDay) return false;
       const days = [DaysNames.monday, DaysNames.friday];
       return (
-        currentDay.singleTimeEvents.includes(
+        previousDay.singleTimeEvents.includes(
           AkihikoSanadaEpisodesNames.AkihikoSanada2
         ) &&
         currentDay.date.getTime() <= new Date(2009, 10, 2).getTime() &&
         currentDay.date.getTime() >= new Date(2009, 9, 9).getTime() &&
-        !currentDay.singleTimeEvents.includes(this.name) &&
+        !previousDay.singleTimeEvents.includes(this.name) &&
         days.includes(currentDay.date.getDay()) &&
         time === Times.Evening
       );
@@ -96,15 +99,16 @@ export const AkihikoSanadaEpisodes: {
   [AkihikoSanadaEpisodesNames.AkihikoSanada4]: {
     ...ji1,
     name: AkihikoSanadaEpisodesNames.AkihikoSanada4,
-    available: function ({ currentDay, time }) {
+    available: function ({ previousDay, currentDay, time }) {
+      if (!previousDay) return false;
       const days = [DaysNames.monday, DaysNames.tuesday, DaysNames.saturday];
       return (
-        currentDay.singleTimeEvents.includes(
+        previousDay.singleTimeEvents.includes(
           AkihikoSanadaEpisodesNames.AkihikoSanada3
         ) &&
         currentDay.date.getTime() >= new Date(2009, 11, 12).getTime() &&
         currentDay.date.getTime() <= new Date(2009, 11, 26).getTime() &&
-        !currentDay.singleTimeEvents.includes(this.name) &&
+        !previousDay.singleTimeEvents.includes(this.name) &&
         days.includes(currentDay.date.getDay()) &&
         time === Times.Evening
       );
@@ -113,15 +117,16 @@ export const AkihikoSanadaEpisodes: {
   [AkihikoSanadaEpisodesNames.AkihikoSanada5]: {
     ...ji1,
     name: AkihikoSanadaEpisodesNames.AkihikoSanada5,
-    available: function ({ currentDay, time }) {
+    available: function ({ previousDay, currentDay, time }) {
+      if (!previousDay) return false;
       const days = [DaysNames.monday, DaysNames.friday];
       return (
-        currentDay.singleTimeEvents.includes(
+        previousDay.singleTimeEvents.includes(
           AkihikoSanadaEpisodesNames.AkihikoSanada4
         ) &&
         currentDay.date.getTime() <= new Date(2010, 0, 29).getTime() &&
         currentDay.date.getTime() >= new Date(2010, 0, 4).getTime() &&
-        !currentDay.singleTimeEvents.includes(this.name) &&
+        !previousDay.singleTimeEvents.includes(this.name) &&
         days.includes(currentDay.date.getDay()) &&
         time === Times.Evening
       );
