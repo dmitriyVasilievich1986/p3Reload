@@ -11,7 +11,9 @@ import {
   LevelsType,
 } from "./types";
 
-export const mainCharName: string = "Protagonist";
+const urlParams = new URLSearchParams(window.location.search);
+export const mainCharName: string =
+  urlParams.get("mainCharName") || "Protagonist";
 
 export class SocialLink {
   readonly invitations?: InvitationsType;
