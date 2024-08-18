@@ -247,7 +247,13 @@ export const april: SingleDay[] = [
           <EventCard head="Tartarus">
             <ul>
               <li>
-                <p>Gain at least ¥27,100</p>
+                <p>Have at least ¥27,080</p>
+              </li>
+              <li>
+                <p>Be at least level 8</p>
+              </li>
+              <li>
+                <p>Have {SocialLinkNames.Hermit} card</p>
               </li>
             </ul>
           </EventCard>
