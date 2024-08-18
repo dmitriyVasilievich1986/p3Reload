@@ -6,7 +6,6 @@ import { SingleDay } from "./SingleDay";
 
 import {
   statsEventsAcademicsNames,
-  statsEventsCourageNames,
   statsEventsCharmNames,
   SpecialEventsNames,
 } from "@/constants/events/types";
