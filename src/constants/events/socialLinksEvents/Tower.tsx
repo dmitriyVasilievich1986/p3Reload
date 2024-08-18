@@ -1,7 +1,7 @@
 import { SocialLinkNames, socialLinks } from "@/constants/socialLinks";
+import { StatsNames, stats } from "@/constants/stats";
 import { DaysNames } from "@/constants/monthsNames";
 import { SingleDay } from "@/constants/calendar";
-import { StatsNames } from "@/constants/stats";
 
 import {
   socialLinkSpendTimeNames,
@@ -39,10 +39,11 @@ function available(shouldLevelUp: boolean) {
     const link = this.linkName as SocialLinkNames;
     const thisLink = currentDay.links[link];
     const isNewLevel = socialLinks[link].isNewLevel(thisLink);
+    const courageLevel = stats[StatsNames.Courage].levels[1].value;
     return (
       currentDay.date.getTime() >= new Date(2009, 4, 23).getTime() &&
       previousDay.links[SocialLinkNames.Strength].level >= 4 &&
-      previousDay.stats[StatsNames.Courage] >= 15 &&
+      previousDay.stats[StatsNames.Courage] >= courageLevel &&
       days.includes(currentDay.date.getDay()) &&
       isNewLevel === shouldLevelUp &&
       time === Times.Evening

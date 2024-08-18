@@ -1,7 +1,7 @@
 import { SocialLinkNames, socialLinks, Routes } from "@/constants/socialLinks";
 import { SingleDay } from "@/constants/calendar/SingleDay";
+import { StatsNames, stats } from "@/constants/stats";
 import { DaysNames } from "@/constants/monthsNames";
-import { StatsNames } from "@/constants/stats";
 
 import {
   socialLinkInvitationEventBase,
@@ -39,10 +39,11 @@ function available(route: Routes) {
     const isRomance =
       previousDay.links[link].level === 6 || thisLink.romance === route;
     const days = [DaysNames.monday, DaysNames.friday, DaysNames.saturday];
+    const courageLevel = stats[StatsNames.Courage].levels[5].value;
     return (
       currentDay.date.getTime() >= new Date(2009, 5, 19).getTime() &&
+      previousDay.stats[StatsNames.Courage] >= courageLevel &&
       previousDay.links[SocialLinkNames.Fortune].level > 0 &&
-      previousDay.stats[StatsNames.Courage] >= 80 &&
       days.includes(currentDay.date.getDay()) &&
       !currentDay.isDayOff &&
       time === Times.Day &&

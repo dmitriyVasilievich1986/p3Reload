@@ -1,7 +1,7 @@
 import { socialLinkEventBase } from "./socialLinkEventsBase";
 import { SocialLinkNames } from "@/constants/socialLinks";
+import { StatsNames, stats } from "@/constants/stats";
 import { DaysNames } from "@/constants/monthsNames";
-import { StatsNames } from "@/constants/stats";
 import { Times, Event } from "../types";
 
 export const sunEvents: {
@@ -13,10 +13,11 @@ export const sunEvents: {
     linkName: SocialLinkNames.Sun,
     available: function ({ previousDay, currentDay, time }) {
       if (previousDay === undefined) return false;
+      const academicsLevel = stats[StatsNames.Academics].levels[5].value;
       return (
         currentDay.date.getTime() >= new Date(2009, 7, 9).getTime() &&
+        previousDay.stats[StatsNames.Academics] >= academicsLevel &&
         previousDay.links[SocialLinkNames.HangedMan].level >= 3 &&
-        previousDay.stats[StatsNames.Academics] >= 100 &&
         currentDay.date.getDay() == DaysNames.sunday &&
         time === Times.Day
       );

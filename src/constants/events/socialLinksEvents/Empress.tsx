@@ -1,7 +1,7 @@
 import { SocialLinkNames, socialLinks, Routes } from "@/constants/socialLinks";
 import { SingleDay } from "@/constants/calendar/SingleDay";
+import { StatsNames, stats } from "@/constants/stats";
 import { DaysNames } from "@/constants/monthsNames";
-import { StatsNames } from "@/constants/stats";
 
 import {
   socialLinkInvitationEventBase,
@@ -45,9 +45,10 @@ function available(route: Routes) {
       DaysNames.thursday,
       DaysNames.saturday,
     ];
+    const academicsLevel = stats[StatsNames.Academics].levels[5].value;
     return (
       currentDay.date.getTime() >= new Date(2009, 10, 21).getTime() &&
-      previousDay.stats[StatsNames.Academics] >= 230 &&
+      previousDay.stats[StatsNames.Academics] >= academicsLevel &&
       days.includes(currentDay.date.getDay()) &&
       !currentDay.isDayOff &&
       time === Times.Day &&

@@ -1,7 +1,7 @@
 import { SocialLinkNames, socialLinks } from "@/constants/socialLinks";
+import { StatsNames, stats } from "@/constants/stats";
 import { DaysNames } from "@/constants/monthsNames";
 import { SingleDay } from "@/constants/calendar";
-import { StatsNames } from "@/constants/stats";
 
 import {
   socialLinkInvitationNames,
@@ -40,10 +40,11 @@ export const TemperanceEvents: {
       const link = this.linkName as SocialLinkNames;
       const thisLink = currentDay.links[link];
       const isNewLevel = socialLinks[link].isNewLevel(thisLink);
+      const academicsLevel = stats[StatsNames.Academics].levels[1].value;
       return (
         currentDay.date.getTime() >= new Date(2009, 4, 8).getTime() &&
+        previousDay.stats[StatsNames.Academics] >= academicsLevel &&
         previousDay.links[SocialLinkNames.Hierophant].level >= 3 &&
-        previousDay.stats[StatsNames.Academics] >= 20 &&
         days.includes(currentDay.date.getDay()) &&
         !currentDay.isDayOff &&
         time === Times.Day &&

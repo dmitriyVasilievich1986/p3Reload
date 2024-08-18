@@ -1,8 +1,8 @@
 import { SocialLinkNames, socialLinks } from "@/constants/socialLinks";
 import { socialLinkShrineNames, Times, Event } from "../types";
+import { StatsNames, stats } from "@/constants/stats";
 import { DaysNames } from "@/constants/monthsNames";
 import { SingleDay } from "@/constants/calendar";
-import { StatsNames } from "@/constants/stats";
 
 import {
   socialLinkShrineEventBase,
@@ -31,9 +31,10 @@ export const starEvents: {
       const link = this.linkName as SocialLinkNames;
       const thisLink = currentDay.links[link];
       const isNewLevel = socialLinks[link].isNewLevel(thisLink);
+      const courageLevel = stats[StatsNames.Courage].levels[3].value;
       return (
         currentDay.date.getTime() >= new Date(2009, 7, 5).getTime() &&
-        previousDay.stats[StatsNames.Courage] >= 45 &&
+        previousDay.stats[StatsNames.Courage] >= courageLevel &&
         days.includes(currentDay.date.getDay()) &&
         time === Times.Day &&
         isNewLevel
