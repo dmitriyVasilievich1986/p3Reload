@@ -16,10 +16,11 @@ const pcProgramBase: Event = {
       />
     );
   },
-  available: function ({ currentDay, time }) {
+  available: function ({ previousDay, currentDay, time }) {
+    if (previousDay === undefined) return false;
     return (
       currentDay.date.getTime() >= new Date(2009, 3, 29).getTime() &&
-      !currentDay.singleTimeEvents.includes(this.name) &&
+      !previousDay.singleTimeEvents.includes(this.name) &&
       [Times.Day, Times.Evening].includes(time)
     );
   },
