@@ -5,26 +5,33 @@ import { StatsNames } from "@/constants/stats";
 import { classmates } from "./baseFunctions";
 import { SingleDay } from "./SingleDay";
 
+import {
+  statsEventsAcademicsNames,
+  statsEventsCourageNames,
+  statsEventsCharmNames,
+  SpecialEventsNames,
+} from "@/constants/events/types";
+
 export const july: SingleDay[] = [
   new SingleDay({
     date: new Date(2009, 6, 1),
     activities: [
-      events.DoNothing,
-      { ...events.DoNothing, time: Times.Evening },
+      events[SpecialEventsNames.DoNothing],
+      { ...events[SpecialEventsNames.DoNothing], time: Times.Evening },
     ],
   }),
   new SingleDay({
     date: new Date(2009, 6, 2),
     activities: [
-      events.DoNothing,
-      { ...events.DoNothing, time: Times.Evening },
+      events[SpecialEventsNames.DoNothing],
+      { ...events[SpecialEventsNames.DoNothing], time: Times.Evening },
     ],
   }),
   new SingleDay({
     date: new Date(2009, 6, 3),
     activities: [
       {
-        ...events.schoolQuestionCharm,
+        ...events[statsEventsCharmNames.schoolQuestionCharm],
         label: () => (
           <Question
             label={`H-Hey, lend me a hand here, ${mainCharName}. What kinda tale is he talkin' about?`}
@@ -35,30 +42,30 @@ export const july: SingleDay[] = [
           </Question>
         ),
       },
-      events.DoNothing,
-      { ...events.DoNothing, time: Times.Evening },
+      events[SpecialEventsNames.DoNothing],
+      { ...events[SpecialEventsNames.DoNothing], time: Times.Evening },
     ],
   }),
   new SingleDay({
     date: new Date(2009, 6, 4),
     activities: [
-      events.DoNothing,
-      { ...events.DoNothing, time: Times.Evening },
+      events[SpecialEventsNames.DoNothing],
+      { ...events[SpecialEventsNames.DoNothing], time: Times.Evening },
     ],
   }),
   new SingleDay({
     date: new Date(2009, 6, 5),
     isDayOff: true,
     activities: [
-      events.DoNothing,
-      { ...events.DoNothing, time: Times.Evening },
+      events[SpecialEventsNames.DoNothing],
+      { ...events[SpecialEventsNames.DoNothing], time: Times.Evening },
     ],
   }),
   new SingleDay({
     date: new Date(2009, 6, 6),
     activities: [
-      events.DoNothing,
-      { ...events.DoNothing, time: Times.Evening },
+      events[SpecialEventsNames.DoNothing],
+      { ...events[SpecialEventsNames.DoNothing], time: Times.Evening },
     ],
   }),
   new SingleDay({
@@ -67,7 +74,7 @@ export const july: SingleDay[] = [
     exams: true,
     activities: [
       {
-        ...events.Special,
+        ...events[SpecialEventsNames.Special],
         time: Times.WholeDay,
         label: () => (
           <WideEvent>
@@ -78,7 +85,7 @@ export const july: SingleDay[] = [
           </WideEvent>
         ),
       },
-      events.Fool,
+      events[SocialLinkNames.Fool],
     ],
   }),
   new SingleDay({
@@ -86,7 +93,7 @@ export const july: SingleDay[] = [
     exams: true,
     activities: [
       {
-        ...events.schoolQuestionCharm,
+        ...events[statsEventsCharmNames.schoolQuestionCharm],
         label: () => (
           <Question
             label={`"Because it is 10:30 right now, we will not reach the theater in time, it's already started, to my dismay."`}
@@ -97,9 +104,9 @@ export const july: SingleDay[] = [
           </Question>
         ),
       },
-      events.drinkMedicine,
-      events.DoNothing,
-      { ...events.DoNothing, time: Times.Evening },
+      events[statsEventsCourageNames.drinkMedicine],
+      events[SpecialEventsNames.DoNothing],
+      { ...events[SpecialEventsNames.DoNothing], time: Times.Evening },
     ],
   }),
   new SingleDay({
@@ -107,7 +114,7 @@ export const july: SingleDay[] = [
     exams: true,
     activities: [
       {
-        ...events.schoolQuestionCharm,
+        ...events[statsEventsCharmNames.schoolQuestionCharm],
         label: () => (
           <Question
             label={
@@ -120,8 +127,8 @@ export const july: SingleDay[] = [
           </Question>
         ),
       },
-      events.DoNothing,
-      { ...events.DoNothing, time: Times.Evening },
+      events[SpecialEventsNames.DoNothing],
+      { ...events[SpecialEventsNames.DoNothing], time: Times.Evening },
     ],
   }),
   new SingleDay({
@@ -129,7 +136,7 @@ export const july: SingleDay[] = [
     exams: true,
     activities: [
       {
-        ...events.schoolQuestionCharm,
+        ...events[statsEventsCharmNames.schoolQuestionCharm],
         label: () => (
           <Question
             label={"What is the esoteric study of Jewish texts called?"}
@@ -140,8 +147,8 @@ export const july: SingleDay[] = [
           </Question>
         ),
       },
-      events.DoNothing,
-      { ...events.DoNothing, time: Times.Evening },
+      events[SpecialEventsNames.DoNothing],
+      { ...events[SpecialEventsNames.DoNothing], time: Times.Evening },
     ],
   }),
   new SingleDay({
@@ -149,7 +156,7 @@ export const july: SingleDay[] = [
     exams: true,
     activities: [
       {
-        ...events.schoolQuestionCharm,
+        ...events[statsEventsCharmNames.schoolQuestionCharm],
         label: () => (
           <Question
             label={
@@ -162,8 +169,8 @@ export const july: SingleDay[] = [
           </Question>
         ),
       },
-      events.DoNothing,
-      { ...events.DoNothing, time: Times.Evening },
+      events[SpecialEventsNames.DoNothing],
+      { ...events[SpecialEventsNames.DoNothing], time: Times.Evening },
     ],
   }),
   new SingleDay({
@@ -171,18 +178,18 @@ export const july: SingleDay[] = [
     isDayOff: true,
     exams: true,
     activities: [
-      events.DoNothing,
-      { ...events.DoNothing, time: Times.Evening },
-      events.Death,
+      events[SpecialEventsNames.DoNothing],
+      { ...events[SpecialEventsNames.DoNothing], time: Times.Evening },
+      events[SocialLinkNames.Death],
     ],
   }),
   new SingleDay({
     date: new Date(2009, 6, 13),
     exams: true,
     activities: [
-      events.stayAwakeInClass,
-      events.DoNothing,
-      { ...events.DoNothing, time: Times.Evening },
+      events[statsEventsAcademicsNames.stayAwakeInClass],
+      events[SpecialEventsNames.DoNothing],
+      { ...events[SpecialEventsNames.DoNothing], time: Times.Evening },
     ],
   }),
   new SingleDay({
@@ -190,7 +197,7 @@ export const july: SingleDay[] = [
     exams: true,
     activities: [
       {
-        ...events.Exams,
+        ...events[SpecialEventsNames.Exams],
         label: () => (
           <WideEvent>
             <Question
@@ -211,7 +218,7 @@ export const july: SingleDay[] = [
     exams: true,
     activities: [
       {
-        ...events.Exams,
+        ...events[SpecialEventsNames.Exams],
         label: () => (
           <WideEvent>
             <Question
@@ -234,7 +241,7 @@ export const july: SingleDay[] = [
     exams: true,
     activities: [
       {
-        ...events.Exams,
+        ...events[SpecialEventsNames.Exams],
         label: () => (
           <WideEvent>
             <Question label={"Who designed the prototype for the katana?"}>
@@ -253,7 +260,7 @@ export const july: SingleDay[] = [
     exams: true,
     activities: [
       {
-        ...events.Exams,
+        ...events[SpecialEventsNames.Exams],
         label: () => (
           <WideEvent>
             <Question
@@ -272,12 +279,12 @@ export const july: SingleDay[] = [
   new SingleDay({
     date: new Date(2009, 6, 18),
     activities: [
-      { ...events.Exams, time: Times.Morning },
+      { ...events[SpecialEventsNames.Exams], time: Times.Morning },
       {
-        ...events.Special,
+        ...events[SpecialEventsNames.Special],
         label: () => <EventCard head="Introduction to Ken" />,
       },
-      { ...events.DoNothing, time: Times.Evening },
+      { ...events[SpecialEventsNames.DoNothing], time: Times.Evening },
     ],
   }),
   new SingleDay({
@@ -285,8 +292,8 @@ export const july: SingleDay[] = [
     isDayOff: true,
     exams: true,
     activities: [
-      events.DoNothing,
-      { ...events.DoNothing, time: Times.Evening },
+      events[SpecialEventsNames.DoNothing],
+      { ...events[SpecialEventsNames.DoNothing], time: Times.Evening },
     ],
   }),
   new SingleDay({
@@ -294,7 +301,7 @@ export const july: SingleDay[] = [
     exams: true,
     activities: [
       {
-        ...events.Special,
+        ...events[SpecialEventsNames.Special],
         time: Times.WholeDay,
         label: () => (
           <WideEvent>
@@ -309,7 +316,7 @@ export const july: SingleDay[] = [
     exams: true,
     activities: [
       {
-        ...events.Special,
+        ...events[SpecialEventsNames.Special],
         time: Times.WholeDay,
         label: () => (
           <WideEvent>
@@ -324,7 +331,7 @@ export const july: SingleDay[] = [
     exams: true,
     activities: [
       {
-        ...events.Special,
+        ...events[SpecialEventsNames.Special],
         time: Times.WholeDay,
         label: () => (
           <WideEvent>
@@ -332,22 +339,22 @@ export const july: SingleDay[] = [
           </WideEvent>
         ),
       },
-      { ...events.Fool, time: Times.Evening },
+      { ...events[SocialLinkNames.Fool], time: Times.Evening },
     ],
   }),
   new SingleDay({
     date: new Date(2009, 6, 23),
     exams: true,
     activities: [
-      events.DoNothing,
-      { ...events.DoNothing, time: Times.Evening },
+      events[SpecialEventsNames.DoNothing],
+      { ...events[SpecialEventsNames.DoNothing], time: Times.Evening },
     ],
   }),
   new SingleDay({
     date: new Date(2009, 6, 24),
     activities: [
       {
-        ...events.Exams,
+        ...events[SpecialEventsNames.Exams],
         time: Times.AfterSchool,
         label: () => <EventCard head="Exam results" />,
         upgrade: function (currentDay: SingleDay, previousWeek?: SingleDay) {
@@ -383,59 +390,59 @@ export const july: SingleDay[] = [
           };
         },
       },
-      events.DoNothing,
-      { ...events.DoNothing, time: Times.Evening },
+      events[SpecialEventsNames.DoNothing],
+      { ...events[SpecialEventsNames.DoNothing], time: Times.Evening },
     ],
   }),
   new SingleDay({
     date: new Date(2009, 6, 25),
     activities: [
-      events.stayAwakeInClass,
-      events.DoNothing,
-      { ...events.DoNothing, time: Times.Evening },
+      events[statsEventsAcademicsNames.stayAwakeInClass],
+      events[SpecialEventsNames.DoNothing],
+      { ...events[SpecialEventsNames.DoNothing], time: Times.Evening },
     ],
   }),
   new SingleDay({
     date: new Date(2009, 6, 26),
     isDayOff: true,
     activities: [
-      events.DoNothing,
-      { ...events.DoNothing, time: Times.Evening },
+      events[SpecialEventsNames.DoNothing],
+      { ...events[SpecialEventsNames.DoNothing], time: Times.Evening },
     ],
   }),
   new SingleDay({
     date: new Date(2009, 6, 27),
     activities: [
-      { ...events.Special },
-      { ...events.DoNothing, time: Times.Evening },
+      { ...events[SpecialEventsNames.Special] },
+      { ...events[SpecialEventsNames.DoNothing], time: Times.Evening },
     ],
   }),
   new SingleDay({
     date: new Date(2009, 6, 28),
     activities: [
-      { ...events.Special },
-      { ...events.DoNothing, time: Times.Evening },
+      { ...events[SpecialEventsNames.Special] },
+      { ...events[SpecialEventsNames.DoNothing], time: Times.Evening },
     ],
   }),
   new SingleDay({
     date: new Date(2009, 6, 29),
     activities: [
-      { ...events.Special },
-      { ...events.DoNothing, time: Times.Evening },
+      { ...events[SpecialEventsNames.Special] },
+      { ...events[SpecialEventsNames.DoNothing], time: Times.Evening },
     ],
   }),
   new SingleDay({
     date: new Date(2009, 6, 30),
     activities: [
-      { ...events.Special },
-      { ...events.DoNothing, time: Times.Evening },
+      { ...events[SpecialEventsNames.Special] },
+      { ...events[SpecialEventsNames.DoNothing], time: Times.Evening },
     ],
   }),
   new SingleDay({
     date: new Date(2009, 6, 31),
     activities: [
-      { ...events.Special },
-      { ...events.DoNothing, time: Times.Evening },
+      { ...events[SpecialEventsNames.Special] },
+      { ...events[SpecialEventsNames.DoNothing], time: Times.Evening },
     ],
   }),
 ];

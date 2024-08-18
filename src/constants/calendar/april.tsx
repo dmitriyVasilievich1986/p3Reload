@@ -1,16 +1,26 @@
 import { EventCard, WideEvent, Question, Answer } from "@/components";
 import { Categories, events, Times } from "@/constants/events";
+import { SocialLinkNames } from "@/constants/socialLinks";
 import { SingleDay } from "./SingleDay";
+
+import {
+  statsEventsAcademicsNames,
+  statsEventsCourageNames,
+  statsEventsCharmNames,
+  SpecialEventsNames,
+} from "@/constants/events/types";
 
 export const april: SingleDay[] = [
   new SingleDay({
     date: new Date(2009, 3, 7),
     activities: [
       {
-        ...events.Special,
+        ...events[SpecialEventsNames.Special],
         time: Times.WholeDay,
         label: (props) => (
-          <WideEvent>{events.Special.label({ ...props })}</WideEvent>
+          <WideEvent>
+            {events[SpecialEventsNames.Special].label({ ...props })}
+          </WideEvent>
         ),
       },
     ],
@@ -19,7 +29,7 @@ export const april: SingleDay[] = [
     date: new Date(2009, 3, 8),
     activities: [
       {
-        ...events.schoolQuestionCharm,
+        ...events[statsEventsCharmNames.schoolQuestionCharm],
         time: Times.Morning,
         label: () => (
           <Question
@@ -33,18 +43,20 @@ export const april: SingleDay[] = [
           </Question>
         ),
       },
-      events.Special,
-      { ...events.Special, time: Times.Evening },
+      events[SpecialEventsNames.Special],
+      { ...events[SpecialEventsNames.Special], time: Times.Evening },
     ],
   }),
   new SingleDay({
     date: new Date(2009, 3, 9),
     activities: [
       {
-        ...events.Special,
+        ...events[SpecialEventsNames.Special],
         time: Times.WholeDay,
         label: (props) => (
-          <WideEvent>{events.Special.label({ ...props })}</WideEvent>
+          <WideEvent>
+            {events[SpecialEventsNames.Special].label({ ...props })}
+          </WideEvent>
         ),
       },
     ],
@@ -53,10 +65,12 @@ export const april: SingleDay[] = [
     date: new Date(2009, 3, 10),
     activities: [
       {
-        ...events.Special,
+        ...events[SpecialEventsNames.Special],
         time: Times.WholeDay,
         label: (props) => (
-          <WideEvent>{events.Special.label({ ...props })}</WideEvent>
+          <WideEvent>
+            {events[SpecialEventsNames.Special].label({ ...props })}
+          </WideEvent>
         ),
       },
     ],
@@ -65,10 +79,12 @@ export const april: SingleDay[] = [
     date: new Date(2009, 3, 11),
     activities: [
       {
-        ...events.Special,
+        ...events[SpecialEventsNames.Special],
         time: Times.WholeDay,
         label: (props) => (
-          <WideEvent>{events.Special.label({ ...props })}</WideEvent>
+          <WideEvent>
+            {events[SpecialEventsNames.Special].label({ ...props })}
+          </WideEvent>
         ),
       },
     ],
@@ -78,10 +94,12 @@ export const april: SingleDay[] = [
     isDayOff: true,
     activities: [
       {
-        ...events.Special,
+        ...events[SpecialEventsNames.Special],
         time: Times.WholeDay,
         label: (props) => (
-          <WideEvent>{events.Special.label({ ...props })}</WideEvent>
+          <WideEvent>
+            {events[SpecialEventsNames.Special].label({ ...props })}
+          </WideEvent>
         ),
       },
     ],
@@ -90,10 +108,12 @@ export const april: SingleDay[] = [
     date: new Date(2009, 3, 13),
     activities: [
       {
-        ...events.Special,
+        ...events[SpecialEventsNames.Special],
         time: Times.WholeDay,
         label: (props) => (
-          <WideEvent>{events.Special.label({ ...props })}</WideEvent>
+          <WideEvent>
+            {events[SpecialEventsNames.Special].label({ ...props })}
+          </WideEvent>
         ),
       },
     ],
@@ -102,10 +122,12 @@ export const april: SingleDay[] = [
     date: new Date(2009, 3, 14),
     activities: [
       {
-        ...events.Special,
+        ...events[SpecialEventsNames.Special],
         time: Times.WholeDay,
         label: (props) => (
-          <WideEvent>{events.Special.label({ ...props })}</WideEvent>
+          <WideEvent>
+            {events[SpecialEventsNames.Special].label({ ...props })}
+          </WideEvent>
         ),
       },
     ],
@@ -114,10 +136,12 @@ export const april: SingleDay[] = [
     date: new Date(2009, 3, 15),
     activities: [
       {
-        ...events.Special,
+        ...events[SpecialEventsNames.Special],
         time: Times.WholeDay,
         label: (props) => (
-          <WideEvent>{events.Special.label({ ...props })}</WideEvent>
+          <WideEvent>
+            {events[SpecialEventsNames.Special].label({ ...props })}
+          </WideEvent>
         ),
       },
     ],
@@ -126,10 +150,12 @@ export const april: SingleDay[] = [
     date: new Date(2009, 3, 16),
     activities: [
       {
-        ...events.Special,
+        ...events[SpecialEventsNames.Special],
         time: Times.WholeDay,
         label: (props) => (
-          <WideEvent>{events.Special.label({ ...props })}</WideEvent>
+          <WideEvent>
+            {events[SpecialEventsNames.Special].label({ ...props })}
+          </WideEvent>
         ),
       },
     ],
@@ -138,10 +164,12 @@ export const april: SingleDay[] = [
     date: new Date(2009, 3, 17),
     activities: [
       {
-        ...events.Special,
+        ...events[SpecialEventsNames.Special],
         time: Times.WholeDay,
         label: (props) => (
-          <WideEvent>{events.Special.label({ ...props })}</WideEvent>
+          <WideEvent>
+            {events[SpecialEventsNames.Special].label({ ...props })}
+          </WideEvent>
         ),
       },
     ],
@@ -150,7 +178,7 @@ export const april: SingleDay[] = [
     date: new Date(2009, 3, 18),
     activities: [
       {
-        ...events.schoolQuestionCharm,
+        ...events[statsEventsCharmNames.schoolQuestionCharm],
         label: () => (
           <Question
             label={
@@ -163,9 +191,9 @@ export const april: SingleDay[] = [
           </Question>
         ),
       },
-      events.Special,
-      { ...events.Special, time: Times.Evening },
-      { ...events.Fool, time: Times.DarkHour },
+      events[SpecialEventsNames.Special],
+      { ...events[SpecialEventsNames.Special], time: Times.Evening },
+      { ...events[SocialLinkNames.Fool], time: Times.DarkHour },
     ],
   }),
   new SingleDay({
@@ -173,10 +201,12 @@ export const april: SingleDay[] = [
     isDayOff: true,
     activities: [
       {
-        ...events.Special,
+        ...events[SpecialEventsNames.Special],
         time: Times.WholeDay,
         label: (props) => (
-          <WideEvent>{events.Special.label({ ...props })}</WideEvent>
+          <WideEvent>
+            {events[SpecialEventsNames.Special].label({ ...props })}
+          </WideEvent>
         ),
       },
     ],
@@ -185,31 +215,33 @@ export const april: SingleDay[] = [
     date: new Date(2009, 3, 20),
     activities: [
       {
-        ...events.Special,
+        ...events[SpecialEventsNames.Special],
         time: Times.WholeDay,
         category: Categories.Tartarus,
         label: (props) => (
-          <WideEvent>{events.Special.label({ ...props })}</WideEvent>
+          <WideEvent>
+            {events[SpecialEventsNames.Special].label({ ...props })}
+          </WideEvent>
         ),
       },
-      { ...events.Fool, time: Times.DarkHour },
+      { ...events[SocialLinkNames.Fool], time: Times.DarkHour },
     ],
   }),
   new SingleDay({
     date: new Date(2009, 3, 21),
     activities: [
-      events.stayAwakeInClass,
-      events.drinkMedicine,
-      { ...events.gameParadeCourage, time: Times.Day },
-      events.gameParadeCourage,
+      events[statsEventsAcademicsNames.stayAwakeInClass],
+      events[statsEventsCourageNames.drinkMedicine],
+      { ...events[statsEventsCourageNames.gameParadeCourage], time: Times.Day },
+      events[statsEventsCourageNames.gameParadeCourage],
     ],
   }),
   new SingleDay({
     date: new Date(2009, 3, 22),
     activities: [
-      { ...events.Magician, special: true },
+      { ...events[SocialLinkNames.Magician], special: true },
       {
-        ...events.Tartarus,
+        ...events[SpecialEventsNames.Tartarus],
         time: Times.Evening,
         label: () => (
           <EventCard head="Tartarus">
@@ -225,26 +257,39 @@ export const april: SingleDay[] = [
   }),
   new SingleDay({
     date: new Date(2009, 3, 23),
-    activities: [events.drinkMedicine, events.Chariot, events.gameParadeCharm],
+    activities: [
+      events[statsEventsCourageNames.drinkMedicine],
+      events[SocialLinkNames.Chariot],
+      events[statsEventsCharmNames.gameParadeCharm],
+    ],
   }),
   new SingleDay({
     date: new Date(2009, 3, 24),
-    activities: [events.Chariot, events.gameParadeCourage],
+    activities: [
+      events[SocialLinkNames.Chariot],
+      events[statsEventsCourageNames.gameParadeCourage],
+    ],
   }),
   new SingleDay({
     date: new Date(2009, 3, 25),
-    activities: [events.Strength, events.gameParadeAcademics],
+    activities: [
+      events[SocialLinkNames.Strength],
+      events[statsEventsAcademicsNames.gameParadeAcademics],
+    ],
   }),
   new SingleDay({
     date: new Date(2009, 3, 26),
     isDayOff: true,
-    activities: [events.Hierophant, events.wakatsuKitchen],
+    activities: [
+      events[SocialLinkNames.Hierophant],
+      events[statsEventsAcademicsNames.wakatsuKitchen],
+    ],
   }),
   new SingleDay({
     date: new Date(2009, 3, 27),
     activities: [
       {
-        ...events.schoolQuestionCharm,
+        ...events[statsEventsCharmNames.schoolQuestionCharm],
         time: Times.Morning,
         special: true,
         label: () => (
@@ -260,15 +305,15 @@ export const april: SingleDay[] = [
           </Question>
         ),
       },
-      events.Emperor,
-      events.gameParadeCharm,
+      events[SocialLinkNames.Emperor],
+      events[statsEventsCharmNames.gameParadeCharm],
     ],
   }),
   new SingleDay({
     date: new Date(2009, 3, 28),
     activities: [
       {
-        ...events.Special,
+        ...events[SpecialEventsNames.Special],
         time: Times.AfterSchool,
         label: () => (
           <EventCard
@@ -279,20 +324,23 @@ export const april: SingleDay[] = [
           />
         ),
       },
-      events.Magician,
-      events.gameParadeCourage,
+      events[SocialLinkNames.Magician],
+      events[statsEventsCourageNames.gameParadeCourage],
     ],
   }),
   new SingleDay({
     date: new Date(2009, 3, 29),
-    activities: [events.Hermit, events.gameParadeAcademics],
+    activities: [
+      events[SocialLinkNames.Hermit],
+      events[statsEventsAcademicsNames.gameParadeAcademics],
+    ],
   }),
   new SingleDay({
     date: new Date(2009, 3, 30),
     activities: [
-      events.stayAwakeInClass,
+      events[statsEventsAcademicsNames.stayAwakeInClass],
       {
-        ...events.Special,
+        ...events[SpecialEventsNames.Special],
         time: Times.AfterSchool,
         label: () => (
           <EventCard
@@ -303,8 +351,8 @@ export const april: SingleDay[] = [
           />
         ),
       },
-      events.Magician,
-      events.gameParadeCharm,
+      events[SocialLinkNames.Magician],
+      events[statsEventsCharmNames.gameParadeCharm],
     ],
   }),
 ];

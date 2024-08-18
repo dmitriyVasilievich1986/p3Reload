@@ -59,11 +59,19 @@ function Modal(props: {
             event.category === Categories.Tartarus
           ) {
             const activities = c.activities
-              .filter((a) => a !== events.drinkMedicine)
+              .filter(
+                (a) => a !== events[statsEventsCourageNames.drinkMedicine]
+              )
               .map((a) =>
-                a.special ? a : { ...events.DoNothing, time: a.time }
+                a.special
+                  ? a
+                  : { ...events[SpecialEventsNames.DoNothing], time: a.time }
               );
-            activities.splice(1, 0, events.drinkMedicine);
+            activities.splice(
+              1,
+              0,
+              events[statsEventsCourageNames.drinkMedicine]
+            );
 
             return new SingleDay({ ...c, activities });
           } else if (i > currentDayIndex)
@@ -71,12 +79,17 @@ function Modal(props: {
               ...c,
               arcanes: [],
               activities: c.activities
-                .filter((a) => a !== events.drinkMedicine)
+                .filter(
+                  (a) => a !== events[statsEventsCourageNames.drinkMedicine]
+                )
                 .map((a) => {
                   if (a.special) return a;
                   else if (a.time === Times.Morning)
-                    return events.stayAwakeInClass;
-                  return { ...events.DoNothing, time: a.time };
+                    return events[statsEventsAcademicsNames.stayAwakeInClass];
+                  return {
+                    ...events[SpecialEventsNames.DoNothing],
+                    time: a.time,
+                  };
                 }),
             });
           return c;
