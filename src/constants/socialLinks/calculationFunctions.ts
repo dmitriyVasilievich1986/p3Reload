@@ -22,10 +22,11 @@ export class CardNeededCalculator {
 
   static nextLevelRounds(
     nextLevelPoints: number,
-    maxPointsSum: number
+    maxPointsSum: number,
+    multiplier: number
   ): number {
     const diff = nextLevelPoints - maxPointsSum;
-    return Math.floor(diff / 10 + 0.99);
+    return Math.floor(diff / Math.floor(10 * multiplier) + 0.99);
   }
 
   isCardNeeded(): boolean {
@@ -35,7 +36,8 @@ export class CardNeededCalculator {
     );
     const nextLevelRoundsWOCard = CardNeededCalculator.nextLevelRounds(
       this.nextLevelPoints,
-      maxPointsSumWOCard
+      maxPointsSumWOCard,
+      this.multiplier
     );
 
     const maxPointsSumWCard = CardNeededCalculator.maxPointsSum(
@@ -44,7 +46,8 @@ export class CardNeededCalculator {
     );
     const nextLevelRoundsWCard = CardNeededCalculator.nextLevelRounds(
       this.nextLevelPoints,
-      maxPointsSumWCard
+      maxPointsSumWCard,
+      this.multiplier
     );
 
     return (
