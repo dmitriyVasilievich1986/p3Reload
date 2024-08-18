@@ -1,4 +1,6 @@
 import { SocialLinkNames } from "@/constants/socialLinks";
+import { LabelProps, Event } from "../events/types";
+import { EventCard } from "@/components";
 import { SingleDay } from "./SingleDay";
 
 export const classmates: SocialLinkNames[] = [
@@ -30,4 +32,23 @@ export function initialCalculataion(calendar: SingleDay[]) {
   });
 
   return calendar;
+}
+
+export function LabelExamGrade(this: Event, { currentDay }: LabelProps) {
+  function Grade() {
+    let grade = "Average";
+    const classmateLink = classmates[0];
+    if (currentDay.links[classmateLink].multiplier === 1.51)
+      grade = "Top class";
+    else if (currentDay.links[classmateLink].multiplier === 1.21)
+      grade = "Top 10";
+    return <h3 style={{ textAlign: "center" }}>{grade}</h3>;
+  }
+
+  return (
+    <div>
+      <EventCard head="Exam results" />
+      <Grade />
+    </div>
+  );
 }

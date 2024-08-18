@@ -1,8 +1,8 @@
-import { EventCard, WideEvent, Question, Answer } from "@/components";
+import { LabelExamGrade, classmates } from "./baseFunctions";
+import { WideEvent, Question, Answer } from "@/components";
 import { SocialLinkNames } from "@/constants/socialLinks";
 import { events, Times } from "@/constants/events";
 import { StatsNames } from "@/constants/stats";
-import { classmates } from "./baseFunctions";
 import { SingleDay } from "./SingleDay";
 
 import {
@@ -238,7 +238,7 @@ export const december: SingleDay[] = [
       {
         ...events[SpecialEventsNames.Exams],
         time: Times.AfterSchool,
-        label: () => <EventCard head="Exam results" />,
+        label: LabelExamGrade,
         upgrade: function (currentDay: SingleDay, previousWeek?: SingleDay) {
           let newMultiplier = 1;
           let charmAddendum = 2;
