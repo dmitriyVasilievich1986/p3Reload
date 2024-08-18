@@ -154,7 +154,34 @@ export const may: SingleDay[] = [
     isDayOff: true,
     activities: [
       events[SocialLinkNames.Hierophant],
-      events[SpecialEventsNames.Tartarus],
+      {
+        ...events[SpecialEventsNames.Tartarus],
+        time: Times.Evening,
+        label: () => (
+          <EventCard head="Tartarus">
+            <ul>
+              <li>
+                <p>Have at least ¥51,300</p>
+              </li>
+              <li>
+                <p>Be at least level 12</p>
+              </li>
+              <li>
+                <p>Have {SocialLinkNames.HangedMan} card</p>
+              </li>
+              <li>
+                <p>Have {SocialLinkNames.Chariot} card</p>
+              </li>
+              <li>
+                <p>Have {SocialLinkNames.Temperance} card</p>
+              </li>
+              <li>
+                <p>Have {SocialLinkNames.Justice} card</p>
+              </li>
+            </ul>
+          </EventCard>
+        ),
+      },
     ],
   }),
   new SingleDay({
