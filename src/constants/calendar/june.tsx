@@ -31,7 +31,7 @@ export const june: SingleDay[] = [
     date: new Date(2009, 5, 3),
     activities: [
       events[SocialLinkNames.Temperance],
-      events[statsEventsCharmNames.hagakureRamen],
+      events[statsEventsCharmNames.hagakureRamenSpecial],
     ],
   }),
   new SingleDay({
@@ -86,7 +86,7 @@ export const june: SingleDay[] = [
     activities: [
       events[statsEventsCourageNames.drinkMedicine],
       events[SocialLinkNames.Temperance],
-      events[statsEventsCharmNames.hagakureRamen],
+      events[statsEventsCharmNames.hagakureRamenSpecial],
     ],
   }),
   new SingleDay({
@@ -94,7 +94,7 @@ export const june: SingleDay[] = [
     activities: [
       events[statsEventsAcademicsNames.stayAwakeInClass],
       events[SocialLinkNames.Emperor],
-      events[statsEventsCharmNames.hagakureRamen],
+      events[statsEventsCharmNames.hagakureRamenSpecial],
     ],
   }),
   new SingleDay({
@@ -108,7 +108,7 @@ export const june: SingleDay[] = [
     date: new Date(2009, 5, 12),
     activities: [
       events[SocialLinkNames.Magician],
-      events[statsEventsCharmNames.hagakureRamen],
+      events[statsEventsAcademicsNames.wakatsuKitchenSpecial],
       events[SocialLinkNames.Death],
     ],
   }),
@@ -156,7 +156,7 @@ export const june: SingleDay[] = [
     date: new Date(2009, 5, 16),
     activities: [
       events[SocialLinkNames.Temperance],
-      events[statsEventsCharmNames.hagakureRamen],
+      events[statsEventsCharmNames.hagakureRamenSpecial],
     ],
   }),
   new SingleDay({
@@ -175,7 +175,7 @@ export const june: SingleDay[] = [
         ),
       },
       events[SocialLinkNames.Fortune],
-      events[statsEventsCharmNames.hagakureRamen],
+      events[statsEventsCharmNames.hagakureRamenSpecial],
     ],
   }),
   new SingleDay({
@@ -189,7 +189,7 @@ export const june: SingleDay[] = [
     date: new Date(2009, 5, 19),
     activities: [
       events[SocialLinkNames.Temperance],
-      events[statsEventsCharmNames.hagakureRamen],
+      events[statsEventsAcademicsNames.wakatsuKitchenSpecial],
     ],
   }),
   new SingleDay({
@@ -231,14 +231,14 @@ export const june: SingleDay[] = [
     date: new Date(2009, 5, 23),
     activities: [
       events[SocialLinkNames.Fortune],
-      events[statsEventsCharmNames.hagakureRamen],
+      events[statsEventsCharmNames.hagakureRamenSpecial],
     ],
   }),
   new SingleDay({
     date: new Date(2009, 5, 24),
     activities: [
       events[SocialLinkNames.Fortune],
-      events[statsEventsCharmNames.hagakureRamen],
+      events[statsEventsCharmNames.hagakureRamenSpecial],
     ],
   }),
   new SingleDay({
@@ -266,7 +266,7 @@ export const june: SingleDay[] = [
     date: new Date(2009, 5, 26),
     activities: [
       events[SocialLinkNames.Magician],
-      events[statsEventsCharmNames.hagakureRamen],
+      events[statsEventsCharmNames.hagakureRamenSpecial],
     ],
   }),
   new SingleDay({
@@ -281,7 +281,19 @@ export const june: SingleDay[] = [
     isDayOff: true,
     activities: [
       events[SocialLinkNames.Moon],
-      events[statsEventsCourageNames.wilduckBurgeWeekendWilduckSet],
+      {
+        ...events[SpecialEventsNames.Tartarus],
+        time: Times.Evening,
+        label: () => (
+          <EventCard head="Tartarus">
+            <ul>
+              <li>
+                <p>Gain at least ¥27,100</p>
+              </li>
+            </ul>
+          </EventCard>
+        ),
+      },
     ],
   }),
   new SingleDay({
@@ -299,6 +311,7 @@ export const june: SingleDay[] = [
           </Question>
         ),
       },
+      events[statsEventsCourageNames.drinkMedicine],
       events[SocialLinkNames.Emperor],
       events[statsEventsAcademicsNames.wakatsuKitchenSpecial],
     ],
@@ -306,8 +319,8 @@ export const june: SingleDay[] = [
   new SingleDay({
     date: new Date(2009, 5, 30),
     activities: [
-      events[SocialLinkNames.Magician],
-      events[statsEventsCharmNames.hagakureRamen],
+      events[SocialLinkNames.Fortune],
+      events[statsEventsCharmNames.hagakureRamenSpecial],
     ],
   }),
 ];
