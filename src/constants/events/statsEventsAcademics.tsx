@@ -1,6 +1,5 @@
 import { statsEventsAcademicsNames, Categories, Times, Event } from "./types";
-import { EventCard } from "../../components/eventCard";
-import { WideEvent } from "../../components/wideEvent";
+import { EventCard, WideEvent } from "@/components";
 import { SingleDay } from "../calendar/SingleDay";
 import { StatsNames } from "../stats/types";
 import { DaysNames } from "../monthsNames";

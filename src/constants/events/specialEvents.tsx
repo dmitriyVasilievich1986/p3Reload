@@ -1,5 +1,5 @@
 import { SingleDay } from "@/constants/calendar/SingleDay";
-import { EventCard } from "@/components/eventCard";
+import { EventCard } from "@/components";
 
 import {
   SpecialEventsNames,

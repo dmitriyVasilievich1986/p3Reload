@@ -1,8 +1,8 @@
 import { statsEventsCharmNames, Categories, Times, Event } from "./types";
-import { EventCard } from "../../components/eventCard";
 import { SingleDay } from "../calendar/SingleDay";
 import { StatsNames } from "../stats/types";
 import { DaysNames } from "../monthsNames";
+import { EventCard } from "@/components";
 import { stats } from "../stats/stats";
 
 const getCharmUpgradeFunction = (value: number) => {
