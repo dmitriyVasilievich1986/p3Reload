@@ -9,6 +9,10 @@ import {
   Event,
 } from "./types";
 
+function SpecialEventCard(this: Event) {
+  return <EventCard head={this.name} />;
+}
+
 const initialUpgrade = {
   upgrade: function (currentDay: SingleDay): upgradeResponse {
     return { ...currentDay };
@@ -22,7 +26,7 @@ export const specialEvents: { [key in SpecialEventsNames]: Event } = {
     name: SpecialEventsNames.DoNothing,
     category: Categories.Empty,
     available: ({ time }) => time !== Times.Morning,
-    label: () => <EventCard head="Free Time" />,
+    label: SpecialEventCard,
   },
   [SpecialEventsNames.NoControl]: {
     ...initialUpgrade,
@@ -31,7 +35,7 @@ export const specialEvents: { [key in SpecialEventsNames]: Event } = {
     name: SpecialEventsNames.NoControl,
     category: Categories.Empty,
     available: () => false,
-    label: () => <EventCard head="Control Not Available" />,
+    label: SpecialEventCard,
   },
   [SpecialEventsNames.Special]: {
     ...initialUpgrade,
@@ -40,7 +44,7 @@ export const specialEvents: { [key in SpecialEventsNames]: Event } = {
     category: Categories.Special,
     special: true,
     available: () => false,
-    label: () => <EventCard head="Special Event" />,
+    label: SpecialEventCard,
   },
   [SpecialEventsNames.Tartarus]: {
     ...initialUpgrade,
@@ -48,7 +52,7 @@ export const specialEvents: { [key in SpecialEventsNames]: Event } = {
     name: SpecialEventsNames.Tartarus,
     category: Categories.Tartarus,
     available: ({ time }) => time !== Times.Morning,
-    label: () => <EventCard head="Tartarus" />,
+    label: SpecialEventCard,
   },
   [SpecialEventsNames.Exams]: {
     ...initialUpgrade,
@@ -57,6 +61,6 @@ export const specialEvents: { [key in SpecialEventsNames]: Event } = {
     category: Categories.Exams,
     special: true,
     available: () => false,
-    label: () => <EventCard head="Exam" />,
+    label: SpecialEventCard,
   },
 };

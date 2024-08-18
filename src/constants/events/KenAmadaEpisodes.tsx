@@ -7,9 +7,9 @@ const ji1: Event = {
   name: KenAmadaEpisodesNames.KenAmada1,
   category: Categories.Stats,
   time: Times.Evening,
-  label: () => (
-    <EventCard head="Ken Amada Episode" name="Ken Amada" stats="Academics +2" />
-  ),
+  label: function () {
+    return <EventCard head={this.name} name="Ken Amada" stats="Academics +2" />;
+  },
   available: function ({ currentDay, time }) {
     const days = [DaysNames.tuesday, DaysNames.wednesday];
     return (
@@ -38,9 +38,9 @@ export const KenAmadaEpisodes: {
   [KenAmadaEpisodesNames.KenAmada2]: {
     ...ji1,
     name: KenAmadaEpisodesNames.KenAmada2,
-    label: () => (
-      <EventCard head="Ken Amada Episode" name="Ken Amada" stats="Courage +2" />
-    ),
+    label: function () {
+      return <EventCard head={this.name} name="Ken Amada" stats="Courage +2" />;
+    },
     available: function ({ currentDay, time }) {
       const days = [DaysNames.tuesday, DaysNames.wednesday];
       return (
@@ -65,9 +65,9 @@ export const KenAmadaEpisodes: {
   [KenAmadaEpisodesNames.KenAmada3]: {
     ...ji1,
     name: KenAmadaEpisodesNames.KenAmada3,
-    label: () => (
-      <EventCard head="Ken Amada Episode" name="Ken Amada" stats="Charm +2" />
-    ),
+    label: function () {
+      return <EventCard head={this.name} name="Ken Amada" stats="Charm +2" />;
+    },
     available: function ({ currentDay, time }) {
       const days = [DaysNames.tuesday, DaysNames.wednesday];
       return (
@@ -92,7 +92,9 @@ export const KenAmadaEpisodes: {
   [KenAmadaEpisodesNames.KenAmada4]: {
     ...ji1,
     name: KenAmadaEpisodesNames.KenAmada4,
-    label: () => <EventCard head="Ken Amada Episode" name="Ken Amada" />,
+    label: function () {
+      return <EventCard head={this.name} name="Ken Amada" />;
+    },
     available: function ({ currentDay, time }) {
       const days = [
         DaysNames.monday,

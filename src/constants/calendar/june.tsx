@@ -1,47 +1,74 @@
 import { EventCard, WideEvent, Question, Answer } from "@/components";
+import { SocialLinkNames } from "@/constants/socialLinks/types";
 import { events, Times } from "@/constants/events";
 import { SingleDay } from "./SingleDay";
+
+import {
+  AkihikoSanadaEpisodesNames,
+  statsEventsAcademicsNames,
+  statsEventsCourageNames,
+  statsEventsCharmNames,
+  SpecialEventsNames,
+} from "@/constants/events/types";
 
 export const june: SingleDay[] = [
   new SingleDay({
     date: new Date(2009, 5, 1),
-    activities: [events.Emperor, events.AkihikoSanada1],
+    activities: [
+      events[SocialLinkNames.Emperor],
+      events[AkihikoSanadaEpisodesNames.AkihikoSanada1],
+    ],
   }),
   new SingleDay({
     date: new Date(2009, 5, 2),
     activities: [
-      events.stayAwakeInClass,
-      events.Temperance,
-      events.gameParadeCourage,
+      events[statsEventsAcademicsNames.stayAwakeInClass],
+      events[SocialLinkNames.Temperance],
+      events[statsEventsCourageNames.gameParadeCourage],
     ],
   }),
   new SingleDay({
     date: new Date(2009, 5, 3),
-    activities: [events.Temperance, events.hagakureRamenSpecial],
+    activities: [
+      events[SocialLinkNames.Temperance],
+      events[statsEventsCharmNames.hagakureRamen],
+    ],
   }),
   new SingleDay({
     date: new Date(2009, 5, 4),
-    activities: [events.Chariot, events.wakatsuKitchenSpecial],
+    activities: [
+      events[SocialLinkNames.Chariot],
+      events[statsEventsAcademicsNames.wakatsuKitchenSpecial],
+    ],
   }),
   new SingleDay({
     date: new Date(2009, 5, 5),
-    activities: [events.Emperor, events.gameParadeCourage],
+    activities: [
+      events[SocialLinkNames.Emperor],
+      events[statsEventsCourageNames.gameParadeCourage],
+    ],
   }),
   new SingleDay({
     date: new Date(2009, 5, 6),
-    activities: [events.Justice, events.wilduckBigEaterChallenge],
+    activities: [
+      events[SocialLinkNames.Justice],
+      events[statsEventsCourageNames.wilduckBigEaterChallenge],
+    ],
   }),
   new SingleDay({
     date: new Date(2009, 5, 7),
     isDayOff: true,
-    activities: [events.Moon, events.wakatsuKitchenSpecial],
+    activities: [
+      events[SocialLinkNames.Moon],
+      events[statsEventsAcademicsNames.wakatsuKitchenSpecial],
+    ],
   }),
   new SingleDay({
     date: new Date(2009, 5, 8),
     foolMoon: true,
     activities: [
       {
-        ...events.Special,
+        ...events[SpecialEventsNames.Special],
         time: Times.WholeDay,
         label: () => (
           <WideEvent>
@@ -57,33 +84,40 @@ export const june: SingleDay[] = [
   new SingleDay({
     date: new Date(2009, 5, 9),
     activities: [
-      events.drinkMedicine,
-      events.Temperance,
-      events.hagakureRamenSpecial,
+      events[statsEventsCourageNames.drinkMedicine],
+      events[SocialLinkNames.Temperance],
+      events[statsEventsCharmNames.hagakureRamen],
     ],
   }),
   new SingleDay({
     date: new Date(2009, 5, 10),
     activities: [
-      events.stayAwakeInClass,
-      events.Emperor,
-      events.hagakureRamenSpecial,
+      events[statsEventsAcademicsNames.stayAwakeInClass],
+      events[SocialLinkNames.Emperor],
+      events[statsEventsCharmNames.hagakureRamen],
     ],
   }),
   new SingleDay({
     date: new Date(2009, 5, 11),
-    activities: [events.Chariot, events.wakatsuKitchenSpecial],
+    activities: [
+      events[SocialLinkNames.Chariot],
+      events[statsEventsAcademicsNames.wakatsuKitchenSpecial],
+    ],
   }),
   new SingleDay({
     date: new Date(2009, 5, 12),
-    activities: [events.Magician, events.hagakureRamenSpecial, events.Death],
+    activities: [
+      events[SocialLinkNames.Magician],
+      events[statsEventsCharmNames.hagakureRamen],
+      events[SocialLinkNames.Death],
+    ],
   }),
   new SingleDay({
     date: new Date(2009, 5, 13),
     activities: [
-      events.Justice,
+      events[SocialLinkNames.Justice],
       {
-        ...events.Special,
+        ...events[SpecialEventsNames.Special],
         time: Times.Evening,
         label: () => <EventCard head="Theurgy Tutorial" place="Tartarus" />,
       },
@@ -92,13 +126,16 @@ export const june: SingleDay[] = [
   new SingleDay({
     date: new Date(2009, 5, 14),
     isDayOff: true,
-    activities: [events.Moon, events.wilduckBurgeWeekendWilduckSet],
+    activities: [
+      events[SocialLinkNames.Moon],
+      events[statsEventsCourageNames.wilduckBurgeWeekendWilduckSet],
+    ],
   }),
   new SingleDay({
     date: new Date(2009, 5, 15),
     activities: [
       {
-        ...events.schoolQuestionCharm,
+        ...events[statsEventsCharmNames.schoolQuestionCharm],
         label: () => (
           <Question
             label={
@@ -111,19 +148,22 @@ export const june: SingleDay[] = [
           </Question>
         ),
       },
-      events.Emperor,
-      events.wakatsuKitchenSpecial,
+      events[SocialLinkNames.Emperor],
+      events[statsEventsAcademicsNames.wakatsuKitchenSpecial],
     ],
   }),
   new SingleDay({
     date: new Date(2009, 5, 16),
-    activities: [events.Temperance, events.hagakureRamenSpecial],
+    activities: [
+      events[SocialLinkNames.Temperance],
+      events[statsEventsCharmNames.hagakureRamen],
+    ],
   }),
   new SingleDay({
     date: new Date(2009, 5, 17),
     activities: [
       {
-        ...events.schoolQuestionCharm,
+        ...events[statsEventsCharmNames.schoolQuestionCharm],
         label: () => (
           <Question
             label={"What early religious practice was the origin of magic?"}
@@ -134,38 +174,47 @@ export const june: SingleDay[] = [
           </Question>
         ),
       },
-      events.Fortune,
-      events.hagakureRamenSpecial,
+      events[SocialLinkNames.Fortune],
+      events[statsEventsCharmNames.hagakureRamen],
     ],
   }),
   new SingleDay({
     date: new Date(2009, 5, 18),
-    activities: [events.Fortune, events.wakatsuKitchenSpecial],
+    activities: [
+      events[SocialLinkNames.Fortune],
+      events[statsEventsAcademicsNames.wakatsuKitchenSpecial],
+    ],
   }),
   new SingleDay({
     date: new Date(2009, 5, 19),
-    activities: [events.Temperance, events.hagakureRamenSpecial],
+    activities: [
+      events[SocialLinkNames.Temperance],
+      events[statsEventsCharmNames.hagakureRamen],
+    ],
   }),
   new SingleDay({
     date: new Date(2009, 5, 20),
     activities: [
       {
-        ...events.Special,
+        ...events[SpecialEventsNames.Special],
         label: () => <EventCard head="Koromaru Introduction" />,
       },
-      events.wilduckBurgeWeekendWilduckSet,
+      events[statsEventsCourageNames.wilduckBurgeWeekendWilduckSet],
     ],
   }),
   new SingleDay({
     date: new Date(2009, 5, 21),
     isDayOff: true,
-    activities: [events.Moon, events.wilduckBurgeWeekendWilduckSet],
+    activities: [
+      events[SocialLinkNames.Moon],
+      events[statsEventsCourageNames.wilduckBurgeWeekendWilduckSet],
+    ],
   }),
   new SingleDay({
     date: new Date(2009, 5, 22),
     activities: [
       {
-        ...events.schoolQuestionCharm,
+        ...events[statsEventsCharmNames.schoolQuestionCharm],
         label: () => (
           <Question label={"What else do people call this curve?"}>
             <Answer label="Orthogonal curves." />
@@ -174,23 +223,29 @@ export const june: SingleDay[] = [
           </Question>
         ),
       },
-      events.Emperor,
-      events.wakatsuKitchenSpecial,
+      events[SocialLinkNames.Emperor],
+      events[statsEventsAcademicsNames.wakatsuKitchenSpecial],
     ],
   }),
   new SingleDay({
     date: new Date(2009, 5, 23),
-    activities: [events.Fortune, events.hagakureRamenSpecial],
+    activities: [
+      events[SocialLinkNames.Fortune],
+      events[statsEventsCharmNames.hagakureRamen],
+    ],
   }),
   new SingleDay({
     date: new Date(2009, 5, 24),
-    activities: [events.Fortune, events.hagakureRamenSpecial],
+    activities: [
+      events[SocialLinkNames.Fortune],
+      events[statsEventsCharmNames.hagakureRamen],
+    ],
   }),
   new SingleDay({
     date: new Date(2009, 5, 25),
     activities: [
       {
-        ...events.schoolQuestionCharm,
+        ...events[statsEventsCharmNames.schoolQuestionCharm],
         label: () => (
           <Question
             label={
@@ -203,28 +258,37 @@ export const june: SingleDay[] = [
           </Question>
         ),
       },
-      events.Chariot,
-      events.wakatsuKitchenSpecial,
+      events[SocialLinkNames.Chariot],
+      events[statsEventsAcademicsNames.wakatsuKitchenSpecial],
     ],
   }),
   new SingleDay({
     date: new Date(2009, 5, 26),
-    activities: [events.Magician, events.hagakureRamenSpecial],
+    activities: [
+      events[SocialLinkNames.Magician],
+      events[statsEventsCharmNames.hagakureRamen],
+    ],
   }),
   new SingleDay({
     date: new Date(2009, 5, 27),
-    activities: [events.Justice, events.wilduckBurgeWeekendWilduckSet],
+    activities: [
+      events[SocialLinkNames.Justice],
+      events[statsEventsCourageNames.wilduckBurgeWeekendWilduckSet],
+    ],
   }),
   new SingleDay({
     date: new Date(2009, 5, 28),
     isDayOff: true,
-    activities: [events.Moon, events.wilduckBurgeWeekendWilduckSet],
+    activities: [
+      events[SocialLinkNames.Moon],
+      events[statsEventsCourageNames.wilduckBurgeWeekendWilduckSet],
+    ],
   }),
   new SingleDay({
     date: new Date(2009, 5, 29),
     activities: [
       {
-        ...events.schoolQuestionCharm,
+        ...events[statsEventsCharmNames.schoolQuestionCharm],
         label: () => (
           <Question
             label={"What form of natural magic is used to find water sources?"}
@@ -235,12 +299,15 @@ export const june: SingleDay[] = [
           </Question>
         ),
       },
-      events.Emperor,
-      events.wakatsuKitchenSpecial,
+      events[SocialLinkNames.Emperor],
+      events[statsEventsAcademicsNames.wakatsuKitchenSpecial],
     ],
   }),
   new SingleDay({
     date: new Date(2009, 5, 30),
-    activities: [events.Magician, events.hagakureRamenSpecial],
+    activities: [
+      events[SocialLinkNames.Magician],
+      events[statsEventsCharmNames.hagakureRamen],
+    ],
   }),
 ];

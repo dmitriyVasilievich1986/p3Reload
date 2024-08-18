@@ -5,16 +5,28 @@ import { StatsNames } from "@/constants/stats";
 import { classmates } from "./baseFunctions";
 import { SingleDay } from "./SingleDay";
 
+import {
+  statsEventsAcademicsNames,
+  JunpeiIoriEpisodesNames,
+  statsEventsCourageNames,
+  statsEventsCharmNames,
+  SpecialEventsNames,
+  pcProgramsNames,
+} from "@/constants/events/types";
+
 export const may: SingleDay[] = [
   new SingleDay({
     date: new Date(2009, 4, 1),
-    activities: [events.Special, events.lobbyPCLessonsInEtiquette],
+    activities: [
+      events[SpecialEventsNames.Special],
+      events[pcProgramsNames.lobbyPCLessonsInEtiquette],
+    ],
   }),
   new SingleDay({
     date: new Date(2009, 4, 2),
     activities: [
       {
-        ...events.Special,
+        ...events[SpecialEventsNames.Special],
         time: Times.AfterSchool,
         label: () => (
           <EventCard
@@ -25,30 +37,39 @@ export const may: SingleDay[] = [
           />
         ),
       },
-      events.Hierophant,
-      events.gameParadeAcademics,
+      events[SocialLinkNames.Hierophant],
+      events[statsEventsAcademicsNames.gameParadeAcademics],
     ],
   }),
   new SingleDay({
     date: new Date(2009, 4, 3),
     isDayOff: true,
-    activities: [events.Hermit, events.lobbyPCDigitalCramSchool],
+    activities: [
+      events[SocialLinkNames.Hermit],
+      events[pcProgramsNames.lobbyPCDigitalCramSchool],
+    ],
   }),
   new SingleDay({
     date: new Date(2009, 4, 4),
     isDayOff: true,
-    activities: [events.Hermit, events.gameParadeCharm],
+    activities: [
+      events[SocialLinkNames.Hermit],
+      events[statsEventsCharmNames.gameParadeCharm],
+    ],
   }),
   new SingleDay({
     date: new Date(2009, 4, 5),
     isDayOff: true,
-    activities: [events.Hermit, events.lobbyPCVirtualDiet],
+    activities: [
+      events[SocialLinkNames.Hermit],
+      events[pcProgramsNames.lobbyPCVirtualDiet],
+    ],
   }),
   new SingleDay({
     date: new Date(2009, 4, 6),
     activities: [
       {
-        ...events.schoolQuestionCharm,
+        ...events[statsEventsCharmNames.schoolQuestionCharm],
         label: () => (
           <Question
             label={
@@ -62,7 +83,7 @@ export const may: SingleDay[] = [
         ),
       },
       {
-        ...events.Special,
+        ...events[SpecialEventsNames.Special],
         time: Times.AfterSchool,
         label: () => (
           <EventCard
@@ -73,56 +94,68 @@ export const may: SingleDay[] = [
           />
         ),
       },
-      events.Emperor,
-      events.lobbyPCAnimalOthello,
+      events[SocialLinkNames.Emperor],
+      events[pcProgramsNames.lobbyPCAnimalOthello],
     ],
   }),
   new SingleDay({
     date: new Date(2009, 4, 7),
-    activities: [events.Justice, events.wakatsuKitchenSpecial],
+    activities: [
+      events[SocialLinkNames.Justice],
+      events[statsEventsAcademicsNames.wakatsuKitchenSpecial],
+    ],
   }),
   new SingleDay({
     date: new Date(2009, 4, 8),
-    activities: [events.Magician, events.wakatsuKitchenSpecial],
+    activities: [
+      events[SocialLinkNames.Magician],
+      events[statsEventsAcademicsNames.wakatsuKitchenSpecial],
+    ],
   }),
   new SingleDay({
     date: new Date(2009, 4, 9),
     foolMoon: true,
     activities: [
       {
-        ...events.Special,
+        ...events[SpecialEventsNames.Special],
         time: Times.WholeDay,
         label: () => <EventCard head="Priestess Boss Fight" place="Tartarus" />,
       },
-      { ...events.Fool, time: Times.DarkHour },
+      { ...events[SocialLinkNames.Fool], time: Times.DarkHour },
     ],
   }),
   new SingleDay({
     date: new Date(2009, 4, 10),
     isDayOff: true,
-    activities: [events.Hierophant, events.Tartarus],
+    activities: [
+      events[SocialLinkNames.Hierophant],
+      events[SpecialEventsNames.Tartarus],
+    ],
   }),
   new SingleDay({
     date: new Date(2009, 4, 11),
     exams: true,
     activities: [
-      events.stayAwakeInClass,
-      events.drinkMedicine,
-      events.HangedMan,
-      events.wakatsuKitchenSpecial,
+      events[statsEventsAcademicsNames.stayAwakeInClass],
+      events[statsEventsCourageNames.drinkMedicine],
+      events[SocialLinkNames.HangedMan],
+      events[statsEventsAcademicsNames.wakatsuKitchenSpecial],
     ],
   }),
   new SingleDay({
     date: new Date(2009, 4, 12),
     exams: true,
-    activities: [events.JunpeiIori1, events.lobbyPCTypinGhoul],
+    activities: [
+      events[JunpeiIoriEpisodesNames.JunpeiIori1],
+      events[pcProgramsNames.lobbyPCTypinGhoul],
+    ],
   }),
   new SingleDay({
     date: new Date(2009, 4, 13),
     exams: true,
     activities: [
       {
-        ...events.schoolQuestionCharm,
+        ...events[statsEventsCharmNames.schoolQuestionCharm],
         label: () => (
           <Question label={"Which tool did he use in his experiments?"}>
             <Answer label="The hourglass." />
@@ -131,21 +164,24 @@ export const may: SingleDay[] = [
           </Question>
         ),
       },
-      events.HangedMan,
-      events.lobbyPCLanguageMadeEasy,
+      events[SocialLinkNames.HangedMan],
+      events[pcProgramsNames.lobbyPCLanguageMadeEasy],
     ],
   }),
   new SingleDay({
     date: new Date(2009, 4, 14),
     exams: true,
-    activities: [events.Hierophant, events.wakatsuKitchenSpecial],
+    activities: [
+      events[SocialLinkNames.Hierophant],
+      events[statsEventsAcademicsNames.wakatsuKitchenSpecial],
+    ],
   }),
   new SingleDay({
     date: new Date(2009, 4, 15),
     exams: true,
     activities: [
       {
-        ...events.schoolQuestionCharm,
+        ...events[statsEventsCharmNames.schoolQuestionCharm],
         label: () => (
           <Question
             label={`What's the other name for "May Sickness"-the more casual one?`}
@@ -156,33 +192,38 @@ export const may: SingleDay[] = [
           </Question>
         ),
       },
-      events.Moon,
-      events.dormExamStudyingGroup,
+      events[SocialLinkNames.Moon],
+      events[statsEventsAcademicsNames.dormExamStudyingGroup],
     ],
   }),
   new SingleDay({
     date: new Date(2009, 4, 16),
     exams: true,
     activities: [
-      events.stayAwakeInClass,
-      events.HangedMan,
-      events.dormExamStudyingGroup,
+      events[statsEventsAcademicsNames.stayAwakeInClass],
+      events[SocialLinkNames.HangedMan],
+      events[statsEventsAcademicsNames.dormExamStudyingGroup],
     ],
   }),
   new SingleDay({
     date: new Date(2009, 4, 17),
     isDayOff: true,
     exams: true,
-    activities: [events.Moon, events.dormExamStudyingTeam],
+    activities: [
+      events[SocialLinkNames.Moon],
+      events[statsEventsAcademicsNames.dormExamStudyingTeam],
+    ],
   }),
   new SingleDay({
     date: new Date(2009, 4, 18),
     exams: true,
     activities: [
       {
-        ...events.Exams,
+        ...events[SpecialEventsNames.Exams],
         label: (props) => (
-          <WideEvent>{events.Exams.label({ ...props })}</WideEvent>
+          <WideEvent>
+            {events[SpecialEventsNames.Exams].label({ ...props })}
+          </WideEvent>
         ),
       },
     ],
@@ -192,7 +233,7 @@ export const may: SingleDay[] = [
     exams: true,
     activities: [
       {
-        ...events.Exams,
+        ...events[SpecialEventsNames.Exams],
         label: () => (
           <WideEvent>
             <Question
@@ -215,7 +256,7 @@ export const may: SingleDay[] = [
     exams: true,
     activities: [
       {
-        ...events.Exams,
+        ...events[SpecialEventsNames.Exams],
         label: () => (
           <WideEvent>
             <Question
@@ -238,7 +279,7 @@ export const may: SingleDay[] = [
     exams: true,
     activities: [
       {
-        ...events.Exams,
+        ...events[SpecialEventsNames.Exams],
         label: () => (
           <WideEvent>
             <Question
@@ -259,7 +300,7 @@ export const may: SingleDay[] = [
     exams: true,
     activities: [
       {
-        ...events.Exams,
+        ...events[SpecialEventsNames.Exams],
         label: () => (
           <WideEvent>
             <Question
@@ -280,22 +321,25 @@ export const may: SingleDay[] = [
   new SingleDay({
     date: new Date(2009, 4, 23),
     activities: [
-      { ...events.Exams, time: Times.Morning },
-      events.HangedMan,
-      events.gameParadeAcademics,
+      { ...events[SpecialEventsNames.Exams], time: Times.Morning },
+      events[SocialLinkNames.HangedMan],
+      events[statsEventsAcademicsNames.gameParadeAcademics],
     ],
   }),
   new SingleDay({
     date: new Date(2009, 4, 24),
     isDayOff: true,
-    activities: [events.Moon, events.wakatsuKitchenSpecial],
+    activities: [
+      events[SocialLinkNames.Moon],
+      events[statsEventsAcademicsNames.wakatsuKitchenSpecial],
+    ],
   }),
   new SingleDay({
     date: new Date(2009, 4, 25),
     activities: [
-      events.stayAwakeInClass,
+      events[statsEventsAcademicsNames.stayAwakeInClass],
       {
-        ...events.Exams,
+        ...events[SpecialEventsNames.Exams],
         time: Times.AfterSchool,
         label: () => <EventCard head="Exam results" />,
         upgrade: function (currentDay: SingleDay, previousWeek?: SingleDay) {
@@ -331,41 +375,53 @@ export const may: SingleDay[] = [
           };
         },
       },
-      events.Emperor,
-      events.wakatsuKitchenSpecial,
+      events[SocialLinkNames.Emperor],
+      events[statsEventsAcademicsNames.wakatsuKitchenSpecial],
     ],
   }),
   new SingleDay({
     date: new Date(2009, 4, 26),
-    activities: [events.Chariot, events.gameParadeCourage],
+    activities: [
+      events[SocialLinkNames.Chariot],
+      events[statsEventsCourageNames.gameParadeCourage],
+    ],
   }),
   new SingleDay({
     date: new Date(2009, 4, 27),
-    activities: [events.Temperance, events.hagakureRamenSpecial],
+    activities: [
+      events[SocialLinkNames.Temperance],
+      events[statsEventsCharmNames.hagakureRamenSpecial],
+    ],
   }),
   new SingleDay({
     date: new Date(2009, 4, 28),
     activities: [
-      events.stayAwakeInClass,
-      events.Chariot,
-      events.wakatsuKitchenSpecial,
+      events[statsEventsAcademicsNames.stayAwakeInClass],
+      events[SocialLinkNames.Chariot],
+      events[statsEventsAcademicsNames.wakatsuKitchenSpecial],
     ],
   }),
   new SingleDay({
     date: new Date(2009, 4, 29),
     activities: [
-      events.stayAwakeInClass,
-      events.Temperance,
-      events.gameParadeCourage,
+      events[statsEventsAcademicsNames.stayAwakeInClass],
+      events[SocialLinkNames.Temperance],
+      events[statsEventsCourageNames.gameParadeCourage],
     ],
   }),
   new SingleDay({
     date: new Date(2009, 4, 30),
-    activities: [events.HangedMan, events.gameParadeAcademics],
+    activities: [
+      events[SocialLinkNames.HangedMan],
+      events[statsEventsAcademicsNames.gameParadeAcademics],
+    ],
   }),
   new SingleDay({
     date: new Date(2009, 4, 31),
     isDayOff: true,
-    activities: [events.Moon, events.wakatsuKitchenSpecial],
+    activities: [
+      events[SocialLinkNames.Moon],
+      events[statsEventsAcademicsNames.wakatsuKitchenSpecial],
+    ],
   }),
 ];

@@ -59,11 +59,19 @@ function Modal(props: {
             event.category === Categories.Tartarus
           ) {
             const activities = c.activities
-              .filter((a) => a !== events.drinkMedicine)
+              .filter(
+                (a) => a !== events[statsEventsCourageNames.drinkMedicine]
+              )
               .map((a) =>
-                a.special ? a : { ...events.DoNothing, time: a.time }
+                a.special
+                  ? a
+                  : { ...events[SpecialEventsNames.DoNothing], time: a.time }
               );
-            activities.splice(1, 0, events.drinkMedicine);
+            activities.splice(
+              1,
+              0,
+              events[statsEventsCourageNames.drinkMedicine]
+            );
 
             return new SingleDay({ ...c, activities });
           } else if (i > currentDayIndex)
@@ -71,12 +79,17 @@ function Modal(props: {
               ...c,
               arcanes: [],
               activities: c.activities
-                .filter((a) => a !== events.drinkMedicine)
+                .filter(
+                  (a) => a !== events[statsEventsCourageNames.drinkMedicine]
+                )
                 .map((a) => {
                   if (a.special) return a;
                   else if (a.time === Times.Morning)
-                    return events.stayAwakeInClass;
-                  return { ...events.DoNothing, time: a.time };
+                    return events[statsEventsAcademicsNames.stayAwakeInClass];
+                  return {
+                    ...events[SpecialEventsNames.DoNothing],
+                    time: a.time,
+                  };
                 }),
             });
           return c;
@@ -123,10 +136,18 @@ function Modal(props: {
           <EventsList
             events={availableEvents.filter(
               (e) =>
-                e.name in AkihikoSanadaEpisodesNames ||
-                e.name in JunpeiIoriEpisodesNames ||
-                e.name in KoromaruEpisodesNames ||
-                e.name in SpecialEventsNames
+                (
+                  Object.values(AkihikoSanadaEpisodesNames) as Array<string>
+                ).includes(e.name) ||
+                (
+                  Object.values(JunpeiIoriEpisodesNames) as Array<string>
+                ).includes(e.name) ||
+                (
+                  Object.values(KoromaruEpisodesNames) as Array<string>
+                ).includes(e.name) ||
+                (Object.values(SpecialEventsNames) as Array<string>).includes(
+                  e.name
+                )
             )}
             onClick={updateCalendar}
             currentDay={currentDay}
@@ -136,9 +157,15 @@ function Modal(props: {
           <EventsList
             events={availableEvents.filter(
               (e) =>
-                e.name in statsEventsAcademicsNames ||
-                e.name in statsEventsCourageNames ||
-                e.name in statsEventsCharmNames
+                (
+                  Object.values(statsEventsAcademicsNames) as Array<string>
+                ).includes(e.name) ||
+                (
+                  Object.values(statsEventsCourageNames) as Array<string>
+                ).includes(e.name) ||
+                (
+                  Object.values(statsEventsCharmNames) as Array<string>
+                ).includes(e.name)
             )}
             onClick={updateCalendar}
             currentDay={currentDay}
@@ -146,7 +173,9 @@ function Modal(props: {
             head="Stats"
           />
           <EventsList
-            events={availableEvents.filter((e) => e.name in pcProgramsNames)}
+            events={availableEvents.filter((e) =>
+              (Object.values(pcProgramsNames) as Array<string>).includes(e.name)
+            )}
             onClick={updateCalendar}
             currentDay={currentDay}
             filter={filter}

@@ -7,9 +7,9 @@ const ji1: Event = {
   name: AkihikoSanadaEpisodesNames.AkihikoSanada1,
   category: Categories.Stats,
   time: Times.Evening,
-  label: () => (
-    <EventCard head="Akihiko Sanada Episode" name="Akihiko Sanada" />
-  ),
+  label: function () {
+    return <EventCard head={this.name} name="Akihiko Sanada" />;
+  },
   available: function ({ currentDay, time }) {
     const days = [DaysNames.monday, DaysNames.friday];
     return (
@@ -34,13 +34,11 @@ export const AkihikoSanadaEpisodes: {
   [AkihikoSanadaEpisodesNames.AkihikoSanada2]: {
     ...ji1,
     name: AkihikoSanadaEpisodesNames.AkihikoSanada2,
-    label: () => (
-      <EventCard
-        head="Akihiko Sanada Episode"
-        name="Akihiko Sanada"
-        stats="Charm +2"
-      />
-    ),
+    label: function () {
+      return (
+        <EventCard head={this.name} name="Akihiko Sanada" stats="Charm +2" />
+      );
+    },
     available: function ({ currentDay, time }) {
       const days = [DaysNames.monday, DaysNames.friday];
       return (
@@ -67,13 +65,11 @@ export const AkihikoSanadaEpisodes: {
   [AkihikoSanadaEpisodesNames.AkihikoSanada3]: {
     ...ji1,
     name: AkihikoSanadaEpisodesNames.AkihikoSanada3,
-    label: () => (
-      <EventCard
-        head="Akihiko Sanada Episode"
-        name="Akihiko Sanada"
-        stats="Charm +2"
-      />
-    ),
+    label: function () {
+      return (
+        <EventCard head={this.name} name="Akihiko Sanada" stats="Charm +2" />
+      );
+    },
     available: function ({ currentDay, time }) {
       const days = [DaysNames.monday, DaysNames.friday];
       return (

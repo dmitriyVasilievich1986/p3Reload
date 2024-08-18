@@ -23,14 +23,16 @@ export const statsEventsCharm: {
     name: statsEventsCharmNames.beBlueV,
     category: Categories.Stats,
     time: Times.Day,
-    label: () => (
-      <EventCard
-        head="Be Blue V(Work part-time)"
-        stats="Charm +1 | Academics +1"
-        place="Paulownia Mall"
-        receive={3500}
-      />
-    ),
+    label: function () {
+      return (
+        <EventCard
+          head={this.name}
+          stats="Charm +1 | Academics +1"
+          place="Paulownia Mall"
+          receive={3500}
+        />
+      );
+    },
     available: function ({ currentDay, time }) {
       const days = [
         DaysNames.monday,
@@ -59,14 +61,16 @@ export const statsEventsCharm: {
     name: statsEventsCharmNames.chagallCafePartTimeWork,
     category: Categories.Stats,
     time: Times.Evening,
-    label: () => (
-      <EventCard
-        head="Chagall Cafe(Part-Time Work)"
-        stats="Courage +1 | Charm +1"
-        place="Paulownia Mall"
-        receive={2500}
-      />
-    ),
+    label: function () {
+      return (
+        <EventCard
+          head={this.name}
+          stats="Courage +1 | Charm +1"
+          place="Paulownia Mall"
+          receive={2500}
+        />
+      );
+    },
     available: function ({ currentDay, time }) {
       const days = [DaysNames.monday, DaysNames.tuesday, DaysNames.wednesday];
       return time === Times.Evening && days.includes(currentDay.date.getDay());
@@ -85,14 +89,16 @@ export const statsEventsCharm: {
     name: statsEventsCharmNames.chagallCafeCharm,
     category: Categories.Stats,
     time: Times.Evening,
-    label: () => (
-      <EventCard
-        head="Chagall Cafe(Pheromone Coffee)"
-        place="Paulownia Mall"
-        stats="Charm +2"
-        price={500}
-      />
-    ),
+    label: function () {
+      return (
+        <EventCard
+          head={this.name}
+          place="Paulownia Mall"
+          stats="Charm +2"
+          price={500}
+        />
+      );
+    },
     available: function ({ currentDay, time }) {
       const days = [DaysNames.monday, DaysNames.tuesday];
       return (
@@ -115,14 +121,16 @@ export const statsEventsCharm: {
     name: statsEventsCharmNames.hagakureRamen,
     category: Categories.Stats,
     time: Times.Evening,
-    label: () => (
-      <EventCard
-        head="Hagakure Ramen(Pork Ramen)"
-        place="Iwatodai Strip Mall"
-        stats="Charm +3"
-        price={900}
-      />
-    ),
+    label: function () {
+      return (
+        <EventCard
+          head={this.name}
+          place="Iwatodai Strip Mall"
+          stats="Charm +3"
+          price={900}
+        />
+      );
+    },
     available: function ({ currentDay, time }) {
       const days = [
         DaysNames.monday,
@@ -142,14 +150,16 @@ export const statsEventsCharm: {
     name: statsEventsCharmNames.cinemaTheaterCharm,
     category: Categories.Stats,
     time: Times.Day,
-    label: () => (
-      <EventCard
-        head="Cinema('Thy Name')"
-        place="Port Island Station"
-        stats="Charm +4"
-        price={1500}
-      />
-    ),
+    label: function () {
+      return (
+        <EventCard
+          head={this.name}
+          place="Port Island Station"
+          stats="Charm +4"
+          price={1500}
+        />
+      );
+    },
     available: function ({ currentDay, time }) {
       const days = [DaysNames.tuesday, DaysNames.friday];
       return days.includes(currentDay.date.getDay()) && time === Times.Day;
@@ -160,14 +170,16 @@ export const statsEventsCharm: {
     name: statsEventsCharmNames.hagakureRamenSpecial,
     category: Categories.Stats,
     time: Times.Evening,
-    label: () => (
-      <EventCard
-        head="Hagakure Ramen(Special Hagakure Bowl)"
-        place="Iwatodai Strip Mall"
-        stats="Charm +4"
-        price={1200}
-      />
-    ),
+    label: function () {
+      return (
+        <EventCard
+          head={this.name}
+          place="Iwatodai Strip Mall"
+          stats="Charm +4"
+          price={1200}
+        />
+      );
+    },
     available: function ({ currentDay, time }) {
       const days = [DaysNames.tuesday, DaysNames.wednesday, DaysNames.friday];
       return (
@@ -182,14 +194,16 @@ export const statsEventsCharm: {
     name: statsEventsCharmNames.gameParadeCharm,
     category: Categories.Stats,
     time: Times.Evening,
-    label: () => (
-      <EventCard
-        head="Game Parade(Play High School of Youth)"
-        place="Paulownia Mall"
-        stats="Charm +4"
-        price={1500}
-      />
-    ),
+    label: function () {
+      return (
+        <EventCard
+          head={this.name}
+          place="Paulownia Mall"
+          stats="Charm +4"
+          price={1500}
+        />
+      );
+    },
     available: function ({ currentDay, time }) {
       const days = [DaysNames.monday, DaysNames.thursday];
       return (

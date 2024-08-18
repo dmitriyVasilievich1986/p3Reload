@@ -7,7 +7,9 @@ const ji1: Event = {
   name: JunpeiIoriEpisodesNames.JunpeiIori1,
   category: Categories.Stats,
   time: Times.Day,
-  label: () => <EventCard head="Junpei Iori Episode" name="Junpei Iori" />,
+  label: function () {
+    return <EventCard head={this.name} name="Junpei Iori" />;
+  },
   available: function ({ currentDay, time }) {
     const days = [DaysNames.tuesday, DaysNames.friday];
     return (
@@ -30,13 +32,9 @@ export const JunpeiIoriEpisodes: { [key in JunpeiIoriEpisodesNames]: Event } = {
   [JunpeiIoriEpisodesNames.JunpeiIori2]: {
     ...ji1,
     name: JunpeiIoriEpisodesNames.JunpeiIori2,
-    label: () => (
-      <EventCard
-        head="Junpei Iori Episode"
-        name="Junpei Iori"
-        stats="Charm +2"
-      />
-    ),
+    label: function () {
+      return <EventCard head={this.name} name="Junpei Iori" stats="Charm +2" />;
+    },
     available: function ({ currentDay, time }) {
       const days = [
         new Date(2009, 7, 9).getTime(),
@@ -69,13 +67,11 @@ export const JunpeiIoriEpisodes: { [key in JunpeiIoriEpisodesNames]: Event } = {
   [JunpeiIoriEpisodesNames.JunpeiIori3]: {
     ...ji1,
     name: JunpeiIoriEpisodesNames.JunpeiIori3,
-    label: () => (
-      <EventCard
-        head="Junpei Iori Episode"
-        stats="Academics +2"
-        name="Junpei Iori"
-      />
-    ),
+    label: function () {
+      return (
+        <EventCard head={this.name} stats="Academics +2" name="Junpei Iori" />
+      );
+    },
     available: function ({ currentDay, time }) {
       const days = [
         new Date(2009, 10, 7).getTime(),
@@ -120,13 +116,11 @@ export const JunpeiIoriEpisodes: { [key in JunpeiIoriEpisodesNames]: Event } = {
   [JunpeiIoriEpisodesNames.JunpeiIori4]: {
     ...ji1,
     name: JunpeiIoriEpisodesNames.JunpeiIori4,
-    label: () => (
-      <EventCard
-        head="Junpei Iori Episode"
-        name="Junpei Iori"
-        stats="Courage +2"
-      />
-    ),
+    label: function () {
+      return (
+        <EventCard head={this.name} name="Junpei Iori" stats="Courage +2" />
+      );
+    },
     available: function ({ currentDay, time }) {
       const days = [
         new Date(2009, 11, 19).getTime(),
