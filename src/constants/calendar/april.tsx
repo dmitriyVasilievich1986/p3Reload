@@ -1,6 +1,6 @@
+import { SocialLinkNames, socialLinks } from "@/constants/socialLinks";
 import { EventCard, WideEvent, Question, Answer } from "@/components";
 import { Categories, events, Times } from "@/constants/events";
-import { SocialLinkNames } from "@/constants/socialLinks";
 import { SingleDay } from "./SingleDay";
 
 import {
@@ -317,11 +317,18 @@ export const april: SingleDay[] = [
         time: Times.AfterSchool,
         label: () => (
           <EventCard
-            prerequisite={`Talk to Chihiro and say "Let's hang out."`}
-            place="2nd Floor Hallway"
-            name="Chihiro Fushimi"
-            head="Justice"
-          />
+            {...socialLinks[SocialLinkNames.Justice].linkDetails}
+            head={`${SocialLinkNames.Justice} (Prerequisite)`}
+          >
+            <ul>
+              <li>
+                <p>Talk to Chihiro.</p>
+              </li>
+              <li>
+                <p>Choose "Let's hang out."</p>
+              </li>
+            </ul>
+          </EventCard>
         ),
       },
       events[SocialLinkNames.Magician],
@@ -344,11 +351,15 @@ export const april: SingleDay[] = [
         time: Times.AfterSchool,
         label: () => (
           <EventCard
-            prerequisite="Talk to Chihiro"
-            place="2nd Floor Hallway"
-            name="Chihiro Fushimi"
-            head="Justice"
-          />
+            {...socialLinks[SocialLinkNames.Justice].linkDetails}
+            head={`${SocialLinkNames.Justice} (Prerequisite)`}
+          >
+            <ul>
+              <li>
+                <p>Talk to Chihiro.</p>
+              </li>
+            </ul>
+          </EventCard>
         ),
       },
       events[SocialLinkNames.Magician],
