@@ -136,10 +136,18 @@ function Modal(props: {
           <EventsList
             events={availableEvents.filter(
               (e) =>
-                e.name in AkihikoSanadaEpisodesNames ||
-                e.name in JunpeiIoriEpisodesNames ||
-                e.name in KoromaruEpisodesNames ||
-                e.name in SpecialEventsNames
+                (
+                  Object.values(AkihikoSanadaEpisodesNames) as Array<string>
+                ).includes(e.name) ||
+                (
+                  Object.values(JunpeiIoriEpisodesNames) as Array<string>
+                ).includes(e.name) ||
+                (
+                  Object.values(KoromaruEpisodesNames) as Array<string>
+                ).includes(e.name) ||
+                (Object.values(SpecialEventsNames) as Array<string>).includes(
+                  e.name
+                )
             )}
             onClick={updateCalendar}
             currentDay={currentDay}
@@ -149,9 +157,15 @@ function Modal(props: {
           <EventsList
             events={availableEvents.filter(
               (e) =>
-                e.name in statsEventsAcademicsNames ||
-                e.name in statsEventsCourageNames ||
-                e.name in statsEventsCharmNames
+                (
+                  Object.values(statsEventsAcademicsNames) as Array<string>
+                ).includes(e.name) ||
+                (
+                  Object.values(statsEventsCourageNames) as Array<string>
+                ).includes(e.name) ||
+                (
+                  Object.values(statsEventsCharmNames) as Array<string>
+                ).includes(e.name)
             )}
             onClick={updateCalendar}
             currentDay={currentDay}
@@ -159,7 +173,9 @@ function Modal(props: {
             head="Stats"
           />
           <EventsList
-            events={availableEvents.filter((e) => e.name in pcProgramsNames)}
+            events={availableEvents.filter((e) =>
+              (Object.values(pcProgramsNames) as Array<string>).includes(e.name)
+            )}
             onClick={updateCalendar}
             currentDay={currentDay}
             filter={filter}
