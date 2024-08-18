@@ -1,6 +1,6 @@
 import { pcProgramsNames, Categories, Times, Event } from "./types";
-import { EventCard } from "../../components/eventCard";
 import { StatsNames } from "../stats/types";
+import { EventCard } from "@/components";
 
 const pcProgramBase: Event = {
   name: pcProgramsNames.lobbyPCLanguageMadeEasy,

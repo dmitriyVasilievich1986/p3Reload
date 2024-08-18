@@ -1,5 +1,5 @@
 import { RyojiMochizukiEpisodesNames, Categories, Times, Event } from "./types";
-import { EventCard } from "../../components/eventCard";
+import { EventCard } from "@/components";
 
 const ji1: Event = {
   name: RyojiMochizukiEpisodesNames.RyojiMochizuki1,

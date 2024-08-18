@@ -1,4 +1,4 @@
-import { QuestionsWrapper, Question, Answer } from "../../components/choices";
+import { QuestionsWrapper, Question, Answer } from "@/components";
 import { createBondObject, LinkMaxedObject } from "./GenericCard";
 import { SocialLinkNames, Routes } from "./types";
 import { SocialLink } from "./baseFunctions";

@@ -1,7 +1,7 @@
 import { AkihikoSanadaEpisodesNames, Categories, Times, Event } from "./types";
-import { EventCard } from "../../components/eventCard";
 import { StatsNames } from "../stats/types";
 import { DaysNames } from "../monthsNames";
+import { EventCard } from "@/components";
 
 const ji1: Event = {
   name: AkihikoSanadaEpisodesNames.AkihikoSanada1,

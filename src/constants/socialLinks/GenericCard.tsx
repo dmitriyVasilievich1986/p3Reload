@@ -1,5 +1,5 @@
-import { EventCard } from "../../components/eventCard";
 import { SocialLinkLevel } from "./types";
+import { EventCard } from "@/components";
 
 export function CreateBond() {
   return <EventCard head="Create bond" />;

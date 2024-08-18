@@ -1,6 +1,6 @@
-import { EventCard } from "../../components/eventCard";
 import { StatsNames } from "../stats/types";
 import { DaysNames } from "../monthsNames";
+import { EventCard } from "@/components";
 
 import {
   ShinjiroAragakiEpisodesNames,
