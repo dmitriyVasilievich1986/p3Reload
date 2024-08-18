@@ -66,6 +66,7 @@ export const statsEventsAcademics: {
     name: statsEventsAcademicsNames.summerSchool,
     category: Categories.Stats,
     time: Times.WholeDay,
+    special: true,
     label: function () {
       return (
         <WideEvent>
