@@ -266,7 +266,7 @@ export const june: SingleDay[] = [
     date: new Date(2009, 5, 26),
     activities: [
       events[SocialLinkNames.Magician],
-      events[statsEventsCharmNames.hagakureRamenSpecial],
+      events[statsEventsAcademicsNames.wakatsuKitchenSpecial],
     ],
   }),
   new SingleDay({

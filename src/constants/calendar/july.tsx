@@ -8,6 +8,7 @@ import { SingleDay } from "./SingleDay";
 import {
   statsEventsAcademicsNames,
   statsEventsCourageNames,
+  socialLinkShrineNames,
   statsEventsCharmNames,
   SpecialEventsNames,
 } from "@/constants/events/types";
@@ -16,15 +17,15 @@ export const july: SingleDay[] = [
   new SingleDay({
     date: new Date(2009, 6, 1),
     activities: [
-      events[SpecialEventsNames.DoNothing],
-      { ...events[SpecialEventsNames.DoNothing], time: Times.Evening },
+      events[SocialLinkNames.Strength],
+      events[statsEventsCharmNames.hagakureRamenSpecial],
     ],
   }),
   new SingleDay({
     date: new Date(2009, 6, 2),
     activities: [
-      events[SpecialEventsNames.DoNothing],
-      { ...events[SpecialEventsNames.DoNothing], time: Times.Evening },
+      events[SocialLinkNames.Justice],
+      events[statsEventsAcademicsNames.wakatsuKitchenSpecial],
     ],
   }),
   new SingleDay({
@@ -42,30 +43,30 @@ export const july: SingleDay[] = [
           </Question>
         ),
       },
-      events[SpecialEventsNames.DoNothing],
-      { ...events[SpecialEventsNames.DoNothing], time: Times.Evening },
+      events[SocialLinkNames.Emperor],
+      events[statsEventsAcademicsNames.wakatsuKitchenSpecial],
     ],
   }),
   new SingleDay({
     date: new Date(2009, 6, 4),
     activities: [
-      events[SpecialEventsNames.DoNothing],
-      { ...events[SpecialEventsNames.DoNothing], time: Times.Evening },
+      events[SocialLinkNames.Strength],
+      events[statsEventsCourageNames.wilduckBurgeWeekendWilduckSet],
     ],
   }),
   new SingleDay({
     date: new Date(2009, 6, 5),
     isDayOff: true,
     activities: [
-      events[SpecialEventsNames.DoNothing],
-      { ...events[SpecialEventsNames.DoNothing], time: Times.Evening },
+      events[SocialLinkNames.Moon],
+      events[statsEventsCourageNames.wilduckBurgeWeekendWilduckSet],
     ],
   }),
   new SingleDay({
     date: new Date(2009, 6, 6),
     activities: [
-      events[SpecialEventsNames.DoNothing],
-      { ...events[SpecialEventsNames.DoNothing], time: Times.Evening },
+      events[SocialLinkNames.Chariot],
+      events[statsEventsAcademicsNames.wakatsuKitchenSpecial],
     ],
   }),
   new SingleDay({
@@ -105,8 +106,8 @@ export const july: SingleDay[] = [
         ),
       },
       events[statsEventsCourageNames.drinkMedicine],
-      events[SpecialEventsNames.DoNothing],
-      { ...events[SpecialEventsNames.DoNothing], time: Times.Evening },
+      events[socialLinkShrineNames.MoonShrineTime],
+      events[statsEventsAcademicsNames.gameParadeAcademics],
     ],
   }),
   new SingleDay({
@@ -127,8 +128,8 @@ export const july: SingleDay[] = [
           </Question>
         ),
       },
-      events[SpecialEventsNames.DoNothing],
-      { ...events[SpecialEventsNames.DoNothing], time: Times.Evening },
+      events[SocialLinkNames.Moon],
+      events[statsEventsAcademicsNames.dormExamStudyingGroup],
     ],
   }),
   new SingleDay({
@@ -147,8 +148,8 @@ export const july: SingleDay[] = [
           </Question>
         ),
       },
-      events[SpecialEventsNames.DoNothing],
-      { ...events[SpecialEventsNames.DoNothing], time: Times.Evening },
+      events[SocialLinkNames.Hierophant],
+      events[statsEventsAcademicsNames.dormExamStudyingGroup],
     ],
   }),
   new SingleDay({
@@ -169,8 +170,8 @@ export const july: SingleDay[] = [
           </Question>
         ),
       },
-      events[SpecialEventsNames.DoNothing],
-      { ...events[SpecialEventsNames.DoNothing], time: Times.Evening },
+      events[SocialLinkNames.HangedMan],
+      events[statsEventsAcademicsNames.gameParadeAcademics],
     ],
   }),
   new SingleDay({
@@ -178,8 +179,8 @@ export const july: SingleDay[] = [
     isDayOff: true,
     exams: true,
     activities: [
-      events[SpecialEventsNames.DoNothing],
-      { ...events[SpecialEventsNames.DoNothing], time: Times.Evening },
+      events[SocialLinkNames.Hermit],
+      events[statsEventsAcademicsNames.wakatsuKitchenSpecial],
       events[SocialLinkNames.Death],
     ],
   }),
@@ -188,8 +189,8 @@ export const july: SingleDay[] = [
     exams: true,
     activities: [
       events[statsEventsAcademicsNames.stayAwakeInClass],
-      events[SpecialEventsNames.DoNothing],
-      { ...events[SpecialEventsNames.DoNothing], time: Times.Evening },
+      events[SocialLinkNames.HangedMan],
+      events[statsEventsAcademicsNames.dormExamStudyingTeam],
     ],
   }),
   new SingleDay({
@@ -298,7 +299,6 @@ export const july: SingleDay[] = [
   }),
   new SingleDay({
     date: new Date(2009, 6, 20),
-    exams: true,
     activities: [
       {
         ...events[SpecialEventsNames.Special],
@@ -313,7 +313,6 @@ export const july: SingleDay[] = [
   }),
   new SingleDay({
     date: new Date(2009, 6, 21),
-    exams: true,
     activities: [
       {
         ...events[SpecialEventsNames.Special],
@@ -328,7 +327,6 @@ export const july: SingleDay[] = [
   }),
   new SingleDay({
     date: new Date(2009, 6, 22),
-    exams: true,
     activities: [
       {
         ...events[SpecialEventsNames.Special],
@@ -344,7 +342,6 @@ export const july: SingleDay[] = [
   }),
   new SingleDay({
     date: new Date(2009, 6, 23),
-    exams: true,
     activities: [
       events[SpecialEventsNames.DoNothing],
       { ...events[SpecialEventsNames.DoNothing], time: Times.Evening },
