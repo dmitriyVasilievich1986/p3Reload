@@ -23,13 +23,11 @@ export const statsEventsCourage: {
     category: Categories.Special,
     time: Times.AfterSchool,
     special: true,
-    label: () => (
-      <EventCard
-        head="Drink Mr. Edogawa's medicine"
-        place="Nurse's Office"
-        stats="Courage +2"
-      />
-    ),
+    label: function () {
+      return (
+        <EventCard head={this.name} place="Nurse's Office" stats="Courage +2" />
+      );
+    },
     available: function ({ currentDay, time }) {
       const days = [DaysNames.tuesday, DaysNames.friday];
       return time === Times.Day && days.includes(currentDay.date.getDay());
@@ -40,7 +38,9 @@ export const statsEventsCourage: {
     name: statsEventsCourageNames.sleepDuringClass,
     category: Categories.Stats,
     time: Times.Morning,
-    label: () => <EventCard head="Sleep During Class" stats="Courage +2" />,
+    label: function () {
+      return <EventCard head={this.name} stats="Courage +2" />;
+    },
     available: function ({ time }) {
       return time === Times.Morning;
     },
@@ -50,14 +50,16 @@ export const statsEventsCourage: {
     name: statsEventsCourageNames.Mandragora,
     category: Categories.Stats,
     time: Times.Evening,
-    label: () => (
-      <EventCard
-        head="Mandragora(Sing solo karaoke)"
-        place="Paulownia Mall"
-        stats="Courage +2"
-        price={800}
-      />
-    ),
+    label: function () {
+      return (
+        <EventCard
+          head={this.name}
+          place="Paulownia Mall"
+          stats="Courage +2"
+          price={800}
+        />
+      );
+    },
     available: function ({ currentDay, time }) {
       return (
         [Times.Day, Times.Evening].includes(time) &&
@@ -70,14 +72,16 @@ export const statsEventsCourage: {
     name: statsEventsCourageNames.wilduckBurgeMysteryBurger,
     category: Categories.Stats,
     time: Times.Evening,
-    label: () => (
-      <EventCard
-        head="Wilduck Burger(Mystery Burger)"
-        place="Iwatodai Strip Mall"
-        stats="Courage +3"
-        price={1000}
-      />
-    ),
+    label: function () {
+      return (
+        <EventCard
+          head={this.name}
+          place="Iwatodai Strip Mall"
+          stats="Courage +3"
+          price={1000}
+        />
+      );
+    },
     available: function ({ currentDay, time }) {
       return (
         [Times.Day, Times.Evening].includes(time) &&
@@ -90,14 +94,16 @@ export const statsEventsCourage: {
     name: statsEventsCourageNames.gameParadeCourage,
     category: Categories.Stats,
     time: Times.Evening,
-    label: () => (
-      <EventCard
-        head="Game Parade(Play House of the Deceased)"
-        place="Paulownia Mall"
-        stats="Courage +4"
-        price={3000}
-      />
-    ),
+    label: function () {
+      return (
+        <EventCard
+          head={this.name}
+          place="Paulownia Mall"
+          stats="Courage +4"
+          price={3000}
+        />
+      );
+    },
     available: function ({ currentDay, time }) {
       const days = [DaysNames.tuesday, DaysNames.friday];
       return (
@@ -111,14 +117,16 @@ export const statsEventsCourage: {
     name: statsEventsCourageNames.wilduckBurgeWeekendWilduckSet,
     category: Categories.Stats,
     time: Times.Evening,
-    label: () => (
-      <EventCard
-        head="Wilduck Burger(Weekend Wilduck Set)"
-        place="Iwatodai Strip Mall"
-        stats="Courage +4"
-        price={1200}
-      />
-    ),
+    label: function () {
+      return (
+        <EventCard
+          head={this.name}
+          place="Iwatodai Strip Mall"
+          stats="Courage +4"
+          price={1200}
+        />
+      );
+    },
     available: function ({ currentDay, time }) {
       const days = [DaysNames.saturday, DaysNames.sunday];
       return (
@@ -135,14 +143,16 @@ export const statsEventsCourage: {
     name: statsEventsCourageNames.cinemaTheaterCourage,
     category: Categories.Stats,
     time: Times.Day,
-    label: () => (
-      <EventCard
-        head="Cinema('The School of No Wonder/The Way of Godson')"
-        place="Port Island Station"
-        stats="Courage +4"
-        price={1500}
-      />
-    ),
+    label: function () {
+      return (
+        <EventCard
+          head={this.name}
+          place="Port Island Station"
+          stats="Courage +4"
+          price={1500}
+        />
+      );
+    },
     available: function ({ currentDay, time }) {
       const days = [DaysNames.monday, DaysNames.thursday];
       return days.includes(currentDay.date.getDay()) && time === Times.Day;
@@ -153,19 +163,21 @@ export const statsEventsCourage: {
     name: statsEventsCourageNames.wilduckBigEaterChallenge,
     category: Categories.Stats,
     time: Times.Evening,
-    label: () => (
-      <EventCard
-        stats="Academics +4 | Courage +4 | Charm +4"
-        head="Wilduck Burger(Big Eater Challenge)"
-        place="Iwatodai Strip Mall"
-        price={1800}
-      />
-    ),
+    label: function () {
+      return (
+        <EventCard
+          head={this.name}
+          stats="Academics +4 | Courage +4 | Charm +4"
+          place="Iwatodai Strip Mall"
+          price={1800}
+        />
+      );
+    },
     available: function ({ currentDay, time }) {
       return (
         currentDay.date.getTime() >= new Date(2009, 4, 10).getTime() &&
         !currentDay.singleTimeEvents.includes(this.name) &&
-        currentDay.stats.Courage >= 45 &&
+        currentDay.stats[StatsNames.Courage] >= 45 &&
         time === Times.Evening
       );
     },

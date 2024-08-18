@@ -7,9 +7,9 @@ const ji1: Event = {
   name: KoromaruEpisodesNames.Koromaru1,
   category: Categories.Stats,
   time: Times.Day,
-  label: () => (
-    <EventCard head="Koromaru Episode" name="Koromaru" stats="Charm +2" />
-  ),
+  label: function () {
+    return <EventCard head={this.name} name="Koromaru" stats="Charm +2" />;
+  },
   available: function ({ currentDay, time }) {
     const days = [DaysNames.tuesday, DaysNames.wednesday, DaysNames.friday];
     const additionalDays = [
@@ -46,9 +46,9 @@ export const KoromaruEpisodes: {
   [KoromaruEpisodesNames.Koromaru2]: {
     ...ji1,
     name: KoromaruEpisodesNames.Koromaru2,
-    label: () => (
-      <EventCard head="Koromaru Episode" name="Koromaru" stats="Courage +2" />
-    ),
+    label: function () {
+      return <EventCard head={this.name} name="Koromaru" stats="Courage +2" />;
+    },
     available: function ({ currentDay, time }) {
       const days = [DaysNames.tuesday, DaysNames.wednesday, DaysNames.friday];
       const additionalDays = [
@@ -80,7 +80,9 @@ export const KoromaruEpisodes: {
   [KoromaruEpisodesNames.Koromaru3]: {
     ...ji1,
     name: KoromaruEpisodesNames.Koromaru3,
-    label: () => <EventCard head="Koromaru Episode" name="Koromaru" />,
+    label: function () {
+      return <EventCard head={this.name} name="Koromaru" />;
+    },
     available: function ({ currentDay, time }) {
       const days = [DaysNames.tuesday, DaysNames.wednesday, DaysNames.friday];
       const additionalDays = [
@@ -108,9 +110,9 @@ export const KoromaruEpisodes: {
   [KoromaruEpisodesNames.Koromaru4]: {
     ...ji1,
     name: KoromaruEpisodesNames.Koromaru4,
-    label: () => (
-      <EventCard head="Koromaru Episode" name="Koromaru" stats="Courage +2" />
-    ),
+    label: function () {
+      return <EventCard head={this.name} name="Koromaru" stats="Courage +2" />;
+    },
     available: function ({ currentDay, time }) {
       const days = [DaysNames.tuesday, DaysNames.wednesday, DaysNames.friday];
       const additionalDays = [
@@ -142,7 +144,9 @@ export const KoromaruEpisodes: {
   [KoromaruEpisodesNames.Koromaru5]: {
     ...ji1,
     name: KoromaruEpisodesNames.Koromaru5,
-    label: () => <EventCard head="Koromaru Episode" name="Koromaru" />,
+    label: function () {
+      return <EventCard head={this.name} name="Koromaru" />;
+    },
     available: function ({ currentDay, time }) {
       const days = [DaysNames.tuesday, DaysNames.wednesday];
       const additionalDays = [

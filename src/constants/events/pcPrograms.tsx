@@ -6,14 +6,16 @@ const pcProgramBase: Event = {
   name: pcProgramsNames.lobbyPCLanguageMadeEasy,
   category: Categories.Stats,
   time: Times.Evening,
-  label: () => (
-    <EventCard
-      head="Lobby PC(Language Made Easy)"
-      stats="Academics +4"
-      place="Dorm"
-      price={1200}
-    />
-  ),
+  label: function () {
+    return (
+      <EventCard
+        head={this.name}
+        stats="Academics +4"
+        place="Dorm"
+        price={1200}
+      />
+    );
+  },
   available: function ({ currentDay, time }) {
     return (
       currentDay.date.getTime() >= new Date(2009, 3, 29).getTime() &&
@@ -37,25 +39,23 @@ export const pcPrograms: { [key in pcProgramsNames]: Event } = {
   [pcProgramsNames.lobbyPCDigitalCramSchool]: {
     ...pcProgramBase,
     name: pcProgramsNames.lobbyPCDigitalCramSchool,
-    label: () => (
-      <EventCard
-        head="Lobby PC(Digital Cram School)"
-        stats="Academics +4"
-        place="Dorm"
-      />
-    ),
+    label: function () {
+      return <EventCard head={this.name} stats="Academics +4" place="Dorm" />;
+    },
   },
   [pcProgramsNames.lobbyPCAnimalOthello]: {
     ...pcProgramBase,
     name: pcProgramsNames.lobbyPCAnimalOthello,
-    label: () => (
-      <EventCard
-        head="Lobby PC(Animal Othello)"
-        stats="Courage +4"
-        place="Dorm"
-        price={1200}
-      />
-    ),
+    label: function () {
+      return (
+        <EventCard
+          head={this.name}
+          stats="Courage +4"
+          place="Dorm"
+          price={1200}
+        />
+      );
+    },
     upgrade: function (currentDay) {
       return {
         singleTimeEvents: [...currentDay.singleTimeEvents, this.name],
@@ -69,14 +69,16 @@ export const pcPrograms: { [key in pcProgramsNames]: Event } = {
   [pcProgramsNames.lobbyPCTypinGhoul]: {
     ...pcProgramBase,
     name: pcProgramsNames.lobbyPCTypinGhoul,
-    label: () => (
-      <EventCard
-        head="Lobby PC(Typin Ghoul)"
-        stats="Courage +4"
-        place="Dorm"
-        price={1200}
-      />
-    ),
+    label: function () {
+      return (
+        <EventCard
+          head={this.name}
+          stats="Courage +4"
+          place="Dorm"
+          price={1200}
+        />
+      );
+    },
     upgrade: function (currentDay) {
       return {
         singleTimeEvents: [...currentDay.singleTimeEvents, this.name],
@@ -90,14 +92,16 @@ export const pcPrograms: { [key in pcProgramsNames]: Event } = {
   [pcProgramsNames.lobbyPCLessonsInEtiquette]: {
     ...pcProgramBase,
     name: pcProgramsNames.lobbyPCLessonsInEtiquette,
-    label: () => (
-      <EventCard
-        head="Lobby PC(Lessons in Etiquette)"
-        stats="Charm +4"
-        place="Dorm"
-        price={1200}
-      />
-    ),
+    label: function () {
+      return (
+        <EventCard
+          head={this.name}
+          stats="Charm +4"
+          place="Dorm"
+          price={1200}
+        />
+      );
+    },
     upgrade: function (currentDay) {
       return {
         singleTimeEvents: [...currentDay.singleTimeEvents, this.name],
@@ -111,14 +115,16 @@ export const pcPrograms: { [key in pcProgramsNames]: Event } = {
   [pcProgramsNames.lobbyPCVirtualDiet]: {
     ...pcProgramBase,
     name: pcProgramsNames.lobbyPCVirtualDiet,
-    label: () => (
-      <EventCard
-        head="Lobby PC(Virtual Diet)"
-        stats="Charm +4"
-        place="Dorm"
-        price={1200}
-      />
-    ),
+    label: function () {
+      return (
+        <EventCard
+          head={this.name}
+          stats="Charm +4"
+          place="Dorm"
+          price={1200}
+        />
+      );
+    },
     upgrade: function (currentDay) {
       return {
         singleTimeEvents: [...currentDay.singleTimeEvents, this.name],

@@ -22,105 +22,105 @@ export enum Times {
 }
 
 export enum SpecialEventsNames {
-  DoNothing = "DoNothing",
-  NoControl = "NoControl",
-  Special = "Special",
+  DoNothing = "Do Nothing",
+  NoControl = "No Control",
+  Special = "Special Event",
   Tartarus = "Tartarus",
   Exams = "Exams",
 }
 
 export enum pcProgramsNames {
-  lobbyPCLessonsInEtiquette = "lobbyPCLessonsInEtiquette",
-  lobbyPCDigitalCramSchool = "lobbyPCDigitalCramSchool",
-  lobbyPCLanguageMadeEasy = "lobbyPCLanguageMadeEasy",
-  lobbyPCAnimalOthello = "lobbyPCAnimalOthello",
-  lobbyPCVirtualDiet = "lobbyPCVirtualDiet",
-  lobbyPCTypinGhoul = "lobbyPCTypinGhoul",
+  lobbyPCLessonsInEtiquette = 'Lobby PC ("Lessons in Etiquette")',
+  lobbyPCDigitalCramSchool = 'Lobby PC ("Digital Cram School")',
+  lobbyPCLanguageMadeEasy = 'Lobby PC ("Language Made Easy")',
+  lobbyPCAnimalOthello = 'Lobby PC ("Animal Othello")',
+  lobbyPCVirtualDiet = 'Lobby PC ("Virtual Diet")',
+  lobbyPCTypinGhoul = 'Lobby PC ("Typin Ghoul")',
 }
 
 export enum JunpeiIoriEpisodesNames {
-  JunpeiIori1 = "JunpeiIori1",
-  JunpeiIori2 = "JunpeiIori2",
-  JunpeiIori3 = "JunpeiIori3",
-  JunpeiIori35 = "JunpeiIori35",
-  JunpeiIori4 = "JunpeiIori4",
-  JunpeiIori5 = "JunpeiIori5",
+  JunpeiIori1 = "Junpei Iori (Episode 1)",
+  JunpeiIori2 = "Junpei Iori (Episode 2)",
+  JunpeiIori3 = "Junpei Iori (Episode 3)",
+  JunpeiIori35 = "Junpei Iori (Episode 3 extra)",
+  JunpeiIori4 = "Junpei Iori (Episode 4)",
+  JunpeiIori5 = "Junpei Iori (Episode 5)",
 }
 
 export enum ShinjiroAragakiEpisodesNames {
-  ShinjiroAragaki1 = "ShinjiroAragaki1",
-  ShinjiroAragaki2 = "ShinjiroAragaki2",
-  ShinjiroAragaki3 = "ShinjiroAragaki3",
-  ShinjiroAragaki35 = "ShinjiroAragaki35",
-  ShinjiroAragaki4 = "ShinjiroAragaki4",
-  ShinjiroAragaki5 = "ShinjiroAragaki5",
+  ShinjiroAragaki1 = "Shinjiro Aragaki (Episode 1)",
+  ShinjiroAragaki2 = "Shinjiro Aragaki (Episode 2)",
+  ShinjiroAragaki3 = "Shinjiro Aragaki (Episode 3)",
+  ShinjiroAragaki35 = "Shinjiro Aragaki (Episode 3 extra)",
+  ShinjiroAragaki4 = "Shinjiro Aragaki (Episode 4)",
+  ShinjiroAragaki5 = "Shinjiro Aragaki (Episode 5)",
 }
 
 export enum AkihikoSanadaEpisodesNames {
-  AkihikoSanada1 = "AkihikoSanada1",
-  AkihikoSanada2 = "AkihikoSanada2",
-  AkihikoSanada3 = "AkihikoSanada3",
-  AkihikoSanada4 = "AkihikoSanada4",
-  AkihikoSanada5 = "AkihikoSanada5",
+  AkihikoSanada1 = "Akihiko Sanada (Episode 1)",
+  AkihikoSanada2 = "Akihiko Sanada (Episode 2)",
+  AkihikoSanada3 = "Akihiko Sanada (Episode 3)",
+  AkihikoSanada4 = "Akihiko Sanada (Episode 4)",
+  AkihikoSanada5 = "Akihiko Sanada (Episode 5)",
 }
 
 export enum KoromaruEpisodesNames {
-  Koromaru1 = "Koromaru1",
-  Koromaru2 = "Koromaru2",
-  Koromaru3 = "Koromaru3",
-  Koromaru4 = "Koromaru4",
-  Koromaru5 = "Koromaru5",
+  Koromaru1 = "Koromaru (Episode 1)",
+  Koromaru2 = "Koromaru (Episode 2)",
+  Koromaru3 = "Koromaru (Episode 3)",
+  Koromaru4 = "Koromaru (Episode 4)",
+  Koromaru5 = "Koromaru (Episode 5)",
 }
 
 export enum KenAmadaEpisodesNames {
-  KenAmada1 = "KenAmada1",
-  KenAmada2 = "KenAmada2",
-  KenAmada3 = "KenAmada3",
-  KenAmada4 = "KenAmada4",
-  KenAmada5 = "KenAmada5",
+  KenAmada1 = "KenAmada (Episode 1)",
+  KenAmada2 = "KenAmada (Episode 2)",
+  KenAmada3 = "KenAmada (Episode 3)",
+  KenAmada4 = "KenAmada (Episode 4)",
+  KenAmada5 = "KenAmada (Episode 5)",
 }
 
 export enum RyojiMochizukiEpisodesNames {
-  RyojiMochizuki1 = "RyojiMochizuki1",
-  RyojiMochizuki2 = "RyojiMochizuki2",
-  RyojiMochizuki3 = "RyojiMochizuki3",
-  RyojiMochizuki4 = "RyojiMochizuki4",
-  RyojiMochizuki5 = "RyojiMochizuki5",
+  RyojiMochizuki1 = "Ryoji Mochizuki (Episode 1)",
+  RyojiMochizuki2 = "Ryoji Mochizuki (Episode 2)",
+  RyojiMochizuki3 = "Ryoji Mochizuki (Episode 3)",
+  RyojiMochizuki4 = "Ryoji Mochizuki (Episode 4)",
+  RyojiMochizuki5 = "Ryoji Mochizuki (Episode 5)",
 }
 
 export enum statsEventsAcademicsNames {
-  cinemaTheaterAcademics = "cinemaTheaterAcademics",
-  wakatsuKitchenSpecial = "wakatsuKitchenSpecial",
-  dormExamStudyingGroup = "dormExamStudyingGroup",
-  dormExamStudyingTeam = "dormExamStudyingTeam",
-  gameParadeAcademics = "gameParadeAcademics",
-  wakatsuKitchenDay = "wakatsuKitchenDay",
-  stayAwakeInClass = "stayAwakeInClass",
-  studyAtLibrary = "studyAtLibrary",
-  wakatsuKitchen = "wakatsuKitchen",
-  summerSchool = "summerSchool",
-  studyAtHome = "studyAtHome",
+  wakatsuKitchenSpecial = "Wakatsu Kitchen (Seafood Full Course)",
+  wakatsuKitchenDay = "Wakatsu Kitchen Day(Prodigy Platter)",
+  wakatsuKitchen = "Wakatsu Kitchen (Prodigy Platter)",
+  gameParadeAcademics = 'Game Parade (Play "You\'re the Answer")',
+  cinemaTheaterAcademics = 'Cinema ("Unresolved Mysteries")',
+  dormExamStudyingGroup = "Dorm exam studying (Group)",
+  dormExamStudyingTeam = "Dorm exam studying (Team)",
+  stayAwakeInClass = "Stay awake in class",
+  studyAtLibrary = "Study at library",
+  summerSchool = "Summer School",
+  studyAtHome = "Study at home",
 }
 
 export enum statsEventsCharmNames {
-  chagallCafePartTimeWork = "chagallCafePartTimeWork",
-  hagakureRamenSpecial = "hagakureRamenSpecial",
-  schoolQuestionCharm = "schoolQuestionCharm",
-  cinemaTheaterCharm = "cinemaTheaterCharm",
-  chagallCafeCharm = "chagallCafeCharm",
-  gameParadeCharm = "gameParadeCharm",
-  hagakureRamen = "hagakureRamen",
-  beBlueV = "beBlueV",
+  hagakureRamenSpecial = "Hagakure Ramen (Special Hagakure Bowl)",
+  hagakureRamen = "Hagakure Ramen (Pork Ramen)",
+  gameParadeCharm = 'Game Parade (Play "High School of Youth")',
+  chagallCafePartTimeWork = "Chagall Cafe(Part-time work)",
+  chagallCafeCharm = "Chagall Cafe (Pheromone Coffee)",
+  cinemaTheaterCharm = 'Cinema ("Thy Name")',
+  schoolQuestionCharm = "School Question",
+  beBlueV = "Be Blue V (Part-time work)",
 }
 export enum statsEventsCourageNames {
-  wilduckBurgeWeekendWilduckSet = "wilduckBurgeWeekendWilduckSet",
-  wilduckBurgeMysteryBurger = "wilduckBurgeMysteryBurger",
-  wilduckBigEaterChallenge = "wilduckBigEaterChallenge",
-  cinemaTheaterCourage = "cinemaTheaterCourage",
-  gameParadeCourage = "gameParadeCourage",
-  sleepDuringClass = "sleepDuringClass",
-  drinkMedicine = "drinkMedicine",
-  Mandragora = "Mandragora",
+  wilduckBurgeWeekendWilduckSet = "Wilduck Burger (Weekend Wilduck Set)",
+  wilduckBigEaterChallenge = "Wilduck Burger (Big Eater Challenge)",
+  wilduckBurgeMysteryBurger = "Wilduck Burger (Mystery Burger)",
+  gameParadeCourage = 'Game Parade (Play "House of the Deceased")',
+  cinemaTheaterCourage = 'Cinema ("The School of No Wonder")',
+  drinkMedicine = "Drink Mr. Edogawa's medicine",
+  Mandragora = "Mandragora (Sing solo karaoke)",
+  sleepDuringClass = "Sleep during class",
 }
 export enum socialLinkRomanceNames {
   PriestessRomance = "Priestess (Romance)",

@@ -23,7 +23,9 @@ export const statsEventsAcademics: {
     name: statsEventsAcademicsNames.stayAwakeInClass,
     category: Categories.Stats,
     time: Times.Morning,
-    label: () => <EventCard head="Stay Awake in Class" stats="Academics +2" />,
+    label: function () {
+      return <EventCard head={this.name} stats="Academics +2" />;
+    },
     available: function ({ time }) {
       return time === Times.Morning;
     },
@@ -33,13 +35,11 @@ export const statsEventsAcademics: {
     name: statsEventsAcademicsNames.studyAtHome,
     category: Categories.Stats,
     time: Times.Evening,
-    label: () => (
-      <EventCard
-        head="Studying In Your Room"
-        stats="Academics +2"
-        place="Your Room"
-      />
-    ),
+    label: function () {
+      return (
+        <EventCard head={this.name} stats="Academics +2" place="Your Room" />
+      );
+    },
     available: function ({ time }) {
       return time === Times.Evening;
     },
@@ -49,13 +49,15 @@ export const statsEventsAcademics: {
     name: statsEventsAcademicsNames.studyAtLibrary,
     category: Categories.Stats,
     time: Times.Day,
-    label: () => (
-      <EventCard
-        head="Studying At The Library"
-        place="Gekkoukan High School"
-        stats="Academics +2"
-      />
-    ),
+    label: function () {
+      return (
+        <EventCard
+          head={this.name}
+          place="Gekkoukan High School"
+          stats="Academics +2"
+        />
+      );
+    },
     available: function ({ time }) {
       return time === Times.Day;
     },
@@ -65,15 +67,17 @@ export const statsEventsAcademics: {
     name: statsEventsAcademicsNames.summerSchool,
     category: Categories.Stats,
     time: Times.WholeDay,
-    label: () => (
-      <WideEvent>
-        <EventCard
-          place="Gekkoukan High School"
-          head="Summer School"
-          stats="Academics +3"
-        />
-      </WideEvent>
-    ),
+    label: function () {
+      return (
+        <WideEvent>
+          <EventCard
+            head={this.name}
+            place="Gekkoukan High School"
+            stats="Academics +3"
+          />
+        </WideEvent>
+      );
+    },
     available: function () {
       return false;
     },
@@ -83,14 +87,16 @@ export const statsEventsAcademics: {
     name: statsEventsAcademicsNames.wakatsuKitchenDay,
     category: Categories.Stats,
     time: Times.Day,
-    label: () => (
-      <EventCard
-        head="Wakatsu Kitchen(Prodigy Platter)"
-        place="Iwatodai Strip Mall"
-        stats="Academics +3"
-        price={680}
-      />
-    ),
+    label: function () {
+      return (
+        <EventCard
+          head={this.name}
+          place="Iwatodai Strip Mall"
+          stats="Academics +3"
+          price={680}
+        />
+      );
+    },
     available: function ({ currentDay, time }) {
       const days = [
         DaysNames.thursday,
@@ -106,14 +112,16 @@ export const statsEventsAcademics: {
     name: statsEventsAcademicsNames.wakatsuKitchen,
     category: Categories.Stats,
     time: Times.Evening,
-    label: () => (
-      <EventCard
-        head="Wakatsu Kitchen(Prodigy Platter)"
-        place="Iwatodai Strip Mall"
-        stats="Academics +3"
-        price={680}
-      />
-    ),
+    label: function () {
+      return (
+        <EventCard
+          head={this.name}
+          place="Iwatodai Strip Mall"
+          stats="Academics +3"
+          price={680}
+        />
+      );
+    },
     available: function ({ currentDay, time }) {
       const days = [
         DaysNames.thursday,
@@ -150,14 +158,16 @@ export const statsEventsAcademics: {
     name: statsEventsAcademicsNames.cinemaTheaterAcademics,
     category: Categories.Stats,
     time: Times.Day,
-    label: () => (
-      <EventCard
-        head="Cinema('Unresolved Mysteries')"
-        place="Port Island Station"
-        stats="Academics +4"
-        price={1500}
-      />
-    ),
+    label: function () {
+      return (
+        <EventCard
+          head={this.name}
+          place="Port Island Station"
+          stats="Academics +4"
+          price={1500}
+        />
+      );
+    },
     available: function ({ currentDay, time }) {
       const days = [DaysNames.wednesday, DaysNames.saturday];
       return time === Times.Day && days.includes(currentDay.date.getDay());
@@ -168,14 +178,16 @@ export const statsEventsAcademics: {
     name: statsEventsAcademicsNames.wakatsuKitchenSpecial,
     category: Categories.Stats,
     time: Times.Evening,
-    label: () => (
-      <EventCard
-        head="Wakatsu Kitchen(Seafood Full Course)"
-        place="Iwatodai Strip Mall"
-        stats="Academics +4"
-        price={900}
-      />
-    ),
+    label: function () {
+      return (
+        <EventCard
+          head={this.name}
+          place="Iwatodai Strip Mall"
+          stats="Academics +4"
+          price={900}
+        />
+      );
+    },
     available: function ({ previousDay, currentDay, time }) {
       if (!previousDay) return false;
       const days = [
@@ -199,14 +211,16 @@ export const statsEventsAcademics: {
     name: statsEventsAcademicsNames.gameParadeAcademics,
     category: Categories.Stats,
     time: Times.Evening,
-    label: () => (
-      <EventCard
-        head="Game Parade(Play You're the Answer)"
-        place="Paulownia Mall"
-        stats="Academics +4"
-        price={3000}
-      />
-    ),
+    label: function () {
+      return (
+        <EventCard
+          head={this.name}
+          place="Paulownia Mall"
+          stats="Academics +4"
+          price={3000}
+        />
+      );
+    },
     available: function ({ currentDay, time }) {
       const days = [DaysNames.wednesday, DaysNames.saturday];
       return (
@@ -220,13 +234,9 @@ export const statsEventsAcademics: {
     name: statsEventsAcademicsNames.dormExamStudyingGroup,
     category: Categories.Stats,
     time: Times.Evening,
-    label: () => (
-      <EventCard
-        head="Dorm Exam Group Studying"
-        stats="Academics +4"
-        place="Dorm"
-      />
-    ),
+    label: function () {
+      return <EventCard head={this.name} stats="Academics +4" place="Dorm" />;
+    },
     available: function ({ currentDay, time }) {
       const dates = [
         new Date(2009, 4, 15).getTime(),
@@ -244,13 +254,9 @@ export const statsEventsAcademics: {
     name: statsEventsAcademicsNames.dormExamStudyingTeam,
     category: Categories.Stats,
     time: Times.Evening,
-    label: () => (
-      <EventCard
-        head="Dorm Exam Study with the Team"
-        stats="Academics +5"
-        place="Dorm"
-      />
-    ),
+    label: function () {
+      return <EventCard head={this.name} stats="Academics +5" place="Dorm" />;
+    },
     available: function ({ currentDay, time }) {
       const dates = [
         new Date(2009, 4, 17).getTime(),

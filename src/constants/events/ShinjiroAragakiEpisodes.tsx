@@ -13,13 +13,11 @@ const ji1: Event = {
   name: ShinjiroAragakiEpisodesNames.ShinjiroAragaki1,
   category: Categories.Stats,
   time: Times.Day,
-  label: () => (
-    <EventCard
-      head="Shinjiro Aragaki Episode"
-      name="Shinjiro Aragaki"
-      stats="Courage +2"
-    />
-  ),
+  label: function () {
+    return (
+      <EventCard head={this.name} name="Shinjiro Aragaki" stats="Courage +2" />
+    );
+  },
   available: function ({ currentDay, time }) {
     const days = [
       DaysNames.monday,
@@ -55,13 +53,11 @@ export const ShinjiroAragakiEpisodes: {
   [ShinjiroAragakiEpisodesNames.ShinjiroAragaki2]: {
     ...ji1,
     name: ShinjiroAragakiEpisodesNames.ShinjiroAragaki2,
-    label: () => (
-      <EventCard
-        head="Shinjiro Aragaki Episode"
-        name="Shinjiro Aragaki"
-        stats="Charm +2"
-      />
-    ),
+    label: function () {
+      return (
+        <EventCard head={this.name} name="Shinjiro Aragaki" stats="Charm +2" />
+      );
+    },
     available: function ({ currentDay, time }) {
       const days = [
         DaysNames.monday,
@@ -95,13 +91,15 @@ export const ShinjiroAragakiEpisodes: {
   [ShinjiroAragakiEpisodesNames.ShinjiroAragaki3]: {
     ...ji1,
     name: ShinjiroAragakiEpisodesNames.ShinjiroAragaki3,
-    label: () => (
-      <EventCard
-        head="Shinjiro Aragaki Episode"
-        name="Shinjiro Aragaki"
-        stats="Academics +2"
-      />
-    ),
+    label: function () {
+      return (
+        <EventCard
+          head={this.name}
+          name="Shinjiro Aragaki"
+          stats="Academics +2"
+        />
+      );
+    },
     available: function ({ currentDay, time }) {
       const days = [
         DaysNames.monday,
@@ -135,9 +133,9 @@ export const ShinjiroAragakiEpisodes: {
   [ShinjiroAragakiEpisodesNames.ShinjiroAragaki35]: {
     ...ji1,
     name: ShinjiroAragakiEpisodesNames.ShinjiroAragaki35,
-    label: () => (
-      <EventCard head="Shinjiro Aragaki Episode" name="Shinjiro Aragaki" />
-    ),
+    label: function () {
+      return <EventCard head={this.name} name="Shinjiro Aragaki" />;
+    },
     available: function ({ currentDay, time }) {
       return (
         currentDay.singleTimeEvents.includes(
@@ -156,13 +154,15 @@ export const ShinjiroAragakiEpisodes: {
   [ShinjiroAragakiEpisodesNames.ShinjiroAragaki4]: {
     ...ji1,
     name: ShinjiroAragakiEpisodesNames.ShinjiroAragaki4,
-    label: () => (
-      <EventCard
-        head="Shinjiro Aragaki Episode"
-        name="Shinjiro Aragaki"
-        stats="Courage +2"
-      />
-    ),
+    label: function () {
+      return (
+        <EventCard
+          head={this.name}
+          name="Shinjiro Aragaki"
+          stats="Courage +2"
+        />
+      );
+    },
     available: function ({ currentDay, time }) {
       const days = [
         DaysNames.monday,

@@ -5,9 +5,9 @@ const ji1: Event = {
   name: RyojiMochizukiEpisodesNames.RyojiMochizuki1,
   category: Categories.Stats,
   time: Times.Day,
-  label: () => (
-    <EventCard head="Ryoji Mochizuki Episode" name="Ryoji Mochizuki" />
-  ),
+  label: function () {
+    return <EventCard head={this.name} name="Ryoji Mochizuki" />;
+  },
   available: function () {
     return false;
   },
