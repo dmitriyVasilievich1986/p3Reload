@@ -67,11 +67,13 @@ function Modal(props: {
                   ? a
                   : { ...events[SpecialEventsNames.DoNothing], time: a.time }
               );
-            activities.splice(
-              1,
-              0,
-              events[statsEventsCourageNames.drinkMedicine]
-            );
+            if (!c.isDayOff) {
+              activities.splice(
+                1,
+                0,
+                events[statsEventsCourageNames.drinkMedicine]
+              );
+            }
 
             return new SingleDay({ ...c, activities });
           } else if (i > currentDayIndex)
