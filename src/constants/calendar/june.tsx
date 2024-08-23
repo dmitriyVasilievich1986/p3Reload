@@ -237,7 +237,7 @@ export const june: SingleDay[] = [
   new SingleDay({
     date: new Date(2009, 5, 24),
     activities: [
-      events[SocialLinkNames.Fortune],
+      events[SocialLinkNames.Strength],
       events[statsEventsCharmNames.hagakureRamenSpecial],
     ],
   }),
@@ -288,7 +288,22 @@ export const june: SingleDay[] = [
           <EventCard head="Tartarus">
             <ul>
               <li>
-                <p>Gain at least ¥27,100</p>
+                <p>Have at least ¥59,500</p>
+              </li>
+              <li>
+                <p>Be at least level 10</p>
+              </li>
+              <li>
+                <p>Have {SocialLinkNames.Hermit} card</p>
+              </li>
+              <li>
+                <p>Have {SocialLinkNames.Hierophant} card</p>
+              </li>
+              <li>
+                <p>Have {SocialLinkNames.HangedMan} card</p>
+              </li>
+              <li>
+                <p>Have {SocialLinkNames.Strength} card</p>
               </li>
             </ul>
           </EventCard>

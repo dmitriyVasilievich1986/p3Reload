@@ -1,4 +1,3 @@
-import { SocialLinkNames, mainCharName } from "@/constants/socialLinks";
 import { EventCard, WideEvent, Question, Answer } from "@/components";
 import { LabelExamGrade, classmates } from "./baseFunctions";
 import { events, Times } from "@/constants/events";
@@ -6,9 +5,15 @@ import { StatsNames } from "@/constants/stats";
 import { SingleDay } from "./SingleDay";
 
 import {
+  SocialLinkNames,
+  mainCharName,
+  socialLinks,
+} from "@/constants/socialLinks";
+
+import {
+  AkihikoSanadaEpisodesNames,
   statsEventsAcademicsNames,
   statsEventsCourageNames,
-  socialLinkShrineNames,
   statsEventsCharmNames,
   SpecialEventsNames,
 } from "@/constants/events/types";
@@ -44,13 +49,29 @@ export const july: SingleDay[] = [
         ),
       },
       events[SocialLinkNames.Emperor],
-      events[statsEventsAcademicsNames.wakatsuKitchenSpecial],
+      events[statsEventsCharmNames.hagakureRamenSpecial],
     ],
   }),
   new SingleDay({
     date: new Date(2009, 6, 4),
     activities: [
       events[SocialLinkNames.Strength],
+      {
+        ...events[SpecialEventsNames.Special],
+        time: Times.EveningFreeTime,
+        label: () => (
+          <EventCard
+            {...socialLinks[SocialLinkNames.Devil].linkDetails}
+            head={`${SocialLinkNames.Devil} (Prerequisite)`}
+          >
+            <ul>
+              <li>
+                <p>Give President Tanaka ¥20,000.</p>
+              </li>
+            </ul>
+          </EventCard>
+        ),
+      },
       events[statsEventsCourageNames.wilduckBurgeWeekendWilduckSet],
     ],
   }),
@@ -106,7 +127,7 @@ export const july: SingleDay[] = [
         ),
       },
       events[statsEventsCourageNames.drinkMedicine],
-      events[socialLinkShrineNames.MoonShrineTime],
+      events[SocialLinkNames.HangedMan],
       events[statsEventsAcademicsNames.gameParadeAcademics],
     ],
   }),
@@ -128,7 +149,7 @@ export const july: SingleDay[] = [
           </Question>
         ),
       },
-      events[SocialLinkNames.Moon],
+      events[SocialLinkNames.Hierophant],
       events[statsEventsAcademicsNames.dormExamStudyingGroup],
     ],
   }),
@@ -170,7 +191,23 @@ export const july: SingleDay[] = [
           </Question>
         ),
       },
-      events[SocialLinkNames.HangedMan],
+      events[SocialLinkNames.Hierophant],
+      {
+        ...events[SpecialEventsNames.Special],
+        time: Times.EveningFreeTime,
+        label: () => (
+          <EventCard
+            {...socialLinks[SocialLinkNames.Devil].linkDetails}
+            head={`${SocialLinkNames.Devil} (Prerequisite)`}
+          >
+            <ul>
+              <li>
+                <p>Give President Tanaka ¥10,000.</p>
+              </li>
+            </ul>
+          </EventCard>
+        ),
+      },
       events[statsEventsAcademicsNames.gameParadeAcademics],
     ],
   }),
@@ -285,7 +322,23 @@ export const july: SingleDay[] = [
         ...events[SpecialEventsNames.Special],
         label: () => <EventCard head="Introduction to Ken" />,
       },
-      { ...events[SpecialEventsNames.DoNothing], time: Times.Evening },
+      {
+        ...events[SpecialEventsNames.Special],
+        time: Times.EveningFreeTime,
+        label: () => (
+          <EventCard
+            {...socialLinks[SocialLinkNames.Devil].linkDetails}
+            head={`${SocialLinkNames.Devil} (Prerequisite)`}
+          >
+            <ul>
+              <li>
+                <p>Give President Tanaka ¥10,000.</p>
+              </li>
+            </ul>
+          </EventCard>
+        ),
+      },
+      events[statsEventsAcademicsNames.gameParadeAcademics],
     ],
   }),
   new SingleDay({
@@ -293,8 +346,8 @@ export const july: SingleDay[] = [
     isDayOff: true,
     exams: true,
     activities: [
-      events[SpecialEventsNames.DoNothing],
-      { ...events[SpecialEventsNames.DoNothing], time: Times.Evening },
+      events[SocialLinkNames.Hermit],
+      events[statsEventsAcademicsNames.wakatsuKitchenSpecial],
     ],
   }),
   new SingleDay({
@@ -343,8 +396,8 @@ export const july: SingleDay[] = [
   new SingleDay({
     date: new Date(2009, 6, 23),
     activities: [
-      events[SpecialEventsNames.DoNothing],
-      { ...events[SpecialEventsNames.DoNothing], time: Times.Evening },
+      events[SocialLinkNames.Justice],
+      events[statsEventsAcademicsNames.wakatsuKitchenSpecial],
     ],
   }),
   new SingleDay({
@@ -387,59 +440,71 @@ export const july: SingleDay[] = [
           };
         },
       },
-      events[SpecialEventsNames.DoNothing],
-      { ...events[SpecialEventsNames.DoNothing], time: Times.Evening },
+      events[SocialLinkNames.Priestess],
+      events[AkihikoSanadaEpisodesNames.AkihikoSanada2],
     ],
   }),
   new SingleDay({
     date: new Date(2009, 6, 25),
     activities: [
       events[statsEventsAcademicsNames.stayAwakeInClass],
-      events[SpecialEventsNames.DoNothing],
-      { ...events[SpecialEventsNames.DoNothing], time: Times.Evening },
+      events[SocialLinkNames.Strength],
+      events[SocialLinkNames.Tower],
     ],
   }),
   new SingleDay({
     date: new Date(2009, 6, 26),
     isDayOff: true,
     activities: [
-      events[SpecialEventsNames.DoNothing],
-      { ...events[SpecialEventsNames.DoNothing], time: Times.Evening },
+      events[SocialLinkNames.Hermit],
+      {
+        ...events[SpecialEventsNames.Tartarus],
+        time: Times.Evening,
+        label: () => (
+          <EventCard head="Tartarus">
+            <ul>
+              <li>
+                <p>Have at least ¥59,500</p>
+              </li>
+            </ul>
+          </EventCard>
+        ),
+      },
     ],
   }),
   new SingleDay({
     date: new Date(2009, 6, 27),
     activities: [
       { ...events[SpecialEventsNames.Special] },
-      { ...events[SpecialEventsNames.DoNothing], time: Times.Evening },
+      events[statsEventsAcademicsNames.wakatsuKitchenSpecial],
     ],
   }),
   new SingleDay({
     date: new Date(2009, 6, 28),
     activities: [
       { ...events[SpecialEventsNames.Special] },
-      { ...events[SpecialEventsNames.DoNothing], time: Times.Evening },
+      events[SocialLinkNames.Devil],
     ],
   }),
   new SingleDay({
     date: new Date(2009, 6, 29),
     activities: [
       { ...events[SpecialEventsNames.Special] },
-      { ...events[SpecialEventsNames.DoNothing], time: Times.Evening },
+      events[statsEventsAcademicsNames.gameParadeAcademics],
     ],
   }),
   new SingleDay({
     date: new Date(2009, 6, 30),
     activities: [
       { ...events[SpecialEventsNames.Special] },
-      { ...events[SpecialEventsNames.DoNothing], time: Times.Evening },
+      events[SocialLinkNames.Tower],
     ],
   }),
   new SingleDay({
     date: new Date(2009, 6, 31),
     activities: [
       { ...events[SpecialEventsNames.Special] },
-      { ...events[SpecialEventsNames.DoNothing], time: Times.Evening },
+      events[SocialLinkNames.Tower],
     ],
   }),
 ];
