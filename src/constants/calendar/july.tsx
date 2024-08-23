@@ -464,7 +464,19 @@ export const july: SingleDay[] = [
           <EventCard head="Tartarus">
             <ul>
               <li>
-                <p>Have at least ¥59,500</p>
+                <p>Be at least level 31</p>
+              </li>
+              <li>
+                <p>Have {SocialLinkNames.Tower} card</p>
+              </li>
+              <li>
+                <p>Have {SocialLinkNames.Star} card</p>
+              </li>
+              <li>
+                <p>Have {SocialLinkNames.HangedMan} card</p>
+              </li>
+              <li>
+                <p>Have {SocialLinkNames.Hierophant} card</p>
               </li>
             </ul>
           </EventCard>
