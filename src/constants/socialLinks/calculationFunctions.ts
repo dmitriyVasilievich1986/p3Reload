@@ -47,7 +47,7 @@ export class CardNeededCalculator {
     const nextLevelRoundsWCard = CardNeededCalculator.nextLevelRounds(
       this.nextLevelPoints,
       maxPointsSumWCard,
-      this.multiplier
+      this.multiplier * this.cardMultiplier
     );
 
     return (
