@@ -112,7 +112,7 @@ export const Magician = new SocialLink(
     },
     7: {
       [Routes.Platonic]: QuestionsWrapper({
-        points: 25,
+        points: 22,
         element: [
           <Question label="H-Hey, man. Sorry to make you come here. I, um... Ah, damn it...">
             <Answer label="Spit it out!" points={5} />
@@ -167,7 +167,9 @@ export const Magician = new SocialLink(
     1: {
       [Routes.Platonic]: (
         <Question label="Not bad... Not bad at all! But, there are some things you could do to look better...">
+          <Answer label="That's rude." />
           <Answer label="Like what?" points={30} />
+          <Answer label="Whatever..." />
         </Question>
       ),
     },
@@ -175,6 +177,8 @@ export const Magician = new SocialLink(
       [Routes.Platonic]: (
         <Question label="By the way, are you picky about your food?">
           <Answer label="I'm pretty picky." points={30} />
+          <Answer label="Not at all." />
+          <Answer label="I refuse to eat certain things." />
         </Question>
       ),
     },
@@ -197,14 +201,18 @@ export const Magician = new SocialLink(
     5: {
       [Routes.Platonic]: (
         <Question label="Maybe she's scared of catching it... Is it contagious?">
+          <Answer label="Yeah, it is." />
           <Answer label="No, it's not." points={30} />
+          <Answer label="I don't know." />
         </Question>
       ),
     },
     6: {
       [Routes.Platonic]: (
         <Question label="That was the last beef bowl I'm ever gonna eat!">
+          <Answer label="......" />
           <Answer label="Why?" points={30} />
+          <Answer label="Don't be an idiot." />
         </Question>
       ),
     },

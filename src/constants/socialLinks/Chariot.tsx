@@ -64,7 +64,7 @@ export const Chariot = new SocialLink(
     },
     3: {
       [Routes.Platonic]: QuestionsWrapper({
-        points: 20,
+        points: 15,
         element: [
           <Question label="Wh-What's up? I was just gonna sneak back into practice.">
             <Answer label="Where have you been?" />

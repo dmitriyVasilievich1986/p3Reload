@@ -18,10 +18,12 @@ const pcProgramBase: Event = {
   },
   available: function ({ previousDay, currentDay, time }) {
     if (previousDay === undefined) return false;
+    const timeAvailable =
+      time === Times.Evening || (time === Times.Day && !!currentDay.isDayOff);
     return (
       currentDay.date.getTime() >= new Date(2009, 3, 29).getTime() &&
       !previousDay.singleTimeEvents.includes(this.name) &&
-      [Times.Day, Times.Evening].includes(time)
+      timeAvailable
     );
   },
   upgrade: function (currentDay) {
