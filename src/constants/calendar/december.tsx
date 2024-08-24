@@ -1,15 +1,15 @@
-import { EventCard, WideEvent, Question, Answer } from "@/components";
 import { LabelExamGrade, classmates } from "./baseFunctions";
+import { WideEvent, Question, Answer } from "@/components";
 import { SocialLinkNames } from "@/constants/socialLinks";
 import { events, Times } from "@/constants/events";
 import { StatsNames } from "@/constants/stats";
 import { SingleDay } from "./SingleDay";
 
 import {
+  AkihikoSanadaEpisodesNames,
   statsEventsAcademicsNames,
   statsEventsCharmNames,
   SpecialEventsNames,
-  AkihikoSanadaEpisodesNames,
 } from "@/constants/events/types";
 
 export const december: SingleDay[] = [

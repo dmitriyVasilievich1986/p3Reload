@@ -5,11 +5,11 @@ import { SingleDay } from "./SingleDay";
 
 import {
   statsEventsAcademicsNames,
+  socialLinkInvitationNames,
+  JunpeiIoriEpisodesNames,
+  socialLinkShrineNames,
   statsEventsCharmNames,
   SpecialEventsNames,
-  JunpeiIoriEpisodesNames,
-  socialLinkInvitationNames,
-  socialLinkShrineNames,
 } from "@/constants/events/types";
 
 export const november: SingleDay[] = [

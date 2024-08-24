@@ -7,11 +7,8 @@ import { SingleDay } from "./SingleDay";
 import {
   statsEventsAcademicsNames,
   statsEventsCharmNames,
-  SpecialEventsNames,
-  socialLinkSpendTimeNames,
-  JunpeiIoriEpisodesNames,
   KoromaruEpisodesNames,
-  socialLinkShrineNames,
+  SpecialEventsNames,
 } from "@/constants/events/types";
 
 export const september: SingleDay[] = [
