@@ -27,7 +27,7 @@ export const Star = new SocialLink(
     },
     2: {
       [Routes.Platonic]: QuestionsWrapper({
-        points: 5,
+        points: 0,
         element: [
           <Question label="Maybe I should get some for them, too...">
             <Answer label="For your teammates?" points={5} />
@@ -76,7 +76,7 @@ export const Star = new SocialLink(
     },
     5: {
       [Routes.Platonic]: QuestionsWrapper({
-        points: 17,
+        points: 20,
         element: [
           <Question label="Let's see.">
             <Answer label="I'll look around for him." />
