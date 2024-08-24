@@ -36,14 +36,17 @@ function available(shouldLevelUp: boolean) {
       DaysNames.saturday,
       DaysNames.sunday,
     ];
+
     const link = this.linkName as SocialLinkNames;
     const thisLink = currentDay.links[link];
     const isNewLevel = socialLinks[link].isNewLevel(thisLink);
     const courageLevel = stats[StatsNames.Courage].levels[1].value;
+
     return (
       currentDay.date.getTime() >= new Date(2009, 4, 23).getTime() &&
       previousDay.links[SocialLinkNames.Strength].level >= 4 &&
       previousDay.stats[StatsNames.Courage] >= courageLevel &&
+      thisLink.level < socialLinks[link].maxLevel &&
       days.includes(currentDay.date.getDay()) &&
       isNewLevel === shouldLevelUp &&
       time === Times.Evening

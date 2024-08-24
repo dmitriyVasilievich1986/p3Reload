@@ -7,6 +7,7 @@ import { SingleDay } from "./SingleDay";
 import {
   statsEventsAcademicsNames,
   statsEventsCharmNames,
+  KoromaruEpisodesNames,
   SpecialEventsNames,
 } from "@/constants/events/types";
 
@@ -24,8 +25,8 @@ export const september: SingleDay[] = [
           </Question>
         ),
       },
-      events[SpecialEventsNames.DoNothing],
-      { ...events[SpecialEventsNames.DoNothing], time: Times.Evening },
+      events[SocialLinkNames.Fortune],
+      events[SocialLinkNames.Devil],
     ],
   }),
   new SingleDay({
@@ -38,14 +39,29 @@ export const september: SingleDay[] = [
   new SingleDay({
     date: new Date(2009, 8, 3),
     activities: [
-      events[SpecialEventsNames.DoNothing],
-      { ...events[SpecialEventsNames.DoNothing], time: Times.Evening },
+      events[SocialLinkNames.Lovers],
+      {
+        ...events[SpecialEventsNames.Tartarus],
+        time: Times.Evening,
+        label: () => (
+          <EventCard head="Tartarus">
+            <ul>
+              <li>
+                <p>Have {SocialLinkNames.Hermit} card</p>
+              </li>
+              <li>
+                <p>Have {SocialLinkNames.Justice} card</p>
+              </li>
+            </ul>
+          </EventCard>
+        ),
+      },
     ],
   }),
   new SingleDay({
     date: new Date(2009, 8, 4),
     activities: [
-      events[SpecialEventsNames.DoNothing],
+      events[KoromaruEpisodesNames.Koromaru2],
       { ...events[SpecialEventsNames.DoNothing], time: Times.Evening },
     ],
   }),
@@ -68,28 +84,28 @@ export const september: SingleDay[] = [
     date: new Date(2009, 8, 6),
     isDayOff: true,
     activities: [
-      events[SpecialEventsNames.DoNothing],
+      events[SocialLinkNames.Sun],
       { ...events[SpecialEventsNames.DoNothing], time: Times.Evening },
     ],
   }),
   new SingleDay({
     date: new Date(2009, 8, 7),
     activities: [
-      events[SpecialEventsNames.DoNothing],
+      events[SocialLinkNames.Priestess],
       { ...events[SpecialEventsNames.DoNothing], time: Times.Evening },
     ],
   }),
   new SingleDay({
     date: new Date(2009, 8, 8),
     activities: [
-      events[SpecialEventsNames.DoNothing],
+      events[SocialLinkNames.Fortune],
       { ...events[SpecialEventsNames.DoNothing], time: Times.Evening },
     ],
   }),
   new SingleDay({
     date: new Date(2009, 8, 9),
     activities: [
-      events[SpecialEventsNames.DoNothing],
+      events[SocialLinkNames.Lovers],
       { ...events[SpecialEventsNames.DoNothing], time: Times.Evening },
     ],
   }),
@@ -108,7 +124,7 @@ export const september: SingleDay[] = [
           </Question>
         ),
       },
-      events[SpecialEventsNames.DoNothing],
+      events[SocialLinkNames.Lovers],
       { ...events[SpecialEventsNames.DoNothing], time: Times.Evening },
     ],
   }),
@@ -129,14 +145,14 @@ export const september: SingleDay[] = [
           </Question>
         ),
       },
-      events[SpecialEventsNames.DoNothing],
+      events[SocialLinkNames.Priestess],
       { ...events[SpecialEventsNames.DoNothing], time: Times.Evening },
     ],
   }),
   new SingleDay({
     date: new Date(2009, 8, 12),
     activities: [
-      events[SpecialEventsNames.DoNothing],
+      events[SocialLinkNames.Strength],
       { ...events[SpecialEventsNames.DoNothing], time: Times.Evening },
       events[SocialLinkNames.Death],
     ],
@@ -145,7 +161,7 @@ export const september: SingleDay[] = [
     date: new Date(2009, 8, 13),
     isDayOff: true,
     activities: [
-      events[SpecialEventsNames.DoNothing],
+      events[SocialLinkNames.Sun],
       { ...events[SpecialEventsNames.DoNothing], time: Times.Evening },
     ],
   }),
@@ -166,28 +182,28 @@ export const september: SingleDay[] = [
           </Question>
         ),
       },
-      events[SpecialEventsNames.DoNothing],
+      events[SocialLinkNames.Priestess],
       { ...events[SpecialEventsNames.DoNothing], time: Times.Evening },
     ],
   }),
   new SingleDay({
     date: new Date(2009, 8, 15),
     activities: [
-      events[SpecialEventsNames.DoNothing],
+      events[SocialLinkNames.Magician],
       { ...events[SpecialEventsNames.DoNothing], time: Times.Evening },
     ],
   }),
   new SingleDay({
     date: new Date(2009, 8, 16),
     activities: [
-      events[SpecialEventsNames.DoNothing],
+      events[SocialLinkNames.Strength],
       { ...events[SpecialEventsNames.DoNothing], time: Times.Evening },
     ],
   }),
   new SingleDay({
     date: new Date(2009, 8, 17),
     activities: [
-      events[SpecialEventsNames.DoNothing],
+      events[SocialLinkNames.Justice],
       { ...events[SpecialEventsNames.DoNothing], time: Times.Evening },
     ],
   }),
@@ -231,7 +247,7 @@ export const september: SingleDay[] = [
     date: new Date(2009, 8, 21),
     isDayOff: true,
     activities: [
-      events[SpecialEventsNames.DoNothing],
+      events[SocialLinkNames.Hermit],
       { ...events[SpecialEventsNames.DoNothing], time: Times.Evening },
     ],
   }),
@@ -239,15 +255,36 @@ export const september: SingleDay[] = [
     date: new Date(2009, 8, 22),
     isDayOff: true,
     activities: [
-      events[SpecialEventsNames.DoNothing],
-      { ...events[SpecialEventsNames.DoNothing], time: Times.Evening },
+      events[SocialLinkNames.Hermit],
+      {
+        ...events[SpecialEventsNames.Tartarus],
+        time: Times.Evening,
+        label: () => (
+          <EventCard head="Tartarus">
+            <ul>
+              <li>
+                <p>Have {SocialLinkNames.Lovers} card</p>
+              </li>
+              <li>
+                <p>Have {SocialLinkNames.Strength} card</p>
+              </li>
+              <li>
+                <p>Have {SocialLinkNames.Star} card</p>
+              </li>
+              <li>
+                <p>Have {SocialLinkNames.Priestess} card</p>
+              </li>
+            </ul>
+          </EventCard>
+        ),
+      },
     ],
   }),
   new SingleDay({
     date: new Date(2009, 8, 23),
     isDayOff: true,
     activities: [
-      events[SpecialEventsNames.DoNothing],
+      events[KoromaruEpisodesNames.Koromaru3],
       { ...events[SpecialEventsNames.DoNothing], time: Times.Evening },
     ],
   }),
@@ -255,14 +292,14 @@ export const september: SingleDay[] = [
     date: new Date(2009, 8, 24),
     activities: [
       events[statsEventsAcademicsNames.stayAwakeInClass],
-      events[SpecialEventsNames.DoNothing],
+      events[SocialLinkNames.Fortune],
       { ...events[SpecialEventsNames.DoNothing], time: Times.Evening },
     ],
   }),
   new SingleDay({
     date: new Date(2009, 8, 25),
     activities: [
-      events[SpecialEventsNames.DoNothing],
+      events[SocialLinkNames.Priestess],
       { ...events[SpecialEventsNames.DoNothing], time: Times.Evening },
     ],
   }),
@@ -279,7 +316,7 @@ export const september: SingleDay[] = [
           </Question>
         ),
       },
-      events[SpecialEventsNames.DoNothing],
+      events[SocialLinkNames.Strength],
       { ...events[SpecialEventsNames.DoNothing], time: Times.Evening },
     ],
   }),
@@ -287,7 +324,7 @@ export const september: SingleDay[] = [
     date: new Date(2009, 8, 27),
     isDayOff: true,
     activities: [
-      events[SpecialEventsNames.DoNothing],
+      events[SocialLinkNames.Sun],
       { ...events[SpecialEventsNames.DoNothing], time: Times.Evening },
     ],
   }),
@@ -295,21 +332,21 @@ export const september: SingleDay[] = [
     date: new Date(2009, 8, 28),
     activities: [
       events[statsEventsAcademicsNames.stayAwakeInClass],
-      events[SpecialEventsNames.DoNothing],
+      events[SocialLinkNames.Priestess],
       { ...events[SpecialEventsNames.DoNothing], time: Times.Evening },
     ],
   }),
   new SingleDay({
     date: new Date(2009, 8, 29),
     activities: [
-      events[SpecialEventsNames.DoNothing],
+      events[SocialLinkNames.Fortune],
       { ...events[SpecialEventsNames.DoNothing], time: Times.Evening },
     ],
   }),
   new SingleDay({
     date: new Date(2009, 8, 30),
     activities: [
-      events[SpecialEventsNames.DoNothing],
+      events[SocialLinkNames.Star],
       { ...events[SpecialEventsNames.DoNothing], time: Times.Evening },
     ],
   }),

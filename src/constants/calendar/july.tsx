@@ -322,22 +322,6 @@ export const july: SingleDay[] = [
         ...events[SpecialEventsNames.Special],
         label: () => <EventCard head="Introduction to Ken" />,
       },
-      {
-        ...events[SpecialEventsNames.Special],
-        time: Times.EveningFreeTime,
-        label: () => (
-          <EventCard
-            {...socialLinks[SocialLinkNames.Devil].linkDetails}
-            head={`${SocialLinkNames.Devil} (Prerequisite)`}
-          >
-            <ul>
-              <li>
-                <p>Give President Tanaka ¥10,000.</p>
-              </li>
-            </ul>
-          </EventCard>
-        ),
-      },
       events[statsEventsAcademicsNames.gameParadeAcademics],
     ],
   }),
@@ -495,6 +479,22 @@ export const july: SingleDay[] = [
     date: new Date(2009, 6, 28),
     activities: [
       { ...events[SpecialEventsNames.Special] },
+      {
+        ...events[SpecialEventsNames.Special],
+        time: Times.EveningFreeTime,
+        label: () => (
+          <EventCard
+            {...socialLinks[SocialLinkNames.Devil].linkDetails}
+            head={`${SocialLinkNames.Devil} (Prerequisite)`}
+          >
+            <ul>
+              <li>
+                <p>Give President Tanaka ¥10,000.</p>
+              </li>
+            </ul>
+          </EventCard>
+        ),
+      },
       events[SocialLinkNames.Devil],
     ],
   }),

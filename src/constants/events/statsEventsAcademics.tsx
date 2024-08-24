@@ -25,7 +25,13 @@ export const statsEventsAcademics: {
     label: function () {
       return <EventCard head={this.name} stats="Academics +2" />;
     },
-    available: function ({ time }) {
+    available: function ({ previousDay, time }) {
+      if (
+        !previousDay ||
+        previousDay.stats[StatsNames.Academics] >=
+          stats[StatsNames.Academics].levels[5].value
+      )
+        return false;
       return time === Times.Morning;
     },
     upgrade: getAcademicsUpgradeFunction(2),
@@ -39,7 +45,13 @@ export const statsEventsAcademics: {
         <EventCard head={this.name} stats="Academics +2" place="Your Room" />
       );
     },
-    available: function ({ time }) {
+    available: function ({ previousDay, time }) {
+      if (
+        !previousDay ||
+        previousDay.stats[StatsNames.Academics] >=
+          stats[StatsNames.Academics].levels[5].value
+      )
+        return false;
       return time === Times.Evening;
     },
     upgrade: getAcademicsUpgradeFunction(2),
@@ -57,7 +69,13 @@ export const statsEventsAcademics: {
         />
       );
     },
-    available: function ({ time }) {
+    available: function ({ previousDay, time }) {
+      if (
+        !previousDay ||
+        previousDay.stats[StatsNames.Academics] >=
+          stats[StatsNames.Academics].levels[5].value
+      )
+        return false;
       return time === Times.Day;
     },
     upgrade: getAcademicsUpgradeFunction(2),
@@ -97,7 +115,13 @@ export const statsEventsAcademics: {
         />
       );
     },
-    available: function ({ currentDay, time }) {
+    available: function ({ previousDay, currentDay, time }) {
+      if (
+        !previousDay ||
+        previousDay.stats[StatsNames.Academics] >=
+          stats[StatsNames.Academics].levels[5].value
+      )
+        return false;
       const days = [
         DaysNames.thursday,
         DaysNames.friday,
@@ -122,7 +146,13 @@ export const statsEventsAcademics: {
         />
       );
     },
-    available: function ({ currentDay, time }) {
+    available: function ({ previousDay, currentDay, time }) {
+      if (
+        !previousDay ||
+        previousDay.stats[StatsNames.Academics] >=
+          stats[StatsNames.Academics].levels[5].value
+      )
+        return false;
       const days = [
         DaysNames.thursday,
         DaysNames.friday,
@@ -168,7 +198,13 @@ export const statsEventsAcademics: {
         />
       );
     },
-    available: function ({ currentDay, time }) {
+    available: function ({ previousDay, currentDay, time }) {
+      if (
+        !previousDay ||
+        previousDay.stats[StatsNames.Academics] >=
+          stats[StatsNames.Academics].levels[5].value
+      )
+        return false;
       const days = [DaysNames.wednesday, DaysNames.saturday];
       return time === Times.Day && days.includes(currentDay.date.getDay());
     },
@@ -189,7 +225,12 @@ export const statsEventsAcademics: {
       );
     },
     available: function ({ previousDay, currentDay, time }) {
-      if (!previousDay) return false;
+      if (
+        !previousDay ||
+        previousDay.stats[StatsNames.Academics] >=
+          stats[StatsNames.Academics].levels[5].value
+      )
+        return false;
       const days = [
         DaysNames.monday,
         DaysNames.thursday,
@@ -222,7 +263,13 @@ export const statsEventsAcademics: {
         />
       );
     },
-    available: function ({ currentDay, time }) {
+    available: function ({ previousDay, currentDay, time }) {
+      if (
+        !previousDay ||
+        previousDay.stats[StatsNames.Academics] >=
+          stats[StatsNames.Academics].levels[5].value
+      )
+        return false;
       const days = [DaysNames.wednesday, DaysNames.saturday];
       return (
         [Times.Day, Times.Evening].includes(time) &&
@@ -238,7 +285,13 @@ export const statsEventsAcademics: {
     label: function () {
       return <EventCard head={this.name} stats="Academics +4" place="Dorm" />;
     },
-    available: function ({ currentDay, time }) {
+    available: function ({ previousDay, currentDay, time }) {
+      if (
+        !previousDay ||
+        previousDay.stats[StatsNames.Academics] >=
+          stats[StatsNames.Academics].levels[5].value
+      )
+        return false;
       const dates = [
         new Date(2009, 4, 15).getTime(),
         new Date(2009, 4, 16).getTime(),
@@ -258,7 +311,13 @@ export const statsEventsAcademics: {
     label: function () {
       return <EventCard head={this.name} stats="Academics +5" place="Dorm" />;
     },
-    available: function ({ currentDay, time }) {
+    available: function ({ previousDay, currentDay, time }) {
+      if (
+        !previousDay ||
+        previousDay.stats[StatsNames.Academics] >=
+          stats[StatsNames.Academics].levels[5].value
+      )
+        return false;
       const dates = [
         new Date(2009, 4, 17).getTime(),
         new Date(2009, 6, 13).getTime(),
