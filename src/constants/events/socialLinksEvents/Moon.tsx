@@ -1,7 +1,7 @@
 import { SocialLinkNames, socialLinks } from "@/constants/socialLinks";
 import { socialLinkShrineNames, Times, Event } from "../types";
+import { StatsNames, stats } from "@/constants/stats";
 import { SingleDay } from "@/constants/calendar";
-import { StatsNames } from "@/constants/stats";
 
 import {
   socialLinkShrineEventBase,
@@ -29,10 +29,11 @@ export const moonEvents: {
       const link = this.linkName as SocialLinkNames;
       const thisLink = currentDay.links[link];
       const isNewLevel = socialLinks[link].isNewLevel(thisLink);
+      const charmLevel = stats[StatsNames.Charm].levels[1].value;
       return (
         currentDay.date.getTime() >= new Date(2009, 3, 28).getTime() &&
         previousDay.links[SocialLinkNames.Magician].level >= 3 &&
-        previousDay.stats[StatsNames.Charm] >= 15 &&
+        previousDay.stats[StatsNames.Charm] >= charmLevel &&
         time === Times.Day &&
         isNewLevel
       );

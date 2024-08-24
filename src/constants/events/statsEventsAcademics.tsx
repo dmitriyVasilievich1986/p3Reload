@@ -1,7 +1,7 @@
 import { statsEventsAcademicsNames, Categories, Times, Event } from "./types";
 import { EventCard, WideEvent } from "@/components";
 import { SingleDay } from "../calendar/SingleDay";
-import { StatsNames } from "../stats/types";
+import { StatsNames, stats } from "../stats";
 import { DaysNames } from "../monthsNames";
 
 const getAcademicsUpgradeFunction = (value: number) => {
@@ -66,6 +66,7 @@ export const statsEventsAcademics: {
     name: statsEventsAcademicsNames.summerSchool,
     category: Categories.Stats,
     time: Times.WholeDay,
+    special: true,
     label: function () {
       return (
         <WideEvent>
@@ -195,11 +196,12 @@ export const statsEventsAcademics: {
         DaysNames.friday,
         DaysNames.sunday,
       ];
+      const charmLevel = stats[StatsNames.Charm].levels[2].value;
       return (
-        currentDay.singleTimeEvents.includes(
+        previousDay.singleTimeEvents.includes(
           statsEventsAcademicsNames.wakatsuKitchen
         ) &&
-        previousDay.stats[StatsNames.Charm] >= 30 &&
+        previousDay.stats[StatsNames.Charm] >= charmLevel &&
         days.includes(currentDay.date.getDay()) &&
         time == Times.Evening
       );

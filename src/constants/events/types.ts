@@ -16,6 +16,7 @@ export enum Times {
   Morning = "Morning",
   AfterSchool = "After School",
   Day = "Day",
+  EveningFreeTime = "Evening (Free Time)",
   Evening = "Evening",
   DarkHour = "Dark Hour",
   WholeDay = "Whole Day",

@@ -1,7 +1,7 @@
 import { SocialLinkNames, socialLinks, Routes } from "@/constants/socialLinks";
 import { SingleDay } from "@/constants/calendar/SingleDay";
+import { StatsNames, stats } from "@/constants/stats";
 import { DaysNames } from "@/constants/monthsNames";
-import { StatsNames } from "@/constants/stats";
 
 import {
   socialLinkInvitationEventBase,
@@ -44,9 +44,10 @@ function available(route: Routes) {
       DaysNames.thursday,
       DaysNames.saturday,
     ];
+    const charmLevel = stats[StatsNames.Charm].levels[5].value;
     return (
       currentDay.date.getTime() >= new Date(2009, 6, 25).getTime() &&
-      previousDay.stats[StatsNames.Charm] >= 100 &&
+      previousDay.stats[StatsNames.Charm] >= charmLevel &&
       days.includes(currentDay.date.getDay()) &&
       !currentDay.isDayOff &&
       time === Times.Day &&

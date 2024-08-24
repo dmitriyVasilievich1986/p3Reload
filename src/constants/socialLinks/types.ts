@@ -8,7 +8,7 @@ export enum SocialLinkNames {
   Empress = "Empress",
   Fool = "Fool",
   Fortune = "Fortune",
-  HangedMan = "HangedMan",
+  HangedMan = "Hanged Man",
   Hermit = "Hermit",
   Hierophant = "Hierophant",
   Justice = "Justice",

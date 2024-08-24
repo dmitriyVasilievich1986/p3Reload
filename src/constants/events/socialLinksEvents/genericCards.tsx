@@ -1,6 +1,6 @@
 import { SocialLinkNames, socialLinks } from "@/constants/socialLinks";
 import { InvitationsType } from "@/constants/socialLinks/types";
-import { StatsNames } from "@/constants/stats";
+import { StatsNames, stats } from "@/constants/stats";
 import { Event, LabelProps } from "../types";
 import { EventCard } from "@/components";
 
@@ -11,13 +11,14 @@ function EventCardBase({
   ...props
 }: Event & LabelProps & { showPlace?: boolean }) {
   const linkName = props.linkName as SocialLinkNames;
+  const charmLevel = stats[StatsNames.Charm].levels[5].value;
 
   return (
     <EventCard
       charm={
         fullCard &&
         currentDay?.stats &&
-        currentDay.stats[StatsNames.Charm] >= 100
+        currentDay.stats[StatsNames.Charm] >= charmLevel
       }
       multiplier={
         fullCard

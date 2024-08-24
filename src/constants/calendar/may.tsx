@@ -1,6 +1,6 @@
+import { SocialLinkNames, socialLinks } from "@/constants/socialLinks";
 import { EventCard, WideEvent, Question, Answer } from "@/components";
 import { LabelExamGrade, classmates } from "./baseFunctions";
-import { SocialLinkNames } from "@/constants/socialLinks";
 import { events, Times } from "@/constants/events";
 import { StatsNames } from "@/constants/stats";
 import { SingleDay } from "./SingleDay";
@@ -30,11 +30,18 @@ export const may: SingleDay[] = [
         time: Times.AfterSchool,
         label: () => (
           <EventCard
-            prerequisite={`Talk to Chihiro and say "Let's hang out."`}
-            place="2nd Floor Hallway"
-            name="Chihiro Fushimi"
-            head="Justice"
-          />
+            {...socialLinks[SocialLinkNames.Justice].linkDetails}
+            head={`${SocialLinkNames.Justice} (Prerequisite)`}
+          >
+            <ul>
+              <li>
+                <p>Talk to Chihiro.</p>
+              </li>
+              <li>
+                <p>Choose "Let's hang out."</p>
+              </li>
+            </ul>
+          </EventCard>
         ),
       },
       events[SocialLinkNames.Hierophant],
@@ -87,11 +94,29 @@ export const may: SingleDay[] = [
         time: Times.AfterSchool,
         label: () => (
           <EventCard
-            prerequisite='Give her "Weird Takoyaki" & "Mad Bull"'
-            place="Naganaki Shrine"
-            name="Maiko Oohashi"
-            head="Hanged Man"
-          />
+            {...socialLinks[SocialLinkNames.HangedMan].linkDetails}
+            head={`${SocialLinkNames.HangedMan} (Prerequisite)`}
+          >
+            <ul>
+              <li>
+                <p>
+                  Buy Weird Takoyaki from Octopia at Iwatodai Station Strip Mall
+                  1F.
+                </p>
+              </li>
+              <li>
+                <p>
+                  Buy Mad Bull from the vending machine at Iwatodai Station.
+                </p>
+              </li>
+              <li>
+                <p>Give them to Maiko at Naganaki Shrine.</p>
+              </li>
+              <li>
+                <p>Promise to play with her.</p>
+              </li>
+            </ul>
+          </EventCard>
         ),
       },
       events[SocialLinkNames.Emperor],
@@ -129,7 +154,34 @@ export const may: SingleDay[] = [
     isDayOff: true,
     activities: [
       events[SocialLinkNames.Hierophant],
-      events[SpecialEventsNames.Tartarus],
+      {
+        ...events[SpecialEventsNames.Tartarus],
+        time: Times.Evening,
+        label: () => (
+          <EventCard head="Tartarus">
+            <ul>
+              <li>
+                <p>Have at least ¥51,300</p>
+              </li>
+              <li>
+                <p>Be at least level 12</p>
+              </li>
+              <li>
+                <p>Have {SocialLinkNames.HangedMan} card</p>
+              </li>
+              <li>
+                <p>Have {SocialLinkNames.Chariot} card</p>
+              </li>
+              <li>
+                <p>Have {SocialLinkNames.Temperance} card</p>
+              </li>
+              <li>
+                <p>Have {SocialLinkNames.Justice} card</p>
+              </li>
+            </ul>
+          </EventCard>
+        ),
+      },
     ],
   }),
   new SingleDay({

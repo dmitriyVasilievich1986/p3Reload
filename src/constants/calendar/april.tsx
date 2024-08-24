@@ -1,6 +1,6 @@
+import { SocialLinkNames, socialLinks } from "@/constants/socialLinks";
 import { EventCard, WideEvent, Question, Answer } from "@/components";
 import { Categories, events, Times } from "@/constants/events";
-import { SocialLinkNames } from "@/constants/socialLinks";
 import { SingleDay } from "./SingleDay";
 
 import {
@@ -247,7 +247,13 @@ export const april: SingleDay[] = [
           <EventCard head="Tartarus">
             <ul>
               <li>
-                <p>Gain at least ¥27,100</p>
+                <p>Have at least ¥27,080</p>
+              </li>
+              <li>
+                <p>Be at least level 8</p>
+              </li>
+              <li>
+                <p>Have {SocialLinkNames.Hermit} card</p>
               </li>
             </ul>
           </EventCard>
@@ -273,6 +279,28 @@ export const april: SingleDay[] = [
   new SingleDay({
     date: new Date(2009, 3, 25),
     activities: [
+      {
+        ...events[SpecialEventsNames.Special],
+        time: Times.AfterSchool,
+        label: () => (
+          <EventCard
+            {...socialLinks[SocialLinkNames.Hierophant].linkDetails}
+            head={`${SocialLinkNames.Hierophant} (Prerequisite)`}
+          >
+            <ul>
+              <li>
+                <p>Enter Bookworms bookstore to talk to them.</p>
+              </li>
+              <li>
+                <p>
+                  Retrieve a Persimmon Leaf from Gekkoukan High School,
+                  Corridor.
+                </p>
+              </li>
+            </ul>
+          </EventCard>
+        ),
+      },
       events[SocialLinkNames.Strength],
       events[statsEventsAcademicsNames.gameParadeAcademics],
     ],
@@ -317,11 +345,18 @@ export const april: SingleDay[] = [
         time: Times.AfterSchool,
         label: () => (
           <EventCard
-            prerequisite={`Talk to Chihiro and say "Let's hang out."`}
-            place="2nd Floor Hallway"
-            name="Chihiro Fushimi"
-            head="Justice"
-          />
+            {...socialLinks[SocialLinkNames.Justice].linkDetails}
+            head={`${SocialLinkNames.Justice} (Prerequisite)`}
+          >
+            <ul>
+              <li>
+                <p>Talk to Chihiro.</p>
+              </li>
+              <li>
+                <p>Choose "Let's hang out."</p>
+              </li>
+            </ul>
+          </EventCard>
         ),
       },
       events[SocialLinkNames.Magician],
@@ -344,11 +379,15 @@ export const april: SingleDay[] = [
         time: Times.AfterSchool,
         label: () => (
           <EventCard
-            prerequisite="Talk to Chihiro"
-            place="2nd Floor Hallway"
-            name="Chihiro Fushimi"
-            head="Justice"
-          />
+            {...socialLinks[SocialLinkNames.Justice].linkDetails}
+            head={`${SocialLinkNames.Justice} (Prerequisite)`}
+          >
+            <ul>
+              <li>
+                <p>Talk to Chihiro.</p>
+              </li>
+            </ul>
+          </EventCard>
         ),
       },
       events[SocialLinkNames.Magician],
