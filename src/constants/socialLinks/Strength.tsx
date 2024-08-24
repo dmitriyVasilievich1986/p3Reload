@@ -70,7 +70,7 @@ export const Strength = new SocialLink(
     },
     3: {
       [Routes.Platonic]: QuestionsWrapper({
-        points: 20,
+        points: 15,
         element: [
           <Question
             label={`${mainCharName}-kun, what do you think I should do?`}
@@ -85,7 +85,7 @@ export const Strength = new SocialLink(
         ],
       }),
       [Routes.Romantic]: QuestionsWrapper({
-        points: 20,
+        points: 15,
         element: [
           <Question
             label={`${mainCharName}-kun, what do you think I should do?`}
@@ -208,7 +208,7 @@ export const Strength = new SocialLink(
     },
     7: {
       [Routes.Platonic]: QuestionsWrapper({
-        points: 40,
+        points: 35,
         element: [
           <Question
             label={`Which one sounds better to you, ${mainCharName}-kun?`}
@@ -224,7 +224,7 @@ export const Strength = new SocialLink(
         ],
       }),
       [Routes.Romantic]: QuestionsWrapper({
-        points: 40,
+        points: 35,
         element: [
           <Question label="I was out buying stuff that might be useful for running practice, and I ran out of money.">
             <Answer label="It's fine." />
@@ -245,7 +245,7 @@ export const Strength = new SocialLink(
     },
     8: {
       [Routes.Platonic]: QuestionsWrapper({
-        points: 30,
+        points: 40,
         element: [
           <Question label="I thought my stomach was gonna explode!">
             <Answer label="That sounds like you." />
@@ -269,7 +269,7 @@ export const Strength = new SocialLink(
         ],
       }),
       [Routes.Romantic]: QuestionsWrapper({
-        points: 30,
+        points: 40,
         element: [
           <Question label="All it did was make me more confused than I originally was. Guess I'll have to go ask again tomorrow.">
             <Answer label="You're so hardworking." />
