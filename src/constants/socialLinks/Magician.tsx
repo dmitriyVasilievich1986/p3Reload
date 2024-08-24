@@ -112,7 +112,7 @@ export const Magician = new SocialLink(
     },
     7: {
       [Routes.Platonic]: QuestionsWrapper({
-        points: 25,
+        points: 22,
         element: [
           <Question label="H-Hey, man. Sorry to make you come here. I, um... Ah, damn it...">
             <Answer label="Spit it out!" points={5} />
