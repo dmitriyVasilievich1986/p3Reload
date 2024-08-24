@@ -1,5 +1,5 @@
+import { EventCard, WideEvent, Question, Answer } from "@/components";
 import { LabelExamGrade, classmates } from "./baseFunctions";
-import { WideEvent, Question, Answer } from "@/components";
 import { SocialLinkNames } from "@/constants/socialLinks";
 import { events, Times } from "@/constants/events";
 import { StatsNames } from "@/constants/stats";
@@ -9,20 +9,21 @@ import {
   statsEventsAcademicsNames,
   statsEventsCharmNames,
   SpecialEventsNames,
+  AkihikoSanadaEpisodesNames,
 } from "@/constants/events/types";
 
 export const december: SingleDay[] = [
   new SingleDay({
     date: new Date(2009, 11, 1),
     activities: [
-      events[SpecialEventsNames.DoNothing],
+      events[SocialLinkNames.Empress],
       { ...events[SpecialEventsNames.DoNothing], time: Times.Evening },
     ],
   }),
   new SingleDay({
     date: new Date(2009, 11, 2),
     activities: [
-      events[SpecialEventsNames.DoNothing],
+      events[SocialLinkNames.Empress],
       { ...events[SpecialEventsNames.DoNothing], time: Times.Evening },
     ],
   }),
@@ -35,14 +36,14 @@ export const december: SingleDay[] = [
   new SingleDay({
     date: new Date(2009, 11, 4),
     activities: [
-      events[SpecialEventsNames.DoNothing],
+      events[SocialLinkNames.Priestess],
       { ...events[SpecialEventsNames.DoNothing], time: Times.Evening },
     ],
   }),
   new SingleDay({
     date: new Date(2009, 11, 5),
     activities: [
-      events[SpecialEventsNames.DoNothing],
+      events[SocialLinkNames.Empress],
       { ...events[SpecialEventsNames.DoNothing], time: Times.Evening },
     ],
   }),
@@ -124,7 +125,7 @@ export const december: SingleDay[] = [
     activities: [
       events[statsEventsAcademicsNames.stayAwakeInClass],
       events[SpecialEventsNames.DoNothing],
-      { ...events[SpecialEventsNames.DoNothing], time: Times.Evening },
+      events[AkihikoSanadaEpisodesNames.AkihikoSanada4],
     ],
   }),
   new SingleDay({
@@ -220,7 +221,7 @@ export const december: SingleDay[] = [
     date: new Date(2009, 11, 19),
     activities: [
       { ...events[SpecialEventsNames.Exams], time: Times.Morning },
-      events[SpecialEventsNames.DoNothing],
+      events[SocialLinkNames.Empress],
       { ...events[SpecialEventsNames.DoNothing], time: Times.Evening },
     ],
   }),
@@ -272,7 +273,7 @@ export const december: SingleDay[] = [
           };
         },
       },
-      events[SpecialEventsNames.DoNothing],
+      events[SocialLinkNames.Empress],
       { ...events[SpecialEventsNames.DoNothing], time: Times.Evening },
     ],
   }),
@@ -287,14 +288,14 @@ export const december: SingleDay[] = [
           </Question>
         ),
       },
-      events[SpecialEventsNames.DoNothing],
-      { ...events[SpecialEventsNames.DoNothing], time: Times.Evening },
+      events[SocialLinkNames.Empress],
+      events[SpecialEventsNames.Tartarus],
     ],
   }),
   new SingleDay({
     date: new Date(2009, 11, 23),
     activities: [
-      events[SpecialEventsNames.DoNothing],
+      events[SocialLinkNames.Empress],
       { ...events[SpecialEventsNames.DoNothing], time: Times.Evening },
     ],
   }),

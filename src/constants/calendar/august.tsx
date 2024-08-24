@@ -33,7 +33,31 @@ export const august: SingleDay[] = [
     isDayOff: true,
     activities: [
       events[socialLinkShrineNames.HangedManShrineTime],
-      events[statsEventsAcademicsNames.wakatsuKitchenSpecial],
+      {
+        ...events[SpecialEventsNames.Tartarus],
+        time: Times.Evening,
+        label: () => (
+          <EventCard head="Tartarus">
+            <ul>
+              <li>
+                <p>Be at least level 31</p>
+              </li>
+              <li>
+                <p>Have {SocialLinkNames.Tower} card</p>
+              </li>
+              <li>
+                <p>Have {SocialLinkNames.Star} card</p>
+              </li>
+              <li>
+                <p>Have {SocialLinkNames.HangedMan} card</p>
+              </li>
+              <li>
+                <p>Have {SocialLinkNames.Hierophant} card</p>
+              </li>
+            </ul>
+          </EventCard>
+        ),
+      },
     ],
   }),
   new SingleDay({
@@ -185,7 +209,7 @@ export const august: SingleDay[] = [
     isDayOff: true,
     activities: [
       events[SocialLinkNames.Hierophant],
-      events[SpecialEventsNames.Tartarus],
+      events[statsEventsAcademicsNames.wakatsuKitchenSpecial],
     ],
   }),
   new SingleDay({
