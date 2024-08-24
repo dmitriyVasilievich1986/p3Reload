@@ -49,13 +49,14 @@ export const april: SingleDay[] = [
   }),
   new SingleDay({
     date: new Date(2009, 3, 9),
+    foolMoon: true,
     activities: [
       {
         ...events[SpecialEventsNames.Special],
         time: Times.WholeDay,
-        label: (props) => (
+        label: () => (
           <WideEvent>
-            {events[SpecialEventsNames.Special].label({ ...props })}
+            <EventCard head="Magician Boss Fight" />
           </WideEvent>
         ),
       },
@@ -67,9 +68,11 @@ export const april: SingleDay[] = [
       {
         ...events[SpecialEventsNames.Special],
         time: Times.WholeDay,
-        label: (props) => (
+        label: () => (
           <WideEvent>
-            {events[SpecialEventsNames.Special].label({ ...props })}
+            <h3 style={{ textAlign: "center" }}>
+              The main character in the hospital.
+            </h3>
           </WideEvent>
         ),
       },
@@ -81,9 +84,11 @@ export const april: SingleDay[] = [
       {
         ...events[SpecialEventsNames.Special],
         time: Times.WholeDay,
-        label: (props) => (
+        label: () => (
           <WideEvent>
-            {events[SpecialEventsNames.Special].label({ ...props })}
+            <h3 style={{ textAlign: "center" }}>
+              The main character in the hospital.
+            </h3>
           </WideEvent>
         ),
       },
@@ -96,9 +101,11 @@ export const april: SingleDay[] = [
       {
         ...events[SpecialEventsNames.Special],
         time: Times.WholeDay,
-        label: (props) => (
+        label: () => (
           <WideEvent>
-            {events[SpecialEventsNames.Special].label({ ...props })}
+            <h3 style={{ textAlign: "center" }}>
+              The main character in the hospital.
+            </h3>
           </WideEvent>
         ),
       },
@@ -110,9 +117,11 @@ export const april: SingleDay[] = [
       {
         ...events[SpecialEventsNames.Special],
         time: Times.WholeDay,
-        label: (props) => (
+        label: () => (
           <WideEvent>
-            {events[SpecialEventsNames.Special].label({ ...props })}
+            <h3 style={{ textAlign: "center" }}>
+              The main character in the hospital.
+            </h3>
           </WideEvent>
         ),
       },
@@ -124,9 +133,11 @@ export const april: SingleDay[] = [
       {
         ...events[SpecialEventsNames.Special],
         time: Times.WholeDay,
-        label: (props) => (
+        label: () => (
           <WideEvent>
-            {events[SpecialEventsNames.Special].label({ ...props })}
+            <h3 style={{ textAlign: "center" }}>
+              The main character in the hospital.
+            </h3>
           </WideEvent>
         ),
       },
@@ -138,9 +149,11 @@ export const april: SingleDay[] = [
       {
         ...events[SpecialEventsNames.Special],
         time: Times.WholeDay,
-        label: (props) => (
+        label: () => (
           <WideEvent>
-            {events[SpecialEventsNames.Special].label({ ...props })}
+            <h3 style={{ textAlign: "center" }}>
+              The main character in the hospital.
+            </h3>
           </WideEvent>
         ),
       },
@@ -152,9 +165,11 @@ export const april: SingleDay[] = [
       {
         ...events[SpecialEventsNames.Special],
         time: Times.WholeDay,
-        label: (props) => (
+        label: () => (
           <WideEvent>
-            {events[SpecialEventsNames.Special].label({ ...props })}
+            <h3 style={{ textAlign: "center" }}>
+              The main character in the hospital.
+            </h3>
           </WideEvent>
         ),
       },
@@ -166,9 +181,11 @@ export const april: SingleDay[] = [
       {
         ...events[SpecialEventsNames.Special],
         time: Times.WholeDay,
-        label: (props) => (
+        label: () => (
           <WideEvent>
-            {events[SpecialEventsNames.Special].label({ ...props })}
+            <h3 style={{ textAlign: "center" }}>
+              The main character in the hospital.
+            </h3>
           </WideEvent>
         ),
       },
@@ -191,8 +208,15 @@ export const april: SingleDay[] = [
           </Question>
         ),
       },
-      events[SpecialEventsNames.Special],
-      { ...events[SpecialEventsNames.Special], time: Times.Evening },
+      {
+        ...events[SpecialEventsNames.Special],
+        time: Times.WholeDay,
+        label: () => (
+          <WideEvent>
+            <h3 style={{ textAlign: "center" }}>Joining the S.E.E.S. team.</h3>
+          </WideEvent>
+        ),
+      },
       { ...events[SocialLinkNames.Fool], time: Times.DarkHour },
     ],
   }),
@@ -203,9 +227,9 @@ export const april: SingleDay[] = [
       {
         ...events[SpecialEventsNames.Special],
         time: Times.WholeDay,
-        label: (props) => (
+        label: () => (
           <WideEvent>
-            {events[SpecialEventsNames.Special].label({ ...props })}
+            <EventCard head="Introduction to Junpei" />
           </WideEvent>
         ),
       },
@@ -218,9 +242,9 @@ export const april: SingleDay[] = [
         ...events[SpecialEventsNames.Special],
         time: Times.WholeDay,
         category: Categories.Tartarus,
-        label: (props) => (
+        label: () => (
           <WideEvent>
-            {events[SpecialEventsNames.Special].label({ ...props })}
+            <EventCard head="Introduction to Tartarus" />
           </WideEvent>
         ),
       },
