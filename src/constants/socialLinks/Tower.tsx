@@ -90,7 +90,7 @@ export const Tower = new SocialLink(
     },
     7: {
       [Routes.Platonic]: QuestionsWrapper({
-        points: 32,
+        points: 30,
         element: [
           <Question label="Didn't dad tell you not to do that, huh?">
             <Answer label="Dad?" points={15} />
