@@ -91,7 +91,7 @@ export const HangedMan = new SocialLink(
     },
     6: {
       [Routes.Platonic]: QuestionsWrapper({
-        points: 40,
+        points: 30,
         element: [
           <Question label="She's never done anything like this before!">
             <Answer label="We should look for her." />
