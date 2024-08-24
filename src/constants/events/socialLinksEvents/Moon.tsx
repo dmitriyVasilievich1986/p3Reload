@@ -26,6 +26,9 @@ export const moonEvents: {
       time: Times;
     }) {
       if (previousDay === undefined) return false;
+      const firstLevel =
+        currentDay.links[SocialLinkNames.Moon].level !== 0 ||
+        !currentDay.isDayOff;
       const link = this.linkName as SocialLinkNames;
       const thisLink = currentDay.links[link];
       const isNewLevel = socialLinks[link].isNewLevel(thisLink);
@@ -35,6 +38,7 @@ export const moonEvents: {
         previousDay.links[SocialLinkNames.Magician].level >= 3 &&
         previousDay.stats[StatsNames.Charm] >= charmLevel &&
         time === Times.Day &&
+        firstLevel &&
         isNewLevel
       );
     },
