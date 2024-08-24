@@ -33,7 +33,13 @@ export const statsEventsCharm: {
         />
       );
     },
-    available: function ({ currentDay, time }) {
+    available: function ({ previousDay, currentDay, time }) {
+      if (
+        !previousDay ||
+        previousDay.stats[StatsNames.Charm] >=
+          stats[StatsNames.Charm].levels[5].value
+      )
+        return false;
       const days = [
         DaysNames.monday,
         DaysNames.tuesday,
@@ -71,7 +77,13 @@ export const statsEventsCharm: {
         />
       );
     },
-    available: function ({ currentDay, time }) {
+    available: function ({ previousDay, currentDay, time }) {
+      if (
+        !previousDay ||
+        previousDay.stats[StatsNames.Charm] >=
+          stats[StatsNames.Charm].levels[5].value
+      )
+        return false;
       const days = [DaysNames.monday, DaysNames.tuesday, DaysNames.wednesday];
       return time === Times.Evening && days.includes(currentDay.date.getDay());
     },
@@ -99,7 +111,13 @@ export const statsEventsCharm: {
         />
       );
     },
-    available: function ({ currentDay, time }) {
+    available: function ({ previousDay, currentDay, time }) {
+      if (
+        !previousDay ||
+        previousDay.stats[StatsNames.Charm] >=
+          stats[StatsNames.Charm].levels[5].value
+      )
+        return false;
       const days = [DaysNames.monday, DaysNames.tuesday];
       return (
         time === Times.Evening ||
@@ -131,7 +149,13 @@ export const statsEventsCharm: {
         />
       );
     },
-    available: function ({ currentDay, time }) {
+    available: function ({ previousDay, currentDay, time }) {
+      if (
+        !previousDay ||
+        previousDay.stats[StatsNames.Charm] >=
+          stats[StatsNames.Charm].levels[5].value
+      )
+        return false;
       const days = [
         DaysNames.monday,
         DaysNames.tuesday,
@@ -160,7 +184,13 @@ export const statsEventsCharm: {
         />
       );
     },
-    available: function ({ currentDay, time }) {
+    available: function ({ previousDay, currentDay, time }) {
+      if (
+        !previousDay ||
+        previousDay.stats[StatsNames.Charm] >=
+          stats[StatsNames.Charm].levels[5].value
+      )
+        return false;
       const days = [DaysNames.tuesday, DaysNames.friday];
       return days.includes(currentDay.date.getDay()) && time === Times.Day;
     },
@@ -181,7 +211,12 @@ export const statsEventsCharm: {
       );
     },
     available: function ({ previousDay, currentDay, time }) {
-      if (!previousDay) return false;
+      if (
+        !previousDay ||
+        previousDay.stats[StatsNames.Charm] >=
+          stats[StatsNames.Charm].levels[5].value
+      )
+        return false;
       const days = [DaysNames.tuesday, DaysNames.wednesday, DaysNames.friday];
       const courageLevel = stats[StatsNames.Courage].levels[2].value;
       return (
@@ -206,7 +241,13 @@ export const statsEventsCharm: {
         />
       );
     },
-    available: function ({ currentDay, time }) {
+    available: function ({ previousDay, currentDay, time }) {
+      if (
+        !previousDay ||
+        previousDay.stats[StatsNames.Charm] >=
+          stats[StatsNames.Charm].levels[5].value
+      )
+        return false;
       const days = [DaysNames.monday, DaysNames.thursday];
       return (
         [Times.Day, Times.Evening].includes(time) &&
