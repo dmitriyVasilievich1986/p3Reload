@@ -1,8 +1,11 @@
 import { createBondObject, LinkMaxedObject, CreateBond } from "./GenericCard";
 import { QuestionsWrapper, Question, Answer } from "@/components";
+import { CardNeededCalculator } from "./calculationFunctions";
 import { EventCard } from "../../components/eventCard";
 import { SocialLinkNames, Routes } from "./types";
+import { SingleDay } from "../calendar/SingleDay";
 import { SocialLink } from "./baseFunctions";
+import { StatsNames } from "../stats/types";
 
 function chariotStrength() {
   const payload = QuestionsWrapper({
@@ -39,7 +42,69 @@ function chariotStrength() {
   };
 }
 
-export const Chariot = new SocialLink(
+class ChariotSocialLink extends SocialLink {
+  calculate(props: {
+    currentDay: SingleDay;
+    level: number;
+    points: number;
+    maxPoints?: number[];
+    cardMultiplier: number;
+    examMultiplier: number;
+    maxCharmMultiplier: number;
+  }) {
+    const thisLink = props.currentDay.links[this.linkName];
+    const currentLevel = this.getLevel(thisLink);
+    const maxPoints = props.maxPoints || currentLevel.maxPoints;
+    let points = props.points;
+
+    let multiplier = props.examMultiplier;
+    const newLevel = this.getLevel({
+      ...thisLink,
+      level: props.level,
+      romance: thisLink.romance,
+    });
+    if (props.currentDay.stats[StatsNames.Charm] >= 100)
+      multiplier *= props.maxCharmMultiplier;
+
+    const cardNeeded = new CardNeededCalculator({
+      nextLevelPoints: newLevel.points - points,
+      cardMultiplier: props.cardMultiplier,
+      multiplier,
+      maxPoints,
+    });
+
+    if (props.currentDay.arcanes.includes(this.linkName)) {
+      multiplier *= props.cardMultiplier;
+    } else if (cardNeeded.isCardNeeded()) {
+      multiplier *= props.cardMultiplier;
+      props.currentDay.arcanes.push(this.linkName);
+    }
+
+    points += CardNeededCalculator.maxPointsSum(maxPoints, multiplier);
+    let strengthLevel = props.currentDay.links[SocialLinkNames.Strength];
+    if (props.level === 2) {
+      strengthLevel = {
+        ...props.currentDay.links[SocialLinkNames.Strength],
+        points: 0,
+        level: 1,
+      };
+    }
+
+    return {
+      links: {
+        ...props.currentDay.links,
+        [this.linkName]: {
+          ...thisLink,
+          level: props.level,
+          points,
+        },
+        [SocialLinkNames.Strength]: { ...strengthLevel },
+      },
+    };
+  }
+}
+
+export const Chariot = new ChariotSocialLink(
   SocialLinkNames.Chariot,
   { name: "Kazushi Miyamoto", place: "Classroom 2F" },
   {

@@ -22,7 +22,7 @@ export const july: SingleDay[] = [
   new SingleDay({
     date: new Date(2009, 6, 1),
     activities: [
-      events[SocialLinkNames.Strength],
+      events[SocialLinkNames.Temperance],
       events[statsEventsCharmNames.hagakureRamenSpecial],
     ],
   }),
