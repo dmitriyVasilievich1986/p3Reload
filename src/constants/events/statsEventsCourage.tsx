@@ -28,7 +28,13 @@ export const statsEventsCourage: {
         <EventCard head={this.name} place="Nurse's Office" stats="Courage +2" />
       );
     },
-    available: function ({ currentDay, time }) {
+    available: function ({ previousDay, currentDay, time }) {
+      if (
+        !previousDay ||
+        previousDay.stats[StatsNames.Courage] >=
+          stats[StatsNames.Courage].levels[5].value
+      )
+        return false;
       const days = [DaysNames.tuesday, DaysNames.friday];
       return time === Times.Day && days.includes(currentDay.date.getDay());
     },
@@ -41,7 +47,13 @@ export const statsEventsCourage: {
     label: function () {
       return <EventCard head={this.name} stats="Courage +2" />;
     },
-    available: function ({ time }) {
+    available: function ({ previousDay, time }) {
+      if (
+        !previousDay ||
+        previousDay.stats[StatsNames.Courage] >=
+          stats[StatsNames.Courage].levels[5].value
+      )
+        return false;
       return time === Times.Morning;
     },
     upgrade: getCourageUpgradeFunction(2),
@@ -60,7 +72,13 @@ export const statsEventsCourage: {
         />
       );
     },
-    available: function ({ currentDay, time }) {
+    available: function ({ previousDay, currentDay, time }) {
+      if (
+        !previousDay ||
+        previousDay.stats[StatsNames.Courage] >=
+          stats[StatsNames.Courage].levels[5].value
+      )
+        return false;
       return (
         [Times.Day, Times.Evening].includes(time) &&
         currentDay.date.getDay() !== DaysNames.sunday
@@ -82,7 +100,13 @@ export const statsEventsCourage: {
         />
       );
     },
-    available: function ({ currentDay, time }) {
+    available: function ({ previousDay, currentDay, time }) {
+      if (
+        !previousDay ||
+        previousDay.stats[StatsNames.Courage] >=
+          stats[StatsNames.Courage].levels[5].value
+      )
+        return false;
       return (
         [Times.Day, Times.Evening].includes(time) &&
         currentDay.date.getDay() !== DaysNames.thursday
@@ -104,7 +128,13 @@ export const statsEventsCourage: {
         />
       );
     },
-    available: function ({ currentDay, time }) {
+    available: function ({ previousDay, currentDay, time }) {
+      if (
+        !previousDay ||
+        previousDay.stats[StatsNames.Courage] >=
+          stats[StatsNames.Courage].levels[5].value
+      )
+        return false;
       const days = [DaysNames.tuesday, DaysNames.friday];
       return (
         [Times.Day, Times.Evening].includes(time) &&
@@ -127,7 +157,13 @@ export const statsEventsCourage: {
         />
       );
     },
-    available: function ({ currentDay, time }) {
+    available: function ({ previousDay, currentDay, time }) {
+      if (
+        !previousDay ||
+        previousDay.stats[StatsNames.Courage] >=
+          stats[StatsNames.Courage].levels[5].value
+      )
+        return false;
       const days = [DaysNames.saturday, DaysNames.sunday];
       return (
         currentDay.singleTimeEvents.includes(
@@ -153,7 +189,13 @@ export const statsEventsCourage: {
         />
       );
     },
-    available: function ({ currentDay, time }) {
+    available: function ({ previousDay, currentDay, time }) {
+      if (
+        !previousDay ||
+        previousDay.stats[StatsNames.Courage] >=
+          stats[StatsNames.Courage].levels[5].value
+      )
+        return false;
       const days = [DaysNames.monday, DaysNames.thursday];
       return days.includes(currentDay.date.getDay()) && time === Times.Day;
     },
@@ -201,7 +243,12 @@ export const statsEventsCourage: {
       );
     },
     available: function ({ previousDay, currentDay, time }) {
-      if (previousDay === undefined) return false;
+      if (
+        !previousDay ||
+        previousDay.stats[StatsNames.Courage] >=
+          stats[StatsNames.Courage].levels[5].value
+      )
+        return false;
       const courageLevel = stats[StatsNames.Courage].levels[3].value;
       return (
         currentDay.date.getTime() >= new Date(2009, 4, 10).getTime() &&
