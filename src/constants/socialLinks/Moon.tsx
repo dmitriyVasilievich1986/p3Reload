@@ -108,7 +108,7 @@ export const Moon = new SocialLink(
     },
     9: {
       [Routes.Platonic]: QuestionsWrapper({
-        points: 20,
+        points: 15,
         element: [
           <Question
             label={`But I couldn't even cry. I actually felt... relieved. I though, "Maybe they'll all finally stop laughing at me."`}

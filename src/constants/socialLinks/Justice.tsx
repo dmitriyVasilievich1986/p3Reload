@@ -148,7 +148,7 @@ export const Justice = new SocialLink(
     },
     6: {
       [Routes.Platonic]: QuestionsWrapper({
-        points: 40,
+        points: 30,
         element: [
           <Question label={`${mainCharName}-san...`}>
             <Answer label="Try to remember." />
@@ -161,7 +161,7 @@ export const Justice = new SocialLink(
         ],
       }),
       [Routes.Romantic]: QuestionsWrapper({
-        points: 40,
+        points: 30,
         element: [
           <Question label={`${mainCharName}-san...`}>
             <Answer label="Try to remember." />
@@ -258,7 +258,7 @@ export const Justice = new SocialLink(
     },
     9: {
       [Routes.Platonic]: QuestionsWrapper({
-        points: 40,
+        points: 30,
         element: [
           <Question label="I wonder if this is going to be enough flyers...">
             <Answer label="Looks tough." />
@@ -279,7 +279,7 @@ export const Justice = new SocialLink(
         ],
       }),
       [Routes.Romantic]: QuestionsWrapper({
-        points: 40,
+        points: 30,
         element: [
           <Question label="Just promise to think of me when you read it…">
             <Answer label="Thank you." points={15} />

@@ -29,7 +29,7 @@ export const Temperance = new SocialLink(
     },
     2: {
       [Routes.Platonic]: QuestionsWrapper({
-        points: 5,
+        points: 0,
         element: [
           <Question
             label={`You have gotten much better at this, ${mainCharName}-dono! Subarashii-wonderful!`}
@@ -47,7 +47,7 @@ export const Temperance = new SocialLink(
     },
     3: {
       [Routes.Platonic]: QuestionsWrapper({
-        points: 20,
+        points: 15,
         element: [
           <Question label="......">
             <Answer label="How come you're not working?" />
@@ -79,7 +79,7 @@ export const Temperance = new SocialLink(
     },
     5: {
       [Routes.Platonic]: QuestionsWrapper({
-        points: 20,
+        points: 15,
         element: [
           <Question label="I have barely sewn anything at all.">
             <Answer label="What's wrong?" />
