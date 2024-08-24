@@ -28,9 +28,9 @@ export const hermitEvents: {
         new Date(2009, 3, 29).getTime(),
         new Date(2009, 4, 4).getTime(),
         new Date(2009, 4, 5).getTime(),
+        new Date(2009, 8, 21).getTime(),
         new Date(2009, 8, 22).getTime(),
         new Date(2009, 8, 23).getTime(),
-        new Date(2009, 8, 24).getTime(),
         new Date(2009, 9, 12).getTime(),
       ];
       const isToday =
