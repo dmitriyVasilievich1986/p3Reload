@@ -164,7 +164,7 @@ export const Lovers = new SocialLink(
     },
     8: {
       [Routes.Platonic]: QuestionsWrapper({
-        points: 15,
+        points: 40,
         element: [
           <Question label="......">
             <Answer label="Hello?" />
@@ -178,7 +178,7 @@ export const Lovers = new SocialLink(
         ],
       }),
       [Routes.Romantic]: QuestionsWrapper({
-        points: 15,
+        points: 40,
         element: [
           <Question label="......">
             <Answer label="Hello?" />
@@ -194,7 +194,7 @@ export const Lovers = new SocialLink(
     },
     9: {
       [Routes.Platonic]: QuestionsWrapper({
-        points: 15,
+        points: 55,
         element: [
           <Question label="Wait, I didn't mean it like that! Don't get the wrong idea, okay!?">
             <Answer label="Too late." points={15} />
@@ -203,7 +203,7 @@ export const Lovers = new SocialLink(
         ],
       }),
       [Routes.Romantic]: QuestionsWrapper({
-        points: 15,
+        points: 55,
         element: [
           <Question label="Wait, I didn't mean it like that! Don't get the wrong idea, okay!?">
             <Answer label="Too late." points={15} />
