@@ -186,7 +186,7 @@ export const statsEventsCharm: {
       const courageLevel = stats[StatsNames.Courage].levels[2].value;
       return (
         previousDay.stats[StatsNames.Courage] >= courageLevel &&
-        [Times.Day, Times.Evening].includes(time) &&
+        [Times.Evening].includes(time) &&
         days.includes(currentDay.date.getDay())
       );
     },
