@@ -168,7 +168,20 @@ export const statsEventsCharm: {
         days.includes(currentDay.date.getDay())
       );
     },
-    upgrade: getCharmUpgradeFunction(3),
+    upgrade: function ({ currentDay }) {
+      const singleTimeEvents = currentDay.singleTimeEvents.includes(
+        statsEventsCharmNames.hagakureRamen
+      )
+        ? currentDay.singleTimeEvents
+        : [...currentDay.singleTimeEvents, statsEventsCharmNames.hagakureRamen];
+      return {
+        singleTimeEvents,
+        stats: {
+          ...currentDay.stats,
+          [StatsNames.Charm]: currentDay.stats[StatsNames.Charm] + 3,
+        },
+      };
+    },
   },
   [statsEventsCharmNames.cinemaTheaterCharm]: {
     name: statsEventsCharmNames.cinemaTheaterCharm,
@@ -219,10 +232,14 @@ export const statsEventsCharm: {
         return false;
       const days = [DaysNames.tuesday, DaysNames.wednesday, DaysNames.friday];
       const courageLevel = stats[StatsNames.Courage].levels[2].value;
+      const isSecondTime = previousDay.singleTimeEvents.includes(
+        statsEventsCharmNames.hagakureRamen
+      );
       return (
         previousDay.stats[StatsNames.Courage] >= courageLevel &&
+        days.includes(currentDay.date.getDay()) &&
         [Times.Evening].includes(time) &&
-        days.includes(currentDay.date.getDay())
+        isSecondTime
       );
     },
     upgrade: getCharmUpgradeFunction(4),
