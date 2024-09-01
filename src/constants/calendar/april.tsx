@@ -51,6 +51,7 @@ export const april: SingleDay[] = [
     date: new Date(2009, 3, 9),
     foolMoon: true,
     activities: [
+      events[statsEventsAcademicsNames.stayAwakeInClass],
       {
         ...events[SpecialEventsNames.Special],
         time: Times.WholeDay,
@@ -389,6 +390,7 @@ export const april: SingleDay[] = [
   }),
   new SingleDay({
     date: new Date(2009, 3, 29),
+    isDayOff: true,
     activities: [
       events[SocialLinkNames.Hermit],
       events[statsEventsAcademicsNames.gameParadeAcademics],
