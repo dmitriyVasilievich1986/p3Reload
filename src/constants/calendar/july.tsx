@@ -441,31 +441,7 @@ export const july: SingleDay[] = [
     isDayOff: true,
     activities: [
       events[SocialLinkNames.Hermit],
-      {
-        ...events[SpecialEventsNames.Tartarus],
-        time: Times.Evening,
-        label: () => (
-          <EventCard head="Tartarus">
-            <ul>
-              <li>
-                <p>Be at least level 31</p>
-              </li>
-              <li>
-                <p>Have {SocialLinkNames.Tower} card</p>
-              </li>
-              <li>
-                <p>Have {SocialLinkNames.Star} card</p>
-              </li>
-              <li>
-                <p>Have {SocialLinkNames.HangedMan} card</p>
-              </li>
-              <li>
-                <p>Have {SocialLinkNames.Hierophant} card</p>
-              </li>
-            </ul>
-          </EventCard>
-        ),
-      },
+      events[statsEventsAcademicsNames.wakatsuKitchenSpecial],
     ],
   }),
   new SingleDay({
