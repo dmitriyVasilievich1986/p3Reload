@@ -471,14 +471,20 @@ export const july: SingleDay[] = [
   new SingleDay({
     date: new Date(2009, 6, 27),
     activities: [
-      { ...events[SpecialEventsNames.Special] },
+      {
+        ...events[SpecialEventsNames.Special],
+        label: () => <EventCard head="Training for running competitions" />,
+      },
       events[statsEventsAcademicsNames.wakatsuKitchenSpecial],
     ],
   }),
   new SingleDay({
     date: new Date(2009, 6, 28),
     activities: [
-      { ...events[SpecialEventsNames.Special] },
+      {
+        ...events[SpecialEventsNames.Special],
+        label: () => <EventCard head="Training for running competitions" />,
+      },
       {
         ...events[SpecialEventsNames.Special],
         time: Times.EveningFreeTime,
@@ -501,21 +507,30 @@ export const july: SingleDay[] = [
   new SingleDay({
     date: new Date(2009, 6, 29),
     activities: [
-      { ...events[SpecialEventsNames.Special] },
+      {
+        ...events[SpecialEventsNames.Special],
+        label: () => <EventCard head="Training for running competitions" />,
+      },
       events[statsEventsAcademicsNames.gameParadeAcademics],
     ],
   }),
   new SingleDay({
     date: new Date(2009, 6, 30),
     activities: [
-      { ...events[SpecialEventsNames.Special] },
+      {
+        ...events[SpecialEventsNames.Special],
+        label: () => <EventCard head="Training for running competitions" />,
+      },
       events[SocialLinkNames.Tower],
     ],
   }),
   new SingleDay({
     date: new Date(2009, 6, 31),
     activities: [
-      { ...events[SpecialEventsNames.Special] },
+      {
+        ...events[SpecialEventsNames.Special],
+        label: () => <EventCard head="Training for running competitions" />,
+      },
       events[SocialLinkNames.Tower],
     ],
   }),

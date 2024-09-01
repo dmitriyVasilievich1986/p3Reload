@@ -16,7 +16,10 @@ export const august: SingleDay[] = [
   new SingleDay({
     date: new Date(2009, 7, 1),
     activities: [
-      { ...events[SpecialEventsNames.Special] },
+      {
+        ...events[SpecialEventsNames.Special],
+        label: () => <EventCard head="Training for running competitions" />,
+      },
       events[SocialLinkNames.Devil],
     ],
   }),
@@ -24,8 +27,11 @@ export const august: SingleDay[] = [
     date: new Date(2009, 7, 2),
     isDayOff: true,
     activities: [
-      { ...events[SpecialEventsNames.Special] },
-      events[SocialLinkNames.Tower],
+      {
+        ...events[SpecialEventsNames.Special],
+        label: () => <EventCard head="Running competitions" />,
+      },
+      events[statsEventsAcademicsNames.wakatsuKitchenSpecial],
     ],
   }),
   new SingleDay({
