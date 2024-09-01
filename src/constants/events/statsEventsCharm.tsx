@@ -6,7 +6,7 @@ import { EventCard } from "@/components";
 import { stats } from "../stats/stats";
 
 const getCharmUpgradeFunction = (value: number) => {
-  return function (currentDay: SingleDay) {
+  return function ({ currentDay }: { currentDay: SingleDay }) {
     return {
       stats: {
         ...currentDay.stats,
@@ -53,7 +53,7 @@ export const statsEventsCharm: {
         time === Times.Day
       );
     },
-    upgrade: function (currentDay: SingleDay) {
+    upgrade: function ({ currentDay }) {
       return {
         stats: {
           ...currentDay.stats,
@@ -87,7 +87,7 @@ export const statsEventsCharm: {
       const days = [DaysNames.monday, DaysNames.tuesday, DaysNames.wednesday];
       return time === Times.Evening && days.includes(currentDay.date.getDay());
     },
-    upgrade: function (currentDay: SingleDay) {
+    upgrade: function ({ currentDay }) {
       return {
         stats: {
           ...currentDay.stats,

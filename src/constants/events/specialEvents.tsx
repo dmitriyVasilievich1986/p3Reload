@@ -14,7 +14,11 @@ function SpecialEventCard(this: Event) {
 }
 
 const initialUpgrade = {
-  upgrade: function (currentDay: SingleDay): upgradeResponse {
+  upgrade: function ({
+    currentDay,
+  }: {
+    currentDay: SingleDay;
+  }): upgradeResponse {
     return { ...currentDay };
   },
 };

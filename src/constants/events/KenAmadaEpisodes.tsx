@@ -21,7 +21,7 @@ const ji1: Event = {
       time === Times.Evening
     );
   },
-  upgrade: function (currentDay) {
+  upgrade: function ({ currentDay }) {
     return {
       singleTimeEvents: [...currentDay.singleTimeEvents, this.name],
       stats: {
@@ -56,7 +56,7 @@ export const KenAmadaEpisodes: {
         time === Times.Evening
       );
     },
-    upgrade: function (currentDay) {
+    upgrade: function ({ currentDay }) {
       return {
         singleTimeEvents: [...currentDay.singleTimeEvents, this.name],
         stats: {
@@ -86,7 +86,7 @@ export const KenAmadaEpisodes: {
         time === Times.Evening
       );
     },
-    upgrade: function (currentDay) {
+    upgrade: function ({ currentDay }) {
       return {
         singleTimeEvents: [...currentDay.singleTimeEvents, this.name],
         stats: {

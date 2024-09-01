@@ -5,7 +5,7 @@ import { StatsNames, stats } from "../stats";
 import { DaysNames } from "../monthsNames";
 
 const getAcademicsUpgradeFunction = (value: number) => {
-  return function (currentDay: SingleDay) {
+  return function ({ currentDay }: { currentDay: SingleDay }) {
     return {
       stats: {
         ...currentDay.stats,
@@ -161,7 +161,7 @@ export const statsEventsAcademics: {
       ];
       return days.includes(currentDay.date.getDay()) && time == Times.Evening;
     },
-    upgrade: function (currentDay: SingleDay) {
+    upgrade: function ({ currentDay }) {
       if (
         !currentDay.singleTimeEvents.includes(
           statsEventsAcademicsNames.wakatsuKitchen

@@ -401,7 +401,13 @@ export const may: SingleDay[] = [
         ...events[SpecialEventsNames.Exams],
         time: Times.AfterSchool,
         label: LabelExamGrade,
-        upgrade: function (currentDay: SingleDay, previousWeek?: SingleDay) {
+        upgrade: function ({
+          previousWeek,
+          currentDay,
+        }: {
+          previousWeek?: SingleDay;
+          currentDay: SingleDay;
+        }) {
           let newMultiplier = 1;
           let charmAddendum = 2;
           if (previousWeek!.stats[StatsNames.Academics] >= 55) {

@@ -206,8 +206,13 @@ export type Event = {
   name: allEventsNames;
   category: Categories;
   linkName?: SocialLinkNames;
-  upgrade: (currentDay: SingleDay, previousWeek?: SingleDay) => upgradeResponse;
   label: (props: LabelProps) => React.ReactNode;
+  upgrade: (props: {
+    previousWeek?: SingleDay;
+    previousDay?: SingleDay;
+    currentDay: SingleDay;
+    time: Times;
+  }) => upgradeResponse;
   available: (props: {
     previousDay?: SingleDay;
     currentDay: SingleDay;

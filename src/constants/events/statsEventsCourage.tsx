@@ -5,7 +5,7 @@ import { StatsNames, stats } from "../stats";
 import { DaysNames } from "../monthsNames";
 
 const getCourageUpgradeFunction = (value: number) => {
-  return function (currentDay: SingleDay) {
+  return function ({ currentDay }: { currentDay: SingleDay }) {
     return {
       stats: {
         ...currentDay.stats,
@@ -257,7 +257,7 @@ export const statsEventsCourage: {
         time === Times.Evening
       );
     },
-    upgrade: function (currentDay: SingleDay) {
+    upgrade: function ({ currentDay }) {
       return {
         singleTimeEvents: [...currentDay.singleTimeEvents, this.name],
         stats: {

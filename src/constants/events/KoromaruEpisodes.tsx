@@ -29,7 +29,7 @@ const ji1: Event = {
       isDay
     );
   },
-  upgrade: function (currentDay) {
+  upgrade: function ({ currentDay }) {
     return {
       singleTimeEvents: [...currentDay.singleTimeEvents, this.name],
       stats: {
@@ -71,7 +71,7 @@ export const KoromaruEpisodes: {
         isDay
       );
     },
-    upgrade: function (currentDay) {
+    upgrade: function ({ currentDay }) {
       return {
         singleTimeEvents: [...currentDay.singleTimeEvents, this.name],
         stats: {
@@ -108,7 +108,7 @@ export const KoromaruEpisodes: {
         isDay
       );
     },
-    upgrade: function (currentDay) {
+    upgrade: function ({ currentDay }) {
       return {
         singleTimeEvents: [...currentDay.singleTimeEvents, this.name],
       };
@@ -141,7 +141,7 @@ export const KoromaruEpisodes: {
         isDay
       );
     },
-    upgrade: function (currentDay) {
+    upgrade: function ({ currentDay }) {
       return {
         singleTimeEvents: [...currentDay.singleTimeEvents, this.name],
         stats: {
@@ -179,7 +179,7 @@ export const KoromaruEpisodes: {
         isDay
       );
     },
-    upgrade: function (currentDay) {
+    upgrade: function ({ currentDay }) {
       return {
         singleTimeEvents: [...currentDay.singleTimeEvents, this.name],
       };
