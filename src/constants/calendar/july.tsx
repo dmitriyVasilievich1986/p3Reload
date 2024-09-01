@@ -16,6 +16,7 @@ import {
   statsEventsCourageNames,
   statsEventsCharmNames,
   SpecialEventsNames,
+  socialLinkShrineNames,
 } from "@/constants/events/types";
 
 export const july: SingleDay[] = [
@@ -217,7 +218,7 @@ export const july: SingleDay[] = [
     exams: true,
     activities: [
       events[SocialLinkNames.Hermit],
-      events[statsEventsAcademicsNames.wakatsuKitchenSpecial],
+      events[SpecialEventsNames.DoNothing],
       events[SocialLinkNames.Death],
     ],
   }),
@@ -432,7 +433,7 @@ export const july: SingleDay[] = [
     date: new Date(2009, 6, 25),
     activities: [
       events[statsEventsAcademicsNames.stayAwakeInClass],
-      events[SocialLinkNames.Strength],
+      events[socialLinkShrineNames.StrengthShrineTime],
       events[SocialLinkNames.Tower],
     ],
   }),

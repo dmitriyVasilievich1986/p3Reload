@@ -317,7 +317,7 @@ export const december: SingleDay[] = [
     date: new Date(2009, 11, 26),
     activities: [
       events[statsEventsAcademicsNames.stayAwakeInClass],
-      events[SpecialEventsNames.DoNothing],
+      events[SocialLinkNames.Justice],
       { ...events[SpecialEventsNames.DoNothing], time: Times.Evening },
     ],
   }),
@@ -346,7 +346,7 @@ export const december: SingleDay[] = [
   new SingleDay({
     date: new Date(2009, 11, 30),
     activities: [
-      events[SpecialEventsNames.DoNothing],
+      events[SocialLinkNames.Strength],
       { ...events[SpecialEventsNames.DoNothing], time: Times.Evening },
     ],
   }),

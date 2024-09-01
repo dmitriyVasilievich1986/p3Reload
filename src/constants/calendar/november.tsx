@@ -63,7 +63,7 @@ export const november: SingleDay[] = [
   new SingleDay({
     date: new Date(2009, 10, 6),
     activities: [
-      events[SpecialEventsNames.DoNothing],
+      events[socialLinkShrineNames.JusticeShrineTime],
       { ...events[SpecialEventsNames.DoNothing], time: Times.Evening },
     ],
   }),
