@@ -149,7 +149,7 @@ export const june: SingleDay[] = [
         ),
       },
       events[SocialLinkNames.Emperor],
-      events[statsEventsAcademicsNames.wakatsuKitchenSpecial],
+      events[SpecialEventsNames.DoNothing],
     ],
   }),
   new SingleDay({
