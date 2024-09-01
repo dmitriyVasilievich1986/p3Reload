@@ -94,7 +94,7 @@ export const october: SingleDay[] = [
     date: new Date(2009, 9, 8),
     exams: true,
     activities: [
-      events[socialLinkShrineNames.JusticeShrineTime],
+      events[SpecialEventsNames.DoNothing],
       { ...events[SpecialEventsNames.DoNothing], time: Times.Evening },
     ],
   }),
@@ -121,7 +121,7 @@ export const october: SingleDay[] = [
           </Question>
         ),
       },
-      events[socialLinkShrineNames.StrengthShrineTime],
+      events[SpecialEventsNames.DoNothing],
       { ...events[SpecialEventsNames.DoNothing], time: Times.Evening },
     ],
   }),
@@ -296,7 +296,7 @@ export const october: SingleDay[] = [
   new SingleDay({
     date: new Date(2009, 9, 21),
     activities: [
-      events[SocialLinkNames.Strength],
+      events[socialLinkShrineNames.StrengthShrineTime],
       { ...events[SpecialEventsNames.DoNothing], time: Times.Evening },
     ],
   }),

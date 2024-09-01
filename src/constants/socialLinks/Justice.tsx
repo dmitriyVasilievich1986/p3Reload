@@ -308,6 +308,8 @@ export const Justice = new SocialLink(
     3: {
       [Routes.Platonic]: (
         <Question label="There's not much point in meeting up if we're both just going to read on our own, huh...?">
+          <Answer label="You're right, it's pointless." />
+          <Answer label="I think it's fun, actually." />
           <Answer label="We'll do better next time." points={30} />
         </Question>
       ),
@@ -322,7 +324,9 @@ export const Justice = new SocialLink(
     5: {
       [Routes.Platonic]: (
         <Question label="Um... Your coffee is going to get cold.">
+          <Answer label="It needs to cool down." />
           <Answer label="Do you want sugar?" points={30} />
+          <Answer label="I know." />
         </Question>
       ),
     },

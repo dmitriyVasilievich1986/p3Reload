@@ -266,6 +266,8 @@ export const Chariot = new ChariotSocialLink(
     5: {
       [Routes.Platonic]: (
         <Question label="Anyway... Sorry about all of that.">
+          <Answer label="You'd be in trouble." />
+          <Answer label="I was worried about you." />
           <Answer label="Gotta pick your battles." points={30} />
         </Question>
       ),
@@ -273,7 +275,9 @@ export const Chariot = new ChariotSocialLink(
     6: {
       [Routes.Platonic]: (
         <Question label="Any ideas?">
+          <Answer label="Running shoes?" />
           <Answer label="A video game." points={30} />
+          <Answer label="Clothes." />
         </Question>
       ),
     },
@@ -288,6 +292,8 @@ export const Chariot = new ChariotSocialLink(
       [Routes.Platonic]: (
         <Question label="Man, why do I even bother anymore? What's the point of going through all this pain just to win...?">
           <Answer label="That's just who you are." points={30} />
+          <Answer label="For your nephew." />
+          <Answer label="Figure it out yourself." />
         </Question>
       ),
     },

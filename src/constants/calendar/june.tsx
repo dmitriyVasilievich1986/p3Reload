@@ -149,7 +149,7 @@ export const june: SingleDay[] = [
         ),
       },
       events[SocialLinkNames.Emperor],
-      events[statsEventsAcademicsNames.wakatsuKitchenSpecial],
+      events[SpecialEventsNames.DoNothing],
     ],
   }),
   new SingleDay({
@@ -281,6 +281,25 @@ export const june: SingleDay[] = [
     isDayOff: true,
     activities: [
       events[SocialLinkNames.Moon],
+      events[statsEventsAcademicsNames.wakatsuKitchenSpecial],
+    ],
+  }),
+  new SingleDay({
+    date: new Date(2009, 5, 29),
+    activities: [
+      {
+        ...events[statsEventsCharmNames.schoolQuestionCharm],
+        label: () => (
+          <Question
+            label={"What form of natural magic is used to find water sources?"}
+          >
+            <Answer label="Dowsing." points={15} />
+            <Answer label="Divining." />
+            <Answer label="Channeling." />
+          </Question>
+        ),
+      },
+      events[SocialLinkNames.Emperor],
       {
         ...events[SpecialEventsNames.Tartarus],
         time: Times.Evening,
@@ -312,28 +331,9 @@ export const june: SingleDay[] = [
     ],
   }),
   new SingleDay({
-    date: new Date(2009, 5, 29),
-    activities: [
-      {
-        ...events[statsEventsCharmNames.schoolQuestionCharm],
-        label: () => (
-          <Question
-            label={"What form of natural magic is used to find water sources?"}
-          >
-            <Answer label="Dowsing." points={15} />
-            <Answer label="Divining." />
-            <Answer label="Channeling." />
-          </Question>
-        ),
-      },
-      events[statsEventsCourageNames.drinkMedicine],
-      events[SocialLinkNames.Emperor],
-      events[statsEventsAcademicsNames.wakatsuKitchenSpecial],
-    ],
-  }),
-  new SingleDay({
     date: new Date(2009, 5, 30),
     activities: [
+      events[statsEventsCourageNames.drinkMedicine],
       events[SocialLinkNames.Fortune],
       events[statsEventsCharmNames.hagakureRamenSpecial],
     ],

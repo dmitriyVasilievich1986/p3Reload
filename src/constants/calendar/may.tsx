@@ -18,7 +18,11 @@ export const may: SingleDay[] = [
   new SingleDay({
     date: new Date(2009, 4, 1),
     activities: [
-      events[SpecialEventsNames.Special],
+      {
+        ...events[SpecialEventsNames.Special],
+        time: Times.WholeDay,
+        label: () => <EventCard head="Akihiko's check up" />,
+      },
       events[pcProgramsNames.lobbyPCLessonsInEtiquette],
     ],
   }),
@@ -53,7 +57,7 @@ export const may: SingleDay[] = [
     isDayOff: true,
     activities: [
       events[SocialLinkNames.Hermit],
-      events[pcProgramsNames.lobbyPCDigitalCramSchool],
+      events[pcProgramsNames.lobbyPCVirtualDiet],
     ],
   }),
   new SingleDay({
@@ -69,7 +73,7 @@ export const may: SingleDay[] = [
     isDayOff: true,
     activities: [
       events[SocialLinkNames.Hermit],
-      events[pcProgramsNames.lobbyPCVirtualDiet],
+      events[pcProgramsNames.lobbyPCDigitalCramSchool],
     ],
   }),
   new SingleDay({
@@ -120,7 +124,7 @@ export const may: SingleDay[] = [
         ),
       },
       events[SocialLinkNames.Emperor],
-      events[pcProgramsNames.lobbyPCAnimalOthello],
+      events[pcProgramsNames.lobbyPCLanguageMadeEasy],
     ],
   }),
   new SingleDay({
@@ -178,6 +182,9 @@ export const may: SingleDay[] = [
               <li>
                 <p>Have {SocialLinkNames.Justice} card</p>
               </li>
+              <li>
+                <p>Have {SocialLinkNames.Strength} card</p>
+              </li>
             </ul>
           </EventCard>
         ),
@@ -199,7 +206,7 @@ export const may: SingleDay[] = [
     exams: true,
     activities: [
       events[JunpeiIoriEpisodesNames.JunpeiIori1],
-      events[pcProgramsNames.lobbyPCTypinGhoul],
+      events[pcProgramsNames.lobbyPCAnimalOthello],
     ],
   }),
   new SingleDay({
@@ -217,7 +224,7 @@ export const may: SingleDay[] = [
         ),
       },
       events[SocialLinkNames.HangedMan],
-      events[pcProgramsNames.lobbyPCLanguageMadeEasy],
+      events[pcProgramsNames.lobbyPCTypinGhoul],
     ],
   }),
   new SingleDay({
@@ -442,7 +449,7 @@ export const may: SingleDay[] = [
     date: new Date(2009, 4, 27),
     activities: [
       events[SocialLinkNames.Temperance],
-      events[statsEventsCharmNames.hagakureRamenSpecial],
+      events[statsEventsCharmNames.hagakureRamen],
     ],
   }),
   new SingleDay({

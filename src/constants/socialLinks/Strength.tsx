@@ -348,6 +348,8 @@ export const Strength = new SocialLink(
     2: {
       [Routes.Platonic]: (
         <Question label="Take me, for example. How's my outfit?">
+          <Answer label="It's cute on you." />
+          <Answer label="You look mature." />
           <Answer label="It's pretty slick." points={30} />
         </Question>
       ),
@@ -364,6 +366,8 @@ export const Strength = new SocialLink(
     4: {
       [Routes.Platonic]: (
         <Question label="Sure, I'm team manager and all, but I dunno if I'm ready to be a coach... What do you think?">
+          <Answer label="You were a bit hasty." />
+          <Answer label="You're too nice." />
           <Answer label="You're very responsible." points={30} />
         </Question>
       ),

@@ -16,6 +16,7 @@ import {
   statsEventsCourageNames,
   statsEventsCharmNames,
   SpecialEventsNames,
+  socialLinkShrineNames,
 } from "@/constants/events/types";
 
 export const july: SingleDay[] = [
@@ -217,7 +218,7 @@ export const july: SingleDay[] = [
     exams: true,
     activities: [
       events[SocialLinkNames.Hermit],
-      events[statsEventsAcademicsNames.wakatsuKitchenSpecial],
+      events[SpecialEventsNames.DoNothing],
       events[SocialLinkNames.Death],
     ],
   }),
@@ -380,7 +381,7 @@ export const july: SingleDay[] = [
   new SingleDay({
     date: new Date(2009, 6, 23),
     activities: [
-      events[SocialLinkNames.Justice],
+      events[SpecialEventsNames.Special],
       events[statsEventsAcademicsNames.wakatsuKitchenSpecial],
     ],
   }),
@@ -432,7 +433,7 @@ export const july: SingleDay[] = [
     date: new Date(2009, 6, 25),
     activities: [
       events[statsEventsAcademicsNames.stayAwakeInClass],
-      events[SocialLinkNames.Strength],
+      events[socialLinkShrineNames.StrengthShrineTime],
       events[SocialLinkNames.Tower],
     ],
   }),
@@ -441,44 +442,26 @@ export const july: SingleDay[] = [
     isDayOff: true,
     activities: [
       events[SocialLinkNames.Hermit],
-      {
-        ...events[SpecialEventsNames.Tartarus],
-        time: Times.Evening,
-        label: () => (
-          <EventCard head="Tartarus">
-            <ul>
-              <li>
-                <p>Be at least level 31</p>
-              </li>
-              <li>
-                <p>Have {SocialLinkNames.Tower} card</p>
-              </li>
-              <li>
-                <p>Have {SocialLinkNames.Star} card</p>
-              </li>
-              <li>
-                <p>Have {SocialLinkNames.HangedMan} card</p>
-              </li>
-              <li>
-                <p>Have {SocialLinkNames.Hierophant} card</p>
-              </li>
-            </ul>
-          </EventCard>
-        ),
-      },
+      events[statsEventsAcademicsNames.wakatsuKitchenSpecial],
     ],
   }),
   new SingleDay({
     date: new Date(2009, 6, 27),
     activities: [
-      { ...events[SpecialEventsNames.Special] },
+      {
+        ...events[SpecialEventsNames.Special],
+        label: () => <EventCard head="Training for running competitions" />,
+      },
       events[statsEventsAcademicsNames.wakatsuKitchenSpecial],
     ],
   }),
   new SingleDay({
     date: new Date(2009, 6, 28),
     activities: [
-      { ...events[SpecialEventsNames.Special] },
+      {
+        ...events[SpecialEventsNames.Special],
+        label: () => <EventCard head="Training for running competitions" />,
+      },
       {
         ...events[SpecialEventsNames.Special],
         time: Times.EveningFreeTime,
@@ -501,21 +484,30 @@ export const july: SingleDay[] = [
   new SingleDay({
     date: new Date(2009, 6, 29),
     activities: [
-      { ...events[SpecialEventsNames.Special] },
+      {
+        ...events[SpecialEventsNames.Special],
+        label: () => <EventCard head="Training for running competitions" />,
+      },
       events[statsEventsAcademicsNames.gameParadeAcademics],
     ],
   }),
   new SingleDay({
     date: new Date(2009, 6, 30),
     activities: [
-      { ...events[SpecialEventsNames.Special] },
+      {
+        ...events[SpecialEventsNames.Special],
+        label: () => <EventCard head="Training for running competitions" />,
+      },
       events[SocialLinkNames.Tower],
     ],
   }),
   new SingleDay({
     date: new Date(2009, 6, 31),
     activities: [
-      { ...events[SpecialEventsNames.Special] },
+      {
+        ...events[SpecialEventsNames.Special],
+        label: () => <EventCard head="Training for running competitions" />,
+      },
       events[SocialLinkNames.Tower],
     ],
   }),
