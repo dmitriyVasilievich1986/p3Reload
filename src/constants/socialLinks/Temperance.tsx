@@ -168,7 +168,9 @@ export const Temperance = new SocialLink(
     4: {
       [Routes.Platonic]: (
         <Question label="Perhaps I am feeling homesick...">
+          <Answer label="Are you going back?" />
           <Answer label="You should stay in Japan." points={30} />
+          <Answer label="Will you go to the funeral?" />
         </Question>
       ),
     },
@@ -189,6 +191,8 @@ export const Temperance = new SocialLink(
     7: {
       [Routes.Platonic]: (
         <Question label="I must hurry and complete the kimono.">
+          <Answer label="Go finish it now." />
+          <Answer label="Patience." />
           <Answer label="Just relax." points={30} />
         </Question>
       ),
@@ -196,6 +200,8 @@ export const Temperance = new SocialLink(
     8: {
       [Routes.Platonic]: (
         <Question label="What exactly is it? It just looks like the eggs of an insect to me.">
+          <Answer label="I'm not sure." />
+          <Answer label="It IS insect eggs." />
           <Answer label="It's beans." points={30} />
         </Question>
       ),
