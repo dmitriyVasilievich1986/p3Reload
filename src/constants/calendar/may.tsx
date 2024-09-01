@@ -449,7 +449,7 @@ export const may: SingleDay[] = [
     date: new Date(2009, 4, 27),
     activities: [
       events[SocialLinkNames.Temperance],
-      events[statsEventsCharmNames.hagakureRamenSpecial],
+      events[statsEventsCharmNames.hagakureRamen],
     ],
   }),
   new SingleDay({
