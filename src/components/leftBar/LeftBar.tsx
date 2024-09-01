@@ -1,3 +1,4 @@
+import { useSearchParams } from "react-router-dom";
 import { calendar } from "@/constants/calendar";
 import classnames from "classnames/bind";
 import { LeftBarProps } from "./types";
@@ -8,14 +9,13 @@ const cx = classnames.bind(style);
 
 function LeftBar(props: LeftBarProps) {
   if (props.calendarRef.current === null) return;
+  const [searchParams, setSearchParams] = useSearchParams();
 
   const allMonths = new Set(calendar.map((c) => c.date.getMonth()));
 
   const clickHandler = (id: string) => {
-    const element = (props.calendarRef.current as HTMLDivElement).querySelector(
-      `#${id}`
-    );
-    element?.scrollIntoView({ behavior: "smooth", block: "start" });
+    searchParams.set("dateId", id);
+    setSearchParams(searchParams);
   };
 
   return (
