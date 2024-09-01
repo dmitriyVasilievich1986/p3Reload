@@ -18,7 +18,11 @@ export const may: SingleDay[] = [
   new SingleDay({
     date: new Date(2009, 4, 1),
     activities: [
-      events[SpecialEventsNames.Special],
+      {
+        ...events[SpecialEventsNames.Special],
+        time: Times.WholeDay,
+        label: () => <EventCard head="Akihiko's check up" />,
+      },
       events[pcProgramsNames.lobbyPCLessonsInEtiquette],
     ],
   }),
