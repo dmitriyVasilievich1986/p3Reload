@@ -101,37 +101,6 @@ export const statsEventsAcademics: {
     },
     upgrade: getAcademicsUpgradeFunction(3),
   },
-  [statsEventsAcademicsNames.wakatsuKitchenDay]: {
-    name: statsEventsAcademicsNames.wakatsuKitchenDay,
-    category: Categories.Stats,
-    time: Times.Day,
-    label: function () {
-      return (
-        <EventCard
-          head={this.name}
-          place="Iwatodai Strip Mall"
-          stats="Academics +3"
-          price={680}
-        />
-      );
-    },
-    available: function ({ previousDay, currentDay, time }) {
-      if (
-        !previousDay ||
-        previousDay.stats[StatsNames.Academics] >=
-          stats[StatsNames.Academics].levels[5].value
-      )
-        return false;
-      const days = [
-        DaysNames.thursday,
-        DaysNames.friday,
-        DaysNames.saturday,
-        DaysNames.sunday,
-      ];
-      return days.includes(currentDay.date.getDay()) && time == Times.Day;
-    },
-    upgrade: getAcademicsUpgradeFunction(3),
-  },
   [statsEventsAcademicsNames.wakatsuKitchen]: {
     name: statsEventsAcademicsNames.wakatsuKitchen,
     category: Categories.Stats,
@@ -159,24 +128,24 @@ export const statsEventsAcademics: {
         DaysNames.saturday,
         DaysNames.sunday,
       ];
-      return days.includes(currentDay.date.getDay()) && time == Times.Evening;
+      return (
+        [Times.Day, Times.Evening].includes(time) &&
+        days.includes(currentDay.date.getDay())
+      );
     },
-    upgrade: function ({ currentDay }) {
-      if (
+    upgrade: function ({ currentDay, time }) {
+      const singleTimeEvents =
         !currentDay.singleTimeEvents.includes(
           statsEventsAcademicsNames.wakatsuKitchen
-        )
-      ) {
-      }
-      return {
-        singleTimeEvents: currentDay.singleTimeEvents.includes(
-          statsEventsAcademicsNames.wakatsuKitchen
-        )
-          ? currentDay.singleTimeEvents
-          : [
+        ) && time === Times.Evening
+          ? [
               ...currentDay.singleTimeEvents,
               statsEventsAcademicsNames.wakatsuKitchen,
-            ],
+            ]
+          : currentDay.singleTimeEvents;
+
+      return {
+        singleTimeEvents,
         stats: {
           ...currentDay.stats,
           [StatsNames.Academics]: currentDay.stats[StatsNames.Academics] + 3,

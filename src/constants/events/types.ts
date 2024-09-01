@@ -91,7 +91,6 @@ export enum RyojiMochizukiEpisodesNames {
 
 export enum statsEventsAcademicsNames {
   wakatsuKitchenSpecial = "Wakatsu Kitchen (Seafood Full Course)",
-  wakatsuKitchenDay = "Wakatsu Kitchen Day(Prodigy Platter)",
   wakatsuKitchen = "Wakatsu Kitchen (Prodigy Platter)",
   gameParadeAcademics = 'Game Parade (Play "You\'re the Answer")',
   cinemaTheaterAcademics = 'Cinema ("Unresolved Mysteries")',
