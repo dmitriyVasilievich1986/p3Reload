@@ -182,6 +182,9 @@ export const may: SingleDay[] = [
               <li>
                 <p>Have {SocialLinkNames.Justice} card</p>
               </li>
+              <li>
+                <p>Have {SocialLinkNames.Strength} card</p>
+              </li>
             </ul>
           </EventCard>
         ),
