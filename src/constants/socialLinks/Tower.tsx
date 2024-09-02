@@ -134,7 +134,7 @@ export const Tower = new SocialLink(
     },
     9: {
       [Routes.Platonic]: QuestionsWrapper({
-        points: 40,
+        points: 30,
         element: [
           <Question
             label={`I'm gonna say, "I wanna recite the sutras with you by my side, for the rest of my life." ... Well? How's that sound?`}
