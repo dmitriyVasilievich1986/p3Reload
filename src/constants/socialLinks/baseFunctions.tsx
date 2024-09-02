@@ -20,17 +20,15 @@ export class SocialLink {
   readonly linkDetails: LinkDetailsType;
   readonly linkName: SocialLinkNames;
   readonly levels: LevelsType;
-
-  readonly maxLevel: number = 10;
+  readonly maxLevel: number;
 
   constructor(
     linkName: SocialLinkNames,
     linkDetails: LinkDetailsType,
     levels: LevelsType,
-    invitations?: InvitationsType,
-    maxLevel?: number
+    invitations?: InvitationsType
   ) {
-    this.maxLevel = maxLevel || this.maxLevel;
+    this.maxLevel = Math.max(...Object.keys(levels).map((k) => Number(k)));
     this.linkDetails = linkDetails;
     this.invitations = invitations;
     this.linkName = linkName;
