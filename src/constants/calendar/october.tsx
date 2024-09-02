@@ -94,7 +94,7 @@ export const october: SingleDay[] = [
     date: new Date(2009, 9, 8),
     exams: true,
     activities: [
-      events[SpecialEventsNames.DoNothing],
+      events[socialLinkShrineNames.ChariotShrineTime],
       { ...events[SpecialEventsNames.DoNothing], time: Times.Evening },
     ],
   }),
