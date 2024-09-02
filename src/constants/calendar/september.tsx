@@ -32,7 +32,10 @@ export const september: SingleDay[] = [
   new SingleDay({
     date: new Date(2009, 8, 2),
     activities: [
-      events[SpecialEventsNames.Special],
+      {
+        ...events[SpecialEventsNames.Special],
+        label: () => <EventCard head="Aragaki joins the team" />,
+      },
       { ...events[SpecialEventsNames.DoNothing], time: Times.Evening },
     ],
   }),
