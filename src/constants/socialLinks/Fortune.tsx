@@ -179,7 +179,9 @@ export const Fortune = new SocialLink(
     4: {
       [Routes.Platonic]: (
         <Question label="Hey, we should organize an outdoor sketching session one of these days.">
+          <Answer label="Sounds like a hassle." />
           <Answer label="That would be cool." points={30} />
+          <Answer label="Think we can do it?" />
         </Question>
       ),
     },

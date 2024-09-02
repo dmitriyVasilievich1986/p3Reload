@@ -27,7 +27,12 @@ export function initialCalculataion(calendar: SingleDay[]) {
     c.links = previousDay.links;
 
     c.activities.forEach((activity) => {
-      const response = activity.upgrade(c, previousWeek);
+      const response = activity.upgrade({
+        time: activity.time,
+        currentDay: c,
+        previousWeek,
+        previousDay,
+      });
       c.singleTimeEvents = response?.singleTimeEvents || c.singleTimeEvents;
       c.stats = response?.stats || c.stats;
       c.links = response?.links || c.links;

@@ -94,7 +94,7 @@ export const october: SingleDay[] = [
     date: new Date(2009, 9, 8),
     exams: true,
     activities: [
-      events[SpecialEventsNames.DoNothing],
+      events[socialLinkShrineNames.ChariotShrineTime],
       { ...events[SpecialEventsNames.DoNothing], time: Times.Evening },
     ],
   }),
@@ -252,7 +252,13 @@ export const october: SingleDay[] = [
         ...events[SpecialEventsNames.Exams],
         time: Times.AfterSchool,
         label: LabelExamGrade,
-        upgrade: function (currentDay: SingleDay, previousWeek?: SingleDay) {
+        upgrade: function ({
+          previousWeek,
+          currentDay,
+        }: {
+          previousWeek?: SingleDay;
+          currentDay: SingleDay;
+        }) {
           let newMultiplier = 1;
           let charmAddendum = 2;
           if (previousWeek!.stats[StatsNames.Academics] >= 230) {

@@ -26,7 +26,7 @@ const pcProgramBase: Event = {
       timeAvailable
     );
   },
-  upgrade: function (currentDay) {
+  upgrade: function ({ currentDay }) {
     return {
       singleTimeEvents: [...currentDay.singleTimeEvents, this.name],
       stats: {
@@ -59,7 +59,7 @@ export const pcPrograms: { [key in pcProgramsNames]: Event } = {
         />
       );
     },
-    upgrade: function (currentDay) {
+    upgrade: function ({ currentDay }) {
       return {
         singleTimeEvents: [...currentDay.singleTimeEvents, this.name],
         stats: {
@@ -82,7 +82,7 @@ export const pcPrograms: { [key in pcProgramsNames]: Event } = {
         />
       );
     },
-    upgrade: function (currentDay) {
+    upgrade: function ({ currentDay }) {
       return {
         singleTimeEvents: [...currentDay.singleTimeEvents, this.name],
         stats: {
@@ -105,7 +105,7 @@ export const pcPrograms: { [key in pcProgramsNames]: Event } = {
         />
       );
     },
-    upgrade: function (currentDay) {
+    upgrade: function ({ currentDay }) {
       return {
         singleTimeEvents: [...currentDay.singleTimeEvents, this.name],
         stats: {
@@ -128,7 +128,7 @@ export const pcPrograms: { [key in pcProgramsNames]: Event } = {
         />
       );
     },
-    upgrade: function (currentDay) {
+    upgrade: function ({ currentDay }) {
       return {
         singleTimeEvents: [...currentDay.singleTimeEvents, this.name],
         stats: {

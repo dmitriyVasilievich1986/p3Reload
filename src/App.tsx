@@ -1,5 +1,6 @@
 import { DayConstants } from "@/components/modalWindow/types";
 import { Calendar, LeftBar, Modal } from "@/components";
+import { useSearchParams } from "react-router-dom";
 import { SingleDay } from "@/constants/calendar";
 import { Times } from "@/constants/events";
 import classnames from "classnames/bind";
@@ -20,9 +21,21 @@ function App() {
     null
   );
 
+  const [searchParams, _] = useSearchParams();
+
   React.useEffect(() => {
     setCalendar(initialCalculataion(initialCalendar));
   }, []);
+
+  React.useEffect(() => {
+    const dateId = searchParams.get("dateId");
+    if (dateId && calendarRef.current) {
+      const element = (calendarRef.current as HTMLDivElement).querySelector(
+        `#${dateId}`
+      );
+      element?.scrollIntoView({ behavior: "smooth", block: "start" });
+    }
+  }, [searchParams, calendarRef.current]);
 
   return (
     <React.Fragment>

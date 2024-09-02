@@ -91,7 +91,6 @@ export enum RyojiMochizukiEpisodesNames {
 
 export enum statsEventsAcademicsNames {
   wakatsuKitchenSpecial = "Wakatsu Kitchen (Seafood Full Course)",
-  wakatsuKitchenDay = "Wakatsu Kitchen Day(Prodigy Platter)",
   wakatsuKitchen = "Wakatsu Kitchen (Prodigy Platter)",
   gameParadeAcademics = 'Game Parade (Play "You\'re the Answer")',
   cinemaTheaterAcademics = 'Cinema ("Unresolved Mysteries")',
@@ -206,8 +205,13 @@ export type Event = {
   name: allEventsNames;
   category: Categories;
   linkName?: SocialLinkNames;
-  upgrade: (currentDay: SingleDay, previousWeek?: SingleDay) => upgradeResponse;
   label: (props: LabelProps) => React.ReactNode;
+  upgrade: (props: {
+    previousWeek?: SingleDay;
+    previousDay?: SingleDay;
+    currentDay: SingleDay;
+    time: Times;
+  }) => upgradeResponse;
   available: (props: {
     previousDay?: SingleDay;
     currentDay: SingleDay;

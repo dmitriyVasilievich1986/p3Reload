@@ -11,8 +11,8 @@ const ji1: Event = {
   available: function () {
     return false;
   },
-  upgrade: function ({ singleTimeEvents }) {
-    return { singleTimeEvents: [...singleTimeEvents, this.name] };
+  upgrade: function ({ currentDay }) {
+    return { singleTimeEvents: [...currentDay.singleTimeEvents, this.name] };
   },
 };
 

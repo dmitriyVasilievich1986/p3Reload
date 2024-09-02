@@ -36,7 +36,7 @@ const ji1: Event = {
       time === Times.Day
     );
   },
-  upgrade: function (currentDay) {
+  upgrade: function ({ currentDay }) {
     return {
       singleTimeEvents: [...currentDay.singleTimeEvents, this.name],
       stats: {
@@ -80,7 +80,7 @@ export const ShinjiroAragakiEpisodes: {
         time === Times.Day
       );
     },
-    upgrade: function (currentDay) {
+    upgrade: function ({ currentDay }) {
       return {
         singleTimeEvents: [...currentDay.singleTimeEvents, this.name],
         stats: {
@@ -123,7 +123,7 @@ export const ShinjiroAragakiEpisodes: {
         time === Times.Day
       );
     },
-    upgrade: function (currentDay) {
+    upgrade: function ({ currentDay }) {
       return {
         singleTimeEvents: [...currentDay.singleTimeEvents, this.name],
         stats: {
@@ -151,8 +151,8 @@ export const ShinjiroAragakiEpisodes: {
         time === Times.Day
       );
     },
-    upgrade: function ({ singleTimeEvents }) {
-      return { singleTimeEvents: [...singleTimeEvents, this.name] };
+    upgrade: function ({ currentDay }) {
+      return { singleTimeEvents: [...currentDay.singleTimeEvents, this.name] };
     },
   },
   [ShinjiroAragakiEpisodesNames.ShinjiroAragaki4]: {
@@ -187,7 +187,7 @@ export const ShinjiroAragakiEpisodes: {
         time === Times.Day
       );
     },
-    upgrade: function (currentDay) {
+    upgrade: function ({ currentDay }) {
       return {
         singleTimeEvents: [...currentDay.singleTimeEvents, this.name],
         stats: {

@@ -15,7 +15,7 @@ import {
 } from "@/constants/socialLinks/types";
 
 function upgrade(romance: Routes) {
-  return function (this: Event, currentDay: SingleDay) {
+  return function (this: Event, { currentDay }: { currentDay: SingleDay }) {
     const linkName = this.linkName as SocialLinkNames;
     const level = currentDay.links[linkName].level + 1;
 
@@ -73,7 +73,7 @@ const socialLinkShrineEventBase: Event = {
       !isNewLevel
     );
   },
-  upgrade: function (currentDay: SingleDay) {
+  upgrade: function ({ currentDay }: { currentDay: SingleDay }) {
     const linkName = this.linkName as SocialLinkNames;
 
     return socialLinks[linkName].calculate({
@@ -91,7 +91,7 @@ const socialLinkShrineEventBase: Event = {
 const socialLinkSpendTimeEventBase: Event = {
   ...socialLinkEventBase,
   label: CardSpendTime,
-  upgrade: function (currentDay: SingleDay) {
+  upgrade: function ({ currentDay }: { currentDay: SingleDay }) {
     const linkName = this.linkName as SocialLinkNames;
 
     return socialLinks[linkName].calculate({
@@ -109,7 +109,7 @@ const socialLinkSpendTimeEventBase: Event = {
 const socialLinkInvitationEventBase: Event = {
   ...socialLinkEventBase,
   label: InvitationCard,
-  upgrade: function (currentDay: SingleDay) {
+  upgrade: function ({ currentDay }: { currentDay: SingleDay }) {
     const linkName = this.linkName as SocialLinkNames;
 
     return socialLinks[linkName].calculate({

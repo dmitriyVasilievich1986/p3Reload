@@ -5,7 +5,6 @@ import { SingleDay } from "./SingleDay";
 
 import {
   statsEventsAcademicsNames,
-  socialLinkSpendTimeNames,
   JunpeiIoriEpisodesNames,
   KoromaruEpisodesNames,
   socialLinkShrineNames,
@@ -214,7 +213,8 @@ export const august: SingleDay[] = [
     date: new Date(2009, 7, 24),
     isDayOff: true,
     activities: [
-      events[SocialLinkNames.Hierophant],
+      events[socialLinkShrineNames.MoonShrineTime],
+
       events[SpecialEventsNames.DoNothing],
     ],
   }),
@@ -238,30 +238,30 @@ export const august: SingleDay[] = [
     date: new Date(2009, 7, 27),
     isDayOff: true,
     activities: [
-      events[socialLinkShrineNames.ChariotShrineTime],
+      events[socialLinkShrineNames.HierophantShrineTime],
       events[SocialLinkNames.Tower],
     ],
   }),
   new SingleDay({
     date: new Date(2009, 7, 28),
     isDayOff: true,
-    activities: [
-      events[SocialLinkNames.Star],
-      events[socialLinkSpendTimeNames.TowerSpendTime],
-    ],
+    activities: [events[SocialLinkNames.Star], events[SocialLinkNames.Tower]],
   }),
   new SingleDay({
     date: new Date(2009, 7, 29),
     isDayOff: true,
     activities: [
-      events[socialLinkShrineNames.MoonShrineTime],
+      events[SocialLinkNames.Hierophant],
       events[SocialLinkNames.Devil],
     ],
   }),
   new SingleDay({
     date: new Date(2009, 7, 30),
     isDayOff: true,
-    activities: [events[SocialLinkNames.Sun], events[SocialLinkNames.Tower]],
+    activities: [
+      events[SocialLinkNames.Sun],
+      events[SpecialEventsNames.DoNothing],
+    ],
   }),
   new SingleDay({
     date: new Date(2009, 7, 31),

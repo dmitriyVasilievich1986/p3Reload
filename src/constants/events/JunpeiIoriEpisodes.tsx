@@ -21,7 +21,7 @@ const ji1: Event = {
       time === Times.Day
     );
   },
-  upgrade: function (currentDay) {
+  upgrade: function ({ currentDay }) {
     return {
       singleTimeEvents: [...currentDay.singleTimeEvents, this.name],
     };
@@ -56,7 +56,7 @@ export const JunpeiIoriEpisodes: { [key in JunpeiIoriEpisodesNames]: Event } = {
         time === Times.Day
       );
     },
-    upgrade: function (currentDay) {
+    upgrade: function ({ currentDay }) {
       return {
         singleTimeEvents: [...currentDay.singleTimeEvents, this.name],
         stats: {
@@ -91,7 +91,7 @@ export const JunpeiIoriEpisodes: { [key in JunpeiIoriEpisodesNames]: Event } = {
         time === Times.Day
       );
     },
-    upgrade: function (currentDay) {
+    upgrade: function ({ currentDay }) {
       return {
         singleTimeEvents: [...currentDay.singleTimeEvents, this.name],
         stats: {
@@ -142,7 +142,7 @@ export const JunpeiIoriEpisodes: { [key in JunpeiIoriEpisodesNames]: Event } = {
         time === Times.Day
       );
     },
-    upgrade: function (currentDay) {
+    upgrade: function ({ currentDay }) {
       return {
         singleTimeEvents: [...currentDay.singleTimeEvents, this.name],
         stats: {
