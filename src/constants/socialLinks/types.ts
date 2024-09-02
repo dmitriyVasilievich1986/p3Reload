@@ -63,5 +63,5 @@ export type LevelsType = {
 
 export type LinkDetailsType = {
   name: string;
-  place: string;
+  place?: string;
 };
