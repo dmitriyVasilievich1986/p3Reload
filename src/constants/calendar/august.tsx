@@ -5,7 +5,6 @@ import { SingleDay } from "./SingleDay";
 
 import {
   statsEventsAcademicsNames,
-  socialLinkSpendTimeNames,
   JunpeiIoriEpisodesNames,
   KoromaruEpisodesNames,
   socialLinkShrineNames,
