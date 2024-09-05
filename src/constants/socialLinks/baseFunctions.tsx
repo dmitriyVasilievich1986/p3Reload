@@ -1,6 +1,8 @@
 import { CardNeededCalculator } from "./calculationFunctions";
 import { SingleDay } from "../calendar/SingleDay";
 import { StatsNames } from "../stats/types";
+import { EventCard } from "@/components";
+import { stats } from "../stats";
 
 import {
   SocialLinkStats,
@@ -8,6 +10,7 @@ import {
   SocialLinkNames,
   InvitationsType,
   LinkDetailsType,
+  SocialLinkType,
   LevelsType,
 } from "./types";
 
@@ -15,12 +18,12 @@ const urlParams = new URLSearchParams(window.location.search);
 export const mainCharName: string =
   urlParams.get("mainCharName") || "Protagonist";
 
-export class SocialLink {
-  readonly invitations?: InvitationsType;
-  readonly linkDetails: LinkDetailsType;
-  readonly linkName: SocialLinkNames;
-  readonly levels: LevelsType;
-  readonly maxLevel: number;
+export class SocialLink implements SocialLinkType {
+  invitations?: InvitationsType;
+  linkDetails: LinkDetailsType;
+  linkName: SocialLinkNames;
+  levels: LevelsType;
+  maxLevel: number;
 
   constructor(
     linkName: SocialLinkNames,
@@ -96,6 +99,39 @@ export class SocialLink {
       },
     };
   }
+
+  element(props: { currentDay: SingleDay; fullCard?: boolean }) {
+    const charmLevel = stats[StatsNames.Charm].levels[5].value;
+    const level = props.currentDay.links[this.linkName] as SocialLinkStats;
+
+    return (
+      <div>
+        <EventCard
+          charm={
+            props.fullCard &&
+            props.currentDay?.stats &&
+            props.currentDay.stats[StatsNames.Charm] >= charmLevel
+          }
+          multiplier={
+            props.fullCard
+              ? props.currentDay.links &&
+                props.currentDay.links[this.linkName].multiplier
+              : undefined
+          }
+          card={
+            props.fullCard && props.currentDay.arcanes.includes(this.linkName)
+          }
+          place={this.linkDetails.place}
+          name={this.linkDetails.name}
+          head={this.linkName}
+        />
+        {props.fullCard &&
+          (this.getLevel(level) as SocialLinkLevel).element({
+            key: this.linkName,
+          })}
+      </div>
+    );
+  }
 }
 
 export class SocialLinkAlwaysLevelUp extends SocialLink {
@@ -124,5 +160,23 @@ export class SocialLinkAlwaysLevelUp extends SocialLink {
         [this.linkName]: { ...thisLink, level },
       },
     };
+  }
+
+  element(props: { currentDay: SingleDay; fullCard?: boolean }) {
+    const level = props.currentDay.links[this.linkName] as SocialLinkStats;
+
+    return (
+      <div>
+        <EventCard
+          place={this.linkDetails.place}
+          name={this.linkDetails.name}
+          head={this.linkName}
+        />
+        {props.fullCard &&
+          (this.getLevel(level) as SocialLinkLevel).element({
+            key: this.linkName,
+          })}
+      </div>
+    );
   }
 }

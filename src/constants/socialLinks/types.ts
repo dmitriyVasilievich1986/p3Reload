@@ -1,3 +1,5 @@
+import { upgradeResponse, Times } from "../events/types";
+import { SingleDay } from "../calendar/SingleDay";
 import React from "react";
 
 export enum SocialLinkNames {
@@ -64,4 +66,30 @@ export type LevelsType = {
 export type LinkDetailsType = {
   name: string;
   place?: string;
+};
+
+export type SocialLinkType = {
+  invitations?: InvitationsType;
+  linkDetails: LinkDetailsType;
+  linkName: SocialLinkNames;
+  levels: LevelsType;
+  maxLevel: number;
+
+  getLevel(props: SocialLinkStats): SocialLinkLevel;
+  isNewLevel(thisLink: SocialLinkStats): boolean;
+  calculate(props: {
+    currentDay: SingleDay;
+    level: number;
+    points: number;
+    maxPoints?: number[];
+    cardMultiplier: number;
+    examMultiplier: number;
+    maxCharmMultiplier: number;
+  }): upgradeResponse;
+  element(props: {
+    previousDay: SingleDay;
+    currentDay: SingleDay;
+    fullCard?: boolean;
+    time: Times;
+  }): React.ReactNode;
 };
