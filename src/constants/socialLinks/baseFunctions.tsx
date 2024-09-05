@@ -126,7 +126,12 @@ export class SocialLink implements SocialLinkType {
           head={this.linkName}
         />
         {props.fullCard &&
-          (this.getLevel(level) as SocialLinkLevel).element({
+          (
+            this.getLevel({
+              ...level,
+              level: level.level - 1,
+            }) as SocialLinkLevel
+          ).element({
             key: this.linkName,
           })}
       </div>
