@@ -78,8 +78,9 @@ class ChariotSocialLink extends SocialLink {
   }
 
   element(props: SocialLinkElementProps) {
+    if (!props.previousDay) return null;
     const charmLevel = stats[StatsNames.Charm].levels[5].value;
-    const level = props.currentDay.links[this.linkName] as SocialLinkStats;
+    const level = props.previousDay.links[this.linkName] as SocialLinkStats;
 
     return (
       <div>
@@ -103,12 +104,7 @@ class ChariotSocialLink extends SocialLink {
           head={this.linkName}
         />
         {props.fullCard &&
-          (
-            this.getLevel({
-              ...level,
-              level: level.level - 1,
-            }) as SocialLinkLevel
-          ).element({
+          (this.getLevel(level) as SocialLinkLevel).element({
             key: this.linkName,
           })}
         {props.currentDay.links[this.linkName].level === 2 &&
