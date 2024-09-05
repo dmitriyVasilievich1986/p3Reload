@@ -1,46 +1,19 @@
-import { createBondObject, LinkMaxedObject, CreateBond } from "./GenericCard";
+import { createBondObject, LinkMaxedObject } from "./GenericCard";
 import { QuestionsWrapper, Question, Answer } from "@/components";
 import { CardNeededCalculator } from "./calculationFunctions";
 import { EventCard } from "../../components/eventCard";
-import { SocialLinkNames, Routes } from "./types";
 import { SingleDay } from "../calendar/SingleDay";
 import { SocialLink } from "./baseFunctions";
 import { StatsNames } from "../stats/types";
+import { Strength } from "./Strength";
+import { stats } from "../stats";
 
-function chariotStrength() {
-  const payload = QuestionsWrapper({
-    points: 0,
-    element: [
-      <Question label="M-My side is killing me... I might've overdone it a bit.">
-        <Answer label="Don't push yourself." />
-        <Answer label="Toughen up!" points={5} />
-      </Question>,
-      <Question label="You don't even look tired... Uh, what kind of training regimen do you have?">
-        <Answer label="Just a normal routine." />
-        <Answer label="A very special routine." />
-      </Question>,
-      <Question label="Let's get go- Argh!">
-        <Answer label="What's wrong?" />
-        <Answer label="Come on, hurry up." />
-      </Question>,
-    ],
-  });
-  return {
-    ...payload,
-    element: () => (
-      <>
-        {payload.element()}
-        <EventCard
-          place="2F Classroom Hallway"
-          name="Yuko Nishiwaki"
-          head="Strength"
-        >
-          <CreateBond />
-        </EventCard>
-      </>
-    ),
-  };
-}
+import {
+  SocialLinkNames,
+  SocialLinkLevel,
+  SocialLinkStats,
+  Routes,
+} from "./types";
 
 class ChariotSocialLink extends SocialLink {
   calculate(props: {
@@ -102,6 +75,46 @@ class ChariotSocialLink extends SocialLink {
       },
     };
   }
+
+  element(props: { currentDay: SingleDay; fullCard?: boolean }) {
+    const charmLevel = stats[StatsNames.Charm].levels[5].value;
+    const level = props.currentDay.links[this.linkName] as SocialLinkStats;
+
+    return (
+      <div>
+        <EventCard
+          charm={
+            props.fullCard &&
+            props.currentDay?.stats &&
+            props.currentDay.stats[StatsNames.Charm] >= charmLevel
+          }
+          multiplier={
+            props.fullCard
+              ? props.currentDay.links &&
+                props.currentDay.links[this.linkName].multiplier
+              : undefined
+          }
+          card={
+            props.fullCard && props.currentDay.arcanes.includes(this.linkName)
+          }
+          place={this.linkDetails.place}
+          name={this.linkDetails.name}
+          head={this.linkName}
+        />
+        {props.fullCard &&
+          (
+            this.getLevel({
+              ...level,
+              level: level.level - 1,
+            }) as SocialLinkLevel
+          ).element({
+            key: this.linkName,
+          })}
+        {props.currentDay.links[this.linkName].level === 2 &&
+          Strength.element.bind(Strength)(props)}
+      </div>
+    );
+  }
 }
 
 export const Chariot = new ChariotSocialLink(
@@ -111,7 +124,25 @@ export const Chariot = new ChariotSocialLink(
     0: {
       [Routes.Platonic]: createBondObject,
     },
-    1: { [Routes.Platonic]: chariotStrength() },
+    1: {
+      [Routes.Platonic]: QuestionsWrapper({
+        points: 0,
+        element: [
+          <Question label="M-My side is killing me... I might've overdone it a bit.">
+            <Answer label="Don't push yourself." />
+            <Answer label="Toughen up!" points={5} />
+          </Question>,
+          <Question label="You don't even look tired... Uh, what kind of training regimen do you have?">
+            <Answer label="Just a normal routine." />
+            <Answer label="A very special routine." />
+          </Question>,
+          <Question label="Let's get go- Argh!">
+            <Answer label="What's wrong?" />
+            <Answer label="Come on, hurry up." />
+          </Question>,
+        ],
+      }),
+    },
     2: {
       [Routes.Platonic]: QuestionsWrapper({
         points: 0,
