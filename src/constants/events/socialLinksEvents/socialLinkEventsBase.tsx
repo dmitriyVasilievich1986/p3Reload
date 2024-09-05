@@ -1,13 +1,14 @@
+import { InvitationCard, CardSpendTime, CardShrine } from "./genericCards";
 import { socialLinks, Routes } from "@/constants/socialLinks";
 import { SingleDay } from "@/constants/calendar/SingleDay";
-import { Categories, Times, Event } from "../types";
 
 import {
-  CardWithMultiplier,
-  InvitationCard,
-  CardSpendTime,
-  CardShrine,
-} from "./genericCards";
+  upgradeResponse,
+  LabelProps,
+  Categories,
+  Times,
+  Event,
+} from "../types";
 
 import {
   SocialLinkNames,
@@ -41,14 +42,20 @@ const socialLinkEventBase: Event = {
   name: SocialLinkNames.Aeon,
   category: Categories.Links,
   time: Times.Day,
-  label: CardWithMultiplier,
+  label: function (props) {
+    const link = this.linkName as SocialLinkNames;
+    return socialLinks[link].element.bind(socialLinks[link])(props);
+  },
   available: () => false,
   upgrade: upgrade(Routes.Platonic),
 };
 
 const socialLinkRomanceEventBase: Event = {
   ...socialLinkEventBase,
-  label: CardSpendTime,
+  label: function (props) {
+    const link = this.linkName as SocialLinkNames;
+    return socialLinks[link].element.bind(socialLinks[link])(props);
+  },
   upgrade: upgrade(Routes.Romantic),
 };
 

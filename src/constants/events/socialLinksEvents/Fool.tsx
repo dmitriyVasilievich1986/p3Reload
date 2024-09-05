@@ -1,6 +1,5 @@
 import { socialLinkEventBase } from "./socialLinkEventsBase";
 import { SocialLinkNames } from "@/constants/socialLinks";
-import { CardWithoutMultiplier } from "./genericCards";
 import { Times, Event } from "../types";
 
 export const foolEvents: {
@@ -12,6 +11,5 @@ export const foolEvents: {
     time: Times.DarkHour,
     name: SocialLinkNames.Fool,
     linkName: SocialLinkNames.Fool,
-    label: CardWithoutMultiplier,
   },
 };
