@@ -68,6 +68,13 @@ export type LinkDetailsType = {
   place?: string;
 };
 
+export type SocialLinkElementProps = {
+  previousDay: SingleDay;
+  currentDay: SingleDay;
+  fullCard?: boolean;
+  time: Times;
+};
+
 export type SocialLinkType = {
   invitations?: InvitationsType;
   linkDetails: LinkDetailsType;
@@ -86,10 +93,5 @@ export type SocialLinkType = {
     examMultiplier: number;
     maxCharmMultiplier: number;
   }): upgradeResponse;
-  element(props: {
-    previousDay: SingleDay;
-    currentDay: SingleDay;
-    fullCard?: boolean;
-    time: Times;
-  }): React.ReactNode;
+  element(props: SocialLinkElementProps): React.ReactNode;
 };

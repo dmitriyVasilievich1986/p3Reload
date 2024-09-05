@@ -130,7 +130,9 @@ function Modal(props: {
         <div className={cx("wrapper")}>
           <EventsList
             events={availableEvents.filter((e) => e.linkName)}
+            previousDay={previousDay}
             onClick={updateCalendar}
+            time={dayConstants.time}
             currentDay={currentDay}
             head="Social Links"
             filter={filter}
@@ -151,7 +153,9 @@ function Modal(props: {
                   e.name
                 )
             )}
+            previousDay={previousDay}
             onClick={updateCalendar}
+            time={dayConstants.time}
             currentDay={currentDay}
             filter={filter}
             head="Special"
@@ -169,7 +173,9 @@ function Modal(props: {
                   Object.values(statsEventsCharmNames) as Array<string>
                 ).includes(e.name)
             )}
+            previousDay={previousDay}
             onClick={updateCalendar}
+            time={dayConstants.time}
             currentDay={currentDay}
             filter={filter}
             head="Stats"
@@ -178,7 +184,9 @@ function Modal(props: {
             events={availableEvents.filter((e) =>
               (Object.values(pcProgramsNames) as Array<string>).includes(e.name)
             )}
+            previousDay={previousDay}
             onClick={updateCalendar}
+            time={dayConstants.time}
             currentDay={currentDay}
             filter={filter}
             head="Lobby PC"

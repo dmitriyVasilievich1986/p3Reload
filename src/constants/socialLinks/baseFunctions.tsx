@@ -5,6 +5,7 @@ import { EventCard } from "@/components";
 import { stats } from "../stats";
 
 import {
+  SocialLinkElementProps,
   SocialLinkStats,
   SocialLinkLevel,
   SocialLinkNames,
@@ -100,7 +101,7 @@ export class SocialLink implements SocialLinkType {
     };
   }
 
-  element(props: { currentDay: SingleDay; fullCard?: boolean }) {
+  element(props: SocialLinkElementProps) {
     const charmLevel = stats[StatsNames.Charm].levels[5].value;
     const level = props.currentDay.links[this.linkName] as SocialLinkStats;
 
@@ -167,7 +168,7 @@ export class SocialLinkAlwaysLevelUp extends SocialLink {
     };
   }
 
-  element(props: { currentDay: SingleDay; fullCard?: boolean }) {
+  element(props: SocialLinkElementProps) {
     const level = props.currentDay.links[this.linkName] as SocialLinkStats;
 
     return (

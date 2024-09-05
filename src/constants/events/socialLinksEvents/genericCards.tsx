@@ -41,49 +41,44 @@ function CardShrine(this: Event, props: LabelProps) {
   return <EventCardBase {...this} {...props} showPlace={false} />;
 }
 
-function CardWithMultiplier(this: Event, { currentDay, fullCard }: LabelProps) {
+function CardWithMultiplier(this: Event, props: LabelProps) {
   const linkName = this.linkName as SocialLinkNames;
 
   const LevelUp = () => {
     return socialLinks[linkName]
       .getLevel({
-        ...currentDay.links[linkName],
-        level: currentDay.links[linkName].level - 1,
+        ...props.currentDay.links[linkName],
+        level: props.currentDay.links[linkName].level - 1,
       })
       .element({ key: linkName });
   };
 
   return (
     <div>
-      <EventCardBase {...this} fullCard={fullCard} currentDay={currentDay} />
-      {fullCard && <LevelUp />}
+      <EventCardBase {...this} {...props} />
+      {props.fullCard && <LevelUp />}
     </div>
   );
 }
 
-function CardWithoutMultiplier(this: Event, { currentDay }: LabelProps) {
-  return <EventCardBase currentDay={currentDay} fullCard={false} {...this} />;
+function CardWithoutMultiplier(this: Event, props: LabelProps) {
+  return <EventCardBase {...this} {...{ ...props, fullCard: false }} />;
 }
 
-function InvitationCard(this: Event, { currentDay, fullCard }: LabelProps) {
+function InvitationCard(this: Event, props: LabelProps) {
   const linkName = this.linkName as SocialLinkNames;
-  const level = currentDay.links[linkName].level;
+  const level = props.currentDay.links[linkName].level;
 
   const Invitation = () => {
     return (socialLinks[linkName].invitations as InvitationsType)[level][
-      currentDay.links[linkName].romance
+      props.currentDay.links[linkName].romance
     ];
   };
 
   return (
     <div>
-      <EventCardBase
-        currentDay={currentDay}
-        fullCard={fullCard}
-        showPlace={false}
-        {...this}
-      />
-      {fullCard && <Invitation />}
+      <EventCardBase {...this} {...{ ...props, showPlace: false }} />
+      {props.fullCard && <Invitation />}
     </div>
   );
 }

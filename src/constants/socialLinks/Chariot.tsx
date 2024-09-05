@@ -9,6 +9,7 @@ import { Strength } from "./Strength";
 import { stats } from "../stats";
 
 import {
+  SocialLinkElementProps,
   SocialLinkNames,
   SocialLinkLevel,
   SocialLinkStats,
@@ -76,7 +77,7 @@ class ChariotSocialLink extends SocialLink {
     };
   }
 
-  element(props: { currentDay: SingleDay; fullCard?: boolean }) {
+  element(props: SocialLinkElementProps) {
     const charmLevel = stats[StatsNames.Charm].levels[5].value;
     const level = props.currentDay.links[this.linkName] as SocialLinkStats;
 

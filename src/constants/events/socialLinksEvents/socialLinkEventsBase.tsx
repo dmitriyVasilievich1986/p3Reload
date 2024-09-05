@@ -1,16 +1,10 @@
 import { InvitationCard, CardSpendTime, CardShrine } from "./genericCards";
+import { upgradeResponse, Categories, Times, Event } from "../types";
 import { socialLinks, Routes } from "@/constants/socialLinks";
 import { SingleDay } from "@/constants/calendar/SingleDay";
 
 import {
-  upgradeResponse,
-  LabelProps,
-  Categories,
-  Times,
-  Event,
-} from "../types";
-
-import {
+  SocialLinkElementProps,
   SocialLinkNames,
   InvitationsType,
 } from "@/constants/socialLinks/types";

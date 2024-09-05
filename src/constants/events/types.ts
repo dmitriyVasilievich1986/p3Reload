@@ -1,6 +1,11 @@
-import { SocialLinksStatsArray, SocialLinkNames } from "../socialLinks/types";
 import { SingleDay } from "../calendar/SingleDay";
 import { CharStats } from "../stats/types";
+
+import {
+  SocialLinkElementProps,
+  SocialLinksStatsArray,
+  SocialLinkNames,
+} from "../socialLinks/types";
 
 export enum Categories {
   Invitation = "Invitation",
@@ -195,6 +200,7 @@ export type upgradeResponse = {
 };
 
 export type LabelProps = {
+  previousDay: SingleDay;
   currentDay: SingleDay;
   fullCard?: boolean;
 };
@@ -205,7 +211,7 @@ export type Event = {
   name: allEventsNames;
   category: Categories;
   linkName?: SocialLinkNames;
-  label: (props: LabelProps) => React.ReactNode;
+  label: (props: SocialLinkElementProps) => React.ReactNode;
   upgrade: (props: {
     previousWeek?: SingleDay;
     previousDay?: SingleDay;
