@@ -1,17 +1,14 @@
 import { useSearchParams } from "react-router-dom";
 import { calendar } from "@/constants/calendar";
 import classnames from "classnames/bind";
-import { LeftBarProps } from "./types";
 import * as style from "./style.scss";
 import MonthBlock from "./MonthBlock";
 
 const cx = classnames.bind(style);
 
-function LeftBar(props: LeftBarProps) {
-  if (props.calendarRef.current === null) return;
-  const [searchParams, setSearchParams] = useSearchParams();
-
+function LeftBar() {
   const allMonths = new Set(calendar.map((c) => c.date.getMonth()));
+  const [searchParams, setSearchParams] = useSearchParams();
 
   const clickHandler = (id: string) => {
     searchParams.set("dateId", id);
