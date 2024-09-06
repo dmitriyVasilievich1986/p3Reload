@@ -1,11 +1,8 @@
-import { SocialLinkNames, socialLinks } from "@/constants/socialLinks";
-import { DaysNames } from "@/constants/monthsNames";
-import { SingleDay } from "@/constants/calendar";
+import { SocialLinkNames } from "@/constants/socialLinks";
 
 import {
   socialLinkInvitationNames,
   socialLinkShrineNames,
-  Times,
   Event,
 } from "../types";
 
@@ -13,7 +10,7 @@ import {
   socialLinkInvitationEventBase,
   socialLinkShrineEventBase,
   invitationAvailable,
-  socialLinkEventBase,
+  SocialLinkEvent,
 } from "./socialLinkEventsBase";
 
 export const fortuneEvents: {
@@ -21,32 +18,9 @@ export const fortuneEvents: {
   [socialLinkShrineNames.FortuneShrineTime]: Event;
   [socialLinkInvitationNames.FortuneInvitation]: Event;
 } = {
-  [SocialLinkNames.Fortune]: {
-    ...socialLinkEventBase,
+  [SocialLinkNames.Fortune]: new SocialLinkEvent({
     name: SocialLinkNames.Fortune,
-    linkName: SocialLinkNames.Fortune,
-    available: function ({
-      currentDay,
-      time,
-    }: {
-      previousDay?: SingleDay;
-      currentDay: SingleDay;
-      time: Times;
-    }) {
-      const days = [DaysNames.tuesday, DaysNames.wednesday, DaysNames.thursday];
-      const link = this.linkName as SocialLinkNames;
-      const thisLink = currentDay.links[link];
-      const isNewLevel = socialLinks[link].isNewLevel(thisLink);
-      return (
-        currentDay.date.getTime() >= new Date(2009, 5, 17).getTime() &&
-        days.includes(currentDay.date.getDay()) &&
-        !currentDay.isDayOff &&
-        time === Times.Day &&
-        !currentDay.exams &&
-        isNewLevel
-      );
-    },
-  },
+  }),
   [socialLinkShrineNames.FortuneShrineTime]: {
     ...socialLinkShrineEventBase,
     linkName: SocialLinkNames.Fortune,

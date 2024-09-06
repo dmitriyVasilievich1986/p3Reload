@@ -1,58 +1,18 @@
-import { SocialLinkNames, socialLinks, Routes } from "@/constants/socialLinks";
-import { SingleDay } from "@/constants/calendar/SingleDay";
-import { StatsNames, stats } from "@/constants/stats";
-import { DaysNames } from "@/constants/monthsNames";
+import { Routes, SocialLinkNames } from "@/constants/socialLinks";
 
 import {
   socialLinkInvitationEventBase,
-  socialLinkRomanceEventBase,
   socialLinkShrineEventBase,
   invitationAvailable,
-  socialLinkEventBase,
+  SocialLinkEvent,
 } from "./socialLinkEventsBase";
 
 import {
   socialLinkInvitationNames,
   socialLinkRomanceNames,
   socialLinkShrineNames,
-  Times,
   Event,
 } from "../types";
-
-function available(route: Routes) {
-  return function (
-    this: Event,
-    {
-      previousDay,
-      currentDay,
-      time,
-    }: {
-      previousDay?: SingleDay;
-      currentDay: SingleDay;
-      time: Times;
-    }
-  ) {
-    if (previousDay === undefined) return false;
-    const link = this.linkName as SocialLinkNames;
-    const thisLink = currentDay.links[link];
-    const isNewLevel = socialLinks[link].isNewLevel(thisLink);
-    const isRomance =
-      previousDay.links[link].level === 6 || thisLink.romance === route;
-    const days = [DaysNames.monday, DaysNames.friday, DaysNames.saturday];
-    const courageLevel = stats[StatsNames.Courage].levels[5].value;
-    return (
-      currentDay.date.getTime() >= new Date(2009, 5, 19).getTime() &&
-      previousDay.stats[StatsNames.Courage] >= courageLevel &&
-      previousDay.links[SocialLinkNames.Fortune].level > 0 &&
-      days.includes(currentDay.date.getDay()) &&
-      !currentDay.isDayOff &&
-      time === Times.Day &&
-      !currentDay.exams &&
-      isNewLevel &&
-      isRomance
-    );
-  };
-}
 
 export const priestessEvents: {
   [SocialLinkNames.Priestess]: Event;
@@ -60,18 +20,14 @@ export const priestessEvents: {
   [socialLinkShrineNames.PriestessShrineTime]: Event;
   [socialLinkInvitationNames.PriestessInvitation]: Event;
 } = {
-  [SocialLinkNames.Priestess]: {
-    ...socialLinkEventBase,
+  [SocialLinkNames.Priestess]: new SocialLinkEvent({
     name: SocialLinkNames.Priestess,
-    linkName: SocialLinkNames.Priestess,
-    available: available(Routes.Platonic),
-  },
-  [socialLinkRomanceNames.PriestessRomance]: {
-    ...socialLinkRomanceEventBase,
-    linkName: SocialLinkNames.Priestess,
+  }),
+  [socialLinkRomanceNames.PriestessRomance]: new SocialLinkEvent({
     name: socialLinkRomanceNames.PriestessRomance,
-    available: available(Routes.Romantic),
-  },
+    linkName: SocialLinkNames.Priestess,
+    romance: Routes.Romantic,
+  }),
   [socialLinkShrineNames.PriestessShrineTime]: {
     ...socialLinkShrineEventBase,
     linkName: SocialLinkNames.Priestess,

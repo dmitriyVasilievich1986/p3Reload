@@ -13,7 +13,7 @@ import {
 import {
   socialLinkSpendTimeEventBase,
   socialLinkShrineEventBase,
-  socialLinkEventBase,
+  SocialLinkEvent,
 } from "./socialLinkEventsBase";
 
 function available(shouldLevelUp: boolean) {
@@ -59,13 +59,10 @@ export const towerEvents: {
   [socialLinkShrineNames.TowerShrineTime]: Event;
   [socialLinkSpendTimeNames.TowerSpendTime]: Event;
 } = {
-  [SocialLinkNames.Tower]: {
-    ...socialLinkEventBase,
-    time: Times.Evening,
+  [SocialLinkNames.Tower]: new SocialLinkEvent({
     name: SocialLinkNames.Tower,
-    linkName: SocialLinkNames.Tower,
-    available: available(true),
-  },
+    time: Times.Evening,
+  }),
   [socialLinkSpendTimeNames.TowerSpendTime]: {
     ...socialLinkSpendTimeEventBase,
     time: Times.Evening,

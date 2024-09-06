@@ -1,15 +1,13 @@
-import { socialLinkEventBase } from "./socialLinkEventsBase";
 import { SocialLinkNames } from "@/constants/socialLinks";
+import { SocialLinkEvent } from "./socialLinkEventsBase";
 import { Times, Event } from "../types";
 
 export const foolEvents: {
   [SocialLinkNames.Fool]: Event;
 } = {
-  [SocialLinkNames.Fool]: {
-    ...socialLinkEventBase,
-    special: true,
-    time: Times.DarkHour,
+  [SocialLinkNames.Fool]: new SocialLinkEvent({
     name: SocialLinkNames.Fool,
-    linkName: SocialLinkNames.Fool,
-  },
+    time: Times.DarkHour,
+    special: true,
+  }),
 };

@@ -1,12 +1,8 @@
-import { SocialLinkNames, socialLinks } from "@/constants/socialLinks";
-import { StatsNames, stats } from "@/constants/stats";
-import { DaysNames } from "@/constants/monthsNames";
-import { SingleDay } from "@/constants/calendar";
+import { SocialLinkNames } from "@/constants/socialLinks";
 
 import {
   socialLinkInvitationNames,
   socialLinkShrineNames,
-  Times,
   Event,
 } from "../types";
 
@@ -14,7 +10,7 @@ import {
   socialLinkInvitationEventBase,
   socialLinkShrineEventBase,
   invitationAvailable,
-  socialLinkEventBase,
+  SocialLinkEvent,
 } from "./socialLinkEventsBase";
 
 export const TemperanceEvents: {
@@ -22,37 +18,9 @@ export const TemperanceEvents: {
   [socialLinkShrineNames.TemperanceShrineTime]: Event;
   [socialLinkInvitationNames.TemperanceInvitation]: Event;
 } = {
-  [SocialLinkNames.Temperance]: {
-    ...socialLinkEventBase,
+  [SocialLinkNames.Temperance]: new SocialLinkEvent({
     name: SocialLinkNames.Temperance,
-    linkName: SocialLinkNames.Temperance,
-    available: function ({
-      previousDay,
-      currentDay,
-      time,
-    }: {
-      previousDay?: SingleDay;
-      currentDay: SingleDay;
-      time: Times;
-    }) {
-      if (previousDay === undefined) return false;
-      const days = [DaysNames.tuesday, DaysNames.wednesday, DaysNames.friday];
-      const link = this.linkName as SocialLinkNames;
-      const thisLink = currentDay.links[link];
-      const isNewLevel = socialLinks[link].isNewLevel(thisLink);
-      const academicsLevel = stats[StatsNames.Academics].levels[1].value;
-      return (
-        currentDay.date.getTime() >= new Date(2009, 4, 8).getTime() &&
-        previousDay.stats[StatsNames.Academics] >= academicsLevel &&
-        previousDay.links[SocialLinkNames.Hierophant].level >= 3 &&
-        days.includes(currentDay.date.getDay()) &&
-        !currentDay.isDayOff &&
-        time === Times.Day &&
-        !currentDay.exams &&
-        isNewLevel
-      );
-    },
-  },
+  }),
   [socialLinkShrineNames.TemperanceShrineTime]: {
     ...socialLinkShrineEventBase,
     linkName: SocialLinkNames.Temperance,

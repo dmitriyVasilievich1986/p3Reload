@@ -1,55 +1,18 @@
-import { SocialLinkNames, socialLinks, Routes } from "@/constants/socialLinks";
-import { SingleDay } from "@/constants/calendar/SingleDay";
-import { DaysNames } from "@/constants/monthsNames";
+import { SocialLinkNames, Routes } from "@/constants/socialLinks";
 
 import {
   socialLinkInvitationEventBase,
-  socialLinkRomanceEventBase,
   socialLinkShrineEventBase,
   invitationAvailable,
-  socialLinkEventBase,
+  SocialLinkEvent,
 } from "./socialLinkEventsBase";
 
 import {
   socialLinkInvitationNames,
   socialLinkRomanceNames,
   socialLinkShrineNames,
-  Times,
   Event,
 } from "../types";
-
-function available(route: Routes) {
-  return function (
-    this: Event,
-    {
-      previousDay,
-      currentDay,
-      time,
-    }: {
-      previousDay?: SingleDay;
-      currentDay: SingleDay;
-      time: Times;
-    }
-  ) {
-    if (previousDay === undefined) return false;
-    const days = [DaysNames.tuesday, DaysNames.thursday, DaysNames.saturday];
-    const link = this.linkName as SocialLinkNames;
-    const thisLink = currentDay.links[link];
-    const isNewLevel = socialLinks[link].isNewLevel(thisLink);
-    const isRomance =
-      previousDay.links[link].level === 4 || thisLink.romance === route;
-    return (
-      currentDay.date.getTime() >= new Date(2009, 4, 7).getTime() &&
-      previousDay.links[SocialLinkNames.Emperor].level > 0 &&
-      days.includes(currentDay.date.getDay()) &&
-      !currentDay.isDayOff &&
-      time === Times.Day &&
-      !currentDay.exams &&
-      isNewLevel &&
-      isRomance
-    );
-  };
-}
 
 export const justiceEvents: {
   [SocialLinkNames.Justice]: Event;
@@ -57,18 +20,14 @@ export const justiceEvents: {
   [socialLinkShrineNames.JusticeShrineTime]: Event;
   [socialLinkInvitationNames.JusticeInvitation]: Event;
 } = {
-  [SocialLinkNames.Justice]: {
-    ...socialLinkEventBase,
+  [SocialLinkNames.Justice]: new SocialLinkEvent({
     name: SocialLinkNames.Justice,
-    linkName: SocialLinkNames.Justice,
-    available: available(Routes.Platonic),
-  },
-  [socialLinkRomanceNames.JusticeRomance]: {
-    ...socialLinkRomanceEventBase,
-    linkName: SocialLinkNames.Justice,
+  }),
+  [socialLinkRomanceNames.JusticeRomance]: new SocialLinkEvent({
     name: socialLinkRomanceNames.JusticeRomance,
-    available: available(Routes.Romantic),
-  },
+    linkName: SocialLinkNames.Justice,
+    romance: Routes.Romantic,
+  }),
   [socialLinkShrineNames.JusticeShrineTime]: {
     ...socialLinkShrineEventBase,
     linkName: SocialLinkNames.Justice,

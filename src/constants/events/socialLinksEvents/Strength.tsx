@@ -1,55 +1,18 @@
-import { SocialLinkNames, socialLinks, Routes } from "@/constants/socialLinks";
-import { SingleDay } from "@/constants/calendar/SingleDay";
-import { DaysNames } from "@/constants/monthsNames";
+import { SocialLinkNames, Routes } from "@/constants/socialLinks";
 
 import {
   socialLinkInvitationEventBase,
-  socialLinkRomanceEventBase,
   socialLinkShrineEventBase,
   invitationAvailable,
-  socialLinkEventBase,
+  SocialLinkEvent,
 } from "./socialLinkEventsBase";
 
 import {
   socialLinkInvitationNames,
   socialLinkRomanceNames,
   socialLinkShrineNames,
-  Times,
   Event,
 } from "../types";
-
-function available(route: Routes) {
-  return function (
-    this: Event,
-    {
-      previousDay,
-      currentDay,
-      time,
-    }: {
-      previousDay?: SingleDay;
-      currentDay: SingleDay;
-      time: Times;
-    }
-  ) {
-    if (previousDay === undefined) return false;
-    const link = this.linkName as SocialLinkNames;
-    const thisLink = currentDay.links[link];
-    const isNewLevel = socialLinks[link].isNewLevel(thisLink);
-    const isRomance =
-      previousDay.links[link].level === 2 || thisLink.romance === route;
-    const days = [DaysNames.wednesday, DaysNames.saturday];
-    return (
-      currentDay.date.getTime() >= new Date(2009, 3, 24).getTime() &&
-      previousDay.links[SocialLinkNames.Chariot].level >= 2 &&
-      days.includes(currentDay.date.getDay()) &&
-      !currentDay.isDayOff &&
-      time === Times.Day &&
-      !currentDay.exams &&
-      isNewLevel &&
-      isRomance
-    );
-  };
-}
 
 export const strengthEvents: {
   [SocialLinkNames.Strength]: Event;
@@ -57,18 +20,14 @@ export const strengthEvents: {
   [socialLinkShrineNames.StrengthShrineTime]: Event;
   [socialLinkInvitationNames.StrengthInvitation]: Event;
 } = {
-  [SocialLinkNames.Strength]: {
-    ...socialLinkEventBase,
+  [SocialLinkNames.Strength]: new SocialLinkEvent({
     name: SocialLinkNames.Strength,
-    linkName: SocialLinkNames.Strength,
-    available: available(Routes.Platonic),
-  },
-  [socialLinkRomanceNames.StrengthRomance]: {
-    ...socialLinkRomanceEventBase,
-    linkName: SocialLinkNames.Strength,
+  }),
+  [socialLinkRomanceNames.StrengthRomance]: new SocialLinkEvent({
     name: socialLinkRomanceNames.StrengthRomance,
-    available: available(Routes.Romantic),
-  },
+    linkName: SocialLinkNames.Strength,
+    romance: Routes.Romantic,
+  }),
   [socialLinkShrineNames.StrengthShrineTime]: {
     ...socialLinkShrineEventBase,
     linkName: SocialLinkNames.Strength,

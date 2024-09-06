@@ -1,9 +1,17 @@
 import { InvitationCard, CardSpendTime, CardShrine } from "./genericCards";
-import { upgradeResponse, Categories, Times, Event } from "../types";
 import { socialLinks, Routes } from "@/constants/socialLinks";
 import { SingleDay } from "@/constants/calendar/SingleDay";
 
 import {
+  upgradeResponse,
+  allEventsNames,
+  Categories,
+  Times,
+  Event,
+} from "../types";
+
+import {
+  SocialLinkAvailableProps,
   SocialLinkElementProps,
   SocialLinkNames,
   InvitationsType,
@@ -29,6 +37,69 @@ function upgrade(romance: Routes) {
       }),
     });
   };
+}
+
+export class SocialLinkEvent implements Event {
+  name: allEventsNames;
+  linkName: SocialLinkNames;
+  romance: Routes = Routes.Platonic;
+
+  time: Times = Times.Day;
+  special: boolean = false;
+  category: Categories = Categories.Links;
+
+  available: (props: SocialLinkAvailableProps) => boolean;
+  label: (props: SocialLinkElementProps) => React.ReactNode;
+
+  constructor(props: {
+    name: allEventsNames;
+    time?: Times;
+    romance?: Routes;
+    special?: boolean;
+    linkName?: SocialLinkNames;
+  }) {
+    this.linkName = props.linkName || (props.name as SocialLinkNames);
+    this.romance = props.romance || this.romance;
+    this.special = props.special ?? this.special;
+    this.time = props.time || this.time;
+    this.name = props.name;
+
+    this.available = socialLinks[this.linkName].isAvailable.bind(
+      socialLinks[this.linkName]
+    );
+    this.label = socialLinks[this.linkName].element.bind(
+      socialLinks[this.linkName]
+    );
+    this.upgrade = this.upgrade.bind(this);
+  }
+
+  upgrade(props: {
+    previousWeek?: SingleDay;
+    previousDay?: SingleDay;
+    currentDay: SingleDay;
+    time: Times;
+  }): upgradeResponse {
+    const linkName = this.linkName as SocialLinkNames;
+    const level = props.currentDay.links[linkName].level + 1;
+
+    return socialLinks[linkName].calculate.bind(socialLinks[linkName])({
+      examMultiplier: props.currentDay.links[linkName].multiplier,
+      maxCharmMultiplier: 1.51,
+      cardMultiplier: 1.51,
+      points: 0,
+      level,
+      currentDay: new SingleDay({
+        ...props.currentDay,
+        links: {
+          ...props.currentDay.links,
+          [linkName]: {
+            ...props.currentDay.links[linkName],
+            romance: this.romance,
+          },
+        },
+      }),
+    });
+  }
 }
 
 const socialLinkEventBase: Event = {
