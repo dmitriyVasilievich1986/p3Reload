@@ -104,7 +104,12 @@ export class SocialLink implements SocialLinkType {
   element(props: SocialLinkElementProps) {
     if (!props.previousDay) return null;
     const charmLevel = stats[StatsNames.Charm].levels[5].value;
-    const level = props.previousDay.links[this.linkName] as SocialLinkStats;
+    const previousLevel = props.previousDay.links[
+      this.linkName
+    ] as SocialLinkStats;
+    const currentLevel = props.currentDay.links[
+      this.linkName
+    ] as SocialLinkStats;
 
     return (
       <div>
@@ -128,7 +133,12 @@ export class SocialLink implements SocialLinkType {
           head={this.linkName}
         />
         {props.fullCard &&
-          (this.getLevel(level) as SocialLinkLevel).element({
+          (
+            this.getLevel({
+              ...previousLevel,
+              romance: currentLevel.romance,
+            }) as SocialLinkLevel
+          ).element({
             key: this.linkName,
           })}
       </div>
