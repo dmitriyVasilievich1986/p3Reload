@@ -13,7 +13,7 @@ import {
   Routes,
 } from "./types";
 
-class AkihikoSocialLink extends SocialLinkEpisodes {
+class SanadaSocialLink extends SocialLinkEpisodes {
   isLinkAvailable(props: SocialLinkAvailableProps): boolean {
     const previousLink = props.previousDay!.links[this.linkName];
     const isTime = props.time === Times.Evening;
@@ -117,8 +117,8 @@ class AkihikoSocialLink extends SocialLinkEpisodes {
   }
 }
 
-export const Akihiko = new AkihikoSocialLink(
-  SocialLinkNames.Akihiko,
+export const Sanada = new SanadaSocialLink(
+  SocialLinkNames.Sanada,
   { name: "Akihiko Sanada" },
   {
     5: {

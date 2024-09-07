@@ -23,7 +23,7 @@ const initialStats: CharStats = {
 };
 
 const initialLinks: SocialLinksStatsArray = {
-  [SocialLinkNames.Akihiko]: { ...zeroStats },
+  [SocialLinkNames.Sanada]: { ...zeroStats },
   [SocialLinkNames.Koromaru]: { ...zeroStats },
   [SocialLinkNames.Amada]: { ...zeroStats },
   [SocialLinkNames.Mochizuki]: { ...zeroStats },

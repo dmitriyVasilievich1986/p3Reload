@@ -3,7 +3,7 @@ import { SingleDay } from "../calendar/SingleDay";
 import React from "react";
 
 export enum SocialLinkNames {
-  Akihiko = "Akihiko",
+  Sanada = "Sanada",
   Koromaru = "Koromaru",
   Amada = "Amada",
   Mochizuki = "Mochizuki",

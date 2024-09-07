@@ -15,7 +15,7 @@ import { Emperor } from "./Emperor";
 import { Empress } from "./Empress";
 import { Fortune } from "./Fortune";
 import { Justice } from "./Justice";
-import { Akihiko } from "./Akihiko";
+import { Sanada } from "./Sanada";
 import { Lovers } from "./Lovers";
 import { Hermit } from "./Hermit";
 import { Tower } from "./Tower";
@@ -30,7 +30,7 @@ import { Iori } from "./Iori";
 import { Sun } from "./Sun";
 
 const socialLinks: { [key in SocialLinkNames]: SocialLink } = {
-  [SocialLinkNames.Akihiko]: Akihiko,
+  [SocialLinkNames.Sanada]: Sanada,
   [SocialLinkNames.Koromaru]: Koromaru,
   [SocialLinkNames.Amada]: Amada,
   [SocialLinkNames.Mochizuki]: Mochizuki,

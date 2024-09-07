@@ -5,8 +5,8 @@ import { SocialLinkEvent } from "./SocialLinkEventClass";
 export const socialLinksEvents: {
   [key in socialLinkRomanceNames | SocialLinkNames]: Event;
 } = {
-  [SocialLinkNames.Akihiko]: new SocialLinkEvent({
-    name: SocialLinkNames.Akihiko,
+  [SocialLinkNames.Sanada]: new SocialLinkEvent({
+    name: SocialLinkNames.Sanada,
     time: Times.Evening,
   }),
   [SocialLinkNames.Koromaru]: new SocialLinkEvent({

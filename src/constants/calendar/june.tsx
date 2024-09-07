@@ -15,7 +15,7 @@ export const june: SingleDay[] = [
     date: new Date(2009, 5, 1),
     activities: [
       events[SocialLinkNames.Emperor],
-      events[SocialLinkNames.Akihiko],
+      events[SocialLinkNames.Sanada],
     ],
   }),
   new SingleDay({

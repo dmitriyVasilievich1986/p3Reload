@@ -430,7 +430,7 @@ export const july: SingleDay[] = [
         },
       },
       events[SocialLinkNames.Priestess],
-      events[SocialLinkNames.Akihiko],
+      events[SocialLinkNames.Sanada],
     ],
   }),
   new SingleDay({

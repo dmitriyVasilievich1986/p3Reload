@@ -286,7 +286,7 @@ export const october: SingleDay[] = [
         },
       },
       events[SocialLinkNames.Lovers],
-      events[SocialLinkNames.Akihiko],
+      events[SocialLinkNames.Sanada],
     ],
   }),
   new SingleDay({

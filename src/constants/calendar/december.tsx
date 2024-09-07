@@ -124,7 +124,7 @@ export const december: SingleDay[] = [
     activities: [
       events[statsEventsAcademicsNames.stayAwakeInClass],
       events[SpecialEventsNames.DoNothing],
-      events[SocialLinkNames.Akihiko],
+      events[SocialLinkNames.Sanada],
     ],
   }),
   new SingleDay({

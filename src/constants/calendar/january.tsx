@@ -36,8 +36,7 @@ export const january: SingleDay[] = [
     date: new Date(2010, 0, 4),
     activities: [
       events[SpecialEventsNames.DoNothing],
-      events[SocialLinkNames.Akihiko],
-      // { ...events[SpecialEventsNames.DoNothing], time: Times.Evening },
+      { ...events[SpecialEventsNames.DoNothing], time: Times.Evening },
     ],
   }),
   new SingleDay({
