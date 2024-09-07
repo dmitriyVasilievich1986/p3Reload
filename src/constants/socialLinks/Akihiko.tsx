@@ -74,7 +74,7 @@ class AkihikoSocialLink extends SocialLinkEpisodes {
       case 2:
         currentStats = {
           ...currentStats,
-          [StatsNames.Charm]: currentStats.Charm + 2,
+          [StatsNames.Charm]: currentStats[StatsNames.Charm] + 2,
         };
         break;
     }
