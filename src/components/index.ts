@@ -1,7 +1,7 @@
 import { QuestionsWrapper, Question, Answer } from "./choices";
+import { CalendarPage, Calendar } from "./calendarPage";
 import { OutsideClick } from "./supportComponents";
 import { EventCard, Item } from "./eventCard";
-import { Calendar } from "./calendarPage";
 import { WideEvent } from "./wideEvent";
 import { Modal } from "./modalWindow";
 import { LeftBar } from "./leftBar";
@@ -13,6 +13,7 @@ import { Card } from "./card";
 export {
   QuestionsWrapper,
   OutsideClick,
+  CalendarPage,
   WideEvent,
   EventCard,
   Calendar,

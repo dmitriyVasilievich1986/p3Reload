@@ -1,3 +1,4 @@
+import CalendarPage from "./CalendarPage";
 import Calendar from "./Calendar";
 
-export { Calendar };
+export { CalendarPage, Calendar };

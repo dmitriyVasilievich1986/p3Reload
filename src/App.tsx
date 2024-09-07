@@ -1,18 +1,13 @@
+import { useSearchParams, Routes, Route } from "react-router-dom";
 import { DayConstants } from "@/components/modalWindow/types";
-import { Calendar, LeftBar, Modal } from "@/components";
-import { useSearchParams } from "react-router-dom";
+import { CalendarPage, LeftBar } from "@/components";
 import { SingleDay } from "@/constants/calendar";
-import { Times } from "@/constants/events";
-import classnames from "classnames/bind";
-import * as style from "./App.scss";
 import React from "react";
 
 import {
   initialCalculataion,
   calendar as initialCalendar,
 } from "@/constants/calendar";
-
-const cx = classnames.bind(style);
 
 function App() {
   const [calendar, setCalendar] = React.useState<SingleDay[]>([]);
@@ -39,27 +34,21 @@ function App() {
 
   return (
     <React.Fragment>
-      <Modal
-        calendar={calendar}
-        setCalendar={setCalendar}
-        dayConstants={dayConstants}
-        setDayConstants={setDayConstants}
-      />
       <LeftBar />
-      <div className={cx("App")}>
-        <div ref={calendarRef}>
-          {calendar.map((c, i) => (
-            <Calendar
-              previousDay={calendar?.[i - 1]}
-              key={c.date.getTime()}
-              currentDay={c}
-              setDayConstants={(time: Times) =>
-                setDayConstants({ time, day: c.date })
-              }
+      <Routes>
+        <Route
+          path="/"
+          element={
+            <CalendarPage
+              setDayConstants={setDayConstants}
+              dayConstants={dayConstants}
+              calendarRef={calendarRef}
+              setCalendar={setCalendar}
+              calendar={calendar}
             />
-          ))}
-        </div>
-      </div>
+          }
+        />
+      </Routes>
     </React.Fragment>
   );
 }
