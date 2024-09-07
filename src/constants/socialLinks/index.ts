@@ -26,6 +26,7 @@ import { Aeon } from "./Aeon";
 import { Fool } from "./Fool";
 import { Moon } from "./Moon";
 import { Star } from "./Star";
+import { Iori } from "./Iori";
 import { Sun } from "./Sun";
 
 const socialLinks: { [key in SocialLinkNames]: SocialLink } = {
@@ -33,6 +34,7 @@ const socialLinks: { [key in SocialLinkNames]: SocialLink } = {
   [SocialLinkNames.Koromaru]: Koromaru,
   [SocialLinkNames.Amada]: Amada,
   [SocialLinkNames.Mochizuki]: Mochizuki,
+  [SocialLinkNames.Iori]: Iori,
   [SocialLinkNames.Fool]: Fool,
   [SocialLinkNames.Magician]: Magician,
   [SocialLinkNames.Priestess]: Priestess,

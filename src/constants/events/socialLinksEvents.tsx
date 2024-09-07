@@ -19,6 +19,9 @@ export const socialLinksEvents: {
   [SocialLinkNames.Mochizuki]: new SocialLinkEvent({
     name: SocialLinkNames.Mochizuki,
   }),
+  [SocialLinkNames.Iori]: new SocialLinkEvent({
+    name: SocialLinkNames.Iori,
+  }),
   [SocialLinkNames.Fool]: new SocialLinkEvent({
     name: SocialLinkNames.Fool,
     time: Times.DarkHour,

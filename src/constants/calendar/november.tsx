@@ -5,7 +5,6 @@ import { SingleDay } from "./SingleDay";
 
 import {
   statsEventsAcademicsNames,
-  JunpeiIoriEpisodesNames,
   statsEventsCharmNames,
   SpecialEventsNames,
 } from "@/constants/events/types";
@@ -76,7 +75,7 @@ export const november: SingleDay[] = [
           </Question>
         ),
       },
-      events[JunpeiIoriEpisodesNames.JunpeiIori3],
+      events[SocialLinkNames.Iori],
       { ...events[SpecialEventsNames.DoNothing], time: Times.Evening },
     ],
   }),

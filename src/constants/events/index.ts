@@ -1,7 +1,6 @@
 import { ShinjiroAragakiEpisodes } from "./ShinjiroAragakiEpisodes";
 import { statsEventsAcademics } from "./statsEventsAcademics";
 import { statsEventsCourage } from "./statsEventsCourage";
-import { JunpeiIoriEpisodes } from "./JunpeiIoriEpisodes";
 import { socialLinksEvents } from "./socialLinksEvents";
 import { statsEventsCharm } from "./statsEventsCharm";
 import { specialEvents } from "./specialEvents";
@@ -16,7 +15,6 @@ const events: { [key in allEventsNames]: Event } = {
   ...statsEventsAcademics,
   ...statsEventsCourage,
   ...statsEventsCharm,
-  ...JunpeiIoriEpisodes,
   ...ShinjiroAragakiEpisodes,
 };
 

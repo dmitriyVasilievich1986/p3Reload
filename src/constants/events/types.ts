@@ -45,15 +45,6 @@ export enum pcProgramsNames {
   lobbyPCTypinGhoul = 'Lobby PC ("Typin Ghoul")',
 }
 
-export enum JunpeiIoriEpisodesNames {
-  JunpeiIori1 = "Junpei Iori (Episode 1)",
-  JunpeiIori2 = "Junpei Iori (Episode 2)",
-  JunpeiIori3 = "Junpei Iori (Episode 3)",
-  JunpeiIori35 = "Junpei Iori (Episode 3 extra)",
-  JunpeiIori4 = "Junpei Iori (Episode 4)",
-  JunpeiIori5 = "Junpei Iori (Episode 5)",
-}
-
 export enum ShinjiroAragakiEpisodesNames {
   ShinjiroAragaki1 = "Shinjiro Aragaki (Episode 1)",
   ShinjiroAragaki2 = "Shinjiro Aragaki (Episode 2)",
@@ -108,7 +99,6 @@ export enum socialLinkRomanceNames {
 const allNames = {
   ...SpecialEventsNames,
   ...pcProgramsNames,
-  ...JunpeiIoriEpisodesNames,
   ...ShinjiroAragakiEpisodesNames,
   ...statsEventsAcademicsNames,
   ...statsEventsCharmNames,

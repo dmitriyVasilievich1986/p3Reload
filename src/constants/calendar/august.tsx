@@ -5,7 +5,6 @@ import { SingleDay } from "./SingleDay";
 
 import {
   statsEventsAcademicsNames,
-  JunpeiIoriEpisodesNames,
   SpecialEventsNames,
 } from "@/constants/events/types";
 
@@ -168,10 +167,7 @@ export const august: SingleDay[] = [
   new SingleDay({
     date: new Date(2009, 7, 18),
     isDayOff: true,
-    activities: [
-      events[JunpeiIoriEpisodesNames.JunpeiIori2],
-      events[SocialLinkNames.Devil],
-    ],
+    activities: [events[SocialLinkNames.Iori], events[SocialLinkNames.Devil]],
   }),
   new SingleDay({
     date: new Date(2009, 7, 19),
