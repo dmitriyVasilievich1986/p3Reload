@@ -1,9 +1,56 @@
 import { QuestionsWrapper, Question, Answer } from "@/components";
 import { createBondObject, LinkMaxedObject } from "./GenericCard";
 import { SocialLink, mainCharName } from "./baseFunctions";
-import { SocialLinkNames, Routes } from "./types";
+import { DaysNames } from "@/constants/monthsNames";
+import { Times } from "@/constants/events/types";
 
-export const Magician = new SocialLink(
+import {
+  SocialLinkAvailableProps,
+  InvitationsType,
+  SocialLinkNames,
+  Routes,
+} from "./types";
+
+class MagicianSocialLink extends SocialLink {
+  isInvitationAvailable(props: SocialLinkAvailableProps): boolean {
+    const dates = [
+      new Date(2009, 3, 26).getTime(),
+      new Date(2009, 4, 5).getTime(),
+      new Date(2009, 4, 24).getTime(),
+      new Date(2009, 5, 14).getTime(),
+      new Date(2009, 7, 5).getTime(),
+      new Date(2009, 7, 26).getTime(),
+      new Date(2009, 8, 22).getTime(),
+      new Date(2009, 9, 18).getTime(),
+      new Date(2010, 0, 4).getTime(),
+      new Date(2010, 0, 11).getTime(),
+    ];
+    const invitations = this.invitations as InvitationsType;
+
+    return (
+      props.currentDay.links[this.linkName].level in invitations &&
+      dates.includes(props.currentDay.date.getTime()) &&
+      props.time === Times.Day
+    );
+  }
+
+  isLinkAvailable(props: SocialLinkAvailableProps): boolean {
+    const previousLink = props.previousDay!.links[this.linkName];
+    const isNewLevel = this.isNewLevel(previousLink);
+    const days = [DaysNames.tuesday, DaysNames.thursday, DaysNames.friday];
+
+    return (
+      props.currentDay.date.getTime() >= new Date(2009, 3, 22).getTime() &&
+      days.includes(props.currentDay.date.getDay()) &&
+      !props.currentDay.isDayOff &&
+      props.time === Times.Day &&
+      !props.currentDay.exams &&
+      isNewLevel
+    );
+  }
+}
+
+export const Magician = new MagicianSocialLink(
   SocialLinkNames.Magician,
   { name: "Kenji Tomochika", place: "Classroom 2F" },
   {

@@ -1,113 +1,97 @@
 import { createBondObject, LinkMaxedObject } from "./GenericCard";
 import { QuestionsWrapper, Question, Answer } from "@/components";
-import { CardNeededCalculator } from "./calculationFunctions";
-import { EventCard } from "../../components/eventCard";
 import { SingleDay } from "../calendar/SingleDay";
 import { SocialLink } from "./baseFunctions";
-import { StatsNames } from "../stats/types";
+import { DaysNames } from "../monthsNames";
+import { Times } from "../events/types";
 import { Strength } from "./Strength";
-import { stats } from "../stats";
 
 import {
+  SocialLinkAvailableProps,
   SocialLinkElementProps,
   SocialLinkNames,
-  SocialLinkLevel,
-  SocialLinkStats,
+  InvitationsType,
   Routes,
 } from "./types";
 
 class ChariotSocialLink extends SocialLink {
-  calculate(props: {
-    currentDay: SingleDay;
-    level: number;
-    points: number;
-    maxPoints?: number[];
-    cardMultiplier: number;
-    examMultiplier: number;
-    maxCharmMultiplier: number;
-  }) {
-    const thisLink = props.currentDay.links[this.linkName];
-    const currentLevel = this.getLevel(thisLink);
-    const maxPoints = props.maxPoints || currentLevel.maxPoints;
-    let points = props.points;
+  isInvitationAvailable(props: SocialLinkAvailableProps): boolean {
+    const dates = [
+      new Date(2009, 4, 4).getTime(),
+      new Date(2009, 4, 24).getTime(),
+      new Date(2009, 5, 7).getTime(),
+      new Date(2009, 5, 14).getTime(),
+      new Date(2009, 7, 5).getTime(),
+      new Date(2009, 8, 27).getTime(),
+      new Date(2009, 9, 18).getTime(),
+      new Date(2009, 10, 8).getTime(),
+      new Date(2010, 0, 6).getTime(),
+      new Date(2010, 0, 10).getTime(),
+    ];
+    const invitations = this.invitations as InvitationsType;
 
-    let multiplier = props.examMultiplier;
-    const newLevel = this.getLevel({
-      ...thisLink,
-      level: props.level,
-      romance: thisLink.romance,
-    });
-    if (props.currentDay.stats[StatsNames.Charm] >= 100)
-      multiplier *= props.maxCharmMultiplier;
+    return (
+      props.currentDay.links[this.linkName].level in invitations &&
+      dates.includes(props.currentDay.date.getTime()) &&
+      props.time === Times.Day
+    );
+  }
 
-    const cardNeeded = new CardNeededCalculator({
-      nextLevelPoints: newLevel.points - points,
-      cardMultiplier: props.cardMultiplier,
-      multiplier,
-      maxPoints,
-    });
+  isLinkAvailable(props: SocialLinkAvailableProps): boolean {
+    const previousLink = props.previousDay!.links[this.linkName];
+    const isNewLevel = this.isNewLevel(previousLink);
+    const days = [
+      DaysNames.monday,
+      DaysNames.tuesday,
+      DaysNames.thursday,
+      DaysNames.friday,
+    ];
 
-    if (props.currentDay.arcanes.includes(this.linkName)) {
-      multiplier *= props.cardMultiplier;
-    } else if (cardNeeded.isCardNeeded()) {
-      multiplier *= props.cardMultiplier;
-      props.currentDay.arcanes.push(this.linkName);
+    return (
+      props.currentDay.date.getTime() >= new Date(2009, 3, 23).getTime() &&
+      days.includes(props.currentDay.date.getDay()) &&
+      !props.currentDay.isDayOff &&
+      props.time === Times.Day &&
+      !props.currentDay.exams &&
+      isNewLevel
+    );
+  }
+
+  calculate(
+    props: SocialLinkAvailableProps & {
+      previousWeek?: SingleDay;
     }
-
-    points += CardNeededCalculator.maxPointsSum(maxPoints, multiplier);
-    let strengthLevel = props.currentDay.links[SocialLinkNames.Strength];
-    if (props.level === 2) {
+  ) {
+    const previousLink = props.previousDay!.links[this.linkName];
+    let strengthLevel = props.previousDay!.links[SocialLinkNames.Strength];
+    if (
+      this.isNewLevel(previousLink) &&
+      props.previousDay!.links[this.linkName].level === 1
+    ) {
       strengthLevel = {
         ...props.currentDay.links[SocialLinkNames.Strength],
         points: 0,
         level: 1,
       };
     }
+    const payload = super.calculate(props);
 
     return {
       links: {
-        ...props.currentDay.links,
-        [this.linkName]: {
-          ...thisLink,
-          level: props.level,
-          points,
-        },
-        [SocialLinkNames.Strength]: { ...strengthLevel },
+        ...payload.links,
+        [SocialLinkNames.Strength]: strengthLevel,
       },
     };
   }
 
   element(props: SocialLinkElementProps) {
     if (!props.previousDay) return null;
-    const charmLevel = stats[StatsNames.Charm].levels[5].value;
-    const level = props.previousDay.links[this.linkName] as SocialLinkStats;
 
     return (
       <div>
-        <EventCard
-          charm={
-            props.fullCard &&
-            props.currentDay?.stats &&
-            props.currentDay.stats[StatsNames.Charm] >= charmLevel
-          }
-          multiplier={
-            props.fullCard
-              ? props.currentDay.links &&
-                props.currentDay.links[this.linkName].multiplier
-              : undefined
-          }
-          card={
-            props.fullCard && props.currentDay.arcanes.includes(this.linkName)
-          }
-          place={this.linkDetails.place}
-          name={this.linkDetails.name}
-          head={this.linkName}
-        />
+        {super.element(props)}
         {props.fullCard &&
-          (this.getLevel(level) as SocialLinkLevel).element({
-            key: this.linkName,
-          })}
-        {props.currentDay.links[this.linkName].level === 2 &&
+          props.currentDay.links[this.linkName].level === 2 &&
           Strength.element.bind(Strength)(props)}
       </div>
     );

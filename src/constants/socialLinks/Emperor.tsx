@@ -1,9 +1,35 @@
+import { SocialLinkAvailableProps, SocialLinkNames, Routes } from "./types";
 import { QuestionsWrapper, Question, Answer } from "@/components";
 import { createBondObject, LinkMaxedObject } from "./GenericCard";
-import { SocialLinkNames, Routes } from "./types";
+import { DaysNames } from "@/constants/monthsNames";
+import { Times } from "@/constants/events/types";
 import { SocialLink } from "./baseFunctions";
 
-export const Emperor = new SocialLink(
+class EmperorSocialLink extends SocialLink {
+  isInvitationAvailable(): boolean {
+    return false;
+  }
+
+  isLinkAvailable(props: SocialLinkAvailableProps): boolean {
+    const days = [DaysNames.monday, DaysNames.wednesday, DaysNames.friday];
+    const previousLink = props.previousDay!.links[this.linkName];
+    const isNewLevel = this.isNewLevel(previousLink);
+    const isJanuary =
+      props.currentDay.date.getTime() >= new Date(2010, 0, 1).getTime() ||
+      days.includes(props.currentDay.date.getDay());
+
+    return (
+      props.currentDay.date.getTime() >= new Date(2009, 3, 27).getTime() &&
+      !props.currentDay.isDayOff &&
+      props.time === Times.Day &&
+      !props.currentDay.exams &&
+      isNewLevel &&
+      isJanuary
+    );
+  }
+}
+
+export const Emperor = new EmperorSocialLink(
   SocialLinkNames.Emperor,
   { name: "Hidetoshi Odagiri", place: "Student Council Room" },
   {

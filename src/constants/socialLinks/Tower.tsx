@@ -1,9 +1,39 @@
+import { SocialLinkAvailableProps, SocialLinkNames, Routes } from "./types";
 import { QuestionsWrapper, Question, Answer } from "@/components";
 import { createBondObject, LinkMaxedObject } from "./GenericCard";
-import { SocialLinkNames, Routes } from "./types";
+import { StatsNames, stats } from "@/constants/stats";
+import { DaysNames } from "@/constants/monthsNames";
+import { Times } from "@/constants/events/types";
 import { SocialLink } from "./baseFunctions";
 
-export const Tower = new SocialLink(
+class TowerSocialLink extends SocialLink {
+  isInvitationAvailable(): boolean {
+    return false;
+  }
+
+  isLinkAvailable(props: SocialLinkAvailableProps): boolean {
+    const courageLevel = stats[StatsNames.Courage].levels[1].value;
+    const previousLink = props.previousDay!.links[this.linkName];
+    const isNewLevel = this.isNewLevel(previousLink);
+    const days = [
+      DaysNames.thursday,
+      DaysNames.friday,
+      DaysNames.saturday,
+      DaysNames.sunday,
+    ];
+
+    return (
+      props.currentDay.date.getTime() >= new Date(2009, 4, 23).getTime() &&
+      props.previousDay!.links[SocialLinkNames.Strength].level >= 4 &&
+      props.previousDay!.stats[StatsNames.Courage] >= courageLevel &&
+      days.includes(props.currentDay.date.getDay()) &&
+      props.time === Times.Evening &&
+      isNewLevel
+    );
+  }
+}
+
+export const Tower = new TowerSocialLink(
   SocialLinkNames.Tower,
   { name: "Mutatsu", place: "Club Escapade" },
   {

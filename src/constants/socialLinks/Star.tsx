@@ -1,9 +1,33 @@
+import { SocialLinkAvailableProps, SocialLinkNames, Routes } from "./types";
 import { QuestionsWrapper, Question, Answer } from "@/components";
 import { createBondObject, LinkMaxedObject } from "./GenericCard";
-import { SocialLinkNames, Routes } from "./types";
+import { StatsNames, stats } from "@/constants/stats";
+import { DaysNames } from "@/constants/monthsNames";
+import { Times } from "@/constants/events/types";
 import { SocialLink } from "./baseFunctions";
 
-export const Star = new SocialLink(
+class StarSocialLink extends SocialLink {
+  isInvitationAvailable(): boolean {
+    return false;
+  }
+
+  isLinkAvailable(props: SocialLinkAvailableProps): boolean {
+    const courageLevel = stats[StatsNames.Courage].levels[3].value;
+    const previousLink = props.previousDay!.links[this.linkName];
+    const isNewLevel = this.isNewLevel(previousLink);
+    const days = [DaysNames.wednesday, DaysNames.friday, DaysNames.sunday];
+
+    return (
+      props.currentDay.date.getTime() >= new Date(2009, 7, 5).getTime() &&
+      props.previousDay!.stats[StatsNames.Courage] >= courageLevel &&
+      days.includes(props.currentDay.date.getDay()) &&
+      props.time === Times.Day &&
+      isNewLevel
+    );
+  }
+}
+
+export const Star = new StarSocialLink(
   SocialLinkNames.Star,
   { name: "Mamoru Hayase", place: "Iwatodai Station Strip Mall 1F" },
   {

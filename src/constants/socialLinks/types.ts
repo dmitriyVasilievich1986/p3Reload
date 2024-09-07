@@ -26,6 +26,14 @@ export enum SocialLinkNames {
   Death = "Death",
 }
 
+export enum LabelHeadPrefixes {
+  Shrine = " (Naganaki shrine)",
+  Invitation = " (Invitation)",
+  SpendTime = " (Spend time)",
+  Romance = " (Romance)",
+  Default = "",
+}
+
 export enum Routes {
   Platonic = "Platonic",
   Romantic = "Romantic",
@@ -68,11 +76,14 @@ export type LinkDetailsType = {
   place?: string;
 };
 
-export type SocialLinkElementProps = {
-  previousDay: SingleDay;
+export type SocialLinkAvailableProps = {
+  previousDay?: SingleDay;
   currentDay: SingleDay;
-  fullCard?: boolean;
   time: Times;
+};
+
+export type SocialLinkElementProps = SocialLinkAvailableProps & {
+  fullCard?: boolean;
 };
 
 export type SocialLinkType = {
@@ -82,16 +93,12 @@ export type SocialLinkType = {
   levels: LevelsType;
   maxLevel: number;
 
+  element(props: SocialLinkElementProps): React.ReactNode;
   getLevel(props: SocialLinkStats): SocialLinkLevel;
   isNewLevel(thisLink: SocialLinkStats): boolean;
-  calculate(props: {
-    currentDay: SingleDay;
-    level: number;
-    points: number;
-    maxPoints?: number[];
-    cardMultiplier: number;
-    examMultiplier: number;
-    maxCharmMultiplier: number;
-  }): upgradeResponse;
-  element(props: SocialLinkElementProps): React.ReactNode;
+  calculate(
+    props: SocialLinkAvailableProps & {
+      previousWeek?: SingleDay;
+    }
+  ): upgradeResponse;
 };
