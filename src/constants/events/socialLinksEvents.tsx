@@ -5,6 +5,10 @@ import { SocialLinkEvent } from "./SocialLinkEventClass";
 export const socialLinksEvents: {
   [key in socialLinkRomanceNames | SocialLinkNames]: Event;
 } = {
+  [SocialLinkNames.Akihiko]: new SocialLinkEvent({
+    name: SocialLinkNames.Akihiko,
+    time: Times.Evening,
+  }),
   [SocialLinkNames.Fool]: new SocialLinkEvent({
     name: SocialLinkNames.Fool,
     time: Times.DarkHour,

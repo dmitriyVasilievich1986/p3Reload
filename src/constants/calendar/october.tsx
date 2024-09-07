@@ -6,7 +6,6 @@ import { StatsNames } from "@/constants/stats";
 import { SingleDay } from "./SingleDay";
 
 import {
-  AkihikoSanadaEpisodesNames,
   statsEventsAcademicsNames,
   statsEventsCharmNames,
   KoromaruEpisodesNames,
@@ -288,7 +287,7 @@ export const october: SingleDay[] = [
         },
       },
       events[SocialLinkNames.Lovers],
-      events[AkihikoSanadaEpisodesNames.AkihikoSanada3],
+      events[SocialLinkNames.Akihiko],
     ],
   }),
   new SingleDay({

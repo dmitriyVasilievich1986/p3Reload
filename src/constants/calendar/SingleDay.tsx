@@ -23,6 +23,7 @@ const initialStats: CharStats = {
 };
 
 const initialLinks: SocialLinksStatsArray = {
+  [SocialLinkNames.Akihiko]: { ...zeroStats },
   [SocialLinkNames.Fool]: { ...zeroStats },
   [SocialLinkNames.Magician]: { ...zeroStats },
   [SocialLinkNames.Priestess]: { ...zeroStats },

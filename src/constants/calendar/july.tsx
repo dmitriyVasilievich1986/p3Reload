@@ -11,7 +11,6 @@ import {
 } from "@/constants/socialLinks";
 
 import {
-  AkihikoSanadaEpisodesNames,
   statsEventsAcademicsNames,
   statsEventsCourageNames,
   statsEventsCharmNames,
@@ -431,7 +430,7 @@ export const july: SingleDay[] = [
         },
       },
       events[SocialLinkNames.Priestess],
-      events[AkihikoSanadaEpisodesNames.AkihikoSanada2],
+      events[SocialLinkNames.Akihiko],
     ],
   }),
   new SingleDay({
