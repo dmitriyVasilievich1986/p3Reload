@@ -1,14 +1,15 @@
+import { useSearchParams } from "react-router-dom";
 import { Modal } from "@/components/modalWindow";
 import { SingleDay } from "@/constants/calendar";
 import { Times } from "@/constants/events";
 import classnames from "classnames/bind";
 import * as style from "./style.scss";
 import Calendar from "./Calendar";
+import React from "react";
 
 const cx = classnames.bind(style);
 
 function CalendarPage(props: {
-  calendarRef: React.RefObject<HTMLDivElement>;
   calendar: SingleDay[];
   setDayConstants: (props: { time: Times; day: Date } | null) => void;
   setCalendar: React.Dispatch<React.SetStateAction<SingleDay[]>>;
@@ -17,6 +18,19 @@ function CalendarPage(props: {
     day: Date;
   } | null;
 }) {
+  const calendarRef = React.useRef<HTMLDivElement>(null);
+  const [searchParams, _] = useSearchParams();
+
+  React.useEffect(() => {
+    const dateId = searchParams.get("dateId");
+    if (dateId && calendarRef.current) {
+      const element = (calendarRef.current as HTMLDivElement).querySelector(
+        `#${dateId}`
+      );
+      element?.scrollIntoView({ behavior: "smooth", block: "start" });
+    }
+  }, [searchParams, calendarRef.current]);
+
   return (
     <div className={cx("App")}>
       <Modal
@@ -25,7 +39,7 @@ function CalendarPage(props: {
         dayConstants={props.dayConstants}
         setDayConstants={props.setDayConstants}
       />
-      <div ref={props.calendarRef}>
+      <div ref={calendarRef}>
         {props.calendar.map((c, i) => (
           <Calendar
             previousDay={props.calendar?.[i - 1]}
