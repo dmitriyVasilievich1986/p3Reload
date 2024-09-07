@@ -6,6 +6,7 @@ export enum SocialLinkNames {
   Akihiko = "Akihiko",
   Koromaru = "Koromaru",
   Amada = "Amada",
+  Mochizuki = "Mochizuki",
   Aeon = "Aeon",
   Chariot = "Chariot",
   Devil = "Devil",

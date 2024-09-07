@@ -63,14 +63,6 @@ export enum ShinjiroAragakiEpisodesNames {
   ShinjiroAragaki5 = "Shinjiro Aragaki (Episode 5)",
 }
 
-export enum RyojiMochizukiEpisodesNames {
-  RyojiMochizuki1 = "Ryoji Mochizuki (Episode 1)",
-  RyojiMochizuki2 = "Ryoji Mochizuki (Episode 2)",
-  RyojiMochizuki3 = "Ryoji Mochizuki (Episode 3)",
-  RyojiMochizuki4 = "Ryoji Mochizuki (Episode 4)",
-  RyojiMochizuki5 = "Ryoji Mochizuki (Episode 5)",
-}
-
 export enum statsEventsAcademicsNames {
   wakatsuKitchenSpecial = "Wakatsu Kitchen (Seafood Full Course)",
   wakatsuKitchen = "Wakatsu Kitchen (Prodigy Platter)",
@@ -117,7 +109,6 @@ const allNames = {
   ...SpecialEventsNames,
   ...pcProgramsNames,
   ...JunpeiIoriEpisodesNames,
-  ...RyojiMochizukiEpisodesNames,
   ...ShinjiroAragakiEpisodesNames,
   ...statsEventsAcademicsNames,
   ...statsEventsCharmNames,

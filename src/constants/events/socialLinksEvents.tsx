@@ -14,6 +14,10 @@ export const socialLinksEvents: {
   }),
   [SocialLinkNames.Amada]: new SocialLinkEvent({
     name: SocialLinkNames.Amada,
+    time: Times.Evening,
+  }),
+  [SocialLinkNames.Mochizuki]: new SocialLinkEvent({
+    name: SocialLinkNames.Mochizuki,
   }),
   [SocialLinkNames.Fool]: new SocialLinkEvent({
     name: SocialLinkNames.Fool,

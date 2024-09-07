@@ -6,6 +6,7 @@ import { Hierophant } from "./Hierophant";
 import { Temperance } from "./Temperance";
 import { Priestess } from "./Priestess";
 import { HangedMan } from "./HangedMan";
+import { Mochizuki } from "./Mochizuki";
 import { Strength } from "./Strength";
 import { Magician } from "./Magician";
 import { Koromaru } from "./Koromaru";
@@ -31,6 +32,7 @@ const socialLinks: { [key in SocialLinkNames]: SocialLink } = {
   [SocialLinkNames.Akihiko]: Akihiko,
   [SocialLinkNames.Koromaru]: Koromaru,
   [SocialLinkNames.Amada]: Amada,
+  [SocialLinkNames.Mochizuki]: Mochizuki,
   [SocialLinkNames.Fool]: Fool,
   [SocialLinkNames.Magician]: Magician,
   [SocialLinkNames.Priestess]: Priestess,
