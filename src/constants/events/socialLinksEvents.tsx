@@ -22,6 +22,9 @@ export const socialLinksEvents: {
   [SocialLinkNames.Iori]: new SocialLinkEvent({
     name: SocialLinkNames.Iori,
   }),
+  [SocialLinkNames.Aragaki]: new SocialLinkEvent({
+    name: SocialLinkNames.Aragaki,
+  }),
   [SocialLinkNames.Fool]: new SocialLinkEvent({
     name: SocialLinkNames.Fool,
     time: Times.DarkHour,

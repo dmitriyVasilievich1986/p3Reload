@@ -28,6 +28,7 @@ const initialLinks: SocialLinksStatsArray = {
   [SocialLinkNames.Amada]: { ...zeroStats },
   [SocialLinkNames.Mochizuki]: { ...zeroStats },
   [SocialLinkNames.Iori]: { ...zeroStats },
+  [SocialLinkNames.Aragaki]: { ...zeroStats },
   [SocialLinkNames.Fool]: { ...zeroStats },
   [SocialLinkNames.Magician]: { ...zeroStats },
   [SocialLinkNames.Priestess]: { ...zeroStats },

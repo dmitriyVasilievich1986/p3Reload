@@ -10,6 +10,7 @@ import { Mochizuki } from "./Mochizuki";
 import { Strength } from "./Strength";
 import { Magician } from "./Magician";
 import { Koromaru } from "./Koromaru";
+import { Aragaki } from "./Aragaki";
 import { Chariot } from "./Chariot";
 import { Emperor } from "./Emperor";
 import { Empress } from "./Empress";
@@ -35,6 +36,7 @@ const socialLinks: { [key in SocialLinkNames]: SocialLink } = {
   [SocialLinkNames.Amada]: Amada,
   [SocialLinkNames.Mochizuki]: Mochizuki,
   [SocialLinkNames.Iori]: Iori,
+  [SocialLinkNames.Aragaki]: Aragaki,
   [SocialLinkNames.Fool]: Fool,
   [SocialLinkNames.Magician]: Magician,
   [SocialLinkNames.Priestess]: Priestess,
