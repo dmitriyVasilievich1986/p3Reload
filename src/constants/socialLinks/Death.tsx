@@ -1,41 +1,32 @@
+import { SocialLinkAvailableProps, SocialLinkNames, Routes } from "./types";
 import { createBondObject, ChooseAnyObject } from "./GenericCard";
-import { SingleDay } from "../calendar/SingleDay";
-import { SocialLink } from "./baseFunctions";
+import { SingleDay } from "@/constants/calendar/SingleDay";
+import { SocialLinkAlwaysLevelUp } from "./baseFunctions";
 
-import {
-  SocialLinkStats,
-  SocialLinkNames,
-  SocialLinkLevel,
-  Routes,
-} from "./types";
-
-class SocialLinkDeath extends SocialLink {
-  getLevel({ level }: SocialLinkStats) {
-    if (level <= 1) return this.levels[0].Platonic as SocialLinkLevel;
-    return this.levels[1].Platonic as SocialLinkLevel;
-  }
-
-  calculate({
-    currentDay,
-  }: {
-    currentDay: SingleDay;
-    level: number;
-    points: number;
-    maxPoints: number[];
-    cardMultiplier: number;
-    examMultiplier: number;
-    maxCharmMultiplier: number;
-  }) {
-    const thisLink = currentDay.links[SocialLinkNames.Death];
-    const level = [1, 3, 6, 8].includes(thisLink.level)
-      ? thisLink.level + 2
-      : thisLink.level + 1;
+class SocialLinkDeath extends SocialLinkAlwaysLevelUp {
+  calculate(
+    props: SocialLinkAvailableProps & {
+      previousWeek?: SingleDay;
+    }
+  ) {
+    const previousLink = props.previousDay!.links[this.linkName];
+    const level = [1, 3, 6, 8].includes(previousLink.level)
+      ? previousLink.level + 2
+      : previousLink.level + 1;
     return {
       links: {
-        ...currentDay.links,
-        [SocialLinkNames.Death]: { ...thisLink, level },
+        ...props.currentDay.links,
+        [SocialLinkNames.Death]: { ...previousLink, level },
       },
     };
+  }
+
+  isLinkAvailable(): boolean {
+    return false;
+  }
+
+  isAvailable(): boolean {
+    return false;
   }
 }
 
@@ -46,7 +37,7 @@ export const Death = new SocialLinkDeath(
     0: {
       [Routes.Platonic]: createBondObject,
     },
-    1: {
+    10: {
       [Routes.Platonic]: ChooseAnyObject,
     },
   }

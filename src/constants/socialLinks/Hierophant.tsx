@@ -1,9 +1,37 @@
+import { SocialLinkAvailableProps, SocialLinkNames, Routes } from "./types";
 import { QuestionsWrapper, Question, Answer } from "@/components";
 import { createBondObject, LinkMaxedObject } from "./GenericCard";
 import { SocialLink, mainCharName } from "./baseFunctions";
-import { SocialLinkNames, Routes } from "./types";
+import { DaysNames } from "@/constants/monthsNames";
+import { Times } from "@/constants/events/types";
 
-export const Hierophant = new SocialLink(
+class HierophantSocialLink extends SocialLink {
+  isInvitationAvailable(): boolean {
+    return false;
+  }
+
+  isLinkAvailable(props: SocialLinkAvailableProps): boolean {
+    const previousLink = props.previousDay!.links[this.linkName];
+    const isNewLevel = this.isNewLevel(previousLink);
+    const days = [
+      DaysNames.tuesday,
+      DaysNames.wednesday,
+      DaysNames.thursday,
+      DaysNames.friday,
+      DaysNames.saturday,
+      DaysNames.sunday,
+    ];
+
+    return (
+      props.currentDay.date.getTime() >= new Date(2009, 3, 25).getTime() &&
+      days.includes(props.currentDay.date.getDay()) &&
+      props.time === Times.Day &&
+      isNewLevel
+    );
+  }
+}
+
+export const Hierophant = new HierophantSocialLink(
   SocialLinkNames.Hierophant,
   { name: "Bunkichi and Mitsuko", place: "Bookworms Used Books" },
   {

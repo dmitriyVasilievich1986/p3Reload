@@ -4,7 +4,6 @@ import { events, Times } from "@/constants/events";
 import { SingleDay } from "./SingleDay";
 
 import {
-  AkihikoSanadaEpisodesNames,
   statsEventsAcademicsNames,
   statsEventsCourageNames,
   statsEventsCharmNames,
@@ -16,7 +15,7 @@ export const june: SingleDay[] = [
     date: new Date(2009, 5, 1),
     activities: [
       events[SocialLinkNames.Emperor],
-      events[AkihikoSanadaEpisodesNames.AkihikoSanada1],
+      events[SocialLinkNames.Sanada],
     ],
   }),
   new SingleDay({

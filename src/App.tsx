@@ -45,7 +45,7 @@ function App() {
         dayConstants={dayConstants}
         setDayConstants={setDayConstants}
       />
-      <LeftBar calendarRef={calendarRef} />
+      <LeftBar />
       <div className={cx("App")}>
         <div ref={calendarRef}>
           {calendar.map((c, i) => (

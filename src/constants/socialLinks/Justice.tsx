@@ -1,9 +1,65 @@
 import { QuestionsWrapper, Question, Answer } from "@/components";
 import { createBondObject, LinkMaxedObject } from "./GenericCard";
 import { SocialLink, mainCharName } from "./baseFunctions";
-import { SocialLinkNames, Routes } from "./types";
+import { DaysNames } from "@/constants/monthsNames";
+import { Times } from "@/constants/events/types";
 
-export const Justice = new SocialLink(
+import {
+  SocialLinkAvailableProps,
+  InvitationsType,
+  SocialLinkNames,
+  Routes,
+} from "./types";
+
+class JusticeSocialLink extends SocialLink {
+  isInvitationAvailable(
+    props: SocialLinkAvailableProps,
+    route: Routes
+  ): boolean {
+    const dates = [
+      new Date(2009, 4, 31).getTime(),
+      new Date(2009, 5, 21).getTime(),
+      new Date(2009, 6, 5).getTime(),
+      new Date(2009, 6, 26).getTime(),
+      new Date(2009, 7, 9).getTime(),
+      new Date(2009, 7, 27).getTime(),
+      new Date(2009, 8, 27).getTime(),
+      new Date(2009, 9, 25).getTime(),
+      new Date(2009, 10, 29).getTime(),
+      new Date(2010, 0, 5).getTime(),
+      new Date(2010, 0, 10).getTime(),
+    ];
+    const invitations = this.invitations as InvitationsType;
+
+    return (
+      props.currentDay.links[this.linkName].level in invitations &&
+      props.previousDay!.links[this.linkName].romance === route &&
+      dates.includes(props.currentDay.date.getTime()) &&
+      props.time === Times.Day
+    );
+  }
+
+  isLinkAvailable(props: SocialLinkAvailableProps, route: Routes): boolean {
+    const previousLink = props.previousDay!.links[this.linkName];
+    const isNewLevel = this.isNewLevel(previousLink);
+    const isRomance =
+      previousLink.level === 4 || previousLink.romance === route;
+    const days = [DaysNames.tuesday, DaysNames.thursday, DaysNames.saturday];
+
+    return (
+      props.currentDay.date.getTime() >= new Date(2009, 4, 7).getTime() &&
+      props.previousDay!.links[SocialLinkNames.Emperor].level > 0 &&
+      days.includes(props.currentDay.date.getDay()) &&
+      !props.currentDay.isDayOff &&
+      props.time === Times.Day &&
+      !props.currentDay.exams &&
+      isNewLevel &&
+      isRomance
+    );
+  }
+}
+
+export const Justice = new JusticeSocialLink(
   SocialLinkNames.Justice,
   { name: "Chihiro Fushimi", place: "2nd Floor Hallway" },
   {

@@ -1,6 +1,7 @@
+import { SocialLinkElementProps } from "@/constants/socialLinks/types";
 import { SocialLinkNames } from "@/constants/socialLinks";
-import { LabelProps, Event } from "../events/types";
 import { EventCard } from "@/components";
+import { Event } from "../events/types";
 import { SingleDay } from "./SingleDay";
 
 export const classmates: SocialLinkNames[] = [
@@ -42,7 +43,10 @@ export function initialCalculataion(calendar: SingleDay[]) {
   return calendar;
 }
 
-export function LabelExamGrade(this: Event, { currentDay }: LabelProps) {
+export function LabelExamGrade(
+  this: Event,
+  { currentDay }: SocialLinkElementProps
+) {
   function Grade() {
     let grade = "Average";
     const classmateLink = classmates[0];

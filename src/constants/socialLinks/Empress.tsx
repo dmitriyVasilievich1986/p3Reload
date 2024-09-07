@@ -1,9 +1,65 @@
 import { QuestionsWrapper, Question, Answer } from "@/components";
 import { createBondObject, LinkMaxedObject } from "./GenericCard";
 import { SocialLink, mainCharName } from "./baseFunctions";
-import { SocialLinkNames, Routes } from "./types";
+import { StatsNames, stats } from "@/constants/stats";
+import { DaysNames } from "@/constants/monthsNames";
+import { Times } from "@/constants/events/types";
 
-export const Empress = new SocialLink(
+import {
+  SocialLinkAvailableProps,
+  InvitationsType,
+  SocialLinkNames,
+  Routes,
+} from "./types";
+
+class EmpressSocialLink extends SocialLink {
+  isInvitationAvailable(
+    props: SocialLinkAvailableProps,
+    route: Routes
+  ): boolean {
+    const dates = [
+      new Date(2010, 1, 4).getTime(),
+      new Date(2010, 1, 7).getTime(),
+      new Date(2010, 1, 24).getTime(),
+    ];
+    const invitations = this.invitations as InvitationsType;
+
+    return (
+      props.currentDay.links[this.linkName].level in invitations &&
+      props.previousDay!.links[this.linkName].romance === route &&
+      dates.includes(props.currentDay.date.getTime()) &&
+      props.time === Times.Day
+    );
+  }
+
+  isLinkAvailable(props: SocialLinkAvailableProps, route: Routes): boolean {
+    const academicsLevel = stats[StatsNames.Academics].levels[5].value;
+    const previousLink = props.previousDay!.links[this.linkName];
+    const isNewLevel = this.isNewLevel(previousLink);
+    const isRomance =
+      previousLink.level === 6 || previousLink.romance === route;
+    const days = [
+      DaysNames.monday,
+      DaysNames.tuesday,
+      DaysNames.wednesday,
+      DaysNames.thursday,
+      DaysNames.saturday,
+    ];
+
+    return (
+      props.currentDay.date.getTime() >= new Date(2009, 10, 21).getTime() &&
+      props.previousDay!.stats[StatsNames.Academics] >= academicsLevel &&
+      days.includes(props.currentDay.date.getDay()) &&
+      !props.currentDay.isDayOff &&
+      props.time === Times.Day &&
+      !props.currentDay.exams &&
+      isNewLevel &&
+      isRomance
+    );
+  }
+}
+
+export const Empress = new EmpressSocialLink(
   SocialLinkNames.Empress,
   { name: "Mitsuru Kirijo", place: "Faculty Office Entrance" },
   {

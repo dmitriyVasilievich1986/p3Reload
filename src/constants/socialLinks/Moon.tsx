@@ -1,9 +1,35 @@
+import { SocialLinkAvailableProps, SocialLinkNames, Routes } from "./types";
 import { QuestionsWrapper, Question, Answer } from "@/components";
 import { createBondObject, LinkMaxedObject } from "./GenericCard";
 import { SocialLink, mainCharName } from "./baseFunctions";
-import { SocialLinkNames, Routes } from "./types";
+import { StatsNames, stats } from "@/constants/stats";
+import { Times } from "@/constants/events/types";
 
-export const Moon = new SocialLink(
+class MoonSocialLink extends SocialLink {
+  isInvitationAvailable(): boolean {
+    return false;
+  }
+
+  isLinkAvailable(props: SocialLinkAvailableProps): boolean {
+    const previousLink = props.previousDay!.links[this.linkName];
+    const charmLevel = stats[StatsNames.Charm].levels[1].value;
+    const isNewLevel = this.isNewLevel(previousLink);
+    const firstLevel =
+      props.currentDay.links[SocialLinkNames.Moon].level !== 0 ||
+      !props.currentDay.isDayOff;
+
+    return (
+      props.currentDay.date.getTime() >= new Date(2009, 3, 28).getTime() &&
+      props.previousDay!.links[SocialLinkNames.Magician].level >= 3 &&
+      props.previousDay!.stats[StatsNames.Charm] >= charmLevel &&
+      props.time === Times.Day &&
+      firstLevel &&
+      isNewLevel
+    );
+  }
+}
+
+export const Moon = new MoonSocialLink(
   SocialLinkNames.Moon,
   { name: "Nozomi Suemitsu", place: "Paulownia Mall" },
   {

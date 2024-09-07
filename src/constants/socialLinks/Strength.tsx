@@ -1,9 +1,63 @@
 import { QuestionsWrapper, Question, Answer } from "@/components";
 import { createBondObject, LinkMaxedObject } from "./GenericCard";
 import { SocialLink, mainCharName } from "./baseFunctions";
-import { SocialLinkNames, Routes } from "./types";
+import { DaysNames } from "@/constants/monthsNames";
+import { Times } from "@/constants/events/types";
 
-export const Strength = new SocialLink(
+import {
+  SocialLinkAvailableProps,
+  InvitationsType,
+  SocialLinkNames,
+  Routes,
+} from "./types";
+
+class StrengthSocialLink extends SocialLink {
+  isInvitationAvailable(
+    props: SocialLinkAvailableProps,
+    route: Routes
+  ): boolean {
+    const dates = [
+      new Date(2009, 4, 31).getTime(),
+      new Date(2009, 6, 5).getTime(),
+      new Date(2009, 7, 4).getTime(),
+      new Date(2009, 7, 26).getTime(),
+      new Date(2009, 8, 22).getTime(),
+      new Date(2009, 9, 25).getTime(),
+      new Date(2009, 10, 15).getTime(),
+      new Date(2010, 0, 6).getTime(),
+      new Date(2010, 0, 17).getTime(),
+    ];
+    const invitations = this.invitations as InvitationsType;
+
+    return (
+      props.currentDay.links[this.linkName].level in invitations &&
+      props.previousDay!.links[this.linkName].romance === route &&
+      dates.includes(props.currentDay.date.getTime()) &&
+      props.time === Times.Day
+    );
+  }
+
+  isLinkAvailable(props: SocialLinkAvailableProps, route: Routes): boolean {
+    const previousLink = props.previousDay!.links[this.linkName];
+    const isNewLevel = this.isNewLevel(previousLink);
+    const isRomance =
+      previousLink.level === 2 || previousLink.romance === route;
+    const days = [DaysNames.wednesday, DaysNames.saturday];
+
+    return (
+      props.currentDay.date.getTime() >= new Date(2009, 3, 24).getTime() &&
+      props.previousDay!.links[SocialLinkNames.Chariot].level >= 2 &&
+      days.includes(props.currentDay.date.getDay()) &&
+      !props.currentDay.isDayOff &&
+      props.time === Times.Day &&
+      !props.currentDay.exams &&
+      isNewLevel &&
+      isRomance
+    );
+  }
+}
+
+export const Strength = new StrengthSocialLink(
   SocialLinkNames.Strength,
   { name: "Yuko Nishiwaki", place: "2F Classroom Hallway" },
   {
@@ -353,9 +407,23 @@ export const Strength = new SocialLink(
           <Answer label="It's pretty slick." points={30} />
         </Question>
       ),
+      [Routes.Romantic]: (
+        <Question label="Take me, for example. How's my outfit?">
+          <Answer label="It's cute on you." />
+          <Answer label="You look mature." />
+          <Answer label="It's pretty slick." points={30} />
+        </Question>
+      ),
     },
     3: {
       [Routes.Platonic]: (
+        <Question label="What!? No way! That's such bull! This has to be rigged or something!">
+          <Answer label="Let's just calm down first." points={30} />
+          <Answer label="Man, you suck." />
+          <Answer label="Want me to give it a shot?" />
+        </Question>
+      ),
+      [Routes.Romantic]: (
         <Question label="What!? No way! That's such bull! This has to be rigged or something!">
           <Answer label="Let's just calm down first." points={30} />
           <Answer label="Man, you suck." />
@@ -371,9 +439,21 @@ export const Strength = new SocialLink(
           <Answer label="You're very responsible." points={30} />
         </Question>
       ),
+      [Routes.Romantic]: (
+        <Question label="Sure, I'm team manager and all, but I dunno if I'm ready to be a coach... What do you think?">
+          <Answer label="You were a bit hasty." />
+          <Answer label="You're too nice." />
+          <Answer label="You're very responsible." points={30} />
+        </Question>
+      ),
     },
     5: {
       [Routes.Platonic]: (
+        <Question label="I wonder what I'll be doing then...">
+          <Answer label="Studying for entrance exams." points={30} />
+        </Question>
+      ),
+      [Routes.Romantic]: (
         <Question label="I wonder what I'll be doing then...">
           <Answer label="Studying for entrance exams." points={30} />
         </Question>
@@ -385,9 +465,19 @@ export const Strength = new SocialLink(
           <Answer label="You'll find something." points={30} />
         </Question>
       ),
+      [Routes.Romantic]: (
+        <Question label="I'm a little envious... since I don't really have anything I'm passionate about.">
+          <Answer label="You'll find something." points={30} />
+        </Question>
+      ),
     },
     7: {
       [Routes.Platonic]: (
+        <Question label="You still have some time, right? What do you wanna do now?">
+          <Answer label="Let's go to a café." points={30} />
+        </Question>
+      ),
+      [Routes.Romantic]: (
         <Question label="You still have some time, right? What do you wanna do now?">
           <Answer label="Let's go to a café." points={30} />
         </Question>

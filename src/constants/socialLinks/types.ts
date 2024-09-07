@@ -1,6 +1,14 @@
+import { upgradeResponse, Times } from "../events/types";
+import { SingleDay } from "../calendar/SingleDay";
 import React from "react";
 
 export enum SocialLinkNames {
+  Sanada = "Sanada",
+  Koromaru = "Koromaru",
+  Amada = "Amada",
+  Mochizuki = "Mochizuki",
+  Iori = "Iori",
+  Aragaki = "Aragaki",
   Aeon = "Aeon",
   Chariot = "Chariot",
   Devil = "Devil",
@@ -22,6 +30,14 @@ export enum SocialLinkNames {
   Temperance = "Temperance",
   Tower = "Tower",
   Death = "Death",
+}
+
+export enum LabelHeadPrefixes {
+  Shrine = " (Naganaki shrine)",
+  Invitation = " (Invitation)",
+  SpendTime = " (Spend time)",
+  Romance = " (Romance)",
+  Default = "",
 }
 
 export enum Routes {
@@ -63,5 +79,32 @@ export type LevelsType = {
 
 export type LinkDetailsType = {
   name: string;
-  place: string;
+  place?: string;
+};
+
+export type SocialLinkAvailableProps = {
+  previousDay?: SingleDay;
+  currentDay: SingleDay;
+  time: Times;
+};
+
+export type SocialLinkElementProps = SocialLinkAvailableProps & {
+  fullCard?: boolean;
+};
+
+export type SocialLinkType = {
+  invitations?: InvitationsType;
+  linkDetails: LinkDetailsType;
+  linkName: SocialLinkNames;
+  levels: LevelsType;
+  maxLevel: number;
+
+  element(props: SocialLinkElementProps): React.ReactNode;
+  getLevel(props: SocialLinkStats): SocialLinkLevel;
+  isNewLevel(thisLink: SocialLinkStats): boolean;
+  calculate(
+    props: SocialLinkAvailableProps & {
+      previousWeek?: SingleDay;
+    }
+  ): upgradeResponse;
 };
