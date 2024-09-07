@@ -9,12 +9,9 @@ import { Input } from "../input";
 import React from "react";
 
 import {
-  AkihikoSanadaEpisodesNames,
   statsEventsAcademicsNames,
-  JunpeiIoriEpisodesNames,
   statsEventsCourageNames,
   statsEventsCharmNames,
-  KoromaruEpisodesNames,
   SpecialEventsNames,
   pcProgramsNames,
   allEventsNames,
@@ -138,20 +135,10 @@ function Modal(props: {
             filter={filter}
           />
           <EventsList
-            events={availableEvents.filter(
-              (e) =>
-                (
-                  Object.values(AkihikoSanadaEpisodesNames) as Array<string>
-                ).includes(e.name) ||
-                (
-                  Object.values(JunpeiIoriEpisodesNames) as Array<string>
-                ).includes(e.name) ||
-                (
-                  Object.values(KoromaruEpisodesNames) as Array<string>
-                ).includes(e.name) ||
-                (Object.values(SpecialEventsNames) as Array<string>).includes(
-                  e.name
-                )
+            events={availableEvents.filter((e) =>
+              (Object.values(SpecialEventsNames) as Array<string>).includes(
+                e.name
+              )
             )}
             previousDay={previousDay}
             onClick={updateCalendar}
