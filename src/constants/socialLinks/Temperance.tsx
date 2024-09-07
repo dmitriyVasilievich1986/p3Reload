@@ -1,9 +1,59 @@
 import { QuestionsWrapper, Question, Answer } from "@/components";
 import { createBondObject, LinkMaxedObject } from "./GenericCard";
 import { SocialLink, mainCharName } from "./baseFunctions";
-import { SocialLinkNames, Routes } from "./types";
+import { StatsNames, stats } from "@/constants/stats";
+import { DaysNames } from "@/constants/monthsNames";
+import { Times } from "@/constants/events/types";
 
-export const Temperance = new SocialLink(
+import {
+  SocialLinkAvailableProps,
+  InvitationsType,
+  SocialLinkNames,
+  Routes,
+} from "./types";
+
+class TemperanceSocialLink extends SocialLink {
+  isInvitationAvailable(props: SocialLinkAvailableProps): boolean {
+    const dates = [
+      new Date(2009, 5, 7).getTime(),
+      new Date(2009, 5, 21).getTime(),
+      new Date(2009, 6, 26).getTime(),
+      new Date(2009, 7, 7).getTime(),
+      new Date(2009, 7, 27).getTime(),
+      new Date(2009, 8, 27).getTime(),
+      new Date(2009, 10, 8).getTime(),
+      new Date(2009, 10, 29).getTime(),
+      new Date(2010, 0, 5).getTime(),
+    ];
+    const invitations = this.invitations as InvitationsType;
+
+    return (
+      props.currentDay.links[this.linkName].level in invitations &&
+      dates.includes(props.currentDay.date.getTime()) &&
+      props.time === Times.Day
+    );
+  }
+
+  isLinkAvailable(props: SocialLinkAvailableProps): boolean {
+    const academicsLevel = stats[StatsNames.Academics].levels[1].value;
+    const previousLink = props.previousDay!.links[this.linkName];
+    const isNewLevel = this.isNewLevel(previousLink);
+    const days = [DaysNames.tuesday, DaysNames.wednesday, DaysNames.friday];
+
+    return (
+      props.currentDay.date.getTime() >= new Date(2009, 4, 8).getTime() &&
+      props.previousDay!.stats[StatsNames.Academics] >= academicsLevel &&
+      props.previousDay!.links[SocialLinkNames.Hierophant].level >= 3 &&
+      days.includes(props.currentDay.date.getDay()) &&
+      !props.currentDay.isDayOff &&
+      props.time === Times.Day &&
+      !props.currentDay.exams &&
+      isNewLevel
+    );
+  }
+}
+
+export const Temperance = new TemperanceSocialLink(
   SocialLinkNames.Temperance,
   { name: 'André Laurent Jean "Bebe" Geraux', place: "2F Classroom Hallway" },
   {

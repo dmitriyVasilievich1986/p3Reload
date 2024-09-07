@@ -6,7 +6,6 @@ import { StatsNames } from "@/constants/stats";
 import { SingleDay } from "./SingleDay";
 
 import {
-  AkihikoSanadaEpisodesNames,
   statsEventsAcademicsNames,
   statsEventsCharmNames,
   SpecialEventsNames,
@@ -125,7 +124,7 @@ export const december: SingleDay[] = [
     activities: [
       events[statsEventsAcademicsNames.stayAwakeInClass],
       events[SpecialEventsNames.DoNothing],
-      events[AkihikoSanadaEpisodesNames.AkihikoSanada4],
+      events[SocialLinkNames.Sanada],
     ],
   }),
   new SingleDay({

@@ -6,11 +6,8 @@ import { StatsNames } from "@/constants/stats";
 import { SingleDay } from "./SingleDay";
 
 import {
-  AkihikoSanadaEpisodesNames,
   statsEventsAcademicsNames,
   statsEventsCharmNames,
-  KoromaruEpisodesNames,
-  socialLinkShrineNames,
   SpecialEventsNames,
 } from "@/constants/events/types";
 
@@ -33,7 +30,7 @@ export const october: SingleDay[] = [
     date: new Date(2009, 9, 3),
     activities: [
       events[statsEventsAcademicsNames.stayAwakeInClass],
-      events[socialLinkShrineNames.LoversShrineTime],
+      events[SocialLinkNames.Lovers],
       { ...events[SpecialEventsNames.DoNothing], time: Times.Evening },
     ],
   }),
@@ -67,7 +64,7 @@ export const october: SingleDay[] = [
     date: new Date(2009, 9, 6),
     exams: true,
     activities: [
-      events[KoromaruEpisodesNames.Koromaru4],
+      events[SocialLinkNames.Koromaru],
       { ...events[SpecialEventsNames.DoNothing], time: Times.Evening },
       events[SocialLinkNames.Death],
     ],
@@ -94,7 +91,7 @@ export const october: SingleDay[] = [
     date: new Date(2009, 9, 8),
     exams: true,
     activities: [
-      events[socialLinkShrineNames.ChariotShrineTime],
+      events[SocialLinkNames.Chariot],
       { ...events[SpecialEventsNames.DoNothing], time: Times.Evening },
     ],
   }),
@@ -139,7 +136,7 @@ export const october: SingleDay[] = [
     isDayOff: true,
     exams: true,
     activities: [
-      events[socialLinkShrineNames.PriestessShrineTime],
+      events[SocialLinkNames.Priestess],
       { ...events[SpecialEventsNames.DoNothing], time: Times.Evening },
     ],
   }),
@@ -289,7 +286,7 @@ export const october: SingleDay[] = [
         },
       },
       events[SocialLinkNames.Lovers],
-      events[AkihikoSanadaEpisodesNames.AkihikoSanada3],
+      events[SocialLinkNames.Sanada],
     ],
   }),
   new SingleDay({
@@ -302,7 +299,7 @@ export const october: SingleDay[] = [
   new SingleDay({
     date: new Date(2009, 9, 21),
     activities: [
-      events[socialLinkShrineNames.StrengthShrineTime],
+      events[SocialLinkNames.Strength],
       { ...events[SpecialEventsNames.DoNothing], time: Times.Evening },
     ],
   }),

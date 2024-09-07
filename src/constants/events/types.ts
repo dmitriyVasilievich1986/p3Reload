@@ -1,6 +1,12 @@
-import { SocialLinksStatsArray, SocialLinkNames } from "../socialLinks/types";
 import { SingleDay } from "../calendar/SingleDay";
 import { CharStats } from "../stats/types";
+
+import {
+  SocialLinkAvailableProps,
+  SocialLinkElementProps,
+  SocialLinksStatsArray,
+  SocialLinkNames,
+} from "../socialLinks/types";
 
 export enum Categories {
   Invitation = "Invitation",
@@ -37,56 +43,6 @@ export enum pcProgramsNames {
   lobbyPCAnimalOthello = 'Lobby PC ("Animal Othello")',
   lobbyPCVirtualDiet = 'Lobby PC ("Virtual Diet")',
   lobbyPCTypinGhoul = 'Lobby PC ("Typin Ghoul")',
-}
-
-export enum JunpeiIoriEpisodesNames {
-  JunpeiIori1 = "Junpei Iori (Episode 1)",
-  JunpeiIori2 = "Junpei Iori (Episode 2)",
-  JunpeiIori3 = "Junpei Iori (Episode 3)",
-  JunpeiIori35 = "Junpei Iori (Episode 3 extra)",
-  JunpeiIori4 = "Junpei Iori (Episode 4)",
-  JunpeiIori5 = "Junpei Iori (Episode 5)",
-}
-
-export enum ShinjiroAragakiEpisodesNames {
-  ShinjiroAragaki1 = "Shinjiro Aragaki (Episode 1)",
-  ShinjiroAragaki2 = "Shinjiro Aragaki (Episode 2)",
-  ShinjiroAragaki3 = "Shinjiro Aragaki (Episode 3)",
-  ShinjiroAragaki35 = "Shinjiro Aragaki (Episode 3 extra)",
-  ShinjiroAragaki4 = "Shinjiro Aragaki (Episode 4)",
-  ShinjiroAragaki5 = "Shinjiro Aragaki (Episode 5)",
-}
-
-export enum AkihikoSanadaEpisodesNames {
-  AkihikoSanada1 = "Akihiko Sanada (Episode 1)",
-  AkihikoSanada2 = "Akihiko Sanada (Episode 2)",
-  AkihikoSanada3 = "Akihiko Sanada (Episode 3)",
-  AkihikoSanada4 = "Akihiko Sanada (Episode 4)",
-  AkihikoSanada5 = "Akihiko Sanada (Episode 5)",
-}
-
-export enum KoromaruEpisodesNames {
-  Koromaru1 = "Koromaru (Episode 1)",
-  Koromaru2 = "Koromaru (Episode 2)",
-  Koromaru3 = "Koromaru (Episode 3)",
-  Koromaru4 = "Koromaru (Episode 4)",
-  Koromaru5 = "Koromaru (Episode 5)",
-}
-
-export enum KenAmadaEpisodesNames {
-  KenAmada1 = "KenAmada (Episode 1)",
-  KenAmada2 = "KenAmada (Episode 2)",
-  KenAmada3 = "KenAmada (Episode 3)",
-  KenAmada4 = "KenAmada (Episode 4)",
-  KenAmada5 = "KenAmada (Episode 5)",
-}
-
-export enum RyojiMochizukiEpisodesNames {
-  RyojiMochizuki1 = "Ryoji Mochizuki (Episode 1)",
-  RyojiMochizuki2 = "Ryoji Mochizuki (Episode 2)",
-  RyojiMochizuki3 = "Ryoji Mochizuki (Episode 3)",
-  RyojiMochizuki4 = "Ryoji Mochizuki (Episode 4)",
-  RyojiMochizuki5 = "Ryoji Mochizuki (Episode 5)",
 }
 
 export enum statsEventsAcademicsNames {
@@ -131,59 +87,14 @@ export enum socialLinkRomanceNames {
   AeonRomance = "Aeon (Romance)",
 }
 
-export enum socialLinkInvitationNames {
-  TemperanceInvitation = "Temperance (Invitation)",
-  PriestessInvitation = "Priestess (Invitation)",
-  MagicianInvitation = "Magician (Invitation)",
-  StrengthInvitation = "Strength (Invitation)",
-  JusticeInvitation = "Justice (Invitation)",
-  ChariotInvitation = "Chariot (Invitation)",
-  FortuneInvitation = "Fortune (Invitation)",
-  EmpressInvitation = "Empress (Invitation)",
-  LoversInvitation = "Lovers (Invitation)",
-}
-
-export enum socialLinkSpendTimeNames {
-  TowerSpendTime = "Tower (Spending Time)",
-}
-
-export enum socialLinkShrineNames {
-  HierophantShrineTime = "Hierophant (Naganaki shrine)",
-  TemperanceShrineTime = "Temperance (Naganaki shrine)",
-  HangedManShrineTime = "Hanged Man (Naganaki shrine)",
-  PriestessShrineTime = "Priestess (Naganaki shrine)",
-  StrengthShrineTime = "Strength (Naganaki shrine)",
-  MagicianShrineTime = "Magician (Naganaki shrine)",
-  EmpressShrineTime = "Empress (Naganaki shrine)",
-  ChariotShrineTime = "Chariot (Naganaki shrine)",
-  EmperorShrineTime = "Emperor (Naganaki shrine)",
-  FortuneShrineTime = "Fortune (Naganaki shrine)",
-  JusticeShrineTime = "Justice (Naganaki shrine)",
-  LoversShrineTime = "Lovers (Naganaki shrine)",
-  HermitShrineTime = "Hermit (Naganaki shrine)",
-  TowerShrineTime = "Tower (Naganaki shrine)",
-  AeonShrineTime = "Aeon (Naganaki shrine)",
-  MoonShrineTime = "Moon (Naganaki shrine)",
-  StarShrineTime = "Star (Naganaki shrine)",
-}
-
 const allNames = {
   ...SpecialEventsNames,
   ...pcProgramsNames,
-  ...JunpeiIoriEpisodesNames,
-  ...AkihikoSanadaEpisodesNames,
-  ...KoromaruEpisodesNames,
-  ...KenAmadaEpisodesNames,
-  ...RyojiMochizukiEpisodesNames,
-  ...ShinjiroAragakiEpisodesNames,
   ...statsEventsAcademicsNames,
   ...statsEventsCharmNames,
   ...statsEventsCourageNames,
   ...SocialLinkNames,
   ...socialLinkRomanceNames,
-  ...socialLinkInvitationNames,
-  ...socialLinkSpendTimeNames,
-  ...socialLinkShrineNames,
 };
 
 export type allEventsNames = (typeof allNames)[keyof typeof allNames];
@@ -195,6 +106,7 @@ export type upgradeResponse = {
 };
 
 export type LabelProps = {
+  previousDay: SingleDay;
   currentDay: SingleDay;
   fullCard?: boolean;
 };
@@ -205,16 +117,11 @@ export type Event = {
   name: allEventsNames;
   category: Categories;
   linkName?: SocialLinkNames;
-  label: (props: LabelProps) => React.ReactNode;
-  upgrade: (props: {
-    previousWeek?: SingleDay;
-    previousDay?: SingleDay;
-    currentDay: SingleDay;
-    time: Times;
-  }) => upgradeResponse;
-  available: (props: {
-    previousDay?: SingleDay;
-    currentDay: SingleDay;
-    time: Times;
-  }) => boolean;
+  label: (props: SocialLinkElementProps) => React.ReactNode;
+  available: (props: SocialLinkAvailableProps) => boolean;
+  upgrade: (
+    props: SocialLinkAvailableProps & {
+      previousWeek?: SingleDay;
+    }
+  ) => upgradeResponse;
 };

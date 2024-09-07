@@ -1,106 +1,100 @@
-import { createBondObject, LinkMaxedObject, CreateBond } from "./GenericCard";
+import { createBondObject, LinkMaxedObject } from "./GenericCard";
 import { QuestionsWrapper, Question, Answer } from "@/components";
-import { CardNeededCalculator } from "./calculationFunctions";
-import { EventCard } from "../../components/eventCard";
-import { SocialLinkNames, Routes } from "./types";
 import { SingleDay } from "../calendar/SingleDay";
 import { SocialLink } from "./baseFunctions";
-import { StatsNames } from "../stats/types";
+import { DaysNames } from "../monthsNames";
+import { Times } from "../events/types";
+import { Strength } from "./Strength";
 
-function chariotStrength() {
-  const payload = QuestionsWrapper({
-    points: 0,
-    element: [
-      <Question label="M-My side is killing me... I might've overdone it a bit.">
-        <Answer label="Don't push yourself." />
-        <Answer label="Toughen up!" points={5} />
-      </Question>,
-      <Question label="You don't even look tired... Uh, what kind of training regimen do you have?">
-        <Answer label="Just a normal routine." />
-        <Answer label="A very special routine." />
-      </Question>,
-      <Question label="Let's get go- Argh!">
-        <Answer label="What's wrong?" />
-        <Answer label="Come on, hurry up." />
-      </Question>,
-    ],
-  });
-  return {
-    ...payload,
-    element: () => (
-      <>
-        {payload.element()}
-        <EventCard
-          place="2F Classroom Hallway"
-          name="Yuko Nishiwaki"
-          head="Strength"
-        >
-          <CreateBond />
-        </EventCard>
-      </>
-    ),
-  };
-}
+import {
+  SocialLinkAvailableProps,
+  SocialLinkElementProps,
+  SocialLinkNames,
+  InvitationsType,
+  Routes,
+} from "./types";
 
 class ChariotSocialLink extends SocialLink {
-  calculate(props: {
-    currentDay: SingleDay;
-    level: number;
-    points: number;
-    maxPoints?: number[];
-    cardMultiplier: number;
-    examMultiplier: number;
-    maxCharmMultiplier: number;
-  }) {
-    const thisLink = props.currentDay.links[this.linkName];
-    const currentLevel = this.getLevel(thisLink);
-    const maxPoints = props.maxPoints || currentLevel.maxPoints;
-    let points = props.points;
+  isInvitationAvailable(props: SocialLinkAvailableProps): boolean {
+    const dates = [
+      new Date(2009, 4, 4).getTime(),
+      new Date(2009, 4, 24).getTime(),
+      new Date(2009, 5, 7).getTime(),
+      new Date(2009, 5, 14).getTime(),
+      new Date(2009, 7, 5).getTime(),
+      new Date(2009, 8, 27).getTime(),
+      new Date(2009, 9, 18).getTime(),
+      new Date(2009, 10, 8).getTime(),
+      new Date(2010, 0, 6).getTime(),
+      new Date(2010, 0, 10).getTime(),
+    ];
+    const invitations = this.invitations as InvitationsType;
 
-    let multiplier = props.examMultiplier;
-    const newLevel = this.getLevel({
-      ...thisLink,
-      level: props.level,
-      romance: thisLink.romance,
-    });
-    if (props.currentDay.stats[StatsNames.Charm] >= 100)
-      multiplier *= props.maxCharmMultiplier;
+    return (
+      props.currentDay.links[this.linkName].level in invitations &&
+      dates.includes(props.currentDay.date.getTime()) &&
+      props.time === Times.Day
+    );
+  }
 
-    const cardNeeded = new CardNeededCalculator({
-      nextLevelPoints: newLevel.points - points,
-      cardMultiplier: props.cardMultiplier,
-      multiplier,
-      maxPoints,
-    });
+  isLinkAvailable(props: SocialLinkAvailableProps): boolean {
+    const previousLink = props.previousDay!.links[this.linkName];
+    const isNewLevel = this.isNewLevel(previousLink);
+    const days = [
+      DaysNames.monday,
+      DaysNames.tuesday,
+      DaysNames.thursday,
+      DaysNames.friday,
+    ];
 
-    if (props.currentDay.arcanes.includes(this.linkName)) {
-      multiplier *= props.cardMultiplier;
-    } else if (cardNeeded.isCardNeeded()) {
-      multiplier *= props.cardMultiplier;
-      props.currentDay.arcanes.push(this.linkName);
+    return (
+      props.currentDay.date.getTime() >= new Date(2009, 3, 23).getTime() &&
+      days.includes(props.currentDay.date.getDay()) &&
+      !props.currentDay.isDayOff &&
+      props.time === Times.Day &&
+      !props.currentDay.exams &&
+      isNewLevel
+    );
+  }
+
+  calculate(
+    props: SocialLinkAvailableProps & {
+      previousWeek?: SingleDay;
     }
-
-    points += CardNeededCalculator.maxPointsSum(maxPoints, multiplier);
-    let strengthLevel = props.currentDay.links[SocialLinkNames.Strength];
-    if (props.level === 2) {
+  ) {
+    const previousLink = props.previousDay!.links[this.linkName];
+    let strengthLevel = props.previousDay!.links[SocialLinkNames.Strength];
+    if (
+      this.isNewLevel(previousLink) &&
+      props.previousDay!.links[this.linkName].level === 1
+    ) {
       strengthLevel = {
         ...props.currentDay.links[SocialLinkNames.Strength],
         points: 0,
         level: 1,
       };
     }
+    const payload = super.calculate(props);
 
     return {
       links: {
-        ...props.currentDay.links,
-        [this.linkName]: {
-          ...thisLink,
-          level: props.level,
-          points,
-        },
-        [SocialLinkNames.Strength]: { ...strengthLevel },
+        ...payload.links,
+        [SocialLinkNames.Strength]: strengthLevel,
       },
     };
+  }
+
+  element(props: SocialLinkElementProps) {
+    if (!props.previousDay) return null;
+
+    return (
+      <div>
+        {super.element(props)}
+        {props.fullCard &&
+          props.currentDay.links[this.linkName].level === 2 &&
+          Strength.element.bind(Strength)(props)}
+      </div>
+    );
   }
 }
 
@@ -111,7 +105,25 @@ export const Chariot = new ChariotSocialLink(
     0: {
       [Routes.Platonic]: createBondObject,
     },
-    1: { [Routes.Platonic]: chariotStrength() },
+    1: {
+      [Routes.Platonic]: QuestionsWrapper({
+        points: 0,
+        element: [
+          <Question label="M-My side is killing me... I might've overdone it a bit.">
+            <Answer label="Don't push yourself." />
+            <Answer label="Toughen up!" points={5} />
+          </Question>,
+          <Question label="You don't even look tired... Uh, what kind of training regimen do you have?">
+            <Answer label="Just a normal routine." />
+            <Answer label="A very special routine." />
+          </Question>,
+          <Question label="Let's get go- Argh!">
+            <Answer label="What's wrong?" />
+            <Answer label="Come on, hurry up." />
+          </Question>,
+        ],
+      }),
+    },
     2: {
       [Routes.Platonic]: QuestionsWrapper({
         points: 0,

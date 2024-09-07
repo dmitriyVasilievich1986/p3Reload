@@ -1,9 +1,64 @@
 import { QuestionsWrapper, Question, Answer } from "@/components";
 import { createBondObject, LinkMaxedObject } from "./GenericCard";
 import { SocialLink, mainCharName } from "./baseFunctions";
-import { SocialLinkNames, Routes } from "./types";
+import { StatsNames, stats } from "@/constants/stats";
+import { DaysNames } from "@/constants/monthsNames";
+import { Times } from "@/constants/events/types";
 
-export const Priestess = new SocialLink(
+import {
+  SocialLinkAvailableProps,
+  InvitationsType,
+  SocialLinkNames,
+  Routes,
+} from "./types";
+
+class PriestessSocialLink extends SocialLink {
+  isInvitationAvailable(
+    props: SocialLinkAvailableProps,
+    route: Routes
+  ): boolean {
+    const dates = [
+      new Date(2009, 5, 28).getTime(),
+      new Date(2009, 7, 4).getTime(),
+      new Date(2009, 8, 13).getTime(),
+      new Date(2009, 10, 15).getTime(),
+      new Date(2010, 0, 5).getTime(),
+      new Date(2010, 0, 17).getTime(),
+      new Date(2010, 0, 24).getTime(),
+    ];
+    const invitations = this.invitations as InvitationsType;
+
+    return (
+      props.currentDay.links[this.linkName].level in invitations &&
+      props.previousDay!.links[this.linkName].romance === route &&
+      dates.includes(props.currentDay.date.getTime()) &&
+      props.time === Times.Day
+    );
+  }
+
+  isLinkAvailable(props: SocialLinkAvailableProps, route: Routes): boolean {
+    const courageLevel = stats[StatsNames.Courage].levels[5].value;
+    const previousLink = props.previousDay!.links[this.linkName];
+    const isNewLevel = this.isNewLevel(previousLink);
+    const isRomance =
+      previousLink.level === 6 || previousLink.romance === route;
+    const days = [DaysNames.monday, DaysNames.friday, DaysNames.saturday];
+
+    return (
+      props.currentDay.date.getTime() >= new Date(2009, 5, 19).getTime() &&
+      props.previousDay!.stats[StatsNames.Courage] >= courageLevel &&
+      props.previousDay!.links[SocialLinkNames.Fortune].level > 0 &&
+      days.includes(props.currentDay.date.getDay()) &&
+      !props.currentDay.isDayOff &&
+      props.time === Times.Day &&
+      !props.currentDay.exams &&
+      isNewLevel &&
+      isRomance
+    );
+  }
+}
+
+export const Priestess = new PriestessSocialLink(
   SocialLinkNames.Priestess,
   { name: "Fuuka Yamagishi", place: "2nd Floor Hallway" },
   {

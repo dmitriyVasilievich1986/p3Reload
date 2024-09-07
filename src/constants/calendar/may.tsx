@@ -7,7 +7,6 @@ import { SingleDay } from "./SingleDay";
 
 import {
   statsEventsAcademicsNames,
-  JunpeiIoriEpisodesNames,
   statsEventsCourageNames,
   statsEventsCharmNames,
   SpecialEventsNames,
@@ -205,7 +204,7 @@ export const may: SingleDay[] = [
     date: new Date(2009, 4, 12),
     exams: true,
     activities: [
-      events[JunpeiIoriEpisodesNames.JunpeiIori1],
+      events[SocialLinkNames.Iori],
       events[pcProgramsNames.lobbyPCAnimalOthello],
     ],
   }),

@@ -1,9 +1,41 @@
+import { SocialLinkAvailableProps, SocialLinkNames, Routes } from "./types";
 import { QuestionsWrapper, Question, Answer } from "@/components";
 import { createBondObject, LinkMaxedObject } from "./GenericCard";
-import { SocialLinkNames, Routes } from "./types";
+import { DaysNames } from "@/constants/monthsNames";
+import { Times } from "@/constants/events/types";
 import { SocialLink } from "./baseFunctions";
 
-export const Hermit = new SocialLink(
+class HermitSocialLink extends SocialLink {
+  isInvitationAvailable(): boolean {
+    return false;
+  }
+
+  isLinkAvailable(props: SocialLinkAvailableProps): boolean {
+    const previousLink = props.previousDay!.links[this.linkName];
+    const isNewLevel = this.isNewLevel(previousLink);
+    const days = [
+      new Date(2009, 3, 29).getTime(),
+      new Date(2009, 4, 4).getTime(),
+      new Date(2009, 4, 5).getTime(),
+      new Date(2009, 8, 21).getTime(),
+      new Date(2009, 8, 22).getTime(),
+      new Date(2009, 8, 23).getTime(),
+      new Date(2009, 9, 12).getTime(),
+    ];
+    const isToday =
+      props.currentDay.date.getDay() === DaysNames.sunday ||
+      days.includes(props.currentDay.date.getTime());
+
+    return (
+      props.currentDay.date.getTime() >= new Date(2009, 3, 29).getTime() &&
+      props.time === Times.Day &&
+      isNewLevel &&
+      isToday
+    );
+  }
+}
+
+export const Hermit = new HermitSocialLink(
   SocialLinkNames.Hermit,
   { name: "Maya", place: "Laptop at the Protagonist's room" },
   {

@@ -56,7 +56,9 @@ function DayEvent(props: DayEventProps) {
     >
       <div className={cx("flex-column")}>
         {props.event.label({
+          previousDay: props.previousDay,
           currentDay: props.currentDay,
+          time: props.event.time,
           fullCard: true,
         })}
       </div>

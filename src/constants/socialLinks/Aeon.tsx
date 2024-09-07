@@ -1,9 +1,40 @@
+import { SocialLinkAvailableProps, SocialLinkNames, Routes } from "./types";
 import { QuestionsWrapper, Question, Answer } from "@/components";
 import { createBondObject, LinkMaxedObject } from "./GenericCard";
-import { SocialLinkNames, Routes } from "./types";
+import { DaysNames } from "@/constants/monthsNames";
+import { Times } from "@/constants/events/types";
 import { SocialLink } from "./baseFunctions";
 
-export const Aeon = new SocialLink(
+class AeonSocialLink extends SocialLink {
+  isInvitationAvailable(): boolean {
+    return false;
+  }
+
+  isLinkAvailable(props: SocialLinkAvailableProps, route: Routes): boolean {
+    const previousLink = props.previousDay!.links[this.linkName];
+    const isNewLevel = this.isNewLevel(previousLink);
+    const isRomance =
+      previousLink.level === 6 || previousLink.romance === route;
+    const days = [
+      DaysNames.monday,
+      DaysNames.tuesday,
+      DaysNames.wednesday,
+      DaysNames.thursday,
+      DaysNames.friday,
+      DaysNames.saturday,
+    ];
+
+    return (
+      props.currentDay.date.getTime() >= new Date(2010, 0, 8).getTime() &&
+      days.includes(props.currentDay.date.getDay()) &&
+      props.time === Times.Day &&
+      isNewLevel &&
+      isRomance
+    );
+  }
+}
+
+export const Aeon = new AeonSocialLink(
   SocialLinkNames.Aeon,
   { name: "Aigis", place: "Classroom 2F" },
   {

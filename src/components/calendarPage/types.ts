@@ -15,9 +15,10 @@ export type UpdateCalendarProps = {
 
 export type DayEventProps = {
   onClick: (time: Times) => void;
+  previousDay: SingleDay;
   currentDay: SingleDay;
   event: Event;
-} & TartarusProps;
+};
 
 export type CalendarProps = {
   setDayConstants: (time: Times) => void;

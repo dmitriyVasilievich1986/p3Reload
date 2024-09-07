@@ -1,9 +1,69 @@
 import { QuestionsWrapper, Question, Answer } from "@/components";
 import { createBondObject, LinkMaxedObject } from "./GenericCard";
 import { SocialLink, mainCharName } from "./baseFunctions";
-import { SocialLinkNames, Routes } from "./types";
+import { StatsNames, stats } from "@/constants/stats";
+import { DaysNames } from "@/constants/monthsNames";
+import { Times } from "@/constants/events/types";
 
-export const Lovers = new SocialLink(
+import {
+  SocialLinkAvailableProps,
+  InvitationsType,
+  SocialLinkNames,
+  Routes,
+} from "./types";
+
+class LoversSocialLink extends SocialLink {
+  isInvitationAvailable(
+    props: SocialLinkAvailableProps,
+    route: Routes
+  ): boolean {
+    const dates = [
+      new Date(2009, 8, 13).getTime(),
+      new Date(2009, 8, 23).getTime(),
+      new Date(2009, 9, 25).getTime(),
+      new Date(2009, 10, 15).getTime(),
+      new Date(2010, 0, 7).getTime(),
+      new Date(2010, 0, 10).getTime(),
+      new Date(2010, 0, 17).getTime(),
+      new Date(2010, 0, 24).getTime(),
+    ];
+    const invitations = this.invitations as InvitationsType;
+
+    return (
+      props.currentDay.links[this.linkName].level in invitations &&
+      props.previousDay!.links[this.linkName].romance === route &&
+      dates.includes(props.currentDay.date.getTime()) &&
+      props.time === Times.Day
+    );
+  }
+
+  isLinkAvailable(props: SocialLinkAvailableProps, route: Routes): boolean {
+    const previousLink = props.previousDay!.links[this.linkName];
+    const charmLevel = stats[StatsNames.Charm].levels[5].value;
+    const isNewLevel = this.isNewLevel(previousLink);
+    const isRomance =
+      previousLink.level === 6 || previousLink.romance === route;
+    const days = [
+      DaysNames.monday,
+      DaysNames.wednesday,
+      DaysNames.thursday,
+      DaysNames.saturday,
+    ];
+
+    return (
+      props.currentDay.date.getTime() >= new Date(2009, 6, 25).getTime() &&
+      props.previousDay!.stats[StatsNames.Charm] >= charmLevel &&
+      days.includes(props.currentDay.date.getDay()) &&
+      !props.currentDay.isDayOff &&
+      props.time === Times.Day &&
+      !props.currentDay.exams &&
+      isNewLevel &&
+      isRomance
+    );
+  }
+}
+
+export const Lovers = new LoversSocialLink(
   SocialLinkNames.Lovers,
   { name: "Yukari Takeba", place: "Classroom 2F" },
   {

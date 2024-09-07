@@ -9,12 +9,9 @@ import { Input } from "../input";
 import React from "react";
 
 import {
-  AkihikoSanadaEpisodesNames,
   statsEventsAcademicsNames,
-  JunpeiIoriEpisodesNames,
   statsEventsCourageNames,
   statsEventsCharmNames,
-  KoromaruEpisodesNames,
   SpecialEventsNames,
   pcProgramsNames,
   allEventsNames,
@@ -130,28 +127,22 @@ function Modal(props: {
         <div className={cx("wrapper")}>
           <EventsList
             events={availableEvents.filter((e) => e.linkName)}
+            previousDay={previousDay}
             onClick={updateCalendar}
+            time={dayConstants.time}
             currentDay={currentDay}
             head="Social Links"
             filter={filter}
           />
           <EventsList
-            events={availableEvents.filter(
-              (e) =>
-                (
-                  Object.values(AkihikoSanadaEpisodesNames) as Array<string>
-                ).includes(e.name) ||
-                (
-                  Object.values(JunpeiIoriEpisodesNames) as Array<string>
-                ).includes(e.name) ||
-                (
-                  Object.values(KoromaruEpisodesNames) as Array<string>
-                ).includes(e.name) ||
-                (Object.values(SpecialEventsNames) as Array<string>).includes(
-                  e.name
-                )
+            events={availableEvents.filter((e) =>
+              (Object.values(SpecialEventsNames) as Array<string>).includes(
+                e.name
+              )
             )}
+            previousDay={previousDay}
             onClick={updateCalendar}
+            time={dayConstants.time}
             currentDay={currentDay}
             filter={filter}
             head="Special"
@@ -169,7 +160,9 @@ function Modal(props: {
                   Object.values(statsEventsCharmNames) as Array<string>
                 ).includes(e.name)
             )}
+            previousDay={previousDay}
             onClick={updateCalendar}
+            time={dayConstants.time}
             currentDay={currentDay}
             filter={filter}
             head="Stats"
@@ -178,7 +171,9 @@ function Modal(props: {
             events={availableEvents.filter((e) =>
               (Object.values(pcProgramsNames) as Array<string>).includes(e.name)
             )}
+            previousDay={previousDay}
             onClick={updateCalendar}
+            time={dayConstants.time}
             currentDay={currentDay}
             filter={filter}
             head="Lobby PC"
