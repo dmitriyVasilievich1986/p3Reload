@@ -5,7 +5,6 @@ import { statsEventsCourage } from "./statsEventsCourage";
 import { JunpeiIoriEpisodes } from "./JunpeiIoriEpisodes";
 import { socialLinksEvents } from "./socialLinksEvents";
 import { statsEventsCharm } from "./statsEventsCharm";
-import { KenAmadaEpisodes } from "./KenAmadaEpisodes";
 import { specialEvents } from "./specialEvents";
 import { pcPrograms } from "./pcPrograms";
 
@@ -19,7 +18,6 @@ const events: { [key in allEventsNames]: Event } = {
   ...statsEventsCourage,
   ...statsEventsCharm,
   ...JunpeiIoriEpisodes,
-  ...KenAmadaEpisodes,
   ...RyojiMochizukiEpisodes,
   ...ShinjiroAragakiEpisodes,
 };

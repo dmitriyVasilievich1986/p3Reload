@@ -12,6 +12,9 @@ export const socialLinksEvents: {
   [SocialLinkNames.Koromaru]: new SocialLinkEvent({
     name: SocialLinkNames.Koromaru,
   }),
+  [SocialLinkNames.Amada]: new SocialLinkEvent({
+    name: SocialLinkNames.Amada,
+  }),
   [SocialLinkNames.Fool]: new SocialLinkEvent({
     name: SocialLinkNames.Fool,
     time: Times.DarkHour,

@@ -20,6 +20,7 @@ import { Hermit } from "./Hermit";
 import { Tower } from "./Tower";
 import { Devil } from "./Devil";
 import { Death } from "./Death";
+import { Amada } from "./Amada";
 import { Aeon } from "./Aeon";
 import { Fool } from "./Fool";
 import { Moon } from "./Moon";
@@ -29,6 +30,7 @@ import { Sun } from "./Sun";
 const socialLinks: { [key in SocialLinkNames]: SocialLink } = {
   [SocialLinkNames.Akihiko]: Akihiko,
   [SocialLinkNames.Koromaru]: Koromaru,
+  [SocialLinkNames.Amada]: Amada,
   [SocialLinkNames.Fool]: Fool,
   [SocialLinkNames.Magician]: Magician,
   [SocialLinkNames.Priestess]: Priestess,
