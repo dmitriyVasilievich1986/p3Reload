@@ -7,7 +7,6 @@ import {
   statsEventsAcademicsNames,
   JunpeiIoriEpisodesNames,
   KoromaruEpisodesNames,
-  socialLinkShrineNames,
   SpecialEventsNames,
 } from "@/constants/events/types";
 
@@ -37,7 +36,7 @@ export const august: SingleDay[] = [
     date: new Date(2009, 7, 3),
     isDayOff: true,
     activities: [
-      events[socialLinkShrineNames.HangedManShrineTime],
+      events[SocialLinkNames.HangedMan],
       {
         ...events[SpecialEventsNames.Tartarus],
         time: Times.Evening,
@@ -213,8 +212,7 @@ export const august: SingleDay[] = [
     date: new Date(2009, 7, 24),
     isDayOff: true,
     activities: [
-      events[socialLinkShrineNames.MoonShrineTime],
-
+      events[SocialLinkNames.Moon],
       events[SpecialEventsNames.DoNothing],
     ],
   }),
@@ -238,7 +236,7 @@ export const august: SingleDay[] = [
     date: new Date(2009, 7, 27),
     isDayOff: true,
     activities: [
-      events[socialLinkShrineNames.HierophantShrineTime],
+      events[SocialLinkNames.Hierophant],
       events[SocialLinkNames.Tower],
     ],
   }),

@@ -16,7 +16,6 @@ import {
   statsEventsCourageNames,
   statsEventsCharmNames,
   SpecialEventsNames,
-  socialLinkShrineNames,
 } from "@/constants/events/types";
 
 export const july: SingleDay[] = [
@@ -439,7 +438,7 @@ export const july: SingleDay[] = [
     date: new Date(2009, 6, 25),
     activities: [
       events[statsEventsAcademicsNames.stayAwakeInClass],
-      events[socialLinkShrineNames.StrengthShrineTime],
+      events[SocialLinkNames.Strength],
       events[SocialLinkNames.Tower],
     ],
   }),

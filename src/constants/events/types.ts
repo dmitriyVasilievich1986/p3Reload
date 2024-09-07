@@ -2,6 +2,7 @@ import { SingleDay } from "../calendar/SingleDay";
 import { CharStats } from "../stats/types";
 
 import {
+  SocialLinkAvailableProps,
   SocialLinkElementProps,
   SocialLinksStatsArray,
   SocialLinkNames,
@@ -136,42 +137,6 @@ export enum socialLinkRomanceNames {
   AeonRomance = "Aeon (Romance)",
 }
 
-export enum socialLinkInvitationNames {
-  TemperanceInvitation = "Temperance (Invitation)",
-  PriestessInvitation = "Priestess (Invitation)",
-  MagicianInvitation = "Magician (Invitation)",
-  StrengthInvitation = "Strength (Invitation)",
-  JusticeInvitation = "Justice (Invitation)",
-  ChariotInvitation = "Chariot (Invitation)",
-  FortuneInvitation = "Fortune (Invitation)",
-  EmpressInvitation = "Empress (Invitation)",
-  LoversInvitation = "Lovers (Invitation)",
-}
-
-export enum socialLinkSpendTimeNames {
-  TowerSpendTime = "Tower (Spending Time)",
-}
-
-export enum socialLinkShrineNames {
-  HierophantShrineTime = "Hierophant (Naganaki shrine)",
-  TemperanceShrineTime = "Temperance (Naganaki shrine)",
-  HangedManShrineTime = "Hanged Man (Naganaki shrine)",
-  PriestessShrineTime = "Priestess (Naganaki shrine)",
-  StrengthShrineTime = "Strength (Naganaki shrine)",
-  MagicianShrineTime = "Magician (Naganaki shrine)",
-  EmpressShrineTime = "Empress (Naganaki shrine)",
-  ChariotShrineTime = "Chariot (Naganaki shrine)",
-  EmperorShrineTime = "Emperor (Naganaki shrine)",
-  FortuneShrineTime = "Fortune (Naganaki shrine)",
-  JusticeShrineTime = "Justice (Naganaki shrine)",
-  LoversShrineTime = "Lovers (Naganaki shrine)",
-  HermitShrineTime = "Hermit (Naganaki shrine)",
-  TowerShrineTime = "Tower (Naganaki shrine)",
-  AeonShrineTime = "Aeon (Naganaki shrine)",
-  MoonShrineTime = "Moon (Naganaki shrine)",
-  StarShrineTime = "Star (Naganaki shrine)",
-}
-
 const allNames = {
   ...SpecialEventsNames,
   ...pcProgramsNames,
@@ -186,9 +151,6 @@ const allNames = {
   ...statsEventsCourageNames,
   ...SocialLinkNames,
   ...socialLinkRomanceNames,
-  ...socialLinkInvitationNames,
-  ...socialLinkSpendTimeNames,
-  ...socialLinkShrineNames,
 };
 
 export type allEventsNames = (typeof allNames)[keyof typeof allNames];
@@ -212,15 +174,10 @@ export type Event = {
   category: Categories;
   linkName?: SocialLinkNames;
   label: (props: SocialLinkElementProps) => React.ReactNode;
-  upgrade: (props: {
-    previousWeek?: SingleDay;
-    previousDay?: SingleDay;
-    currentDay: SingleDay;
-    time: Times;
-  }) => upgradeResponse;
-  available: (props: {
-    previousDay?: SingleDay;
-    currentDay: SingleDay;
-    time: Times;
-  }) => boolean;
+  available: (props: SocialLinkAvailableProps) => boolean;
+  upgrade: (
+    props: SocialLinkAvailableProps & {
+      previousWeek?: SingleDay;
+    }
+  ) => upgradeResponse;
 };
