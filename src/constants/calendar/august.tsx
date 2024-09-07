@@ -6,7 +6,6 @@ import { SingleDay } from "./SingleDay";
 import {
   statsEventsAcademicsNames,
   JunpeiIoriEpisodesNames,
-  KoromaruEpisodesNames,
   SpecialEventsNames,
 } from "@/constants/events/types";
 
@@ -220,7 +219,7 @@ export const august: SingleDay[] = [
     date: new Date(2009, 7, 25),
     isDayOff: true,
     activities: [
-      events[KoromaruEpisodesNames.Koromaru1],
+      events[SocialLinkNames.Koromaru],
       events[SocialLinkNames.Devil],
     ],
   }),

@@ -63,14 +63,6 @@ export enum ShinjiroAragakiEpisodesNames {
   ShinjiroAragaki5 = "Shinjiro Aragaki (Episode 5)",
 }
 
-export enum KoromaruEpisodesNames {
-  Koromaru1 = "Koromaru (Episode 1)",
-  Koromaru2 = "Koromaru (Episode 2)",
-  Koromaru3 = "Koromaru (Episode 3)",
-  Koromaru4 = "Koromaru (Episode 4)",
-  Koromaru5 = "Koromaru (Episode 5)",
-}
-
 export enum KenAmadaEpisodesNames {
   KenAmada1 = "KenAmada (Episode 1)",
   KenAmada2 = "KenAmada (Episode 2)",
@@ -133,7 +125,6 @@ const allNames = {
   ...SpecialEventsNames,
   ...pcProgramsNames,
   ...JunpeiIoriEpisodesNames,
-  ...KoromaruEpisodesNames,
   ...KenAmadaEpisodesNames,
   ...RyojiMochizukiEpisodesNames,
   ...ShinjiroAragakiEpisodesNames,

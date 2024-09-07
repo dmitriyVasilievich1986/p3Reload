@@ -4,6 +4,7 @@ import React from "react";
 
 export enum SocialLinkNames {
   Akihiko = "Akihiko",
+  Koromaru = "Koromaru",
   Aeon = "Aeon",
   Chariot = "Chariot",
   Devil = "Devil",
