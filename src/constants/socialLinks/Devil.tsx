@@ -1,14 +1,9 @@
 import { SocialLinkAvailableProps, SocialLinkNames, Routes } from "./types";
+import { createBondObject, ChooseAnyObject } from "./GenericCard";
 import { SocialLinkAlwaysLevelUp } from "./baseFunctions";
 import { StatsNames, stats } from "@/constants/stats";
 import { DaysNames } from "@/constants/monthsNames";
 import { Times } from "@/constants/events/types";
-
-import {
-  createBondObject,
-  ChooseAnyObject,
-  LinkMaxedObject,
-} from "./GenericCard";
 
 class DevilSocialLink extends SocialLinkAlwaysLevelUp {
   isLinkAvailable(props: SocialLinkAvailableProps): boolean {
@@ -35,11 +30,8 @@ export const Devil = new DevilSocialLink(
     0: {
       [Routes.Platonic]: createBondObject,
     },
-    1: {
-      [Routes.Platonic]: ChooseAnyObject,
-    },
     10: {
-      [Routes.Platonic]: LinkMaxedObject,
+      [Routes.Platonic]: ChooseAnyObject,
     },
   }
 );

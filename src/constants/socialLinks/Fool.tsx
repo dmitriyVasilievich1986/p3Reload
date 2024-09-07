@@ -1,12 +1,7 @@
 import { SocialLinkAvailableProps, SocialLinkNames, Routes } from "./types";
+import { AutomaticLevelUpObject, createBondObject } from "./GenericCard";
 import { SingleDay } from "@/constants/calendar/SingleDay";
 import { SocialLinkAlwaysLevelUp } from "./baseFunctions";
-
-import {
-  AutomaticLevelUpObject,
-  createBondObject,
-  LinkMaxedObject,
-} from "./GenericCard";
 
 class SocialLinkFool extends SocialLinkAlwaysLevelUp {
   calculate(
@@ -43,11 +38,8 @@ export const Fool = new SocialLinkFool(
     0: {
       [Routes.Platonic]: createBondObject,
     },
-    1: {
-      [Routes.Platonic]: AutomaticLevelUpObject,
-    },
     10: {
-      [Routes.Platonic]: LinkMaxedObject,
+      [Routes.Platonic]: AutomaticLevelUpObject,
     },
   }
 );

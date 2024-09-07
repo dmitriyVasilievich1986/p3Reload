@@ -223,7 +223,7 @@ export abstract class SocialLink implements SocialLinkType {
 export abstract class SocialLinkAlwaysLevelUp extends SocialLink {
   getLevel({ level }: SocialLinkStats) {
     if (level === 0) return this.levels[0].Platonic as SocialLinkLevel;
-    return this.levels[1].Platonic as SocialLinkLevel;
+    return this.levels[10].Platonic as SocialLinkLevel;
   }
 
   isInvitationAvailable(
