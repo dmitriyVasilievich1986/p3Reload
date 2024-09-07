@@ -271,3 +271,49 @@ export abstract class SocialLinkAlwaysLevelUp extends SocialLink {
     );
   }
 }
+
+export abstract class SocialLinkEpisodes extends SocialLink {
+  getLevel() {
+    return this.levels[5][Routes.Platonic] as SocialLinkLevel;
+  }
+
+  isInvitationAvailable() {
+    return false;
+  }
+
+  isShrineAvailable() {
+    return false;
+  }
+
+  calculate(
+    props: SocialLinkAvailableProps & {
+      previousWeek?: SingleDay;
+    }
+  ) {
+    const previousLink = props.previousDay!.links[this.linkName];
+
+    return {
+      links: {
+        ...props.previousDay!.links,
+        [this.linkName]: { ...previousLink, level: previousLink.level + 1 },
+      },
+    };
+  }
+
+  element(props: SocialLinkElementProps) {
+    if (!props.previousDay) return null;
+
+    return (
+      <div>
+        <EventCard
+          head={`${this.linkName} (Episode)`}
+          name={this.linkDetails.name}
+        />
+        {props.fullCard &&
+          this.getLevel().element({
+            key: this.linkName,
+          })}
+      </div>
+    );
+  }
+}
