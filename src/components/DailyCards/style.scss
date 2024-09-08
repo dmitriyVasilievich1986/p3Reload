@@ -19,29 +19,33 @@
     flex-direction: column;
     display: flex;
     gap: 10px;
+}
 
-    &>.date {
-        align-items: center;
-        color: inherit;
-        display: flex;
-        gap: 10px;
+.date {
+    align-items: center;
+    color: inherit;
+    display: flex;
+    gap: 10px;
 
-        &.exams {
-            color: #390099;
-        }
-        
-        &.isDayOff {
-            color: #9d0208;
-        }
-        
-        &.foolMoon {
-            color: #ff9f1c;
-        }
+    &.exams {
+        color: #390099;
+    }
+    
+    &.isDayOff {
+        color: #9d0208;
+    }
+    
+    &.foolMoon {
+        color: #ff9f1c;
+    }
+    
+    &.clickable {
+        cursor: pointer;
+    }
 
-        & img {
-            height: 35px;
-            width: 35px;
-        }
+    & img {
+        height: 35px;
+        width: 35px;
     }
 }
 
@@ -93,4 +97,9 @@
             font-weight: bold;
         }
     }
+}
+
+.full-moon-tooltip {
+    text-align: center;
+    width: 70px;
 }
