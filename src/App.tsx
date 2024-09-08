@@ -1,5 +1,5 @@
+import { CalendarPage, SingleDayPage, LeftBar } from "@/components";
 import { DayConstants } from "@/components/modalWindow/types";
-import { CalendarPage, LeftBar } from "@/components";
 import { Routes, Route } from "react-router-dom";
 import { SingleDay } from "@/constants/calendar";
 import React from "react";
@@ -24,7 +24,7 @@ function App() {
       <LeftBar />
       <Routes>
         <Route
-          path="/"
+          path="scroll/"
           element={
             <CalendarPage
               setDayConstants={setDayConstants}
@@ -32,6 +32,12 @@ function App() {
               setCalendar={setCalendar}
               calendar={calendar}
             />
+          }
+        />
+        <Route
+          path="/"
+          element={
+            <SingleDayPage calendar={calendar} setCalendar={setCalendar} />
           }
         />
       </Routes>
