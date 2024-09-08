@@ -1,11 +1,11 @@
 import { MonthNames, DaysNamesIndex } from "@/constants/monthsNames";
 import { SingleDay } from "@/constants/calendar/SingleDay";
 
+import { FullMoonIcon } from "@/components/icons";
 import { Tooltip } from "@/components/tootlip";
 
 import classnames from "classnames/bind";
 import * as style from "./style.scss";
-import moonIcon from "./moon.png";
 
 const cx = classnames.bind(style);
 
@@ -34,7 +34,7 @@ export function CurrentDate({
     >
       <h1>{`${month} ${day} (${dayName})`}</h1>
       <Tooltip tooltip={<FoolMoonTooltip />} position="bottom">
-        {!!currentDay.foolMoon && <img src={moonIcon} />}
+        {!!currentDay.foolMoon && <FullMoonIcon />}
       </Tooltip>
     </div>
   );

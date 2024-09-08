@@ -1,0 +1,76 @@
+import * as style from "./style.scss";
+import filterIcon from "./filter.png";
+import searchIcon from "./search.png";
+import charmIcon from "./charm.png";
+import tarotIcon from "./tarot.png";
+import trashIcon from "./trash.png";
+import moonIcon from "./moon.png";
+import bookIcon from "./book.png";
+import React from "react";
+
+import classnames from "classnames/bind";
+
+const cx = classnames.bind(style);
+
+type IconProps = {
+  onClick?: () => void;
+  clickable?: boolean;
+  className?: string;
+};
+
+abstract class Icon extends React.Component<IconProps> {
+  onClick?: () => void;
+  clickable?: boolean;
+  className: string;
+
+  abstract iconPath: string;
+
+  constructor(props: IconProps) {
+    super(props);
+    this.onClick = props.onClick;
+    this.clickable = props.clickable;
+    this.className = props.className ?? "";
+
+    this.render = this.render.bind(this);
+  }
+
+  render() {
+    return (
+      <img
+        src={this.iconPath}
+        onClick={this.onClick}
+        className={cx("standard-icon", this.className, {
+          clickable: this.clickable || this?.onClick !== undefined,
+        })}
+      />
+    );
+  }
+}
+
+export class FullMoonIcon extends Icon {
+  iconPath: string = moonIcon;
+}
+
+export class BookIcon extends Icon {
+  iconPath: string = bookIcon;
+}
+
+export class TarotIcon extends Icon {
+  iconPath: string = tarotIcon;
+}
+
+export class CharmIcon extends Icon {
+  iconPath: string = charmIcon;
+}
+
+export class FilterIcon extends Icon {
+  iconPath: string = filterIcon;
+}
+
+export class SearchIcon extends Icon {
+  iconPath: string = searchIcon;
+}
+
+export class TrashIcon extends Icon {
+  iconPath: string = trashIcon;
+}
