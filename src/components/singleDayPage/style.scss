@@ -66,8 +66,10 @@
     width: 100%;
 
     &>.date-navigation-left, .date-navigation-right {
+        align-items: center;
         display: flex;
         width: 50%;
+        gap: 10px;
     }
 
     &>.date-navigation-left {

@@ -1,3 +1,4 @@
+import leftArrowIcon from "./left-arrow.png";
 import * as style from "./style.scss";
 import filterIcon from "./filter.png";
 import searchIcon from "./search.png";
@@ -87,4 +88,13 @@ export class SearchIcon extends Icon {
 
 export class TrashIcon extends Icon {
   iconPath: string = trashIcon;
+}
+
+export class LeftArrowIcon extends Icon {
+  iconPath: string = leftArrowIcon;
+}
+
+export class RightArrowIcon extends Icon {
+  iconPath: string = leftArrowIcon;
+  reversed: boolean = true;
 }

@@ -1,4 +1,6 @@
 import {
+  RightArrowIcon,
+  LeftArrowIcon,
   FullMoonIcon,
   SearchIcon,
   FilterIcon,
@@ -9,6 +11,8 @@ import {
 } from "./Icons";
 
 export {
+  RightArrowIcon,
+  LeftArrowIcon,
   FullMoonIcon,
   SearchIcon,
   FilterIcon,
