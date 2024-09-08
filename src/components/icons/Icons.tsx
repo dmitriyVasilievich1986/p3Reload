@@ -13,12 +13,17 @@ import classnames from "classnames/bind";
 const cx = classnames.bind(style);
 
 type IconProps = {
+  size?: "small" | "medium" | "large";
   onClick?: () => void;
   clickable?: boolean;
+  reversed?: boolean;
   className?: string;
 };
 
 abstract class Icon extends React.Component<IconProps> {
+  reversed: boolean = false;
+
+  size?: "small" | "medium" | "large";
   onClick?: () => void;
   clickable?: boolean;
   className: string;
@@ -27,9 +32,11 @@ abstract class Icon extends React.Component<IconProps> {
 
   constructor(props: IconProps) {
     super(props);
+    this.size = props.size;
     this.onClick = props.onClick;
     this.clickable = props.clickable;
     this.className = props.className ?? "";
+    this.reversed = props.reversed || this.reversed;
 
     this.render = this.render.bind(this);
   }
@@ -39,9 +46,16 @@ abstract class Icon extends React.Component<IconProps> {
       <img
         src={this.iconPath}
         onClick={this.onClick}
-        className={cx("standard-icon", this.className, {
-          clickable: this.clickable || this?.onClick !== undefined,
-        })}
+        className={cx(
+          "standard-icon",
+          this.className,
+
+          this.size,
+          {
+            clickable: this.clickable || this?.onClick !== undefined,
+            reversed: this.reversed,
+          }
+        )}
       />
     );
   }

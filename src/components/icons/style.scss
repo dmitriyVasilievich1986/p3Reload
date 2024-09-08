@@ -2,4 +2,23 @@
     &.clickable {
         cursor: pointer;
     }
+
+    &.small {
+        height: 15px;
+        width: 15px;
+    }
+    
+    &.medium {
+        height: 25px;
+        width: 25px;
+    }
+    
+    &.large {
+        height: 35px;
+        width: 35px;
+    }
+
+    &.reversed {
+        transform: rotate(180deg);
+    }
 }
