@@ -60,3 +60,20 @@
     width: 100%;
     gap: 10px;
 }
+
+.date-navigation {
+    display: flex;
+    width: 100%;
+
+    &>.date-navigation-left, .date-navigation-right {
+        display: flex;
+        width: 50%;
+    }
+
+    &>.date-navigation-left {
+        justify-content: flex-start;
+    }
+    &>.date-navigation-right {
+        justify-content: flex-end;
+    }
+}

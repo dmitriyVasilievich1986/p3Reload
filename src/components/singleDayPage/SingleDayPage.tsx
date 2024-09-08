@@ -1,14 +1,11 @@
 import { getCalculatedCalendar, SingleDay } from "@/constants/calendar";
 import { Event, Times } from "@/constants/events/types";
 
+import { SocialLinksStats, HeroStats } from "@/components/DailyCards";
 import { dayIndexParams } from "@/components/supportComponents";
-import {
-  SocialLinksStats,
-  ActivitesList,
-  HeroStats,
-} from "@/components/DailyCards";
 
 import { AvailableTimes } from "./types";
+import { CenterTab } from "./CenterTab";
 import { RightTab } from "./RightTab";
 import * as style from "./style.scss";
 
@@ -61,13 +58,11 @@ function SingleDayPage(props: {
       </div>
       <div className={cx("center-tab")}>
         <div className={cx("tab-main-container")}>
-          <ActivitesList
-            previousDay={props.calendar?.[dateId - 1]}
-            highlitedTime={showTime ?? undefined}
-            currentDay={props.calendar[dateId]}
-            clickHandler={(t) =>
-              setShowTime((o) => (o === t ? null : (t as AvailableTimes)))
-            }
+          <CenterTab
+            setShowTime={setShowTime}
+            calendar={props.calendar}
+            showTime={showTime}
+            dateId={dateId}
           />
         </div>
       </div>
