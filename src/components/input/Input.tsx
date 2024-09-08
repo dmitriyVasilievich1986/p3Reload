@@ -18,9 +18,11 @@ function Input(props: {
         placeholder={props.placeholder}
         value={props.value}
       />
-      {props.clearable && <TrashIcon onClick={() => props.onChange("")} />}
-      {props.label === "filter" && <FilterIcon />}
-      {props.label === "search" && <SearchIcon />}
+      {props.clearable && (
+        <TrashIcon size="medium" onClick={() => props.onChange("")} />
+      )}
+      {props.label === "filter" && <FilterIcon size="medium" />}
+      {props.label === "search" && <SearchIcon size="medium" />}
     </div>
   );
 }

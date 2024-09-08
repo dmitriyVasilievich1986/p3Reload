@@ -34,7 +34,7 @@ export function CurrentDate({
     >
       <h1>{`${month} ${day} (${dayName})`}</h1>
       <Tooltip tooltip={<FoolMoonTooltip />} position="bottom">
-        {!!currentDay.foolMoon && <FullMoonIcon />}
+        {!!currentDay.foolMoon && <FullMoonIcon size="large" />}
       </Tooltip>
     </div>
   );

@@ -29,14 +29,14 @@ export function Head(props: {
         <Tooltip
           tooltip={<p className={cx("tooltip-text")}>Card multiplier</p>}
         >
-          <TarotIcon />
+          <TarotIcon size="large" />
         </Tooltip>
       )}
       {props.charm && (
         <Tooltip
           tooltip={<p className={cx("tooltip-text")}>Max Charm multiplier</p>}
         >
-          <CharmIcon />
+          <CharmIcon size="large" />
         </Tooltip>
       )}
       {props?.multiplier && props.multiplier > 1 && (
@@ -49,7 +49,7 @@ export function Head(props: {
             </p>
           }
         >
-          <BookIcon />
+          <BookIcon size="large" />
         </Tooltip>
       )}
     </div>
