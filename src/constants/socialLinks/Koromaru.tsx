@@ -126,7 +126,7 @@ class KoromaruSocialLink extends SocialLinkEpisodes {
     return {
       stats: currentStats,
       links: {
-        ...props.previousDay!.links,
+        ...props.currentDay.links,
         [this.linkName]: { ...previousLink, level: previousLink.level + 1 },
       },
     };
