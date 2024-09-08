@@ -1,12 +1,12 @@
 import { SingleDay } from "@/constants/calendar";
 import { Times } from "@/constants/events";
 
+import { dayIndexParams } from "@/components/supportComponents";
 import { Modal } from "@/components/modalWindow";
 
 import * as style from "./style.scss";
 import Calendar from "./Calendar";
 
-import { useSearchParams } from "react-router-dom";
 import classnames from "classnames/bind";
 import React from "react";
 
@@ -22,17 +22,16 @@ function CalendarPage(props: {
   } | null;
 }) {
   const calendarRef = React.useRef<HTMLDivElement>(null);
-  const [searchParams, _] = useSearchParams();
+  const [dayIndex, _] = dayIndexParams();
 
   React.useEffect(() => {
-    const dateId = searchParams.get("dateId");
-    if (dateId && calendarRef.current) {
+    if (!!dayIndex && calendarRef.current) {
       const element = (calendarRef.current as HTMLDivElement).querySelector(
-        `#${dateId}`
+        `#${dayIndex}`
       );
       element?.scrollIntoView({ behavior: "smooth", block: "start" });
     }
-  }, [searchParams, calendarRef.current]);
+  }, [dayIndex, calendarRef.current]);
 
   return (
     <div className={cx("App")}>
