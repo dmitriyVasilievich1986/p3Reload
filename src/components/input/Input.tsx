@@ -1,8 +1,6 @@
+import { SearchIcon, FilterIcon, TrashIcon } from "@/components/icons";
 import classnames from "classnames/bind";
-import filterIcon from "./filter.png";
-import searchIcon from "./search.png";
 import * as style from "./style.scss";
-import trashIcon from "./trash.png";
 
 const cx = classnames.bind(style);
 
@@ -21,14 +19,10 @@ function Input(props: {
         value={props.value}
       />
       {props.clearable && (
-        <img
-          onClick={() => props.onChange("")}
-          className={cx("clickable")}
-          src={trashIcon}
-        />
+        <TrashIcon size="medium" onClick={() => props.onChange("")} />
       )}
-      {props.label === "filter" && <img src={filterIcon} />}
-      {props.label === "search" && <img src={searchIcon} />}
+      {props.label === "filter" && <FilterIcon size="medium" />}
+      {props.label === "search" && <SearchIcon size="medium" />}
     </div>
   );
 }

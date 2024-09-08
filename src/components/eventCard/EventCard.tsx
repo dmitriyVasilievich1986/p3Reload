@@ -1,14 +1,12 @@
-import { EventProps, ItemProps, HeadProps } from "./types";
+import { TarotIcon, CharmIcon, BookIcon } from "@/components/icons";
+import { Tooltip } from "@/components/tootlip";
+
 import classnames from "classnames/bind";
 import * as style from "./style.scss";
-import { Tooltip } from "../tootlip";
-import tarotIcon from "./tarot.png";
-import charmIcon from "./charm.png";
-import bookIcon from "./book.png";
 
 const cx = classnames.bind(style);
 
-export function Item(props: ItemProps) {
+export function Item(props: { label: string; value?: string }) {
   if (!props?.value) return null;
   return (
     <div className={cx("item")}>
@@ -18,43 +16,40 @@ export function Item(props: ItemProps) {
   );
 }
 
-export function Head(props: HeadProps) {
+export function Head(props: {
+  head: string;
+  card?: boolean;
+  charm?: boolean;
+  multiplier?: number;
+}) {
   return (
     <div className={cx("head")}>
       <h3>{props.head}</h3>
       {props.card && (
         <Tooltip
-          tooltip={
-            <p style={{ width: "110px", textAlign: "center" }}>
-              Card multiplier
-            </p>
-          }
+          tooltip={<p className={cx("tooltip-text")}>Card multiplier</p>}
         >
-          <img src={tarotIcon} />
+          <TarotIcon size="large" />
         </Tooltip>
       )}
       {props.charm && (
         <Tooltip
-          tooltip={
-            <p style={{ width: "110px", textAlign: "center" }}>
-              Max Charm multiplier
-            </p>
-          }
+          tooltip={<p className={cx("tooltip-text")}>Max Charm multiplier</p>}
         >
-          <img src={charmIcon} />
+          <CharmIcon size="large" />
         </Tooltip>
       )}
       {props?.multiplier && props.multiplier > 1 && (
         <Tooltip
           tooltip={
-            <p style={{ width: "130px", textAlign: "center" }}>
+            <p className={cx("tooltip-text", "wide")}>
               {props.multiplier === 1.51
                 ? "Top class multiplier"
                 : "Top 10 multiplier"}
             </p>
           }
         >
-          <img src={bookIcon} />
+          <BookIcon size="large" />
         </Tooltip>
       )}
     </div>
@@ -69,7 +64,19 @@ export function price(price?: number): string | undefined {
   return `¥${first},${second}`;
 }
 
-function EventCard(props: EventProps) {
+function EventCard(props: {
+  head: string;
+  name?: string;
+  place?: string;
+  stats?: string;
+  price?: number;
+  card?: boolean;
+  charm?: boolean;
+  receive?: number;
+  multiplier?: number;
+  prerequisite?: string;
+  children?: React.ReactNode;
+}) {
   return (
     <div className={cx("event-card")}>
       <Head {...props} />

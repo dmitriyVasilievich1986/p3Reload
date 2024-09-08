@@ -1,4 +1,5 @@
 import { ActivitesList, CurrentDate } from "@/components/DailyCards";
+import { RightArrowIcon, LeftArrowIcon } from "@/components/icons";
 import { dayIndexParams } from "@/components/supportComponents";
 
 import { SingleDay } from "@/constants/calendar";
@@ -46,10 +47,12 @@ export function CenterTab(props: {
 
       <div className={cx("date-navigation")}>
         <div className={cx("date-navigation-left")}>
+          <LeftArrowIcon size="large" />
           <DateNavigation calendar={props.calendar} dateId={props.dateId - 1} />
         </div>
         <div className={cx("date-navigation-right")}>
           <DateNavigation calendar={props.calendar} dateId={props.dateId + 1} />
+          <RightArrowIcon size="large" />
         </div>
       </div>
     </>
