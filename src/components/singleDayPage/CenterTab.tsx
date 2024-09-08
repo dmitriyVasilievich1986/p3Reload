@@ -13,15 +13,25 @@ import React from "react";
 
 const cx = classnames.bind(style);
 
-function DateNavigation(props: { calendar: SingleDay[]; dateId: number }) {
+function DateNavigation(props: {
+  side: "left" | "right";
+  calendar: SingleDay[];
+  dateId: number;
+}) {
   const [_, setDayIndex] = dayIndexParams();
-  if (props.calendar?.[props.dateId] === undefined) return null;
+  if (props.calendar?.[props.dateId] === undefined)
+    return <div className={cx(`date-navigation-${props.side}`)} />;
 
   return (
-    <CurrentDate
+    <div
       onClick={() => setDayIndex(props.calendar[props.dateId].getId())}
-      currentDay={props.calendar[props.dateId]}
-    />
+      className={cx(`date-navigation-${props.side}`)}
+      style={{ cursor: "pointer" }}
+    >
+      {props.side === "left" && <LeftArrowIcon size="large" />}
+      <CurrentDate currentDay={props.calendar[props.dateId]} />
+      {props.side === "right" && <RightArrowIcon size="large" />}
+    </div>
   );
 }
 
@@ -46,14 +56,16 @@ export function CenterTab(props: {
       />
 
       <div className={cx("date-navigation")}>
-        <div className={cx("date-navigation-left")}>
-          <LeftArrowIcon size="large" />
-          <DateNavigation calendar={props.calendar} dateId={props.dateId - 1} />
-        </div>
-        <div className={cx("date-navigation-right")}>
-          <DateNavigation calendar={props.calendar} dateId={props.dateId + 1} />
-          <RightArrowIcon size="large" />
-        </div>
+        <DateNavigation
+          calendar={props.calendar}
+          dateId={props.dateId - 1}
+          side="left"
+        />
+        <DateNavigation
+          calendar={props.calendar}
+          dateId={props.dateId + 1}
+          side="right"
+        />
       </div>
     </>
   );
