@@ -179,6 +179,19 @@ export abstract class SocialLink implements SocialLinkType {
       headPrefix = LabelHeadPrefixes.SpendTime;
     else if (route === Routes.Romantic) headPrefix = LabelHeadPrefixes.Romance;
 
+    const FullCard = () => {
+      if (!props.fullCard) return null;
+      if (headPrefix === LabelHeadPrefixes.Invitation)
+        return this.invitations![currentLevel.level][currentLevel.romance];
+      if (standard.includes(headPrefix)) {
+        const level = this.getLevel({
+          ...previousLevel,
+          romance: route,
+        }) as SocialLinkLevel;
+        return level.element({ key: this.linkName });
+      }
+    };
+
     return (
       <div>
         <EventCard
@@ -202,19 +215,7 @@ export abstract class SocialLink implements SocialLinkType {
             standard.includes(headPrefix) ? this.linkDetails.place : undefined
           }
         />
-        {props.fullCard &&
-          standard.includes(headPrefix) &&
-          (
-            this.getLevel({
-              ...previousLevel,
-              romance: route,
-            }) as SocialLinkLevel
-          ).element({
-            key: this.linkName,
-          })}
-        {props.fullCard &&
-          headPrefix === LabelHeadPrefixes.Invitation &&
-          this.invitations![previousLevel.level][currentLevel.romance]}
+        <FullCard />
       </div>
     );
   }
@@ -246,7 +247,7 @@ export abstract class SocialLinkAlwaysLevelUp extends SocialLink {
 
     return {
       links: {
-        ...props.previousDay!.links,
+        ...props.currentDay.links,
         [this.linkName]: { ...previousLink, level: previousLink.level + 1 },
       },
     };
@@ -294,7 +295,7 @@ export abstract class SocialLinkEpisodes extends SocialLink {
 
     return {
       links: {
-        ...props.previousDay!.links,
+        ...props.currentDay.links,
         [this.linkName]: { ...previousLink, level: previousLink.level + 1 },
       },
     };
