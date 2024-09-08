@@ -1,10 +1,13 @@
-import { useSearchParams } from "react-router-dom";
-import { Modal } from "@/components/modalWindow";
 import { SingleDay } from "@/constants/calendar";
 import { Times } from "@/constants/events";
-import classnames from "classnames/bind";
+
+import { Modal } from "@/components/modalWindow";
+
 import * as style from "./style.scss";
 import Calendar from "./Calendar";
+
+import { useSearchParams } from "react-router-dom";
+import classnames from "classnames/bind";
 import React from "react";
 
 const cx = classnames.bind(style);
@@ -45,7 +48,7 @@ function CalendarPage(props: {
             previousDay={props.calendar?.[i - 1]}
             key={c.date.getTime()}
             currentDay={c}
-            setDayConstants={(time: Times) =>
+            clickHandler={(time: Times) =>
               props.setDayConstants({ time, day: c.date })
             }
           />

@@ -1,16 +1,18 @@
-import { SocialLinkNames } from "../../constants/socialLinks/types";
-import { socialLinks } from "@/constants/socialLinks";
-import BadgeTooltip from "./BadgeTooltip";
+import { SocialLinkNames, socialLinks } from "@/constants/socialLinks";
+import { SingleDay } from "@/constants/calendar/SingleDay";
+import { Times, Event } from "@/constants/events/types";
+
+import { Tooltip } from "@/components/tootlip";
+import { Badge } from "@/components/badge";
+import { Card } from "@/components/card";
+
+import { BadgeTooltip } from "./BadgeTooltip";
 import classnames from "classnames/bind";
-import { DayEventProps } from "./types";
 import * as style from "./style.scss";
-import { Tooltip } from "../tootlip";
-import { Badge } from "../badge";
-import Card from "../card/Card";
 
 const cx = classnames.bind(style);
 
-function LinkBadge(props: DayEventProps) {
+function LinkBadge(props: { currentDay: SingleDay; event: Event }) {
   if (!props.event.linkName) return null;
 
   const linkName = props.event.linkName as SocialLinkNames;
@@ -40,10 +42,16 @@ function LinkBadge(props: DayEventProps) {
   );
 }
 
-function DayEvent(props: DayEventProps) {
+export function Activity(props: {
+  clickHandler: (time: Times) => void;
+  previousDay: SingleDay;
+  currentDay: SingleDay;
+  event: Event;
+  highlited?: boolean;
+}) {
   const clickHandler = () => {
     if (!props.event?.special) {
-      props.onClick(props.event.time);
+      props.clickHandler(props.event.time);
     }
   };
 
@@ -51,6 +59,7 @@ function DayEvent(props: DayEventProps) {
     <Card
       badge={<LinkBadge {...props} />}
       enable={!props.event.special}
+      highlited={props.highlited}
       head={props.event.time}
       onClick={clickHandler}
     >
@@ -65,5 +74,3 @@ function DayEvent(props: DayEventProps) {
     </Card>
   );
 }
-
-export default DayEvent;
