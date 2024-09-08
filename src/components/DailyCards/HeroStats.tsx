@@ -1,15 +1,20 @@
+import { SingleDay } from "@/constants/calendar/SingleDay";
 import { StatsNames, stats } from "@/constants/stats";
-import { SingleDay } from "@/constants/calendar";
-import BadgeTooltip from "./BadgeTooltip";
+
+import { Tooltip } from "@/components/tootlip";
+import { Badge } from "@/components/badge";
+import { Card } from "@/components/card";
+
+import { BadgeTooltip } from "./BadgeTooltip";
 import classnames from "classnames/bind";
 import * as style from "./style.scss";
-import { Tooltip } from "../tootlip";
-import { Badge } from "../badge";
-import Card from "../card/Card";
 
 const cx = classnames.bind(style);
 
-function HeroStats(props: { currentDay: SingleDay; previousDay: SingleDay }) {
+export function HeroStats(props: {
+  currentDay: SingleDay;
+  previousDay: SingleDay;
+}) {
   const getLevel = (name: StatsNames) => {
     const currentName = stats[name].getLevel(props.currentDay.stats[name]).name;
     const previousName = props.previousDay
@@ -45,7 +50,7 @@ function HeroStats(props: { currentDay: SingleDay; previousDay: SingleDay }) {
       <div className={cx("stat")}>
         {(Object.keys(StatsNames) as Array<StatsNames>).map((stat) => (
           <div key={stat} className={cx("stat-item")}>
-            <Tooltip tooltip={<StatsTooltip name={stat} />}>
+            <Tooltip position="right" tooltip={<StatsTooltip name={stat} />}>
               {getBadge(stat)}
             </Tooltip>
             <label>{stat}:</label>
@@ -56,5 +61,3 @@ function HeroStats(props: { currentDay: SingleDay; previousDay: SingleDay }) {
     </Card>
   );
 }
-
-export default HeroStats;

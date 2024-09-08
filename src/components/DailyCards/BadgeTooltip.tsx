@@ -3,7 +3,7 @@ import * as style from "./style.scss";
 
 const cx = classnames.bind(style);
 
-function BadgeTooltip(props: {
+export function BadgeTooltip(props: {
   points: string | number;
   nextLevel: string | number;
 }) {
@@ -20,5 +20,3 @@ function BadgeTooltip(props: {
     </div>
   );
 }
-
-export default BadgeTooltip;

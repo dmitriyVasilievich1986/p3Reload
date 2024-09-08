@@ -1,7 +1,17 @@
 import { SocialLinkElementProps } from "@/constants/socialLinks/types";
-import { SocialLinkNames } from "@/constants/socialLinks";
+import { SocialLinkNames } from "@/constants/socialLinks/types";
+import { events } from "@/constants/events";
+import {
+  statsEventsAcademicsNames,
+  statsEventsCourageNames,
+  SpecialEventsNames,
+  Categories,
+  Event,
+  Times,
+} from "@/constants/events/types";
+
 import { EventCard } from "@/components";
-import { Event } from "../events/types";
+
 import { SingleDay } from "./SingleDay";
 
 export const classmates: SocialLinkNames[] = [
@@ -41,6 +51,59 @@ export function initialCalculataion(calendar: SingleDay[]) {
   });
 
   return calendar;
+}
+
+export function getCalculatedCalendar(props: {
+  previousCalendar: SingleDay[];
+  dayIndex: number;
+  newEvent: Event;
+  time: Times;
+}) {
+  const newCalendar: SingleDay[] = (
+    props.previousCalendar as Array<SingleDay>
+  ).map((c, i) => {
+    if (i === props.dayIndex) {
+      return new SingleDay({
+        ...c,
+        activities: c.activities.map((a) =>
+          a.time === props.time ? { ...props.newEvent, time: props.time } : a
+        ),
+      });
+    } else if (
+      i > props.dayIndex &&
+      props.newEvent.category === Categories.Tartarus
+    ) {
+      const activities = c.activities
+        .filter((a) => a !== events[statsEventsCourageNames.drinkMedicine])
+        .map((a) =>
+          a.special
+            ? a
+            : { ...events[SpecialEventsNames.DoNothing], time: a.time }
+        );
+      if (!c.isDayOff) {
+        activities.splice(1, 0, events[statsEventsCourageNames.drinkMedicine]);
+      }
+
+      return new SingleDay({ ...c, activities });
+    } else if (i > props.dayIndex)
+      return new SingleDay({
+        ...c,
+        arcanes: [],
+        activities: c.activities
+          .filter((a) => a !== events[statsEventsCourageNames.drinkMedicine])
+          .map((a) => {
+            if (a.special) return a;
+            else if (a.time === Times.Morning)
+              return events[statsEventsAcademicsNames.stayAwakeInClass];
+            return {
+              ...events[SpecialEventsNames.DoNothing],
+              time: a.time,
+            };
+          }),
+      });
+    return c;
+  });
+  return initialCalculataion(newCalendar);
 }
 
 export function LabelExamGrade(

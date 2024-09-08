@@ -1,0 +1,79 @@
+.main-container {
+    flex-wrap: wrap;
+    display: flex;
+
+    .left-tab, .right-tab, .center-tab {
+        justify-content: center;
+        overflow-y: auto;
+        display: flex;
+
+        &>.tab-main-container {
+            margin: 1rem 10px;
+            max-height: 90vh;
+            width: 90%;
+        }
+    }
+    
+    .left-tab, .right-tab {
+        flex: 3 500px;
+
+        &>.tab-main-container {
+            max-width: 500px;
+        }
+    }
+
+    .center-tab {
+        flex: 1 700px;
+
+        &>.tab-main-container {
+            max-width: 700px;
+        }
+    }
+}
+
+.right-tab-container {
+    flex-direction: column;
+    display: flex;
+    width: 100%;
+
+    &>.filter-input {
+        justify-content: center;
+        margin-bottom: 1rem;
+        padding: 10px 0;
+        display: flex;
+        
+        background-color: white;
+        position: sticky;
+        z-index: 90;
+        top: 0;
+
+        &>div {
+            width: 80%;
+        }
+    }
+}
+
+.activities-list {
+    flex-direction: column;
+    margin: 1rem 0;
+    display: flex;
+    width: 100%;
+    gap: 10px;
+}
+
+.date-navigation {
+    display: flex;
+    width: 100%;
+
+    &>.date-navigation-left, .date-navigation-right {
+        display: flex;
+        width: 50%;
+    }
+
+    &>.date-navigation-left {
+        justify-content: flex-start;
+    }
+    &>.date-navigation-right {
+        justify-content: flex-end;
+    }
+}

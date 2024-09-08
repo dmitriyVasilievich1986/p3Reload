@@ -29,7 +29,12 @@
             cursor: pointer;
         }
     }
-    
+
+    &.highlited {
+        box-shadow: #00afb9 0px 0px 10px 0px;
+        border-color: #00afb9;
+    }
+
     &>.head {
         font-weight: bold;
         margin-left: 10px;
