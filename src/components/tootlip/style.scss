@@ -2,7 +2,6 @@
     position: relative;
 
     &>.tooltip {
-        transform: translate(-50%);
         background-color: #000;
         border-radius: 5px;
         position: absolute;
@@ -10,18 +9,31 @@
         padding: 10px;
         display: none;
         z-index: 10;
-        left: 50%;
 
         &.show {
             display: block;
         }
 
         &.top {
+            transform: translate(-50%);
             bottom: calc(100% + 5px);
+            left: 50%;
         }
         
         &.bottom {
+            transform: translate(-50%);
             top: calc(100% + 5px);
+            left: 50%;
+        }
+
+        &.left {
+            right: calc(100% + 5px);
+            bottom: -50%;
+        }
+
+        &.right {
+            left: calc(100% + 5px);
+            bottom: -50%;
         }
     }
 }

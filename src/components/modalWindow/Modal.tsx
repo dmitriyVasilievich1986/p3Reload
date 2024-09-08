@@ -1,13 +1,6 @@
-import { initialCalculataion, SingleDay } from "@/constants/calendar";
-import { OutsideClick } from "../supportComponents";
+import { getCalculatedCalendar } from "@/constants/calendar/baseFunctions";
+import { SingleDay } from "@/constants/calendar/SingleDay";
 import { events } from "@/constants/events";
-import classnames from "classnames/bind";
-import { DayConstants } from "./types";
-import EventsList from "./EventsList";
-import * as style from "./style.scss";
-import { Input } from "../input";
-import React from "react";
-
 import {
   statsEventsAcademicsNames,
   statsEventsCourageNames,
@@ -15,10 +8,18 @@ import {
   SpecialEventsNames,
   pcProgramsNames,
   allEventsNames,
-  Categories,
   Event,
-  Times,
 } from "@/constants/events/types";
+
+import { OutsideClick } from "@/components/supportComponents";
+import { Input } from "@/components/input";
+
+import { DayConstants } from "./types";
+import EventsList from "./EventsList";
+import * as style from "./style.scss";
+
+import classnames from "classnames/bind";
+import React from "react";
 
 const cx = classnames.bind(style);
 
@@ -40,61 +41,12 @@ function Modal(props: {
 
   const updateCalendar = ({ event }: { event: Event }) => {
     props.setCalendar((prev: SingleDay[]) => {
-      const newCalendar: SingleDay[] = (prev as Array<SingleDay>).map(
-        (c, i) => {
-          if (i === currentDayIndex) {
-            return new SingleDay({
-              ...c,
-              activities: c.activities.map((a) =>
-                a.time === dayConstants.time
-                  ? { ...event, time: props.dayConstants?.time as Times }
-                  : a
-              ),
-            });
-          } else if (
-            i > currentDayIndex &&
-            event.category === Categories.Tartarus
-          ) {
-            const activities = c.activities
-              .filter(
-                (a) => a !== events[statsEventsCourageNames.drinkMedicine]
-              )
-              .map((a) =>
-                a.special
-                  ? a
-                  : { ...events[SpecialEventsNames.DoNothing], time: a.time }
-              );
-            if (!c.isDayOff) {
-              activities.splice(
-                1,
-                0,
-                events[statsEventsCourageNames.drinkMedicine]
-              );
-            }
-
-            return new SingleDay({ ...c, activities });
-          } else if (i > currentDayIndex)
-            return new SingleDay({
-              ...c,
-              arcanes: [],
-              activities: c.activities
-                .filter(
-                  (a) => a !== events[statsEventsCourageNames.drinkMedicine]
-                )
-                .map((a) => {
-                  if (a.special) return a;
-                  else if (a.time === Times.Morning)
-                    return events[statsEventsAcademicsNames.stayAwakeInClass];
-                  return {
-                    ...events[SpecialEventsNames.DoNothing],
-                    time: a.time,
-                  };
-                }),
-            });
-          return c;
-        }
-      );
-      return initialCalculataion(newCalendar);
+      return getCalculatedCalendar({
+        previousCalendar: prev,
+        dayIndex: currentDayIndex,
+        newEvent: event,
+        time: dayConstants.time,
+      });
     });
     props.setDayConstants(null);
   };

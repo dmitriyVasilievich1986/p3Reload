@@ -1,15 +1,17 @@
 import { SocialLinkNames, socialLinks } from "@/constants/socialLinks";
-import { SingleDay } from "@/constants/calendar";
-import BadgeTooltip from "./BadgeTooltip";
+import { SingleDay } from "@/constants/calendar/SingleDay";
+
+import { Tooltip } from "@/components/tootlip";
+import { Badge } from "@/components/badge";
+import { Card } from "@/components/card";
+
+import { BadgeTooltip } from "./BadgeTooltip";
 import classnames from "classnames/bind";
 import * as style from "./style.scss";
-import { Tooltip } from "../tootlip";
-import { Badge } from "../badge";
-import { Card } from "../card";
 
 const cx = classnames.bind(style);
 
-function SocialLinks({
+export function SocialLinksStats({
   previousDay,
   currentDay,
 }: {
@@ -58,7 +60,7 @@ function SocialLinks({
           .sort((l) => (isLeveledUp(l) ? -1 : 1))
           .map((l) => (
             <div key={l} className={cx("stat-item")}>
-              <Tooltip tooltip={<StatsTooltip name={l} />}>
+              <Tooltip position="right" tooltip={<StatsTooltip name={l} />}>
                 {getBadge(l)}
               </Tooltip>
               <label>{l}</label>
@@ -69,5 +71,3 @@ function SocialLinks({
     </Card>
   );
 }
-
-export default SocialLinks;
