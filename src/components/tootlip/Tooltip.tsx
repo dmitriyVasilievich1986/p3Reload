@@ -5,7 +5,7 @@ import React from "react";
 const cx = classnames.bind(style);
 
 function Tooltip(props: {
-  position?: "top" | "bottom";
+  position?: "top" | "bottom" | "left" | "right";
   children: React.ReactNode;
   tooltip?: React.ReactNode;
   onClick?: () => void;
