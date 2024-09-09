@@ -100,8 +100,8 @@ export const september: SingleDay[] = [
   new SingleDay({
     date: new Date(2009, 8, 8),
     activities: [
-      events[SocialLinkNames.Fortune],
-      { ...events[SpecialEventsNames.DoNothing], time: Times.Evening },
+      events[SocialLinkNames.Koromaru],
+      events[SocialLinkNames.Amada],
     ],
   }),
   new SingleDay({
