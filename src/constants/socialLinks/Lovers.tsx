@@ -287,8 +287,10 @@ export const Lovers = new LoversSocialLink(
     },
     3: {
       [Routes.Platonic]: (
-        <Question label="Do YOU like azuki strawberry daifuku!?">
+        <Question label="Do YOU like azuki strawberry daifuku?">
+          <Answer label="Not really." />
           <Answer label="I love it." points={30} />
+          <Answer label="Never tried it." />
         </Question>
       ),
     },

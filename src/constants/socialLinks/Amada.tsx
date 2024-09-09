@@ -29,7 +29,7 @@ class AmadaSocialLink extends SocialLinkEpisodes {
         );
       case 1:
         return (
-          props.currentDay.date.getTime() >= new Date(2009, 8, 8).getTime() &&
+          props.currentDay.date.getTime() >= new Date(2009, 8, 15).getTime() &&
           props.currentDay.date.getTime() <= new Date(2009, 8, 30).getTime() &&
           days.includes(props.currentDay.date.getDay()) &&
           isTime
