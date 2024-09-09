@@ -29,7 +29,7 @@ class PriestessSocialLink extends SocialLink {
     const invitations = this.invitations as InvitationsType;
 
     return (
-      props.currentDay.links[this.linkName].level in invitations &&
+      props.previousDay!.links[this.linkName].level in invitations &&
       props.previousDay!.links[this.linkName].romance === route &&
       dates.includes(props.currentDay.date.getTime()) &&
       props.time === Times.Day
@@ -335,6 +335,15 @@ export const Priestess = new PriestessSocialLink(
     },
   },
   {
+    1: {
+      [Routes.Platonic]: (
+        <Question label={`Um, ${mainCharName}-kun. Do you like sweets?`}>
+          <Answer label="I do." points={30} />
+          <Answer label="Not really." />
+          <Answer label="Never thought about it." />
+        </Question>
+      ),
+    },
     2: {
       [Routes.Platonic]: (
         <Question label={`Um, ${mainCharName}-kun. Do you like sweets?`}>
