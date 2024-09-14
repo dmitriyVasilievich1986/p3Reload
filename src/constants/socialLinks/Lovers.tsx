@@ -1,42 +1,114 @@
+import { InvitationLevels, SocialLink, mainCharName } from "./baseFunctions";
 import { QuestionsWrapper, Question, Answer } from "@/components";
 import { createBondObject, LinkMaxedObject } from "./GenericCard";
-import { SocialLink, mainCharName } from "./baseFunctions";
 import { StatsNames, stats } from "@/constants/stats";
 import { DaysNames } from "@/constants/monthsNames";
 import { Times } from "@/constants/events/types";
 
 import {
   SocialLinkAvailableProps,
-  InvitationsType,
   SocialLinkNames,
+  LevelsType,
   Routes,
 } from "./types";
 
+class LevelsInvitationLevels extends InvitationLevels {
+  dates = [
+    new Date(2009, 8, 13).getTime(),
+    new Date(2009, 8, 23).getTime(),
+    new Date(2009, 9, 25).getTime(),
+    new Date(2009, 10, 15).getTime(),
+    new Date(2010, 0, 7).getTime(),
+    new Date(2010, 0, 10).getTime(),
+    new Date(2010, 0, 17).getTime(),
+    new Date(2010, 0, 24).getTime(),
+  ];
+
+  levels: LevelsType = {
+    2: {
+      [Routes.Platonic]: QuestionsWrapper({
+        points: 0,
+        element: [
+          <Question label="Oh, speaking of music, what do you usually listen to?">
+            <Answer label="J-pop." points={30} />
+          </Question>,
+        ],
+      }),
+    },
+    3: {
+      [Routes.Platonic]: QuestionsWrapper({
+        points: 0,
+        element: [
+          <Question label="Do YOU like azuki strawberry daifuku?">
+            <Answer label="Not really." />
+            <Answer label="I love it." points={30} />
+            <Answer label="Never tried it." />
+          </Question>,
+        ],
+      }),
+    },
+    4: {
+      [Routes.Platonic]: QuestionsWrapper({
+        points: 0,
+        element: [
+          <Question label="Is it weird for me to be so hung up about my parents so much at my age?">
+            <Answer label="Leave the bags to me." points={30} />
+          </Question>,
+        ],
+      }),
+    },
+    6: {
+      [Routes.Platonic]: QuestionsWrapper({
+        points: 0,
+        element: [
+          <Question label="I-I'm not trying to pry, or anything. I was just curious...">
+            <Answer label="Hang out with a friend." points={30} />
+          </Question>,
+        ],
+      }),
+    },
+    7: {
+      [Routes.Platonic]: QuestionsWrapper({
+        points: 0,
+        element: [
+          <Question label={`What's your favorite color, ${mainCharName}-kun?`}>
+            <Answer label="Green." points={30} />
+          </Question>,
+        ],
+      }),
+    },
+    8: {
+      [Routes.Platonic]: QuestionsWrapper({
+        points: 0,
+        element: [
+          <Question label="Yeah, I have a pretty big appetite, huh? Haha...">
+            <Answer label="It's a healthy appetite." points={30} />
+          </Question>,
+        ],
+      }),
+    },
+    9: {
+      [Routes.Platonic]: QuestionsWrapper({
+        points: 0,
+        element: [
+          <Question label="But no one knows about us, huh... Just like a manga.">
+            <Answer label="Some people do." points={30} />
+          </Question>,
+        ],
+      }),
+      [Routes.Romantic]: QuestionsWrapper({
+        points: 0,
+        element: [
+          <Question label="But no one knows about us, huh... Just like a manga.">
+            <Answer label="Some people do." points={30} />
+          </Question>,
+        ],
+      }),
+    },
+  };
+}
+
 class LoversSocialLink extends SocialLink {
-  isInvitationAvailable(
-    props: SocialLinkAvailableProps,
-    route: Routes
-  ): boolean {
-    const dates = [
-      new Date(2009, 8, 13).getTime(),
-      new Date(2009, 8, 23).getTime(),
-      new Date(2009, 9, 25).getTime(),
-      new Date(2009, 10, 15).getTime(),
-      new Date(2010, 0, 7).getTime(),
-      new Date(2010, 0, 10).getTime(),
-      new Date(2010, 0, 17).getTime(),
-      new Date(2010, 0, 24).getTime(),
-    ];
-    const invitations = this.invitations as InvitationsType;
-
-    return (
-      props.currentDay.links[this.linkName].level in invitations &&
-      props.previousDay!.links[this.linkName].romance === route &&
-      dates.includes(props.currentDay.date.getTime()) &&
-      props.time === Times.Day
-    );
-  }
-
   isLinkAvailable(props: SocialLinkAvailableProps, route: Routes): boolean {
     const previousLink = props.previousDay!.links[this.linkName];
     const charmLevel = stats[StatsNames.Charm].levels[5].value;
@@ -277,62 +349,5 @@ export const Lovers = new LoversSocialLink(
       [Routes.Romantic]: LinkMaxedObject,
     },
   },
-  {
-    2: {
-      [Routes.Platonic]: (
-        <Question label="Oh, speaking of music, what do you usually listen to?">
-          <Answer label="J-pop." points={30} />
-        </Question>
-      ),
-    },
-    3: {
-      [Routes.Platonic]: (
-        <Question label="Do YOU like azuki strawberry daifuku?">
-          <Answer label="Not really." />
-          <Answer label="I love it." points={30} />
-          <Answer label="Never tried it." />
-        </Question>
-      ),
-    },
-    4: {
-      [Routes.Platonic]: (
-        <Question label="Is it weird for me to be so hung up about my parents so much at my age?">
-          <Answer label="Leave the bags to me." points={30} />
-        </Question>
-      ),
-    },
-    6: {
-      [Routes.Platonic]: (
-        <Question label="I-I'm not trying to pry, or anything. I was just curious...">
-          <Answer label="Hang out with a friend." points={30} />
-        </Question>
-      ),
-    },
-    7: {
-      [Routes.Platonic]: (
-        <Question label={`What's your favorite color, ${mainCharName}-kun?`}>
-          <Answer label="Green." points={30} />
-        </Question>
-      ),
-    },
-    8: {
-      [Routes.Platonic]: (
-        <Question label="Yeah, I have a pretty big appetite, huh? Haha...">
-          <Answer label="It's a healthy appetite." points={30} />
-        </Question>
-      ),
-    },
-    9: {
-      [Routes.Platonic]: (
-        <Question label="But no one knows about us, huh... Just like a manga.">
-          <Answer label="Some people do." points={30} />
-        </Question>
-      ),
-      [Routes.Romantic]: (
-        <Question label="But no one knows about us, huh... Just like a manga.">
-          <Answer label="Some people do." points={30} />
-        </Question>
-      ),
-    },
-  }
+  { invitations: new LevelsInvitationLevels() }
 );

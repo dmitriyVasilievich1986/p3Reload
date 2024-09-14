@@ -93,7 +93,6 @@ export type SocialLinkElementProps = SocialLinkAvailableProps & {
 };
 
 export type SocialLinkType = {
-  invitations?: InvitationsType;
   linkDetails: LinkDetailsType;
   linkName: SocialLinkNames;
   levels: LevelsType;

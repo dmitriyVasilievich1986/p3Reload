@@ -1,37 +1,127 @@
+import { InvitationLevels, SocialLink, mainCharName } from "./baseFunctions";
 import { QuestionsWrapper, Question, Answer } from "@/components";
 import { createBondObject, LinkMaxedObject } from "./GenericCard";
-import { SocialLink, mainCharName } from "./baseFunctions";
 import { StatsNames, stats } from "@/constants/stats";
 import { DaysNames } from "@/constants/monthsNames";
 import { Times } from "@/constants/events/types";
 
 import {
   SocialLinkAvailableProps,
-  InvitationsType,
   SocialLinkNames,
+  LevelsType,
   Routes,
 } from "./types";
 
+class EmpressInvitationLevels extends InvitationLevels {
+  dates = [
+    new Date(2010, 1, 4).getTime(),
+    new Date(2010, 1, 7).getTime(),
+    new Date(2010, 1, 24).getTime(),
+  ];
+
+  levels: LevelsType = {
+    2: {
+      [Routes.Platonic]: QuestionsWrapper({
+        points: 0,
+        element: [
+          <Question label="I didn't see many female customers there... Or was it just my imagination?">
+            <Answer label="Does it really matter?" points={30} />
+          </Question>,
+        ],
+      }),
+    },
+    3: {
+      [Routes.Platonic]: QuestionsWrapper({
+        points: 0,
+        element: [
+          <Question label="How much does one of those arcade machines with a life-sized motorcycle cost?">
+            <Answer label="But you have a real one." points={30} />
+          </Question>,
+        ],
+      }),
+    },
+    4: {
+      [Routes.Platonic]: QuestionsWrapper({
+        points: 0,
+        element: [
+          <Question label="Should we... head back now?">
+            <Answer label="You don't want to?" points={30} />
+          </Question>,
+        ],
+      }),
+    },
+    5: {
+      [Routes.Platonic]: QuestionsWrapper({
+        points: 0,
+        element: [
+          <Question label="Would you mind telling me who your favorite musical artist is?">
+            <Answer label="Why?" points={30} />
+          </Question>,
+        ],
+      }),
+    },
+    6: {
+      [Routes.Platonic]: QuestionsWrapper({
+        points: 0,
+        element: [
+          <Question label="It seems I have a tendency to spill all my thoughts when I'm with you. I wonder why.">
+            <Answer label="Don't worry about it." points={30} />
+          </Question>,
+        ],
+      }),
+    },
+    7: {
+      [Routes.Platonic]: QuestionsWrapper({
+        points: 0,
+        element: [
+          <Question label="Since manga aren't that expensive, why don't people just buy them?">
+            <Answer label="Lack of storage space." points={30} />
+          </Question>,
+        ],
+      }),
+    },
+    8: {
+      [Routes.Platonic]: QuestionsWrapper({
+        points: 0,
+        element: [
+          <Question label="Why did they give us this lemon on the side? I don't suppose it's dessert...">
+            <Answer label="Squeeze it over your food." points={30} />
+          </Question>,
+        ],
+      }),
+      [Routes.Romantic]: QuestionsWrapper({
+        points: 0,
+        element: [
+          <Question label="...interested in anyone?">
+            <Answer label="Why do you ask?" points={30} />
+          </Question>,
+        ],
+      }),
+    },
+    9: {
+      [Routes.Platonic]: QuestionsWrapper({
+        points: 0,
+        element: [
+          <Question label="Once everything is over... where would be a nice place to go?">
+            <Answer label="You don't need a destination." points={30} />
+          </Question>,
+        ],
+      }),
+      [Routes.Romantic]: QuestionsWrapper({
+        points: 0,
+        element: [
+          <Question
+            label={`So, um, ${mainCharName}- Oh no, I mean ${mainCharName}...`}
+          >
+            <Answer label="You usually don't call me that." points={30} />
+          </Question>,
+        ],
+      }),
+    },
+  };
+}
+
 class EmpressSocialLink extends SocialLink {
-  isInvitationAvailable(
-    props: SocialLinkAvailableProps,
-    route: Routes
-  ): boolean {
-    const dates = [
-      new Date(2010, 1, 4).getTime(),
-      new Date(2010, 1, 7).getTime(),
-      new Date(2010, 1, 24).getTime(),
-    ];
-    const invitations = this.invitations as InvitationsType;
-
-    return (
-      props.currentDay.links[this.linkName].level in invitations &&
-      props.previousDay!.links[this.linkName].romance === route &&
-      dates.includes(props.currentDay.date.getTime()) &&
-      props.time === Times.Day
-    );
-  }
-
   isLinkAvailable(props: SocialLinkAvailableProps, route: Routes): boolean {
     const academicsLevel = stats[StatsNames.Academics].levels[5].value;
     const previousLink = props.previousDay!.links[this.linkName];
@@ -308,74 +398,5 @@ export const Empress = new EmpressSocialLink(
       [Routes.Romantic]: LinkMaxedObject,
     },
   },
-  {
-    2: {
-      [Routes.Platonic]: (
-        <Question label="I didn't see many female customers there... Or was it just my imagination?">
-          <Answer label="Does it really matter?" points={30} />
-        </Question>
-      ),
-    },
-    3: {
-      [Routes.Platonic]: (
-        <Question label="How much does one of those arcade machines with a life-sized motorcycle cost?">
-          <Answer label="But you have a real one." points={30} />
-        </Question>
-      ),
-    },
-    4: {
-      [Routes.Platonic]: (
-        <Question label="Should we... head back now?">
-          <Answer label="You don't want to?" points={30} />
-        </Question>
-      ),
-    },
-    5: {
-      [Routes.Platonic]: (
-        <Question label="Would you mind telling me who your favorite musical artist is?">
-          <Answer label="Why?" points={30} />
-        </Question>
-      ),
-    },
-    6: {
-      [Routes.Platonic]: (
-        <Question label="It seems I have a tendency to spill all my thoughts when I'm with you. I wonder why.">
-          <Answer label="Don't worry about it." points={30} />
-        </Question>
-      ),
-    },
-    7: {
-      [Routes.Platonic]: (
-        <Question label="Since manga aren't that expensive, why don't people just buy them?">
-          <Answer label="Lack of storage space." points={30} />
-        </Question>
-      ),
-    },
-    8: {
-      [Routes.Platonic]: (
-        <Question label="Why did they give us this lemon on the side? I don't suppose it's dessert...">
-          <Answer label="Squeeze it over your food." points={30} />
-        </Question>
-      ),
-      [Routes.Romantic]: (
-        <Question label="...interested in anyone?">
-          <Answer label="Why do you ask?" points={30} />
-        </Question>
-      ),
-    },
-    9: {
-      [Routes.Platonic]: (
-        <Question label="Once everything is over... where would be a nice place to go?">
-          <Answer label="You don't need a destination." points={30} />
-        </Question>
-      ),
-      [Routes.Romantic]: (
-        <Question
-          label={`So, um, ${mainCharName}- Oh no, I mean ${mainCharName}...`}
-        >
-          <Answer label="You usually don't call me that." points={30} />
-        </Question>
-      ),
-    },
-  }
+  { invitations: new EmpressInvitationLevels() }
 );

@@ -44,3 +44,9 @@ export const AutomaticLevelUpObject: SocialLinkLevel = {
 export function SpendingTime() {
   return <EventCard head="Spending time" />;
 }
+
+export const SpendingTimeObject: SocialLinkLevel = {
+  points: 0,
+  maxPoints: [],
+  element: SpendingTime,
+};

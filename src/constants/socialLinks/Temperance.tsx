@@ -1,39 +1,123 @@
+import { InvitationLevels, SocialLink, mainCharName } from "./baseFunctions";
 import { QuestionsWrapper, Question, Answer } from "@/components";
 import { createBondObject, LinkMaxedObject } from "./GenericCard";
-import { SocialLink, mainCharName } from "./baseFunctions";
 import { StatsNames, stats } from "@/constants/stats";
 import { DaysNames } from "@/constants/monthsNames";
 import { Times } from "@/constants/events/types";
 
 import {
   SocialLinkAvailableProps,
-  InvitationsType,
   SocialLinkNames,
+  LevelsType,
   Routes,
 } from "./types";
 
+class TemperanceInvitationLevels extends InvitationLevels {
+  dates = [
+    new Date(2009, 5, 7).getTime(),
+    new Date(2009, 5, 21).getTime(),
+    new Date(2009, 6, 26).getTime(),
+    new Date(2009, 7, 7).getTime(),
+    new Date(2009, 7, 27).getTime(),
+    new Date(2009, 8, 27).getTime(),
+    new Date(2009, 10, 8).getTime(),
+    new Date(2009, 10, 29).getTime(),
+    new Date(2010, 0, 5).getTime(),
+  ];
+
+  levels: LevelsType = {
+    2: {
+      [Routes.Platonic]: QuestionsWrapper({
+        points: 0,
+        element: [
+          <Question label="...I know! We can go there now! It is just a train ride away, is it not?">
+            <Answer label="Sure, let's go." points={30} />
+          </Question>,
+        ],
+      }),
+    },
+    3: {
+      [Routes.Platonic]: QuestionsWrapper({
+        points: 0,
+        element: [
+          <Question label={`Do you like it, too, ${mainCharName}-dono?`}>
+            <Answer label="Yeah, I do." points={30} />
+          </Question>,
+        ],
+      }),
+    },
+    4: {
+      [Routes.Platonic]: QuestionsWrapper({
+        points: 0,
+        element: [
+          <Question label="Perhaps I am feeling homesick...">
+            <Answer label="Are you going back?" />
+            <Answer label="You should stay in Japan." points={30} />
+            <Answer label="Will you go to the funeral?" />
+          </Question>,
+        ],
+      }),
+    },
+    5: {
+      [Routes.Platonic]: QuestionsWrapper({
+        points: 0,
+        element: [
+          <Question label="He looked just like my scary uncle! I did not want to think about him...">
+            <Answer label="Don't worry about it." points={30} />
+          </Question>,
+        ],
+      }),
+    },
+    6: {
+      [Routes.Platonic]: QuestionsWrapper({
+        points: 0,
+        element: [
+          <Question label="Does no one play those games anymore?">
+            <Answer label="We do on New Year's." points={30} />
+          </Question>,
+        ],
+      }),
+    },
+    7: {
+      [Routes.Platonic]: QuestionsWrapper({
+        points: 0,
+        element: [
+          <Question label="I must hurry and complete the kimono.">
+            <Answer label="Go finish it now." />
+            <Answer label="Patience." />
+            <Answer label="Just relax." points={30} />
+          </Question>,
+        ],
+      }),
+    },
+    8: {
+      [Routes.Platonic]: QuestionsWrapper({
+        points: 0,
+        element: [
+          <Question label="What exactly is it? It just looks like the eggs of an insect to me.">
+            <Answer label="I'm not sure." />
+            <Answer label="It IS insect eggs." />
+            <Answer label="It's beans." points={30} />
+          </Question>,
+        ],
+      }),
+    },
+    9: {
+      [Routes.Platonic]: QuestionsWrapper({
+        points: 0,
+        element: [
+          <Question
+            label={`Speaking of rice... What is your favorite dish with it, ${mainCharName}-dono?`}
+          >
+            <Answer label="Ochazuke." points={30} />
+          </Question>,
+        ],
+      }),
+    },
+  };
+}
+
 class TemperanceSocialLink extends SocialLink {
-  isInvitationAvailable(props: SocialLinkAvailableProps): boolean {
-    const dates = [
-      new Date(2009, 5, 7).getTime(),
-      new Date(2009, 5, 21).getTime(),
-      new Date(2009, 6, 26).getTime(),
-      new Date(2009, 7, 7).getTime(),
-      new Date(2009, 7, 27).getTime(),
-      new Date(2009, 8, 27).getTime(),
-      new Date(2009, 10, 8).getTime(),
-      new Date(2009, 10, 29).getTime(),
-      new Date(2010, 0, 5).getTime(),
-    ];
-    const invitations = this.invitations as InvitationsType;
-
-    return (
-      props.currentDay.links[this.linkName].level in invitations &&
-      dates.includes(props.currentDay.date.getTime()) &&
-      props.time === Times.Day
-    );
-  }
-
   isLinkAvailable(props: SocialLinkAvailableProps): boolean {
     const academicsLevel = stats[StatsNames.Academics].levels[1].value;
     const previousLink = props.previousDay!.links[this.linkName];
@@ -200,70 +284,5 @@ export const Temperance = new TemperanceSocialLink(
       [Routes.Platonic]: LinkMaxedObject,
     },
   },
-  {
-    2: {
-      [Routes.Platonic]: (
-        <Question label="...I know! We can go there now! It is just a train ride away, is it not?">
-          <Answer label="Sure, let's go." points={30} />
-        </Question>
-      ),
-    },
-    3: {
-      [Routes.Platonic]: (
-        <Question label={`Do you like it, too, ${mainCharName}-dono?`}>
-          <Answer label="Yeah, I do." points={30} />
-        </Question>
-      ),
-    },
-    4: {
-      [Routes.Platonic]: (
-        <Question label="Perhaps I am feeling homesick...">
-          <Answer label="Are you going back?" />
-          <Answer label="You should stay in Japan." points={30} />
-          <Answer label="Will you go to the funeral?" />
-        </Question>
-      ),
-    },
-    5: {
-      [Routes.Platonic]: (
-        <Question label="He looked just like my scary uncle! I did not want to think about him...">
-          <Answer label="Don't worry about it." points={30} />
-        </Question>
-      ),
-    },
-    6: {
-      [Routes.Platonic]: (
-        <Question label="Does no one play those games anymore?">
-          <Answer label="We do on New Year's." points={30} />
-        </Question>
-      ),
-    },
-    7: {
-      [Routes.Platonic]: (
-        <Question label="I must hurry and complete the kimono.">
-          <Answer label="Go finish it now." />
-          <Answer label="Patience." />
-          <Answer label="Just relax." points={30} />
-        </Question>
-      ),
-    },
-    8: {
-      [Routes.Platonic]: (
-        <Question label="What exactly is it? It just looks like the eggs of an insect to me.">
-          <Answer label="I'm not sure." />
-          <Answer label="It IS insect eggs." />
-          <Answer label="It's beans." points={30} />
-        </Question>
-      ),
-    },
-    9: {
-      [Routes.Platonic]: (
-        <Question
-          label={`Speaking of rice... What is your favorite dish with it, ${mainCharName}-dono?`}
-        >
-          <Answer label="Ochazuke." points={30} />
-        </Question>
-      ),
-    },
-  }
+  { invitations: new TemperanceInvitationLevels() }
 );

@@ -1,41 +1,149 @@
+import { InvitationLevels, SocialLink, mainCharName } from "./baseFunctions";
 import { QuestionsWrapper, Question, Answer } from "@/components";
 import { createBondObject, LinkMaxedObject } from "./GenericCard";
-import { SocialLink, mainCharName } from "./baseFunctions";
 import { StatsNames, stats } from "@/constants/stats";
 import { DaysNames } from "@/constants/monthsNames";
 import { Times } from "@/constants/events/types";
 
 import {
   SocialLinkAvailableProps,
-  InvitationsType,
   SocialLinkNames,
+  LevelsType,
   Routes,
 } from "./types";
 
+class PriestessInvitationLevels extends InvitationLevels {
+  dates = [
+    new Date(2009, 5, 28).getTime(),
+    new Date(2009, 7, 4).getTime(),
+    new Date(2009, 8, 13).getTime(),
+    new Date(2009, 10, 15).getTime(),
+    new Date(2010, 0, 5).getTime(),
+    new Date(2010, 0, 17).getTime(),
+    new Date(2010, 0, 24).getTime(),
+  ];
+
+  levels: LevelsType = {
+    1: {
+      [Routes.Platonic]: QuestionsWrapper({
+        points: 0,
+        element: [
+          <Question label={`Um, ${mainCharName}-kun. Do you like sweets?`}>
+            <Answer label="I do." points={30} />
+            <Answer label="Not really." />
+            <Answer label="Never thought about it." />
+          </Question>,
+        ],
+      }),
+    },
+    2: {
+      [Routes.Platonic]: QuestionsWrapper({
+        points: 0,
+        element: [
+          <Question label={`Um, ${mainCharName}-kun. Do you like sweets?`}>
+            <Answer label="I do." points={30} />
+          </Question>,
+        ],
+      }),
+    },
+    3: {
+      [Routes.Platonic]: QuestionsWrapper({
+        points: 0,
+        element: [
+          <Question label="Which do you like more? Japanese food or western food?">
+            <Answer label="Japanese food." points={30} />
+          </Question>,
+        ],
+      }),
+    },
+    4: {
+      [Routes.Platonic]: QuestionsWrapper({
+        points: 0,
+        element: [
+          <Question label="Do you prefer watching movies at the theater or at home on DVD?">
+            <Answer label="At home on DVD." points={30} />
+          </Question>,
+        ],
+      }),
+    },
+    5: {
+      [Routes.Platonic]: QuestionsWrapper({
+        points: 0,
+        element: [
+          <Question label="What do you usually do on your days off?">
+            <Answer label="Spend time with friends." points={30} />
+          </Question>,
+        ],
+      }),
+    },
+    6: {
+      [Routes.Platonic]: QuestionsWrapper({
+        points: 0,
+        element: [
+          <Question
+            label={`Um... If I did make a dish with dried snake meat, would you still eat it, ${mainCharName}-kun?`}
+          >
+            <Answer label="You don't have to." points={30} />
+          </Question>,
+        ],
+      }),
+    },
+    7: {
+      [Routes.Platonic]: QuestionsWrapper({
+        points: 0,
+        element: [
+          <Question label="Have you ever filleted a fish before?">
+            <Answer label="Yeah, I'm not too bad." points={30} />
+            <Answer label="I've never tried before." />
+            <Answer label="Not interested." />
+          </Question>,
+        ],
+      }),
+    },
+    8: {
+      [Routes.Platonic]: QuestionsWrapper({
+        points: 0,
+        element: [
+          <Question label="Do you think it's possible to connect music to cooking in that same vein?">
+            <Answer label="Yeah, I think so." points={30} />
+            <Answer label="I can't imagine so." />
+            <Answer label="Not interested." />
+          </Question>,
+        ],
+      }),
+      [Routes.Romantic]: QuestionsWrapper({
+        points: 0,
+        element: [
+          <Question label="Do you think it's possible to connect music to cooking in that same vein?">
+            <Answer label="Yeah, I think so." points={30} />
+            <Answer label="I can't imagine so." />
+            <Answer label="Not interested." />
+          </Question>,
+        ],
+      }),
+    },
+    9: {
+      [Routes.Platonic]: QuestionsWrapper({
+        points: 0,
+        element: [
+          <Question label="You've been awfully friendly with different girls lately, haven't you?">
+            <Answer label="N-No, I haven't." points={30} />
+          </Question>,
+        ],
+      }),
+      [Routes.Romantic]: QuestionsWrapper({
+        points: 0,
+        element: [
+          <Question label="You've been awfully friendly with different girls lately, haven't you?">
+            <Answer label="N-No, I haven't." points={30} />
+          </Question>,
+        ],
+      }),
+    },
+  };
+}
+
 class PriestessSocialLink extends SocialLink {
-  isInvitationAvailable(
-    props: SocialLinkAvailableProps,
-    route: Routes
-  ): boolean {
-    const dates = [
-      new Date(2009, 5, 28).getTime(),
-      new Date(2009, 7, 4).getTime(),
-      new Date(2009, 8, 13).getTime(),
-      new Date(2009, 10, 15).getTime(),
-      new Date(2010, 0, 5).getTime(),
-      new Date(2010, 0, 17).getTime(),
-      new Date(2010, 0, 24).getTime(),
-    ];
-    const invitations = this.invitations as InvitationsType;
-
-    return (
-      props.previousDay!.links[this.linkName].level in invitations &&
-      props.previousDay!.links[this.linkName].romance === route &&
-      dates.includes(props.currentDay.date.getTime()) &&
-      props.time === Times.Day
-    );
-  }
-
   isLinkAvailable(props: SocialLinkAvailableProps, route: Routes): boolean {
     const courageLevel = stats[StatsNames.Courage].levels[5].value;
     const previousLink = props.previousDay!.links[this.linkName];
@@ -334,89 +442,5 @@ export const Priestess = new PriestessSocialLink(
       [Routes.Romantic]: LinkMaxedObject,
     },
   },
-  {
-    1: {
-      [Routes.Platonic]: (
-        <Question label={`Um, ${mainCharName}-kun. Do you like sweets?`}>
-          <Answer label="I do." points={30} />
-          <Answer label="Not really." />
-          <Answer label="Never thought about it." />
-        </Question>
-      ),
-    },
-    2: {
-      [Routes.Platonic]: (
-        <Question label={`Um, ${mainCharName}-kun. Do you like sweets?`}>
-          <Answer label="I do." points={30} />
-        </Question>
-      ),
-    },
-    3: {
-      [Routes.Platonic]: (
-        <Question label="Which do you like more? Japanese food or western food?">
-          <Answer label="Japanese food." points={30} />
-        </Question>
-      ),
-    },
-    4: {
-      [Routes.Platonic]: (
-        <Question label="Do you prefer watching movies at the theater or at home on DVD?">
-          <Answer label="At home on DVD." points={30} />
-        </Question>
-      ),
-    },
-    5: {
-      [Routes.Platonic]: (
-        <Question label="What do you usually do on your days off?">
-          <Answer label="Spend time with friends." points={30} />
-        </Question>
-      ),
-    },
-    6: {
-      [Routes.Platonic]: (
-        <Question
-          label={`Um... If I did make a dish with dried snake meat, would you still eat it, ${mainCharName}-kun?`}
-        >
-          <Answer label="You don't have to." points={30} />
-        </Question>
-      ),
-    },
-    7: {
-      [Routes.Platonic]: (
-        <Question label="Have you ever filleted a fish before?">
-          <Answer label="Yeah, I'm not too bad." points={30} />
-          <Answer label="I've never tried before." />
-          <Answer label="Not interested." />
-        </Question>
-      ),
-    },
-    8: {
-      [Routes.Platonic]: (
-        <Question label="Do you think it's possible to connect music to cooking in that same vein?">
-          <Answer label="Yeah, I think so." points={30} />
-          <Answer label="I can't imagine so." />
-          <Answer label="Not interested." />
-        </Question>
-      ),
-      [Routes.Romantic]: (
-        <Question label="Do you think it's possible to connect music to cooking in that same vein?">
-          <Answer label="Yeah, I think so." points={30} />
-          <Answer label="I can't imagine so." />
-          <Answer label="Not interested." />
-        </Question>
-      ),
-    },
-    9: {
-      [Routes.Platonic]: (
-        <Question label="You've been awfully friendly with different girls lately, haven't you?">
-          <Answer label="N-No, I haven't." points={30} />
-        </Question>
-      ),
-      [Routes.Romantic]: (
-        <Question label="You've been awfully friendly with different girls lately, haven't you?">
-          <Answer label="N-No, I haven't." points={30} />
-        </Question>
-      ),
-    },
-  }
+  { invitations: new PriestessInvitationLevels() }
 );
