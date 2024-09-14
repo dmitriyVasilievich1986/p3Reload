@@ -1,20 +1,28 @@
-import { SocialLinkAvailableProps, SocialLinkNames, Routes } from "./types";
+import { createBondObject, LinkMaxedObject } from "./classes/GenericCard";
 import { QuestionsWrapper, Question, Answer } from "@/components";
-import { createBondObject, LinkMaxedObject } from "./GenericCard";
+import { LinkMainLevels } from "./classes/LinkLevels";
 import { StatsNames, stats } from "@/constants/stats";
 import { DaysNames } from "@/constants/monthsNames";
+import { SocialLink } from "./classes/SocialLink";
 import { Times } from "@/constants/events/types";
-import { SocialLink } from "./baseFunctions";
 
-class TowerSocialLink extends SocialLink {
-  isInvitationAvailable(): boolean {
-    return false;
-  }
+import {
+  SocialLinkAvailableProps,
+  SocialLinkNames,
+  SocialLinkType,
+  LevelsType,
+  Routes,
+} from "./types";
 
-  isLinkAvailable(props: SocialLinkAvailableProps): boolean {
+class TowerMainLevels extends LinkMainLevels {
+  isAvailable(
+    socialLink: SocialLinkType,
+    props: SocialLinkAvailableProps
+  ): boolean {
+    const linkName = socialLink.linkName;
     const courageLevel = stats[StatsNames.Courage].levels[1].value;
-    const previousLink = props.previousDay!.links[this.linkName];
-    const isNewLevel = this.isNewLevel(previousLink);
+    const previousLink = props.previousDay!.links[linkName];
+    const isNewLevel = socialLink.isNewLevel(previousLink);
     const days = [
       DaysNames.thursday,
       DaysNames.friday,
@@ -31,12 +39,8 @@ class TowerSocialLink extends SocialLink {
       isNewLevel
     );
   }
-}
 
-export const Tower = new TowerSocialLink(
-  SocialLinkNames.Tower,
-  { name: "Mutatsu", place: "Club Escapade" },
-  {
+  levels: LevelsType = {
     0: {
       [Routes.Platonic]: createBondObject,
     },
@@ -178,5 +182,11 @@ export const Tower = new TowerSocialLink(
     10: {
       [Routes.Platonic]: LinkMaxedObject,
     },
-  }
+  };
+}
+
+export const Tower = new SocialLink(
+  SocialLinkNames.Tower,
+  { name: "Mutatsu", place: "Club Escapade" },
+  { mainLevels: new TowerMainLevels() }
 );

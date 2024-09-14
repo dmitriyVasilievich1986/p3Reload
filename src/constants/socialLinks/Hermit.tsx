@@ -1,18 +1,26 @@
-import { SocialLinkAvailableProps, SocialLinkNames, Routes } from "./types";
+import { createBondObject, LinkMaxedObject } from "./classes/GenericCard";
 import { QuestionsWrapper, Question, Answer } from "@/components";
-import { createBondObject, LinkMaxedObject } from "./GenericCard";
+import { LinkMainLevels } from "./classes/LinkLevels";
 import { DaysNames } from "@/constants/monthsNames";
+import { SocialLink } from "./classes/SocialLink";
 import { Times } from "@/constants/events/types";
-import { SocialLink } from "./baseFunctions";
 
-class HermitSocialLink extends SocialLink {
-  isInvitationAvailable(): boolean {
-    return false;
-  }
+import {
+  SocialLinkAvailableProps,
+  SocialLinkNames,
+  SocialLinkType,
+  LevelsType,
+  Routes,
+} from "./types";
 
-  isLinkAvailable(props: SocialLinkAvailableProps): boolean {
-    const previousLink = props.previousDay!.links[this.linkName];
-    const isNewLevel = this.isNewLevel(previousLink);
+class HermitMainLevels extends LinkMainLevels {
+  isAvailable(
+    socialLink: SocialLinkType,
+    props: SocialLinkAvailableProps
+  ): boolean {
+    const linkName = socialLink.linkName;
+    const previousLink = props.previousDay!.links[linkName];
+    const isNewLevel = socialLink.isNewLevel(previousLink);
     const days = [
       new Date(2009, 3, 29).getTime(),
       new Date(2009, 4, 4).getTime(),
@@ -33,12 +41,8 @@ class HermitSocialLink extends SocialLink {
       isToday
     );
   }
-}
 
-export const Hermit = new HermitSocialLink(
-  SocialLinkNames.Hermit,
-  { name: "Maya", place: "Laptop at the Protagonist's room" },
-  {
+  levels: LevelsType = {
     0: {
       [Routes.Platonic]: createBondObject,
     },
@@ -187,5 +191,11 @@ export const Hermit = new HermitSocialLink(
     10: {
       [Routes.Platonic]: LinkMaxedObject,
     },
-  }
+  };
+}
+
+export const Hermit = new SocialLink(
+  SocialLinkNames.Hermit,
+  { name: "Maya", place: "Laptop at the Protagonist's room" },
+  { mainLevels: new HermitMainLevels() }
 );

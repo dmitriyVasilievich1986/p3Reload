@@ -1,15 +1,22 @@
-import { SocialLinkAvailableProps, SocialLinkNames, Routes } from "./types";
-import { createBondObject, ChooseAnyObject } from "./GenericCard";
+import { SocialLinkAlwaysLevelUp } from "./classes/SocialLink";
+import { LinkMainLevelsChooseAny } from "./classes/LinkLevels";
 import { SingleDay } from "@/constants/calendar/SingleDay";
-import { SocialLinkAlwaysLevelUp } from "./baseFunctions";
 
-class SocialLinkDeath extends SocialLinkAlwaysLevelUp {
+import {
+  SocialLinkAvailableProps,
+  SocialLinkNames,
+  SocialLinkType,
+} from "./types";
+
+class DeathtMainLevels extends LinkMainLevelsChooseAny {
   calculate(
+    socialLink: SocialLinkType,
     props: SocialLinkAvailableProps & {
       previousWeek?: SingleDay;
     }
   ) {
-    const previousLink = props.previousDay!.links[this.linkName];
+    const linkName = socialLink.linkName;
+    const previousLink = props.previousDay!.links[linkName];
     const level = [1, 3, 6, 8].includes(previousLink.level)
       ? previousLink.level + 2
       : previousLink.level + 1;
@@ -20,25 +27,13 @@ class SocialLinkDeath extends SocialLinkAlwaysLevelUp {
       },
     };
   }
-
-  isLinkAvailable(): boolean {
-    return false;
-  }
-
-  isAvailable(): boolean {
-    return false;
-  }
 }
 
-export const Death = new SocialLinkDeath(
+export const Death = new SocialLinkAlwaysLevelUp(
   SocialLinkNames.Death,
-  { name: "Pharos", place: "Main character room" },
   {
-    0: {
-      [Routes.Platonic]: createBondObject,
-    },
-    10: {
-      [Routes.Platonic]: ChooseAnyObject,
-    },
-  }
+    name: "Pharos",
+    place: "Main character room",
+  },
+  { mainLevels: new DeathtMainLevels() }
 );

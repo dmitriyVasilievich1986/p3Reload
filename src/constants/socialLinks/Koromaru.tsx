@@ -1,21 +1,27 @@
+import { LinkMainLevelsEpisodes } from "./classes/LinkLevels";
 import { SingleDay } from "@/constants/calendar/SingleDay";
-import { SocialLinkEpisodes } from "./baseFunctions";
+import { SocialLinkEpisodes } from "./classes/SocialLink";
 import { DaysNames } from "@/constants/monthsNames";
 import { Times } from "@/constants/events/types";
-import { ChooseAnyObject } from "./GenericCard";
 import { StatsNames } from "@/constants/stats";
 import { EventCard } from "@/components";
 
 import {
   SocialLinkAvailableProps,
   SocialLinkElementProps,
+  SocialLinkLevel,
+  SocialLinkStats,
   SocialLinkNames,
-  Routes,
+  SocialLinkType,
 } from "./types";
 
-class KoromaruSocialLink extends SocialLinkEpisodes {
-  isLinkAvailable(props: SocialLinkAvailableProps): boolean {
-    const previousLink = props.previousDay!.links[this.linkName];
+class KoromaruMainLevels extends LinkMainLevelsEpisodes {
+  isAvailable(
+    socialLink: SocialLinkType,
+    props: SocialLinkAvailableProps
+  ): boolean {
+    const linkName = socialLink.linkName;
+    const previousLink = props.previousDay!.links[linkName];
     const isTime = props.time === Times.Day;
     let days = [DaysNames.tuesday, DaysNames.wednesday, DaysNames.friday];
     let additionalDays = [];
@@ -100,11 +106,13 @@ class KoromaruSocialLink extends SocialLinkEpisodes {
   }
 
   calculate(
+    socialLink: SocialLinkType,
     props: SocialLinkAvailableProps & {
       previousWeek?: SingleDay;
     }
   ) {
-    const previousLink = props.previousDay!.links[this.linkName];
+    const linkName = socialLink.linkName;
+    const previousLink = props.previousDay!.links[linkName];
     let currentStats = props.currentDay.stats;
 
     switch (previousLink.level) {
@@ -127,16 +135,24 @@ class KoromaruSocialLink extends SocialLinkEpisodes {
       stats: currentStats,
       links: {
         ...props.currentDay.links,
-        [this.linkName]: { ...previousLink, level: previousLink.level + 1 },
+        [linkName]: { ...previousLink, level: previousLink.level + 1 },
       },
     };
   }
 
-  element(props: SocialLinkElementProps) {
+  element(
+    socialLink: SocialLinkType,
+    props: SocialLinkElementProps
+  ): React.ReactNode {
     if (!props.previousDay) return null;
 
-    const previousLink = props.previousDay!.links[this.linkName];
+    const linkName = socialLink.linkName;
+    const previousLink = props.previousDay!.links[linkName];
     let additionalStats: string | undefined = undefined;
+    const currentLevel = props.currentDay.links[linkName] as SocialLinkStats;
+    const level = this.levels[currentLevel.level][
+      currentLevel.romance
+    ] as SocialLinkLevel;
 
     switch (previousLink.level) {
       case 0:
@@ -151,25 +167,18 @@ class KoromaruSocialLink extends SocialLinkEpisodes {
     return (
       <div>
         <EventCard
-          head={`${this.linkName} (Episode)`}
-          name={this.linkDetails.name}
+          head={`${linkName} (Episode)`}
+          name={socialLink.linkDetails.name}
           stats={additionalStats}
         />
-        {props.fullCard &&
-          this.getLevel().element({
-            key: this.linkName,
-          })}
+        {props.fullCard && level.element({ key: linkName })}
       </div>
     );
   }
 }
 
-export const Koromaru = new KoromaruSocialLink(
+export const Koromaru = new SocialLinkEpisodes(
   SocialLinkNames.Koromaru,
   { name: "Koromaru" },
-  {
-    5: {
-      [Routes.Platonic]: ChooseAnyObject,
-    },
-  }
+  { mainLevels: new KoromaruMainLevels() }
 );

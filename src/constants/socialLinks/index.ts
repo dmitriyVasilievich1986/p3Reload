@@ -1,5 +1,5 @@
-import { CardNeededCalculator } from "./calculationFunctions";
-import { mainCharName, SocialLink } from "./baseFunctions";
+import { mainCharName } from "./classes/mainCharName";
+import { SocialLink } from "./classes/SocialLink";
 import { SocialLinkNames, Routes } from "./types";
 
 import { Hierophant } from "./Hierophant";
@@ -60,11 +60,4 @@ const socialLinks: { [key in SocialLinkNames]: SocialLink } = {
   [SocialLinkNames.Aeon]: Aeon,
 };
 
-export {
-  CardNeededCalculator,
-  SocialLinkNames,
-  mainCharName,
-  socialLinks,
-  SocialLink,
-  Routes,
-};
+export { SocialLinkNames, mainCharName, socialLinks, SocialLink, Routes };

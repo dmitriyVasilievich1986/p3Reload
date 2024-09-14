@@ -1,47 +1,28 @@
+import { createBondObject, LinkMaxedObject } from "./classes/GenericCard";
+import { InvitationLevels, LinkMainLevels } from "./classes/LinkLevels";
 import { QuestionsWrapper, Question, Answer } from "@/components";
-import { createBondObject, LinkMaxedObject } from "./GenericCard";
-import { SocialLink, mainCharName } from "./baseFunctions";
+import { mainCharName } from "./classes/mainCharName";
 import { DaysNames } from "@/constants/monthsNames";
+import { SocialLink } from "./classes/SocialLink";
 import { Times } from "@/constants/events/types";
 
 import {
   SocialLinkAvailableProps,
-  InvitationsType,
   SocialLinkNames,
+  SocialLinkType,
+  LevelsType,
   Routes,
 } from "./types";
 
-class JusticeSocialLink extends SocialLink {
-  isInvitationAvailable(
+class JusticeMainLevels extends LinkMainLevels {
+  isAvailable(
+    socialLink: SocialLinkType,
     props: SocialLinkAvailableProps,
     route: Routes
   ): boolean {
-    const dates = [
-      new Date(2009, 4, 31).getTime(),
-      new Date(2009, 5, 21).getTime(),
-      new Date(2009, 6, 5).getTime(),
-      new Date(2009, 6, 26).getTime(),
-      new Date(2009, 7, 9).getTime(),
-      new Date(2009, 7, 27).getTime(),
-      new Date(2009, 8, 27).getTime(),
-      new Date(2009, 9, 25).getTime(),
-      new Date(2009, 10, 29).getTime(),
-      new Date(2010, 0, 5).getTime(),
-      new Date(2010, 0, 10).getTime(),
-    ];
-    const invitations = this.invitations as InvitationsType;
-
-    return (
-      props.currentDay.links[this.linkName].level in invitations &&
-      props.previousDay!.links[this.linkName].romance === route &&
-      dates.includes(props.currentDay.date.getTime()) &&
-      props.time === Times.Day
-    );
-  }
-
-  isLinkAvailable(props: SocialLinkAvailableProps, route: Routes): boolean {
-    const previousLink = props.previousDay!.links[this.linkName];
-    const isNewLevel = this.isNewLevel(previousLink);
+    const linkName = socialLink.linkName;
+    const previousLink = props.previousDay!.links[linkName];
+    const isNewLevel = socialLink.isNewLevel(previousLink);
     const isRomance =
       previousLink.level === 4 || previousLink.romance === route;
     const days = [DaysNames.tuesday, DaysNames.thursday, DaysNames.saturday];
@@ -57,12 +38,8 @@ class JusticeSocialLink extends SocialLink {
       isRomance
     );
   }
-}
 
-export const Justice = new JusticeSocialLink(
-  SocialLinkNames.Justice,
-  { name: "Chihiro Fushimi", place: "2nd Floor Hallway" },
-  {
+  levels: LevelsType = {
     0: {
       [Routes.Platonic]: createBondObject,
     },
@@ -352,76 +329,130 @@ export const Justice = new JusticeSocialLink(
       [Routes.Platonic]: LinkMaxedObject,
       [Routes.Romantic]: LinkMaxedObject,
     },
-  },
-  {
+  };
+}
+
+class JusticeInvitationLevels extends InvitationLevels {
+  dates = [
+    new Date(2009, 4, 31).getTime(),
+    new Date(2009, 5, 21).getTime(),
+    new Date(2009, 6, 5).getTime(),
+    new Date(2009, 6, 26).getTime(),
+    new Date(2009, 7, 9).getTime(),
+    new Date(2009, 7, 27).getTime(),
+    new Date(2009, 8, 27).getTime(),
+    new Date(2009, 9, 25).getTime(),
+    new Date(2009, 10, 29).getTime(),
+    new Date(2010, 0, 5).getTime(),
+    new Date(2010, 0, 10).getTime(),
+  ];
+
+  levels: LevelsType = {
     2: {
-      [Routes.Platonic]: (
-        <Question label={`I kept thinking, "What if he doesn't show up?"`}>
-          <Answer label="Try not to worry so much." points={30} />
-        </Question>
-      ),
+      [Routes.Platonic]: QuestionsWrapper({
+        points: 0,
+        element: [
+          <Question label={`I kept thinking, "What if he doesn't show up?"`}>
+            <Answer label="Try not to worry so much." points={30} />
+          </Question>,
+        ],
+      }),
     },
     3: {
-      [Routes.Platonic]: (
-        <Question label="There's not much point in meeting up if we're both just going to read on our own, huh...?">
-          <Answer label="You're right, it's pointless." />
-          <Answer label="I think it's fun, actually." />
-          <Answer label="We'll do better next time." points={30} />
-        </Question>
-      ),
+      [Routes.Platonic]: QuestionsWrapper({
+        points: 0,
+        element: [
+          <Question label="There's not much point in meeting up if we're both just going to read on our own, huh...?">
+            <Answer label="You're right, it's pointless." />
+            <Answer label="I think it's fun, actually." />
+            <Answer label="We'll do better next time." points={30} />
+          </Question>,
+        ],
+      }),
     },
     4: {
-      [Routes.Platonic]: (
-        <Question label="I-I was afraid that I might see that guy from before who tried to, um...">
-          <Answer label="I'd help you again." points={30} />
-        </Question>
-      ),
+      [Routes.Platonic]: QuestionsWrapper({
+        points: 0,
+        element: [
+          <Question label="I-I was afraid that I might see that guy from before who tried to, um...">
+            <Answer label="I'd help you again." points={30} />
+          </Question>,
+        ],
+      }),
     },
     5: {
-      [Routes.Platonic]: (
-        <Question label="Um... Your coffee is going to get cold.">
-          <Answer label="It needs to cool down." />
-          <Answer label="Do you want sugar?" points={30} />
-          <Answer label="I know." />
-        </Question>
-      ),
+      [Routes.Platonic]: QuestionsWrapper({
+        points: 0,
+        element: [
+          <Question label="Um... Your coffee is going to get cold.">
+            <Answer label="It needs to cool down." />
+            <Answer label="Do you want sugar?" points={30} />
+            <Answer label="I know." />
+          </Question>,
+        ],
+      }),
     },
     6: {
-      [Routes.Platonic]: (
-        <Question label="I... want to be like that too...">
-          <Answer label="You can do it." points={30} />
-        </Question>
-      ),
+      [Routes.Platonic]: QuestionsWrapper({
+        points: 0,
+        element: [
+          <Question label="I... want to be like that too...">
+            <Answer label="You can do it." points={30} />
+          </Question>,
+        ],
+      }),
     },
     7: {
-      [Routes.Platonic]: (
-        <Question label="It's sad to think there might be a thief at our school...">
-          <Answer label="Don't worry, it wasn't a thief." points={30} />
-        </Question>
-      ),
+      [Routes.Platonic]: QuestionsWrapper({
+        points: 0,
+        element: [
+          <Question label="It's sad to think there might be a thief at our school...">
+            <Answer label="Don't worry, it wasn't a thief." points={30} />
+          </Question>,
+        ],
+      }),
     },
     8: {
-      [Routes.Platonic]: (
-        <Question label="It's just... ever since that money went missing, I've been feeling anxious whenever I'm alone...">
-          <Answer label="I'm happy to help." points={30} />
-        </Question>
-      ),
+      [Routes.Platonic]: QuestionsWrapper({
+        points: 0,
+        element: [
+          <Question label="It's just... ever since that money went missing, I've been feeling anxious whenever I'm alone...">
+            <Answer label="I'm happy to help." points={30} />
+          </Question>,
+        ],
+      }),
     },
     9: {
-      [Routes.Platonic]: (
-        <Question
-          label={`What about you, ${mainCharName}-san? Are you planning to get a driver's license?`}
-        >
-          <Answer label="I am." points={30} />
-        </Question>
-      ),
-      [Routes.Romantic]: (
-        <Question
-          label={`What about you, ${mainCharName}-san? Are you planning to get a driver's license?`}
-        >
-          <Answer label="I am." points={30} />
-        </Question>
-      ),
+      [Routes.Platonic]: QuestionsWrapper({
+        points: 0,
+        element: [
+          <Question
+            label={`What about you, ${mainCharName}-san? Are you planning to get a driver's license?`}
+          >
+            <Answer label="I am." points={30} />
+          </Question>,
+        ],
+      }),
+      [Routes.Romantic]: QuestionsWrapper({
+        points: 0,
+        element: [
+          <Question
+            label={`What about you, ${mainCharName}-san? Are you planning to get a driver's license?`}
+          >
+            <Answer label="I am." points={30} />
+          </Question>,
+        ],
+      }),
     },
+  };
+}
+
+export const Justice = new SocialLink(
+  SocialLinkNames.Justice,
+  { name: "Chihiro Fushimi", place: "2nd Floor Hallway" },
+
+  {
+    invitations: new JusticeInvitationLevels(),
+    mainLevels: new JusticeMainLevels(),
   }
 );

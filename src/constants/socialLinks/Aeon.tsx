@@ -1,18 +1,27 @@
-import { SocialLinkAvailableProps, SocialLinkNames, Routes } from "./types";
+import { createBondObject, LinkMaxedObject } from "./classes/GenericCard";
 import { QuestionsWrapper, Question, Answer } from "@/components";
-import { createBondObject, LinkMaxedObject } from "./GenericCard";
+import { LinkMainLevels } from "./classes/LinkLevels";
 import { DaysNames } from "@/constants/monthsNames";
+import { SocialLink } from "./classes/SocialLink";
 import { Times } from "@/constants/events/types";
-import { SocialLink } from "./baseFunctions";
 
-class AeonSocialLink extends SocialLink {
-  isInvitationAvailable(): boolean {
-    return false;
-  }
+import {
+  SocialLinkAvailableProps,
+  SocialLinkNames,
+  SocialLinkType,
+  LevelsType,
+  Routes,
+} from "./types";
 
-  isLinkAvailable(props: SocialLinkAvailableProps, route: Routes): boolean {
-    const previousLink = props.previousDay!.links[this.linkName];
-    const isNewLevel = this.isNewLevel(previousLink);
+class AeonMainLevels extends LinkMainLevels {
+  isAvailable(
+    socialLink: SocialLinkType,
+    props: SocialLinkAvailableProps,
+    route: Routes
+  ): boolean {
+    const linkName = socialLink.linkName;
+    const previousLink = props.previousDay!.links[linkName];
+    const isNewLevel = socialLink.isNewLevel(previousLink);
     const isRomance =
       previousLink.level === 6 || previousLink.romance === route;
     const days = [
@@ -32,12 +41,8 @@ class AeonSocialLink extends SocialLink {
       isRomance
     );
   }
-}
 
-export const Aeon = new AeonSocialLink(
-  SocialLinkNames.Aeon,
-  { name: "Aigis", place: "Classroom 2F" },
-  {
+  levels: LevelsType = {
     0: {
       [Routes.Platonic]: createBondObject,
     },
@@ -251,5 +256,11 @@ export const Aeon = new AeonSocialLink(
       [Routes.Platonic]: LinkMaxedObject,
       [Routes.Romantic]: LinkMaxedObject,
     },
-  }
+  };
+}
+
+export const Aeon = new SocialLink(
+  SocialLinkNames.Aeon,
+  { name: "Aigis", place: "Classroom 2F" },
+  { mainLevels: new AeonMainLevels() }
 );

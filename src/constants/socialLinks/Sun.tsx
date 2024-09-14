@@ -1,15 +1,24 @@
-import { SocialLinkAvailableProps, SocialLinkNames, Routes } from "./types";
-import { createBondObject, ChooseAnyObject } from "./GenericCard";
-import { SocialLinkAlwaysLevelUp } from "./baseFunctions";
+import { LinkMainLevelsChooseAny } from "./classes/LinkLevels";
+import { SocialLinkAlwaysLevelUp } from "./classes/SocialLink";
 import { StatsNames, stats } from "@/constants/stats";
 import { DaysNames } from "@/constants/monthsNames";
 import { Times } from "@/constants/events/types";
 
-class SunSocialLink extends SocialLinkAlwaysLevelUp {
-  isLinkAvailable(props: SocialLinkAvailableProps): boolean {
+import {
+  SocialLinkAvailableProps,
+  SocialLinkNames,
+  SocialLinkType,
+} from "./types";
+
+class SunMainLevels extends LinkMainLevelsChooseAny {
+  isAvailable(
+    socialLink: SocialLinkType,
+    props: SocialLinkAvailableProps
+  ): boolean {
+    const linkName = socialLink.linkName;
     const academicsLevel = stats[StatsNames.Academics].levels[5].value;
-    const previousLink = props.previousDay!.links[this.linkName];
-    const isNewLevel = this.isNewLevel(previousLink);
+    const previousLink = props.previousDay!.links[linkName];
+    const isNewLevel = socialLink.isNewLevel(previousLink);
 
     return (
       props.currentDay.date.getTime() >= new Date(2009, 7, 9).getTime() &&
@@ -22,15 +31,8 @@ class SunSocialLink extends SocialLinkAlwaysLevelUp {
   }
 }
 
-export const Sun = new SunSocialLink(
+export const Sun = new SocialLinkAlwaysLevelUp(
   SocialLinkNames.Sun,
   { name: "Akinari Kamiki", place: "Naganaki Shrine" },
-  {
-    0: {
-      [Routes.Platonic]: createBondObject,
-    },
-    10: {
-      [Routes.Platonic]: ChooseAnyObject,
-    },
-  }
+  { mainLevels: new SunMainLevels() }
 );

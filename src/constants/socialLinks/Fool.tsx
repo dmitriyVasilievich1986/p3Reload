@@ -1,15 +1,16 @@
-import { SocialLinkAvailableProps, SocialLinkNames, Routes } from "./types";
-import { AutomaticLevelUpObject, createBondObject } from "./GenericCard";
-import { SingleDay } from "@/constants/calendar/SingleDay";
-import { SocialLinkAlwaysLevelUp } from "./baseFunctions";
+import { SocialLinkAlwaysLevelUp } from "./classes/SocialLink";
+import { LinkMainLevelsChooseAny } from "./classes/LinkLevels";
 
-class SocialLinkFool extends SocialLinkAlwaysLevelUp {
-  calculate(
-    props: SocialLinkAvailableProps & {
-      previousWeek?: SingleDay;
-    }
-  ) {
-    const previousLink = props.previousDay!.links[this.linkName];
+import {
+  SocialLinkAvailableProps,
+  SocialLinkNames,
+  SocialLinkType,
+} from "./types";
+
+class SocialLinkFool extends LinkMainLevelsChooseAny {
+  calculate(socialLink: SocialLinkType, props: SocialLinkAvailableProps) {
+    const linkName = socialLink.linkName;
+    const previousLink = props.previousDay!.links[linkName];
     const level =
       previousLink.level === 7
         ? previousLink.level + 2
@@ -21,25 +22,13 @@ class SocialLinkFool extends SocialLinkAlwaysLevelUp {
       },
     };
   }
-
-  isLinkAvailable(): boolean {
-    return false;
-  }
-
-  isAvailable(): boolean {
-    return false;
-  }
 }
 
-export const Fool = new SocialLinkFool(
+export const Fool = new SocialLinkAlwaysLevelUp(
   SocialLinkNames.Fool,
-  { name: "S.E.E.S.", place: "Tartarus" },
   {
-    0: {
-      [Routes.Platonic]: createBondObject,
-    },
-    10: {
-      [Routes.Platonic]: AutomaticLevelUpObject,
-    },
-  }
+    name: "S.E.E.S.",
+    place: "Tartarus",
+  },
+  { mainLevels: new SocialLinkFool() }
 );

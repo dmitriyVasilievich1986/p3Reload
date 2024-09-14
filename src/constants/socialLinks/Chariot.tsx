@@ -1,7 +1,8 @@
-import { createBondObject, LinkMaxedObject } from "./GenericCard";
+import { createBondObject, LinkMaxedObject } from "./classes/GenericCard";
+import { InvitationLevels, LinkMainLevels } from "./classes/LinkLevels";
 import { QuestionsWrapper, Question, Answer } from "@/components";
+import { SocialLink } from "./classes/SocialLink";
 import { SingleDay } from "../calendar/SingleDay";
-import { SocialLink } from "./baseFunctions";
 import { DaysNames } from "../monthsNames";
 import { Times } from "../events/types";
 import { Strength } from "./Strength";
@@ -10,36 +11,19 @@ import {
   SocialLinkAvailableProps,
   SocialLinkElementProps,
   SocialLinkNames,
-  InvitationsType,
+  SocialLinkType,
+  LevelsType,
   Routes,
 } from "./types";
 
-class ChariotSocialLink extends SocialLink {
-  isInvitationAvailable(props: SocialLinkAvailableProps): boolean {
-    const dates = [
-      new Date(2009, 4, 4).getTime(),
-      new Date(2009, 4, 24).getTime(),
-      new Date(2009, 5, 7).getTime(),
-      new Date(2009, 5, 14).getTime(),
-      new Date(2009, 7, 5).getTime(),
-      new Date(2009, 8, 27).getTime(),
-      new Date(2009, 9, 18).getTime(),
-      new Date(2009, 10, 8).getTime(),
-      new Date(2010, 0, 6).getTime(),
-      new Date(2010, 0, 10).getTime(),
-    ];
-    const invitations = this.invitations as InvitationsType;
-
-    return (
-      props.currentDay.links[this.linkName].level in invitations &&
-      dates.includes(props.currentDay.date.getTime()) &&
-      props.time === Times.Day
-    );
-  }
-
-  isLinkAvailable(props: SocialLinkAvailableProps): boolean {
-    const previousLink = props.previousDay!.links[this.linkName];
-    const isNewLevel = this.isNewLevel(previousLink);
+class ChariotMainLevels extends LinkMainLevels {
+  isAvailable(
+    socialLink: SocialLinkType,
+    props: SocialLinkAvailableProps
+  ): boolean {
+    const linkName = socialLink.linkName;
+    const previousLink = props.previousDay!.links[linkName];
+    const isNewLevel = socialLink.isNewLevel(previousLink);
     const days = [
       DaysNames.monday,
       DaysNames.tuesday,
@@ -58,23 +42,24 @@ class ChariotSocialLink extends SocialLink {
   }
 
   calculate(
+    socialLink: SocialLinkType,
     props: SocialLinkAvailableProps & {
       previousWeek?: SingleDay;
-    }
+    },
+    route: Routes
   ) {
-    const previousLink = props.previousDay!.links[this.linkName];
+    const linkName = socialLink.linkName;
+    const previousLink = props.previousDay!.links[linkName];
     let strengthLevel = props.previousDay!.links[SocialLinkNames.Strength];
-    if (
-      this.isNewLevel(previousLink) &&
-      props.previousDay!.links[this.linkName].level === 1
-    ) {
+
+    if (socialLink.isNewLevel(previousLink) && previousLink.level === 1) {
       strengthLevel = {
         ...props.currentDay.links[SocialLinkNames.Strength],
         points: 0,
         level: 1,
       };
     }
-    const payload = super.calculate(props);
+    const payload = super.calculate(socialLink, props, route);
 
     return {
       links: {
@@ -84,24 +69,27 @@ class ChariotSocialLink extends SocialLink {
     };
   }
 
-  element(props: SocialLinkElementProps) {
+  element(
+    socialLink: SocialLinkType,
+    props: SocialLinkElementProps,
+    route: Routes
+  ): React.ReactNode {
     if (!props.previousDay) return null;
+
+    const linkName = socialLink.linkName;
+    const currentLink = props.currentDay!.links[linkName];
 
     return (
       <div>
-        {super.element(props)}
+        {super.element(socialLink, props, route)}
         {props.fullCard &&
-          props.currentDay.links[this.linkName].level === 2 &&
+          currentLink.level === 2 &&
           Strength.element.bind(Strength)(props)}
       </div>
     );
   }
-}
 
-export const Chariot = new ChariotSocialLink(
-  SocialLinkNames.Chariot,
-  { name: "Kazushi Miyamoto", place: "Classroom 2F" },
-  {
+  levels: LevelsType = {
     0: {
       [Routes.Platonic]: createBondObject,
     },
@@ -250,71 +238,120 @@ export const Chariot = new ChariotSocialLink(
     10: {
       [Routes.Platonic]: LinkMaxedObject,
     },
-  },
-  {
+  };
+}
+
+class ChariotInvitationLevels extends InvitationLevels {
+  dates = [
+    new Date(2009, 4, 4).getTime(),
+    new Date(2009, 4, 24).getTime(),
+    new Date(2009, 5, 7).getTime(),
+    new Date(2009, 5, 14).getTime(),
+    new Date(2009, 7, 5).getTime(),
+    new Date(2009, 8, 27).getTime(),
+    new Date(2009, 9, 18).getTime(),
+    new Date(2009, 10, 8).getTime(),
+    new Date(2010, 0, 6).getTime(),
+    new Date(2010, 0, 10).getTime(),
+  ];
+
+  levels: LevelsType = {
     2: {
-      [Routes.Platonic]: (
-        <Question label="That way, I'm ready to go 24/7, y'know? That's real dedication, man.">
-          <Answer label="Impressive." points={30} />
-          <Answer label="I don't really care." />
-          <Answer label="You need to chill." />
-        </Question>
-      ),
+      [Routes.Platonic]: QuestionsWrapper({
+        points: 0,
+        element: [
+          <Question label="That way, I'm ready to go 24/7, y'know? That's real dedication, man.">
+            <Answer label="Impressive." points={30} />
+            <Answer label="I don't really care." />
+            <Answer label="You need to chill." />
+          </Question>,
+        ],
+      }),
     },
     3: {
-      [Routes.Platonic]: (
-        <Question label="I'm trying to cut down on carbs.">
-          <Answer label="Are you on a diet?" points={30} />
-        </Question>
-      ),
+      [Routes.Platonic]: QuestionsWrapper({
+        points: 0,
+        element: [
+          <Question label="I'm trying to cut down on carbs.">
+            <Answer label="Are you on a diet?" points={30} />
+          </Question>,
+        ],
+      }),
     },
     4: {
-      [Routes.Platonic]: (
-        <Question label="The more I want to win, I can just feel myself tense up...">
-          <Answer label="Winning isn't everything." points={30} />
-        </Question>
-      ),
+      [Routes.Platonic]: QuestionsWrapper({
+        points: 0,
+        element: [
+          <Question label="The more I want to win, I can just feel myself tense up...">
+            <Answer label="Winning isn't everything." points={30} />
+          </Question>,
+        ],
+      }),
     },
     5: {
-      [Routes.Platonic]: (
-        <Question label="Anyway... Sorry about all of that.">
-          <Answer label="You'd be in trouble." />
-          <Answer label="I was worried about you." />
-          <Answer label="Gotta pick your battles." points={30} />
-        </Question>
-      ),
+      [Routes.Platonic]: QuestionsWrapper({
+        points: 0,
+        element: [
+          <Question label="Anyway... Sorry about all of that.">
+            <Answer label="You'd be in trouble." />
+            <Answer label="I was worried about you." />
+            <Answer label="Gotta pick your battles." points={30} />
+          </Question>,
+        ],
+      }),
     },
     6: {
-      [Routes.Platonic]: (
-        <Question label="Any ideas?">
-          <Answer label="Running shoes?" />
-          <Answer label="A video game." points={30} />
-          <Answer label="Clothes." />
-        </Question>
-      ),
+      [Routes.Platonic]: QuestionsWrapper({
+        points: 0,
+        element: [
+          <Question label="Any ideas?">
+            <Answer label="Running shoes?" />
+            <Answer label="A video game." points={30} />
+            <Answer label="Clothes." />
+          </Question>,
+        ],
+      }),
     },
     7: {
-      [Routes.Platonic]: (
-        <Question label="You know, that Apathy Syndrome thing.">
-          <Answer label="That's worrying." points={30} />
-        </Question>
-      ),
+      [Routes.Platonic]: QuestionsWrapper({
+        points: 0,
+        element: [
+          <Question label="You know, that Apathy Syndrome thing.">
+            <Answer label="That's worrying." points={30} />
+          </Question>,
+        ],
+      }),
     },
     8: {
-      [Routes.Platonic]: (
-        <Question label="Man, why do I even bother anymore? What's the point of going through all this pain just to win...?">
-          <Answer label="That's just who you are." points={30} />
-          <Answer label="For your nephew." />
-          <Answer label="Figure it out yourself." />
-        </Question>
-      ),
+      [Routes.Platonic]: QuestionsWrapper({
+        points: 0,
+        element: [
+          <Question label="Man, why do I even bother anymore? What's the point of going through all this pain just to win...?">
+            <Answer label="That's just who you are." points={30} />
+            <Answer label="For your nephew." />
+            <Answer label="Figure it out yourself." />
+          </Question>,
+        ],
+      }),
     },
     9: {
-      [Routes.Platonic]: (
-        <Question label="With everything that's happening to me right now... do you really think I can still win the regionals next year?">
-          <Answer label="Sounds impossible." points={30} />
-        </Question>
-      ),
+      [Routes.Platonic]: QuestionsWrapper({
+        points: 0,
+        element: [
+          <Question label="With everything that's happening to me right now... do you really think I can still win the regionals next year?">
+            <Answer label="Sounds impossible." points={30} />
+          </Question>,
+        ],
+      }),
     },
+  };
+}
+
+export const Chariot = new SocialLink(
+  SocialLinkNames.Chariot,
+  { name: "Kazushi Miyamoto", place: "Classroom 2F" },
+  {
+    invitations: new ChariotInvitationLevels(),
+    mainLevels: new ChariotMainLevels(),
   }
 );

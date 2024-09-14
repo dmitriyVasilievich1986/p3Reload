@@ -1,37 +1,47 @@
-import { SocialLinkAvailableProps, SocialLinkNames, Routes } from "./types";
-import { createBondObject, ChooseAnyObject } from "./GenericCard";
-import { SocialLinkAlwaysLevelUp } from "./baseFunctions";
-import { StatsNames, stats } from "@/constants/stats";
+import { SocialLinkAlwaysLevelUp } from "./classes/SocialLink";
+import { LinkMainLevelsChooseAny } from "./classes/LinkLevels";
 import { DaysNames } from "@/constants/monthsNames";
 import { Times } from "@/constants/events/types";
 
-class DevilSocialLink extends SocialLinkAlwaysLevelUp {
-  isLinkAvailable(props: SocialLinkAvailableProps): boolean {
-    const previousLink = props.previousDay!.links[this.linkName];
-    const isNewLevel = this.isNewLevel(previousLink);
-    const days = [DaysNames.tuesday, DaysNames.saturday];
-    const charmLevel = stats[StatsNames.Charm].levels[3].value;
+import {
+  SocialLinkAvailableProps,
+  SocialLinkNames,
+  SocialLinkType,
+  Routes,
+} from "./types";
+
+class DevilMainLevels extends LinkMainLevelsChooseAny {
+  isAvailable(
+    socialLink: SocialLinkType,
+    props: SocialLinkAvailableProps,
+    route: Routes
+  ): boolean {
+    const linkName = socialLink.linkName;
+    const previousLink = props.previousDay!.links[linkName];
+    const isNewLevel = socialLink.isNewLevel(previousLink);
+    const isRomance =
+      previousLink.level === 6 || previousLink.romance === route;
+    const days = [
+      DaysNames.monday,
+      DaysNames.tuesday,
+      DaysNames.wednesday,
+      DaysNames.thursday,
+      DaysNames.friday,
+      DaysNames.saturday,
+    ];
 
     return (
-      props.currentDay.date.getTime() >= new Date(2009, 4, 16).getTime() &&
-      props.previousDay!.links[SocialLinkNames.Hermit].level >= 4 &&
-      props.previousDay!.stats[StatsNames.Charm] >= charmLevel &&
+      props.currentDay.date.getTime() >= new Date(2010, 0, 8).getTime() &&
       days.includes(props.currentDay.date.getDay()) &&
-      props.time === Times.Evening &&
-      isNewLevel
+      props.time === Times.Day &&
+      isNewLevel &&
+      isRomance
     );
   }
 }
 
-export const Devil = new DevilSocialLink(
+export const Devil = new SocialLinkAlwaysLevelUp(
   SocialLinkNames.Devil,
   { name: "President Tanaka", place: "Paulownia Mall" },
-  {
-    0: {
-      [Routes.Platonic]: createBondObject,
-    },
-    10: {
-      [Routes.Platonic]: ChooseAnyObject,
-    },
-  }
+  { mainLevels: new DevilMainLevels() }
 );

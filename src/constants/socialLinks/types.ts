@@ -69,10 +69,6 @@ export type SocialLinksStatsArray = {
   [key in SocialLinkNames]: SocialLinkStats;
 };
 
-export type InvitationsType = {
-  [key: number]: { [key in Routes]?: React.ReactNode };
-};
-
 export type LevelsType = {
   [key: number]: { [key in Routes]?: SocialLinkLevel };
 };
@@ -93,10 +89,8 @@ export type SocialLinkElementProps = SocialLinkAvailableProps & {
 };
 
 export type SocialLinkType = {
-  invitations?: InvitationsType;
   linkDetails: LinkDetailsType;
   linkName: SocialLinkNames;
-  levels: LevelsType;
   maxLevel: number;
 
   element(props: SocialLinkElementProps): React.ReactNode;
