@@ -4,7 +4,13 @@ import { StatsNames, stats } from "@/constants/stats";
 import { Times } from "@/constants/events/types";
 import { EventCard } from "@/components";
 
-import { SpendingTimeObject } from "./GenericCard";
+import {
+  SpendingTimeObject,
+  createBondObject,
+  ChooseAnyObject,
+  SpendingTime,
+} from "./GenericCard";
+
 import {
   SocialLinkAvailableProps,
   SocialLinkElementProps,
@@ -27,7 +33,8 @@ export abstract class LinkLevels {
 
   abstract element(
     socialLink: SocialLinkType,
-    props: SocialLinkElementProps
+    props: SocialLinkElementProps,
+    route: Routes
   ): React.ReactNode;
 
   abstract isAvailable(
@@ -47,6 +54,77 @@ class EmptyLevels extends LinkLevels {
   isAvailable() {
     return false;
   }
+}
+
+export abstract class LinkMainLevels extends LinkLevels {
+  element(
+    socialLink: SocialLinkType,
+    props: SocialLinkElementProps,
+    route: Routes = Routes.Platonic
+  ): React.ReactNode {
+    if (!props.previousDay) return null;
+    const linkName = socialLink.linkName;
+    const charmLevel = stats[StatsNames.Charm].levels[5].value;
+    const previousLevel = props.previousDay.links[linkName] as SocialLinkStats;
+    const headPostfix = route === Routes.Romantic ? " (Romantic)" : "";
+    const isNewLevel = socialLink.isNewLevel(previousLevel);
+    const level = socialLink.getLevel({
+      ...previousLevel,
+      romance: route,
+    }) as SocialLinkLevel;
+
+    const Card = () => {
+      if (!props.fullCard) return null;
+      if (isNewLevel) return level.element({ key: linkName });
+      return SpendingTime();
+    };
+
+    return (
+      <div>
+        <EventCard
+          charm={
+            props.fullCard &&
+            props.currentDay?.stats &&
+            props.currentDay.stats[StatsNames.Charm] >= charmLevel
+          }
+          multiplier={
+            props.fullCard
+              ? props.currentDay.links &&
+                props.currentDay.links[linkName].multiplier
+              : undefined
+          }
+          card={props.fullCard && props.currentDay.arcanes.includes(linkName)}
+          place={socialLink.linkDetails.place}
+          name={socialLink.linkDetails.name}
+          head={`${linkName}${headPostfix}`}
+        />
+        <Card />
+      </div>
+    );
+  }
+}
+
+export abstract class LinkMainLevelsEpisodes extends LinkMainLevels {
+  levels: LevelsType = {
+    5: {
+      [Routes.Platonic]: ChooseAnyObject,
+    },
+  };
+}
+
+export class LinkMainLevelsChooseAny extends LinkMainLevels {
+  isAvailable(): boolean {
+    return false;
+  }
+
+  levels: LevelsType = {
+    0: {
+      [Routes.Platonic]: createBondObject,
+    },
+    10: {
+      [Routes.Platonic]: ChooseAnyObject,
+    },
+  };
 }
 
 export abstract class InvitationLevels extends LinkLevels {
@@ -154,34 +232,36 @@ export class ShrineLevels extends LinkLevels {
   }
 }
 
-export abstract class SocialLink implements SocialLinkType {
+export class SocialLink implements SocialLinkType {
   linkDetails: LinkDetailsType;
   linkName: SocialLinkNames;
-  levels: LevelsType;
   maxLevel: number;
 
   shrineLevels: LinkLevels;
   invitations: LinkLevels;
+  mainLevels: LinkLevels;
 
   constructor(
     linkName: SocialLinkNames,
     linkDetails: LinkDetailsType,
-    levels: LevelsType,
-    props?: {
+    levels: {
       shrineLevels?: LinkLevels;
       invitations?: LinkLevels;
+      mainLevels: LinkLevels;
     }
   ) {
-    this.maxLevel = Math.max(...Object.keys(levels).map((k) => Number(k)));
-    this.shrineLevels = props?.shrineLevels || new ShrineLevels();
-    this.invitations = props?.invitations || new EmptyLevels();
+    this.maxLevel = Math.max(
+      ...Object.keys(levels.mainLevels.levels).map((k) => Number(k))
+    );
+    this.shrineLevels = levels?.shrineLevels || new ShrineLevels();
+    this.invitations = levels?.invitations || new EmptyLevels();
+    this.mainLevels = levels.mainLevels;
     this.linkDetails = linkDetails;
     this.linkName = linkName;
-    this.levels = levels;
   }
 
   getLevel({ romance, level }: SocialLinkStats) {
-    return this.levels[level][romance] as SocialLinkLevel;
+    return this.mainLevels.levels[level][romance] as SocialLinkLevel;
   }
 
   isNewLevel(thisLink: SocialLinkStats) {
@@ -191,18 +271,13 @@ export abstract class SocialLink implements SocialLinkType {
     );
   }
 
-  abstract isLinkAvailable(
-    props: SocialLinkAvailableProps,
-    route: Routes
-  ): boolean;
-
   isAvailable(props: SocialLinkAvailableProps, route: Routes): boolean {
     if (!props.previousDay) return false;
 
     return (
       this.shrineLevels.isAvailable(this, props, route) ||
       this.invitations.isAvailable(this, props, route) ||
-      this.isLinkAvailable(props, route)
+      this.mainLevels.isAvailable(this, props, route)
     );
   }
 
@@ -216,6 +291,7 @@ export abstract class SocialLink implements SocialLinkType {
     const currentLink = props.currentDay.links[this.linkName];
     const charmMax = stats[StatsNames.Charm].levels[5].value;
     const isNewLevel = this.isNewLevel(previousLink);
+    // console.log("previousLink", previousLink, isNewLevel);
 
     const previousLevel = this.getLevel(previousLink);
     let maxPoints = previousLevel.maxPoints;
@@ -339,10 +415,23 @@ export abstract class SocialLink implements SocialLinkType {
   }
 }
 
-export abstract class SocialLinkAlwaysLevelUp extends SocialLink {
+export class SocialLinkAlwaysLevelUp extends SocialLink {
+  constructor(
+    linkName: SocialLinkNames,
+    linkDetails: LinkDetailsType,
+    levels?: { mainLevels?: LinkLevels }
+  ) {
+    super(linkName, linkDetails, {
+      mainLevels: levels?.mainLevels ?? new LinkMainLevelsChooseAny(),
+      shrineLevels: new EmptyLevels(),
+      invitations: new EmptyLevels(),
+    });
+  }
+
   getLevel({ level }: SocialLinkStats) {
-    if (level === 0) return this.levels[0].Platonic as SocialLinkLevel;
-    return this.levels[10].Platonic as SocialLinkLevel;
+    if (level === 0)
+      return this.mainLevels.levels[0].Platonic as SocialLinkLevel;
+    return this.mainLevels.levels[10].Platonic as SocialLinkLevel;
   }
 
   calculate(
@@ -380,9 +469,9 @@ export abstract class SocialLinkAlwaysLevelUp extends SocialLink {
   }
 }
 
-export abstract class SocialLinkEpisodes extends SocialLink {
+export class SocialLinkEpisodes extends SocialLink {
   getLevel() {
-    return this.levels[5][Routes.Platonic] as SocialLinkLevel;
+    return this.mainLevels.levels[5][Routes.Platonic] as SocialLinkLevel;
   }
 
   calculate(
