@@ -1,19 +1,26 @@
-import { SocialLinkAvailableProps, SocialLinkNames, Routes } from "./types";
+import { SocialLink, LinkMainLevels, mainCharName } from "./baseFunctions";
 import { QuestionsWrapper, Question, Answer } from "@/components";
 import { createBondObject, LinkMaxedObject } from "./GenericCard";
-import { SocialLink, mainCharName } from "./baseFunctions";
 import { StatsNames, stats } from "@/constants/stats";
 import { Times } from "@/constants/events/types";
 
-class MoonSocialLink extends SocialLink {
-  isInvitationAvailable(): boolean {
-    return false;
-  }
+import {
+  SocialLinkAvailableProps,
+  SocialLinkNames,
+  SocialLinkType,
+  LevelsType,
+  Routes,
+} from "./types";
 
-  isLinkAvailable(props: SocialLinkAvailableProps): boolean {
-    const previousLink = props.previousDay!.links[this.linkName];
+class MoonMainLevels extends LinkMainLevels {
+  isAvailable(
+    socialLink: SocialLinkType,
+    props: SocialLinkAvailableProps
+  ): boolean {
+    const linkName = socialLink.linkName;
     const charmLevel = stats[StatsNames.Charm].levels[1].value;
-    const isNewLevel = this.isNewLevel(previousLink);
+    const previousLink = props.previousDay!.links[linkName];
+    const isNewLevel = socialLink.isNewLevel(previousLink);
     const firstLevel =
       props.currentDay.links[SocialLinkNames.Moon].level !== 0 ||
       !props.currentDay.isDayOff;
@@ -27,12 +34,8 @@ class MoonSocialLink extends SocialLink {
       isNewLevel
     );
   }
-}
 
-export const Moon = new MoonSocialLink(
-  SocialLinkNames.Moon,
-  { name: "Nozomi Suemitsu", place: "Paulownia Mall" },
-  {
+  levels: LevelsType = {
     0: {
       [Routes.Platonic]: createBondObject,
     },
@@ -152,5 +155,11 @@ export const Moon = new MoonSocialLink(
     10: {
       [Routes.Platonic]: LinkMaxedObject,
     },
-  }
+  };
+}
+
+export const Moon = new SocialLink(
+  SocialLinkNames.Moon,
+  { name: "Nozomi Suemitsu", place: "Paulownia Mall" },
+  { mainLevels: new MoonMainLevels() }
 );

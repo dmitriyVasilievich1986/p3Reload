@@ -1,8 +1,7 @@
+import { LinkMainLevelsEpisodes, SocialLinkEpisodes } from "./baseFunctions";
 import { SingleDay } from "@/constants/calendar/SingleDay";
-import { SocialLinkEpisodes } from "./baseFunctions";
 import { DaysNames } from "@/constants/monthsNames";
 import { Times } from "@/constants/events/types";
-import { ChooseAnyObject } from "./GenericCard";
 import { StatsNames } from "@/constants/stats";
 import { EventCard } from "@/components";
 
@@ -10,12 +9,16 @@ import {
   SocialLinkAvailableProps,
   SocialLinkElementProps,
   SocialLinkNames,
-  Routes,
+  SocialLinkType,
 } from "./types";
 
-class IoriSocialLink extends SocialLinkEpisodes {
-  isLinkAvailable(props: SocialLinkAvailableProps): boolean {
-    const previousLink = props.previousDay!.links[this.linkName];
+class IoriMainLevels extends LinkMainLevelsEpisodes {
+  isAvailable(
+    socialLink: SocialLinkType,
+    props: SocialLinkAvailableProps
+  ): boolean {
+    const linkName = socialLink.linkName;
+    const previousLink = props.previousDay!.links[linkName];
     const isTime = props.time === Times.Day;
     let days = [DaysNames.tuesday, DaysNames.friday];
 
@@ -70,7 +73,9 @@ class IoriSocialLink extends SocialLinkEpisodes {
         return false;
     }
   }
+}
 
+class IoriSocialLink extends SocialLinkEpisodes {
   calculate(
     props: SocialLinkAvailableProps & {
       previousWeek?: SingleDay;
@@ -146,9 +151,5 @@ class IoriSocialLink extends SocialLinkEpisodes {
 export const Iori = new IoriSocialLink(
   SocialLinkNames.Iori,
   { name: "Junpei Iori" },
-  {
-    5: {
-      [Routes.Platonic]: ChooseAnyObject,
-    },
-  }
+  { mainLevels: new IoriMainLevels() }
 );

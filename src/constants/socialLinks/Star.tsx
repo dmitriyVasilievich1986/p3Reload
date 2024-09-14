@@ -1,20 +1,27 @@
-import { SocialLinkAvailableProps, SocialLinkNames, Routes } from "./types";
 import { QuestionsWrapper, Question, Answer } from "@/components";
 import { createBondObject, LinkMaxedObject } from "./GenericCard";
+import { LinkMainLevels, SocialLink } from "./baseFunctions";
 import { StatsNames, stats } from "@/constants/stats";
 import { DaysNames } from "@/constants/monthsNames";
 import { Times } from "@/constants/events/types";
-import { SocialLink } from "./baseFunctions";
 
-class StarSocialLink extends SocialLink {
-  isInvitationAvailable(): boolean {
-    return false;
-  }
+import {
+  SocialLinkAvailableProps,
+  SocialLinkNames,
+  SocialLinkType,
+  LevelsType,
+  Routes,
+} from "./types";
 
-  isLinkAvailable(props: SocialLinkAvailableProps): boolean {
+class StarMainLevels extends LinkMainLevels {
+  isAvailable(
+    socialLink: SocialLinkType,
+    props: SocialLinkAvailableProps
+  ): boolean {
+    const linkName = socialLink.linkName;
     const courageLevel = stats[StatsNames.Courage].levels[3].value;
-    const previousLink = props.previousDay!.links[this.linkName];
-    const isNewLevel = this.isNewLevel(previousLink);
+    const previousLink = props.previousDay!.links[linkName];
+    const isNewLevel = socialLink.isNewLevel(previousLink);
     const days = [DaysNames.wednesday, DaysNames.friday, DaysNames.sunday];
 
     return (
@@ -25,12 +32,8 @@ class StarSocialLink extends SocialLink {
       isNewLevel
     );
   }
-}
 
-export const Star = new StarSocialLink(
-  SocialLinkNames.Star,
-  { name: "Mamoru Hayase", place: "Iwatodai Station Strip Mall 1F" },
-  {
+  levels: LevelsType = {
     0: {
       [Routes.Platonic]: createBondObject,
     },
@@ -204,5 +207,11 @@ export const Star = new StarSocialLink(
     10: {
       [Routes.Platonic]: LinkMaxedObject,
     },
-  }
+  };
+}
+
+export const Star = new SocialLink(
+  SocialLinkNames.Star,
+  { name: "Mamoru Hayase", place: "Iwatodai Station Strip Mall 1F" },
+  { mainLevels: new StarMainLevels() }
 );

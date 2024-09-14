@@ -1,38 +1,47 @@
-import { SocialLinkAvailableProps, SocialLinkNames, Routes } from "./types";
 import { QuestionsWrapper, Question, Answer } from "@/components";
 import { createBondObject, LinkMaxedObject } from "./GenericCard";
+import { LinkMainLevels, SocialLink } from "./baseFunctions";
 import { DaysNames } from "@/constants/monthsNames";
 import { Times } from "@/constants/events/types";
-import { SocialLink } from "./baseFunctions";
 
-class EmperorSocialLink extends SocialLink {
-  isInvitationAvailable(): boolean {
-    return false;
-  }
+import {
+  SocialLinkAvailableProps,
+  SocialLinkNames,
+  SocialLinkType,
+  LevelsType,
+  Routes,
+} from "./types";
 
-  isLinkAvailable(props: SocialLinkAvailableProps): boolean {
-    const days = [DaysNames.monday, DaysNames.wednesday, DaysNames.friday];
-    const previousLink = props.previousDay!.links[this.linkName];
-    const isNewLevel = this.isNewLevel(previousLink);
-    const isJanuary =
-      props.currentDay.date.getTime() >= new Date(2010, 0, 1).getTime() ||
-      days.includes(props.currentDay.date.getDay());
+class EmperorMainLevels extends LinkMainLevels {
+  isAvailable(
+    socialLink: SocialLinkType,
+    props: SocialLinkAvailableProps,
+    route: Routes
+  ): boolean {
+    const linkName = socialLink.linkName;
+    const previousLink = props.previousDay!.links[linkName];
+    const isNewLevel = socialLink.isNewLevel(previousLink);
+    const isRomance =
+      previousLink.level === 6 || previousLink.romance === route;
+    const days = [
+      DaysNames.monday,
+      DaysNames.tuesday,
+      DaysNames.wednesday,
+      DaysNames.thursday,
+      DaysNames.friday,
+      DaysNames.saturday,
+    ];
 
     return (
-      props.currentDay.date.getTime() >= new Date(2009, 3, 27).getTime() &&
-      !props.currentDay.isDayOff &&
+      props.currentDay.date.getTime() >= new Date(2010, 0, 8).getTime() &&
+      days.includes(props.currentDay.date.getDay()) &&
       props.time === Times.Day &&
-      !props.currentDay.exams &&
       isNewLevel &&
-      isJanuary
+      isRomance
     );
   }
-}
 
-export const Emperor = new EmperorSocialLink(
-  SocialLinkNames.Emperor,
-  { name: "Hidetoshi Odagiri", place: "Student Council Room" },
-  {
+  levels: LevelsType = {
     0: {
       [Routes.Platonic]: createBondObject,
     },
@@ -154,5 +163,11 @@ export const Emperor = new EmperorSocialLink(
     10: {
       [Routes.Platonic]: LinkMaxedObject,
     },
-  }
+  };
+}
+
+export const Emperor = new SocialLink(
+  SocialLinkNames.Emperor,
+  { name: "Hidetoshi Odagiri", place: "Student Council Room" },
+  { mainLevels: new EmperorMainLevels() }
 );

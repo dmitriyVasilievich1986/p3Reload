@@ -1,8 +1,7 @@
+import { LinkMainLevelsEpisodes, SocialLinkEpisodes } from "./baseFunctions";
 import { SingleDay } from "@/constants/calendar/SingleDay";
-import { SocialLinkEpisodes } from "./baseFunctions";
 import { DaysNames } from "@/constants/monthsNames";
 import { Times } from "@/constants/events/types";
-import { ChooseAnyObject } from "./GenericCard";
 import { StatsNames } from "@/constants/stats";
 import { EventCard } from "@/components";
 
@@ -10,12 +9,16 @@ import {
   SocialLinkAvailableProps,
   SocialLinkElementProps,
   SocialLinkNames,
-  Routes,
+  SocialLinkType,
 } from "./types";
 
-class AmadaSocialLink extends SocialLinkEpisodes {
-  isLinkAvailable(props: SocialLinkAvailableProps): boolean {
-    const previousLink = props.previousDay!.links[this.linkName];
+class AmadaMainLevels extends LinkMainLevelsEpisodes {
+  isAvailable(
+    socialLink: SocialLinkType,
+    props: SocialLinkAvailableProps
+  ): boolean {
+    const linkName = socialLink.linkName;
+    const previousLink = props.previousDay!.links[linkName];
     const isTime = props.time === Times.Evening;
     let days = [DaysNames.tuesday, DaysNames.wednesday];
 
@@ -66,7 +69,9 @@ class AmadaSocialLink extends SocialLinkEpisodes {
         return false;
     }
   }
+}
 
+class AmadaSocialLink extends SocialLinkEpisodes {
   calculate(
     props: SocialLinkAvailableProps & {
       previousWeek?: SingleDay;
@@ -142,9 +147,5 @@ class AmadaSocialLink extends SocialLinkEpisodes {
 export const Amada = new AmadaSocialLink(
   SocialLinkNames.Amada,
   { name: "Ken Amada" },
-  {
-    5: {
-      [Routes.Platonic]: ChooseAnyObject,
-    },
-  }
+  { mainLevels: new AmadaMainLevels() }
 );

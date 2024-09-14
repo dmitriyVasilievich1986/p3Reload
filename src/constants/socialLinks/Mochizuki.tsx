@@ -1,11 +1,19 @@
-import { SocialLinkAvailableProps, SocialLinkNames, Routes } from "./types";
-import { SocialLinkEpisodes } from "./baseFunctions";
+import { LinkMainLevelsEpisodes, SocialLinkEpisodes } from "./baseFunctions";
 import { Times } from "@/constants/events/types";
-import { ChooseAnyObject } from "./GenericCard";
 
-class MochizukiSocialLink extends SocialLinkEpisodes {
-  isLinkAvailable(props: SocialLinkAvailableProps): boolean {
-    const previousLink = props.previousDay!.links[this.linkName];
+import {
+  SocialLinkAvailableProps,
+  SocialLinkNames,
+  SocialLinkType,
+} from "./types";
+
+class MochizukiMainLevels extends LinkMainLevelsEpisodes {
+  isAvailable(
+    socialLink: SocialLinkType,
+    props: SocialLinkAvailableProps
+  ): boolean {
+    const linkName = socialLink.linkName;
+    const previousLink = props.previousDay!.links[linkName];
     const isTime = props.time === Times.Day;
     let days = [];
 
@@ -32,12 +40,8 @@ class MochizukiSocialLink extends SocialLinkEpisodes {
   }
 }
 
-export const Mochizuki = new MochizukiSocialLink(
+export const Mochizuki = new SocialLinkEpisodes(
   SocialLinkNames.Mochizuki,
   { name: "Ryoji Mochizuki" },
-  {
-    5: {
-      [Routes.Platonic]: ChooseAnyObject,
-    },
-  }
+  { mainLevels: new MochizukiMainLevels() }
 );

@@ -1,5 +1,4 @@
-import { SocialLinkAvailableProps, SocialLinkNames, Routes } from "./types";
-import { AutomaticLevelUpObject, createBondObject } from "./GenericCard";
+import { SocialLinkAvailableProps, SocialLinkNames } from "./types";
 import { SingleDay } from "@/constants/calendar/SingleDay";
 import { SocialLinkAlwaysLevelUp } from "./baseFunctions";
 
@@ -22,24 +21,12 @@ class SocialLinkFool extends SocialLinkAlwaysLevelUp {
     };
   }
 
-  isLinkAvailable(): boolean {
-    return false;
-  }
-
   isAvailable(): boolean {
     return false;
   }
 }
 
-export const Fool = new SocialLinkFool(
-  SocialLinkNames.Fool,
-  { name: "S.E.E.S.", place: "Tartarus" },
-  {
-    0: {
-      [Routes.Platonic]: createBondObject,
-    },
-    10: {
-      [Routes.Platonic]: AutomaticLevelUpObject,
-    },
-  }
-);
+export const Fool = new SocialLinkFool(SocialLinkNames.Fool, {
+  name: "S.E.E.S.",
+  place: "Tartarus",
+});

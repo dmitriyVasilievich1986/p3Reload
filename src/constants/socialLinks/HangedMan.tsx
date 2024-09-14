@@ -1,33 +1,47 @@
-import { SocialLinkAvailableProps, SocialLinkNames, Routes } from "./types";
 import { QuestionsWrapper, Question, Answer } from "@/components";
 import { createBondObject, LinkMaxedObject } from "./GenericCard";
+import { LinkMainLevels, SocialLink } from "./baseFunctions";
 import { DaysNames } from "@/constants/monthsNames";
 import { Times } from "@/constants/events/types";
-import { SocialLink } from "./baseFunctions";
 
-class HangedManSocialLink extends SocialLink {
-  isInvitationAvailable(): boolean {
-    return false;
-  }
+import {
+  SocialLinkAvailableProps,
+  SocialLinkNames,
+  SocialLinkType,
+  LevelsType,
+  Routes,
+} from "./types";
 
-  isLinkAvailable(props: SocialLinkAvailableProps): boolean {
-    const previousLink = props.previousDay!.links[this.linkName];
-    const isNewLevel = this.isNewLevel(previousLink);
-    const days = [DaysNames.monday, DaysNames.wednesday, DaysNames.saturday];
+class HangedManMainLevels extends LinkMainLevels {
+  isAvailable(
+    socialLink: SocialLinkType,
+    props: SocialLinkAvailableProps,
+    route: Routes
+  ): boolean {
+    const linkName = socialLink.linkName;
+    const previousLink = props.previousDay!.links[linkName];
+    const isNewLevel = socialLink.isNewLevel(previousLink);
+    const isRomance =
+      previousLink.level === 6 || previousLink.romance === route;
+    const days = [
+      DaysNames.monday,
+      DaysNames.tuesday,
+      DaysNames.wednesday,
+      DaysNames.thursday,
+      DaysNames.friday,
+      DaysNames.saturday,
+    ];
 
     return (
-      props.currentDay.date.getTime() >= new Date(2009, 4, 6).getTime() &&
+      props.currentDay.date.getTime() >= new Date(2010, 0, 8).getTime() &&
       days.includes(props.currentDay.date.getDay()) &&
       props.time === Times.Day &&
-      isNewLevel
+      isNewLevel &&
+      isRomance
     );
   }
-}
 
-export const HangedMan = new HangedManSocialLink(
-  SocialLinkNames.HangedMan,
-  { name: "Maiko Oohashi", place: "Naganaki Shrine" },
-  {
+  levels: LevelsType = {
     0: {
       [Routes.Platonic]: createBondObject,
     },
@@ -175,5 +189,11 @@ export const HangedMan = new HangedManSocialLink(
     10: {
       [Routes.Platonic]: LinkMaxedObject,
     },
-  }
+  };
+}
+
+export const HangedMan = new SocialLink(
+  SocialLinkNames.HangedMan,
+  { name: "Maiko Oohashi", place: "Naganaki Shrine" },
+  { mainLevels: new HangedManMainLevels() }
 );

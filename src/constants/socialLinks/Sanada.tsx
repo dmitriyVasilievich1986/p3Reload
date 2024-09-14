@@ -1,8 +1,7 @@
+import { LinkMainLevelsEpisodes, SocialLinkEpisodes } from "./baseFunctions";
 import { SingleDay } from "@/constants/calendar/SingleDay";
-import { SocialLinkEpisodes } from "./baseFunctions";
 import { DaysNames } from "@/constants/monthsNames";
 import { Times } from "@/constants/events/types";
-import { ChooseAnyObject } from "./GenericCard";
 import { StatsNames } from "@/constants/stats";
 import { EventCard } from "@/components";
 
@@ -10,12 +9,16 @@ import {
   SocialLinkAvailableProps,
   SocialLinkElementProps,
   SocialLinkNames,
-  Routes,
+  SocialLinkType,
 } from "./types";
 
-class SanadaSocialLink extends SocialLinkEpisodes {
-  isLinkAvailable(props: SocialLinkAvailableProps): boolean {
-    const previousLink = props.previousDay!.links[this.linkName];
+class SanadaMainLevels extends LinkMainLevelsEpisodes {
+  isAvailable(
+    socialLink: SocialLinkType,
+    props: SocialLinkAvailableProps
+  ): boolean {
+    const linkName = socialLink.linkName;
+    const previousLink = props.previousDay!.links[linkName];
     const isTime = props.time === Times.Evening;
     let days = [DaysNames.monday, DaysNames.friday];
 
@@ -60,7 +63,9 @@ class SanadaSocialLink extends SocialLinkEpisodes {
         return false;
     }
   }
+}
 
+class SanadaSocialLink extends SocialLinkEpisodes {
   calculate(
     props: SocialLinkAvailableProps & {
       previousWeek?: SingleDay;
@@ -120,9 +125,5 @@ class SanadaSocialLink extends SocialLinkEpisodes {
 export const Sanada = new SanadaSocialLink(
   SocialLinkNames.Sanada,
   { name: "Akihiko Sanada" },
-  {
-    5: {
-      [Routes.Platonic]: ChooseAnyObject,
-    },
-  }
+  { mainLevels: new SanadaMainLevels() }
 );

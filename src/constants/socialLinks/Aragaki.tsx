@@ -1,8 +1,7 @@
+import { LinkMainLevelsEpisodes, SocialLinkEpisodes } from "./baseFunctions";
 import { SingleDay } from "@/constants/calendar/SingleDay";
-import { SocialLinkEpisodes } from "./baseFunctions";
 import { DaysNames } from "@/constants/monthsNames";
 import { Times } from "@/constants/events/types";
-import { ChooseAnyObject } from "./GenericCard";
 import { StatsNames } from "@/constants/stats";
 import { EventCard } from "@/components";
 
@@ -10,12 +9,16 @@ import {
   SocialLinkAvailableProps,
   SocialLinkElementProps,
   SocialLinkNames,
-  Routes,
+  SocialLinkType,
 } from "./types";
 
-class AragakiSocialLink extends SocialLinkEpisodes {
-  isLinkAvailable(props: SocialLinkAvailableProps): boolean {
-    const previousLink = props.previousDay!.links[this.linkName];
+class AragakiMainLevels extends LinkMainLevelsEpisodes {
+  isAvailable(
+    socialLink: SocialLinkType,
+    props: SocialLinkAvailableProps
+  ): boolean {
+    const linkName = socialLink.linkName;
+    const previousLink = props.previousDay!.links[linkName];
     const isTime = props.time === Times.Day;
     let days = [
       DaysNames.monday,
@@ -72,7 +75,9 @@ class AragakiSocialLink extends SocialLinkEpisodes {
         return false;
     }
   }
+}
 
+class AragakiSocialLink extends SocialLinkEpisodes {
   calculate(
     props: SocialLinkAvailableProps & {
       previousWeek?: SingleDay;
@@ -158,8 +163,6 @@ export const Aragaki = new AragakiSocialLink(
   SocialLinkNames.Aragaki,
   { name: "Shinjiro Aragaki" },
   {
-    5: {
-      [Routes.Platonic]: ChooseAnyObject,
-    },
+    mainLevels: new AragakiMainLevels(),
   }
 );

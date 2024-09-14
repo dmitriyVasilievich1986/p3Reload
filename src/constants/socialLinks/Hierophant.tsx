@@ -1,18 +1,25 @@
-import { SocialLinkAvailableProps, SocialLinkNames, Routes } from "./types";
+import { SocialLink, LinkMainLevels, mainCharName } from "./baseFunctions";
 import { QuestionsWrapper, Question, Answer } from "@/components";
 import { createBondObject, LinkMaxedObject } from "./GenericCard";
-import { SocialLink, mainCharName } from "./baseFunctions";
 import { DaysNames } from "@/constants/monthsNames";
 import { Times } from "@/constants/events/types";
 
-class HierophantSocialLink extends SocialLink {
-  isInvitationAvailable(): boolean {
-    return false;
-  }
+import {
+  SocialLinkAvailableProps,
+  SocialLinkNames,
+  SocialLinkType,
+  LevelsType,
+  Routes,
+} from "./types";
 
-  isLinkAvailable(props: SocialLinkAvailableProps): boolean {
-    const previousLink = props.previousDay!.links[this.linkName];
-    const isNewLevel = this.isNewLevel(previousLink);
+class HierophantMainLevels extends LinkMainLevels {
+  isAvailable(
+    socialLink: SocialLinkType,
+    props: SocialLinkAvailableProps
+  ): boolean {
+    const linkName = socialLink.linkName;
+    const previousLink = props.previousDay!.links[linkName];
+    const isNewLevel = socialLink.isNewLevel(previousLink);
     const days = [
       DaysNames.tuesday,
       DaysNames.wednesday,
@@ -29,12 +36,7 @@ class HierophantSocialLink extends SocialLink {
       isNewLevel
     );
   }
-}
-
-export const Hierophant = new HierophantSocialLink(
-  SocialLinkNames.Hierophant,
-  { name: "Bunkichi and Mitsuko", place: "Bookworms Used Books" },
-  {
+  levels: LevelsType = {
     0: {
       [Routes.Platonic]: createBondObject,
     },
@@ -233,5 +235,11 @@ export const Hierophant = new HierophantSocialLink(
     10: {
       [Routes.Platonic]: LinkMaxedObject,
     },
-  }
+  };
+}
+
+export const Hierophant = new SocialLink(
+  SocialLinkNames.Hierophant,
+  { name: "Bunkichi and Mitsuko", place: "Bookworms Used Books" },
+  { mainLevels: new HierophantMainLevels() }
 );

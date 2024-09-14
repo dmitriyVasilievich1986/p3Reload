@@ -1,5 +1,4 @@
-import { SocialLinkAvailableProps, SocialLinkNames, Routes } from "./types";
-import { createBondObject, ChooseAnyObject } from "./GenericCard";
+import { SocialLinkAvailableProps, SocialLinkNames } from "./types";
 import { SingleDay } from "@/constants/calendar/SingleDay";
 import { SocialLinkAlwaysLevelUp } from "./baseFunctions";
 
@@ -21,24 +20,12 @@ class SocialLinkDeath extends SocialLinkAlwaysLevelUp {
     };
   }
 
-  isLinkAvailable(): boolean {
-    return false;
-  }
-
   isAvailable(): boolean {
     return false;
   }
 }
 
-export const Death = new SocialLinkDeath(
-  SocialLinkNames.Death,
-  { name: "Pharos", place: "Main character room" },
-  {
-    0: {
-      [Routes.Platonic]: createBondObject,
-    },
-    10: {
-      [Routes.Platonic]: ChooseAnyObject,
-    },
-  }
-);
+export const Death = new SocialLinkDeath(SocialLinkNames.Death, {
+  name: "Pharos",
+  place: "Main character room",
+});

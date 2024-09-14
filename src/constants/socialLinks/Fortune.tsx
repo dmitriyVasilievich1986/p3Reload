@@ -1,119 +1,25 @@
+import { InvitationLevels, LinkMainLevels, SocialLink } from "./baseFunctions";
 import { QuestionsWrapper, Question, Answer } from "@/components";
 import { createBondObject, LinkMaxedObject } from "./GenericCard";
-import { InvitationLevels, SocialLink } from "./baseFunctions";
 import { DaysNames } from "@/constants/monthsNames";
 import { Times } from "@/constants/events/types";
 
 import {
   SocialLinkAvailableProps,
   SocialLinkNames,
+  SocialLinkType,
   LevelsType,
   Routes,
 } from "./types";
 
-class FortuneInvitationLevels extends InvitationLevels {
-  dates = [
-    new Date(2009, 7, 4).getTime(),
-    new Date(2009, 7, 7).getTime(),
-    new Date(2009, 8, 23).getTime(),
-    new Date(2009, 9, 18).getTime(),
-    new Date(2010, 0, 4).getTime(),
-    new Date(2010, 0, 10).getTime(),
-    new Date(2010, 0, 11).getTime(),
-  ];
-
-  levels: LevelsType = {
-    2: {
-      [Routes.Platonic]: QuestionsWrapper({
-        points: 0,
-        element: [
-          <Question label="I doubt I'd ever see something like a beef bowl on the dinner table at home...">
-            <Answer label="Let's eat here again, then." points={30} />
-          </Question>,
-        ],
-      }),
-    },
-    3: {
-      [Routes.Platonic]: QuestionsWrapper({
-        points: 0,
-        element: [
-          <Question label="D-Do you think it's okay for me to be in the finals?">
-            <Answer label="Yeah, you just did your best." points={30} />
-          </Question>,
-        ],
-      }),
-    },
-    4: {
-      [Routes.Platonic]: QuestionsWrapper({
-        points: 0,
-        element: [
-          <Question label="Hey, we should organize an outdoor sketching session one of these days.">
-            <Answer label="Sounds like a hassle." />
-            <Answer label="That would be cool." points={30} />
-            <Answer label="Think we can do it?" />
-          </Question>,
-        ],
-      }),
-    },
-    5: {
-      [Routes.Platonic]: QuestionsWrapper({
-        points: 0,
-        element: [
-          <Question label="What would I list as my occupation on a survey...?">
-            <Answer label="Artist." />
-            <Answer label="Entertainment industry." points={30} />
-            <Answer label="Unemployed." />
-          </Question>,
-        ],
-      }),
-    },
-    6: {
-      [Routes.Platonic]: QuestionsWrapper({
-        points: 0,
-        element: [
-          <Question label="This is all his fault! Why does he keep changing his mind!?">
-            <Answer label="You shouldn't blame others." points={30} />
-          </Question>,
-        ],
-      }),
-    },
-    7: {
-      [Routes.Platonic]: QuestionsWrapper({
-        points: 0,
-        element: [
-          <Question label="I mean, I won't just be visiting; I'll be living there...">
-            <Answer label="Think of the new inspirations." points={30} />
-          </Question>,
-        ],
-      }),
-    },
-    8: {
-      [Routes.Platonic]: QuestionsWrapper({
-        points: 0,
-        element: [
-          <Question label="So... I was wondering... what it'd be like if you called me something in that vein...">
-            <Answer label="Okay, Brother." points={30} />
-          </Question>,
-        ],
-      }),
-    },
-    9: {
-      [Routes.Platonic]: QuestionsWrapper({
-        points: 0,
-        element: [
-          <Question label="Even if your life is predestined, I think you should give it your all while on that path.">
-            <Answer label="You have a point." points={30} />
-          </Question>,
-        ],
-      }),
-    },
-  };
-}
-
-class FortuneSocialLink extends SocialLink {
-  isLinkAvailable(props: SocialLinkAvailableProps): boolean {
-    const previousLink = props.previousDay!.links[this.linkName];
-    const isNewLevel = this.isNewLevel(previousLink);
+class FortuneMainLevels extends LinkMainLevels {
+  isAvailable(
+    socialLink: SocialLinkType,
+    props: SocialLinkAvailableProps
+  ): boolean {
+    const linkName = socialLink.linkName;
+    const previousLink = props.previousDay!.links[linkName];
+    const isNewLevel = socialLink.isNewLevel(previousLink);
     const days = [DaysNames.tuesday, DaysNames.wednesday, DaysNames.thursday];
 
     return (
@@ -125,12 +31,8 @@ class FortuneSocialLink extends SocialLink {
       isNewLevel
     );
   }
-}
 
-export const Fortune = new FortuneSocialLink(
-  SocialLinkNames.Fortune,
-  { name: "Keisuke Hiraga", place: "Art Club Room" },
-  {
+  levels: LevelsType = {
     0: {
       [Routes.Platonic]: createBondObject,
     },
@@ -284,6 +186,114 @@ export const Fortune = new FortuneSocialLink(
     10: {
       [Routes.Platonic]: LinkMaxedObject,
     },
-  },
-  { invitations: new FortuneInvitationLevels() }
+  };
+}
+
+class FortuneInvitationLevels extends InvitationLevels {
+  dates = [
+    new Date(2009, 7, 4).getTime(),
+    new Date(2009, 7, 7).getTime(),
+    new Date(2009, 8, 23).getTime(),
+    new Date(2009, 9, 18).getTime(),
+    new Date(2010, 0, 4).getTime(),
+    new Date(2010, 0, 10).getTime(),
+    new Date(2010, 0, 11).getTime(),
+  ];
+
+  levels: LevelsType = {
+    2: {
+      [Routes.Platonic]: QuestionsWrapper({
+        points: 0,
+        element: [
+          <Question label="I doubt I'd ever see something like a beef bowl on the dinner table at home...">
+            <Answer label="Let's eat here again, then." points={30} />
+          </Question>,
+        ],
+      }),
+    },
+    3: {
+      [Routes.Platonic]: QuestionsWrapper({
+        points: 0,
+        element: [
+          <Question label="D-Do you think it's okay for me to be in the finals?">
+            <Answer label="Yeah, you just did your best." points={30} />
+          </Question>,
+        ],
+      }),
+    },
+    4: {
+      [Routes.Platonic]: QuestionsWrapper({
+        points: 0,
+        element: [
+          <Question label="Hey, we should organize an outdoor sketching session one of these days.">
+            <Answer label="Sounds like a hassle." />
+            <Answer label="That would be cool." points={30} />
+            <Answer label="Think we can do it?" />
+          </Question>,
+        ],
+      }),
+    },
+    5: {
+      [Routes.Platonic]: QuestionsWrapper({
+        points: 0,
+        element: [
+          <Question label="What would I list as my occupation on a survey...?">
+            <Answer label="Artist." />
+            <Answer label="Entertainment industry." points={30} />
+            <Answer label="Unemployed." />
+          </Question>,
+        ],
+      }),
+    },
+    6: {
+      [Routes.Platonic]: QuestionsWrapper({
+        points: 0,
+        element: [
+          <Question label="This is all his fault! Why does he keep changing his mind!?">
+            <Answer label="You shouldn't blame others." points={30} />
+          </Question>,
+        ],
+      }),
+    },
+    7: {
+      [Routes.Platonic]: QuestionsWrapper({
+        points: 0,
+        element: [
+          <Question label="I mean, I won't just be visiting; I'll be living there...">
+            <Answer label="Think of the new inspirations." points={30} />
+          </Question>,
+        ],
+      }),
+    },
+    8: {
+      [Routes.Platonic]: QuestionsWrapper({
+        points: 0,
+        element: [
+          <Question label="So... I was wondering... what it'd be like if you called me something in that vein...">
+            <Answer label="Okay, Brother." points={30} />
+          </Question>,
+        ],
+      }),
+    },
+    9: {
+      [Routes.Platonic]: QuestionsWrapper({
+        points: 0,
+        element: [
+          <Question label="Even if your life is predestined, I think you should give it your all while on that path.">
+            <Answer label="You have a point." points={30} />
+          </Question>,
+        ],
+      }),
+    },
+  };
+}
+
+export const Fortune = new SocialLink(
+  SocialLinkNames.Fortune,
+  { name: "Keisuke Hiraga", place: "Art Club Room" },
+
+  {
+    invitations: new FortuneInvitationLevels(),
+    mainLevels: new FortuneMainLevels(),
+  }
 );
