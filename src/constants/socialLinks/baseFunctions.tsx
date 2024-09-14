@@ -14,7 +14,6 @@ import {
 import {
   SocialLinkAvailableProps,
   SocialLinkElementProps,
-  LabelHeadPrefixes,
   SocialLinkStats,
   SocialLinkLevel,
   SocialLinkNames,
@@ -260,6 +259,19 @@ export class SocialLink implements SocialLinkType {
     this.linkName = linkName;
   }
 
+  getLevels(
+    props: SocialLinkAvailableProps & {
+      previousWeek?: SingleDay;
+    },
+    route: Routes = Routes.Platonic
+  ): LinkLevels {
+    if (this.invitations.isAvailable(this, props, route))
+      return this.invitations;
+    if (this.shrineLevels.isAvailable(this, props, route))
+      return this.shrineLevels;
+    return this.mainLevels;
+  }
+
   getLevel({ romance, level }: SocialLinkStats) {
     return this.mainLevels.levels[level][romance] as SocialLinkLevel;
   }
@@ -291,7 +303,6 @@ export class SocialLink implements SocialLinkType {
     const currentLink = props.currentDay.links[this.linkName];
     const charmMax = stats[StatsNames.Charm].levels[5].value;
     const isNewLevel = this.isNewLevel(previousLink);
-    // console.log("previousLink", previousLink, isNewLevel);
 
     const previousLevel = this.getLevel(previousLink);
     let maxPoints = previousLevel.maxPoints;
@@ -359,59 +370,7 @@ export class SocialLink implements SocialLinkType {
 
   element(props: SocialLinkElementProps, route: Routes = Routes.Platonic) {
     if (!props.previousDay) return null;
-    const charmLevel = stats[StatsNames.Charm].levels[5].value;
-    const previousLevel = props.previousDay.links[
-      this.linkName
-    ] as SocialLinkStats;
-
-    const standard = [LabelHeadPrefixes.Default, LabelHeadPrefixes.Romance];
-    let headPrefix: LabelHeadPrefixes = LabelHeadPrefixes.Default;
-    if (this.invitations.isAvailable(this, props, route))
-      headPrefix = LabelHeadPrefixes.Invitation;
-    else if (this.shrineLevels.isAvailable(this, props, route))
-      headPrefix = LabelHeadPrefixes.Shrine;
-    else if (!this.isNewLevel(props.previousDay.links[this.linkName]))
-      headPrefix = LabelHeadPrefixes.SpendTime;
-    else if (route === Routes.Romantic) headPrefix = LabelHeadPrefixes.Romance;
-
-    const FullCard = () => {
-      if (!props.fullCard) return null;
-      if (headPrefix === LabelHeadPrefixes.Invitation) return null;
-      if (standard.includes(headPrefix)) {
-        const level = this.getLevel({
-          ...previousLevel,
-          romance: route,
-        }) as SocialLinkLevel;
-        return level.element({ key: this.linkName });
-      }
-    };
-
-    return (
-      <div>
-        <EventCard
-          charm={
-            props.fullCard &&
-            props.currentDay?.stats &&
-            props.currentDay.stats[StatsNames.Charm] >= charmLevel
-          }
-          multiplier={
-            props.fullCard
-              ? props.currentDay.links &&
-                props.currentDay.links[this.linkName].multiplier
-              : undefined
-          }
-          card={
-            props.fullCard && props.currentDay.arcanes.includes(this.linkName)
-          }
-          name={this.linkDetails.name}
-          head={`${this.linkName}${headPrefix}`}
-          place={
-            standard.includes(headPrefix) ? this.linkDetails.place : undefined
-          }
-        />
-        <FullCard />
-      </div>
-    );
+    return this.getLevels(props, route).element(this, props, route);
   }
 }
 
