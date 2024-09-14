@@ -462,12 +462,16 @@ export const Strength = new StrengthSocialLink(
     6: {
       [Routes.Platonic]: (
         <Question label="I'm a little envious... since I don't really have anything I'm passionate about.">
+          <Answer label="Don't give up yet." />
           <Answer label="You'll find something." points={30} />
+          <Answer label="You're amazing too." />
         </Question>
       ),
       [Routes.Romantic]: (
         <Question label="I'm a little envious... since I don't really have anything I'm passionate about.">
+          <Answer label="Don't give up yet." />
           <Answer label="You'll find something." points={30} />
+          <Answer label="You're amazing too." />
         </Question>
       ),
     },

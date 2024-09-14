@@ -214,8 +214,15 @@ export const september: SingleDay[] = [
   new SingleDay({
     date: new Date(2009, 8, 18),
     activities: [
-      events[SpecialEventsNames.Special],
-      { ...events[SpecialEventsNames.DoNothing], time: Times.Evening },
+      {
+        ...events[SpecialEventsNames.Special],
+        time: Times.WholeDay,
+        label: () => (
+          <WideEvent>
+            <EventCard head="Typhoon" />
+          </WideEvent>
+        ),
+      },
     ],
   }),
   new SingleDay({
@@ -224,9 +231,9 @@ export const september: SingleDay[] = [
       {
         ...events[SpecialEventsNames.Special],
         time: Times.WholeDay,
-        label: (props) => (
+        label: () => (
           <WideEvent>
-            {events[SpecialEventsNames.Special].label(props)}
+            <EventCard head="Sickness" />
           </WideEvent>
         ),
       },
@@ -239,9 +246,9 @@ export const september: SingleDay[] = [
       {
         ...events[SpecialEventsNames.Special],
         time: Times.WholeDay,
-        label: (props) => (
+        label: () => (
           <WideEvent>
-            {events[SpecialEventsNames.Special].label(props)}
+            <EventCard head="Sickness" />
           </WideEvent>
         ),
       },
