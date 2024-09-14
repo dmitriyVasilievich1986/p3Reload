@@ -8,6 +8,8 @@ import { EventCard } from "@/components";
 import {
   SocialLinkAvailableProps,
   SocialLinkElementProps,
+  SocialLinkLevel,
+  SocialLinkStats,
   SocialLinkNames,
   SocialLinkType,
 } from "./types";
@@ -63,15 +65,15 @@ class SanadaMainLevels extends LinkMainLevelsEpisodes {
         return false;
     }
   }
-}
 
-class SanadaSocialLink extends SocialLinkEpisodes {
   calculate(
+    socialLink: SocialLinkType,
     props: SocialLinkAvailableProps & {
       previousWeek?: SingleDay;
     }
   ) {
-    const previousLink = props.previousDay!.links[this.linkName];
+    const linkName = socialLink.linkName;
+    const previousLink = props.previousDay!.links[linkName];
     let currentStats = props.currentDay.stats;
 
     switch (previousLink.level) {
@@ -88,16 +90,24 @@ class SanadaSocialLink extends SocialLinkEpisodes {
       stats: currentStats,
       links: {
         ...props.currentDay.links,
-        [this.linkName]: { ...previousLink, level: previousLink.level + 1 },
+        [linkName]: { ...previousLink, level: previousLink.level + 1 },
       },
     };
   }
 
-  element(props: SocialLinkElementProps) {
+  element(
+    socialLink: SocialLinkType,
+    props: SocialLinkElementProps
+  ): React.ReactNode {
     if (!props.previousDay) return null;
 
-    const previousLink = props.previousDay!.links[this.linkName];
+    const linkName = socialLink.linkName;
+    const previousLink = props.previousDay!.links[linkName];
     let additionalStats: string | undefined = undefined;
+    const currentLevel = props.currentDay.links[linkName] as SocialLinkStats;
+    const level = this.levels[currentLevel.level][
+      currentLevel.romance
+    ] as SocialLinkLevel;
 
     switch (previousLink.level) {
       case 1:
@@ -109,20 +119,17 @@ class SanadaSocialLink extends SocialLinkEpisodes {
     return (
       <div>
         <EventCard
-          head={`${this.linkName} (Episode)`}
-          name={this.linkDetails.name}
+          head={`${linkName} (Episode)`}
+          name={socialLink.linkDetails.name}
           stats={additionalStats}
         />
-        {props.fullCard &&
-          this.getLevel().element({
-            key: this.linkName,
-          })}
+        {props.fullCard && level.element({ key: linkName })}
       </div>
     );
   }
 }
 
-export const Sanada = new SanadaSocialLink(
+export const Sanada = new SocialLinkEpisodes(
   SocialLinkNames.Sanada,
   { name: "Akihiko Sanada" },
   { mainLevels: new SanadaMainLevels() }

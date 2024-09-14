@@ -8,6 +8,8 @@ import { EventCard } from "@/components";
 import {
   SocialLinkAvailableProps,
   SocialLinkElementProps,
+  SocialLinkLevel,
+  SocialLinkStats,
   SocialLinkNames,
   SocialLinkType,
 } from "./types";
@@ -69,15 +71,15 @@ class AmadaMainLevels extends LinkMainLevelsEpisodes {
         return false;
     }
   }
-}
 
-class AmadaSocialLink extends SocialLinkEpisodes {
   calculate(
+    socialLink: SocialLinkType,
     props: SocialLinkAvailableProps & {
       previousWeek?: SingleDay;
     }
   ) {
-    const previousLink = props.previousDay!.links[this.linkName];
+    const linkName = socialLink.linkName;
+    const previousLink = props.previousDay!.links[linkName];
     let currentStats = props.currentDay.stats;
 
     switch (previousLink.level) {
@@ -105,16 +107,24 @@ class AmadaSocialLink extends SocialLinkEpisodes {
       stats: currentStats,
       links: {
         ...props.currentDay.links,
-        [this.linkName]: { ...previousLink, level: previousLink.level + 1 },
+        [linkName]: { ...previousLink, level: previousLink.level + 1 },
       },
     };
   }
 
-  element(props: SocialLinkElementProps) {
+  element(
+    socialLink: SocialLinkType,
+    props: SocialLinkElementProps
+  ): React.ReactNode {
     if (!props.previousDay) return null;
 
-    const previousLink = props.previousDay!.links[this.linkName];
+    const linkName = socialLink.linkName;
+    const previousLink = props.previousDay!.links[linkName];
     let additionalStats: string | undefined = undefined;
+    const currentLevel = props.currentDay.links[linkName] as SocialLinkStats;
+    const level = this.levels[currentLevel.level][
+      currentLevel.romance
+    ] as SocialLinkLevel;
 
     switch (previousLink.level) {
       case 0:
@@ -131,20 +141,17 @@ class AmadaSocialLink extends SocialLinkEpisodes {
     return (
       <div>
         <EventCard
-          head={`${this.linkName} (Episode)`}
-          name={this.linkDetails.name}
+          head={`${linkName} (Episode)`}
+          name={socialLink.linkDetails.name}
           stats={additionalStats}
         />
-        {props.fullCard &&
-          this.getLevel().element({
-            key: this.linkName,
-          })}
+        {props.fullCard && level.element({ key: linkName })}
       </div>
     );
   }
 }
 
-export const Amada = new AmadaSocialLink(
+export const Amada = new SocialLinkEpisodes(
   SocialLinkNames.Amada,
   { name: "Ken Amada" },
   { mainLevels: new AmadaMainLevels() }

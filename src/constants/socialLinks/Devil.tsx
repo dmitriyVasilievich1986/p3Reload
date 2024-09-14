@@ -1,17 +1,19 @@
-import { SocialLinkAlwaysLevelUp, LinkMainLevels } from "./baseFunctions";
-import { createBondObject, ChooseAnyObject } from "./GenericCard";
 import { DaysNames } from "@/constants/monthsNames";
 import { Times } from "@/constants/events/types";
+
+import {
+  SocialLinkAlwaysLevelUp,
+  LinkMainLevelsChooseAny,
+} from "./baseFunctions";
 
 import {
   SocialLinkAvailableProps,
   SocialLinkNames,
   SocialLinkType,
-  LevelsType,
   Routes,
 } from "./types";
 
-class DevilMainLevels extends LinkMainLevels {
+class DevilMainLevels extends LinkMainLevelsChooseAny {
   isAvailable(
     socialLink: SocialLinkType,
     props: SocialLinkAvailableProps,
@@ -39,15 +41,6 @@ class DevilMainLevels extends LinkMainLevels {
       isRomance
     );
   }
-
-  levels: LevelsType = {
-    0: {
-      [Routes.Platonic]: createBondObject,
-    },
-    10: {
-      [Routes.Platonic]: ChooseAnyObject,
-    },
-  };
 }
 
 export const Devil = new SocialLinkAlwaysLevelUp(

@@ -40,6 +40,54 @@ class ChariotMainLevels extends LinkMainLevels {
     );
   }
 
+  calculate(
+    socialLink: SocialLinkType,
+    props: SocialLinkAvailableProps & {
+      previousWeek?: SingleDay;
+    },
+    route: Routes
+  ) {
+    const linkName = socialLink.linkName;
+    const previousLink = props.previousDay!.links[linkName];
+    let strengthLevel = props.previousDay!.links[SocialLinkNames.Strength];
+
+    if (socialLink.isNewLevel(previousLink) && previousLink.level === 1) {
+      strengthLevel = {
+        ...props.currentDay.links[SocialLinkNames.Strength],
+        points: 0,
+        level: 1,
+      };
+    }
+    const payload = super.calculate(socialLink, props, route);
+
+    return {
+      links: {
+        ...payload.links,
+        [SocialLinkNames.Strength]: strengthLevel,
+      },
+    };
+  }
+
+  element(
+    socialLink: SocialLinkType,
+    props: SocialLinkElementProps,
+    route: Routes
+  ): React.ReactNode {
+    if (!props.previousDay) return null;
+
+    const linkName = socialLink.linkName;
+    const currentLink = props.currentDay!.links[linkName];
+
+    return (
+      <div>
+        {super.element(socialLink, props, route)}
+        {props.fullCard &&
+          currentLink.level === 2 &&
+          Strength.element.bind(Strength)(props)}
+      </div>
+    );
+  }
+
   levels: LevelsType = {
     0: {
       [Routes.Platonic]: createBondObject,
@@ -298,49 +346,7 @@ class ChariotInvitationLevels extends InvitationLevels {
   };
 }
 
-class ChariotSocialLink extends SocialLink {
-  calculate(
-    props: SocialLinkAvailableProps & {
-      previousWeek?: SingleDay;
-    }
-  ) {
-    const previousLink = props.previousDay!.links[this.linkName];
-    let strengthLevel = props.previousDay!.links[SocialLinkNames.Strength];
-    if (
-      this.isNewLevel(previousLink) &&
-      props.previousDay!.links[this.linkName].level === 1
-    ) {
-      strengthLevel = {
-        ...props.currentDay.links[SocialLinkNames.Strength],
-        points: 0,
-        level: 1,
-      };
-    }
-    const payload = super.calculate(props);
-
-    return {
-      links: {
-        ...payload.links,
-        [SocialLinkNames.Strength]: strengthLevel,
-      },
-    };
-  }
-
-  element(props: SocialLinkElementProps) {
-    if (!props.previousDay) return null;
-
-    return (
-      <div>
-        {super.element(props)}
-        {props.fullCard &&
-          props.currentDay.links[this.linkName].level === 2 &&
-          Strength.element.bind(Strength)(props)}
-      </div>
-    );
-  }
-}
-
-export const Chariot = new ChariotSocialLink(
+export const Chariot = new SocialLink(
   SocialLinkNames.Chariot,
   { name: "Kazushi Miyamoto", place: "Classroom 2F" },
   {

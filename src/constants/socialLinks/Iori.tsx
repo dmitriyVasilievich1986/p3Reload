@@ -8,6 +8,8 @@ import { EventCard } from "@/components";
 import {
   SocialLinkAvailableProps,
   SocialLinkElementProps,
+  SocialLinkLevel,
+  SocialLinkStats,
   SocialLinkNames,
   SocialLinkType,
 } from "./types";
@@ -73,15 +75,15 @@ class IoriMainLevels extends LinkMainLevelsEpisodes {
         return false;
     }
   }
-}
 
-class IoriSocialLink extends SocialLinkEpisodes {
   calculate(
+    socialLink: SocialLinkType,
     props: SocialLinkAvailableProps & {
       previousWeek?: SingleDay;
     }
   ) {
-    const previousLink = props.previousDay!.links[this.linkName];
+    const linkName = socialLink.linkName;
+    const previousLink = props.previousDay!.links[linkName];
     let currentStats = props.currentDay.stats;
 
     switch (previousLink.level) {
@@ -109,16 +111,24 @@ class IoriSocialLink extends SocialLinkEpisodes {
       stats: currentStats,
       links: {
         ...props.currentDay.links,
-        [this.linkName]: { ...previousLink, level: previousLink.level + 1 },
+        [linkName]: { ...previousLink, level: previousLink.level + 1 },
       },
     };
   }
 
-  element(props: SocialLinkElementProps) {
+  element(
+    socialLink: SocialLinkType,
+    props: SocialLinkElementProps
+  ): React.ReactNode {
     if (!props.previousDay) return null;
 
-    const previousLink = props.previousDay!.links[this.linkName];
+    const linkName = socialLink.linkName;
+    const previousLink = props.previousDay!.links[linkName];
     let additionalStats: string | undefined = undefined;
+    const currentLevel = props.currentDay.links[linkName] as SocialLinkStats;
+    const level = this.levels[currentLevel.level][
+      currentLevel.romance
+    ] as SocialLinkLevel;
 
     switch (previousLink.level) {
       case 1:
@@ -135,20 +145,17 @@ class IoriSocialLink extends SocialLinkEpisodes {
     return (
       <div>
         <EventCard
-          head={`${this.linkName} (Episode)`}
-          name={this.linkDetails.name}
+          head={`${linkName} (Episode)`}
+          name={socialLink.linkDetails.name}
           stats={additionalStats}
         />
-        {props.fullCard &&
-          this.getLevel().element({
-            key: this.linkName,
-          })}
+        {props.fullCard && level.element({ key: linkName })}
       </div>
     );
   }
 }
 
-export const Iori = new IoriSocialLink(
+export const Iori = new SocialLinkEpisodes(
   SocialLinkNames.Iori,
   { name: "Junpei Iori" },
   { mainLevels: new IoriMainLevels() }

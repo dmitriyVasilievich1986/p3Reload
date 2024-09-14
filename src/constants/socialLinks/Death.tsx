@@ -1,14 +1,25 @@
-import { SocialLinkAvailableProps, SocialLinkNames } from "./types";
 import { SingleDay } from "@/constants/calendar/SingleDay";
-import { SocialLinkAlwaysLevelUp } from "./baseFunctions";
 
-class SocialLinkDeath extends SocialLinkAlwaysLevelUp {
+import {
+  SocialLinkAvailableProps,
+  SocialLinkNames,
+  SocialLinkType,
+} from "./types";
+
+import {
+  LinkMainLevelsChooseAny,
+  SocialLinkAlwaysLevelUp,
+} from "./baseFunctions";
+
+class DeathtMainLevels extends LinkMainLevelsChooseAny {
   calculate(
+    socialLink: SocialLinkType,
     props: SocialLinkAvailableProps & {
       previousWeek?: SingleDay;
     }
   ) {
-    const previousLink = props.previousDay!.links[this.linkName];
+    const linkName = socialLink.linkName;
+    const previousLink = props.previousDay!.links[linkName];
     const level = [1, 3, 6, 8].includes(previousLink.level)
       ? previousLink.level + 2
       : previousLink.level + 1;
@@ -19,13 +30,13 @@ class SocialLinkDeath extends SocialLinkAlwaysLevelUp {
       },
     };
   }
-
-  isAvailable(): boolean {
-    return false;
-  }
 }
 
-export const Death = new SocialLinkDeath(SocialLinkNames.Death, {
-  name: "Pharos",
-  place: "Main character room",
-});
+export const Death = new SocialLinkAlwaysLevelUp(
+  SocialLinkNames.Death,
+  {
+    name: "Pharos",
+    place: "Main character room",
+  },
+  { mainLevels: new DeathtMainLevels() }
+);

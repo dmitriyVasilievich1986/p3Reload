@@ -1,14 +1,18 @@
-import { SocialLinkAvailableProps, SocialLinkNames } from "./types";
-import { SingleDay } from "@/constants/calendar/SingleDay";
-import { SocialLinkAlwaysLevelUp } from "./baseFunctions";
+import {
+  SocialLinkAvailableProps,
+  SocialLinkNames,
+  SocialLinkType,
+} from "./types";
 
-class SocialLinkFool extends SocialLinkAlwaysLevelUp {
-  calculate(
-    props: SocialLinkAvailableProps & {
-      previousWeek?: SingleDay;
-    }
-  ) {
-    const previousLink = props.previousDay!.links[this.linkName];
+import {
+  SocialLinkAlwaysLevelUp,
+  LinkMainLevelsChooseAny,
+} from "./baseFunctions";
+
+class SocialLinkFool extends LinkMainLevelsChooseAny {
+  calculate(socialLink: SocialLinkType, props: SocialLinkAvailableProps) {
+    const linkName = socialLink.linkName;
+    const previousLink = props.previousDay!.links[linkName];
     const level =
       previousLink.level === 7
         ? previousLink.level + 2
@@ -20,13 +24,13 @@ class SocialLinkFool extends SocialLinkAlwaysLevelUp {
       },
     };
   }
-
-  isAvailable(): boolean {
-    return false;
-  }
 }
 
-export const Fool = new SocialLinkFool(SocialLinkNames.Fool, {
-  name: "S.E.E.S.",
-  place: "Tartarus",
-});
+export const Fool = new SocialLinkAlwaysLevelUp(
+  SocialLinkNames.Fool,
+  {
+    name: "S.E.E.S.",
+    place: "Tartarus",
+  },
+  { mainLevels: new SocialLinkFool() }
+);
