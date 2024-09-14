@@ -10,9 +10,9 @@ import {
   SocialLinkAvailableProps,
   SocialLinkElementProps,
   SocialLinkLevel,
-  SocialLinkStats,
   SocialLinkNames,
   SocialLinkType,
+  Routes,
 } from "./types";
 
 class KoromaruMainLevels extends LinkMainLevelsEpisodes {
@@ -149,10 +149,7 @@ class KoromaruMainLevels extends LinkMainLevelsEpisodes {
     const linkName = socialLink.linkName;
     const previousLink = props.previousDay!.links[linkName];
     let additionalStats: string | undefined = undefined;
-    const currentLevel = props.currentDay.links[linkName] as SocialLinkStats;
-    const level = this.levels[currentLevel.level][
-      currentLevel.romance
-    ] as SocialLinkLevel;
+    const level = this.levels[5][Routes.Platonic] as SocialLinkLevel;
 
     switch (previousLink.level) {
       case 0:
