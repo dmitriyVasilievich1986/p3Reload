@@ -105,6 +105,7 @@ export function RightTab(props: {
         <ActivitiesList
           {...props}
           head="Special"
+          time={props.showTime as Times}
           selectedActivity={getSelectedActivity()}
           activities={filteredActivities.filter((a) =>
             specialsArray.includes(a.name)
@@ -113,12 +114,14 @@ export function RightTab(props: {
         <ActivitiesList
           {...props}
           head="Social Links"
+          time={props.showTime as Times}
           selectedActivity={getSelectedActivity()}
           activities={filteredActivities.filter((a) => !!a.linkName)}
         />
         <ActivitiesList
           {...props}
           head={StatsNames.Academics}
+          time={props.showTime as Times}
           selectedActivity={getSelectedActivity()}
           activities={filteredActivities.filter((a) =>
             academicsArray.includes(a.name)
@@ -127,6 +130,7 @@ export function RightTab(props: {
         <ActivitiesList
           {...props}
           head={StatsNames.Courage}
+          time={props.showTime as Times}
           selectedActivity={getSelectedActivity()}
           activities={filteredActivities.filter((a) =>
             courageArray.includes(a.name)
@@ -135,6 +139,7 @@ export function RightTab(props: {
         <ActivitiesList
           {...props}
           head={StatsNames.Charm}
+          time={props.showTime as Times}
           selectedActivity={getSelectedActivity()}
           activities={filteredActivities.filter((a) =>
             charmArray.includes(a.name)
@@ -143,6 +148,7 @@ export function RightTab(props: {
         <ActivitiesList
           {...props}
           head="Lobby PC"
+          time={props.showTime as Times}
           selectedActivity={getSelectedActivity()}
           activities={filteredActivities.filter((a) =>
             lobbyPCArray.includes(a.name)
