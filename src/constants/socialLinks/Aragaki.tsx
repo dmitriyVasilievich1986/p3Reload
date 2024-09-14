@@ -1,5 +1,6 @@
-import { LinkMainLevelsEpisodes, SocialLinkEpisodes } from "./baseFunctions";
+import { LinkMainLevelsEpisodes } from "./classes/LinkLevels";
 import { SingleDay } from "@/constants/calendar/SingleDay";
+import { SocialLinkEpisodes } from "./classes/SocialLink";
 import { DaysNames } from "@/constants/monthsNames";
 import { Times } from "@/constants/events/types";
 import { StatsNames } from "@/constants/stats";

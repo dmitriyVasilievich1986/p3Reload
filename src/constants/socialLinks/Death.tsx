@@ -1,3 +1,5 @@
+import { SocialLinkAlwaysLevelUp } from "./classes/SocialLink";
+import { LinkMainLevelsChooseAny } from "./classes/LinkLevels";
 import { SingleDay } from "@/constants/calendar/SingleDay";
 
 import {
@@ -5,11 +7,6 @@ import {
   SocialLinkNames,
   SocialLinkType,
 } from "./types";
-
-import {
-  LinkMainLevelsChooseAny,
-  SocialLinkAlwaysLevelUp,
-} from "./baseFunctions";
 
 class DeathtMainLevels extends LinkMainLevelsChooseAny {
   calculate(

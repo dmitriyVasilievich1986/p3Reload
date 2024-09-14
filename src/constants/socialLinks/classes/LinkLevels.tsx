@@ -1,5 +1,5 @@
 import { upgradeResponse, Times } from "@/constants/events/types";
-import { CardNeededCalculator } from "./calculationFunctions";
+import { getCalulateFunction } from "./calculationFunctions";
 import { SingleDay } from "@/constants/calendar/SingleDay";
 import { StatsNames, stats } from "@/constants/stats";
 import { EventCard } from "@/components";
@@ -16,76 +16,10 @@ import {
   SocialLinkElementProps,
   SocialLinkStats,
   SocialLinkLevel,
-  SocialLinkNames,
-  LinkDetailsType,
   SocialLinkType,
   LevelsType,
   Routes,
-} from "./types";
-
-const urlParams = new URLSearchParams(window.location.search);
-export const mainCharName: string =
-  urlParams.get("mainCharName") || "Protagonist";
-
-function getCalulateFunction(
-  maxMultiplier: number,
-  isNewLevel: boolean,
-  maxPoints: number[],
-  socialLink: SocialLinkType,
-  props: SocialLinkAvailableProps & {
-    previousWeek?: SingleDay;
-  },
-  route: Routes = Routes.Platonic
-) {
-  const linkName = socialLink.linkName;
-  const previousLink = props.previousDay!.links[linkName];
-  const currentLink = props.currentDay.links[linkName];
-  const charmMax = stats[StatsNames.Charm].levels[5].value;
-
-  const level = isNewLevel ? previousLink.level + 1 : previousLink.level;
-  let points = isNewLevel ? 0 : currentLink.points;
-
-  const examMultiplier = previousLink.multiplier === 1 ? 1 : maxMultiplier;
-  const cardMultiplier = maxMultiplier;
-  const maxCharmMultiplier =
-    props.currentDay.stats[StatsNames.Charm] >= charmMax ? maxMultiplier : 1;
-
-  let multiplier = examMultiplier * maxCharmMultiplier;
-
-  const newLevel = socialLink.getLevel({
-    ...previousLink,
-    romance: route,
-    level,
-  });
-
-  const cardNeeded = new CardNeededCalculator({
-    nextLevelPoints: newLevel.points - points,
-    cardMultiplier: cardMultiplier,
-    multiplier,
-    maxPoints,
-  });
-
-  if (props.currentDay.arcanes.includes(linkName)) {
-    multiplier *= cardMultiplier;
-  } else if (cardNeeded.isCardNeeded()) {
-    multiplier *= cardMultiplier;
-    props.currentDay.arcanes.push(linkName);
-  }
-
-  points += CardNeededCalculator.maxPointsSum(maxPoints, multiplier);
-
-  return {
-    links: {
-      ...props.currentDay.links,
-      [linkName]: {
-        ...previousLink,
-        romance: route,
-        points,
-        level,
-      },
-    },
-  };
-}
+} from "../types";
 
 export abstract class LinkLevels {
   abstract levels: LevelsType;
@@ -111,7 +45,7 @@ export abstract class LinkLevels {
   ): boolean;
 }
 
-class EmptyLevels extends LinkLevels {
+export class EmptyLevels extends LinkLevels {
   levels: LevelsType = {};
 
   calculate() {
@@ -359,108 +293,5 @@ export class ShrineLevels extends LinkLevels {
         />
       </div>
     );
-  }
-}
-
-export class SocialLink implements SocialLinkType {
-  linkDetails: LinkDetailsType;
-  linkName: SocialLinkNames;
-  maxLevel: number;
-
-  shrineLevels: LinkLevels;
-  invitations: LinkLevels;
-  mainLevels: LinkLevels;
-
-  constructor(
-    linkName: SocialLinkNames,
-    linkDetails: LinkDetailsType,
-    levels: {
-      shrineLevels?: LinkLevels;
-      invitations?: LinkLevels;
-      mainLevels: LinkLevels;
-    }
-  ) {
-    this.maxLevel = Math.max(
-      ...Object.keys(levels.mainLevels.levels).map((k) => Number(k))
-    );
-    this.shrineLevels = levels?.shrineLevels || new ShrineLevels();
-    this.invitations = levels?.invitations || new EmptyLevels();
-    this.mainLevels = levels.mainLevels;
-    this.linkDetails = linkDetails;
-    this.linkName = linkName;
-  }
-
-  getLevels(
-    props: SocialLinkAvailableProps & {
-      previousWeek?: SingleDay;
-    },
-    route: Routes = Routes.Platonic
-  ): LinkLevels {
-    if (this.invitations.isAvailable(this, props, route))
-      return this.invitations;
-    if (this.shrineLevels.isAvailable(this, props, route))
-      return this.shrineLevels;
-    return this.mainLevels;
-  }
-
-  getLevel({ romance, level }: SocialLinkStats) {
-    return this.mainLevels.levels[level][romance] as SocialLinkLevel;
-  }
-
-  isNewLevel(thisLink: SocialLinkStats) {
-    const currentLevel = this.getLevel(thisLink);
-    return (
-      thisLink.level < this.maxLevel && thisLink.points >= currentLevel.points
-    );
-  }
-
-  isAvailable(props: SocialLinkAvailableProps, route: Routes): boolean {
-    if (!props.previousDay) return false;
-
-    return (
-      this.shrineLevels.isAvailable(this, props, route) ||
-      this.invitations.isAvailable(this, props, route) ||
-      this.mainLevels.isAvailable(this, props, route)
-    );
-  }
-
-  calculate(
-    props: SocialLinkAvailableProps & {
-      previousWeek?: SingleDay;
-    },
-    route: Routes = Routes.Platonic
-  ) {
-    return this.getLevels(props, route).calculate(this, props, route);
-  }
-
-  element(props: SocialLinkElementProps, route: Routes = Routes.Platonic) {
-    if (!props.previousDay) return null;
-    return this.getLevels(props, route).element(this, props, route);
-  }
-}
-
-export class SocialLinkAlwaysLevelUp extends SocialLink {
-  constructor(
-    linkName: SocialLinkNames,
-    linkDetails: LinkDetailsType,
-    levels?: { mainLevels?: LinkLevels }
-  ) {
-    super(linkName, linkDetails, {
-      mainLevels: levels?.mainLevels ?? new LinkMainLevelsChooseAny(),
-      shrineLevels: new EmptyLevels(),
-      invitations: new EmptyLevels(),
-    });
-  }
-
-  getLevel({ level }: SocialLinkStats) {
-    if (level === 0)
-      return this.mainLevels.levels[0].Platonic as SocialLinkLevel;
-    return this.mainLevels.levels[10].Platonic as SocialLinkLevel;
-  }
-}
-
-export class SocialLinkEpisodes extends SocialLink {
-  getLevel() {
-    return this.mainLevels.levels[5][Routes.Platonic] as SocialLinkLevel;
   }
 }

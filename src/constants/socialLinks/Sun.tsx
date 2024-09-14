@@ -1,11 +1,8 @@
+import { LinkMainLevelsChooseAny } from "./classes/LinkLevels";
+import { SocialLinkAlwaysLevelUp } from "./classes/SocialLink";
 import { StatsNames, stats } from "@/constants/stats";
 import { DaysNames } from "@/constants/monthsNames";
 import { Times } from "@/constants/events/types";
-
-import {
-  SocialLinkAlwaysLevelUp,
-  LinkMainLevelsChooseAny,
-} from "./baseFunctions";
 
 import {
   SocialLinkAvailableProps,

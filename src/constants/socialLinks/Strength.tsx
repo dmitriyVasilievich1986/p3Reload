@@ -1,14 +1,10 @@
+import { createBondObject, LinkMaxedObject } from "./classes/GenericCard";
+import { InvitationLevels, LinkMainLevels } from "./classes/LinkLevels";
 import { QuestionsWrapper, Question, Answer } from "@/components";
-import { createBondObject, LinkMaxedObject } from "./GenericCard";
+import { mainCharName } from "./classes/mainCharName";
 import { DaysNames } from "@/constants/monthsNames";
+import { SocialLink } from "./classes/SocialLink";
 import { Times } from "@/constants/events/types";
-
-import {
-  InvitationLevels,
-  LinkMainLevels,
-  mainCharName,
-  SocialLink,
-} from "./baseFunctions";
 
 import {
   SocialLinkAvailableProps,

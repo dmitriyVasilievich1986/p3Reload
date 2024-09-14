@@ -1,13 +1,11 @@
+import { SocialLinkAlwaysLevelUp } from "./classes/SocialLink";
+import { LinkMainLevelsChooseAny } from "./classes/LinkLevels";
+
 import {
   SocialLinkAvailableProps,
   SocialLinkNames,
   SocialLinkType,
 } from "./types";
-
-import {
-  SocialLinkAlwaysLevelUp,
-  LinkMainLevelsChooseAny,
-} from "./baseFunctions";
 
 class SocialLinkFool extends LinkMainLevelsChooseAny {
   calculate(socialLink: SocialLinkType, props: SocialLinkAvailableProps) {

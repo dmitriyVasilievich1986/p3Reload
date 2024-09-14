@@ -1,4 +1,5 @@
-import { LinkMainLevelsEpisodes, SocialLinkEpisodes } from "./baseFunctions";
+import { LinkMainLevelsEpisodes } from "./classes/LinkLevels";
+import { SocialLinkEpisodes } from "./classes/SocialLink";
 import { Times } from "@/constants/events/types";
 
 import {

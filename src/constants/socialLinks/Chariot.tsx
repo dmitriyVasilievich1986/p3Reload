@@ -1,6 +1,7 @@
-import { InvitationLevels, LinkMainLevels, SocialLink } from "./baseFunctions";
-import { createBondObject, LinkMaxedObject } from "./GenericCard";
+import { createBondObject, LinkMaxedObject } from "./classes/GenericCard";
+import { InvitationLevels, LinkMainLevels } from "./classes/LinkLevels";
 import { QuestionsWrapper, Question, Answer } from "@/components";
+import { SocialLink } from "./classes/SocialLink";
 import { SingleDay } from "../calendar/SingleDay";
 import { DaysNames } from "../monthsNames";
 import { Times } from "../events/types";

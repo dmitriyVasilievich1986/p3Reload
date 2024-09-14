@@ -1,7 +1,9 @@
-import { SocialLink, LinkMainLevels, mainCharName } from "./baseFunctions";
+import { createBondObject, LinkMaxedObject } from "./classes/GenericCard";
 import { QuestionsWrapper, Question, Answer } from "@/components";
-import { createBondObject, LinkMaxedObject } from "./GenericCard";
+import { LinkMainLevels } from "./classes/LinkLevels";
 import { StatsNames, stats } from "@/constants/stats";
+import { mainCharName } from "./classes/mainCharName";
+import { SocialLink } from "./classes/SocialLink";
 import { Times } from "@/constants/events/types";
 
 import {
