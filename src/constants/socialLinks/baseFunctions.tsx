@@ -4,6 +4,7 @@ import { StatsNames, stats } from "@/constants/stats";
 import { Times } from "@/constants/events/types";
 import { EventCard } from "@/components";
 
+import { SpendingTimeObject } from "./GenericCard";
 import {
   SocialLinkAvailableProps,
   SocialLinkElementProps,
@@ -11,7 +12,6 @@ import {
   SocialLinkStats,
   SocialLinkLevel,
   SocialLinkNames,
-  InvitationsType,
   LinkDetailsType,
   SocialLinkType,
   LevelsType,
@@ -22,22 +22,160 @@ const urlParams = new URLSearchParams(window.location.search);
 export const mainCharName: string =
   urlParams.get("mainCharName") || "Protagonist";
 
+export abstract class LinkLevels {
+  abstract levels: LevelsType;
+
+  abstract element(
+    socialLink: SocialLinkType,
+    props: SocialLinkElementProps
+  ): React.ReactNode;
+
+  abstract isAvailable(
+    socialLink: SocialLinkType,
+    props: SocialLinkAvailableProps,
+    route: Routes
+  ): boolean;
+}
+
+class EmptyLevels extends LinkLevels {
+  levels: LevelsType = {};
+
+  element() {
+    return null;
+  }
+
+  isAvailable() {
+    return false;
+  }
+}
+
+export abstract class InvitationLevels extends LinkLevels {
+  abstract dates: number[];
+
+  isAvailable(
+    socialLink: SocialLinkType,
+    props: SocialLinkAvailableProps,
+    route: Routes
+  ): boolean {
+    const linkName = socialLink.linkName;
+
+    return (
+      props.currentDay.links[linkName].level in this.levels &&
+      props.previousDay!.links[linkName].romance === route &&
+      this.dates.includes(props.currentDay.date.getTime()) &&
+      props.time === Times.Day
+    );
+  }
+
+  element(
+    socialLink: SocialLinkType,
+    props: SocialLinkElementProps
+  ): React.ReactNode {
+    if (!props.previousDay) return null;
+    const linkName = socialLink.linkName;
+    const charmLevel = stats[StatsNames.Charm].levels[5].value;
+    const currentLevel = props.currentDay.links[linkName] as SocialLinkStats;
+    const level = this.levels[currentLevel.level][
+      currentLevel.romance
+    ] as SocialLinkLevel;
+
+    return (
+      <div>
+        <EventCard
+          charm={
+            props.fullCard &&
+            props.currentDay?.stats &&
+            props.currentDay.stats[StatsNames.Charm] >= charmLevel
+          }
+          multiplier={
+            props.fullCard
+              ? props.currentDay.links &&
+                props.currentDay.links[linkName].multiplier
+              : undefined
+          }
+          card={props.fullCard && props.currentDay.arcanes.includes(linkName)}
+          name={socialLink.linkDetails.name}
+          head={`${linkName} (Invitation)`}
+        />
+        {props.fullCard && level.element({ key: linkName })}
+      </div>
+    );
+  }
+}
+
+export class ShrineLevels extends LinkLevels {
+  levels: LevelsType = {
+    0: {
+      [Routes.Platonic]: SpendingTimeObject,
+    },
+  };
+
+  isAvailable(
+    socialLink: SocialLinkType,
+    props: SocialLinkAvailableProps,
+    route: Routes
+  ): boolean {
+    const linkName = socialLink.linkName;
+
+    return (
+      !socialLink.isNewLevel(props.previousDay!.links[linkName]) &&
+      props.previousDay!.links[linkName].romance === route &&
+      props.previousDay!.links[linkName].level > 0 &&
+      props.time === Times.Day
+    );
+  }
+
+  element(socialLink: SocialLinkType, props: SocialLinkElementProps) {
+    if (!props.previousDay) return null;
+    const linkName = socialLink.linkName;
+    const charmLevel = stats[StatsNames.Charm].levels[5].value;
+
+    return (
+      <div>
+        <EventCard
+          charm={
+            props.fullCard &&
+            props.currentDay?.stats &&
+            props.currentDay.stats[StatsNames.Charm] >= charmLevel
+          }
+          multiplier={
+            props.fullCard
+              ? props.currentDay.links &&
+                props.currentDay.links[linkName].multiplier
+              : undefined
+          }
+          card={props.fullCard && props.currentDay.arcanes.includes(linkName)}
+          head={`${linkName} (Naganaki shrine)`}
+          name={socialLink.linkDetails.name}
+          place="Naganaki shrine"
+        />
+      </div>
+    );
+  }
+}
+
 export abstract class SocialLink implements SocialLinkType {
-  invitations?: InvitationsType;
   linkDetails: LinkDetailsType;
   linkName: SocialLinkNames;
   levels: LevelsType;
   maxLevel: number;
 
+  shrineLevels: LinkLevels;
+  invitations: LinkLevels;
+
   constructor(
     linkName: SocialLinkNames,
     linkDetails: LinkDetailsType,
     levels: LevelsType,
-    invitations?: InvitationsType
+    props?: {
+      shrineLevels?: LinkLevels;
+      invitations?: LinkLevels;
+    }
   ) {
     this.maxLevel = Math.max(...Object.keys(levels).map((k) => Number(k)));
+    this.shrineLevels = props?.shrineLevels || new ShrineLevels();
+    this.invitations = props?.invitations || new EmptyLevels();
     this.linkDetails = linkDetails;
-    this.invitations = invitations;
     this.linkName = linkName;
     this.levels = levels;
   }
@@ -58,28 +196,12 @@ export abstract class SocialLink implements SocialLinkType {
     route: Routes
   ): boolean;
 
-  abstract isInvitationAvailable(
-    props: SocialLinkAvailableProps,
-    route: Routes
-  ): boolean;
-
-  isShrineAvailable(props: SocialLinkAvailableProps, route: Routes): boolean {
-    return (
-      !this.isNewLevel(props.previousDay!.links[this.linkName]) &&
-      props.previousDay!.links[this.linkName].romance === route &&
-      props.previousDay!.links[this.linkName].level > 0 &&
-      props.time === Times.Day
-    );
-  }
-
   isAvailable(props: SocialLinkAvailableProps, route: Routes): boolean {
     if (!props.previousDay) return false;
-    else if (props.previousDay.links[this.linkName].level >= this.maxLevel)
-      return false;
 
     return (
-      this.isInvitationAvailable(props, route) ||
-      this.isShrineAvailable(props, route) ||
+      this.shrineLevels.isAvailable(this, props, route) ||
+      this.invitations.isAvailable(this, props, route) ||
       this.isLinkAvailable(props, route)
     );
   }
@@ -105,7 +227,7 @@ export abstract class SocialLink implements SocialLinkType {
     let maxCharmMultiplier =
       props.currentDay.stats[StatsNames.Charm] >= charmMax ? 1.51 : 1;
 
-    if (this.isInvitationAvailable(props, route)) {
+    if (this.invitations.isAvailable(this, props, route)) {
       points = currentLink.points;
       level = currentLink.level;
       maxPoints = [30];
@@ -115,7 +237,7 @@ export abstract class SocialLink implements SocialLinkType {
 
       maxPoints = [10];
 
-      if (!this.isShrineAvailable(props, route)) {
+      if (!this.shrineLevels.isAvailable(this, props, route)) {
         maxCharmMultiplier = maxCharmMultiplier === 1 ? 1 : 1.31;
         examMultiplier = examMultiplier === 1 ? 1 : 1.31;
         cardMultiplier = 1.31;
@@ -165,15 +287,12 @@ export abstract class SocialLink implements SocialLinkType {
     const previousLevel = props.previousDay.links[
       this.linkName
     ] as SocialLinkStats;
-    const currentLevel = props.currentDay.links[
-      this.linkName
-    ] as SocialLinkStats;
 
     const standard = [LabelHeadPrefixes.Default, LabelHeadPrefixes.Romance];
     let headPrefix: LabelHeadPrefixes = LabelHeadPrefixes.Default;
-    if (this.isInvitationAvailable(props, route))
+    if (this.invitations.isAvailable(this, props, route))
       headPrefix = LabelHeadPrefixes.Invitation;
-    else if (this.isShrineAvailable(props, route))
+    else if (this.shrineLevels.isAvailable(this, props, route))
       headPrefix = LabelHeadPrefixes.Shrine;
     else if (!this.isNewLevel(props.previousDay.links[this.linkName]))
       headPrefix = LabelHeadPrefixes.SpendTime;
@@ -181,8 +300,7 @@ export abstract class SocialLink implements SocialLinkType {
 
     const FullCard = () => {
       if (!props.fullCard) return null;
-      if (headPrefix === LabelHeadPrefixes.Invitation)
-        return this.invitations![currentLevel.level][currentLevel.romance];
+      if (headPrefix === LabelHeadPrefixes.Invitation) return null;
       if (standard.includes(headPrefix)) {
         const level = this.getLevel({
           ...previousLevel,
@@ -227,17 +345,6 @@ export abstract class SocialLinkAlwaysLevelUp extends SocialLink {
     return this.levels[10].Platonic as SocialLinkLevel;
   }
 
-  isInvitationAvailable(
-    _props: SocialLinkAvailableProps,
-    _route: Routes
-  ): boolean {
-    return false;
-  }
-
-  isShrineAvailable(_props: SocialLinkAvailableProps, _route: Routes): boolean {
-    return false;
-  }
-
   calculate(
     props: SocialLinkAvailableProps & {
       previousWeek?: SingleDay;
@@ -276,14 +383,6 @@ export abstract class SocialLinkAlwaysLevelUp extends SocialLink {
 export abstract class SocialLinkEpisodes extends SocialLink {
   getLevel() {
     return this.levels[5][Routes.Platonic] as SocialLinkLevel;
-  }
-
-  isInvitationAvailable() {
-    return false;
-  }
-
-  isShrineAvailable() {
-    return false;
   }
 
   calculate(
