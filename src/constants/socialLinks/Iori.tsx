@@ -43,7 +43,7 @@ class IoriMainLevels extends LinkMainLevelsEpisodes {
           new Date(2009, 7, 25).getTime(),
           new Date(2009, 7, 28).getTime(),
         ];
-        return days.includes(props.currentDay.date.getDay()) && isTime;
+        return days.includes(props.currentDay.date.getTime()) && isTime;
       case 2:
         days = [
           new Date(2009, 10, 7).getTime(),
@@ -51,7 +51,7 @@ class IoriMainLevels extends LinkMainLevelsEpisodes {
           new Date(2009, 10, 11).getTime(),
           new Date(2009, 10, 13).getTime(),
         ];
-        return days.includes(props.currentDay.date.getDay()) && isTime;
+        return days.includes(props.currentDay.date.getTime()) && isTime;
       case 3:
         days = [
           new Date(2009, 11, 19).getTime(),
@@ -59,7 +59,7 @@ class IoriMainLevels extends LinkMainLevelsEpisodes {
           new Date(2009, 11, 25).getTime(),
           new Date(2009, 11, 26).getTime(),
         ];
-        return days.includes(props.currentDay.date.getDay()) && isTime;
+        return days.includes(props.currentDay.date.getTime()) && isTime;
       case 4:
         days = [
           new Date(2010, 0, 15).getTime(),
@@ -71,7 +71,7 @@ class IoriMainLevels extends LinkMainLevelsEpisodes {
           new Date(2010, 0, 28).getTime(),
           new Date(2010, 0, 29).getTime(),
         ];
-        return days.includes(props.currentDay.date.getDay()) && isTime;
+        return days.includes(props.currentDay.date.getTime()) && isTime;
       default:
         return false;
     }
