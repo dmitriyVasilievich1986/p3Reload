@@ -10,7 +10,6 @@ import {
   SocialLinkAvailableProps,
   SocialLinkElementProps,
   SocialLinkLevel,
-  SocialLinkStats,
   SocialLinkNames,
   SocialLinkType,
   Routes,
