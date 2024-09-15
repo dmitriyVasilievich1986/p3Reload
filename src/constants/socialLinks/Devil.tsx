@@ -1,5 +1,6 @@
 import { SocialLinkAlwaysLevelUp } from "./classes/SocialLink";
 import { LinkMainLevelsChooseAny } from "./classes/LinkLevels";
+import { StatsNames, stats } from "@/constants/stats";
 import { DaysNames } from "@/constants/monthsNames";
 import { Times } from "@/constants/events/types";
 
@@ -7,35 +8,26 @@ import {
   SocialLinkAvailableProps,
   SocialLinkNames,
   SocialLinkType,
-  Routes,
 } from "./types";
 
 class DevilMainLevels extends LinkMainLevelsChooseAny {
   isAvailable(
     socialLink: SocialLinkType,
-    props: SocialLinkAvailableProps,
-    route: Routes
+    props: SocialLinkAvailableProps
   ): boolean {
     const linkName = socialLink.linkName;
     const previousLink = props.previousDay!.links[linkName];
     const isNewLevel = socialLink.isNewLevel(previousLink);
-    const isRomance =
-      previousLink.level === 6 || previousLink.romance === route;
-    const days = [
-      DaysNames.monday,
-      DaysNames.tuesday,
-      DaysNames.wednesday,
-      DaysNames.thursday,
-      DaysNames.friday,
-      DaysNames.saturday,
-    ];
+    const days = [DaysNames.tuesday, DaysNames.saturday];
+    const charmLevel = stats[StatsNames.Charm].levels[3].value;
 
     return (
-      props.currentDay.date.getTime() >= new Date(2010, 0, 8).getTime() &&
+      props.currentDay.date.getTime() >= new Date(2009, 4, 16).getTime() &&
+      props.previousDay!.links[SocialLinkNames.Hermit].level >= 4 &&
+      props.previousDay!.stats[StatsNames.Charm] >= charmLevel &&
       days.includes(props.currentDay.date.getDay()) &&
-      props.time === Times.Day &&
-      isNewLevel &&
-      isRomance
+      props.time === Times.Evening &&
+      isNewLevel
     );
   }
 }
