@@ -9,6 +9,7 @@ import {
   createBondObject,
   ChooseAnyObject,
   SpendingTime,
+  LinkMaxedObject,
 } from "./GenericCard";
 
 import {
@@ -291,6 +292,75 @@ export class ShrineLevels extends LinkLevels {
           name={socialLink.linkDetails.name}
           place="Naganaki shrine"
         />
+      </div>
+    );
+  }
+}
+
+export abstract class DormHangoutLevels extends LinkLevels {
+  abstract dormName: "dorm1" | "dorm2";
+  abstract headPostfix: string;
+  abstract dates: number[];
+
+  levels: LevelsType = {
+    0: {
+      [Routes.Platonic]: ChooseAnyObject,
+    },
+    1: {
+      [Routes.Platonic]: ChooseAnyObject,
+    },
+    2: {
+      [Routes.Platonic]: LinkMaxedObject,
+    },
+  };
+
+  isAvailable(
+    socialLink: SocialLinkType,
+    props: SocialLinkAvailableProps,
+    route: Routes
+  ): boolean {
+    const linkName = socialLink.linkName;
+    const previousLink = props.previousDay!.links[linkName];
+
+    return (
+      this.dates.includes(props.currentDay.date.getTime()) &&
+      previousLink[this.dormName] < 3 &&
+      previousLink.romance === route &&
+      props.time === Times.Evening
+    );
+  }
+
+  calculate(socialLink: SocialLinkType, props: SocialLinkAvailableProps) {
+    const linkName = socialLink.linkName;
+    const previousLink = props.previousDay!.links[linkName];
+
+    return {
+      links: {
+        ...props.currentDay.links,
+        [linkName]: {
+          ...previousLink,
+          [this.dormName]: previousLink[this.dormName] + 1,
+        },
+      },
+    };
+  }
+
+  element(socialLink: SocialLinkType, props: SocialLinkElementProps) {
+    if (!props.previousDay) return null;
+    const linkName = socialLink.linkName;
+    const previousLink = props.previousDay!.links[linkName];
+    const level = this.levels[previousLink[this.dormName]][
+      previousLink.romance
+    ] as SocialLinkLevel;
+
+    return (
+      <div>
+        <EventCard
+          head={`${socialLink.linkName} (${this.headPostfix})`}
+          name={socialLink.linkDetails.name}
+          place="Dorm"
+        />
+        {props.fullCard && level.element({ key: linkName })}
       </div>
     );
   }

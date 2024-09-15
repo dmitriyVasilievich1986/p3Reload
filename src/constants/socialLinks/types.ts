@@ -63,6 +63,8 @@ export type SocialLinkStats = {
   romance: Routes;
   points: number;
   level: number;
+  dorm1: number;
+  dorm2: number;
 };
 
 export type SocialLinksStatsArray = {

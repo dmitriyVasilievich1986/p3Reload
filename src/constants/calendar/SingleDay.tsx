@@ -1,19 +1,21 @@
-import { allEventsNames, Event } from "../events/types";
-import { StatsNames, CharStats } from "../stats/types";
-import { MonthNames } from "../monthsNames";
+import { allEventsNames, Event } from "@/constants/events/types";
+import { StatsNames, CharStats } from "@/constants/stats/types";
+import { MonthNames } from "@/constants/monthsNames";
 
 import {
   SocialLinksStatsArray,
   SocialLinkStats,
   SocialLinkNames,
   Routes,
-} from "../socialLinks/types";
+} from "@/constants/socialLinks/types";
 
 const zeroStats: SocialLinkStats = {
-  level: 0,
-  points: 0,
-  multiplier: 1,
   romance: Routes.Platonic,
+  multiplier: 1,
+  points: 0,
+  level: 0,
+  dorm1: 0,
+  dorm2: 0,
 };
 
 const initialStats: CharStats = {
