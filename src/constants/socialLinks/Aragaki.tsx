@@ -1,4 +1,3 @@
-import { LinkMainLevelsEpisodes } from "./classes/LinkLevels";
 import { SingleDay } from "@/constants/calendar/SingleDay";
 import { SocialLinkEpisodes } from "./classes/SocialLink";
 import { DaysNames } from "@/constants/monthsNames";
@@ -7,13 +6,50 @@ import { StatsNames } from "@/constants/stats";
 import { EventCard } from "@/components";
 
 import {
+  LinkMainLevelsEpisodes,
+  DormHangoutLevels,
+} from "./classes/LinkLevels";
+
+import {
   SocialLinkAvailableProps,
   SocialLinkElementProps,
+  LabelHeadPrefixes,
   SocialLinkLevel,
-  SocialLinkStats,
   SocialLinkNames,
   SocialLinkType,
+  Routes,
 } from "./types";
+
+class AragakiKitchenActivityLevels extends DormHangoutLevels {
+  headPostfix: LabelHeadPrefixes = LabelHeadPrefixes.KitchenActivity;
+  dormName: "dorm1" | "dorm2" = "dorm1";
+
+  dates: number[] = [
+    new Date(2009, 8, 8).getTime(),
+    new Date(2009, 8, 12).getTime(),
+    new Date(2009, 8, 15).getTime(),
+    new Date(2009, 8, 22).getTime(),
+    new Date(2009, 8, 26).getTime(),
+    new Date(2009, 8, 29).getTime(),
+    new Date(2009, 9, 3).getTime(),
+  ];
+}
+
+class AragakiGardenActivityLevels extends DormHangoutLevels {
+  headPostfix: LabelHeadPrefixes = LabelHeadPrefixes.GardenActivity;
+  dormName: "dorm1" | "dorm2" = "dorm2";
+
+  dates: number[] = [
+    new Date(2009, 8, 7).getTime(),
+    new Date(2009, 8, 10).getTime(),
+    new Date(2009, 8, 14).getTime(),
+    new Date(2009, 8, 17).getTime(),
+    new Date(2009, 8, 21).getTime(),
+    new Date(2009, 8, 24).getTime(),
+    new Date(2009, 8, 28).getTime(),
+    new Date(2009, 9, 1).getTime(),
+  ];
+}
 
 class AragakiMainLevels extends LinkMainLevelsEpisodes {
   isAvailable(
@@ -34,12 +70,24 @@ class AragakiMainLevels extends LinkMainLevelsEpisodes {
 
     switch (previousLink.level) {
       case 0:
-        return (
-          props.currentDay.date.getTime() >= new Date(2009, 8, 4).getTime() &&
-          props.currentDay.date.getTime() <= new Date(2009, 9, 2).getTime() &&
-          days.includes(props.currentDay.date.getDay()) &&
-          isTime
-        );
+        days = [
+          new Date(2009, 8, 4).getTime(),
+          new Date(2009, 8, 11).getTime(),
+          new Date(2009, 8, 13).getTime(),
+          new Date(2009, 8, 14).getTime(),
+          new Date(2009, 8, 16).getTime(),
+          new Date(2009, 8, 17).getTime(),
+          new Date(2009, 8, 21).getTime(),
+          new Date(2009, 8, 22).getTime(),
+          new Date(2009, 8, 24).getTime(),
+          new Date(2009, 8, 25).getTime(),
+          new Date(2009, 8, 27).getTime(),
+          new Date(2009, 8, 28).getTime(),
+          new Date(2009, 8, 29).getTime(),
+          new Date(2009, 8, 30).getTime(),
+          new Date(2009, 9, 2).getTime(),
+        ];
+        return days.includes(props.currentDay.date.getTime()) && isTime;
       case 1:
         return (
           props.currentDay.date.getTime() >= new Date(2009, 8, 11).getTime() &&
@@ -134,10 +182,7 @@ class AragakiMainLevels extends LinkMainLevelsEpisodes {
     const linkName = socialLink.linkName;
     const previousLink = props.previousDay!.links[linkName];
     let additionalStats: string | undefined = undefined;
-    const currentLevel = props.currentDay.links[linkName] as SocialLinkStats;
-    const level = this.levels[currentLevel.level][
-      currentLevel.romance
-    ] as SocialLinkLevel;
+    const level = this.levels[5][Routes.Platonic] as SocialLinkLevel;
 
     switch (previousLink.level) {
       case 0:
@@ -171,6 +216,8 @@ export const Aragaki = new SocialLinkEpisodes(
   SocialLinkNames.Aragaki,
   { name: "Shinjiro Aragaki" },
   {
+    dormHangout1: new AragakiKitchenActivityLevels(),
+    dormHangout2: new AragakiGardenActivityLevels(),
     mainLevels: new AragakiMainLevels(),
   }
 );

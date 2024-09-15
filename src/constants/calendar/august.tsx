@@ -174,7 +174,7 @@ export const august: SingleDay[] = [
     isDayOff: true,
     activities: [
       events[SocialLinkNames.Star],
-      events[SpecialEventsNames.DoNothing],
+      { ...events[SpecialEventsNames.DoNothing], time: Times.Evening },
     ],
   }),
   new SingleDay({
@@ -208,7 +208,7 @@ export const august: SingleDay[] = [
     isDayOff: true,
     activities: [
       events[SocialLinkNames.Moon],
-      events[SpecialEventsNames.DoNothing],
+      { ...events[SpecialEventsNames.DoNothing], time: Times.Evening },
     ],
   }),
   new SingleDay({
@@ -253,7 +253,7 @@ export const august: SingleDay[] = [
     isDayOff: true,
     activities: [
       events[SocialLinkNames.Sun],
-      events[SpecialEventsNames.DoNothing],
+      { ...events[SpecialEventsNames.DoNothing], time: Times.Evening },
     ],
   }),
   new SingleDay({

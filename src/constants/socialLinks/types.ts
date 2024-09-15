@@ -37,6 +37,11 @@ export enum LabelHeadPrefixes {
   Invitation = " (Invitation)",
   SpendTime = " (Spend time)",
   Romance = " (Romance)",
+  KitchenActivity = " (Kitchen Activity)",
+  GardenActivity = " (Garden Activity)",
+  BookActivity = " (Book Activity)",
+  DVDActivity = " (DVD Activity)",
+  Brush = " (Brush)",
   Default = "",
 }
 
@@ -63,6 +68,8 @@ export type SocialLinkStats = {
   romance: Routes;
   points: number;
   level: number;
+  dorm1: number;
+  dorm2: number;
 };
 
 export type SocialLinksStatsArray = {
@@ -93,12 +100,13 @@ export type SocialLinkType = {
   linkName: SocialLinkNames;
   maxLevel: number;
 
-  element(props: SocialLinkElementProps): React.ReactNode;
+  element(props: SocialLinkElementProps, route: Routes): React.ReactNode;
   getLevel(props: SocialLinkStats): SocialLinkLevel;
   isNewLevel(thisLink: SocialLinkStats): boolean;
   calculate(
     props: SocialLinkAvailableProps & {
       previousWeek?: SingleDay;
-    }
+    },
+    route: Routes
   ): upgradeResponse;
 };

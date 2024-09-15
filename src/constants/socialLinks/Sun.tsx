@@ -16,7 +16,7 @@ class SunMainLevels extends LinkMainLevelsChooseAny {
     props: SocialLinkAvailableProps
   ): boolean {
     const linkName = socialLink.linkName;
-    const academicsLevel = stats[StatsNames.Academics].levels[5].value;
+    const academicsLevel = stats[StatsNames.Academics].levels[3].value;
     const previousLink = props.previousDay!.links[linkName];
     const isNewLevel = socialLink.isNewLevel(previousLink);
 

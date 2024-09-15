@@ -1,6 +1,5 @@
+import { QuestionsWrapper, EventCard, Question, Answer } from "@/components";
 import { createBondObject, LinkMaxedObject } from "./classes/GenericCard";
-import { InvitationLevels, LinkMainLevels } from "./classes/LinkLevels";
-import { QuestionsWrapper, Question, Answer } from "@/components";
 import { StatsNames, stats } from "@/constants/stats";
 import { mainCharName } from "./classes/mainCharName";
 import { DaysNames } from "@/constants/monthsNames";
@@ -8,12 +7,89 @@ import { SocialLink } from "./classes/SocialLink";
 import { Times } from "@/constants/events/types";
 
 import {
+  DormHangoutLevels,
+  InvitationLevels,
+  LinkMainLevels,
+} from "./classes/LinkLevels";
+
+import {
   SocialLinkAvailableProps,
+  SocialLinkElementProps,
+  LabelHeadPrefixes,
+  SocialLinkLevel,
   SocialLinkNames,
   SocialLinkType,
   LevelsType,
   Routes,
 } from "./types";
+
+class PriestessGardenActivityLevels extends DormHangoutLevels {
+  headPostfix: LabelHeadPrefixes = LabelHeadPrefixes.GardenActivity;
+  dormName: "dorm1" | "dorm2" = "dorm1";
+
+  dates: number[] = [
+    new Date(2009, 7, 27).getTime(),
+    new Date(2009, 8, 9).getTime(),
+    new Date(2009, 8, 15).getTime(),
+    new Date(2009, 8, 29).getTime(),
+  ];
+}
+
+class PriestessBookActivityLevels extends DormHangoutLevels {
+  headPostfix: LabelHeadPrefixes = LabelHeadPrefixes.BookActivity;
+  dormName: "dorm1" | "dorm2" = "dorm2";
+
+  dates: number[] = [
+    new Date(2009, 7, 20).getTime(),
+    new Date(2009, 7, 25).getTime(),
+    new Date(2009, 8, 4).getTime(),
+    new Date(2009, 8, 10).getTime(),
+    new Date(2009, 8, 17).getTime(),
+    new Date(2009, 8, 24).getTime(),
+    new Date(2009, 9, 1).getTime(),
+  ];
+
+  calculate(socialLink: SocialLinkType, props: SocialLinkAvailableProps) {
+    const linkName = socialLink.linkName;
+    const previousLink = props.previousDay!.links[linkName];
+
+    return {
+      links: {
+        ...props.currentDay.links,
+        [linkName]: {
+          ...previousLink,
+          [this.dormName]: previousLink[this.dormName] + 1,
+        },
+      },
+      stats: {
+        ...props.currentDay.stats,
+        [StatsNames.Academics]:
+          props.currentDay.stats[StatsNames.Academics] + 2,
+      },
+    };
+  }
+
+  element(socialLink: SocialLinkType, props: SocialLinkElementProps) {
+    if (!props.previousDay) return null;
+    const linkName = socialLink.linkName;
+    const previousLink = props.previousDay!.links[linkName];
+    const level = this.levels[previousLink[this.dormName]][
+      previousLink.romance
+    ] as SocialLinkLevel;
+
+    return (
+      <div>
+        <EventCard
+          head={`${socialLink.linkName}${this.headPostfix}`}
+          stats={`${StatsNames.Academics} +2`}
+          name={socialLink.linkDetails.name}
+          place="Dorm"
+        />
+        {props.fullCard && level.element({ key: linkName })}
+      </div>
+    );
+  }
+}
 
 class PriestessMainLevels extends LinkMainLevels {
   isAvailable(
@@ -452,6 +528,8 @@ export const Priestess = new SocialLink(
   SocialLinkNames.Priestess,
   { name: "Fuuka Yamagishi", place: "2nd Floor Hallway" },
   {
+    dormHangout1: new PriestessGardenActivityLevels(),
+    dormHangout2: new PriestessBookActivityLevels(),
     invitations: new PriestessInvitationLevels(),
     mainLevels: new PriestessMainLevels(),
   }

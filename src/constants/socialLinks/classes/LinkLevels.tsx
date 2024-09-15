@@ -9,11 +9,13 @@ import {
   createBondObject,
   ChooseAnyObject,
   SpendingTime,
+  LinkMaxedObject,
 } from "./GenericCard";
 
 import {
   SocialLinkAvailableProps,
   SocialLinkElementProps,
+  LabelHeadPrefixes,
   SocialLinkStats,
   SocialLinkLevel,
   SocialLinkType,
@@ -65,13 +67,14 @@ export abstract class LinkMainLevels extends LinkLevels {
   element(
     socialLink: SocialLinkType,
     props: SocialLinkElementProps,
-    route: Routes = Routes.Platonic
+    route: Routes
   ): React.ReactNode {
     if (!props.previousDay) return null;
     const linkName = socialLink.linkName;
     const charmLevel = stats[StatsNames.Charm].levels[5].value;
     const previousLevel = props.previousDay.links[linkName] as SocialLinkStats;
-    const headPostfix = route === Routes.Romantic ? " (Romantic)" : "";
+    const headPostfix =
+      route === Routes.Romantic ? ` (${Routes.Romantic})` : "";
     const isNewLevel = socialLink.isNewLevel(previousLevel);
     const level = socialLink.getLevel({
       ...previousLevel,
@@ -250,6 +253,7 @@ export class ShrineLevels extends LinkLevels {
     const linkName = socialLink.linkName;
 
     return (
+      props.previousDay!.links[linkName].level < socialLink.maxLevel &&
       !socialLink.isNewLevel(props.previousDay!.links[linkName]) &&
       props.previousDay!.links[linkName].romance === route &&
       props.previousDay!.links[linkName].level > 0 &&
@@ -291,6 +295,75 @@ export class ShrineLevels extends LinkLevels {
           name={socialLink.linkDetails.name}
           place="Naganaki shrine"
         />
+      </div>
+    );
+  }
+}
+
+export abstract class DormHangoutLevels extends LinkLevels {
+  abstract headPostfix: LabelHeadPrefixes;
+  abstract dormName: "dorm1" | "dorm2";
+  abstract dates: number[];
+
+  levels: LevelsType = {
+    0: {
+      [Routes.Platonic]: ChooseAnyObject,
+    },
+    1: {
+      [Routes.Platonic]: ChooseAnyObject,
+    },
+    2: {
+      [Routes.Platonic]: LinkMaxedObject,
+    },
+  };
+
+  isAvailable(
+    socialLink: SocialLinkType,
+    props: SocialLinkAvailableProps,
+    route: Routes
+  ): boolean {
+    const linkName = socialLink.linkName;
+    const previousLink = props.previousDay!.links[linkName];
+
+    return (
+      this.dates.includes(props.currentDay.date.getTime()) &&
+      previousLink[this.dormName] < 3 &&
+      previousLink.romance === route &&
+      props.time === Times.Evening
+    );
+  }
+
+  calculate(socialLink: SocialLinkType, props: SocialLinkAvailableProps) {
+    const linkName = socialLink.linkName;
+    const previousLink = props.previousDay!.links[linkName];
+
+    return {
+      links: {
+        ...props.currentDay.links,
+        [linkName]: {
+          ...previousLink,
+          [this.dormName]: previousLink[this.dormName] + 1,
+        },
+      },
+    };
+  }
+
+  element(socialLink: SocialLinkType, props: SocialLinkElementProps) {
+    if (!props.previousDay) return null;
+    const linkName = socialLink.linkName;
+    const previousLink = props.previousDay!.links[linkName];
+    const level = this.levels[previousLink[this.dormName]][
+      previousLink.romance
+    ] as SocialLinkLevel;
+
+    return (
+      <div>
+        <EventCard
+          head={`${socialLink.linkName}${this.headPostfix}`}
+          name={socialLink.linkDetails.name}
+          place="Dorm"
+        />
+        {props.fullCard && level.element({ key: linkName })}
       </div>
     );
   }

@@ -21,7 +21,7 @@ function App() {
 
   return (
     <React.Fragment>
-      <LeftBar />
+      <LeftBar calendar={calendar} />
       <Routes>
         <Route
           path="scroll/"

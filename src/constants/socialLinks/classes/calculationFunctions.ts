@@ -69,7 +69,7 @@ export function getCalulateFunction(
   props: SocialLinkAvailableProps & {
     previousWeek?: SingleDay;
   },
-  route: Routes = Routes.Platonic
+  route: Routes
 ) {
   const linkName = socialLink.linkName;
   const previousLink = props.previousDay!.links[linkName];

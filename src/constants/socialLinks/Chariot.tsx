@@ -84,7 +84,7 @@ class ChariotMainLevels extends LinkMainLevels {
         {super.element(socialLink, props, route)}
         {props.fullCard &&
           currentLink.level === 2 &&
-          Strength.element.bind(Strength)(props)}
+          Strength.element.bind(Strength)(props, Routes.Platonic)}
       </div>
     );
   }

@@ -1,4 +1,3 @@
-import { LinkMainLevelsEpisodes } from "./classes/LinkLevels";
 import { SingleDay } from "@/constants/calendar/SingleDay";
 import { SocialLinkEpisodes } from "./classes/SocialLink";
 import { DaysNames } from "@/constants/monthsNames";
@@ -7,13 +6,86 @@ import { StatsNames } from "@/constants/stats";
 import { EventCard } from "@/components";
 
 import {
+  LinkMainLevelsEpisodes,
+  DormHangoutLevels,
+} from "./classes/LinkLevels";
+
+import {
   SocialLinkAvailableProps,
   SocialLinkElementProps,
+  LabelHeadPrefixes,
   SocialLinkLevel,
-  SocialLinkStats,
   SocialLinkNames,
   SocialLinkType,
+  Routes,
 } from "./types";
+
+class IoriGardenActivityLevels extends DormHangoutLevels {
+  headPostfix: LabelHeadPrefixes = LabelHeadPrefixes.GardenActivity;
+  dormName: "dorm1" | "dorm2" = "dorm1";
+
+  dates: number[] = [
+    new Date(2009, 7, 8).getTime(),
+    new Date(2009, 7, 15).getTime(),
+    new Date(2009, 7, 22).getTime(),
+    new Date(2009, 7, 25).getTime(),
+    new Date(2009, 8, 26).getTime(),
+    new Date(2009, 9, 3).getTime(),
+  ];
+}
+
+class IoriBookActivityLevels extends DormHangoutLevels {
+  headPostfix: LabelHeadPrefixes = LabelHeadPrefixes.BookActivity;
+  dormName: "dorm1" | "dorm2" = "dorm2";
+
+  dates: number[] = [
+    new Date(2009, 7, 17).getTime(),
+    new Date(2009, 7, 24).getTime(),
+    new Date(2009, 8, 14).getTime(),
+    new Date(2009, 8, 21).getTime(),
+    new Date(2009, 8, 28).getTime(),
+  ];
+
+  calculate(socialLink: SocialLinkType, props: SocialLinkAvailableProps) {
+    const linkName = socialLink.linkName;
+    const previousLink = props.previousDay!.links[linkName];
+
+    return {
+      links: {
+        ...props.currentDay.links,
+        [linkName]: {
+          ...previousLink,
+          [this.dormName]: previousLink[this.dormName] + 1,
+        },
+      },
+      stats: {
+        ...props.currentDay.stats,
+        [StatsNames.Courage]: props.currentDay.stats[StatsNames.Courage] + 2,
+      },
+    };
+  }
+
+  element(socialLink: SocialLinkType, props: SocialLinkElementProps) {
+    if (!props.previousDay) return null;
+    const linkName = socialLink.linkName;
+    const previousLink = props.previousDay!.links[linkName];
+    const level = this.levels[previousLink[this.dormName]][
+      previousLink.romance
+    ] as SocialLinkLevel;
+
+    return (
+      <div>
+        <EventCard
+          head={`${socialLink.linkName}${this.headPostfix}`}
+          stats={`${StatsNames.Courage} +2`}
+          name={socialLink.linkDetails.name}
+          place="Dorm"
+        />
+        {props.fullCard && level.element({ key: linkName })}
+      </div>
+    );
+  }
+}
 
 class IoriMainLevels extends LinkMainLevelsEpisodes {
   isAvailable(
@@ -43,7 +115,7 @@ class IoriMainLevels extends LinkMainLevelsEpisodes {
           new Date(2009, 7, 25).getTime(),
           new Date(2009, 7, 28).getTime(),
         ];
-        return days.includes(props.currentDay.date.getDay()) && isTime;
+        return days.includes(props.currentDay.date.getTime()) && isTime;
       case 2:
         days = [
           new Date(2009, 10, 7).getTime(),
@@ -51,7 +123,7 @@ class IoriMainLevels extends LinkMainLevelsEpisodes {
           new Date(2009, 10, 11).getTime(),
           new Date(2009, 10, 13).getTime(),
         ];
-        return days.includes(props.currentDay.date.getDay()) && isTime;
+        return days.includes(props.currentDay.date.getTime()) && isTime;
       case 3:
         days = [
           new Date(2009, 11, 19).getTime(),
@@ -59,7 +131,7 @@ class IoriMainLevels extends LinkMainLevelsEpisodes {
           new Date(2009, 11, 25).getTime(),
           new Date(2009, 11, 26).getTime(),
         ];
-        return days.includes(props.currentDay.date.getDay()) && isTime;
+        return days.includes(props.currentDay.date.getTime()) && isTime;
       case 4:
         days = [
           new Date(2010, 0, 15).getTime(),
@@ -71,7 +143,7 @@ class IoriMainLevels extends LinkMainLevelsEpisodes {
           new Date(2010, 0, 28).getTime(),
           new Date(2010, 0, 29).getTime(),
         ];
-        return days.includes(props.currentDay.date.getDay()) && isTime;
+        return days.includes(props.currentDay.date.getTime()) && isTime;
       default:
         return false;
     }
@@ -126,10 +198,7 @@ class IoriMainLevels extends LinkMainLevelsEpisodes {
     const linkName = socialLink.linkName;
     const previousLink = props.previousDay!.links[linkName];
     let additionalStats: string | undefined = undefined;
-    const currentLevel = props.currentDay.links[linkName] as SocialLinkStats;
-    const level = this.levels[currentLevel.level][
-      currentLevel.romance
-    ] as SocialLinkLevel;
+    const level = this.levels[5][Routes.Platonic] as SocialLinkLevel;
 
     switch (previousLink.level) {
       case 1:
@@ -159,5 +228,9 @@ class IoriMainLevels extends LinkMainLevelsEpisodes {
 export const Iori = new SocialLinkEpisodes(
   SocialLinkNames.Iori,
   { name: "Junpei Iori" },
-  { mainLevels: new IoriMainLevels() }
+  {
+    dormHangout1: new IoriGardenActivityLevels(),
+    dormHangout2: new IoriBookActivityLevels(),
+    mainLevels: new IoriMainLevels(),
+  }
 );

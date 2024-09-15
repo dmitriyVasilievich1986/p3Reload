@@ -1,4 +1,3 @@
-import { LinkMainLevelsEpisodes } from "./classes/LinkLevels";
 import { SingleDay } from "@/constants/calendar/SingleDay";
 import { SocialLinkEpisodes } from "./classes/SocialLink";
 import { DaysNames } from "@/constants/monthsNames";
@@ -7,13 +6,88 @@ import { StatsNames } from "@/constants/stats";
 import { EventCard } from "@/components";
 
 import {
+  LinkMainLevelsEpisodes,
+  DormHangoutLevels,
+} from "./classes/LinkLevels";
+
+import {
   SocialLinkAvailableProps,
   SocialLinkElementProps,
+  LabelHeadPrefixes,
   SocialLinkLevel,
-  SocialLinkStats,
   SocialLinkNames,
   SocialLinkType,
+  Routes,
 } from "./types";
+
+class KoromaruDVDActivityLevels extends DormHangoutLevels {
+  headPostfix: LabelHeadPrefixes = LabelHeadPrefixes.DVDActivity;
+  dormName: "dorm1" | "dorm2" = "dorm1";
+
+  dates: number[] = [
+    new Date(2009, 7, 17).getTime(),
+    new Date(2009, 7, 24).getTime(),
+    new Date(2009, 7, 31).getTime(),
+    new Date(2009, 8, 7).getTime(),
+    new Date(2009, 8, 14).getTime(),
+    new Date(2009, 8, 21).getTime(),
+    new Date(2009, 8, 24).getTime(),
+    new Date(2009, 8, 28).getTime(),
+  ];
+
+  calculate(socialLink: SocialLinkType, props: SocialLinkAvailableProps) {
+    const linkName = socialLink.linkName;
+    const previousLink = props.previousDay!.links[linkName];
+
+    return {
+      links: {
+        ...props.currentDay.links,
+        [linkName]: {
+          ...previousLink,
+          [this.dormName]: previousLink[this.dormName] + 1,
+        },
+      },
+      stats: {
+        ...props.currentDay.stats,
+        [StatsNames.Academics]:
+          props.currentDay.stats[StatsNames.Academics] + 2,
+      },
+    };
+  }
+
+  element(socialLink: SocialLinkType, props: SocialLinkElementProps) {
+    if (!props.previousDay) return null;
+    const linkName = socialLink.linkName;
+    const previousLink = props.previousDay!.links[linkName];
+    const level = this.levels[previousLink[this.dormName]][
+      previousLink.romance
+    ] as SocialLinkLevel;
+
+    return (
+      <div>
+        <EventCard
+          head={`${socialLink.linkName}${this.headPostfix}`}
+          stats={`${StatsNames.Academics} +2`}
+          name={socialLink.linkDetails.name}
+          place="Dorm"
+        />
+        {props.fullCard && level.element({ key: linkName })}
+      </div>
+    );
+  }
+}
+
+class KoromaruBrushLevels extends DormHangoutLevels {
+  headPostfix: LabelHeadPrefixes = LabelHeadPrefixes.Brush;
+  dormName: "dorm1" | "dorm2" = "dorm2";
+
+  dates: number[] = [
+    new Date(2009, 8, 9).getTime(),
+    new Date(2009, 8, 17).getTime(),
+    new Date(2009, 8, 24).getTime(),
+    new Date(2009, 9, 1).getTime(),
+  ];
+}
 
 class KoromaruMainLevels extends LinkMainLevelsEpisodes {
   isAvailable(
@@ -30,7 +104,7 @@ class KoromaruMainLevels extends LinkMainLevelsEpisodes {
     switch (previousLink.level) {
       case 0:
         additionalDays = [
-          new Date(2010, 0, 23).getTime(),
+          new Date(2009, 7, 22).getTime(),
           new Date(2010, 0, 28).getTime(),
           new Date(2010, 0, 30).getTime(),
         ];
@@ -149,10 +223,7 @@ class KoromaruMainLevels extends LinkMainLevelsEpisodes {
     const linkName = socialLink.linkName;
     const previousLink = props.previousDay!.links[linkName];
     let additionalStats: string | undefined = undefined;
-    const currentLevel = props.currentDay.links[linkName] as SocialLinkStats;
-    const level = this.levels[currentLevel.level][
-      currentLevel.romance
-    ] as SocialLinkLevel;
+    const level = this.levels[5][Routes.Platonic] as SocialLinkLevel;
 
     switch (previousLink.level) {
       case 0:
@@ -180,5 +251,9 @@ class KoromaruMainLevels extends LinkMainLevelsEpisodes {
 export const Koromaru = new SocialLinkEpisodes(
   SocialLinkNames.Koromaru,
   { name: "Koromaru" },
-  { mainLevels: new KoromaruMainLevels() }
+  {
+    dormHangout1: new KoromaruDVDActivityLevels(),
+    dormHangout2: new KoromaruBrushLevels(),
+    mainLevels: new KoromaruMainLevels(),
+  }
 );

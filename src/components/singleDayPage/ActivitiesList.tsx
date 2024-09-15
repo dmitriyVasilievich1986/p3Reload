@@ -15,6 +15,7 @@ export function ActivitiesList(props: {
   activities: Event[];
   dayIndex: number;
   head: string;
+  time: Times;
 }) {
   if (props.activities.length === 0) return null;
   return (
@@ -32,7 +33,7 @@ export function ActivitiesList(props: {
               {a.label({
                 previousDay: props.calendar?.[props.dayIndex - 1],
                 currentDay: props.calendar[props.dayIndex],
-                time: Times.Day,
+                time: props.time,
               })}
             </Card>
           );

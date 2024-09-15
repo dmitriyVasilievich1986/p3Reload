@@ -25,6 +25,8 @@ export class SocialLink implements SocialLinkType {
 
   shrineLevels: LinkLevels;
   invitations: LinkLevels;
+  dormHangout1: LinkLevels;
+  dormHangout2: LinkLevels;
   mainLevels: LinkLevels;
 
   constructor(
@@ -32,6 +34,8 @@ export class SocialLink implements SocialLinkType {
     linkDetails: LinkDetailsType,
     levels: {
       shrineLevels?: LinkLevels;
+      dormHangout1?: LinkLevels;
+      dormHangout2?: LinkLevels;
       invitations?: LinkLevels;
       mainLevels: LinkLevels;
     }
@@ -40,6 +44,8 @@ export class SocialLink implements SocialLinkType {
       ...Object.keys(levels.mainLevels.levels).map((k) => Number(k))
     );
     this.shrineLevels = levels?.shrineLevels || new ShrineLevels();
+    this.dormHangout1 = levels?.dormHangout1 || new EmptyLevels();
+    this.dormHangout2 = levels?.dormHangout2 || new EmptyLevels();
     this.invitations = levels?.invitations || new EmptyLevels();
     this.mainLevels = levels.mainLevels;
     this.linkDetails = linkDetails;
@@ -52,6 +58,10 @@ export class SocialLink implements SocialLinkType {
     },
     route: Routes = Routes.Platonic
   ): LinkLevels {
+    if (this.dormHangout1.isAvailable(this, props, route))
+      return this.dormHangout1;
+    if (this.dormHangout2.isAvailable(this, props, route))
+      return this.dormHangout2;
     if (this.invitations.isAvailable(this, props, route))
       return this.invitations;
     if (this.shrineLevels.isAvailable(this, props, route))
@@ -75,6 +85,8 @@ export class SocialLink implements SocialLinkType {
 
     return (
       this.shrineLevels.isAvailable(this, props, route) ||
+      this.dormHangout1.isAvailable(this, props, route) ||
+      this.dormHangout2.isAvailable(this, props, route) ||
       this.invitations.isAvailable(this, props, route) ||
       this.mainLevels.isAvailable(this, props, route)
     );
@@ -84,12 +96,12 @@ export class SocialLink implements SocialLinkType {
     props: SocialLinkAvailableProps & {
       previousWeek?: SingleDay;
     },
-    route: Routes = Routes.Platonic
+    route: Routes
   ) {
     return this.getLevels(props, route).calculate(this, props, route);
   }
 
-  element(props: SocialLinkElementProps, route: Routes = Routes.Platonic) {
+  element(props: SocialLinkElementProps, route: Routes) {
     if (!props.previousDay) return null;
     return this.getLevels(props, route).element(this, props, route);
   }

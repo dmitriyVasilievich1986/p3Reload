@@ -11,6 +11,14 @@
 
     transition: width 0.5s;
 
+    &>.events-filter {
+        height: 40px;
+
+        &>div {
+            display: none;
+        }
+    }
+
     & .name-rest {
         display: none;
     }
@@ -21,6 +29,16 @@
 
     &:hover {
         width: 200px;
+
+        &>.events-filter {
+            justify-content: center;
+            display: flex;
+    
+            &>div {
+                display: block;
+                width: 90%;
+            }
+        }
 
         & .name-rest {
             display: block;
