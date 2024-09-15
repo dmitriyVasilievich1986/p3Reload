@@ -15,6 +15,7 @@ import {
 import {
   SocialLinkAvailableProps,
   SocialLinkElementProps,
+  LabelHeadPrefixes,
   SocialLinkStats,
   SocialLinkLevel,
   SocialLinkType,
@@ -299,8 +300,8 @@ export class ShrineLevels extends LinkLevels {
 }
 
 export abstract class DormHangoutLevels extends LinkLevels {
+  abstract headPostfix: LabelHeadPrefixes;
   abstract dormName: "dorm1" | "dorm2";
-  abstract headPostfix: string;
   abstract dates: number[];
 
   levels: LevelsType = {
@@ -357,7 +358,7 @@ export abstract class DormHangoutLevels extends LinkLevels {
     return (
       <div>
         <EventCard
-          head={`${socialLink.linkName} (${this.headPostfix})`}
+          head={`${socialLink.linkName}${this.headPostfix}`}
           name={socialLink.linkDetails.name}
           place="Dorm"
         />
