@@ -8,6 +8,7 @@ import {
   statsEventsCourageNames,
   statsEventsCharmNames,
   SpecialEventsNames,
+  socialLinkRomanceNames,
 } from "@/constants/events/types";
 
 export const june: SingleDay[] = [
@@ -236,7 +237,7 @@ export const june: SingleDay[] = [
   new SingleDay({
     date: new Date(2009, 5, 24),
     activities: [
-      events[SocialLinkNames.Strength],
+      events[socialLinkRomanceNames.StrengthRomance],
       events[statsEventsCharmNames.hagakureRamenSpecial],
     ],
   }),

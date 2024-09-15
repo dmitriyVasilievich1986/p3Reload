@@ -266,7 +266,7 @@ export const september: SingleDay[] = [
     date: new Date(2009, 8, 22),
     isDayOff: true,
     activities: [
-      events[SocialLinkNames.Hermit],
+      events[SocialLinkNames.Koromaru],
       {
         ...events[SpecialEventsNames.Tartarus],
         time: Times.Evening,
@@ -295,7 +295,7 @@ export const september: SingleDay[] = [
     date: new Date(2009, 8, 23),
     isDayOff: true,
     activities: [
-      events[SocialLinkNames.Koromaru],
+      events[SocialLinkNames.Hermit],
       { ...events[SpecialEventsNames.DoNothing], time: Times.Evening },
     ],
   }),
@@ -304,14 +304,14 @@ export const september: SingleDay[] = [
     activities: [
       events[statsEventsAcademicsNames.stayAwakeInClass],
       events[SocialLinkNames.Fortune],
-      { ...events[SpecialEventsNames.DoNothing], time: Times.Evening },
+      { ...events[SocialLinkNames.Priestess], time: Times.Evening },
     ],
   }),
   new SingleDay({
     date: new Date(2009, 8, 25),
     activities: [
       events[SocialLinkNames.Priestess],
-      { ...events[SpecialEventsNames.DoNothing], time: Times.Evening },
+      { ...events[SocialLinkNames.Lovers], time: Times.Evening },
     ],
   }),
   new SingleDay({
@@ -327,7 +327,7 @@ export const september: SingleDay[] = [
           </Question>
         ),
       },
-      events[SocialLinkNames.Strength],
+      events[socialLinkRomanceNames.StrengthRomance],
       { ...events[SpecialEventsNames.DoNothing], time: Times.Evening },
     ],
   }),
