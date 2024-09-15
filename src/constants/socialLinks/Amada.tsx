@@ -1,4 +1,3 @@
-import { LinkMainLevelsEpisodes } from "./classes/LinkLevels";
 import { SingleDay } from "@/constants/calendar/SingleDay";
 import { SocialLinkEpisodes } from "./classes/SocialLink";
 import { DaysNames } from "@/constants/monthsNames";
@@ -7,13 +6,82 @@ import { StatsNames } from "@/constants/stats";
 import { EventCard } from "@/components";
 
 import {
+  LinkMainLevelsEpisodes,
+  DormHangoutLevels,
+} from "./classes/LinkLevels";
+
+import {
   SocialLinkAvailableProps,
   SocialLinkElementProps,
+  LabelHeadPrefixes,
   SocialLinkLevel,
   SocialLinkNames,
   SocialLinkType,
   Routes,
 } from "./types";
+
+class AmadaKitchenActivityLevels extends DormHangoutLevels {
+  headPostfix: LabelHeadPrefixes = LabelHeadPrefixes.KitchenActivity;
+  dormName: "dorm1" | "dorm2" = "dorm1";
+
+  dates: number[] = [
+    new Date(2009, 8, 6).getTime(),
+    new Date(2009, 8, 13).getTime(),
+    new Date(2009, 8, 27).getTime(),
+  ];
+}
+
+class AmadaDVDActivityLevels extends DormHangoutLevels {
+  headPostfix: LabelHeadPrefixes = LabelHeadPrefixes.DVDActivity;
+  dormName: "dorm1" | "dorm2" = "dorm2";
+
+  dates: number[] = [
+    new Date(2009, 8, 4).getTime(),
+    new Date(2009, 8, 11).getTime(),
+    new Date(2009, 8, 25).getTime(),
+    new Date(2009, 9, 2).getTime(),
+  ];
+
+  calculate(socialLink: SocialLinkType, props: SocialLinkAvailableProps) {
+    const linkName = socialLink.linkName;
+    const previousLink = props.previousDay!.links[linkName];
+
+    return {
+      links: {
+        ...props.currentDay.links,
+        [linkName]: {
+          ...previousLink,
+          [this.dormName]: previousLink[this.dormName] + 1,
+        },
+      },
+      stats: {
+        ...props.currentDay.stats,
+        [StatsNames.Courage]: props.currentDay.stats[StatsNames.Courage] + 2,
+      },
+    };
+  }
+
+  element(socialLink: SocialLinkType, props: SocialLinkElementProps) {
+    if (!props.previousDay) return null;
+    const linkName = socialLink.linkName;
+    const previousLink = props.previousDay!.links[linkName];
+    const level = this.levels[previousLink[this.dormName]][
+      previousLink.romance
+    ] as SocialLinkLevel;
+
+    return (
+      <div>
+        <EventCard
+          head={`${socialLink.linkName}${this.headPostfix}`}
+          stats={`${StatsNames.Courage} +2`}
+          name={socialLink.linkDetails.name}
+          place="Dorm"
+        />
+        {props.fullCard && level.element({ key: linkName })}
+      </div>
+    );
+  }
+}
 
 class AmadaMainLevels extends LinkMainLevelsEpisodes {
   isAvailable(
@@ -152,5 +220,9 @@ class AmadaMainLevels extends LinkMainLevelsEpisodes {
 export const Amada = new SocialLinkEpisodes(
   SocialLinkNames.Amada,
   { name: "Ken Amada" },
-  { mainLevels: new AmadaMainLevels() }
+  {
+    dormHangout1: new AmadaKitchenActivityLevels(),
+    dormHangout2: new AmadaDVDActivityLevels(),
+    mainLevels: new AmadaMainLevels(),
+  }
 );

@@ -1,17 +1,87 @@
+import { QuestionsWrapper, EventCard, Question, Answer } from "@/components";
 import { createBondObject, LinkMaxedObject } from "./classes/GenericCard";
-import { QuestionsWrapper, Question, Answer } from "@/components";
-import { LinkMainLevels } from "./classes/LinkLevels";
+import { DormHangoutLevels, LinkMainLevels } from "./classes/LinkLevels";
 import { DaysNames } from "@/constants/monthsNames";
 import { SocialLink } from "./classes/SocialLink";
 import { Times } from "@/constants/events/types";
+import { StatsNames } from "@/constants/stats";
 
 import {
   SocialLinkAvailableProps,
+  SocialLinkElementProps,
+  LabelHeadPrefixes,
+  SocialLinkLevel,
   SocialLinkNames,
   SocialLinkType,
   LevelsType,
   Routes,
 } from "./types";
+
+class AeonGardenActivityLevels extends DormHangoutLevels {
+  headPostfix: LabelHeadPrefixes = LabelHeadPrefixes.GardenActivity;
+  dormName: "dorm1" | "dorm2" = "dorm1";
+
+  dates: number[] = [
+    new Date(2009, 7, 9).getTime(),
+    new Date(2009, 7, 23).getTime(),
+    new Date(2009, 7, 30).getTime(),
+  ];
+}
+
+class AeonBookActivityLevels extends DormHangoutLevels {
+  headPostfix: LabelHeadPrefixes = LabelHeadPrefixes.BookActivity;
+  dormName: "dorm1" | "dorm2" = "dorm2";
+
+  dates: number[] = [
+    new Date(2009, 8, 2).getTime(),
+    new Date(2009, 8, 7).getTime(),
+    new Date(2009, 8, 9).getTime(),
+    new Date(2009, 8, 16).getTime(),
+    new Date(2009, 8, 25).getTime(),
+    new Date(2009, 8, 30).getTime(),
+    new Date(2009, 9, 2).getTime(),
+  ];
+
+  calculate(socialLink: SocialLinkType, props: SocialLinkAvailableProps) {
+    const linkName = socialLink.linkName;
+    const previousLink = props.previousDay!.links[linkName];
+
+    return {
+      links: {
+        ...props.currentDay.links,
+        [linkName]: {
+          ...previousLink,
+          [this.dormName]: previousLink[this.dormName] + 1,
+        },
+      },
+      stats: {
+        ...props.currentDay.stats,
+        [StatsNames.Charm]: props.currentDay.stats[StatsNames.Charm] + 2,
+      },
+    };
+  }
+
+  element(socialLink: SocialLinkType, props: SocialLinkElementProps) {
+    if (!props.previousDay) return null;
+    const linkName = socialLink.linkName;
+    const previousLink = props.previousDay!.links[linkName];
+    const level = this.levels[previousLink[this.dormName]][
+      previousLink.romance
+    ] as SocialLinkLevel;
+
+    return (
+      <div>
+        <EventCard
+          head={`${socialLink.linkName}${this.headPostfix}`}
+          stats={`${StatsNames.Charm} +2`}
+          name={socialLink.linkDetails.name}
+          place="Dorm"
+        />
+        {props.fullCard && level.element({ key: linkName })}
+      </div>
+    );
+  }
+}
 
 class AeonMainLevels extends LinkMainLevels {
   isAvailable(
@@ -262,5 +332,9 @@ class AeonMainLevels extends LinkMainLevels {
 export const Aeon = new SocialLink(
   SocialLinkNames.Aeon,
   { name: "Aigis", place: "Classroom 2F" },
-  { mainLevels: new AeonMainLevels() }
+  {
+    dormHangout1: new AeonGardenActivityLevels(),
+    dormHangout2: new AeonBookActivityLevels(),
+    mainLevels: new AeonMainLevels(),
+  }
 );

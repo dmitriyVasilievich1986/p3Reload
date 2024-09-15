@@ -22,9 +22,11 @@ class FortuneMainLevels extends LinkMainLevels {
     const previousLink = props.previousDay!.links[linkName];
     const isNewLevel = socialLink.isNewLevel(previousLink);
     const days = [DaysNames.tuesday, DaysNames.wednesday, DaysNames.thursday];
+    const excluded = [new Date(2009, 8, 8).getTime()];
 
     return (
       props.currentDay.date.getTime() >= new Date(2009, 5, 17).getTime() &&
+      !excluded.includes(props.currentDay.date.getTime()) &&
       days.includes(props.currentDay.date.getDay()) &&
       !props.currentDay.isDayOff &&
       props.time === Times.Day &&
