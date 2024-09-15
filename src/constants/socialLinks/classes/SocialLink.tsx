@@ -96,12 +96,12 @@ export class SocialLink implements SocialLinkType {
     props: SocialLinkAvailableProps & {
       previousWeek?: SingleDay;
     },
-    route: Routes = Routes.Platonic
+    route: Routes
   ) {
     return this.getLevels(props, route).calculate(this, props, route);
   }
 
-  element(props: SocialLinkElementProps, route: Routes = Routes.Platonic) {
+  element(props: SocialLinkElementProps, route: Routes) {
     if (!props.previousDay) return null;
     return this.getLevels(props, route).element(this, props, route);
   }

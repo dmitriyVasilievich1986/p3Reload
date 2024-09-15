@@ -67,13 +67,14 @@ export abstract class LinkMainLevels extends LinkLevels {
   element(
     socialLink: SocialLinkType,
     props: SocialLinkElementProps,
-    route: Routes = Routes.Platonic
+    route: Routes
   ): React.ReactNode {
     if (!props.previousDay) return null;
     const linkName = socialLink.linkName;
     const charmLevel = stats[StatsNames.Charm].levels[5].value;
     const previousLevel = props.previousDay.links[linkName] as SocialLinkStats;
-    const headPostfix = route === Routes.Romantic ? " (Romantic)" : "";
+    const headPostfix =
+      route === Routes.Romantic ? ` (${Routes.Romantic})` : "";
     const isNewLevel = socialLink.isNewLevel(previousLevel);
     const level = socialLink.getLevel({
       ...previousLevel,
