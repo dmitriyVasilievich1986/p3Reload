@@ -251,6 +251,7 @@ export class ShrineLevels extends LinkLevels {
     const linkName = socialLink.linkName;
 
     return (
+      props.previousDay!.links[linkName].level < socialLink.maxLevel &&
       !socialLink.isNewLevel(props.previousDay!.links[linkName]) &&
       props.previousDay!.links[linkName].romance === route &&
       props.previousDay!.links[linkName].level > 0 &&
