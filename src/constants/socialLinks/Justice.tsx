@@ -397,7 +397,9 @@ class JusticeInvitationLevels extends InvitationLevels {
         points: 0,
         element: [
           <Question label="I... want to be like that too...">
+            <Answer label="It's just fiction, though." />
             <Answer label="You can do it." points={30} />
+            <Answer label="It sounds interesting." />
           </Question>,
         ],
       }),
