@@ -55,7 +55,16 @@ export const specialEvents: { [key in SpecialEventsNames]: Event } = {
     time: Times.Evening,
     name: SpecialEventsNames.Tartarus,
     category: Categories.Tartarus,
-    available: ({ time }) => time !== Times.Morning,
+    available: function ({ currentDay, time }) {
+      const exceptions: number[] = [
+        new Date(2009, 9, 5).getTime(),
+        new Date(2009, 9, 6).getTime(),
+      ];
+      return (
+        time !== Times.Morning &&
+        !exceptions.includes(currentDay.date.getTime())
+      );
+    },
     label: SpecialEventCard,
   },
   [SpecialEventsNames.Exams]: {

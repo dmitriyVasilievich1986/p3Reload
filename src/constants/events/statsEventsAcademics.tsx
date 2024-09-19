@@ -266,6 +266,8 @@ export const statsEventsAcademics: {
         new Date(2009, 4, 16).getTime(),
         new Date(2009, 6, 9).getTime(),
         new Date(2009, 6, 10).getTime(),
+        new Date(2009, 9, 8).getTime(),
+        new Date(2009, 9, 9).getTime(),
       ];
       return (
         dates.includes(currentDay.date.getTime()) && time === Times.Evening

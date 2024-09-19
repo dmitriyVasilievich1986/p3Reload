@@ -16,6 +16,7 @@ export const october: SingleDay[] = [
   new SingleDay({
     date: new Date(2009, 9, 1),
     activities: [
+      events[statsEventsAcademicsNames.stayAwakeInClass],
       events[SocialLinkNames.Justice],
       { ...events[SpecialEventsNames.DoNothing], time: Times.Evening },
     ],
@@ -58,6 +59,11 @@ export const october: SingleDay[] = [
     date: new Date(2009, 9, 5),
     exams: true,
     activities: [
+      {
+        ...events[SpecialEventsNames.Special],
+        time: Times.WholeDay,
+        label: () => <EventCard head="Aragaki's funeral" />,
+      },
       { ...events[SpecialEventsNames.DoNothing], time: Times.Evening },
     ],
   }),
@@ -65,7 +71,7 @@ export const october: SingleDay[] = [
     date: new Date(2009, 9, 6),
     exams: true,
     activities: [
-      events[SocialLinkNames.Koromaru],
+      events[SpecialEventsNames.DoNothing],
       { ...events[SpecialEventsNames.DoNothing], time: Times.Evening },
       events[SocialLinkNames.Death],
     ],

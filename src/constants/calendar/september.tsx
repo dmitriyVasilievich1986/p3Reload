@@ -101,7 +101,7 @@ export const september: SingleDay[] = [
   new SingleDay({
     date: new Date(2009, 8, 8),
     activities: [
-      events[SocialLinkNames.Fortune],
+      events[SocialLinkNames.Koromaru],
       events[SocialLinkNames.Amada],
     ],
   }),
@@ -303,7 +303,7 @@ export const september: SingleDay[] = [
     date: new Date(2009, 8, 24),
     activities: [
       events[statsEventsAcademicsNames.stayAwakeInClass],
-      events[SocialLinkNames.Fortune],
+      events[SocialLinkNames.Koromaru],
       { ...events[SocialLinkNames.Priestess], time: Times.Evening },
     ],
   }),
