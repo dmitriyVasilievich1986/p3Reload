@@ -23,6 +23,7 @@ export class SocialLink implements SocialLinkType {
   linkName: SocialLinkNames;
   maxLevel: number;
 
+  koromaruWalks: LinkLevels;
   shrineLevels: LinkLevels;
   invitations: LinkLevels;
   dormHangout1: LinkLevels;
@@ -33,6 +34,7 @@ export class SocialLink implements SocialLinkType {
     linkName: SocialLinkNames,
     linkDetails: LinkDetailsType,
     levels: {
+      koromaruWalks?: LinkLevels;
       shrineLevels?: LinkLevels;
       dormHangout1?: LinkLevels;
       dormHangout2?: LinkLevels;
@@ -43,6 +45,7 @@ export class SocialLink implements SocialLinkType {
     this.maxLevel = Math.max(
       ...Object.keys(levels.mainLevels.levels).map((k) => Number(k))
     );
+    this.koromaruWalks = levels?.koromaruWalks || new EmptyLevels();
     this.shrineLevels = levels?.shrineLevels || new ShrineLevels();
     this.dormHangout1 = levels?.dormHangout1 || new EmptyLevels();
     this.dormHangout2 = levels?.dormHangout2 || new EmptyLevels();
@@ -58,6 +61,8 @@ export class SocialLink implements SocialLinkType {
     },
     route: Routes = Routes.Platonic
   ): LinkLevels {
+    if (this.koromaruWalks.isAvailable(this, props, route))
+      return this.koromaruWalks;
     if (this.dormHangout1.isAvailable(this, props, route))
       return this.dormHangout1;
     if (this.dormHangout2.isAvailable(this, props, route))
@@ -84,6 +89,7 @@ export class SocialLink implements SocialLinkType {
     if (!props.previousDay) return false;
 
     return (
+      this.koromaruWalks.isAvailable(this, props, route) ||
       this.shrineLevels.isAvailable(this, props, route) ||
       this.dormHangout1.isAvailable(this, props, route) ||
       this.dormHangout2.isAvailable(this, props, route) ||
