@@ -41,6 +41,7 @@ export enum pcProgramsNames {
   lobbyPCDigitalCramSchool = 'Lobby PC ("Digital Cram School")',
   lobbyPCLanguageMadeEasy = 'Lobby PC ("Language Made Easy")',
   lobbyPCAnimalOthello = 'Lobby PC ("Animal Othello")',
+  ninjaFansiteNote = 'Lobby PC ("Ninja Fansite Note")',
   lobbyPCVirtualDiet = 'Lobby PC ("Virtual Diet")',
   lobbyPCTypinGhoul = 'Lobby PC ("Typin Ghoul")',
 }
