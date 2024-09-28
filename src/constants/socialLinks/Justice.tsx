@@ -1,10 +1,15 @@
 import { createBondObject, LinkMaxedObject } from "./classes/GenericCard";
-import { InvitationLevels, LinkMainLevels } from "./classes/LinkLevels";
 import { QuestionsWrapper, Question, Answer } from "@/components";
 import { mainCharName } from "./classes/mainCharName";
 import { DaysNames } from "@/constants/monthsNames";
 import { SocialLink } from "./classes/SocialLink";
 import { Times } from "@/constants/events/types";
+
+import {
+  KoromaruWalkSocialLinkLevels,
+  InvitationLevels,
+  LinkMainLevels,
+} from "./classes/LinkLevels";
 
 import {
   SocialLinkAvailableProps,
@@ -457,11 +462,22 @@ class JusticeInvitationLevels extends InvitationLevels {
   };
 }
 
+class JusticeKoromaruWalkSocialLinkLevels extends KoromaruWalkSocialLinkLevels {
+  dates = [
+    new Date(2009, 8, 6).getTime(),
+    new Date(2009, 10, 14).getTime(),
+    new Date(2009, 11, 8).getTime(),
+    new Date(2010, 0, 9).getTime(),
+    new Date(2010, 0, 23).getTime(),
+  ];
+}
+
 export const Justice = new SocialLink(
   SocialLinkNames.Justice,
   { name: "Chihiro Fushimi", place: "2nd Floor Hallway" },
 
   {
+    koromaruWalks: new JusticeKoromaruWalkSocialLinkLevels(),
     invitations: new JusticeInvitationLevels(),
     mainLevels: new JusticeMainLevels(),
   }

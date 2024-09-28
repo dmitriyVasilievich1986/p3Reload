@@ -1,10 +1,15 @@
 import { createBondObject, LinkMaxedObject } from "./classes/GenericCard";
-import { InvitationLevels, LinkMainLevels } from "./classes/LinkLevels";
 import { QuestionsWrapper, Question, Answer } from "@/components";
 import { mainCharName } from "./classes/mainCharName";
 import { DaysNames } from "@/constants/monthsNames";
 import { SocialLink } from "./classes/SocialLink";
 import { Times } from "@/constants/events/types";
+
+import {
+  KoromaruWalkSocialLinkLevels,
+  InvitationLevels,
+  LinkMainLevels,
+} from "./classes/LinkLevels";
 
 import {
   SocialLinkAvailableProps,
@@ -312,11 +317,21 @@ class MagicianInvitationLevels extends InvitationLevels {
   };
 }
 
+class MagicianKoromaruWalkSocialLinkLevels extends KoromaruWalkSocialLinkLevels {
+  dates = [
+    new Date(2009, 7, 9).getTime(),
+    new Date(2009, 9, 17).getTime(),
+    new Date(2009, 11, 19).getTime(),
+    new Date(2010, 0, 24).getTime(),
+  ];
+}
+
 export const Magician = new SocialLink(
   SocialLinkNames.Magician,
   { name: "Kenji Tomochika", place: "Classroom 2F" },
 
   {
+    koromaruWalks: new MagicianKoromaruWalkSocialLinkLevels(),
     invitations: new MagicianInvitationLevels(),
     mainLevels: new MagicianMainLevels(),
   }

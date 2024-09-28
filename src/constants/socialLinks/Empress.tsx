@@ -7,6 +7,7 @@ import { SocialLink } from "./classes/SocialLink";
 import { Times } from "@/constants/events/types";
 
 import {
+  KoromaruWalkLevels,
   DormHangoutLevels,
   InvitationLevels,
   LinkMainLevels,
@@ -481,12 +482,21 @@ class EmpressInvitationLevels extends InvitationLevels {
   };
 }
 
+class EmpressKoromaruWalkLevels extends KoromaruWalkLevels {
+  dates = [
+    new Date(2009, 7, 30).getTime(),
+    new Date(2009, 11, 22).getTime(),
+    new Date(2010, 0, 16).getTime(),
+  ];
+}
+
 export const Empress = new SocialLink(
   SocialLinkNames.Empress,
   { name: "Mitsuru Kirijo", place: "Faculty Office Entrance" },
 
   {
     dormHangout1: new EmpressKitchenActivityLevels(),
+    koromaruWalks: new EmpressKoromaruWalkLevels(),
     dormHangout2: new EmpressBookActivityLevels(),
     invitations: new EmpressInvitationLevels(),
     mainLevels: new EmpressMainLevels(),

@@ -7,6 +7,7 @@ import { SocialLink } from "./classes/SocialLink";
 import { Times } from "@/constants/events/types";
 
 import {
+  KoromaruWalkLevels,
   DormHangoutLevels,
   InvitationLevels,
   LinkMainLevels,
@@ -456,11 +457,16 @@ class LevelsInvitationLevels extends InvitationLevels {
   };
 }
 
+class LoversKoromaruWalkLevels extends KoromaruWalkLevels {
+  dates = [new Date(2009, 10, 1).getTime(), new Date(2009, 11, 23).getTime()];
+}
+
 export const Lovers = new SocialLink(
   SocialLinkNames.Lovers,
   { name: "Yukari Takeba", place: "Classroom 2F" },
   {
     dormHangout1: new LoversKitchenActivityLevels(),
+    koromaruWalks: new LoversKoromaruWalkLevels(),
     dormHangout2: new LoversDVDActivityLevels(),
     invitations: new LevelsInvitationLevels(),
     mainLevels: new LoversMainLevels(),

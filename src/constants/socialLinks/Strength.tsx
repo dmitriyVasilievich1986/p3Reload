@@ -1,10 +1,15 @@
 import { createBondObject, LinkMaxedObject } from "./classes/GenericCard";
-import { InvitationLevels, LinkMainLevels } from "./classes/LinkLevels";
 import { QuestionsWrapper, Question, Answer } from "@/components";
 import { mainCharName } from "./classes/mainCharName";
 import { DaysNames } from "@/constants/monthsNames";
 import { SocialLink } from "./classes/SocialLink";
 import { Times } from "@/constants/events/types";
+
+import {
+  KoromaruWalkSocialLinkLevels,
+  InvitationLevels,
+  LinkMainLevels,
+} from "./classes/LinkLevels";
 
 import {
   SocialLinkAvailableProps,
@@ -562,11 +567,21 @@ class StrengthInvitationLevels extends InvitationLevels {
   };
 }
 
+class StrengthKoromaruWalkSocialLinkLevels extends KoromaruWalkSocialLinkLevels {
+  dates = [
+    new Date(2009, 9, 18).getTime(),
+    new Date(2009, 10, 8).getTime(),
+    new Date(2010, 0, 2).getTime(),
+    new Date(2010, 0, 17).getTime(),
+  ];
+}
+
 export const Strength = new SocialLink(
   SocialLinkNames.Strength,
   { name: "Yuko Nishiwaki", place: "2F Classroom Hallway" },
 
   {
+    koromaruWalks: new StrengthKoromaruWalkSocialLinkLevels(),
     invitations: new StrengthInvitationLevels(),
     mainLevels: new StrengthMainLevels(),
   }
