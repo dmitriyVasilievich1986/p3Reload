@@ -339,6 +339,8 @@ class ChariotInvitationLevels extends InvitationLevels {
         points: 0,
         element: [
           <Question label="With everything that's happening to me right now... do you really think I can still win the regionals next year?">
+            <Answer label="It's all mentall strength." />
+            <Answer label="It's all up to you." />
             <Answer label="Sounds impossible." points={30} />
           </Question>,
         ],
