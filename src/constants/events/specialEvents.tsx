@@ -59,9 +59,12 @@ export const specialEvents: { [key in SpecialEventsNames]: Event } = {
       const exceptions: number[] = [
         new Date(2009, 9, 5).getTime(),
         new Date(2009, 9, 6).getTime(),
+        new Date(2009, 9, 12).getTime(),
+        new Date(2009, 10, 5).getTime(),
+        new Date(2009, 10, 20).getTime(),
       ];
       return (
-        time !== Times.Morning &&
+        time === Times.Evening &&
         !exceptions.includes(currentDay.date.getTime())
       );
     },

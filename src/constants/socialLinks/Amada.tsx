@@ -28,6 +28,9 @@ class AmadaKitchenActivityLevels extends DormHangoutLevels {
     new Date(2009, 8, 6).getTime(),
     new Date(2009, 8, 13).getTime(),
     new Date(2009, 8, 27).getTime(),
+    new Date(2009, 9, 18).getTime(),
+    new Date(2009, 9, 25).getTime(),
+    new Date(2009, 10, 1).getTime(),
   ];
 }
 
@@ -40,6 +43,9 @@ class AmadaDVDActivityLevels extends DormHangoutLevels {
     new Date(2009, 8, 11).getTime(),
     new Date(2009, 8, 25).getTime(),
     new Date(2009, 9, 2).getTime(),
+    new Date(2009, 9, 23).getTime(),
+    new Date(2009, 9, 30).getTime(),
+    new Date(2009, 10, 13).getTime(),
   ];
 
   calculate(socialLink: SocialLinkType, props: SocialLinkAvailableProps) {

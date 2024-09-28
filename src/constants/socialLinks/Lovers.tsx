@@ -1,7 +1,7 @@
 import { QuestionsWrapper, EventCard, Question, Answer } from "@/components";
 import { createBondObject, LinkMaxedObject } from "./classes/GenericCard";
-import { StatsNames, stats } from "@/constants/stats";
 import { mainCharName } from "./classes/mainCharName";
+import { StatsNames, stats } from "@/constants/stats";
 import { DaysNames } from "@/constants/monthsNames";
 import { SocialLink } from "./classes/SocialLink";
 import { Times } from "@/constants/events/types";
@@ -33,6 +33,9 @@ class LoversKitchenActivityLevels extends DormHangoutLevels {
     new Date(2009, 8, 11).getTime(),
     new Date(2009, 8, 25).getTime(),
     new Date(2009, 9, 2).getTime(),
+    new Date(2009, 9, 23).getTime(),
+    new Date(2009, 9, 30).getTime(),
+    new Date(2009, 10, 13).getTime(),
   ];
 }
 
@@ -46,6 +49,9 @@ class LoversDVDActivityLevels extends DormHangoutLevels {
     new Date(2009, 7, 25).getTime(),
     new Date(2009, 8, 8).getTime(),
     new Date(2009, 8, 15).getTime(),
+    new Date(2009, 9, 20).getTime(),
+    new Date(2009, 9, 27).getTime(),
+    new Date(2009, 10, 10).getTime(),
   ];
 
   calculate(socialLink: SocialLinkType, props: SocialLinkAvailableProps) {
@@ -203,7 +209,9 @@ class LoversMainLevels extends LinkMainLevels {
             <Answer label="Anytime." points={15} />
             <Answer label="Thank you, too." />
           </Question>,
-          <Question label="Wouldn't that be annoying, Makoto-kun? Y'know, if people assumed we were dating...">
+          <Question
+            label={`Wouldn't that be annoying, ${mainCharName}-kun? Y'know, if people assumed we were dating...`}
+          >
             <Answer label="I wouldn't mind." points={5} />
             <Answer label="Yeah..." />
           </Question>,
@@ -217,7 +225,9 @@ class LoversMainLevels extends LinkMainLevels {
             <Answer label="Anytime." points={15} />
             <Answer label="Thank you, too." />
           </Question>,
-          <Question label="Wouldn't that be annoying, Makoto-kun? Y'know, if people assumed we were dating...">
+          <Question
+            label={`Wouldn't that be annoying, ${mainCharName}-kun? Y'know, if people assumed we were dating...`}
+          >
             <Answer label="I wouldn't mind." points={5} />
             <Answer label="Yeah..." />
           </Question>,
@@ -252,7 +262,9 @@ class LoversMainLevels extends LinkMainLevels {
       [Routes.Platonic]: QuestionsWrapper({
         points: 35,
         element: [
-          <Question label="I know! Why don't you come help me pick something out, Makoto-kun?">
+          <Question
+            label={`I know! Why don't you come help me pick something out, ${mainCharName}-kun?`}
+          >
             <Answer label="Alright." points={15} />
             <Answer label="Im too lazy." />
           </Question>,
@@ -265,7 +277,9 @@ class LoversMainLevels extends LinkMainLevels {
       [Routes.Romantic]: QuestionsWrapper({
         points: 35,
         element: [
-          <Question label="I know! Why don't you come help me pick something out, Makoto-kun?">
+          <Question
+            label={`I know! Why don't you come help me pick something out, ${mainCharName}-kun?`}
+          >
             <Answer label="Alright." points={15} />
             <Answer label="Im too lazy." />
           </Question>,
@@ -310,9 +324,18 @@ class LoversMainLevels extends LinkMainLevels {
       [Routes.Platonic]: QuestionsWrapper({
         points: 55,
         element: [
-          <Question label="Wait, I didn't mean it like that! Don't get the wrong idea, okay!?">
-            <Answer label="Too late." points={15} />
-            <Answer label="I didn't hear anything." points={15} />
+          <Question label="He was with his mother today, huh...">
+            <Answer label="That's a relief." points={5} />
+            <Answer label="What's wrong?" />
+          </Question>,
+          <Question label="Gee, what should I do? If only someone would come with me...">
+            <Answer label="I'll go." points={10} />
+            <Answer label="Good luck." />
+            <Answer label="What's the magic word?" />
+          </Question>,
+          <Question label="So I was just thinking, maybe it could help you in some way too.">
+            <Answer label="Can I really have this?" />
+            <Answer label="That's intense." />
           </Question>,
         ],
       }),
@@ -384,6 +407,8 @@ class LevelsInvitationLevels extends InvitationLevels {
         element: [
           <Question label="I-I'm not trying to pry, or anything. I was just curious...">
             <Answer label="Hang out with a friend." points={30} />
+            <Answer label="Stay in my room." />
+            <Answer label="I never remember." />
           </Question>,
         ],
       }),
@@ -412,7 +437,9 @@ class LevelsInvitationLevels extends InvitationLevels {
       [Routes.Platonic]: QuestionsWrapper({
         points: 0,
         element: [
-          <Question label="But no one knows about us, huh... Just like a manga.">
+          <Question label="But, no one knows about us, huh... Just like a manga.">
+            <Answer label="You look like a hero." />
+            <Answer label="Probably not." />
             <Answer label="Some people do." points={30} />
           </Question>,
         ],

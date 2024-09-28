@@ -26,10 +26,16 @@ class JusticeMainLevels extends LinkMainLevels {
     const isRomance =
       previousLink.level === 4 || previousLink.romance === route;
     const days = [DaysNames.tuesday, DaysNames.thursday, DaysNames.saturday];
+    const excludedDates: number[] = [
+      new Date(2009, 10, 7).getTime(),
+      new Date(2009, 10, 10).getTime(),
+      new Date(2009, 10, 12).getTime(),
+    ];
 
     return (
       props.currentDay.date.getTime() >= new Date(2009, 4, 7).getTime() &&
       props.previousDay!.links[SocialLinkNames.Emperor].level > 0 &&
+      !excludedDates.includes(props.currentDay.date.getTime()) &&
       days.includes(props.currentDay.date.getDay()) &&
       !props.currentDay.isDayOff &&
       props.time === Times.Day &&
@@ -419,6 +425,8 @@ class JusticeInvitationLevels extends InvitationLevels {
         points: 0,
         element: [
           <Question label="It's just... ever since that money went missing, I've been feeling anxious whenever I'm alone...">
+            <Answer label="So that's why I'm here?" />
+            <Answer label="I don't mind." />
             <Answer label="I'm happy to help." points={30} />
           </Question>,
         ],

@@ -46,6 +46,28 @@ export const pcPrograms: { [key in pcProgramsNames]: Event } = {
       return <EventCard head={this.name} stats="Academics +4" place="Dorm" />;
     },
   },
+  [pcProgramsNames.ninjaFansiteNote]: {
+    ...pcProgramBase,
+    name: pcProgramsNames.ninjaFansiteNote,
+    label: function () {
+      return <EventCard head={this.name} price={12_000} place="Dorm" />;
+    },
+    available: function ({ previousDay, currentDay, time }) {
+      if (previousDay === undefined) return false;
+      const timeAvailable =
+        time === Times.Evening || (time === Times.Day && !!currentDay.isDayOff);
+      return (
+        currentDay.date.getTime() >= new Date(2009, 10, 5).getTime() &&
+        !previousDay.singleTimeEvents.includes(this.name) &&
+        timeAvailable
+      );
+    },
+    upgrade: function ({ currentDay }) {
+      return {
+        singleTimeEvents: [...currentDay.singleTimeEvents, this.name],
+      };
+    },
+  },
   [pcProgramsNames.lobbyPCAnimalOthello]: {
     ...pcProgramBase,
     name: pcProgramsNames.lobbyPCAnimalOthello,

@@ -7,6 +7,7 @@ import {
   statsEventsAcademicsNames,
   statsEventsCharmNames,
   SpecialEventsNames,
+  pcProgramsNames,
 } from "@/constants/events/types";
 
 export const november: SingleDay[] = [
@@ -22,7 +23,8 @@ export const november: SingleDay[] = [
     date: new Date(2009, 10, 2),
     activities: [
       events[SocialLinkNames.Chariot],
-      { ...events[SocialLinkNames.Fool], time: Times.Evening },
+      { ...events[SocialLinkNames.Fool], time: Times.AfterSchool },
+      { ...events[SpecialEventsNames.DoNothing], time: Times.Evening },
     ],
   }),
   new SingleDay({
@@ -53,8 +55,12 @@ export const november: SingleDay[] = [
   new SingleDay({
     date: new Date(2009, 10, 5),
     activities: [
-      events[SocialLinkNames.Magician],
-      { ...events[SpecialEventsNames.DoNothing], time: Times.Evening },
+      {
+        ...events[SpecialEventsNames.Special],
+        time: Times.Day,
+        label: () => <EventCard head="The Fall discussion" place="Dorm" />,
+      },
+      events[pcProgramsNames.ninjaFansiteNote],
     ],
   }),
   new SingleDay({
@@ -72,6 +78,8 @@ export const november: SingleDay[] = [
         label: () => (
           <Question label="What is the ancient Indian magical text I mentioned today?">
             <Answer label="The Upanishads." points={15} />
+            <Answer label="The Mahabharata." />
+            <Answer label="The Ramayana." />
           </Question>
         ),
       },
@@ -91,7 +99,7 @@ export const november: SingleDay[] = [
     date: new Date(2009, 10, 9),
     activities: [
       events[statsEventsAcademicsNames.stayAwakeInClass],
-      events[SocialLinkNames.Chariot],
+      { ...events[SocialLinkNames.Mochizuki], special: true },
       { ...events[SpecialEventsNames.DoNothing], time: Times.Evening },
     ],
   }),
@@ -104,10 +112,7 @@ export const november: SingleDay[] = [
   }),
   new SingleDay({
     date: new Date(2009, 10, 11),
-    activities: [
-      events[SocialLinkNames.Star],
-      { ...events[SpecialEventsNames.DoNothing], time: Times.Evening },
-    ],
+    activities: [events[SocialLinkNames.Star], events[SocialLinkNames.Amada]],
   }),
   new SingleDay({
     date: new Date(2009, 10, 12),
@@ -117,10 +122,12 @@ export const november: SingleDay[] = [
         label: () => (
           <Question label="What was she describing with such a sparse line?">
             <Answer label="Her favorite time in winter." points={15} />
+            <Answer label="The setting of the plot." />
+            <Answer label="Instructions for the reader." />
           </Question>
         ),
       },
-      events[SocialLinkNames.Magician],
+      events[SocialLinkNames.Mochizuki],
       { ...events[SpecialEventsNames.DoNothing], time: Times.Evening },
     ],
   }),
@@ -158,24 +165,58 @@ export const november: SingleDay[] = [
   new SingleDay({
     date: new Date(2009, 10, 17),
     activities: [
-      { ...events[SpecialEventsNames.Special], time: Times.WholeDay },
+      {
+        ...events[SpecialEventsNames.Special],
+        time: Times.WholeDay,
+        label: () => (
+          <WideEvent>
+            <EventCard head="Kyoto School Trip" />
+          </WideEvent>
+        ),
+      },
     ],
   }),
   new SingleDay({
     date: new Date(2009, 10, 18),
     activities: [
-      { ...events[SpecialEventsNames.Special], time: Times.WholeDay },
+      {
+        ...events[SpecialEventsNames.Special],
+        time: Times.WholeDay,
+        label: () => (
+          <WideEvent>
+            <EventCard head="Kyoto School Trip" />
+          </WideEvent>
+        ),
+      },
+      {
+        ...events[SocialLinkNames.Mochizuki],
+        time: Times.Evening,
+        special: true,
+      },
     ],
   }),
   new SingleDay({
     date: new Date(2009, 10, 19),
     activities: [
-      { ...events[SpecialEventsNames.Special], time: Times.WholeDay },
+      {
+        ...events[SpecialEventsNames.Special],
+        time: Times.WholeDay,
+        label: () => (
+          <WideEvent>
+            <EventCard head="Kyoto School Trip" />
+          </WideEvent>
+        ),
+      },
     ],
   }),
   new SingleDay({
     date: new Date(2009, 10, 20),
     activities: [
+      {
+        ...events[SpecialEventsNames.Special],
+        time: Times.Day,
+        label: () => <EventCard head="Kyoto School Trip" />,
+      },
       { ...events[SpecialEventsNames.DoNothing], time: Times.Evening },
     ],
   }),

@@ -31,6 +31,9 @@ class IoriGardenActivityLevels extends DormHangoutLevels {
     new Date(2009, 7, 25).getTime(),
     new Date(2009, 8, 26).getTime(),
     new Date(2009, 9, 3).getTime(),
+    new Date(2009, 9, 17).getTime(),
+    new Date(2009, 9, 29).getTime(),
+    new Date(2009, 9, 31).getTime(),
   ];
 }
 
@@ -44,6 +47,9 @@ class IoriBookActivityLevels extends DormHangoutLevels {
     new Date(2009, 8, 14).getTime(),
     new Date(2009, 8, 21).getTime(),
     new Date(2009, 8, 28).getTime(),
+    new Date(2009, 9, 20).getTime(),
+    new Date(2009, 9, 26).getTime(),
+    new Date(2009, 10, 14).getTime(),
   ];
 
   calculate(socialLink: SocialLinkType, props: SocialLinkAvailableProps) {
@@ -169,13 +175,13 @@ class IoriMainLevels extends LinkMainLevelsEpisodes {
       case 2:
         currentStats = {
           ...currentStats,
-          [StatsNames.Academics]: currentStats[StatsNames.Charm] + 2,
+          [StatsNames.Academics]: currentStats[StatsNames.Academics] + 2,
         };
         break;
       case 3:
         currentStats = {
           ...currentStats,
-          [StatsNames.Courage]: currentStats[StatsNames.Charm] + 2,
+          [StatsNames.Courage]: currentStats[StatsNames.Courage] + 2,
         };
         break;
     }

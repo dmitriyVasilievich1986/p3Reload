@@ -534,6 +534,8 @@ class StrengthInvitationLevels extends InvitationLevels {
           <Question
             label={`Hey, ${mainCharName}-kun, you got some sauce around your mouth.`}
           >
+            <Answer label="Oh, thanks." />
+            <Answer label="It's fine." />
             <Answer label="Will you wipe it off for me?" points={30} />
           </Question>,
         ],

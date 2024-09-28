@@ -25,6 +25,10 @@ class AeonGardenActivityLevels extends DormHangoutLevels {
     new Date(2009, 7, 9).getTime(),
     new Date(2009, 7, 23).getTime(),
     new Date(2009, 7, 30).getTime(),
+    new Date(2009, 9, 20).getTime(),
+    new Date(2009, 9, 25).getTime(),
+    new Date(2009, 10, 1).getTime(),
+    new Date(2009, 10, 15).getTime(),
   ];
 }
 
@@ -40,6 +44,10 @@ class AeonBookActivityLevels extends DormHangoutLevels {
     new Date(2009, 8, 25).getTime(),
     new Date(2009, 8, 30).getTime(),
     new Date(2009, 9, 2).getTime(),
+    new Date(2009, 9, 21).getTime(),
+    new Date(2009, 9, 24).getTime(),
+    new Date(2009, 9, 28).getTime(),
+    new Date(2009, 10, 11).getTime(),
   ];
 
   calculate(socialLink: SocialLinkType, props: SocialLinkAvailableProps) {
