@@ -203,6 +203,7 @@ class MagicianInvitationLevels extends InvitationLevels {
     new Date(2009, 7, 26).getTime(),
     new Date(2009, 8, 22).getTime(),
     new Date(2009, 9, 18).getTime(),
+    new Date(2009, 10, 8).getTime(),
     new Date(2010, 0, 4).getTime(),
     new Date(2010, 0, 11).getTime(),
   ];
