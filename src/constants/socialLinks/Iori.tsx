@@ -175,13 +175,13 @@ class IoriMainLevels extends LinkMainLevelsEpisodes {
       case 2:
         currentStats = {
           ...currentStats,
-          [StatsNames.Academics]: currentStats[StatsNames.Charm] + 2,
+          [StatsNames.Academics]: currentStats[StatsNames.Academics] + 2,
         };
         break;
       case 3:
         currentStats = {
           ...currentStats,
-          [StatsNames.Courage]: currentStats[StatsNames.Charm] + 2,
+          [StatsNames.Courage]: currentStats[StatsNames.Courage] + 2,
         };
         break;
     }
