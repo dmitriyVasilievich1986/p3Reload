@@ -108,7 +108,7 @@ export const october: SingleDay[] = [
     activities: [
       events[statsEventsAcademicsNames.stayAwakeInClass],
       events[SocialLinkNames.Star],
-      { ...events[SpecialEventsNames.DoNothing], time: Times.Evening },
+      events[SocialLinkNames.Sanada],
     ],
   }),
   new SingleDay({
@@ -143,7 +143,7 @@ export const october: SingleDay[] = [
     isDayOff: true,
     exams: true,
     activities: [
-      events[SocialLinkNames.Priestess],
+      events[SpecialEventsNames.DoNothing],
       { ...events[SpecialEventsNames.DoNothing], time: Times.Evening },
     ],
   }),
@@ -293,7 +293,7 @@ export const october: SingleDay[] = [
         },
       },
       events[SocialLinkNames.Lovers],
-      events[SocialLinkNames.Sanada],
+      { ...events[SpecialEventsNames.DoNothing], time: Times.Evening },
     ],
   }),
   new SingleDay({
@@ -330,6 +330,7 @@ export const october: SingleDay[] = [
   new SingleDay({
     date: new Date(2009, 9, 23),
     activities: [
+      events[statsEventsAcademicsNames.stayAwakeInClass],
       events[SocialLinkNames.Priestess],
       { ...events[SpecialEventsNames.DoNothing], time: Times.Evening },
     ],
@@ -358,7 +359,9 @@ export const october: SingleDay[] = [
           <Question
             label={`But there's one region that instead calls it "the month with gods," because that's where they all go! Do you know which one it is?`}
           >
+            <Answer label="Dotonbori." />
             <Answer label="Izumo." points={15} />
+            <Answer label="Ise." />
           </Question>
         ),
       },
@@ -395,7 +398,9 @@ export const october: SingleDay[] = [
         ...events[statsEventsCharmNames.schoolQuestionCharm],
         label: () => (
           <Question label="A certain enzyme brings out the sweetness in them when they're baked. Do you happen to know what it is?">
-            <Answer label="Beta-amylase" points={15} />
+            <Answer label="Beta-amylase." points={15} />
+            <Answer label="Lactase." />
+            <Answer label="Glucose." />
           </Question>
         ),
       },
