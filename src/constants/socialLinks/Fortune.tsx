@@ -253,7 +253,9 @@ class FortuneInvitationLevels extends InvitationLevels {
         points: 0,
         element: [
           <Question label="This is all his fault! Why does he keep changing his mind!?">
+            <Answer label="You're right." />
             <Answer label="You shouldn't blame others." points={30} />
+            <Answer label="I don't really care." />
           </Question>,
         ],
       }),
