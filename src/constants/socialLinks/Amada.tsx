@@ -7,6 +7,7 @@ import { EventCard } from "@/components";
 
 import {
   LinkMainLevelsEpisodes,
+  KoromaruWalkLevels,
   DormHangoutLevels,
 } from "./classes/LinkLevels";
 
@@ -223,11 +224,21 @@ class AmadaMainLevels extends LinkMainLevelsEpisodes {
   }
 }
 
+class AmadaKoromaruWalkLevels extends KoromaruWalkLevels {
+  dates = [
+    new Date(2009, 9, 10).getTime(),
+    new Date(2009, 9, 31).getTime(),
+    new Date(2009, 10, 20).getTime(),
+    new Date(2010, 0, 24).getTime(),
+  ];
+}
+
 export const Amada = new SocialLinkEpisodes(
   SocialLinkNames.Amada,
   { name: "Ken Amada" },
   {
     dormHangout1: new AmadaKitchenActivityLevels(),
+    koromaruWalks: new AmadaKoromaruWalkLevels(),
     dormHangout2: new AmadaDVDActivityLevels(),
     mainLevels: new AmadaMainLevels(),
   }

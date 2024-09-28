@@ -7,6 +7,7 @@ import { SocialLink } from "./classes/SocialLink";
 import { Times } from "@/constants/events/types";
 
 import {
+  KoromaruWalkLevels,
   DormHangoutLevels,
   InvitationLevels,
   LinkMainLevels,
@@ -533,11 +534,16 @@ class PriestessInvitationLevels extends InvitationLevels {
   };
 }
 
+class PriestessKoromaruWalkLevels extends KoromaruWalkLevels {
+  dates = [new Date(2009, 7, 29).getTime(), new Date(2009, 11, 21).getTime()];
+}
+
 export const Priestess = new SocialLink(
   SocialLinkNames.Priestess,
   { name: "Fuuka Yamagishi", place: "2nd Floor Hallway" },
   {
     dormHangout1: new PriestessGardenActivityLevels(),
+    koromaruWalks: new PriestessKoromaruWalkLevels(),
     dormHangout2: new PriestessBookActivityLevels(),
     invitations: new PriestessInvitationLevels(),
     mainLevels: new PriestessMainLevels(),

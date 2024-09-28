@@ -1,9 +1,14 @@
 import { createBondObject, LinkMaxedObject } from "./classes/GenericCard";
-import { InvitationLevels, LinkMainLevels } from "./classes/LinkLevels";
 import { QuestionsWrapper, Question, Answer } from "@/components";
 import { DaysNames } from "@/constants/monthsNames";
 import { SocialLink } from "./classes/SocialLink";
 import { Times } from "@/constants/events/types";
+
+import {
+  KoromaruWalkSocialLinkLevels,
+  InvitationLevels,
+  LinkMainLevels,
+} from "./classes/LinkLevels";
 
 import {
   SocialLinkAvailableProps,
@@ -293,11 +298,38 @@ class FortuneInvitationLevels extends InvitationLevels {
   };
 }
 
+class FortuneKoromaruWalkSocialLinkLevels extends KoromaruWalkSocialLinkLevels {
+  dates = [new Date(2009, 9, 24).getTime()];
+
+  isAvailable(
+    socialLink: SocialLinkType,
+    props: SocialLinkAvailableProps,
+    route: Routes
+  ): boolean {
+    if (props.previousDay === undefined) return false;
+
+    const linkName = socialLink.linkName;
+    const star = props.previousDay.links[SocialLinkNames.Star];
+    const insteadStar =
+      star.level >= 10 &&
+      props.currentDay.date.getTime() === new Date(2010, 0, 10).getTime();
+    const isDay =
+      this.dates.includes(props.currentDay.date.getTime()) || insteadStar;
+
+    return (
+      props.previousDay!.links[linkName].romance === route &&
+      props.time === Times.Evening &&
+      isDay
+    );
+  }
+}
+
 export const Fortune = new SocialLink(
   SocialLinkNames.Fortune,
   { name: "Keisuke Hiraga", place: "Art Club Room" },
 
   {
+    koromaruWalks: new FortuneKoromaruWalkSocialLinkLevels(),
     invitations: new FortuneInvitationLevels(),
     mainLevels: new FortuneMainLevels(),
   }

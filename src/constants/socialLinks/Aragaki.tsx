@@ -7,6 +7,7 @@ import { EventCard } from "@/components";
 
 import {
   LinkMainLevelsEpisodes,
+  KoromaruWalkLevels,
   DormHangoutLevels,
 } from "./classes/LinkLevels";
 
@@ -212,12 +213,17 @@ class AragakiMainLevels extends LinkMainLevelsEpisodes {
   }
 }
 
+class AragakiKoromaruWalkLevels extends KoromaruWalkLevels {
+  dates = [new Date(2009, 8, 16).getTime(), new Date(2009, 8, 23).getTime()];
+}
+
 export const Aragaki = new SocialLinkEpisodes(
   SocialLinkNames.Aragaki,
   { name: "Shinjiro Aragaki" },
   {
     dormHangout1: new AragakiKitchenActivityLevels(),
     dormHangout2: new AragakiGardenActivityLevels(),
+    koromaruWalks: new AragakiKoromaruWalkLevels(),
     mainLevels: new AragakiMainLevels(),
   }
 );

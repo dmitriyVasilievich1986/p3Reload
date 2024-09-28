@@ -1,10 +1,14 @@
 import { createBondObject, LinkMaxedObject } from "./classes/GenericCard";
 import { QuestionsWrapper, Question, Answer } from "@/components";
-import { LinkMainLevels } from "./classes/LinkLevels";
 import { mainCharName } from "./classes/mainCharName";
 import { DaysNames } from "@/constants/monthsNames";
 import { SocialLink } from "./classes/SocialLink";
 import { Times } from "@/constants/events/types";
+
+import {
+  KoromaruWalkSocialLinkLevels,
+  LinkMainLevels,
+} from "./classes/LinkLevels";
 
 import {
   SocialLinkAvailableProps,
@@ -240,8 +244,15 @@ class HierophantMainLevels extends LinkMainLevels {
   };
 }
 
+class HierophantKoromaruWalkSocialLinkLevels extends KoromaruWalkSocialLinkLevels {
+  dates = [new Date(2009, 7, 22).getTime()];
+}
+
 export const Hierophant = new SocialLink(
   SocialLinkNames.Hierophant,
   { name: "Bunkichi and Mitsuko", place: "Bookworms Used Books" },
-  { mainLevels: new HierophantMainLevels() }
+  {
+    koromaruWalks: new HierophantKoromaruWalkSocialLinkLevels(),
+    mainLevels: new HierophantMainLevels(),
+  }
 );

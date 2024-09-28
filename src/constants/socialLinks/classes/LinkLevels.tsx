@@ -238,6 +238,104 @@ export abstract class InvitationLevels extends LinkLevels {
   }
 }
 
+export abstract class KoromaruWalkLevels extends LinkLevels {
+  abstract dates: number[];
+
+  levels: LevelsType = {
+    0: {
+      [Routes.Platonic]: SpendingTimeObject,
+    },
+  };
+
+  isAvailable(
+    socialLink: SocialLinkType,
+    props: SocialLinkAvailableProps,
+    route: Routes
+  ): boolean {
+    const linkName = socialLink.linkName;
+
+    return (
+      props.previousDay!.links[linkName].romance === route &&
+      this.dates.includes(props.currentDay.date.getTime()) &&
+      props.time === Times.Evening
+    );
+  }
+
+  calculate(
+    _socialLink: SocialLinkType,
+    _props: SocialLinkAvailableProps & {
+      previousWeek?: SingleDay;
+    },
+    _route: Routes
+  ) {
+    return {};
+  }
+
+  element(
+    socialLink: SocialLinkType,
+    props: SocialLinkElementProps
+  ): React.ReactNode {
+    if (!props.previousDay) return null;
+    const linkName = socialLink.linkName;
+    const level = this.levels[0][Routes.Platonic] as SocialLinkLevel;
+
+    return (
+      <div>
+        <EventCard
+          card={props.fullCard && props.currentDay.arcanes.includes(linkName)}
+          head={`${linkName} (Koromaru walk)`}
+          name={socialLink.linkDetails.name}
+        />
+        {props.fullCard && level.element({ key: linkName })}
+      </div>
+    );
+  }
+}
+
+export abstract class KoromaruWalkSocialLinkLevels extends KoromaruWalkLevels {
+  calculate(
+    socialLink: SocialLinkType,
+    props: SocialLinkAvailableProps & {
+      previousWeek?: SingleDay;
+    },
+    route: Routes
+  ) {
+    return getCalulateFunction(1.51, false, [15], socialLink, props, route);
+  }
+
+  element(
+    socialLink: SocialLinkType,
+    props: SocialLinkElementProps
+  ): React.ReactNode {
+    if (!props.previousDay) return null;
+    const linkName = socialLink.linkName;
+    const charmLevel = stats[StatsNames.Charm].levels[5].value;
+    const level = this.levels[0][Routes.Platonic] as SocialLinkLevel;
+
+    return (
+      <div>
+        <EventCard
+          charm={
+            props.fullCard &&
+            props.currentDay?.stats &&
+            props.currentDay.stats[StatsNames.Charm] >= charmLevel
+          }
+          multiplier={
+            props.fullCard
+              ? props.currentDay.links &&
+                props.currentDay.links[linkName].multiplier
+              : undefined
+          }
+          card={props.fullCard && props.currentDay.arcanes.includes(linkName)}
+          head={`${linkName} (Koromaru walk)`}
+          name={socialLink.linkDetails.name}
+        />
+        {props.fullCard && level.element({ key: linkName })}
+      </div>
+    );
+  }
+}
+
 export class ShrineLevels extends LinkLevels {
   levels: LevelsType = {
     0: {

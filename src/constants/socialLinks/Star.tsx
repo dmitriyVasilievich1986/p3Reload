@@ -1,10 +1,14 @@
 import { createBondObject, LinkMaxedObject } from "./classes/GenericCard";
 import { QuestionsWrapper, Question, Answer } from "@/components";
 import { StatsNames, stats } from "@/constants/stats";
-import { LinkMainLevels } from "./classes/LinkLevels";
 import { DaysNames } from "@/constants/monthsNames";
 import { SocialLink } from "./classes/SocialLink";
 import { Times } from "@/constants/events/types";
+
+import {
+  KoromaruWalkSocialLinkLevels,
+  LinkMainLevels,
+} from "./classes/LinkLevels";
 
 import {
   SocialLinkAvailableProps,
@@ -211,8 +215,37 @@ class StarMainLevels extends LinkMainLevels {
   };
 }
 
+class StarKoromaruWalkSocialLinkLevels extends KoromaruWalkSocialLinkLevels {
+  dates = [
+    new Date(2009, 9, 25).getTime(),
+    new Date(2009, 10, 7).getTime(),
+    new Date(2010, 0, 10).getTime(),
+  ];
+
+  isAvailable(
+    socialLink: SocialLinkType,
+    props: SocialLinkAvailableProps,
+    route: Routes
+  ): boolean {
+    if (props.previousDay === undefined) return false;
+
+    const linkName = socialLink.linkName;
+    const thisLink = props.previousDay.links[linkName];
+
+    return (
+      this.dates.includes(props.currentDay.date.getTime()) &&
+      props.previousDay!.links[linkName].romance === route &&
+      props.time === Times.Evening &&
+      thisLink.level < 10
+    );
+  }
+}
+
 export const Star = new SocialLink(
   SocialLinkNames.Star,
   { name: "Mamoru Hayase", place: "Iwatodai Station Strip Mall 1F" },
-  { mainLevels: new StarMainLevels() }
+  {
+    koromaruWalks: new StarKoromaruWalkSocialLinkLevels(),
+    mainLevels: new StarMainLevels(),
+  }
 );

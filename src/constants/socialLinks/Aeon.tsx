@@ -1,10 +1,15 @@
 import { QuestionsWrapper, EventCard, Question, Answer } from "@/components";
 import { createBondObject, LinkMaxedObject } from "./classes/GenericCard";
-import { DormHangoutLevels, LinkMainLevels } from "./classes/LinkLevels";
 import { DaysNames } from "@/constants/monthsNames";
 import { SocialLink } from "./classes/SocialLink";
 import { Times } from "@/constants/events/types";
 import { StatsNames } from "@/constants/stats";
+
+import {
+  KoromaruWalkLevels,
+  DormHangoutLevels,
+  LinkMainLevels,
+} from "./classes/LinkLevels";
 
 import {
   SocialLinkAvailableProps,
@@ -337,11 +342,20 @@ class AeonMainLevels extends LinkMainLevels {
   };
 }
 
+class AeonKoromaruWalkLevels extends KoromaruWalkLevels {
+  dates = [
+    new Date(2009, 7, 15).getTime(),
+    new Date(2009, 9, 5).getTime(),
+    new Date(2010, 0, 7).getTime(),
+  ];
+}
+
 export const Aeon = new SocialLink(
   SocialLinkNames.Aeon,
   { name: "Aigis", place: "Classroom 2F" },
   {
     dormHangout1: new AeonGardenActivityLevels(),
+    koromaruWalks: new AeonKoromaruWalkLevels(),
     dormHangout2: new AeonBookActivityLevels(),
     mainLevels: new AeonMainLevels(),
   }

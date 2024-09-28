@@ -7,6 +7,7 @@ import { EventCard } from "@/components";
 
 import {
   LinkMainLevelsEpisodes,
+  KoromaruWalkLevels,
   DormHangoutLevels,
 } from "./classes/LinkLevels";
 
@@ -231,11 +232,16 @@ class IoriMainLevels extends LinkMainLevelsEpisodes {
   }
 }
 
+class IoriKoromaruWalkLevels extends KoromaruWalkLevels {
+  dates = [new Date(2009, 7, 27).getTime(), new Date(2009, 11, 27).getTime()];
+}
+
 export const Iori = new SocialLinkEpisodes(
   SocialLinkNames.Iori,
   { name: "Junpei Iori" },
   {
     dormHangout1: new IoriGardenActivityLevels(),
+    koromaruWalks: new IoriKoromaruWalkLevels(),
     dormHangout2: new IoriBookActivityLevels(),
     mainLevels: new IoriMainLevels(),
   }

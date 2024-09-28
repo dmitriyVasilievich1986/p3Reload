@@ -7,6 +7,7 @@ import { EventCard } from "@/components";
 
 import {
   LinkMainLevelsEpisodes,
+  KoromaruWalkLevels,
   DormHangoutLevels,
 } from "./classes/LinkLevels";
 
@@ -205,11 +206,16 @@ class SanadaMainLevels extends LinkMainLevelsEpisodes {
   }
 }
 
+class SanadaKoromaruWalkLevels extends KoromaruWalkLevels {
+  dates = [new Date(2009, 7, 23).getTime(), new Date(2009, 8, 27).getTime()];
+}
+
 export const Sanada = new SocialLinkEpisodes(
   SocialLinkNames.Sanada,
   { name: "Akihiko Sanada" },
   {
     dormHangout1: new SanadaKitchenActivityLevels(),
+    koromaruWalks: new SanadaKoromaruWalkLevels(),
     dormHangout2: new SanadaDVDActivityLevels(),
     mainLevels: new SanadaMainLevels(),
   }
