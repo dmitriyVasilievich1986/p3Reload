@@ -32,6 +32,8 @@ class PriestessGardenActivityLevels extends DormHangoutLevels {
     new Date(2009, 8, 9).getTime(),
     new Date(2009, 8, 15).getTime(),
     new Date(2009, 8, 29).getTime(),
+    new Date(2009, 9, 27).getTime(),
+    new Date(2009, 10, 10).getTime(),
   ];
 }
 
@@ -47,6 +49,9 @@ class PriestessBookActivityLevels extends DormHangoutLevels {
     new Date(2009, 8, 17).getTime(),
     new Date(2009, 8, 24).getTime(),
     new Date(2009, 9, 1).getTime(),
+    new Date(2009, 9, 22).getTime(),
+    new Date(2009, 9, 29).getTime(),
+    new Date(2009, 10, 12).getTime(),
   ];
 
   calculate(socialLink: SocialLinkType, props: SocialLinkAvailableProps) {
@@ -104,11 +109,13 @@ class PriestessMainLevels extends LinkMainLevels {
     const isRomance =
       previousLink.level === 6 || previousLink.romance === route;
     const days = [DaysNames.monday, DaysNames.friday, DaysNames.saturday];
+    const excluded_days: number[] = [new Date(2009, 10, 6).getTime()];
 
     return (
       props.currentDay.date.getTime() >= new Date(2009, 5, 19).getTime() &&
       props.previousDay!.stats[StatsNames.Courage] >= courageLevel &&
       props.previousDay!.links[SocialLinkNames.Fortune].level > 0 &&
+      !excluded_days.includes(props.currentDay.date.getTime()) &&
       days.includes(props.currentDay.date.getDay()) &&
       !props.currentDay.isDayOff &&
       props.time === Times.Day &&
@@ -464,7 +471,9 @@ class PriestessInvitationLevels extends InvitationLevels {
           <Question
             label={`Um... If I did make a dish with dried snake meat, would you still eat it, ${mainCharName}-kun?`}
           >
+            <Answer label="Sure I would." />
             <Answer label="You don't have to." points={30} />
+            <Answer label="It's up to you." />
           </Question>,
         ],
       }),
