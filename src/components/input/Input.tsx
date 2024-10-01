@@ -10,9 +10,11 @@ function Input(props: {
   label?: "filter" | "search";
   placeholder?: string;
   clearable?: boolean;
+  name?: string;
 }) {
   return (
-    <div className={cx("input-field")}>
+    <fieldset className={cx("input-field")}>
+      {props.name && <legend>{props.name}</legend>}
       <input
         onChange={(e) => props.onChange(e.target.value)}
         placeholder={props.placeholder}
@@ -23,7 +25,7 @@ function Input(props: {
       )}
       {props.label === "filter" && <FilterIcon size="medium" />}
       {props.label === "search" && <SearchIcon size="medium" />}
-    </div>
+    </fieldset>
   );
 }
 
