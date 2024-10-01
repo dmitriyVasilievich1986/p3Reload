@@ -128,16 +128,16 @@ class SanadaMainLevels extends LinkMainLevelsEpisodes {
         );
       case 4:
         return (
-          props.currentDay.date.getTime() >= new Date(2009, 11, 12).getTime() &&
-          props.currentDay.date.getTime() <= new Date(2009, 11, 26).getTime() &&
+          props.currentDay.date.getTime() <= new Date(2010, 0, 29).getTime() &&
+          props.currentDay.date.getTime() >= new Date(2010, 0, 4).getTime() &&
           days.includes(props.currentDay.date.getDay()) &&
           isTime
         );
       case 3:
         days = [DaysNames.monday, DaysNames.tuesday, DaysNames.saturday];
         return (
-          props.currentDay.date.getTime() <= new Date(2010, 0, 29).getTime() &&
-          props.currentDay.date.getTime() >= new Date(2010, 0, 4).getTime() &&
+          props.currentDay.date.getTime() >= new Date(2009, 11, 12).getTime() &&
+          props.currentDay.date.getTime() <= new Date(2009, 11, 26).getTime() &&
           days.includes(props.currentDay.date.getDay()) &&
           isTime
         );
