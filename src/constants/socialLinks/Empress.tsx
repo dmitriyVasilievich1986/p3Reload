@@ -36,6 +36,8 @@ class EmpressKitchenActivityLevels extends DormHangoutLevels {
     new Date(2009, 8, 21).getTime(),
     new Date(2009, 8, 28).getTime(),
     new Date(2009, 9, 26).getTime(),
+    new Date(2009, 10, 30).getTime(),
+    new Date(2009, 11, 28).getTime(),
   ];
 }
 class EmpressBookActivityLevels extends DormHangoutLevels {
@@ -49,6 +51,9 @@ class EmpressBookActivityLevels extends DormHangoutLevels {
     new Date(2009, 8, 27).getTime(),
     new Date(2009, 9, 19).getTime(),
     new Date(2009, 9, 25).getTime(),
+    new Date(2009, 10, 29).getTime(),
+    new Date(2009, 11, 21).getTime(),
+    new Date(2009, 11, 27).getTime(),
   ];
 
   calculate(socialLink: SocialLinkType, props: SocialLinkAvailableProps) {
@@ -146,7 +151,7 @@ class EmpressMainLevels extends LinkMainLevels {
       [Routes.Platonic]: QuestionsWrapper({
         points: 0,
         element: [
-          <Question label="Sometimes my own ignorance astounds me...">
+          <Question label="Sometimes my own ignorance truly astounds me...">
             <Answer label="Want me to treat you?" />
             <Answer label="Why not give it a try?" points={5} />
           </Question>,
@@ -157,9 +162,9 @@ class EmpressMainLevels extends LinkMainLevels {
           <Question label="It's the most peculiar feeling">
             <Answer label="Maybe you're in love." points={5} />
             <Answer label="Maybe you're anxious." points={5} />
-            <Answer label="Maybe you're sad." />
+            <Answer label="It must be sadness." />
           </Question>,
-          <Question label="Sorry for subjecting you to my thoughtless ramblings… Just forget I said anything.">
+          <Question label="Sorry to subject you to my thoughtless rambling. Just forget I said anything.">
             <Answer label="I'm rooting for you." />
             <Answer label="I heard nothing." points={5} />
           </Question>,
@@ -194,7 +199,7 @@ class EmpressMainLevels extends LinkMainLevels {
             <Answer label="...Said the rich girl." />
             <Answer label="Glad you enjoyed it." points={15} />
           </Question>,
-          <Question label="She's likely more suited to riding a motorcycle than I am as well.">
+          <Question label="She's likely more suited to riding a motorcycle than I am, as well.">
             <Answer label="A motorcycle?" points={15} />
             <Answer label="You're not suited?" />
           </Question>,
@@ -234,7 +239,7 @@ class EmpressMainLevels extends LinkMainLevels {
       [Routes.Platonic]: QuestionsWrapper({
         points: 22,
         element: [
-          <Question label="Or, is that too selfish a request?">
+          <Question label="Or... is that too selfish a request?">
             <Answer label="I don't mind at all." points={15} />
             <Answer label="Is that all you need?" />
           </Question>,
@@ -274,6 +279,10 @@ class EmpressMainLevels extends LinkMainLevels {
             <Answer label="Don't give in." points={15} />
             <Answer label="You're sure about this?" points={5} />
           </Question>,
+          <Question label="But... when he mentioned my father, and you... I couldn't help myself.">
+            <Answer label="Don't sweat it." />
+            <Answer label="You were awesome." />
+          </Question>,
         ],
       }),
       [Routes.Romantic]: QuestionsWrapper({
@@ -306,22 +315,14 @@ class EmpressMainLevels extends LinkMainLevels {
       [Routes.Platonic]: QuestionsWrapper({
         points: 22,
         element: [
-          <Question label="I am so sorry about what happened last time.">
-            <Answer label="What happened?" />
-            <Answer label="Don't worry about it." />
-            <Answer label="It made me happy." points={15} />
+          <Question label="Um... I know what you're thinking.">
+            <Answer label="This room is... Wow." />
+            <Answer label="No fair." />
           </Question>,
-          <Question label="I just didn't think I'd end up shouting them in public like that.">
-            <Answer label="Talk about bold." />
-            <Answer label="Your feelings?" />
-          </Question>,
-          <Question label="...I feel like I'm going to die of embarassment.">
-            <Answer label="I love you too." points={15} />
-            <Answer label="I'm sorry but..." />
-          </Question>,
-          <Question label="I've been thinking about this for a while now, but the way you address me...">
-            <Answer label="Mitsuru?" />
-            <Answer label="What about it?" />
+          <Question label="It's been a much-needed reminder that i'm not alone.">
+            <Answer label="That's a relief." points={15} />
+            <Answer label="Never let go of that." />
+            <Answer label="This is your strength." />
           </Question>,
         ],
       }),
@@ -353,8 +354,13 @@ class EmpressMainLevels extends LinkMainLevels {
         points: 22,
         element: [
           <Question label="The battery and tire pressue look good... And I've already changed the oil, so that's fine.">
-            <Answer label="Impressive." />
+            <Answer label="Impressive." points={5} />
             <Answer label="Looks like fun." points={5} />
+          </Question>,
+          <Question label="When this is all over, let's take this motorcycle and go on a trip somewhere together.">
+            <Answer label="Great idea." points={10} />
+            <Answer label="If i feel like it." />
+            <Answer label="I don't have a license." />
           </Question>,
         ],
       }),
