@@ -35,6 +35,7 @@ class SanadaKitchenActivityLevels extends DormHangoutLevels {
     new Date(2009, 9, 21).getTime(),
     new Date(2009, 9, 28).getTime(),
     new Date(2009, 10, 11).getTime(),
+    new Date(2009, 11, 23).getTime(),
   ];
 }
 
@@ -51,6 +52,8 @@ class SanadaDVDActivityLevels extends DormHangoutLevels {
     new Date(2009, 9, 24).getTime(),
     new Date(2009, 9, 31).getTime(),
     new Date(2009, 10, 14).getTime(),
+    new Date(2009, 10, 21).getTime(),
+    new Date(2009, 11, 26).getTime(),
   ];
 
   calculate(socialLink: SocialLinkType, props: SocialLinkAvailableProps) {
