@@ -11,7 +11,10 @@ export function dayIndexParams(): [string | null, (id: string) => void] {
   }, [searchParams]);
 
   const updateDayIndex = (id: string) => {
-    setSearchParams({ ...searchParams, dateId: id });
+    setSearchParams((prev) => {
+      prev.set("dateId", id);
+      return prev;
+    });
   };
 
   return [dayIndex, updateDayIndex] as const;
