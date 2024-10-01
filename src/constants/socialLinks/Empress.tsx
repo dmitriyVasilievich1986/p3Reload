@@ -104,14 +104,17 @@ class EmpressMainLevels extends LinkMainLevels {
     const previousLink = props.previousDay!.links[linkName];
     const isNewLevel = socialLink.isNewLevel(previousLink);
     const isRomance =
-      previousLink.level === 6 || previousLink.romance === route;
+      previousLink.level === 7 || previousLink.romance === route;
     const days = [
-      DaysNames.monday,
       DaysNames.tuesday,
       DaysNames.wednesday,
       DaysNames.thursday,
       DaysNames.saturday,
     ];
+    if (props.currentDay.date.getTime() < new Date(2009, 11, 24).getTime()) {
+      days.push(DaysNames.monday);
+      days.push(DaysNames.friday);
+    }
 
     return (
       props.currentDay.date.getTime() >= new Date(2009, 10, 21).getTime() &&
@@ -119,7 +122,6 @@ class EmpressMainLevels extends LinkMainLevels {
       days.includes(props.currentDay.date.getDay()) &&
       !props.currentDay.isDayOff &&
       props.time === Times.Day &&
-      !props.currentDay.exams &&
       isNewLevel &&
       isRomance
     );
