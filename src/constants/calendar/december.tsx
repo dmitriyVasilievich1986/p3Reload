@@ -1,5 +1,5 @@
+import { EventCard, WideEvent, Question, Answer } from "@/components";
 import { LabelExamGrade, classmates } from "./baseFunctions";
-import { WideEvent, Question, Answer } from "@/components";
 import { SocialLinkNames } from "@/constants/socialLinks";
 import { events, Times } from "@/constants/events";
 import { StatsNames } from "@/constants/stats";
@@ -16,34 +16,40 @@ export const december: SingleDay[] = [
   new SingleDay({
     date: new Date(2009, 11, 1),
     activities: [
-      events[SocialLinkNames.Empress],
+      events[SocialLinkNames.Mochizuki],
       { ...events[SpecialEventsNames.DoNothing], time: Times.Evening },
     ],
   }),
   new SingleDay({
     date: new Date(2009, 11, 2),
+    foolMoon: true,
     activities: [
-      events[SocialLinkNames.Empress],
+      events[socialLinkRomanceNames.StrengthRomance],
       { ...events[SpecialEventsNames.DoNothing], time: Times.Evening },
     ],
   }),
   new SingleDay({
     date: new Date(2009, 11, 3),
     activities: [
+      {
+        ...events[SpecialEventsNames.Special],
+        time: Times.Day,
+        label: () => <EventCard head="Nyx introduction" />,
+      },
       { ...events[SpecialEventsNames.DoNothing], time: Times.Evening },
     ],
   }),
   new SingleDay({
     date: new Date(2009, 11, 4),
     activities: [
-      events[SocialLinkNames.Priestess],
+      events[SocialLinkNames.Chariot],
       { ...events[SpecialEventsNames.DoNothing], time: Times.Evening },
     ],
   }),
   new SingleDay({
     date: new Date(2009, 11, 5),
     activities: [
-      events[SocialLinkNames.Empress],
+      events[SocialLinkNames.Justice],
       { ...events[SpecialEventsNames.DoNothing], time: Times.Evening },
     ],
   }),
@@ -64,10 +70,12 @@ export const december: SingleDay[] = [
         label: () => (
           <Question label="What's the name of the stratospheric layer of molecules comprised of three oxygen atoms?">
             <Answer label="The ozone layer." points={15} />
+            <Answer label="The ionosphere." />
+            <Answer label="The homosphere." />
           </Question>
         ),
       },
-      events[SpecialEventsNames.DoNothing],
+      events[SocialLinkNames.Empress],
       { ...events[SpecialEventsNames.DoNothing], time: Times.Evening },
     ],
   }),
@@ -75,7 +83,7 @@ export const december: SingleDay[] = [
     date: new Date(2009, 11, 8),
     exams: true,
     activities: [
-      events[SpecialEventsNames.DoNothing],
+      events[SocialLinkNames.Empress],
       { ...events[SpecialEventsNames.DoNothing], time: Times.Evening },
     ],
   }),
@@ -87,11 +95,13 @@ export const december: SingleDay[] = [
         ...events[statsEventsCharmNames.schoolQuestionCharm],
         label: () => (
           <Question label="What sorcery was Himiko said to have used?">
+            <Answer label="Onmyodo." />
             <Answer label="Kido." points={15} />
+            <Answer label="Jugongo." />
           </Question>
         ),
       },
-      events[SpecialEventsNames.DoNothing],
+      events[SocialLinkNames.Empress],
       { ...events[SpecialEventsNames.DoNothing], time: Times.Evening },
     ],
   }),
@@ -99,7 +109,7 @@ export const december: SingleDay[] = [
     date: new Date(2009, 11, 10),
     exams: true,
     activities: [
-      events[SpecialEventsNames.DoNothing],
+      events[SocialLinkNames.Empress],
       { ...events[SpecialEventsNames.DoNothing], time: Times.Evening },
     ],
   }),
@@ -111,11 +121,13 @@ export const december: SingleDay[] = [
         ...events[statsEventsCharmNames.schoolQuestionCharm],
         label: () => (
           <Question label="Did you catch what she said? Do you know the answer?">
+            <Answer label="Wishes." />
             <Answer label="Lives." points={15} />
+            <Answer label="Dreams." />
           </Question>
         ),
       },
-      events[SpecialEventsNames.DoNothing],
+      events[SocialLinkNames.Empress],
       { ...events[SpecialEventsNames.DoNothing], time: Times.Evening },
     ],
   }),
@@ -124,8 +136,8 @@ export const december: SingleDay[] = [
     exams: true,
     activities: [
       events[statsEventsAcademicsNames.stayAwakeInClass],
-      events[SpecialEventsNames.DoNothing],
-      events[SocialLinkNames.Sanada],
+      events[SocialLinkNames.Empress],
+      { ...events[SpecialEventsNames.DoNothing], time: Times.Evening },
     ],
   }),
   new SingleDay({
@@ -147,6 +159,9 @@ export const december: SingleDay[] = [
           <WideEvent>
             <Question label="Which of the following originated in India?">
               <Answer label="The number zero" points={15} />
+              <Answer label="Imaginary numbers" />
+              <Answer label="Systems of linear equations" />
+              <Answer label="Factorials" />
             </Question>
           </WideEvent>
         ),
@@ -162,7 +177,10 @@ export const december: SingleDay[] = [
         label: () => (
           <WideEvent>
             <Question label="When heated, the beta-amylase enzymes in sweet potatoes react with the starch present to produce which disaccharide?">
+              <Answer label="Sucrose" />
               <Answer label="Maltose" points={15} />
+              <Answer label="Galactose" />
+              <Answer label="Maltese" />
             </Question>
           </WideEvent>
         ),
@@ -178,7 +196,10 @@ export const december: SingleDay[] = [
         label: () => (
           <WideEvent>
             <Question label="Which Roman goddess has been theorized as the namesake for the month of April?">
+              <Answer label="Ceres" />
+              <Answer label="Minerva" />
               <Answer label="Venus" points={15} />
+              <Answer label="Diana" />
             </Question>
           </WideEvent>
         ),
@@ -194,6 +215,9 @@ export const december: SingleDay[] = [
         label: () => (
           <WideEvent>
             <Question label="In The Tale of Genji, who does Hikaru Genji compare to cherry blossoms?">
+              <Answer label="Onna San no Miya" />
+              <Answer label="Lady Fujitsubo" />
+              <Answer label="Aoi-no-Ue" />
               <Answer label="Murasaki-no-Ue" points={15} />
             </Question>
           </WideEvent>
@@ -210,6 +234,9 @@ export const december: SingleDay[] = [
         label: () => (
           <WideEvent>
             <Question label="Which of the following words is not in the correct plural form?">
+              <Answer label="Mice" />
+              <Answer label="Cacti" />
+              <Answer label="Moose" />
               <Answer label="Geeses" points={15} />
             </Question>
           </WideEvent>
@@ -221,8 +248,8 @@ export const december: SingleDay[] = [
     date: new Date(2009, 11, 19),
     activities: [
       { ...events[SpecialEventsNames.Exams], time: Times.Morning },
-      events[SocialLinkNames.Empress],
-      { ...events[SpecialEventsNames.DoNothing], time: Times.Evening },
+      events[SocialLinkNames.Iori],
+      events[SocialLinkNames.Sanada],
     ],
   }),
   new SingleDay({
@@ -236,6 +263,7 @@ export const december: SingleDay[] = [
   new SingleDay({
     date: new Date(2009, 11, 21),
     activities: [
+      events[statsEventsAcademicsNames.stayAwakeInClass],
       {
         ...events[SpecialEventsNames.Exams],
         time: Times.AfterSchool,
@@ -291,17 +319,20 @@ export const december: SingleDay[] = [
         label: () => (
           <Question label="What do we call the feeling of joy that comes from a near-death experience?">
             <Answer label="Euphoria." points={15} />
+            <Answer label="Utopia." />
+            <Answer label="Yugoslavia." />
           </Question>
         ),
       },
       events[SocialLinkNames.Empress],
-      events[SpecialEventsNames.Tartarus],
+      events[SocialLinkNames.Amada],
     ],
   }),
   new SingleDay({
     date: new Date(2009, 11, 23),
+    isDayOff: true,
     activities: [
-      events[SocialLinkNames.Empress],
+      events[SocialLinkNames.Priestess],
       { ...events[SpecialEventsNames.DoNothing], time: Times.Evening },
     ],
   }),
@@ -309,13 +340,14 @@ export const december: SingleDay[] = [
     date: new Date(2009, 11, 24),
     activities: [
       events[statsEventsAcademicsNames.stayAwakeInClass],
-      { ...events[SpecialEventsNames.Special], time: Times.WholeDay },
+      events[SocialLinkNames.Magician],
+      { ...events[SpecialEventsNames.DoNothing], time: Times.Evening },
     ],
   }),
   new SingleDay({
     date: new Date(2009, 11, 25),
     activities: [
-      events[SpecialEventsNames.DoNothing],
+      events[SocialLinkNames.Priestess],
       { ...events[SpecialEventsNames.DoNothing], time: Times.Evening },
     ],
   }),
@@ -323,7 +355,7 @@ export const december: SingleDay[] = [
     date: new Date(2009, 11, 26),
     activities: [
       events[statsEventsAcademicsNames.stayAwakeInClass],
-      events[SocialLinkNames.Justice],
+      events[socialLinkRomanceNames.StrengthRomance],
       { ...events[SpecialEventsNames.DoNothing], time: Times.Evening },
     ],
   }),
@@ -331,12 +363,13 @@ export const december: SingleDay[] = [
     date: new Date(2009, 11, 27),
     isDayOff: true,
     activities: [
-      events[SpecialEventsNames.DoNothing],
+      events[SocialLinkNames.Priestess],
       { ...events[SpecialEventsNames.DoNothing], time: Times.Evening },
     ],
   }),
   new SingleDay({
     date: new Date(2009, 11, 28),
+    isDayOff: true,
     activities: [
       events[SpecialEventsNames.DoNothing],
       { ...events[SpecialEventsNames.DoNothing], time: Times.Evening },
@@ -344,6 +377,7 @@ export const december: SingleDay[] = [
   }),
   new SingleDay({
     date: new Date(2009, 11, 29),
+    isDayOff: true,
     activities: [
       events[SpecialEventsNames.DoNothing],
       { ...events[SpecialEventsNames.DoNothing], time: Times.Evening },
@@ -351,15 +385,23 @@ export const december: SingleDay[] = [
   }),
   new SingleDay({
     date: new Date(2009, 11, 30),
+    isDayOff: true,
     activities: [
-      events[socialLinkRomanceNames.StrengthRomance],
+      events[SpecialEventsNames.DoNothing],
       { ...events[SpecialEventsNames.DoNothing], time: Times.Evening },
     ],
   }),
   new SingleDay({
     date: new Date(2009, 11, 31),
+    isDayOff: true,
+    foolMoon: true,
     activities: [
       events[SpecialEventsNames.DoNothing],
+      {
+        ...events[SocialLinkNames.Mochizuki],
+        time: Times.Evening,
+        special: true,
+      },
       { ...events[SocialLinkNames.Fool], time: Times.Evening },
     ],
   }),
