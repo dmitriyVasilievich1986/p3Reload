@@ -21,13 +21,15 @@ function SingleDayPage(props: {
 }) {
   const [showTime, setShowTime] = React.useState<AvailableTimes | null>(null);
   const [dateId, setDateId] = React.useState<number>(0);
-  const [dayIndex, _] = dayIndexParams();
+  const [dayIndex, setDayIndex] = dayIndexParams();
 
   React.useEffect(() => {
     setShowTime(null);
     if (!!dayIndex && props.calendar.length > 0) {
       const index = props.calendar.findIndex((day) => day.getId() === dayIndex);
       setDateId(index);
+    } else if (dayIndex === null && props.calendar.length > 0) {
+      setDayIndex(props.calendar[0].getId());
     }
   }, [dayIndex, props.calendar]);
 
