@@ -19,3 +19,26 @@ export function dayIndexParams(): [string | null, (id: string) => void] {
 
   return [dayIndex, updateDayIndex] as const;
 }
+export function mainCharacterParams(): [string, (name: string) => void] {
+  const [mainCharacterName, setMainCharacterName] = React.useState<string>("");
+  const [searchParams, setSearchParams] = useSearchParams();
+
+  React.useEffect(() => {
+    console.log("searchParams", searchParams.values());
+    const name = searchParams.get("mainCharacterName");
+    if (!name) {
+      updateMainCharacterName("Protagonist");
+    } else {
+      setMainCharacterName(name);
+    }
+  }, [searchParams]);
+
+  const updateMainCharacterName = (name: string) => {
+    setSearchParams((prev) => {
+      prev.set("mainCharacterName", name);
+      return prev;
+    });
+  };
+
+  return [mainCharacterName, updateMainCharacterName] as const;
+}
