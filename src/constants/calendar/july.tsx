@@ -1,14 +1,9 @@
+import { SocialLinkNames, socialLinks } from "@/constants/socialLinks";
 import { EventCard, WideEvent, Question, Answer } from "@/components";
 import { LabelExamGrade, classmates } from "./baseFunctions";
 import { events, Times } from "@/constants/events";
 import { StatsNames } from "@/constants/stats";
 import { SingleDay } from "./SingleDay";
-
-import {
-  SocialLinkNames,
-  mainCharName,
-  socialLinks,
-} from "@/constants/socialLinks";
 
 import {
   statsEventsAcademicsNames,
@@ -39,9 +34,7 @@ export const july: SingleDay[] = [
       {
         ...events[statsEventsCharmNames.schoolQuestionCharm],
         label: () => (
-          <Question
-            label={`H-Hey, lend me a hand here, ${mainCharName}. What kinda tale is he talkin' about?`}
-          >
+          <Question label="H-Hey, lend me a hand here, ${mainCharName}. What kinda tale is he talkin' about?">
             <Answer label="About a peaceful world." />
             <Answer label="About public opinion." />
             <Answer label="About romance." points={15} />

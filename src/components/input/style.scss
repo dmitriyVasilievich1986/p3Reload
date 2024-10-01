@@ -8,6 +8,10 @@
     align-items: center;
     display: flex;
 
+    &>legend {
+        margin-left: 10px;
+    }
+
     &:focus-within {
         border: 1px solid #00b4d8;
     }

@@ -26,6 +26,7 @@ function LinkBadge(props: { currentDay: SingleDay; event: Event }) {
 
   return (
     <Tooltip
+      position="left"
       tooltip={
         <BadgeTooltip
           points={props.currentDay.links[linkName].points}

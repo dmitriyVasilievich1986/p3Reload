@@ -2,7 +2,6 @@ import { createBondObject, LinkMaxedObject } from "./classes/GenericCard";
 import { InvitationLevels, LinkMainLevels } from "./classes/LinkLevels";
 import { QuestionsWrapper, Question, Answer } from "@/components";
 import { StatsNames, stats } from "@/constants/stats";
-import { mainCharName } from "./classes/mainCharName";
 import { DaysNames } from "@/constants/monthsNames";
 import { SocialLink } from "./classes/SocialLink";
 import { Times } from "@/constants/events/types";
@@ -63,9 +62,7 @@ class TemperanceMainLevels extends LinkMainLevels {
       [Routes.Platonic]: QuestionsWrapper({
         points: 0,
         element: [
-          <Question
-            label={`You have gotten much better at this, ${mainCharName}-dono! Subarashii-wonderful!`}
-          >
+          <Question label="You have gotten much better at this, ${mainCharName}-dono! Subarashii-wonderful!">
             <Answer label="I can do better." points={5} />
             <Answer label="Thanks." points={5} />
           </Question>,
@@ -212,7 +209,7 @@ class TemperanceInvitationLevels extends InvitationLevels {
       [Routes.Platonic]: QuestionsWrapper({
         points: 0,
         element: [
-          <Question label={`Do you like it, too, ${mainCharName}-dono?`}>
+          <Question label="Do you like it, too, ${mainCharName}-dono?">
             <Answer label="Yeah, I do." points={30} />
           </Question>,
         ],
@@ -278,9 +275,7 @@ class TemperanceInvitationLevels extends InvitationLevels {
       [Routes.Platonic]: QuestionsWrapper({
         points: 0,
         element: [
-          <Question
-            label={`Speaking of rice... What is your favorite dish with it, ${mainCharName}-dono?`}
-          >
+          <Question label="Speaking of rice... What is your favorite dish with it, ${mainCharName}-dono?">
             <Answer label="Ochazuke." points={30} />
           </Question>,
         ],

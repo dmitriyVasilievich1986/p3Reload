@@ -1,12 +1,23 @@
-import { ChoiceProps, ChoicesProps } from "./types";
+import { mainCharacterParams } from "@/components/supportComponents";
 import classnames from "classnames/bind";
+import { ChoicesProps } from "./types";
 import * as style from "./style.scss";
 import { Tooltip } from "../tootlip";
 import React from "react";
 
 const cx = classnames.bind(style);
 
-export function Answer(props: ChoiceProps) {
+function replaceMainCharName(label: string) {
+  const [mainCharName] = mainCharacterParams();
+  return label.replace(/\$\{mainCharName\}/gi, mainCharName);
+}
+
+export function Answer(props: {
+  label: string;
+  points?: number;
+  fork?: boolean;
+}) {
+  const label = replaceMainCharName(props.label);
   const points = props?.points || 0;
   let backgroundColor = "inherit";
   if (props?.fork) {
@@ -29,7 +40,7 @@ export function Answer(props: ChoiceProps) {
           style={{ backgroundColor }}
           className={cx({ selected: points > 0 || props.fork })}
         >
-          {props.label}
+          {label}
         </div>
       </Tooltip>
     </div>
@@ -37,9 +48,11 @@ export function Answer(props: ChoiceProps) {
 }
 
 export function Question(props: ChoicesProps) {
+  const label = replaceMainCharName(props.label);
+
   return (
     <div className={cx("choices")}>
-      <label>{props.label}</label>
+      <label>{label}</label>
       <div className={cx("list")}>{props.children}</div>
     </div>
   );

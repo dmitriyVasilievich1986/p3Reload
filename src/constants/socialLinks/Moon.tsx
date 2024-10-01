@@ -2,7 +2,6 @@ import { createBondObject, LinkMaxedObject } from "./classes/GenericCard";
 import { QuestionsWrapper, Question, Answer } from "@/components";
 import { LinkMainLevels } from "./classes/LinkLevels";
 import { StatsNames, stats } from "@/constants/stats";
-import { mainCharName } from "./classes/mainCharName";
 import { SocialLink } from "./classes/SocialLink";
 import { Times } from "@/constants/events/types";
 
@@ -80,7 +79,7 @@ class MoonMainLevels extends LinkMainLevels {
       [Routes.Platonic]: QuestionsWrapper({
         points: 15,
         element: [
-          <Question label={`Right, ${mainCharName}-kun?`}>
+          <Question label="Right, ${mainCharName}-kun?">
             <Answer label="That's right." points={15} />
             <Answer label="Sorry, what?" />
           </Question>,
