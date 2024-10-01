@@ -12,8 +12,13 @@ import {
 export const january: SingleDay[] = [
   new SingleDay({
     date: new Date(2010, 0, 1),
+    isDayOff: true,
     activities: [
-      events[SpecialEventsNames.DoNothing],
+      {
+        ...events[SpecialEventsNames.Special],
+        time: Times.Day,
+        label: () => <EventCard head="New Year Shrine visit" />,
+      },
       { ...events[SpecialEventsNames.DoNothing], time: Times.Evening },
     ],
   }),

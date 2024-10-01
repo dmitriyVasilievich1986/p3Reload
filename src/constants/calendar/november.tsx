@@ -232,7 +232,7 @@ export const november: SingleDay[] = [
     date: new Date(2009, 10, 22),
     isDayOff: true,
     activities: [
-      events[SocialLinkNames.Priestess],
+      events[SocialLinkNames.Sun],
       { ...events[SpecialEventsNames.DoNothing], time: Times.Evening },
       {
         ...events[SpecialEventsNames.Special],
@@ -243,32 +243,62 @@ export const november: SingleDay[] = [
   }),
   new SingleDay({
     date: new Date(2009, 10, 23),
+    isDayOff: true,
     activities: [
-      events[SocialLinkNames.Priestess],
+      events[SpecialEventsNames.DoNothing],
       { ...events[SpecialEventsNames.DoNothing], time: Times.Evening },
     ],
   }),
   new SingleDay({
     date: new Date(2009, 10, 24),
     activities: [
-      { ...events[SpecialEventsNames.Special], time: Times.WholeDay },
+      {
+        ...events[SpecialEventsNames.Special],
+        time: Times.WholeDay,
+        label: () => (
+          <WideEvent>
+            <EventCard head="Wildduck internship" />
+          </WideEvent>
+        ),
+      },
     ],
   }),
   new SingleDay({
     date: new Date(2009, 10, 25),
     activities: [
-      { ...events[SpecialEventsNames.Special], time: Times.WholeDay },
+      {
+        ...events[SpecialEventsNames.Special],
+        time: Times.WholeDay,
+        label: () => (
+          <WideEvent>
+            <EventCard head="Wildduck internship" />
+          </WideEvent>
+        ),
+      },
     ],
   }),
   new SingleDay({
     date: new Date(2009, 10, 26),
     activities: [
-      { ...events[SpecialEventsNames.Special], time: Times.WholeDay },
+      {
+        ...events[SpecialEventsNames.Special],
+        time: Times.WholeDay,
+        label: () => (
+          <WideEvent>
+            <EventCard head="Wildduck internship" />
+          </WideEvent>
+        ),
+      },
     ],
   }),
   new SingleDay({
     date: new Date(2009, 10, 27),
     activities: [
+      {
+        ...events[SpecialEventsNames.Special],
+        time: Times.Day,
+        label: () => <EventCard head="Wildduck internship" />,
+      },
       { ...events[SpecialEventsNames.DoNothing], time: Times.Evening },
     ],
   }),
@@ -276,7 +306,7 @@ export const november: SingleDay[] = [
     date: new Date(2009, 10, 28),
     activities: [
       events[SocialLinkNames.Empress],
-      events[SpecialEventsNames.Tartarus],
+      { ...events[SpecialEventsNames.DoNothing], time: Times.Evening },
       events[SocialLinkNames.Fool],
     ],
   }),
@@ -284,8 +314,8 @@ export const november: SingleDay[] = [
     date: new Date(2009, 10, 29),
     isDayOff: true,
     activities: [
-      events[SocialLinkNames.Priestess],
-      { ...events[SpecialEventsNames.DoNothing], time: Times.Evening },
+      events[SpecialEventsNames.DoNothing],
+      events[SpecialEventsNames.Tartarus],
     ],
   }),
   new SingleDay({
@@ -296,10 +326,12 @@ export const november: SingleDay[] = [
         label: () => (
           <Question label="In the poem that Genji, the protagonist, sends to her, what did he compare her to?">
             <Answer label="The cherry blossom." points={15} />
+            <Answer label="A cat." />
+            <Answer label="The hydrangea." />
           </Question>
         ),
       },
-      events[SocialLinkNames.Empress],
+      events[SocialLinkNames.Priestess],
       { ...events[SpecialEventsNames.DoNothing], time: Times.Evening },
     ],
   }),

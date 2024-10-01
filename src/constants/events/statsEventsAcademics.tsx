@@ -269,6 +269,9 @@ export const statsEventsAcademics: {
         new Date(2009, 9, 8).getTime(),
         new Date(2009, 9, 9).getTime(),
         new Date(2009, 9, 11).getTime(),
+        new Date(2009, 11, 9).getTime(),
+        new Date(2009, 11, 11).getTime(),
+        new Date(2009, 11, 12).getTime(),
       ];
       return (
         dates.includes(currentDay.date.getTime()) && time === Times.Evening
@@ -294,6 +297,7 @@ export const statsEventsAcademics: {
         new Date(2009, 4, 17).getTime(),
         new Date(2009, 6, 13).getTime(),
         new Date(2009, 9, 12).getTime(),
+        new Date(2009, 11, 13).getTime(),
       ];
       return (
         dates.includes(currentDay.date.getTime()) && time === Times.Evening

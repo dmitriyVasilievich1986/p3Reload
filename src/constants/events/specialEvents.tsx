@@ -62,6 +62,16 @@ export const specialEvents: { [key in SpecialEventsNames]: Event } = {
         new Date(2009, 9, 12).getTime(),
         new Date(2009, 10, 5).getTime(),
         new Date(2009, 10, 20).getTime(),
+        new Date(2009, 10, 22).getTime(),
+        new Date(2009, 10, 30).getTime(),
+        new Date(2009, 11, 2).getTime(),
+        new Date(2009, 11, 3).getTime(),
+        new Date(2009, 11, 4).getTime(),
+        new Date(2009, 11, 5).getTime(),
+        new Date(2009, 11, 6).getTime(),
+        new Date(2009, 11, 7).getTime(),
+        new Date(2009, 11, 8).getTime(),
+        new Date(2009, 11, 9).getTime(),
       ];
       return (
         time === Times.Evening &&

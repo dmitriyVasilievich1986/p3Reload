@@ -37,6 +37,8 @@ class LoversKitchenActivityLevels extends DormHangoutLevels {
     new Date(2009, 9, 23).getTime(),
     new Date(2009, 9, 30).getTime(),
     new Date(2009, 10, 13).getTime(),
+    new Date(2009, 11, 25).getTime(),
+    new Date(2010, 0, 1).getTime(),
   ];
 }
 
@@ -53,6 +55,9 @@ class LoversDVDActivityLevels extends DormHangoutLevels {
     new Date(2009, 9, 20).getTime(),
     new Date(2009, 9, 27).getTime(),
     new Date(2009, 10, 10).getTime(),
+    new Date(2009, 11, 1).getTime(),
+    new Date(2009, 11, 22).getTime(),
+    new Date(2009, 11, 29).getTime(),
   ];
 
   calculate(socialLink: SocialLinkType, props: SocialLinkAvailableProps) {

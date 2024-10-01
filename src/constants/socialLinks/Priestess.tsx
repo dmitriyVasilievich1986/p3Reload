@@ -35,6 +35,10 @@ class PriestessGardenActivityLevels extends DormHangoutLevels {
     new Date(2009, 8, 29).getTime(),
     new Date(2009, 9, 27).getTime(),
     new Date(2009, 10, 10).getTime(),
+    new Date(2009, 10, 21).getTime(),
+    new Date(2009, 11, 1).getTime(),
+    new Date(2009, 11, 22).getTime(),
+    new Date(2009, 11, 29).getTime(),
   ];
 }
 
