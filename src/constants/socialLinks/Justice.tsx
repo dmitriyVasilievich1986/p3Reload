@@ -445,6 +445,8 @@ class JusticeInvitationLevels extends InvitationLevels {
             label={`What about you, ${mainCharName}-san? Are you planning to get a driver's license?`}
           >
             <Answer label="I am." points={30} />
+            <Answer label="Probably not." />
+            <Answer label="It's a secret." />
           </Question>,
         ],
       }),
@@ -455,6 +457,8 @@ class JusticeInvitationLevels extends InvitationLevels {
             label={`What about you, ${mainCharName}-san? Are you planning to get a driver's license?`}
           >
             <Answer label="I am." points={30} />
+            <Answer label="Probably not." />
+            <Answer label="It's a secret." />
           </Question>,
         ],
       }),
