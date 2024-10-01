@@ -41,3 +41,26 @@ export function mainCharacterParams(): [string, (name: string) => void] {
 
   return [mainCharacterName, updateMainCharacterName] as const;
 }
+
+export function hideSpoilersParams(): [boolean, (name: boolean) => void] {
+  const [hideSpoilers, setHideSpoilers] = React.useState<boolean>(true);
+  const [searchParams, setSearchParams] = useSearchParams();
+
+  React.useEffect(() => {
+    const hide = searchParams.get("hideSpoilers");
+    if (hide === null) {
+      updateHideSpoilers(true);
+    } else {
+      setHideSpoilers(hide === "true");
+    }
+  }, [searchParams]);
+
+  const updateHideSpoilers = (hide: boolean) => {
+    setSearchParams((prev) => {
+      prev.set("hideSpoilers", String(hide));
+      return prev;
+    });
+  };
+
+  return [hideSpoilers, updateHideSpoilers] as const;
+}

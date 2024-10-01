@@ -1,4 +1,13 @@
-import { mainCharacterParams, dayIndexParams } from "./ParamsComponents";
+import {
+  mainCharacterParams,
+  hideSpoilersParams,
+  dayIndexParams,
+} from "./ParamsComponents";
 import { OutsideClick } from "./OutsideClick";
 
-export { mainCharacterParams, dayIndexParams, OutsideClick };
+export {
+  mainCharacterParams,
+  hideSpoilersParams,
+  dayIndexParams,
+  OutsideClick,
+};
