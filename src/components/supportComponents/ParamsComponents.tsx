@@ -24,7 +24,6 @@ export function mainCharacterParams(): [string, (name: string) => void] {
   const [searchParams, setSearchParams] = useSearchParams();
 
   React.useEffect(() => {
-    console.log("searchParams", searchParams.values());
     const name = searchParams.get("mainCharacterName");
     if (!name) {
       updateMainCharacterName("Protagonist");
