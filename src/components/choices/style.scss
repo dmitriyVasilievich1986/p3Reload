@@ -1,37 +1,53 @@
 .choices {
+    box-shadow: 3px 3px 5px 0px rgba(0,0,0,0.75);
+    background-color: #f8ebae;
     justify-content: center;
     box-sizing: border-box;
-    flex-direction: column;
+    flex-direction: row;
     display: flex;
+    padding: 5px;
     width: 100%;
 
-    &>label {
+    &>.header {
+        border-right: 2px solid black;
+        justify-content: center;
+        align-items: center;
         text-align: center;
         font-weight: bold;
         font-size: medium;
+        padding: 0 5px;
+        display: flex;
+        width: 50%;
     }
 
     &>.list {
         justify-content: center;
         flex-direction: column;
-        margin-top: 5px;
+        margin-left: 10px;
         display: flex;
-        width: 100%;
+        width: 50%;
         gap: 3px;
 
         &>.choice {
-            justify-content: center;
+            justify-content: start;
             align-items: center;
             display: flex;
             width: 100%;
 
             &>div>div {
+                transition: margin-left 0.5s;
                 width: fit-content;
                 border-radius: 3px;
-                padding: 2px 10px;
+                padding: 2px 0;
+                margin-left: 0;
+
+                &:hover {
+                    margin-left: 10px;
+                }
 
                 &.selected {
                     font-weight: bolder;
+                    padding: 2px 10px;
                     color: #ebebeb;
                 }
             }
@@ -41,6 +57,7 @@
 
 .question-wrapper {
     flex-direction: column;
+    margin-top: 1rem;
     display: flex;
-    gap: 2rem;
+    gap: 1rem;
 }

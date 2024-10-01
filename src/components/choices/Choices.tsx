@@ -59,7 +59,7 @@ export function Question(props: ChoicesProps) {
 
   return (
     <div className={cx("choices")}>
-      <label>{label}</label>
+      <div className={cx("header")}>{label}</div>
       <div className={cx("list")}>{props.children}</div>
     </div>
   );
