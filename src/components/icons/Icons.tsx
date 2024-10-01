@@ -7,6 +7,7 @@ import tarotIcon from "./tarot.png";
 import trashIcon from "./trash.png";
 import moonIcon from "./moon.png";
 import bookIcon from "./book.png";
+import gearIcon from "./gear.png";
 import React from "react";
 
 import classnames from "classnames/bind";
@@ -92,6 +93,10 @@ export class TrashIcon extends Icon {
 
 export class LeftArrowIcon extends Icon {
   iconPath: string = leftArrowIcon;
+}
+
+export class GearIcon extends Icon {
+  iconPath: string = gearIcon;
 }
 
 export class RightArrowIcon extends Icon {

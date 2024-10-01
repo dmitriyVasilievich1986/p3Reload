@@ -8,6 +8,7 @@ import {
   TarotIcon,
   CharmIcon,
   BookIcon,
+  GearIcon,
 } from "./Icons";
 
 export {
@@ -20,4 +21,5 @@ export {
   TarotIcon,
   CharmIcon,
   BookIcon,
+  GearIcon,
 };
