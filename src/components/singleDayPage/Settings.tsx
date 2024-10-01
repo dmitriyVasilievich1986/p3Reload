@@ -1,15 +1,21 @@
-import { mainCharacterParams } from "@/components/supportComponents";
 import { GearIcon } from "@/components/icons";
+import { Switch } from "@/components/switch";
 import { Input } from "@/components/input";
 import { Card } from "@/components/card";
 import classnames from "classnames/bind";
 import * as style from "./style.scss";
 import React from "react";
 
+import {
+  mainCharacterParams,
+  hideSpoilersParams,
+} from "@/components/supportComponents";
+
 const cx = classnames.bind(style);
 
 function Settings() {
   const [mainCharacterName, setMainCharacterName] = mainCharacterParams();
+  const [hideSpoilers, setHideSpoilers] = hideSpoilersParams();
   const [show, setShow] = React.useState(false);
 
   return (
@@ -24,6 +30,10 @@ function Settings() {
               placeholder="Character name"
               onChange={setMainCharacterName}
             />
+          </div>
+          <div className={cx("input-row")}>
+            <label>Hide spoilers:</label>
+            <Switch value={hideSpoilers} onChange={setHideSpoilers} />
           </div>
         </Card>
       </div>

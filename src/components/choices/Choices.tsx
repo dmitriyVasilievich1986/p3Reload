@@ -1,15 +1,22 @@
-import { mainCharacterParams } from "@/components/supportComponents";
 import classnames from "classnames/bind";
 import { ChoicesProps } from "./types";
 import * as style from "./style.scss";
 import { Tooltip } from "../tootlip";
 import React from "react";
 
+import {
+  mainCharacterParams,
+  hideSpoilersParams,
+} from "@/components/supportComponents";
+
 const cx = classnames.bind(style);
 
-function replaceMainCharName(label: string) {
+function replaceMainCharName(label: string, spoilerAmount: number = 3) {
+  const [hideSpoilers] = hideSpoilersParams();
   const [mainCharName] = mainCharacterParams();
-  return label.replace(/\$\{mainCharName\}/gi, mainCharName);
+  return hideSpoilers
+    ? "x".repeat(spoilerAmount)
+    : label.replace(/\$\{mainCharName\}/gi, mainCharName);
 }
 
 export function Answer(props: {
@@ -48,7 +55,7 @@ export function Answer(props: {
 }
 
 export function Question(props: ChoicesProps) {
-  const label = replaceMainCharName(props.label);
+  const label = replaceMainCharName(props.label, 9);
 
   return (
     <div className={cx("choices")}>
