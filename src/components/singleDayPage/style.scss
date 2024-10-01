@@ -80,3 +80,22 @@
         justify-content: flex-end;
     }
 }
+
+.settings-container {
+    display: none;
+    width: 100%;
+    
+    &.show {
+        display: block;
+    }
+}
+
+.input-row {
+    align-items: center;
+    margin: 1rem 0;
+    display: flex;
+
+    &>label {
+        width: 50%;
+    }
+}

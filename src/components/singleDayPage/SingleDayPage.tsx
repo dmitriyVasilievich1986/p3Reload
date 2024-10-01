@@ -8,6 +8,7 @@ import { AvailableTimes } from "./types";
 import { CenterTab } from "./CenterTab";
 import { RightTab } from "./RightTab";
 import * as style from "./style.scss";
+import Settings from "./Settings";
 
 import classnames from "classnames/bind";
 import React from "react";
@@ -46,6 +47,7 @@ function SingleDayPage(props: {
     <div className={cx("main-container")}>
       <div className={cx("left-tab")}>
         <div className={cx("tab-main-container")}>
+          <Settings />
           <HeroStats
             previousDay={props.calendar?.[dateId - 1]}
             currentDay={props.calendar[dateId]}
