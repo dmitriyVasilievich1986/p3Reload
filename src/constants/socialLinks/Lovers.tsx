@@ -1,6 +1,5 @@
 import { QuestionsWrapper, EventCard, Question, Answer } from "@/components";
 import { createBondObject, LinkMaxedObject } from "./classes/GenericCard";
-import { mainCharName } from "./classes/mainCharName";
 import { StatsNames, stats } from "@/constants/stats";
 import { DaysNames } from "@/constants/monthsNames";
 import { SocialLink } from "./classes/SocialLink";
@@ -215,9 +214,7 @@ class LoversMainLevels extends LinkMainLevels {
             <Answer label="Anytime." points={15} />
             <Answer label="Thank you, too." />
           </Question>,
-          <Question
-            label={`Wouldn't that be annoying, ${mainCharName}-kun? Y'know, if people assumed we were dating...`}
-          >
+          <Question label="Wouldn't that be annoying, ${mainCharName}-kun? Y'know, if people assumed we were dating...">
             <Answer label="I wouldn't mind." points={5} />
             <Answer label="Yeah..." />
           </Question>,
@@ -231,9 +228,7 @@ class LoversMainLevels extends LinkMainLevels {
             <Answer label="Anytime." points={15} />
             <Answer label="Thank you, too." />
           </Question>,
-          <Question
-            label={`Wouldn't that be annoying, ${mainCharName}-kun? Y'know, if people assumed we were dating...`}
-          >
+          <Question label="Wouldn't that be annoying, ${mainCharName}-kun? Y'know, if people assumed we were dating...">
             <Answer label="I wouldn't mind." points={5} />
             <Answer label="Yeah..." />
           </Question>,
@@ -268,9 +263,7 @@ class LoversMainLevels extends LinkMainLevels {
       [Routes.Platonic]: QuestionsWrapper({
         points: 35,
         element: [
-          <Question
-            label={`I know! Why don't you come help me pick something out, ${mainCharName}-kun?`}
-          >
+          <Question label="I know! Why don't you come help me pick something out, ${mainCharName}-kun?">
             <Answer label="Alright." points={15} />
             <Answer label="Im too lazy." />
           </Question>,
@@ -283,9 +276,7 @@ class LoversMainLevels extends LinkMainLevels {
       [Routes.Romantic]: QuestionsWrapper({
         points: 35,
         element: [
-          <Question
-            label={`I know! Why don't you come help me pick something out, ${mainCharName}-kun?`}
-          >
+          <Question label="I know! Why don't you come help me pick something out, ${mainCharName}-kun?">
             <Answer label="Alright." points={15} />
             <Answer label="Im too lazy." />
           </Question>,
@@ -423,7 +414,7 @@ class LevelsInvitationLevels extends InvitationLevels {
       [Routes.Platonic]: QuestionsWrapper({
         points: 0,
         element: [
-          <Question label={`What's your favorite color, ${mainCharName}-kun?`}>
+          <Question label="What's your favorite color, ${mainCharName}-kun?">
             <Answer label="Green." points={30} />
           </Question>,
         ],

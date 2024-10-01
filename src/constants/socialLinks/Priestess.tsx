@@ -1,7 +1,6 @@
 import { QuestionsWrapper, EventCard, Question, Answer } from "@/components";
 import { createBondObject, LinkMaxedObject } from "./classes/GenericCard";
 import { StatsNames, stats } from "@/constants/stats";
-import { mainCharName } from "./classes/mainCharName";
 import { DaysNames } from "@/constants/monthsNames";
 import { SocialLink } from "./classes/SocialLink";
 import { Times } from "@/constants/events/types";
@@ -138,9 +137,7 @@ class PriestessMainLevels extends LinkMainLevels {
       [Routes.Platonic]: QuestionsWrapper({
         points: 0,
         element: [
-          <Question
-            label={`Maybe I should give him some food. What do you think, ${mainCharName}-kun?`}
-          >
+          <Question label="Maybe I should give him some food. What do you think, ${mainCharName}-kun?">
             <Answer label="Sure." points={15} />
             <Answer label="Don't do it." />
           </Question>,
@@ -159,9 +156,7 @@ class PriestessMainLevels extends LinkMainLevels {
       [Routes.Platonic]: QuestionsWrapper({
         points: 0,
         element: [
-          <Question
-            label={`I still don't have a feel for how much salt to add. How do you do it, ${mainCharName}-kun?`}
-          >
+          <Question label="I still don't have a feel for how much salt to add. How do you do it, ${mainCharName}-kun?">
             <Answer label="Just a dash or two." points={15} />
             <Answer label="I don't add salt." />
             <Answer label="Just dump it a ton." points={5} />
@@ -368,9 +363,7 @@ class PriestessMainLevels extends LinkMainLevels {
             <Answer label="Is that safe?" />
             <Answer label="But I like meat..." />
           </Question>,
-          <Question
-            label={`You just seem more at ease now. Or maybe it's more confidence? Don't you think so, ${mainCharName}-kun?`}
-          >
+          <Question label="You just seem more at ease now. Or maybe it's more confidence? Don't you think so, ${mainCharName}-kun?">
             <Answer label="I agree." />
             <Answer label="You haven't seen anything just yet." />
           </Question>,
@@ -421,7 +414,7 @@ class PriestessInvitationLevels extends InvitationLevels {
       [Routes.Platonic]: QuestionsWrapper({
         points: 0,
         element: [
-          <Question label={`Um, ${mainCharName}-kun. Do you like sweets?`}>
+          <Question label="Um, ${mainCharName}-kun. Do you like sweets?">
             <Answer label="I do." points={30} />
             <Answer label="Not really." />
             <Answer label="Never thought about it." />
@@ -433,7 +426,7 @@ class PriestessInvitationLevels extends InvitationLevels {
       [Routes.Platonic]: QuestionsWrapper({
         points: 0,
         element: [
-          <Question label={`Um, ${mainCharName}-kun. Do you like sweets?`}>
+          <Question label="Um, ${mainCharName}-kun. Do you like sweets?">
             <Answer label="I do." points={30} />
           </Question>,
         ],
@@ -473,9 +466,7 @@ class PriestessInvitationLevels extends InvitationLevels {
       [Routes.Platonic]: QuestionsWrapper({
         points: 0,
         element: [
-          <Question
-            label={`Um... If I did make a dish with dried snake meat, would you still eat it, ${mainCharName}-kun?`}
-          >
+          <Question label="Um... If I did make a dish with dried snake meat, would you still eat it, ${mainCharName}-kun?">
             <Answer label="Sure I would." />
             <Answer label="You don't have to." points={30} />
             <Answer label="It's up to you." />

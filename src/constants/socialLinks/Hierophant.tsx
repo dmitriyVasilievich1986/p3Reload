@@ -1,6 +1,5 @@
 import { createBondObject, LinkMaxedObject } from "./classes/GenericCard";
 import { QuestionsWrapper, Question, Answer } from "@/components";
-import { mainCharName } from "./classes/mainCharName";
 import { DaysNames } from "@/constants/monthsNames";
 import { SocialLink } from "./classes/SocialLink";
 import { Times } from "@/constants/events/types";
@@ -51,12 +50,10 @@ class HierophantMainLevels extends LinkMainLevels {
         points: 0,
         element: [
           <Question label="What was your name again?">
-            <Answer label={mainCharName} points={5} />
+            <Answer label="${mainCharName}" points={5} />
             <Answer label="..." />
           </Question>,
-          <Question
-            label={`Someone gave it to me, but I have more than enough. Go ahead and take it, ${mainCharName}-chan.`}
-          >
+          <Question label="Someone gave it to me, but I have more than enough. Go ahead and take it, ${mainCharName}-chan.">
             <Answer label="Thank you." points={15} />
             <Answer label="I'm okay, thanks." />
           </Question>,
@@ -64,9 +61,7 @@ class HierophantMainLevels extends LinkMainLevels {
             <Answer label="I'd like that." />
             <Answer label="No, thank you." />
           </Question>,
-          <Question
-            label={`He should be here helping customers... Sorry about that, ${mainCharName}-chan.`}
-          >
+          <Question label="He should be here helping customers... Sorry about that, ${mainCharName}-chan.">
             <Answer label="Boy?" />
             <Answer label="No need to apologize." />
           </Question>,
@@ -120,9 +115,7 @@ class HierophantMainLevels extends LinkMainLevels {
             <Answer label="What happened" />
             <Answer label="Tree?" />
           </Question>,
-          <Question
-            label={`Do you know anything about this, ${mainCharName}-chan?`}
-          >
+          <Question label="Do you know anything about this, ${mainCharName}-chan?">
             <Answer label="No, I don't." />
             <Answer label="I'm worried." points={5} />
           </Question>,
@@ -171,9 +164,7 @@ class HierophantMainLevels extends LinkMainLevels {
             <Answer label="The tree? A memorial?" />
             <Answer label="That's great." points={5} />
           </Question>,
-          <Question
-            label={`You must be the one who called on them for this, right, ${mainCharName}-chan?`}
-          >
+          <Question label="You must be the one who called on them for this, right, ${mainCharName}-chan?">
             <Answer label="No." points={5} />
             <Answer label="That's right." points={5} />
             <Answer label="What are you talking about?" points={5} />

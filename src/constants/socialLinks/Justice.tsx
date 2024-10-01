@@ -1,6 +1,5 @@
 import { createBondObject, LinkMaxedObject } from "./classes/GenericCard";
 import { QuestionsWrapper, Question, Answer } from "@/components";
-import { mainCharName } from "./classes/mainCharName";
 import { DaysNames } from "@/constants/monthsNames";
 import { SocialLink } from "./classes/SocialLink";
 import { Times } from "@/constants/events/types";
@@ -62,7 +61,7 @@ class JusticeMainLevels extends LinkMainLevels {
             <Answer label="Don't worry about it." points={15} />
             <Answer label="I was bored anyway." />
           </Question>,
-          <Question label={`...Um, do you read much, ${mainCharName}-san?`}>
+          <Question label="...Um, do you read much, ${mainCharName}-san?">
             <Answer label="I read the classics." points={5} />
             <Answer label="I read manga." points={5} />
             <Answer label="I read fashion magazines." />
@@ -105,7 +104,7 @@ class JusticeMainLevels extends LinkMainLevels {
       [Routes.Platonic]: QuestionsWrapper({
         points: 22,
         element: [
-          <Question label={`${mainCharName}-san!`}>
+          <Question label="${mainCharName}-san!">
             <Answer label="Get lost." />
             <Answer label="...Hey." />
           </Question>,
@@ -194,7 +193,7 @@ class JusticeMainLevels extends LinkMainLevels {
       [Routes.Platonic]: QuestionsWrapper({
         points: 30,
         element: [
-          <Question label={`${mainCharName}-san...`}>
+          <Question label="${mainCharName}-san...">
             <Answer label="Try to remember." />
             <Answer label="It's gotta be a misunderstanding." points={5} />
           </Question>,
@@ -207,7 +206,7 @@ class JusticeMainLevels extends LinkMainLevels {
       [Routes.Romantic]: QuestionsWrapper({
         points: 30,
         element: [
-          <Question label={`${mainCharName}-san...`}>
+          <Question label="${mainCharName}-san...">
             <Answer label="Try to remember." />
             <Answer label="It's gotta be a misunderstanding." points={5} />
           </Question>,
@@ -260,7 +259,7 @@ class JusticeMainLevels extends LinkMainLevels {
             <Answer label="Chihiro is innocent." points={5} />
             <Answer label="You need to tell her yourself." points={5} />
           </Question>,
-          <Question label={`Give me a hand, will you, ${mainCharName}?`}>
+          <Question label="Give me a hand, will you, ${mainCharName}?">
             <Answer label="Why me?" />
             <Answer label="All right." />
           </Question>,
@@ -281,7 +280,7 @@ class JusticeMainLevels extends LinkMainLevels {
             <Answer label="Chihiro is innocent." points={5} />
             <Answer label="You need to tell her yourself." points={5} />
           </Question>,
-          <Question label={`Give me a hand, will you, ${mainCharName}?`}>
+          <Question label="Give me a hand, will you, ${mainCharName}?">
             <Answer label="Why me?" />
             <Answer label="All right." />
           </Question>,
@@ -441,9 +440,7 @@ class JusticeInvitationLevels extends InvitationLevels {
       [Routes.Platonic]: QuestionsWrapper({
         points: 0,
         element: [
-          <Question
-            label={`What about you, ${mainCharName}-san? Are you planning to get a driver's license?`}
-          >
+          <Question label="What about you, ${mainCharName}-san? Are you planning to get a driver's license?">
             <Answer label="I am." points={30} />
             <Answer label="Probably not." />
             <Answer label="It's a secret." />
@@ -453,9 +450,7 @@ class JusticeInvitationLevels extends InvitationLevels {
       [Routes.Romantic]: QuestionsWrapper({
         points: 0,
         element: [
-          <Question
-            label={`What about you, ${mainCharName}-san? Are you planning to get a driver's license?`}
-          >
+          <Question label="What about you, ${mainCharName}-san? Are you planning to get a driver's license?">
             <Answer label="I am." points={30} />
             <Answer label="Probably not." />
             <Answer label="It's a secret." />

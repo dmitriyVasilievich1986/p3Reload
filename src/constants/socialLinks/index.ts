@@ -1,4 +1,3 @@
-import { mainCharName } from "./classes/mainCharName";
 import { SocialLink } from "./classes/SocialLink";
 import { SocialLinkNames, Routes } from "./types";
 
@@ -60,4 +59,4 @@ const socialLinks: { [key in SocialLinkNames]: SocialLink } = {
   [SocialLinkNames.Aeon]: Aeon,
 };
 
-export { SocialLinkNames, mainCharName, socialLinks, SocialLink, Routes };
+export { SocialLinkNames, socialLinks, SocialLink, Routes };

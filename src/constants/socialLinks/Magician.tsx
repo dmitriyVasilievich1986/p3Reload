@@ -1,6 +1,5 @@
 import { createBondObject, LinkMaxedObject } from "./classes/GenericCard";
 import { QuestionsWrapper, Question, Answer } from "@/components";
-import { mainCharName } from "./classes/mainCharName";
 import { DaysNames } from "@/constants/monthsNames";
 import { SocialLink } from "./classes/SocialLink";
 import { Times } from "@/constants/events/types";
@@ -69,9 +68,7 @@ class MagicianMainLevels extends LinkMainLevels {
             <Answer label="What, of school?" />
             <Answer label="What, life?" points={15} />
           </Question>,
-          <Question
-            label={`Okay, that settles it, ${mainCharName}. I'm gonna get myself a girlfriend! Right now!`}
-          >
+          <Question label="Okay, that settles it, ${mainCharName}. I'm gonna get myself a girlfriend! Right now!">
             <Answer label="Sounds Impossible." />
             <Answer label="Good luck!" points={5} />
           </Question>,

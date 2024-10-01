@@ -1,6 +1,5 @@
 import { createBondObject, LinkMaxedObject } from "./classes/GenericCard";
 import { QuestionsWrapper, Question, Answer } from "@/components";
-import { mainCharName } from "./classes/mainCharName";
 import { DaysNames } from "@/constants/monthsNames";
 import { SocialLink } from "./classes/SocialLink";
 import { Times } from "@/constants/events/types";
@@ -110,9 +109,7 @@ class StrengthMainLevels extends LinkMainLevels {
       [Routes.Platonic]: QuestionsWrapper({
         points: 15,
         element: [
-          <Question
-            label={`${mainCharName}-kun, what do you think I should do?`}
-          >
+          <Question label="${mainCharName}-kun, what do you think I should do?">
             <Answer label="Why not give it a go?" />
             <Answer label="That's for you to decide." />
           </Question>,
@@ -125,9 +122,7 @@ class StrengthMainLevels extends LinkMainLevels {
       [Routes.Romantic]: QuestionsWrapper({
         points: 15,
         element: [
-          <Question
-            label={`${mainCharName}-kun, what do you think I should do?`}
-          >
+          <Question label="${mainCharName}-kun, what do you think I should do?">
             <Answer label="Why not give it a go?" />
             <Answer label="That's for you to decide." />
           </Question>,
@@ -178,9 +173,7 @@ class StrengthMainLevels extends LinkMainLevels {
       [Routes.Platonic]: QuestionsWrapper({
         points: 22,
         element: [
-          <Question
-            label={`...Oh, ${mainCharName}-kun, why don't you give them some advice too?`}
-          >
+          <Question label="...Oh, ${mainCharName}-kun, why don't you give them some advice too?">
             <Answer label="You guys got this." points={5} />
             <Answer label="Show some guts!" points={5} />
           </Question>,
@@ -193,9 +186,7 @@ class StrengthMainLevels extends LinkMainLevels {
       [Routes.Romantic]: QuestionsWrapper({
         points: 22,
         element: [
-          <Question
-            label={`...Oh, ${mainCharName}-kun, why don't you give them some advice too?`}
-          >
+          <Question label="...Oh, ${mainCharName}-kun, why don't you give them some advice too?">
             <Answer label="You guys got this." points={5} />
             <Answer label="Show some guts!" points={5} />
           </Question>,
@@ -248,9 +239,7 @@ class StrengthMainLevels extends LinkMainLevels {
       [Routes.Platonic]: QuestionsWrapper({
         points: 35,
         element: [
-          <Question
-            label={`Which one sounds better to you, ${mainCharName}-kun?`}
-          >
+          <Question label="Which one sounds better to you, ${mainCharName}-kun?">
             <Answer label="The cute one." points={5} />
             <Answer label="The reasonable one." points={5} />
             <Answer label="Either is fine." />
@@ -526,9 +515,7 @@ class StrengthInvitationLevels extends InvitationLevels {
       [Routes.Platonic]: QuestionsWrapper({
         points: 0,
         element: [
-          <Question
-            label={`Hey, ${mainCharName}-kun, you got some sauce around your mouth.`}
-          >
+          <Question label="Hey, ${mainCharName}-kun, you got some sauce around your mouth.">
             <Answer label="It's a fashion statement." points={30} />
           </Question>,
         ],
@@ -536,9 +523,7 @@ class StrengthInvitationLevels extends InvitationLevels {
       [Routes.Romantic]: QuestionsWrapper({
         points: 0,
         element: [
-          <Question
-            label={`Hey, ${mainCharName}-kun, you got some sauce around your mouth.`}
-          >
+          <Question label="Hey, ${mainCharName}-kun, you got some sauce around your mouth.">
             <Answer label="Oh, thanks." />
             <Answer label="It's fine." />
             <Answer label="Will you wipe it off for me?" points={30} />

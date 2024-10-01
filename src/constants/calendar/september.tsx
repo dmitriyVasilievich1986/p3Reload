@@ -1,6 +1,5 @@
 import { EventCard, WideEvent, Question, Answer } from "@/components";
 import { SocialLinkNames } from "@/constants/socialLinks";
-import { mainCharName } from "@/constants/socialLinks";
 import { events, Times } from "@/constants/events";
 import { SingleDay } from "./SingleDay";
 
@@ -119,7 +118,9 @@ export const september: SingleDay[] = [
         ...events[statsEventsCharmNames.schoolQuestionCharm],
         label: () => (
           <Question
-            label={`H-Hey, ${mainCharName}, do you know what it means to "spill the beans"?`}
+            label={
+              'H-Hey, ${mainCharName}, do you know what it means to "spill the beans"?'
+            }
           >
             <Answer label="To drop money." />
             <Answer label="To break into a smile." />
