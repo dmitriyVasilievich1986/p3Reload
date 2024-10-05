@@ -49,7 +49,7 @@ function SingleDayPage(props: {
     <div className={cx("main-container")}>
       <div className={cx("left-tab")}>
         <div className={cx("tab-main-container")}>
-          <Settings />
+          <Settings {...props} />
           <HeroStats
             previousDay={props.calendar?.[dateId - 1]}
             currentDay={props.calendar[dateId]}

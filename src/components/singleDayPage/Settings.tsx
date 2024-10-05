@@ -2,7 +2,10 @@ import { GearIcon } from "@/components/icons";
 import { Switch } from "@/components/switch";
 import { Input } from "@/components/input";
 import { Card } from "@/components/card";
+
+import ExportImport from "./ExportImport";
 import classnames from "classnames/bind";
+import { SettingsProps } from "./types";
 import * as style from "./style.scss";
 import React from "react";
 
@@ -13,7 +16,7 @@ import {
 
 const cx = classnames.bind(style);
 
-function Settings() {
+function Settings(props: SettingsProps) {
   const [mainCharacterName, setMainCharacterName] = mainCharacterParams();
   const [hideSpoilers, setHideSpoilers] = hideSpoilersParams();
   const [show, setShow] = React.useState(false);
@@ -35,6 +38,7 @@ function Settings() {
             <label>Hide spoilers:</label>
             <Switch value={hideSpoilers} onChange={setHideSpoilers} />
           </div>
+          <ExportImport {...props} />
         </Card>
       </div>
     </div>
