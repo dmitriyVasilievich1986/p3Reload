@@ -108,7 +108,7 @@ class AeonMainLevels extends LinkMainLevels {
     const previousLink = props.previousDay!.links[linkName];
     const isNewLevel = socialLink.isNewLevel(previousLink);
     const isRomance =
-      previousLink.level === 6 || previousLink.romance === route;
+      previousLink.level === 7 || previousLink.romance === route;
     const days = [
       DaysNames.monday,
       DaysNames.tuesday,
@@ -117,9 +117,11 @@ class AeonMainLevels extends LinkMainLevels {
       DaysNames.friday,
       DaysNames.saturday,
     ];
+    const excluded_days = [new Date(2010, 0, 25).getTime()];
 
     return (
       props.currentDay.date.getTime() >= new Date(2010, 0, 8).getTime() &&
+      !excluded_days.includes(props.currentDay.date.getTime()) &&
       days.includes(props.currentDay.date.getDay()) &&
       props.time === Times.Day &&
       isNewLevel &&
