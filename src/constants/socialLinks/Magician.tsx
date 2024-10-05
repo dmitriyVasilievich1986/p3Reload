@@ -296,6 +296,8 @@ class MagicianInvitationLevels extends InvitationLevels {
         points: 0,
         element: [
           <Question label="Maybe I caught it or something...">
+            <Answer label="Maybe you're right." />
+            <Answer label="No, you didn't." />
             <Answer label="You shouldn't worry about it." points={30} />
           </Question>,
         ],
