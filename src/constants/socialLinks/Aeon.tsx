@@ -36,6 +36,10 @@ class AeonGardenActivityLevels extends DormHangoutLevels {
     new Date(2009, 10, 15).getTime(),
     new Date(2009, 10, 22).getTime(),
     new Date(2009, 10, 29).getTime(),
+    new Date(2010, 0, 9).getTime(),
+    new Date(2010, 0, 10).getTime(),
+    new Date(2010, 0, 17).getTime(),
+    new Date(2010, 0, 24).getTime(),
   ];
 }
 
@@ -55,6 +59,10 @@ class AeonBookActivityLevels extends DormHangoutLevels {
     new Date(2009, 9, 24).getTime(),
     new Date(2009, 9, 28).getTime(),
     new Date(2009, 10, 11).getTime(),
+    new Date(2010, 0, 6).getTime(),
+    new Date(2010, 0, 13).getTime(),
+    new Date(2010, 0, 20).getTime(),
+    new Date(2010, 0, 27).getTime(),
   ];
 
   calculate(socialLink: SocialLinkType, props: SocialLinkAvailableProps) {
@@ -137,7 +145,7 @@ class AeonMainLevels extends LinkMainLevels {
       [Routes.Platonic]: QuestionsWrapper({
         points: 0,
         element: [
-          <Question label="What about you, Makoto-san? Do you... like it here?">
+          <Question label="What about you, ${mainCharName}-san? Do you... like it here?">
             <Answer label="I like it here." points={15} />
             <Answer label="Not really." />
             <Answer label="I don't care." />
@@ -149,7 +157,7 @@ class AeonMainLevels extends LinkMainLevels {
       [Routes.Platonic]: QuestionsWrapper({
         points: 0,
         element: [
-          <Question label="How can we make them understand...?">
+          <Question label="How can we make them understand?">
             <Answer label="Just try explaining." />
             <Answer label="I don't think we can." />
           </Question>,
@@ -164,8 +172,8 @@ class AeonMainLevels extends LinkMainLevels {
       [Routes.Platonic]: QuestionsWrapper({
         points: 0,
         element: [
-          <Question label="A white, spotted cat... Did you see one, Makoto-san?">
-            <Answer label="I might have..." points={5} />
+          <Question label="A white, spotted cat... Did you see one, ${mainCharName}-san?">
+            <Answer label="I might have..." />
             <Answer label="No, I haven't." />
           </Question>,
           <Question label="Goodness, really!? Where might this have been?">
@@ -189,8 +197,8 @@ class AeonMainLevels extends LinkMainLevels {
       [Routes.Platonic]: QuestionsWrapper({
         points: 0,
         element: [
-          <Question label="It seems that 'living' is something that can't be done alone...">
-            <Answer label="You may be right." points={15} />
+          <Question label="It seems that living is something that can't be done alone.">
+            <Answer label="You might be right." points={15} />
             <Answer label="That's not true." />
             <Answer label="I don't know." />
           </Question>,
@@ -202,9 +210,9 @@ class AeonMainLevels extends LinkMainLevels {
         points: 0,
         element: [
           <Question label="Did I do something wrong?">
-            <Answer label="You didn't call him Joe." />
-            <Answer label="No, you didn't" />
-            <Answer label="He thought I was your boyfriend." />
+            <Answer label="You didn't call him Joe." points={5} />
+            <Answer label="No, you didn't" points={15} />
+            <Answer label="He thought I was your boyfriend." points={15} />
           </Question>,
         ],
       }),
@@ -218,7 +226,7 @@ class AeonMainLevels extends LinkMainLevels {
             <Answer label="Who knows?" />
           </Question>,
           <Question label="Was Mii-chan-san... grateful to have been born...?">
-            <Answer label="I'm sure she was happy." />
+            <Answer label="I'm sure she was." />
             <Answer label="I'm not sure." />
           </Question>,
           <Question label="For what purpose... was Mii-chan-san born...?">
@@ -258,9 +266,9 @@ class AeonMainLevels extends LinkMainLevels {
             <Answer label="I don't mind you being here." />
             <Answer label="What brought this on?" />
           </Question>,
-          <Question label="Why are you so important to me, Makoto-san?">
+          <Question label="Why are you so important to me, ${mainCharName}-san?">
             <Answer label="It's love." />
-            <Answer label="Because we're friends" />
+            <Answer label="Because we're friends" fork />
           </Question>,
         ],
       }),
@@ -276,8 +284,8 @@ class AeonMainLevels extends LinkMainLevels {
             <Answer label="I don't mind you being here." />
             <Answer label="What brought this on?" />
           </Question>,
-          <Question label="Why are you so important to me, Makoto-san?">
-            <Answer label="It's love." />
+          <Question label="Why are you so important to me, ${mainCharName}-san?">
+            <Answer label="It's love." fork />
             <Answer label="Because we're friends" />
           </Question>,
         ],
@@ -291,9 +299,9 @@ class AeonMainLevels extends LinkMainLevels {
             <Answer label="You're right." points={15} />
             <Answer label="I hadn't noticed..." />
           </Question>,
-          <Question label="I love you so much... that I feel like I'm going to break down somehow...">
-            <Answer label="I love you, too." fork={true} />
-            <Answer label="Sorry, but I can't..." />
+          <Question label="But, even so... my wish is to be your closest friend.">
+            <Answer label="You're already my best friend." />
+            <Answer label="That's a beautiful wish." />
           </Question>,
         ],
       }),
@@ -315,13 +323,21 @@ class AeonMainLevels extends LinkMainLevels {
       [Routes.Platonic]: QuestionsWrapper({
         points: 30,
         element: [
-          <Question label="There's something only I can say, because I am unable to die.">
-            <Answer label="What is it?" />
-            <Answer label="I don't get it." />
+          <Question label="Ch-Cheese...!">
+            <Answer label="Cheese." />
+            <Answer label="......" />
           </Question>,
-          <Question label="Aigis is gazing at you intently...">
-            <Answer label="Nod silently" />
-            <Answer label="Hold her hand gently" />
+          <Question label="Do you like taking photos, ${mainCharName}-san?">
+            <Answer label="Yeah, it's fun." />
+            <Answer label="Actually, I don't." />
+          </Question>,
+          <Question label="There is one thing only a machine with a human heart can do... That only I can do.">
+            <Answer label="What's that?" />
+            <Answer label="I don't understand." />
+          </Question>,
+          <Question label="Hehe. So, what were you and Aigis up to?">
+            <Answer label="Taking a picture." />
+            <Answer label="Just chatting." />
           </Question>,
         ],
       }),
@@ -330,11 +346,11 @@ class AeonMainLevels extends LinkMainLevels {
         element: [
           <Question label="There's something only I can say, because I am unable to die.">
             <Answer label="What is it?" />
-            <Answer label="I don't get it." />
+            <Answer label="I don't really get it." />
           </Question>,
-          <Question label="Aigis is gazing at you intently...">
+          <Question label="Aigis is gazing at me intently...">
             <Answer label="Nod silently" />
-            <Answer label="Hold her hand gently" />
+            <Answer label="Gently hold her hand" />
           </Question>,
         ],
       }),
