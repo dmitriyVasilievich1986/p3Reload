@@ -38,6 +38,10 @@ class KoromaruDVDActivityLevels extends DormHangoutLevels {
     new Date(2009, 10, 9).getTime(),
     new Date(2009, 10, 16).getTime(),
     new Date(2009, 11, 28).getTime(),
+    new Date(2010, 0, 4).getTime(),
+    new Date(2010, 0, 11).getTime(),
+    new Date(2010, 0, 18).getTime(),
+    new Date(2010, 0, 25).getTime(),
   ];
 
   calculate(socialLink: SocialLinkType, props: SocialLinkAvailableProps) {
@@ -99,6 +103,9 @@ class KoromaruBrushLevels extends DormHangoutLevels {
     new Date(2009, 11, 6).getTime(),
     new Date(2009, 11, 10).getTime(),
     new Date(2009, 11, 24).getTime(),
+    new Date(2010, 0, 14).getTime(),
+    new Date(2010, 0, 28).getTime(),
+    new Date(2010, 0, 30).getTime(),
   ];
 }
 

@@ -280,6 +280,8 @@ class FortuneInvitationLevels extends InvitationLevels {
         points: 0,
         element: [
           <Question label="So... I was wondering... what it'd be like if you called me something in that vein...">
+            <Answer label='Hou about "Kid Brother"?' />
+            <Answer label='What about "Senpai"?' />
             <Answer label="Okay, Brother." points={30} />
           </Question>,
         ],

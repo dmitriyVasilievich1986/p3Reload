@@ -37,6 +37,10 @@ class EmpressKitchenActivityLevels extends DormHangoutLevels {
     new Date(2009, 9, 26).getTime(),
     new Date(2009, 10, 30).getTime(),
     new Date(2009, 11, 28).getTime(),
+    new Date(2010, 0, 4).getTime(),
+    new Date(2010, 0, 11).getTime(),
+    new Date(2010, 0, 18).getTime(),
+    new Date(2010, 0, 25).getTime(),
   ];
 }
 class EmpressBookActivityLevels extends DormHangoutLevels {
@@ -53,6 +57,8 @@ class EmpressBookActivityLevels extends DormHangoutLevels {
     new Date(2009, 10, 29).getTime(),
     new Date(2009, 11, 21).getTime(),
     new Date(2009, 11, 27).getTime(),
+    new Date(2010, 0, 10).getTime(),
+    new Date(2010, 0, 24).getTime(),
   ];
 
   calculate(socialLink: SocialLinkType, props: SocialLinkAvailableProps) {

@@ -38,6 +38,10 @@ class PriestessGardenActivityLevels extends DormHangoutLevels {
     new Date(2009, 11, 1).getTime(),
     new Date(2009, 11, 22).getTime(),
     new Date(2009, 11, 29).getTime(),
+    new Date(2010, 0, 5).getTime(),
+    new Date(2010, 0, 12).getTime(),
+    new Date(2010, 0, 22).getTime(),
+    new Date(2010, 0, 26).getTime(),
   ];
 }
 
@@ -56,6 +60,9 @@ class PriestessBookActivityLevels extends DormHangoutLevels {
     new Date(2009, 9, 22).getTime(),
     new Date(2009, 9, 29).getTime(),
     new Date(2009, 10, 12).getTime(),
+    new Date(2010, 0, 7).getTime(),
+    new Date(2010, 0, 14).getTime(),
+    new Date(2010, 0, 28).getTime(),
   ];
 
   calculate(socialLink: SocialLinkType, props: SocialLinkAvailableProps) {

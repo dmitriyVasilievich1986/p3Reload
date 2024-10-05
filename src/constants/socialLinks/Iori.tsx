@@ -36,6 +36,8 @@ class IoriGardenActivityLevels extends DormHangoutLevels {
     new Date(2009, 9, 29).getTime(),
     new Date(2009, 9, 31).getTime(),
     new Date(2009, 11, 2).getTime(),
+    new Date(2010, 0, 16).getTime(),
+    new Date(2010, 0, 23).getTime(),
   ];
 }
 
@@ -54,6 +56,9 @@ class IoriBookActivityLevels extends DormHangoutLevels {
     new Date(2009, 10, 14).getTime(),
     new Date(2009, 11, 26).getTime(),
     new Date(2009, 11, 28).getTime(),
+    new Date(2010, 0, 4).getTime(),
+    new Date(2010, 0, 18).getTime(),
+    new Date(2010, 0, 26).getTime(),
   ];
 
   calculate(socialLink: SocialLinkType, props: SocialLinkAvailableProps) {
