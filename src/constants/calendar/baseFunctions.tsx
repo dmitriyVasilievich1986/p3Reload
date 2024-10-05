@@ -5,6 +5,7 @@ import {
   statsEventsAcademicsNames,
   statsEventsCourageNames,
   SpecialEventsNames,
+  allEventsNames,
   Categories,
   Event,
   Times,
@@ -127,4 +128,32 @@ export function LabelExamGrade(
       <Grade />
     </div>
   );
+}
+
+export function importCalendar(
+  calendar: SingleDay[],
+  newCalendar: { date: Date; activities: allEventsNames[] }[]
+) {
+  if (calendar.length !== newCalendar.length)
+    throw new Error("Calendar length mismatch");
+
+  const payload = calendar.map((oldDay, index) => {
+    const newDay = newCalendar[index];
+    if (oldDay.date.getTime() !== newDay.date.getTime())
+      throw new Error("New calendar date mismatch");
+    if (oldDay.activities.length !== newDay.activities.length)
+      throw new Error("Activities length mismatch");
+
+    const activities = oldDay.activities.map((a, i) => {
+      const newActivity = newDay.activities[i];
+      if (a.special && newActivity !== null)
+        throw new Error("Special mismatch");
+      else if (a.special) return a;
+      return events[newActivity];
+    });
+
+    return new SingleDay({ ...oldDay, activities });
+  });
+
+  return initialCalculataion(payload);
 }
