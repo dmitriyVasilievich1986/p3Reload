@@ -1,5 +1,7 @@
 import leftArrowIcon from "./left-arrow.png";
 import * as style from "./style.scss";
+import exportIcon from "./export.png";
+import importIcon from "./import.png";
 import filterIcon from "./filter.png";
 import searchIcon from "./search.png";
 import charmIcon from "./charm.png";
@@ -97,6 +99,14 @@ export class LeftArrowIcon extends Icon {
 
 export class GearIcon extends Icon {
   iconPath: string = gearIcon;
+}
+
+export class ImportIcon extends Icon {
+  iconPath: string = importIcon;
+}
+
+export class ExportIcon extends Icon {
+  iconPath: string = exportIcon;
 }
 
 export class RightArrowIcon extends Icon {
