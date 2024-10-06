@@ -62,22 +62,31 @@
 }
 
 .date-navigation {
+    background-color: rgba($color: #fff, $alpha: 0.9);
+    margin-bottom: 10px;
     font-size: smaller;
-    display: flex;
+    position: sticky;
+    z-index: 99;
     width: 100%;
+    top: 0;
 
-    &>.date-navigation-left, .date-navigation-right {
-        align-items: center;
+    &>.wrapper {
         display: flex;
-        width: 50%;
-        gap: 10px;
-    }
+        width: 100%;
 
-    &>.date-navigation-left {
-        justify-content: flex-start;
-    }
-    &>.date-navigation-right {
-        justify-content: flex-end;
+        &>.date-navigation-left, .date-navigation-right {
+            align-items: center;
+            display: flex;
+            width: 50%;
+            gap: 10px;
+        }
+    
+        &>.date-navigation-left {
+            justify-content: flex-start;
+        }
+        &>.date-navigation-right {
+            justify-content: flex-end;
+        }
     }
 }
 

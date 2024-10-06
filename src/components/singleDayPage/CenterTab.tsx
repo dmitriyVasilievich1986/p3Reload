@@ -48,25 +48,27 @@ export function CenterTab(props: {
 
   return (
     <>
+      <div className={cx("date-navigation")}>
+        <div className={cx("wrapper")}>
+          <DateNavigation
+            calendar={props.calendar}
+            dateId={props.dateId - 1}
+            side="left"
+          />
+          <DateNavigation
+            calendar={props.calendar}
+            dateId={props.dateId + 1}
+            side="right"
+          />
+        </div>
+      </div>
+
       <ActivitesList
         previousDay={props.calendar?.[props.dateId - 1]}
         highlitedTime={props.showTime ?? undefined}
         currentDay={props.calendar[props.dateId]}
         clickHandler={clickHandler}
       />
-
-      <div className={cx("date-navigation")}>
-        <DateNavigation
-          calendar={props.calendar}
-          dateId={props.dateId - 1}
-          side="left"
-        />
-        <DateNavigation
-          calendar={props.calendar}
-          dateId={props.dateId + 1}
-          side="right"
-        />
-      </div>
     </>
   );
 }

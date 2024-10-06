@@ -1,8 +1,13 @@
 import { getCalculatedCalendar, SingleDay } from "@/constants/calendar";
 import { Event, Times } from "@/constants/events/types";
 
-import { SocialLinksStats, HeroStats } from "@/components/DailyCards";
 import { dayIndexParams } from "@/components/supportComponents";
+import {
+  DormHangoutStats,
+  SocialLinksStats,
+  EpisodesStats,
+  HeroStats,
+} from "@/components/DailyCards";
 
 import { AvailableTimes } from "./types";
 import { CenterTab } from "./CenterTab";
@@ -55,6 +60,14 @@ function SingleDayPage(props: {
             currentDay={props.calendar[dateId]}
           />
           <SocialLinksStats
+            previousDay={props.calendar?.[dateId - 1]}
+            currentDay={props.calendar[dateId]}
+          />
+          <EpisodesStats
+            previousDay={props.calendar?.[dateId - 1]}
+            currentDay={props.calendar[dateId]}
+          />
+          <DormHangoutStats
             previousDay={props.calendar?.[dateId - 1]}
             currentDay={props.calendar[dateId]}
           />
