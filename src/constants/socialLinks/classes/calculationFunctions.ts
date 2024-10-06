@@ -79,7 +79,7 @@ export function getCalulateFunction(
   const level = isNewLevel ? previousLink.level + 1 : previousLink.level;
   let points = isNewLevel ? 0 : currentLink.points;
 
-  const examMultiplier = previousLink.multiplier === 1 ? 1 : maxMultiplier;
+  const examMultiplier = currentLink.multiplier === 1 ? 1 : maxMultiplier;
   const cardMultiplier = maxMultiplier;
   const maxCharmMultiplier =
     props.currentDay.stats[StatsNames.Charm] >= charmMax ? maxMultiplier : 1;
@@ -113,6 +113,7 @@ export function getCalulateFunction(
       ...props.currentDay.links,
       [linkName]: {
         ...previousLink,
+        multiplier: currentLink.multiplier,
         romance: route,
         points,
         level,
