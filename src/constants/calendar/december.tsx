@@ -7,7 +7,6 @@ import { SingleDay } from "./SingleDay";
 
 import {
   statsEventsAcademicsNames,
-  socialLinkRomanceNames,
   statsEventsCharmNames,
   SpecialEventsNames,
 } from "@/constants/events/types";
@@ -24,7 +23,7 @@ export const december: SingleDay[] = [
     date: new Date(2009, 11, 2),
     foolMoon: true,
     activities: [
-      events[socialLinkRomanceNames.StrengthRomance],
+      events[SocialLinkNames.Strength],
       { ...events[SpecialEventsNames.DoNothing], time: Times.Evening },
     ],
   }),
@@ -355,7 +354,7 @@ export const december: SingleDay[] = [
     date: new Date(2009, 11, 26),
     activities: [
       events[statsEventsAcademicsNames.stayAwakeInClass],
-      events[socialLinkRomanceNames.StrengthRomance],
+      events[SocialLinkNames.Strength],
       { ...events[SpecialEventsNames.DoNothing], time: Times.Evening },
     ],
   }),

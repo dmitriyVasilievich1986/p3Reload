@@ -8,7 +8,6 @@ import { SingleDay } from "./SingleDay";
 import {
   statsEventsAcademicsNames,
   statsEventsCourageNames,
-  socialLinkRomanceNames,
   statsEventsCharmNames,
   SpecialEventsNames,
 } from "@/constants/events/types";
@@ -48,7 +47,7 @@ export const july: SingleDay[] = [
   new SingleDay({
     date: new Date(2009, 6, 4),
     activities: [
-      events[socialLinkRomanceNames.StrengthRomance],
+      events[SocialLinkNames.Strength],
       {
         ...events[SpecialEventsNames.Special],
         time: Times.EveningFreeTime,
@@ -65,7 +64,7 @@ export const july: SingleDay[] = [
           </EventCard>
         ),
       },
-      events[statsEventsCourageNames.wilduckBurgeWeekendWilduckSet],
+      { ...events[SocialLinkNames.Sanada], time: Times.Evening },
     ],
   }),
   new SingleDay({
@@ -73,14 +72,14 @@ export const july: SingleDay[] = [
     isDayOff: true,
     activities: [
       events[SocialLinkNames.Moon],
-      events[statsEventsCourageNames.wilduckBurgeWeekendWilduckSet],
+      { ...events[SocialLinkNames.Empress], time: Times.Evening },
     ],
   }),
   new SingleDay({
     date: new Date(2009, 6, 6),
     activities: [
       events[SocialLinkNames.Chariot],
-      events[statsEventsAcademicsNames.wakatsuKitchenSpecial],
+      { ...events[SocialLinkNames.Empress], time: Times.Evening },
     ],
   }),
   new SingleDay({
@@ -431,7 +430,7 @@ export const july: SingleDay[] = [
     date: new Date(2009, 6, 25),
     activities: [
       events[statsEventsAcademicsNames.stayAwakeInClass],
-      events[socialLinkRomanceNames.StrengthRomance],
+      events[SocialLinkNames.Strength],
       events[SocialLinkNames.Tower],
     ],
   }),

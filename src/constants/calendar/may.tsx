@@ -380,7 +380,7 @@ export const may: SingleDay[] = [
     date: new Date(2009, 4, 23),
     activities: [
       { ...events[SpecialEventsNames.Exams], time: Times.Morning },
-      events[SocialLinkNames.HangedMan],
+      events[SocialLinkNames.Justice],
       events[statsEventsAcademicsNames.gameParadeAcademics],
     ],
   }),
@@ -476,7 +476,7 @@ export const may: SingleDay[] = [
   new SingleDay({
     date: new Date(2009, 4, 30),
     activities: [
-      events[SocialLinkNames.HangedMan],
+      events[SocialLinkNames.Justice],
       events[statsEventsAcademicsNames.gameParadeAcademics],
     ],
   }),
