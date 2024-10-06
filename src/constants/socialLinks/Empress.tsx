@@ -28,6 +28,12 @@ class EmpressKitchenActivityLevels extends DormHangoutLevels {
   dormName: "dorm1" | "dorm2" = "dorm1";
 
   dates: number[] = [
+    new Date(2009, 5, 16).getTime(),
+    new Date(2009, 5, 22).getTime(),
+    new Date(2009, 5, 29).getTime(),
+    new Date(2009, 6, 6).getTime(),
+    new Date(2009, 6, 27).getTime(),
+    new Date(2009, 7, 3).getTime(),
     new Date(2009, 7, 17).getTime(),
     new Date(2009, 7, 24).getTime(),
     new Date(2009, 7, 31).getTime(),
@@ -48,6 +54,9 @@ class EmpressBookActivityLevels extends DormHangoutLevels {
   dormName: "dorm1" | "dorm2" = "dorm2";
 
   dates: number[] = [
+    new Date(2009, 6, 5).getTime(),
+    new Date(2009, 6, 26).getTime(),
+    new Date(2009, 7, 1).getTime(),
     new Date(2009, 7, 23).getTime(),
     new Date(2009, 7, 29).getTime(),
     new Date(2009, 8, 13).getTime(),

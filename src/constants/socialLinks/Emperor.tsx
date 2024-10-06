@@ -16,29 +16,23 @@ import {
 class EmperorMainLevels extends LinkMainLevels {
   isAvailable(
     socialLink: SocialLinkType,
-    props: SocialLinkAvailableProps,
-    route: Routes
+    props: SocialLinkAvailableProps
   ): boolean {
+    const days = [DaysNames.monday, DaysNames.wednesday, DaysNames.friday];
     const linkName = socialLink.linkName;
     const previousLink = props.previousDay!.links[linkName];
     const isNewLevel = socialLink.isNewLevel(previousLink);
-    const isRomance =
-      previousLink.level === 6 || previousLink.romance === route;
-    const days = [
-      DaysNames.monday,
-      DaysNames.tuesday,
-      DaysNames.wednesday,
-      DaysNames.thursday,
-      DaysNames.friday,
-      DaysNames.saturday,
-    ];
+    const isJanuary =
+      props.currentDay.date.getTime() >= new Date(2010, 0, 1).getTime() ||
+      days.includes(props.currentDay.date.getDay());
 
     return (
-      props.currentDay.date.getTime() >= new Date(2010, 0, 8).getTime() &&
-      days.includes(props.currentDay.date.getDay()) &&
+      props.currentDay.date.getTime() >= new Date(2009, 3, 27).getTime() &&
+      !props.currentDay.isDayOff &&
       props.time === Times.Day &&
+      !props.currentDay.exams &&
       isNewLevel &&
-      isRomance
+      isJanuary
     );
   }
 

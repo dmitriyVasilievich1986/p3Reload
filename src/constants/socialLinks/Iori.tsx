@@ -26,6 +26,11 @@ class IoriGardenActivityLevels extends DormHangoutLevels {
   dormName: "dorm1" | "dorm2" = "dorm1";
 
   dates: number[] = [
+    new Date(2009, 5, 20).getTime(),
+    new Date(2009, 5, 27).getTime(),
+    new Date(2009, 6, 4).getTime(),
+    new Date(2009, 6, 18).getTime(),
+    new Date(2009, 7, 1).getTime(),
     new Date(2009, 7, 8).getTime(),
     new Date(2009, 7, 15).getTime(),
     new Date(2009, 7, 22).getTime(),
@@ -46,6 +51,10 @@ class IoriBookActivityLevels extends DormHangoutLevels {
   dormName: "dorm1" | "dorm2" = "dorm2";
 
   dates: number[] = [
+    new Date(2009, 5, 16).getTime(),
+    new Date(2009, 5, 22).getTime(),
+    new Date(2009, 5, 29).getTime(),
+    new Date(2009, 7, 3).getTime(),
     new Date(2009, 7, 17).getTime(),
     new Date(2009, 7, 24).getTime(),
     new Date(2009, 8, 14).getTime(),

@@ -28,6 +28,9 @@ class PriestessGardenActivityLevels extends DormHangoutLevels {
   dormName: "dorm1" | "dorm2" = "dorm1";
 
   dates: number[] = [
+    new Date(2009, 5, 16).getTime(),
+    new Date(2009, 5, 23).getTime(),
+    new Date(2009, 5, 30).getTime(),
     new Date(2009, 7, 27).getTime(),
     new Date(2009, 8, 9).getTime(),
     new Date(2009, 8, 15).getTime(),
@@ -50,6 +53,9 @@ class PriestessBookActivityLevels extends DormHangoutLevels {
   dormName: "dorm1" | "dorm2" = "dorm2";
 
   dates: number[] = [
+    new Date(2009, 5, 18).getTime(),
+    new Date(2009, 5, 25).getTime(),
+    new Date(2009, 6, 30).getTime(),
     new Date(2009, 7, 20).getTime(),
     new Date(2009, 7, 25).getTime(),
     new Date(2009, 8, 4).getTime(),
