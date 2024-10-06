@@ -2,11 +2,9 @@ import { DormHangoutLevels } from "@/constants/socialLinks/classes/LinkLevels";
 import { SocialLinkNames, socialLinks } from "@/constants/socialLinks";
 import { SingleDay } from "@/constants/calendar/SingleDay";
 
-import { Tooltip } from "@/components/tootlip";
 import { Badge } from "@/components/badge";
 import { Card } from "@/components/card";
 
-import { BadgeTooltip } from "./BadgeTooltip";
 import classnames from "classnames/bind";
 import * as style from "./style.scss";
 
@@ -21,16 +19,7 @@ export function DormHangoutStats({
 }) {
   const getLevel = (name: SocialLinkNames, level: "dorm1" | "dorm2") => {
     if (currentDay.links[name][level] === 0) return "- not started";
-    const levelName: "dormHangout1" | "dormHangout2" =
-      level === "dorm1" ? "dormHangout1" : "dormHangout2";
-
-    const maxLevel = Math.max(
-      ...Object.keys(socialLinks[name][levelName].levels).map((k) =>
-        parseInt(k)
-      )
-    );
-    if (currentDay.links[name][level] >= maxLevel)
-      return "- characteristic gained";
+    if (currentDay.links[name][level] >= 3) return "- characteristic gained";
     return null;
   };
 
@@ -46,18 +35,6 @@ export function DormHangoutStats({
         value={String(currentDay.links[name][level])}
         color={color}
         size="small"
-      />
-    );
-  };
-
-  const StatsTooltip = ({ name }: { name: SocialLinkNames }) => {
-    const nextLevelPoints = socialLinks[name].getLevel({
-      ...currentDay.links[name],
-    }).points;
-    return (
-      <BadgeTooltip
-        points={currentDay.links[name].points}
-        nextLevel={nextLevelPoints}
       />
     );
   };
@@ -79,9 +56,7 @@ export function DormHangoutStats({
         {hangoutsLinks.map((l) => (
           <>
             <div key={l} className={cx("stat-item")}>
-              <Tooltip position="right" tooltip={<StatsTooltip name={l} />}>
-                {getBadge(l, "dorm1")}
-              </Tooltip>
+              {getBadge(l, "dorm1")}
               <label>
                 {l}
                 {
@@ -92,9 +67,7 @@ export function DormHangoutStats({
               {getLevel(l, "dorm1")}
             </div>
             <div key={l} className={cx("stat-item")}>
-              <Tooltip position="right" tooltip={<StatsTooltip name={l} />}>
-                {getBadge(l, "dorm2")}
-              </Tooltip>
+              {getBadge(l, "dorm2")}
               <label>
                 {l}
                 {
