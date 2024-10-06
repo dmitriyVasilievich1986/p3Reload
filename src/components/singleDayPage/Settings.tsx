@@ -23,7 +23,11 @@ function Settings(props: SettingsProps) {
 
   return (
     <div>
-      <GearIcon size="medium" onClick={() => setShow((p) => !p)} />
+      <GearIcon
+        onClick={() => setShow((p) => !p)}
+        className={cx("rotate-icon")}
+        size="medium"
+      />
       <div className={cx("settings-container", { show })}>
         <Card head="Settings" color="primary">
           <div className={cx("input-row")}>

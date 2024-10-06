@@ -1,5 +1,5 @@
 import { pcProgramsNames, Categories, Times, Event } from "./types";
-import { StatsNames } from "../stats/types";
+import { StatsNames, stats } from "../stats";
 import { EventCard } from "@/components";
 
 const pcProgramBase: Event = {
@@ -39,6 +39,129 @@ const pcProgramBase: Event = {
 
 export const pcPrograms: { [key in pcProgramsNames]: Event } = {
   [pcProgramsNames.lobbyPCLanguageMadeEasy]: pcProgramBase,
+  [pcProgramsNames.lobbyPCSchoolXSiteNote]: {
+    ...pcProgramBase,
+    name: pcProgramsNames.lobbyPCSchoolXSiteNote,
+    label: function () {
+      return (
+        <EventCard
+          stats="Lukewarm Taiyaki available"
+          head={this.name}
+          place="Dorm"
+          price={500}
+        />
+      );
+    },
+    available: function ({ previousDay, currentDay, time }) {
+      if (previousDay === undefined) return false;
+      const timeAvailable =
+        time === Times.Evening || (time === Times.Day && !!currentDay.isDayOff);
+      const isCourage =
+        previousDay.stats[StatsNames.Courage] >=
+        stats[StatsNames.Courage].levels[1].value;
+      return (
+        currentDay.date.getTime() >= new Date(2009, 3, 29).getTime() &&
+        !previousDay.singleTimeEvents.includes(this.name) &&
+        timeAvailable &&
+        isCourage
+      );
+    },
+    upgrade: function ({ currentDay }) {
+      return {
+        singleTimeEvents: [...currentDay.singleTimeEvents, this.name],
+      };
+    },
+  },
+  [pcProgramsNames.lobbyPCIwatodaiForumNote]: {
+    ...pcProgramBase,
+    name: pcProgramsNames.lobbyPCIwatodaiForumNote,
+    label: function () {
+      return (
+        <EventCard
+          stats="More drinks in Iwatodai vending machine"
+          head={this.name}
+          place="Dorm"
+          price={500}
+        />
+      );
+    },
+    available: function ({ previousDay, currentDay, time }) {
+      if (previousDay === undefined) return false;
+      const timeAvailable =
+        time === Times.Evening || (time === Times.Day && !!currentDay.isDayOff);
+      const isCourage =
+        previousDay.stats[StatsNames.Courage] >=
+        stats[StatsNames.Courage].levels[1].value;
+      return (
+        currentDay.date.getTime() >= new Date(2009, 3, 29).getTime() &&
+        !previousDay.singleTimeEvents.includes(this.name) &&
+        timeAvailable &&
+        isCourage
+      );
+    },
+    upgrade: function ({ currentDay }) {
+      return {
+        singleTimeEvents: [...currentDay.singleTimeEvents, this.name],
+      };
+    },
+  },
+  [pcProgramsNames.lobbyPCUmiushiFanBook]: {
+    ...pcProgramBase,
+    name: pcProgramsNames.lobbyPCUmiushiFanBook,
+    label: function () {
+      return (
+        <EventCard
+          stats="Access to Umiushi Beef Bowls"
+          head={this.name}
+          place="Dorm"
+          price={450}
+        />
+      );
+    },
+    upgrade: function ({ currentDay }) {
+      return {
+        singleTimeEvents: [...currentDay.singleTimeEvents, this.name],
+      };
+    },
+  },
+  [pcProgramsNames.lobbyPCMindfulBootCamp]: {
+    ...pcProgramBase,
+    name: pcProgramsNames.lobbyPCMindfulBootCamp,
+    label: function () {
+      return (
+        <EventCard
+          stats="Max SP Boost"
+          head={this.name}
+          price={2_000}
+          place="Dorm"
+        />
+      );
+    },
+    upgrade: function ({ currentDay }) {
+      return {
+        singleTimeEvents: [...currentDay.singleTimeEvents, this.name],
+      };
+    },
+  },
+  [pcProgramsNames.lobbyPCMuscleBootCamp]: {
+    ...pcProgramBase,
+    name: pcProgramsNames.lobbyPCMuscleBootCamp,
+    label: function () {
+      return (
+        <EventCard
+          stats="Max HP Boost"
+          head={this.name}
+          price={2_000}
+          place="Dorm"
+        />
+      );
+    },
+    upgrade: function ({ currentDay }) {
+      return {
+        singleTimeEvents: [...currentDay.singleTimeEvents, this.name],
+      };
+    },
+  },
   [pcProgramsNames.lobbyPCDigitalCramSchool]: {
     ...pcProgramBase,
     name: pcProgramsNames.lobbyPCDigitalCramSchool,

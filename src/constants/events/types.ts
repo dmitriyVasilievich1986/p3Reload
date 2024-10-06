@@ -39,7 +39,12 @@ export enum SpecialEventsNames {
 export enum pcProgramsNames {
   lobbyPCLessonsInEtiquette = 'Lobby PC ("Lessons in Etiquette")',
   lobbyPCDigitalCramSchool = 'Lobby PC ("Digital Cram School")',
+  lobbyPCIwatodaiForumNote = 'Lobby PC ("Iwatodai Forum Note")',
   lobbyPCLanguageMadeEasy = 'Lobby PC ("Language Made Easy")',
+  lobbyPCSchoolXSiteNote = 'Lobby PC ("School X Site Note")',
+  lobbyPCMindfulBootCamp = 'Lobby PC ("Mindful Boot Camp")',
+  lobbyPCMuscleBootCamp = 'Lobby PC ("Muscle Boot Camp")',
+  lobbyPCUmiushiFanBook = 'Lobby PC ("Umiushi Fan Book")',
   lobbyPCAnimalOthello = 'Lobby PC ("Animal Othello")',
   ninjaFansiteNote = 'Lobby PC ("Ninja Fansite Note")',
   lobbyPCVirtualDiet = 'Lobby PC ("Virtual Diet")',
