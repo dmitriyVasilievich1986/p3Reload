@@ -210,7 +210,7 @@ export const july: SingleDay[] = [
     exams: true,
     activities: [
       events[SocialLinkNames.Hermit],
-      events[SpecialEventsNames.DoNothing],
+      { ...events[SpecialEventsNames.DoNothing], time: Times.Evening },
       events[SocialLinkNames.Death],
     ],
   }),
