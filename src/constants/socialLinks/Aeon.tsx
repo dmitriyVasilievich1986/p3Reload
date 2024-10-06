@@ -27,6 +27,8 @@ class AeonGardenActivityLevels extends DormHangoutLevels {
   dormName: "dorm1" | "dorm2" = "dorm1";
 
   dates: number[] = [
+    new Date(2009, 6, 27).getTime(),
+    new Date(2009, 7, 2).getTime(),
     new Date(2009, 7, 9).getTime(),
     new Date(2009, 7, 23).getTime(),
     new Date(2009, 7, 30).getTime(),
