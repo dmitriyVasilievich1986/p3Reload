@@ -60,3 +60,20 @@ export const stats: statsLevels = {
     ]),
   },
 };
+
+export class StatsRepresentation {
+  name: StatsNames;
+  value?: number;
+
+  constructor(name: StatsNames, value?: number) {
+    this.name = name;
+    this.value = value;
+
+    this.representation = this.representation.bind(this);
+  }
+
+  representation() {
+    const value = this.value ? ` +${this.value}` : "";
+    return `${this.name}${value}`;
+  }
+}

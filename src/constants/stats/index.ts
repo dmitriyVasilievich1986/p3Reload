@@ -1,4 +1,4 @@
+import { StatsRepresentation, stats } from "./stats";
 import { StatsNames } from "./types";
-import { stats } from "./stats";
 
-export { StatsNames, stats };
+export { StatsRepresentation, StatsNames, stats };
