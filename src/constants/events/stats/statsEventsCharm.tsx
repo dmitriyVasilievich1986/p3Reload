@@ -1,9 +1,11 @@
-import { statsEventsCharmNames, Categories, Times, Event } from "./types";
-import { SingleDay } from "../calendar/SingleDay";
-import { StatsNames } from "../stats/types";
-import { DaysNames } from "../monthsNames";
+import { SingleDay } from "@/constants/calendar/SingleDay";
+import { StatsNames } from "@/constants/stats/types";
+import { DaysNames } from "@/constants/monthsNames";
+import { stats } from "@/constants/stats";
+
 import { EventCard } from "@/components";
-import { stats } from "../stats/stats";
+
+import { statsEventsCharmNames, Categories, Times, Event } from "../types";
 
 const getCharmUpgradeFunction = (value: number) => {
   return function ({ currentDay }: { currentDay: SingleDay }) {

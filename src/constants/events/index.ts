@@ -1,9 +1,12 @@
-import { statsEventsAcademics } from "./statsEventsAcademics";
-import { statsEventsCourage } from "./statsEventsCourage";
-import { socialLinksEvents } from "./socialLinksEvents";
-import { statsEventsCharm } from "./statsEventsCharm";
+import { socialLinksEvents } from "./socialLinks";
 import { specialEvents } from "./specialEvents";
 import { pcPrograms } from "./pcPrograms";
+
+import {
+  statsEventsAcademics,
+  statsEventsCourage,
+  statsEventsCharm,
+} from "./stats";
 
 import { allEventsNames, Categories, Times, Event } from "./types";
 

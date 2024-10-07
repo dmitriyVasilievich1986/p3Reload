@@ -1,5 +1,5 @@
 import { SocialLinkNames, Routes } from "@/constants/socialLinks/types";
-import { socialLinkRomanceNames, Times, Event } from "./types";
+import { socialLinkRomanceNames, Times, Event } from "../types";
 import { SocialLinkEvent } from "./SocialLinkEventClass";
 
 export const socialLinksEvents: {

@@ -1,8 +1,10 @@
-import { statsEventsCourageNames, Categories, Times, Event } from "./types";
+import { SingleDay } from "@/constants/calendar/SingleDay";
+import { StatsNames, stats } from "@/constants/stats";
+import { DaysNames } from "@/constants/monthsNames";
+
 import { EventCard, Question, Answer } from "@/components";
-import { SingleDay } from "../calendar/SingleDay";
-import { StatsNames, stats } from "../stats";
-import { DaysNames } from "../monthsNames";
+
+import { statsEventsCourageNames, Categories, Times, Event } from "../types";
 
 const getCourageUpgradeFunction = (value: number) => {
   return function ({ currentDay }: { currentDay: SingleDay }) {

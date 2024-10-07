@@ -1,8 +1,10 @@
-import { statsEventsAcademicsNames, Categories, Times, Event } from "./types";
+import { SingleDay } from "@/constants/calendar/SingleDay";
+import { StatsNames, stats } from "@/constants/stats";
+import { DaysNames } from "@/constants/monthsNames";
+
 import { EventCard, WideEvent } from "@/components";
-import { SingleDay } from "../calendar/SingleDay";
-import { StatsNames, stats } from "../stats";
-import { DaysNames } from "../monthsNames";
+
+import { statsEventsAcademicsNames, Categories, Times, Event } from "../types";
 
 const getAcademicsUpgradeFunction = (value: number) => {
   return function ({ currentDay }: { currentDay: SingleDay }) {
