@@ -1,286 +1,164 @@
 import { pcProgramsNames, Categories, Times, Event } from "./types";
-import { StatsNames, stats } from "../stats";
+import { StatsRepresentation, StatsNames, stats } from "../stats";
+import { SocialLinkAvailableProps } from "../socialLinks/types";
+
 import { EventCard } from "@/components";
 
-const pcProgramBase: Event = {
-  name: pcProgramsNames.lobbyPCLanguageMadeEasy,
-  category: Categories.Stats,
-  time: Times.Evening,
-  label: function () {
-    return (
-      <EventCard
-        head={this.name}
-        stats="Academics +4"
-        place="Dorm"
-        price={1200}
-      />
-    );
-  },
-  available: function ({ previousDay, currentDay, time }) {
+class pcProgram implements Event {
+  category: Categories = Categories.Stats;
+  time: Times = Times.Evening;
+
+  name: pcProgramsNames;
+  date: Date;
+
+  stats?: StatsRepresentation | string;
+  price?: number;
+
+  constructor(props: {
+    name: pcProgramsNames;
+    stats?: StatsRepresentation | string;
+    price?: number;
+    date?: Date;
+  }) {
+    this.date = props.date ?? new Date(2009, 3, 29);
+    this.stats = props.stats;
+    this.price = props.price;
+    this.name = props.name;
+
+    this.available = this.available.bind(this);
+    this.upgrade = this.upgrade.bind(this);
+    this.label = this.label.bind(this);
+  }
+
+  available({ previousDay, currentDay, time }: SocialLinkAvailableProps) {
     if (previousDay === undefined) return false;
+
     const timeAvailable =
       time === Times.Evening || (time === Times.Day && !!currentDay.isDayOff);
+
     return (
-      currentDay.date.getTime() >= new Date(2009, 3, 29).getTime() &&
       !previousDay.singleTimeEvents.includes(this.name) &&
+      currentDay.date.getTime() >= this.date.getTime() &&
       timeAvailable
     );
-  },
-  upgrade: function ({ currentDay }) {
+  }
+
+  upgrade({ currentDay }: SocialLinkAvailableProps) {
+    let newStats = {};
+    if (
+      this.stats !== undefined &&
+      typeof this.stats !== "string" &&
+      this.stats.value !== undefined
+    ) {
+      newStats = {
+        [this.stats.name]: currentDay.stats[this.stats.name] + this.stats.value,
+      };
+    }
+
     return {
       singleTimeEvents: [...currentDay.singleTimeEvents, this.name],
       stats: {
         ...currentDay.stats,
-        [StatsNames.Academics]: currentDay.stats[StatsNames.Academics] + 4,
+        ...newStats,
       },
     };
-  },
-};
+  }
+
+  label() {
+    const statsRepr =
+      typeof this.stats === "string"
+        ? this.stats
+        : this.stats?.representation();
+
+    return (
+      <EventCard
+        price={this.price}
+        stats={statsRepr}
+        head={this.name}
+        place="Dorm"
+      />
+    );
+  }
+}
+
+class pcProgramSuspicious extends pcProgram {
+  available({ previousDay, currentDay, time }: SocialLinkAvailableProps) {
+    if (previousDay === undefined) return false;
+
+    const timeAvailable =
+      time === Times.Evening || (time === Times.Day && !!currentDay.isDayOff);
+    const isCourage =
+      previousDay.stats[StatsNames.Courage] >=
+      stats[StatsNames.Courage].levels[1].value;
+
+    return (
+      !previousDay.singleTimeEvents.includes(this.name) &&
+      currentDay.date.getTime() >= this.date.getTime() &&
+      timeAvailable &&
+      isCourage
+    );
+  }
+}
 
 export const pcPrograms: { [key in pcProgramsNames]: Event } = {
-  [pcProgramsNames.lobbyPCLanguageMadeEasy]: pcProgramBase,
-  [pcProgramsNames.lobbyPCSchoolXSiteNote]: {
-    ...pcProgramBase,
-    name: pcProgramsNames.lobbyPCSchoolXSiteNote,
-    label: function () {
-      return (
-        <EventCard
-          stats="Lukewarm Taiyaki available"
-          head={this.name}
-          place="Dorm"
-          price={500}
-        />
-      );
-    },
-    available: function ({ previousDay, currentDay, time }) {
-      if (previousDay === undefined) return false;
-      const timeAvailable =
-        time === Times.Evening || (time === Times.Day && !!currentDay.isDayOff);
-      const isCourage =
-        previousDay.stats[StatsNames.Courage] >=
-        stats[StatsNames.Courage].levels[1].value;
-      return (
-        currentDay.date.getTime() >= new Date(2009, 3, 29).getTime() &&
-        !previousDay.singleTimeEvents.includes(this.name) &&
-        timeAvailable &&
-        isCourage
-      );
-    },
-    upgrade: function ({ currentDay }) {
-      return {
-        singleTimeEvents: [...currentDay.singleTimeEvents, this.name],
-      };
-    },
-  },
-  [pcProgramsNames.lobbyPCIwatodaiForumNote]: {
-    ...pcProgramBase,
-    name: pcProgramsNames.lobbyPCIwatodaiForumNote,
-    label: function () {
-      return (
-        <EventCard
-          stats="More drinks in Iwatodai vending machine"
-          head={this.name}
-          place="Dorm"
-          price={500}
-        />
-      );
-    },
-    available: function ({ previousDay, currentDay, time }) {
-      if (previousDay === undefined) return false;
-      const timeAvailable =
-        time === Times.Evening || (time === Times.Day && !!currentDay.isDayOff);
-      const isCourage =
-        previousDay.stats[StatsNames.Courage] >=
-        stats[StatsNames.Courage].levels[1].value;
-      return (
-        currentDay.date.getTime() >= new Date(2009, 3, 29).getTime() &&
-        !previousDay.singleTimeEvents.includes(this.name) &&
-        timeAvailable &&
-        isCourage
-      );
-    },
-    upgrade: function ({ currentDay }) {
-      return {
-        singleTimeEvents: [...currentDay.singleTimeEvents, this.name],
-      };
-    },
-  },
-  [pcProgramsNames.lobbyPCUmiushiFanBook]: {
-    ...pcProgramBase,
-    name: pcProgramsNames.lobbyPCUmiushiFanBook,
-    label: function () {
-      return (
-        <EventCard
-          stats="Access to Umiushi Beef Bowls"
-          head={this.name}
-          place="Dorm"
-          price={450}
-        />
-      );
-    },
-    upgrade: function ({ currentDay }) {
-      return {
-        singleTimeEvents: [...currentDay.singleTimeEvents, this.name],
-      };
-    },
-  },
-  [pcProgramsNames.lobbyPCMindfulBootCamp]: {
-    ...pcProgramBase,
-    name: pcProgramsNames.lobbyPCMindfulBootCamp,
-    label: function () {
-      return (
-        <EventCard
-          stats="Max SP Boost"
-          head={this.name}
-          price={2_000}
-          place="Dorm"
-        />
-      );
-    },
-    upgrade: function ({ currentDay }) {
-      return {
-        singleTimeEvents: [...currentDay.singleTimeEvents, this.name],
-      };
-    },
-  },
-  [pcProgramsNames.lobbyPCMuscleBootCamp]: {
-    ...pcProgramBase,
-    name: pcProgramsNames.lobbyPCMuscleBootCamp,
-    label: function () {
-      return (
-        <EventCard
-          stats="Max HP Boost"
-          head={this.name}
-          price={2_000}
-          place="Dorm"
-        />
-      );
-    },
-    upgrade: function ({ currentDay }) {
-      return {
-        singleTimeEvents: [...currentDay.singleTimeEvents, this.name],
-      };
-    },
-  },
-  [pcProgramsNames.lobbyPCDigitalCramSchool]: {
-    ...pcProgramBase,
+  [pcProgramsNames.lobbyPCDigitalCramSchool]: new pcProgram({
+    stats: new StatsRepresentation(StatsNames.Academics, 4),
     name: pcProgramsNames.lobbyPCDigitalCramSchool,
-    label: function () {
-      return <EventCard head={this.name} stats="Academics +4" place="Dorm" />;
-    },
-  },
-  [pcProgramsNames.ninjaFansiteNote]: {
-    ...pcProgramBase,
-    name: pcProgramsNames.ninjaFansiteNote,
-    label: function () {
-      return <EventCard head={this.name} price={12_000} place="Dorm" />;
-    },
-    available: function ({ previousDay, currentDay, time }) {
-      if (previousDay === undefined) return false;
-      const timeAvailable =
-        time === Times.Evening || (time === Times.Day && !!currentDay.isDayOff);
-      return (
-        currentDay.date.getTime() >= new Date(2009, 10, 5).getTime() &&
-        !previousDay.singleTimeEvents.includes(this.name) &&
-        timeAvailable
-      );
-    },
-    upgrade: function ({ currentDay }) {
-      return {
-        singleTimeEvents: [...currentDay.singleTimeEvents, this.name],
-      };
-    },
-  },
-  [pcProgramsNames.lobbyPCAnimalOthello]: {
-    ...pcProgramBase,
+  }),
+  [pcProgramsNames.lobbyPCLanguageMadeEasy]: new pcProgram({
+    stats: new StatsRepresentation(StatsNames.Academics, 4),
+    name: pcProgramsNames.lobbyPCLanguageMadeEasy,
+    price: 1_200,
+  }),
+  [pcProgramsNames.lobbyPCAnimalOthello]: new pcProgram({
+    stats: new StatsRepresentation(StatsNames.Courage, 4),
     name: pcProgramsNames.lobbyPCAnimalOthello,
-    label: function () {
-      return (
-        <EventCard
-          head={this.name}
-          stats="Courage +4"
-          place="Dorm"
-          price={1200}
-        />
-      );
-    },
-    upgrade: function ({ currentDay }) {
-      return {
-        singleTimeEvents: [...currentDay.singleTimeEvents, this.name],
-        stats: {
-          ...currentDay.stats,
-          [StatsNames.Courage]: currentDay.stats[StatsNames.Courage] + 4,
-        },
-      };
-    },
-  },
-  [pcProgramsNames.lobbyPCTypinGhoul]: {
-    ...pcProgramBase,
+    price: 1_200,
+  }),
+  [pcProgramsNames.lobbyPCTypinGhoul]: new pcProgram({
+    stats: new StatsRepresentation(StatsNames.Courage, 4),
     name: pcProgramsNames.lobbyPCTypinGhoul,
-    label: function () {
-      return (
-        <EventCard
-          head={this.name}
-          stats="Courage +4"
-          place="Dorm"
-          price={1200}
-        />
-      );
-    },
-    upgrade: function ({ currentDay }) {
-      return {
-        singleTimeEvents: [...currentDay.singleTimeEvents, this.name],
-        stats: {
-          ...currentDay.stats,
-          [StatsNames.Courage]: currentDay.stats[StatsNames.Courage] + 4,
-        },
-      };
-    },
-  },
-  [pcProgramsNames.lobbyPCLessonsInEtiquette]: {
-    ...pcProgramBase,
+    price: 1_200,
+  }),
+  [pcProgramsNames.lobbyPCLessonsInEtiquette]: new pcProgram({
+    stats: new StatsRepresentation(StatsNames.Charm, 4),
     name: pcProgramsNames.lobbyPCLessonsInEtiquette,
-    label: function () {
-      return (
-        <EventCard
-          head={this.name}
-          stats="Charm +4"
-          place="Dorm"
-          price={1200}
-        />
-      );
-    },
-    upgrade: function ({ currentDay }) {
-      return {
-        singleTimeEvents: [...currentDay.singleTimeEvents, this.name],
-        stats: {
-          ...currentDay.stats,
-          [StatsNames.Charm]: currentDay.stats[StatsNames.Charm] + 4,
-        },
-      };
-    },
-  },
-  [pcProgramsNames.lobbyPCVirtualDiet]: {
-    ...pcProgramBase,
+    price: 1_200,
+  }),
+  [pcProgramsNames.lobbyPCVirtualDiet]: new pcProgram({
+    stats: new StatsRepresentation(StatsNames.Charm, 4),
     name: pcProgramsNames.lobbyPCVirtualDiet,
-    label: function () {
-      return (
-        <EventCard
-          head={this.name}
-          stats="Charm +4"
-          place="Dorm"
-          price={1200}
-        />
-      );
-    },
-    upgrade: function ({ currentDay }) {
-      return {
-        singleTimeEvents: [...currentDay.singleTimeEvents, this.name],
-        stats: {
-          ...currentDay.stats,
-          [StatsNames.Charm]: currentDay.stats[StatsNames.Charm] + 4,
-        },
-      };
-    },
-  },
+    price: 1_200,
+  }),
+  [pcProgramsNames.lobbyPCMindfulBootCamp]: new pcProgram({
+    name: pcProgramsNames.lobbyPCMindfulBootCamp,
+    stats: "Max SP Boost",
+    price: 2_000,
+  }),
+  [pcProgramsNames.lobbyPCMuscleBootCamp]: new pcProgram({
+    name: pcProgramsNames.lobbyPCMuscleBootCamp,
+    stats: "Max HP Boost",
+    price: 2_000,
+  }),
+  [pcProgramsNames.lobbyPCUmiushiFanBook]: new pcProgram({
+    name: pcProgramsNames.lobbyPCUmiushiFanBook,
+    stats: "Access to Umiushi Beef Bowls",
+    price: 450,
+  }),
+  [pcProgramsNames.lobbyPCSchoolXSiteNote]: new pcProgramSuspicious({
+    name: pcProgramsNames.lobbyPCSchoolXSiteNote,
+    stats: "Lukewarm Taiyaki available",
+    price: 500,
+  }),
+  [pcProgramsNames.lobbyPCIwatodaiForumNote]: new pcProgramSuspicious({
+    stats: "More drinks in Iwatodai vending machine",
+    name: pcProgramsNames.lobbyPCIwatodaiForumNote,
+    price: 500,
+  }),
+  [pcProgramsNames.ninjaFansiteNote]: new pcProgramSuspicious({
+    stats: "Ambush requires 1 second of dashing ",
+    name: pcProgramsNames.ninjaFansiteNote,
+    date: new Date(2009, 10, 5),
+    price: 12_000,
+  }),
 };
