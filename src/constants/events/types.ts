@@ -31,9 +31,8 @@ export enum Times {
 }
 
 export enum SpecialEventsNames {
-  DoNothing = "Do Nothing",
-  NoControl = "No Control",
   Special = "Special Event",
+  DoNothing = "Do Nothing",
   Tartarus = "Tartarus",
   Exams = "Exams",
 }
