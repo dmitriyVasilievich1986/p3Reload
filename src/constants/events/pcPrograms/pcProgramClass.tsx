@@ -1,102 +1,103 @@
-import { StatsRepresentation, StatsNames, stats } from "@/constants/stats";
 import { SocialLinkAvailableProps } from "@/constants/socialLinks/types";
+import { StatsRepresentation, StatsNames } from "@/constants/stats";
 
-import { pcProgramsNames, Categories, Times, Event } from "../types";
+import {
+  AvailableSingleTimeEventsIsIn,
+  AvailableStatGreater,
+  AvailableDateGreater,
+  AvailableTimesIsIn,
+  AvailableIsDayOff,
+  And_,
+  Or_,
+} from "@/constants/availability/AvailableClass";
 
-import { EventCard } from "@/components";
+import { allEventsNames, Categories, Times } from "../types";
+import { EventClass } from "../EventClass";
 
-export class pcProgram implements Event {
-  category: Categories = Categories.Stats;
-  time: Times = Times.Evening;
-
-  name: pcProgramsNames;
-  date: Date;
-
-  stats?: StatsRepresentation | string;
-  price?: number;
-
+export class pcProgram extends EventClass {
   constructor(props: {
-    name: pcProgramsNames;
-    stats?: StatsRepresentation | string;
+    name: allEventsNames;
+    stats?: (StatsRepresentation | string)[];
+    startDate?: Date;
+    place?: string;
     price?: number;
-    date?: Date;
   }) {
-    this.date = props.date ?? new Date(2009, 3, 29);
-    this.stats = props.stats;
-    this.price = props.price;
-    this.name = props.name;
+    const date = props.startDate ?? new Date(2009, 3, 29);
 
-    this.available = this.available.bind(this);
-    this.upgrade = this.upgrade.bind(this);
-    this.label = this.label.bind(this);
+    const availability = new And_([
+      new AvailableSingleTimeEventsIsIn({ name: props.name, reverse: true }),
+      new AvailableDateGreater({ date }),
+      new Or_([
+        new AvailableTimesIsIn({ times: [Times.Evening] }),
+        new And_([
+          new AvailableIsDayOff(),
+          new AvailableTimesIsIn({ times: [Times.Day] }),
+        ]),
+      ]),
+    ]);
+
+    super({
+      ...props,
+      category: Categories.Stats,
+      stats: props.stats ?? [],
+      time: Times.Evening,
+      availability,
+    });
   }
 
-  available({ previousDay, currentDay, time }: SocialLinkAvailableProps) {
-    if (previousDay === undefined) return false;
-
-    const timeAvailable =
-      time === Times.Evening || (time === Times.Day && !!currentDay.isDayOff);
-
-    return (
-      !previousDay.singleTimeEvents.includes(this.name) &&
-      currentDay.date.getTime() >= this.date.getTime() &&
-      timeAvailable
-    );
-  }
-
-  upgrade({ currentDay }: SocialLinkAvailableProps) {
-    let newStats = {};
-    if (
-      this.stats !== undefined &&
-      typeof this.stats !== "string" &&
-      this.stats.value !== undefined
-    ) {
-      newStats = {
-        [this.stats.name]: currentDay.stats[this.stats.name] + this.stats.value,
-      };
-    }
+  upgrade(props: SocialLinkAvailableProps) {
+    const payload = super.upgrade(props);
 
     return {
-      singleTimeEvents: [...currentDay.singleTimeEvents, this.name],
-      stats: {
-        ...currentDay.stats,
-        ...newStats,
-      },
+      ...payload,
+      singleTimeEvents: [...props.currentDay.singleTimeEvents, this.name],
     };
-  }
-
-  label() {
-    const statsRepr =
-      typeof this.stats === "string"
-        ? this.stats
-        : this.stats?.representation();
-
-    return (
-      <EventCard
-        price={this.price}
-        stats={statsRepr}
-        head={this.name}
-        place="Dorm"
-      />
-    );
   }
 }
 
-export class pcProgramSuspicious extends pcProgram {
-  available({ previousDay, currentDay, time }: SocialLinkAvailableProps) {
-    if (previousDay === undefined) return false;
+export class pcProgramSuspicious extends EventClass {
+  constructor(props: {
+    name: allEventsNames;
+    stats?: (StatsRepresentation | string)[];
+    startDate?: Date;
+    place?: string;
+    price?: number;
+  }) {
+    const date = props.startDate ?? new Date(2009, 3, 29);
 
-    const timeAvailable =
-      time === Times.Evening || (time === Times.Day && !!currentDay.isDayOff);
-    const isCourage =
-      previousDay.stats[StatsNames.Courage] >=
-      stats[StatsNames.Courage].levels[1].value;
+    const availability = new And_([
+      new AvailableSingleTimeEventsIsIn({ name: props.name, reverse: true }),
+      new AvailableStatGreater({ name: StatsNames.Courage, level: 1 }),
+      new AvailableDateGreater({ date }),
+      new Or_([
+        new AvailableTimesIsIn({ times: [Times.Evening] }),
+        new And_([
+          new AvailableIsDayOff(),
+          new AvailableTimesIsIn({ times: [Times.Day] }),
+        ]),
+      ]),
+    ]);
 
-    return (
-      !previousDay.singleTimeEvents.includes(this.name) &&
-      currentDay.date.getTime() >= this.date.getTime() &&
-      timeAvailable &&
-      isCourage
-    );
+    super({
+      ...props,
+      category: Categories.Stats,
+      stats: props.stats ?? [],
+      time: Times.Evening,
+      availability,
+    });
+  }
+
+  upgrade(props: SocialLinkAvailableProps) {
+    const payload = super.upgrade(props);
+
+    const currentDay = props.currentDay;
+    const singleTimeEvents = currentDay.singleTimeEvents.includes(this.name)
+      ? props.currentDay.singleTimeEvents
+      : [...props.currentDay.singleTimeEvents, this.name];
+
+    return {
+      ...payload,
+      singleTimeEvents,
+    };
   }
 }
