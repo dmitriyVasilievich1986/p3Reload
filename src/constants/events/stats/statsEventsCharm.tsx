@@ -1,278 +1,106 @@
-import { SingleDay } from "@/constants/calendar/SingleDay";
-import { StatsNames } from "@/constants/stats/types";
+import { StatsRepresentation, StatsNames } from "@/constants/stats";
 import { DaysNames } from "@/constants/monthsNames";
-import { stats } from "@/constants/stats";
 
-import { EventCard } from "@/components";
+import {
+  AvailableSingleTimeEventsIsIn,
+  AvailableDaysNamesIsIn,
+  AvailableStatGreater,
+  AvailableTimesIsIn,
+  False_,
+  And_,
+  Or_,
+} from "@/constants/availability/AvailableClass";
 
-import { statsEventsCharmNames, Categories, Times, Event } from "../types";
-
-const getCharmUpgradeFunction = (value: number) => {
-  return function ({ currentDay }: { currentDay: SingleDay }) {
-    return {
-      stats: {
-        ...currentDay.stats,
-        [StatsNames.Charm]: currentDay.stats[StatsNames.Charm] + value,
-      },
-    };
-  };
-};
+import { StatsEveningSingleEvent, StatsEvents } from "./statsClass";
+import { statsEventsCharmNames, Times, Event } from "../types";
 
 export const statsEventsCharm: {
   [key in statsEventsCharmNames]: Event;
 } = {
-  [statsEventsCharmNames.beBlueV]: {
-    name: statsEventsCharmNames.beBlueV,
-    category: Categories.Stats,
-    time: Times.Day,
-    label: function () {
-      return (
-        <EventCard
-          head={this.name}
-          stats="Charm +1 | Academics +1"
-          place="Paulownia Mall"
-          receive={3500}
-        />
-      );
-    },
-    available: function ({ previousDay, currentDay, time }) {
-      if (
-        !previousDay ||
-        previousDay.stats[StatsNames.Charm] >=
-          stats[StatsNames.Charm].levels[5].value
-      )
-        return false;
-      const days = [
-        DaysNames.monday,
-        DaysNames.tuesday,
-        DaysNames.wednesday,
-        DaysNames.thursday,
-        DaysNames.friday,
-      ];
-      return (
-        currentDay.date.getTime() >= new Date(2009, 6, 22).getTime() &&
-        days.includes(currentDay.date.getDay()) &&
-        time === Times.Day
-      );
-    },
-    upgrade: function ({ currentDay }) {
-      return {
-        stats: {
-          ...currentDay.stats,
-          [StatsNames.Academics]: currentDay.stats[StatsNames.Academics] + 1,
-          [StatsNames.Charm]: currentDay.stats[StatsNames.Charm] + 1,
-        },
-      };
-    },
-  },
-  [statsEventsCharmNames.chagallCafePartTimeWork]: {
-    name: statsEventsCharmNames.chagallCafePartTimeWork,
-    category: Categories.Stats,
-    time: Times.Evening,
-    label: function () {
-      return (
-        <EventCard
-          head={this.name}
-          stats="Courage +1 | Charm +1"
-          place="Paulownia Mall"
-          receive={2500}
-        />
-      );
-    },
-    available: function ({ previousDay, currentDay, time }) {
-      if (
-        !previousDay ||
-        previousDay.stats[StatsNames.Charm] >=
-          stats[StatsNames.Charm].levels[5].value
-      )
-        return false;
-      const days = [DaysNames.monday, DaysNames.tuesday, DaysNames.wednesday];
-      return time === Times.Evening && days.includes(currentDay.date.getDay());
-    },
-    upgrade: function ({ currentDay }) {
-      return {
-        stats: {
-          ...currentDay.stats,
-          [StatsNames.Courage]: currentDay.stats[StatsNames.Courage] + 1,
-          [StatsNames.Charm]: currentDay.stats[StatsNames.Charm] + 1,
-        },
-      };
-    },
-  },
-  [statsEventsCharmNames.chagallCafeCharm]: {
+  [statsEventsCharmNames.chagallCafeCharm]: new StatsEvents({
+    stats: [new StatsRepresentation(StatsNames.Charm, 2)],
     name: statsEventsCharmNames.chagallCafeCharm,
-    category: Categories.Stats,
+    place: "Paulownia Mall",
     time: Times.Evening,
-    label: function () {
-      return (
-        <EventCard
-          head={this.name}
-          place="Paulownia Mall"
-          stats="Charm +2"
-          price={500}
-        />
-      );
-    },
-    available: function ({ previousDay, currentDay, time }) {
-      if (
-        !previousDay ||
-        previousDay.stats[StatsNames.Charm] >=
-          stats[StatsNames.Charm].levels[5].value
-      )
-        return false;
-      const days = [DaysNames.monday, DaysNames.tuesday];
-      return (
-        time === Times.Evening ||
-        (time === Times.Day && !days.includes(currentDay.date.getDay()))
-      );
-    },
-    upgrade: getCharmUpgradeFunction(2),
-  },
-  [statsEventsCharmNames.schoolQuestionCharm]: {
+    price: 500,
+    availability: new Or_([
+      new AvailableTimesIsIn({ times: [Times.Evening] }),
+      new And_([
+        new AvailableTimesIsIn({ times: [Times.Day] }),
+        new AvailableDaysNamesIsIn({
+          days: [DaysNames.monday, DaysNames.tuesday],
+        }),
+      ]),
+    ]),
+  }),
+  [statsEventsCharmNames.schoolQuestionCharm]: new StatsEvents({
+    stats: [new StatsRepresentation(StatsNames.Charm, 2)],
     name: statsEventsCharmNames.schoolQuestionCharm,
-    category: Categories.Special,
+    place: "Gekkoukan High School",
+    availability: new False_(),
     time: Times.Morning,
     special: true,
-    available: () => false,
-    label: () => null,
-    upgrade: getCharmUpgradeFunction(2),
-  },
-  [statsEventsCharmNames.hagakureRamen]: {
+  }),
+  [statsEventsCharmNames.hagakureRamen]: new StatsEveningSingleEvent({
+    stats: [new StatsRepresentation(StatsNames.Charm, 3)],
     name: statsEventsCharmNames.hagakureRamen,
-    category: Categories.Stats,
+    place: "Iwatodai Strip Mall",
     time: Times.Evening,
-    label: function () {
-      return (
-        <EventCard
-          head={this.name}
-          place="Iwatodai Strip Mall"
-          stats="Charm +3"
-          price={900}
-        />
-      );
-    },
-    available: function ({ previousDay, currentDay, time }) {
-      if (
-        !previousDay ||
-        previousDay.stats[StatsNames.Charm] >=
-          stats[StatsNames.Charm].levels[5].value
-      )
-        return false;
-      const days = [
-        DaysNames.monday,
-        DaysNames.tuesday,
-        DaysNames.wednesday,
-        DaysNames.thursday,
-        DaysNames.friday,
-      ];
-      return (
-        [Times.Day, Times.Evening].includes(time) &&
-        days.includes(currentDay.date.getDay())
-      );
-    },
-    upgrade: function ({ currentDay }) {
-      const singleTimeEvents = currentDay.singleTimeEvents.includes(
-        statsEventsCharmNames.hagakureRamen
-      )
-        ? currentDay.singleTimeEvents
-        : [...currentDay.singleTimeEvents, statsEventsCharmNames.hagakureRamen];
-      return {
-        singleTimeEvents,
-        stats: {
-          ...currentDay.stats,
-          [StatsNames.Charm]: currentDay.stats[StatsNames.Charm] + 3,
-        },
-      };
-    },
-  },
-  [statsEventsCharmNames.cinemaTheaterCharm]: {
+    price: 900,
+    availability: new And_([
+      new AvailableTimesIsIn({ times: [Times.Day, Times.Evening] }),
+      new AvailableDaysNamesIsIn({
+        days: [
+          DaysNames.monday,
+          DaysNames.tuesday,
+          DaysNames.wednesday,
+          DaysNames.thursday,
+          DaysNames.friday,
+        ],
+      }),
+    ]),
+  }),
+  [statsEventsCharmNames.cinemaTheaterCharm]: new StatsEvents({
+    stats: [new StatsRepresentation(StatsNames.Charm, 4)],
     name: statsEventsCharmNames.cinemaTheaterCharm,
-    category: Categories.Stats,
+    place: "Port Island Station",
     time: Times.Day,
-    label: function () {
-      return (
-        <EventCard
-          head={this.name}
-          place="Port Island Station"
-          stats="Charm +4"
-          price={1500}
-        />
-      );
-    },
-    available: function ({ previousDay, currentDay, time }) {
-      if (
-        !previousDay ||
-        previousDay.stats[StatsNames.Charm] >=
-          stats[StatsNames.Charm].levels[5].value
-      )
-        return false;
-      const days = [DaysNames.tuesday, DaysNames.friday];
-      return days.includes(currentDay.date.getDay()) && time === Times.Day;
-    },
-    upgrade: getCharmUpgradeFunction(4),
-  },
-  [statsEventsCharmNames.hagakureRamenSpecial]: {
+    price: 1_500,
+    availability: new And_([
+      new AvailableTimesIsIn({ times: [Times.Day] }),
+      new AvailableDaysNamesIsIn({
+        days: [DaysNames.tuesday, DaysNames.friday],
+      }),
+    ]),
+  }),
+  [statsEventsCharmNames.hagakureRamenSpecial]: new StatsEvents({
+    stats: [new StatsRepresentation(StatsNames.Charm, 4)],
     name: statsEventsCharmNames.hagakureRamenSpecial,
-    category: Categories.Stats,
+    place: "Iwatodai Strip Mall",
     time: Times.Evening,
-    label: function () {
-      return (
-        <EventCard
-          head={this.name}
-          place="Iwatodai Strip Mall"
-          stats="Charm +4"
-          price={1200}
-        />
-      );
-    },
-    available: function ({ previousDay, currentDay, time }) {
-      if (
-        !previousDay ||
-        previousDay.stats[StatsNames.Charm] >=
-          stats[StatsNames.Charm].levels[5].value
-      )
-        return false;
-      const days = [DaysNames.tuesday, DaysNames.wednesday, DaysNames.friday];
-      const courageLevel = stats[StatsNames.Courage].levels[2].value;
-      const isSecondTime = previousDay.singleTimeEvents.includes(
-        statsEventsCharmNames.hagakureRamen
-      );
-      return (
-        previousDay.stats[StatsNames.Courage] >= courageLevel &&
-        days.includes(currentDay.date.getDay()) &&
-        [Times.Evening].includes(time) &&
-        isSecondTime
-      );
-    },
-    upgrade: getCharmUpgradeFunction(4),
-  },
-  [statsEventsCharmNames.gameParadeCharm]: {
+    price: 1_200,
+    availability: new And_([
+      new AvailableTimesIsIn({ times: [Times.Evening] }),
+      new AvailableStatGreater({ name: StatsNames.Courage, level: 2 }),
+      new AvailableSingleTimeEventsIsIn({
+        name: statsEventsCharmNames.hagakureRamen,
+      }),
+      new AvailableDaysNamesIsIn({
+        days: [DaysNames.tuesday, DaysNames.wednesday, DaysNames.friday],
+      }),
+    ]),
+  }),
+  [statsEventsCharmNames.gameParadeCharm]: new StatsEvents({
+    stats: [new StatsRepresentation(StatsNames.Charm, 4)],
     name: statsEventsCharmNames.gameParadeCharm,
-    category: Categories.Stats,
+    place: "Paulownia Mall",
     time: Times.Evening,
-    label: function () {
-      return (
-        <EventCard
-          head={this.name}
-          place="Paulownia Mall"
-          stats="Charm +4"
-          price={1500}
-        />
-      );
-    },
-    available: function ({ previousDay, currentDay, time }) {
-      if (
-        !previousDay ||
-        previousDay.stats[StatsNames.Charm] >=
-          stats[StatsNames.Charm].levels[5].value
-      )
-        return false;
-      const days = [DaysNames.monday, DaysNames.thursday];
-      return (
-        [Times.Day, Times.Evening].includes(time) &&
-        days.includes(currentDay.date.getDay())
-      );
-    },
-    upgrade: getCharmUpgradeFunction(4),
-  },
+    price: 1_500,
+    availability: new And_([
+      new AvailableTimesIsIn({ times: [Times.Day, Times.Evening] }),
+      new AvailableDaysNamesIsIn({
+        days: [DaysNames.monday, DaysNames.thursday],
+      }),
+    ]),
+  }),
 };

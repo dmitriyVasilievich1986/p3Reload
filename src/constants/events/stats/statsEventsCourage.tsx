@@ -1,273 +1,150 @@
-import { SingleDay } from "@/constants/calendar/SingleDay";
-import { StatsNames, stats } from "@/constants/stats";
+import { StatsRepresentation, StatsNames } from "@/constants/stats";
 import { DaysNames } from "@/constants/monthsNames";
 
-import { EventCard, Question, Answer } from "@/components";
+import {
+  AvailableSingleTimeEventsIsIn,
+  AvailableDaysNamesIsIn,
+  AvailableStatGreater,
+  AvailableDateGreater,
+  AvailableTimesIsIn,
+  False_,
+  And_,
+} from "@/constants/availability/AvailableClass";
 
-import { statsEventsCourageNames, Categories, Times, Event } from "../types";
-
-const getCourageUpgradeFunction = (value: number) => {
-  return function ({ currentDay }: { currentDay: SingleDay }) {
-    return {
-      stats: {
-        ...currentDay.stats,
-        [StatsNames.Courage]: currentDay.stats[StatsNames.Courage] + value,
-      },
-    };
-  };
-};
+import { wilduckBigEaterChallengeEvent, StatsEvents } from "./statsClass";
+import { statsEventsCourageNames, Times, Event } from "../types";
 
 export const statsEventsCourage: {
   [key in statsEventsCourageNames]: Event;
 } = {
-  [statsEventsCourageNames.drinkMedicine]: {
+  [statsEventsCourageNames.drinkMedicine]: new StatsEvents({
+    stats: [new StatsRepresentation(StatsNames.Courage, 2)],
     name: statsEventsCourageNames.drinkMedicine,
-    category: Categories.Special,
+    availability: new False_(),
+    place: "Nurse's Office",
     time: Times.AfterSchool,
     special: true,
-    label: function () {
-      return (
-        <EventCard head={this.name} place="Nurse's Office" stats="Courage +2" />
-      );
-    },
-    available: function ({ previousDay, currentDay, time }) {
-      if (
-        !previousDay ||
-        previousDay.stats[StatsNames.Courage] >=
-          stats[StatsNames.Courage].levels[5].value
-      )
-        return false;
-      const days = [DaysNames.tuesday, DaysNames.friday];
-      return time === Times.Day && days.includes(currentDay.date.getDay());
-    },
-    upgrade: getCourageUpgradeFunction(2),
-  },
-  [statsEventsCourageNames.sleepDuringClass]: {
+  }),
+  [statsEventsCourageNames.sleepDuringClass]: new StatsEvents({
+    stats: [new StatsRepresentation(StatsNames.Courage, 2)],
     name: statsEventsCourageNames.sleepDuringClass,
-    category: Categories.Stats,
+    place: "Gekkoukan High School",
     time: Times.Morning,
-    label: function () {
-      return <EventCard head={this.name} stats="Courage +2" />;
-    },
-    available: function ({ previousDay, time }) {
-      if (
-        !previousDay ||
-        previousDay.stats[StatsNames.Courage] >=
-          stats[StatsNames.Courage].levels[5].value
-      )
-        return false;
-      return time === Times.Morning;
-    },
-    upgrade: getCourageUpgradeFunction(2),
-  },
-  [statsEventsCourageNames.Mandragora]: {
+    availability: new And_([
+      new AvailableTimesIsIn({ times: [Times.Morning] }),
+    ]),
+  }),
+  [statsEventsCourageNames.Mandragora]: new StatsEvents({
+    stats: [new StatsRepresentation(StatsNames.Courage, 2)],
     name: statsEventsCourageNames.Mandragora,
-    category: Categories.Stats,
+    place: "Paulownia Mall",
     time: Times.Evening,
-    label: function () {
-      return (
-        <EventCard
-          head={this.name}
-          place="Paulownia Mall"
-          stats="Courage +2"
-          price={800}
-        />
-      );
-    },
-    available: function ({ previousDay, currentDay, time }) {
-      if (
-        !previousDay ||
-        previousDay.stats[StatsNames.Courage] >=
-          stats[StatsNames.Courage].levels[5].value
-      )
-        return false;
-      return (
-        [Times.Day, Times.Evening].includes(time) &&
-        currentDay.date.getDay() !== DaysNames.sunday
-      );
-    },
-    upgrade: getCourageUpgradeFunction(2),
-  },
-  [statsEventsCourageNames.wilduckBurgeMysteryBurger]: {
+    price: 800,
+    availability: new And_([
+      new AvailableTimesIsIn({ times: [Times.Day, Times.Evening] }),
+      new AvailableDaysNamesIsIn({
+        days: [
+          DaysNames.monday,
+          DaysNames.tuesday,
+          DaysNames.wednesday,
+          DaysNames.thursday,
+          DaysNames.friday,
+          DaysNames.saturday,
+        ],
+      }),
+    ]),
+  }),
+  [statsEventsCourageNames.wilduckBurgeMysteryBurger]: new StatsEvents({
+    stats: [new StatsRepresentation(StatsNames.Courage, 3)],
     name: statsEventsCourageNames.wilduckBurgeMysteryBurger,
-    category: Categories.Stats,
+    place: "Iwatodai Strip Mall",
     time: Times.Evening,
-    label: function () {
-      return (
-        <EventCard
-          head={this.name}
-          place="Iwatodai Strip Mall"
-          stats="Courage +3"
-          price={1000}
-        />
-      );
-    },
-    available: function ({ previousDay, currentDay, time }) {
-      if (
-        !previousDay ||
-        previousDay.stats[StatsNames.Courage] >=
-          stats[StatsNames.Courage].levels[5].value
-      )
-        return false;
-      return (
-        [Times.Day, Times.Evening].includes(time) &&
-        currentDay.date.getDay() !== DaysNames.thursday
-      );
-    },
-    upgrade: getCourageUpgradeFunction(3),
-  },
-  [statsEventsCourageNames.gameParadeCourage]: {
+    price: 1_000,
+    availability: new And_([
+      new AvailableTimesIsIn({ times: [Times.Day, Times.Evening] }),
+      new AvailableDaysNamesIsIn({
+        days: [
+          DaysNames.monday,
+          DaysNames.tuesday,
+          DaysNames.wednesday,
+          DaysNames.friday,
+          DaysNames.saturday,
+          DaysNames.sunday,
+        ],
+      }),
+    ]),
+  }),
+  [statsEventsCourageNames.gameParadeCourage]: new StatsEvents({
+    stats: [new StatsRepresentation(StatsNames.Courage, 4)],
     name: statsEventsCourageNames.gameParadeCourage,
-    category: Categories.Stats,
+    place: "Paulownia Mall",
     time: Times.Evening,
-    label: function () {
-      return (
-        <EventCard
-          head={this.name}
-          place="Paulownia Mall"
-          stats="Courage +4"
-          price={3000}
-        />
-      );
-    },
-    available: function ({ previousDay, currentDay, time }) {
-      if (
-        !previousDay ||
-        previousDay.stats[StatsNames.Courage] >=
-          stats[StatsNames.Courage].levels[5].value
-      )
-        return false;
-      const days = [DaysNames.tuesday, DaysNames.friday];
-      return (
-        [Times.Day, Times.Evening].includes(time) &&
-        days.includes(currentDay.date.getDay())
-      );
-    },
-    upgrade: getCourageUpgradeFunction(4),
-  },
-  [statsEventsCourageNames.wilduckBurgeWeekendWilduckSet]: {
+    price: 3_000,
+    availability: new And_([
+      new AvailableTimesIsIn({ times: [Times.Day, Times.Evening] }),
+      new AvailableDaysNamesIsIn({
+        days: [DaysNames.tuesday, DaysNames.friday],
+      }),
+    ]),
+  }),
+  [statsEventsCourageNames.wilduckBurgeWeekendWilduckSet]: new StatsEvents({
+    stats: [new StatsRepresentation(StatsNames.Courage, 4)],
     name: statsEventsCourageNames.wilduckBurgeWeekendWilduckSet,
-    category: Categories.Stats,
+    place: "Iwatodai Strip Mall",
     time: Times.Evening,
-    label: function () {
-      return (
-        <EventCard
-          head={this.name}
-          place="Iwatodai Strip Mall"
-          stats="Courage +4"
-          price={1200}
-        />
-      );
-    },
-    available: function ({ previousDay, currentDay, time }) {
-      if (
-        !previousDay ||
-        previousDay.stats[StatsNames.Courage] >=
-          stats[StatsNames.Courage].levels[5].value
-      )
-        return false;
-      const days = [DaysNames.saturday, DaysNames.sunday];
-      return (
-        currentDay.singleTimeEvents.includes(
-          statsEventsCourageNames.wilduckBigEaterChallenge
-        ) &&
-        [Times.Day, Times.Evening].includes(time) &&
-        days.includes(currentDay.date.getDay())
-      );
-    },
-    upgrade: getCourageUpgradeFunction(4),
-  },
-  [statsEventsCourageNames.cinemaTheaterCourage]: {
+    price: 1_200,
+    availability: new And_([
+      new AvailableTimesIsIn({ times: [Times.Day, Times.Evening] }),
+      new AvailableSingleTimeEventsIsIn({
+        name: statsEventsCourageNames.wilduckBigEaterChallenge,
+      }),
+      new AvailableDaysNamesIsIn({
+        days: [DaysNames.saturday, DaysNames.sunday],
+      }),
+    ]),
+  }),
+  [statsEventsCourageNames.cinemaTheaterCourage]: new StatsEvents({
+    stats: [new StatsRepresentation(StatsNames.Courage, 4)],
     name: statsEventsCourageNames.cinemaTheaterCourage,
-    category: Categories.Stats,
+    place: "Port Island Station",
     time: Times.Day,
-    label: function () {
-      return (
-        <EventCard
-          head={this.name}
-          place="Port Island Station"
-          stats="Courage +4"
-          price={1500}
-        />
-      );
-    },
-    available: function ({ previousDay, currentDay, time }) {
-      if (
-        !previousDay ||
-        previousDay.stats[StatsNames.Courage] >=
-          stats[StatsNames.Courage].levels[5].value
-      )
-        return false;
-      const days = [DaysNames.monday, DaysNames.thursday];
-      return days.includes(currentDay.date.getDay()) && time === Times.Day;
-    },
-    upgrade: getCourageUpgradeFunction(4),
-  },
-  [statsEventsCourageNames.wilduckBigEaterChallenge]: {
-    name: statsEventsCourageNames.wilduckBigEaterChallenge,
-    category: Categories.Stats,
-    time: Times.Evening,
-    label: function ({ fullCard }) {
-      const RightAnswers = () => {
-        if (!fullCard) {
-          return null;
-        }
-        return (
-          <div>
-            <Question label="No matter how much I eat, the amount of burgers doesn't seem to decrease...">
-              <Answer label="Focus on single burger" />
-              <Answer label="Look away from the burgers" points={15} />
-              <Answer label="Glance at the pile of burgers" />
-            </Question>
-            <Question label="I feel like I'm making progress, but I shouldn't get ahead of myself...">
-              <Answer label="Eat without stopping" points={15} />
-              <Answer label="Take breaks in between bites" />
-              <Answer label="Wash it down with soda " />
-            </Question>
-            <Question label="It's the final stretch... How can I keep this up and complete the chalenge...?">
-              <Answer label="Savor the flavors" />
-              <Answer label="Imagine something sour" points={15} />
-              <Answer label="Chew properly and slowly" />
-            </Question>
-          </div>
-        );
-      };
-      return (
-        <div>
-          <EventCard
-            head={this.name}
-            stats="Academics +4 | Courage +4 | Charm +4"
-            place="Iwatodai Strip Mall"
-            price={1800}
-          />
-          <RightAnswers />
-        </div>
-      );
-    },
-    available: function ({ previousDay, currentDay, time }) {
-      if (
-        !previousDay ||
-        previousDay.stats[StatsNames.Courage] >=
-          stats[StatsNames.Courage].levels[5].value
-      )
-        return false;
-      const courageLevel = stats[StatsNames.Courage].levels[3].value;
-      return (
-        currentDay.date.getTime() >= new Date(2009, 4, 10).getTime() &&
-        previousDay.stats[StatsNames.Courage] >= courageLevel &&
-        !previousDay.singleTimeEvents.includes(this.name) &&
-        time === Times.Evening
-      );
-    },
-    upgrade: function ({ currentDay }) {
-      return {
-        singleTimeEvents: [...currentDay.singleTimeEvents, this.name],
-        stats: {
-          [StatsNames.Academics]: currentDay.stats[StatsNames.Academics] + 4,
-          [StatsNames.Courage]: currentDay.stats[StatsNames.Courage] + 4,
-          [StatsNames.Charm]: currentDay.stats[StatsNames.Charm] + 4,
-        },
-      };
-    },
-  },
+    price: 1_500,
+    availability: new And_([
+      new AvailableTimesIsIn({ times: [Times.Day] }),
+      new AvailableDaysNamesIsIn({
+        days: [DaysNames.monday, DaysNames.thursday],
+      }),
+    ]),
+  }),
+  [statsEventsCourageNames.wilduckBigEaterChallenge]:
+    new wilduckBigEaterChallengeEvent({
+      name: statsEventsCourageNames.wilduckBigEaterChallenge,
+      place: "Port Island Station",
+      time: Times.Evening,
+      price: 1_500,
+      stats: [
+        new StatsRepresentation(StatsNames.Courage, 4),
+        new StatsRepresentation(StatsNames.Charm, 4),
+        new StatsRepresentation(StatsNames.Academics, 4),
+      ],
+      availability: new And_([
+        new AvailableStatGreater({ name: StatsNames.Courage, level: 3 }),
+        new AvailableDateGreater({ date: new Date(2009, 4, 10) }),
+        new AvailableTimesIsIn({ times: [Times.Evening] }),
+        new AvailableSingleTimeEventsIsIn({
+          name: statsEventsCourageNames.wilduckBigEaterChallenge,
+          reverse: true,
+        }),
+        new AvailableDaysNamesIsIn({
+          days: [
+            DaysNames.monday,
+            DaysNames.tuesday,
+            DaysNames.wednesday,
+            DaysNames.friday,
+            DaysNames.saturday,
+            DaysNames.sunday,
+          ],
+        }),
+      ]),
+    }),
 };

@@ -1,310 +1,158 @@
-import { SingleDay } from "@/constants/calendar/SingleDay";
-import { StatsNames, stats } from "@/constants/stats";
+import { StatsRepresentation, StatsNames } from "@/constants/stats";
 import { DaysNames } from "@/constants/monthsNames";
 
-import { EventCard, WideEvent } from "@/components";
+import {
+  AvailableSingleTimeEventsIsIn,
+  AvailableDaysNamesIsIn,
+  AvailableStatGreater,
+  AvailableTimesIsIn,
+  AvailableDateIsIn,
+  False_,
+  And_,
+} from "@/constants/availability/AvailableClass";
 
-import { statsEventsAcademicsNames, Categories, Times, Event } from "../types";
-
-const getAcademicsUpgradeFunction = (value: number) => {
-  return function ({ currentDay }: { currentDay: SingleDay }) {
-    return {
-      stats: {
-        ...currentDay.stats,
-        [StatsNames.Academics]: currentDay.stats[StatsNames.Academics] + value,
-      },
-    };
-  };
-};
+import { statsEventsAcademicsNames, Times, Event } from "../types";
+import { StatsEveningSingleEvent, StatsEvents } from "./statsClass";
 
 export const statsEventsAcademics: {
   [key in statsEventsAcademicsNames]: Event;
 } = {
-  [statsEventsAcademicsNames.stayAwakeInClass]: {
+  [statsEventsAcademicsNames.stayAwakeInClass]: new StatsEvents({
+    stats: [new StatsRepresentation(StatsNames.Academics, 2)],
     name: statsEventsAcademicsNames.stayAwakeInClass,
-    category: Categories.Stats,
+    place: "Gekkoukan High School",
     time: Times.Morning,
-    label: function () {
-      return <EventCard head={this.name} stats="Academics +2" />;
-    },
-    available: function ({ previousDay, time }) {
-      if (
-        !previousDay ||
-        previousDay.stats[StatsNames.Academics] >=
-          stats[StatsNames.Academics].levels[5].value
-      )
-        return false;
-      return time === Times.Morning;
-    },
-    upgrade: getAcademicsUpgradeFunction(2),
-  },
-  [statsEventsAcademicsNames.studyAtHome]: {
-    name: statsEventsAcademicsNames.studyAtHome,
-    category: Categories.Stats,
-    time: Times.Evening,
-    label: function () {
-      return (
-        <EventCard head={this.name} stats="Academics +2" place="Your Room" />
-      );
-    },
-    available: function ({ previousDay, time }) {
-      if (
-        !previousDay ||
-        previousDay.stats[StatsNames.Academics] >=
-          stats[StatsNames.Academics].levels[5].value
-      )
-        return false;
-      return time === Times.Evening;
-    },
-    upgrade: getAcademicsUpgradeFunction(2),
-  },
-  [statsEventsAcademicsNames.studyAtLibrary]: {
+    availability: new And_([
+      new AvailableTimesIsIn({ times: [Times.Morning] }),
+    ]),
+  }),
+  [statsEventsAcademicsNames.studyAtLibrary]: new StatsEvents({
+    availability: new And_([new AvailableTimesIsIn({ times: [Times.Day] })]),
+    stats: [new StatsRepresentation(StatsNames.Academics, 2)],
     name: statsEventsAcademicsNames.studyAtLibrary,
-    category: Categories.Stats,
-    time: Times.Day,
-    label: function () {
-      return (
-        <EventCard
-          head={this.name}
-          place="Gekkoukan High School"
-          stats="Academics +2"
-        />
-      );
-    },
-    available: function ({ previousDay, time }) {
-      if (
-        !previousDay ||
-        previousDay.stats[StatsNames.Academics] >=
-          stats[StatsNames.Academics].levels[5].value
-      )
-        return false;
-      return time === Times.Day;
-    },
-    upgrade: getAcademicsUpgradeFunction(2),
-  },
-  [statsEventsAcademicsNames.summerSchool]: {
+    place: "Gekkoukan High School",
+  }),
+  [statsEventsAcademicsNames.studyAtHome]: new StatsEvents({
+    stats: [new StatsRepresentation(StatsNames.Academics, 2)],
+    name: statsEventsAcademicsNames.studyAtHome,
+    place: "Protagonist's Room",
+    time: Times.Evening,
+    availability: new And_([
+      new AvailableTimesIsIn({ times: [Times.Evening] }),
+    ]),
+  }),
+  [statsEventsAcademicsNames.summerSchool]: new StatsEvents({
+    stats: [new StatsRepresentation(StatsNames.Academics, 3)],
     name: statsEventsAcademicsNames.summerSchool,
-    category: Categories.Stats,
+    availability: new And_([new False_()]),
+    place: "Gekkoukan High School",
     time: Times.WholeDay,
     special: true,
-    label: function () {
-      return (
-        <WideEvent>
-          <EventCard
-            head={this.name}
-            place="Gekkoukan High School"
-            stats="Academics +3"
-          />
-        </WideEvent>
-      );
-    },
-    available: function () {
-      return false;
-    },
-    upgrade: getAcademicsUpgradeFunction(3),
-  },
-  [statsEventsAcademicsNames.wakatsuKitchen]: {
+    wide: true,
+  }),
+  [statsEventsAcademicsNames.wakatsuKitchen]: new StatsEveningSingleEvent({
+    stats: [new StatsRepresentation(StatsNames.Academics, 3)],
     name: statsEventsAcademicsNames.wakatsuKitchen,
-    category: Categories.Stats,
+    place: "Iwatodai Strip Mall",
     time: Times.Evening,
-    label: function () {
-      return (
-        <EventCard
-          head={this.name}
-          place="Iwatodai Strip Mall"
-          stats="Academics +3"
-          price={680}
-        />
-      );
-    },
-    available: function ({ previousDay, currentDay, time }) {
-      if (
-        !previousDay ||
-        previousDay.stats[StatsNames.Academics] >=
-          stats[StatsNames.Academics].levels[5].value
-      )
-        return false;
-      const days = [
-        DaysNames.thursday,
-        DaysNames.friday,
-        DaysNames.saturday,
-        DaysNames.sunday,
-      ];
-      return (
-        [Times.Day, Times.Evening].includes(time) &&
-        days.includes(currentDay.date.getDay())
-      );
-    },
-    upgrade: function ({ currentDay, time }) {
-      const singleTimeEvents =
-        !currentDay.singleTimeEvents.includes(
-          statsEventsAcademicsNames.wakatsuKitchen
-        ) && time === Times.Evening
-          ? [
-              ...currentDay.singleTimeEvents,
-              statsEventsAcademicsNames.wakatsuKitchen,
-            ]
-          : currentDay.singleTimeEvents;
-
-      return {
-        singleTimeEvents,
-        stats: {
-          ...currentDay.stats,
-          [StatsNames.Academics]: currentDay.stats[StatsNames.Academics] + 3,
-        },
-      };
-    },
-  },
-  [statsEventsAcademicsNames.cinemaTheaterAcademics]: {
+    price: 680,
+    availability: new And_([
+      new AvailableTimesIsIn({ times: [Times.Day, Times.Evening] }),
+      new AvailableDaysNamesIsIn({
+        days: [
+          DaysNames.thursday,
+          DaysNames.friday,
+          DaysNames.saturday,
+          DaysNames.sunday,
+        ],
+      }),
+    ]),
+  }),
+  [statsEventsAcademicsNames.cinemaTheaterAcademics]: new StatsEvents({
+    stats: [new StatsRepresentation(StatsNames.Academics, 4)],
     name: statsEventsAcademicsNames.cinemaTheaterAcademics,
-    category: Categories.Stats,
-    time: Times.Day,
-    label: function () {
-      return (
-        <EventCard
-          head={this.name}
-          place="Port Island Station"
-          stats="Academics +4"
-          price={1500}
-        />
-      );
-    },
-    available: function ({ previousDay, currentDay, time }) {
-      if (
-        !previousDay ||
-        previousDay.stats[StatsNames.Academics] >=
-          stats[StatsNames.Academics].levels[5].value
-      )
-        return false;
-      const days = [DaysNames.wednesday, DaysNames.saturday];
-      return time === Times.Day && days.includes(currentDay.date.getDay());
-    },
-    upgrade: getAcademicsUpgradeFunction(4),
-  },
-  [statsEventsAcademicsNames.wakatsuKitchenSpecial]: {
+    place: "Port Island Station",
+    price: 1_500,
+    availability: new And_([
+      new AvailableTimesIsIn({ times: [Times.Day] }),
+      new AvailableDaysNamesIsIn({
+        days: [DaysNames.wednesday, DaysNames.saturday],
+      }),
+    ]),
+  }),
+  [statsEventsAcademicsNames.wakatsuKitchenSpecial]: new StatsEvents({
+    stats: [new StatsRepresentation(StatsNames.Academics, 4)],
     name: statsEventsAcademicsNames.wakatsuKitchenSpecial,
-    category: Categories.Stats,
+    place: "Iwatodai Strip Mall",
     time: Times.Evening,
-    label: function () {
-      return (
-        <EventCard
-          head={this.name}
-          place="Iwatodai Strip Mall"
-          stats="Academics +4"
-          price={900}
-        />
-      );
-    },
-    available: function ({ previousDay, currentDay, time }) {
-      if (
-        !previousDay ||
-        previousDay.stats[StatsNames.Academics] >=
-          stats[StatsNames.Academics].levels[5].value
-      )
-        return false;
-      const days = [
-        DaysNames.monday,
-        DaysNames.thursday,
-        DaysNames.friday,
-        DaysNames.sunday,
-      ];
-      const charmLevel = stats[StatsNames.Charm].levels[2].value;
-      return (
-        previousDay.singleTimeEvents.includes(
-          statsEventsAcademicsNames.wakatsuKitchen
-        ) &&
-        previousDay.stats[StatsNames.Charm] >= charmLevel &&
-        days.includes(currentDay.date.getDay()) &&
-        time == Times.Evening
-      );
-    },
-    upgrade: getAcademicsUpgradeFunction(4),
-  },
-  [statsEventsAcademicsNames.gameParadeAcademics]: {
+    price: 900,
+    availability: new And_([
+      new AvailableStatGreater({ name: StatsNames.Charm, level: 2 }),
+      new AvailableTimesIsIn({ times: [Times.Evening] }),
+      new AvailableSingleTimeEventsIsIn({
+        name: statsEventsAcademicsNames.wakatsuKitchen,
+      }),
+      new AvailableDaysNamesIsIn({
+        days: [
+          DaysNames.monday,
+          DaysNames.thursday,
+          DaysNames.friday,
+          DaysNames.sunday,
+        ],
+      }),
+    ]),
+  }),
+  [statsEventsAcademicsNames.gameParadeAcademics]: new StatsEvents({
+    stats: [new StatsRepresentation(StatsNames.Academics, 4)],
     name: statsEventsAcademicsNames.gameParadeAcademics,
-    category: Categories.Stats,
+    place: "Paulownia Mall",
     time: Times.Evening,
-    label: function () {
-      return (
-        <EventCard
-          head={this.name}
-          place="Paulownia Mall"
-          stats="Academics +4"
-          price={3000}
-        />
-      );
-    },
-    available: function ({ previousDay, currentDay, time }) {
-      if (
-        !previousDay ||
-        previousDay.stats[StatsNames.Academics] >=
-          stats[StatsNames.Academics].levels[5].value
-      )
-        return false;
-      const days = [DaysNames.wednesday, DaysNames.saturday];
-      return (
-        [Times.Day, Times.Evening].includes(time) &&
-        days.includes(currentDay.date.getDay())
-      );
-    },
-    upgrade: getAcademicsUpgradeFunction(4),
-  },
-  [statsEventsAcademicsNames.dormExamStudyingGroup]: {
+    price: 3_000,
+    availability: new And_([
+      new AvailableTimesIsIn({ times: [Times.Day, Times.Evening] }),
+      new AvailableDaysNamesIsIn({
+        days: [DaysNames.wednesday, DaysNames.saturday],
+      }),
+    ]),
+  }),
+  [statsEventsAcademicsNames.dormExamStudyingGroup]: new StatsEvents({
+    stats: [new StatsRepresentation(StatsNames.Academics, 4)],
     name: statsEventsAcademicsNames.dormExamStudyingGroup,
-    category: Categories.Stats,
     time: Times.Evening,
-    label: function () {
-      return <EventCard head={this.name} stats="Academics +4" place="Dorm" />;
-    },
-    available: function ({ previousDay, currentDay, time }) {
-      if (
-        !previousDay ||
-        previousDay.stats[StatsNames.Academics] >=
-          stats[StatsNames.Academics].levels[5].value
-      )
-        return false;
-      const dates = [
-        new Date(2009, 4, 15).getTime(),
-        new Date(2009, 4, 16).getTime(),
-        new Date(2009, 6, 9).getTime(),
-        new Date(2009, 6, 10).getTime(),
-        new Date(2009, 9, 8).getTime(),
-        new Date(2009, 9, 9).getTime(),
-        new Date(2009, 9, 11).getTime(),
-        new Date(2009, 11, 9).getTime(),
-        new Date(2009, 11, 11).getTime(),
-        new Date(2009, 11, 12).getTime(),
-      ];
-      return (
-        dates.includes(currentDay.date.getTime()) && time === Times.Evening
-      );
-    },
-    upgrade: getAcademicsUpgradeFunction(4),
-  },
-  [statsEventsAcademicsNames.dormExamStudyingTeam]: {
+    place: "Dorm",
+    availability: new And_([
+      new AvailableTimesIsIn({ times: [Times.Evening] }),
+      new AvailableDateIsIn({
+        date: [
+          new Date(2009, 4, 15),
+          new Date(2009, 4, 16),
+          new Date(2009, 6, 9),
+          new Date(2009, 6, 10),
+          new Date(2009, 9, 8),
+          new Date(2009, 9, 9),
+          new Date(2009, 9, 11),
+          new Date(2009, 11, 9),
+          new Date(2009, 11, 11),
+          new Date(2009, 11, 12),
+        ],
+      }),
+    ]),
+  }),
+  [statsEventsAcademicsNames.dormExamStudyingTeam]: new StatsEvents({
+    stats: [new StatsRepresentation(StatsNames.Academics, 5)],
     name: statsEventsAcademicsNames.dormExamStudyingTeam,
-    category: Categories.Stats,
     time: Times.Evening,
-    label: function () {
-      return <EventCard head={this.name} stats="Academics +5" place="Dorm" />;
-    },
-    available: function ({ previousDay, currentDay, time }) {
-      if (
-        !previousDay ||
-        previousDay.stats[StatsNames.Academics] >=
-          stats[StatsNames.Academics].levels[5].value
-      )
-        return false;
-      const dates = [
-        new Date(2009, 4, 17).getTime(),
-        new Date(2009, 6, 13).getTime(),
-        new Date(2009, 9, 12).getTime(),
-        new Date(2009, 11, 13).getTime(),
-      ];
-      return (
-        dates.includes(currentDay.date.getTime()) && time === Times.Evening
-      );
-    },
-    upgrade: getAcademicsUpgradeFunction(5),
-  },
+    place: "Dorm",
+    availability: new And_([
+      new AvailableTimesIsIn({ times: [Times.Evening] }),
+      new AvailableDateIsIn({
+        date: [
+          new Date(2009, 4, 17),
+          new Date(2009, 6, 13),
+          new Date(2009, 9, 12),
+          new Date(2009, 11, 13),
+        ],
+      }),
+    ]),
+  }),
 };
