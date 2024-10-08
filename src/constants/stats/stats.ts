@@ -63,17 +63,16 @@ export const stats: statsLevels = {
 
 export class StatsRepresentation {
   name: StatsNames;
-  value?: number;
+  value: number;
 
-  constructor(name: StatsNames, value?: number) {
-    this.name = name;
+  constructor(name: StatsNames, value: number) {
     this.value = value;
+    this.name = name;
 
-    this.representation = this.representation.bind(this);
+    this.toString = this.toString.bind(this);
   }
 
-  representation() {
-    const value = this.value ? ` +${this.value}` : "";
-    return `${this.name}${value}`;
+  toString() {
+    return `${this.name} +${this.value}`;
   }
 }
