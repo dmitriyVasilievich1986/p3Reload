@@ -1,12 +1,14 @@
-import { SingleDay } from "../calendar/SingleDay";
-import { CharStats } from "../stats/types";
+import { AvailabilityType } from "@/constants/availability/types";
+import { SingleDay } from "@/constants/calendar/SingleDay";
+import { StatsRepresentation } from "@/constants/stats";
+import { CharStats } from "@/constants/stats/types";
 
 import {
   SocialLinkAvailableProps,
   SocialLinkElementProps,
   SocialLinksStatsArray,
   SocialLinkNames,
-} from "../socialLinks/types";
+} from "@/constants/socialLinks/types";
 
 export enum Categories {
   Invitation = "Invitation",
@@ -68,11 +70,11 @@ export enum statsEventsCharmNames {
   hagakureRamenSpecial = "Hagakure Ramen (Special Hagakure Bowl)",
   hagakureRamen = "Hagakure Ramen (Pork Ramen)",
   gameParadeCharm = 'Game Parade (Play "High School of Youth")',
-  chagallCafePartTimeWork = "Chagall Cafe(Part-time work)",
+  // chagallCafePartTimeWork = "Chagall Cafe(Part-time work)",
   chagallCafeCharm = "Chagall Cafe (Pheromone Coffee)",
   cinemaTheaterCharm = 'Cinema ("Thy Name")',
   schoolQuestionCharm = "School Question",
-  beBlueV = "Be Blue V (Part-time work)",
+  // beBlueV = "Be Blue V (Part-time work)",
 }
 export enum statsEventsCourageNames {
   wilduckBurgeWeekendWilduckSet = "Wilduck Burger (Weekend Wilduck Set)",
@@ -130,4 +132,16 @@ export type Event = {
       previousWeek?: SingleDay;
     }
   ) => upgradeResponse;
+};
+
+export type eventProps = {
+  availability: AvailabilityType;
+  category: Categories;
+  name: allEventsNames;
+  time: Times;
+  stats?: (StatsRepresentation | string)[];
+  special?: boolean;
+  place?: string;
+  price?: number;
+  wide?: boolean;
 };

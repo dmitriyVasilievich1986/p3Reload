@@ -7,6 +7,7 @@ import { Card } from "@/components/card";
 
 import classnames from "classnames/bind";
 import * as style from "./style.scss";
+import React from "react";
 
 const cx = classnames.bind(style);
 
@@ -52,10 +53,10 @@ export function DormHangoutStats({
 
   return (
     <Card head="Dorm Hangouts" color="primary">
-      <div className={cx("stat")}>
+      <div className={cx("stat")} key="dorm-hangout-stats">
         {hangoutsLinks.map((l) => (
-          <>
-            <div key={l} className={cx("stat-item")}>
+          <React.Fragment key={l}>
+            <div className={cx("stat-item")}>
               {getBadge(l, "dorm1")}
               <label>
                 {l}
@@ -66,7 +67,7 @@ export function DormHangoutStats({
               </label>
               {getLevel(l, "dorm1")}
             </div>
-            <div key={l} className={cx("stat-item")}>
+            <div key={`${l}-dorm2`} className={cx("stat-item")}>
               {getBadge(l, "dorm2")}
               <label>
                 {l}
@@ -77,7 +78,7 @@ export function DormHangoutStats({
               </label>
               {getLevel(l, "dorm2")}
             </div>
-          </>
+          </React.Fragment>
         ))}
       </div>
     </Card>

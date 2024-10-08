@@ -2,19 +2,19 @@ import { SingleDay } from "@/constants/calendar/SingleDay";
 import { socialLinks } from "@/constants/socialLinks";
 
 import {
-  upgradeResponse,
-  allEventsNames,
-  Categories,
-  Times,
-  Event,
-} from "./types";
-
-import {
   SocialLinkAvailableProps,
   SocialLinkElementProps,
   SocialLinkNames,
   Routes,
 } from "@/constants/socialLinks/types";
+
+import {
+  upgradeResponse,
+  allEventsNames,
+  Categories,
+  Times,
+  Event,
+} from "../types";
 
 export class SocialLinkEvent implements Event {
   name: allEventsNames;
