@@ -1,8 +1,13 @@
-import { SocialLinkAvailableProps } from "@/constants/socialLinks/types";
 import { allEventsNames, Times } from "@/constants/events/types";
 import { StatsNames, stats } from "@/constants/stats";
 import { DaysNames } from "@/constants/monthsNames";
 import { SingleDay } from "@/constants/calendar";
+
+import {
+  SocialLinkAvailableProps,
+  SocialLinkType,
+  Routes,
+} from "@/constants/socialLinks/types";
 
 import {
   AvailabilityProps,
@@ -19,12 +24,12 @@ export abstract class Available<K> implements AvailableType<K> {
     this.reverse = props?.reverse ?? false;
   }
 
-  abstract getRight(props: AvailabilityProps): K | K[];
-  abstract getLeft(props: AvailabilityProps): K;
+  abstract getRight(props: AvailabilityProps, route?: Routes): K | K[];
+  abstract getLeft(props: AvailabilityProps, route?: Routes): K;
 
-  available(props: AvailabilityProps): boolean {
-    const right = this.getRight(props);
-    const left = this.getLeft(props);
+  available(props: AvailabilityProps, route?: Routes): boolean {
+    const right = this.getRight(props, route);
+    const left = this.getLeft(props, route);
     let payload: boolean;
 
     switch (this.operation) {
@@ -197,33 +202,39 @@ class AvailabilityArray implements AvailabilityType {
     this.available = this.available.bind(this);
   }
 
-  available(_props: SocialLinkAvailableProps) {
+  available(_props: SocialLinkAvailableProps, _route?: Routes) {
     return false;
   }
 }
 
 export class And_ extends AvailabilityArray {
-  available(props: SocialLinkAvailableProps) {
+  available(props: SocialLinkAvailableProps, route?: Routes) {
     if (props.previousDay === undefined) return false;
 
     return this.availabilities.every((a) =>
-      a.available({
-        ...props,
-        previousDay: props.previousDay as SingleDay,
-      })
+      a.available(
+        {
+          ...props,
+          previousDay: props.previousDay as SingleDay,
+        },
+        route
+      )
     );
   }
 }
 
 export class Or_ extends AvailabilityArray {
-  available(props: SocialLinkAvailableProps) {
+  available(props: SocialLinkAvailableProps, route: Routes) {
     if (props.previousDay === undefined) return false;
 
     return this.availabilities.some((a) =>
-      a.available({
-        ...props,
-        previousDay: props.previousDay as SingleDay,
-      })
+      a.available(
+        {
+          ...props,
+          previousDay: props.previousDay as SingleDay,
+        },
+        route
+      )
     );
   }
 }
