@@ -314,7 +314,7 @@ export class And_ extends AvailabilityArray {
 }
 
 export class Or_ extends AvailabilityArray {
-  available(props: SocialLinkAvailableProps, route: Routes) {
+  available(props: SocialLinkAvailableProps, route?: Routes) {
     if (props.previousDay === undefined) return false;
 
     return this.availabilities.some((a) =>
