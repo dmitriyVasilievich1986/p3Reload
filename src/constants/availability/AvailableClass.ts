@@ -155,6 +155,96 @@ export class AvailableDaysNamesIsIn extends Available<DaysNames> {
   }
 }
 
+export class AvailableLinkRouteEqual extends Available<Routes> {
+  operation: Operations = Operations.Equal;
+
+  constructor(props: { socialLink: SocialLinkType; reverse?: boolean }) {
+    super(props);
+
+    this.getLeft = this.getLeft.bind(props.socialLink);
+  }
+
+  getLeft(this: SocialLinkType, props: AvailabilityProps) {
+    return props.previousDay.links[this.linkName].romance;
+  }
+
+  getRight(_props: AvailabilityProps, route?: Routes) {
+    return route as Routes;
+  }
+}
+
+export class AvailableLinkMaxLevel extends Available<number> {
+  operation: Operations = Operations.GreaterOrEqueal;
+
+  constructor(props: { socialLink: SocialLinkType; reverse?: boolean }) {
+    super(props);
+
+    this.getRight = this.getRight.bind(props.socialLink);
+    this.getLeft = this.getLeft.bind(props.socialLink);
+  }
+
+  getLeft(this: SocialLinkType, props: AvailabilityProps) {
+    return props.previousDay.links[this.linkName].level;
+  }
+
+  getRight(this: SocialLinkType) {
+    return this.maxLevel;
+  }
+}
+
+export class AvailableLinkLevelGreater extends Available<number> {
+  operation: Operations = Operations.GreaterOrEqueal;
+  level: number;
+
+  constructor(props: {
+    socialLink: SocialLinkType;
+    level: number;
+    reverse?: boolean;
+  }) {
+    super(props);
+    this.level = props.level;
+
+    this.getLeft = this.getLeft.bind(props.socialLink);
+    this.getRight = this.getRight.bind(this);
+  }
+
+  getLeft(this: SocialLinkType, props: AvailabilityProps) {
+    return props.previousDay.links[this.linkName].level;
+  }
+
+  getRight() {
+    return this.level;
+  }
+}
+
+export class AvailableLinkLevelEqual extends AvailableLinkLevelGreater {
+  operation: Operations = Operations.Equal;
+}
+
+export class AvailableLinkLevelLess extends AvailableLinkLevelGreater {
+  operation: Operations = Operations.Less;
+}
+
+export class AvailableLinkIsNewLevel extends Available<boolean> {
+  operation: Operations = Operations.Equal;
+
+  constructor(props: { socialLink: SocialLinkType; reverse?: boolean }) {
+    super(props);
+
+    this.getLeft = this.getLeft.bind(props.socialLink);
+  }
+
+  getLeft(this: SocialLinkType, props: SocialLinkAvailableProps) {
+    const linkName = this.linkName;
+    const previousLink = props.previousDay!.links[linkName];
+    return this.isNewLevel(previousLink);
+  }
+
+  getRight() {
+    return true;
+  }
+}
+
 export class AvailableStatGreater extends Available<number> {
   operation: Operations = Operations.GreaterOrEqueal;
   name: StatsNames;
