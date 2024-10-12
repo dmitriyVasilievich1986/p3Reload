@@ -1,8 +1,13 @@
-import { SocialLinkAvailableProps } from "@/constants/socialLinks/types";
 import { allEventsNames, Times } from "@/constants/events/types";
 import { StatsNames, stats } from "@/constants/stats";
 import { DaysNames } from "@/constants/monthsNames";
 import { SingleDay } from "@/constants/calendar";
+
+import {
+  SocialLinkAvailableProps,
+  SocialLinkType,
+  Routes,
+} from "@/constants/socialLinks/types";
 
 import {
   AvailabilityProps,
@@ -19,12 +24,12 @@ export abstract class Available<K> implements AvailableType<K> {
     this.reverse = props?.reverse ?? false;
   }
 
-  abstract getRight(props: AvailabilityProps): K | K[];
-  abstract getLeft(props: AvailabilityProps): K;
+  abstract getRight(props: AvailabilityProps, route?: Routes): K | K[];
+  abstract getLeft(props: AvailabilityProps, route?: Routes): K;
 
-  available(props: AvailabilityProps): boolean {
-    const right = this.getRight(props);
-    const left = this.getLeft(props);
+  available(props: AvailabilityProps, route?: Routes): boolean {
+    const right = this.getRight(props, route);
+    const left = this.getLeft(props, route);
     let payload: boolean;
 
     switch (this.operation) {
@@ -150,6 +155,96 @@ export class AvailableDaysNamesIsIn extends Available<DaysNames> {
   }
 }
 
+export class AvailableLinkRouteEqual extends Available<Routes> {
+  operation: Operations = Operations.Equal;
+
+  constructor(props: { socialLink: SocialLinkType; reverse?: boolean }) {
+    super(props);
+
+    this.getLeft = this.getLeft.bind(props.socialLink);
+  }
+
+  getLeft(this: SocialLinkType, props: AvailabilityProps) {
+    return props.previousDay.links[this.linkName].romance;
+  }
+
+  getRight(_props: AvailabilityProps, route?: Routes) {
+    return route as Routes;
+  }
+}
+
+export class AvailableLinkMaxLevel extends Available<number> {
+  operation: Operations = Operations.GreaterOrEqueal;
+
+  constructor(props: { socialLink: SocialLinkType; reverse?: boolean }) {
+    super(props);
+
+    this.getRight = this.getRight.bind(props.socialLink);
+    this.getLeft = this.getLeft.bind(props.socialLink);
+  }
+
+  getLeft(this: SocialLinkType, props: AvailabilityProps) {
+    return props.previousDay.links[this.linkName].level;
+  }
+
+  getRight(this: SocialLinkType) {
+    return this.maxLevel;
+  }
+}
+
+export class AvailableLinkLevelGreater extends Available<number> {
+  operation: Operations = Operations.GreaterOrEqueal;
+  level: number;
+
+  constructor(props: {
+    socialLink: SocialLinkType;
+    level: number;
+    reverse?: boolean;
+  }) {
+    super(props);
+    this.level = props.level;
+
+    this.getLeft = this.getLeft.bind(props.socialLink);
+    this.getRight = this.getRight.bind(this);
+  }
+
+  getLeft(this: SocialLinkType, props: AvailabilityProps) {
+    return props.previousDay.links[this.linkName].level;
+  }
+
+  getRight() {
+    return this.level;
+  }
+}
+
+export class AvailableLinkLevelEqual extends AvailableLinkLevelGreater {
+  operation: Operations = Operations.Equal;
+}
+
+export class AvailableLinkLevelLess extends AvailableLinkLevelGreater {
+  operation: Operations = Operations.Less;
+}
+
+export class AvailableLinkIsNewLevel extends Available<boolean> {
+  operation: Operations = Operations.Equal;
+
+  constructor(props: { socialLink: SocialLinkType; reverse?: boolean }) {
+    super(props);
+
+    this.getLeft = this.getLeft.bind(props.socialLink);
+  }
+
+  getLeft(this: SocialLinkType, props: SocialLinkAvailableProps) {
+    const linkName = this.linkName;
+    const previousLink = props.previousDay!.links[linkName];
+    return this.isNewLevel(previousLink);
+  }
+
+  getRight() {
+    return true;
+  }
+}
+
 export class AvailableStatGreater extends Available<number> {
   operation: Operations = Operations.GreaterOrEqueal;
   name: StatsNames;
@@ -197,33 +292,39 @@ class AvailabilityArray implements AvailabilityType {
     this.available = this.available.bind(this);
   }
 
-  available(_props: SocialLinkAvailableProps) {
+  available(_props: SocialLinkAvailableProps, _route?: Routes) {
     return false;
   }
 }
 
 export class And_ extends AvailabilityArray {
-  available(props: SocialLinkAvailableProps) {
+  available(props: SocialLinkAvailableProps, route?: Routes) {
     if (props.previousDay === undefined) return false;
 
     return this.availabilities.every((a) =>
-      a.available({
-        ...props,
-        previousDay: props.previousDay as SingleDay,
-      })
+      a.available(
+        {
+          ...props,
+          previousDay: props.previousDay as SingleDay,
+        },
+        route
+      )
     );
   }
 }
 
 export class Or_ extends AvailabilityArray {
-  available(props: SocialLinkAvailableProps) {
+  available(props: SocialLinkAvailableProps, route?: Routes) {
     if (props.previousDay === undefined) return false;
 
     return this.availabilities.some((a) =>
-      a.available({
-        ...props,
-        previousDay: props.previousDay as SingleDay,
-      })
+      a.available(
+        {
+          ...props,
+          previousDay: props.previousDay as SingleDay,
+        },
+        route
+      )
     );
   }
 }
