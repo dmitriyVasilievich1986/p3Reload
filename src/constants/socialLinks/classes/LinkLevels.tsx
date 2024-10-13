@@ -1,20 +1,22 @@
 import { upgradeResponse, Times } from "@/constants/events/types";
-import { getCalulateFunction } from "./calculationFunctions";
 import { SingleDay } from "@/constants/calendar/SingleDay";
 import { StatsNames, stats } from "@/constants/stats";
 import { EventCard } from "@/components";
 
+import { getCalulateFunction } from "./calculationFunctions";
+
 import {
   SpendingTimeObject,
   createBondObject,
+  LinkMaxedObject,
   ChooseAnyObject,
   SpendingTime,
-  LinkMaxedObject,
 } from "./GenericCard";
 
 import {
   SocialLinkAvailableProps,
   SocialLinkElementProps,
+  EventAvailableProps,
   LabelHeadPrefixes,
   SocialLinkStats,
   SocialLinkLevel,
@@ -40,11 +42,7 @@ export abstract class LinkLevels {
     route: Routes
   ): React.ReactNode;
 
-  abstract isAvailable(
-    socialLink: SocialLinkType,
-    props: SocialLinkAvailableProps,
-    route: Routes
-  ): boolean;
+  abstract isAvailable(props: EventAvailableProps): boolean;
 }
 
 export class EmptyLevels extends LinkLevels {
@@ -144,11 +142,7 @@ export abstract class LinkMainLevelsEpisodes extends LinkMainLevels {
 }
 
 export class LinkMainLevelsChooseAny extends LinkMainLevels {
-  isAvailable(
-    _socialLink: SocialLinkType,
-    _props: SocialLinkAvailableProps,
-    _route: Routes
-  ): boolean {
+  isAvailable(_props: EventAvailableProps): boolean {
     return false;
   }
 
@@ -177,16 +171,12 @@ export class LinkMainLevelsChooseAny extends LinkMainLevels {
 export abstract class InvitationLevels extends LinkLevels {
   abstract dates: number[];
 
-  isAvailable(
-    socialLink: SocialLinkType,
-    props: SocialLinkAvailableProps,
-    route: Routes
-  ): boolean {
-    const linkName = socialLink.linkName;
+  isAvailable(props: EventAvailableProps): boolean {
+    const linkName = props.socialLink.linkName;
 
     return (
+      props.previousDay!.links[linkName].romance === props.route &&
       props.currentDay.links[linkName].level in this.levels &&
-      props.previousDay!.links[linkName].romance === route &&
       this.dates.includes(props.currentDay.date.getTime()) &&
       props.time === Times.Day
     );
@@ -247,15 +237,11 @@ export abstract class KoromaruWalkLevels extends LinkLevels {
     },
   };
 
-  isAvailable(
-    socialLink: SocialLinkType,
-    props: SocialLinkAvailableProps,
-    route: Routes
-  ): boolean {
-    const linkName = socialLink.linkName;
+  isAvailable(props: EventAvailableProps): boolean {
+    const linkName = props.socialLink.linkName;
 
     return (
-      props.previousDay!.links[linkName].romance === route &&
+      props.previousDay!.links[linkName].romance === props.route &&
       this.dates.includes(props.currentDay.date.getTime()) &&
       props.time === Times.Evening
     );
@@ -343,17 +329,13 @@ export class ShrineLevels extends LinkLevels {
     },
   };
 
-  isAvailable(
-    socialLink: SocialLinkType,
-    props: SocialLinkAvailableProps,
-    route: Routes
-  ): boolean {
-    const linkName = socialLink.linkName;
+  isAvailable(props: EventAvailableProps): boolean {
+    const linkName = props.socialLink.linkName;
 
     return (
-      props.previousDay!.links[linkName].level < socialLink.maxLevel &&
-      !socialLink.isNewLevel(props.previousDay!.links[linkName]) &&
-      props.previousDay!.links[linkName].romance === route &&
+      props.previousDay!.links[linkName].level < props.socialLink.maxLevel &&
+      !props.socialLink.isNewLevel(props.previousDay!.links[linkName]) &&
+      props.previousDay!.links[linkName].romance === props.route &&
       props.previousDay!.links[linkName].level > 0 &&
       props.time === Times.Day
     );
@@ -415,18 +397,14 @@ export abstract class DormHangoutLevels extends LinkLevels {
     },
   };
 
-  isAvailable(
-    socialLink: SocialLinkType,
-    props: SocialLinkAvailableProps,
-    route: Routes
-  ): boolean {
-    const linkName = socialLink.linkName;
+  isAvailable(props: EventAvailableProps): boolean {
+    const linkName = props.socialLink.linkName;
     const previousLink = props.previousDay!.links[linkName];
 
     return (
       this.dates.includes(props.currentDay.date.getTime()) &&
       previousLink[this.dormName] < 3 &&
-      previousLink.romance === route &&
+      previousLink.romance === props.route &&
       props.time === Times.Evening
     );
   }
