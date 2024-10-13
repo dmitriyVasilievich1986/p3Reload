@@ -1,3 +1,4 @@
+import { AvailabilityProps } from "@/constants/availability/types";
 import { upgradeResponse, Times } from "../events/types";
 import { SingleDay } from "../calendar/SingleDay";
 import React from "react";
@@ -49,6 +50,10 @@ export enum Routes {
   Platonic = "Platonic",
   Romantic = "Romantic",
 }
+
+export type EventAvailableProps = AvailabilityProps & {
+  socialLink: SocialLinkType;
+};
 
 export type KeyProps = {
   key: string | number;
