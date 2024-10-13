@@ -54,32 +54,25 @@ export function DormHangoutStats({
   return (
     <Card head="Dorm Hangouts" color="primary">
       <div className={cx("stat")} key="dorm-hangout-stats">
-        {hangoutsLinks.map((l) => (
-          <React.Fragment key={l}>
-            <div className={cx("stat-item")}>
-              {getBadge(l, "dorm1")}
-              <label>
-                {l}
-                {
-                  (socialLinks[l].dormHangout1 as DormHangoutLevels)
-                    .headPostfix as string
-                }
-              </label>
-              {getLevel(l, "dorm1")}
-            </div>
-            <div key={`${l}-dorm2`} className={cx("stat-item")}>
-              {getBadge(l, "dorm2")}
-              <label>
-                {l}
-                {
-                  (socialLinks[l].dormHangout2 as DormHangoutLevels)
-                    .headPostfix as string
-                }
-              </label>
-              {getLevel(l, "dorm2")}
-            </div>
-          </React.Fragment>
-        ))}
+        {hangoutsLinks.map((l) => {
+          const dormHangouts = socialLinks[l].levels.filter(
+            (level) => level instanceof DormHangoutLevels
+          ) as DormHangoutLevels[];
+          return (
+            <React.Fragment key={l}>
+              {dormHangouts.map((dorm) => (
+                <div key={dorm.dormName} className={cx("stat-item")}>
+                  {getBadge(l, dorm.dormName)}
+                  <label>
+                    {l}
+                    {dorm.headPostfix as string}
+                  </label>
+                  {getLevel(l, dorm.dormName)}
+                </div>
+              ))}
+            </React.Fragment>
+          );
+        })}
       </div>
     </Card>
   );
