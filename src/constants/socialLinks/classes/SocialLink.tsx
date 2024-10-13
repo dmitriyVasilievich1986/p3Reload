@@ -1,3 +1,4 @@
+import { AvailabilityProps } from "@/constants/availability/types";
 import { SingleDay } from "@/constants/calendar/SingleDay";
 
 import {
@@ -13,89 +14,62 @@ import {
 
 import {
   LinkMainLevelsChooseAny,
-  ShrineLevels,
-  EmptyLevels,
+  LinkMainLevelsEpisodes,
+  LinkMainLevels,
   LinkLevels,
 } from "./LinkLevels";
 
 export class SocialLink implements SocialLinkType {
   linkDetails: LinkDetailsType;
   linkName: SocialLinkNames;
+  levels: LinkLevels[];
   maxLevel: number;
 
-  koromaruWalks: LinkLevels;
-  shrineLevels: LinkLevels;
-  invitations: LinkLevels;
-  dormHangout1: LinkLevels;
-  dormHangout2: LinkLevels;
-  mainLevels: LinkLevels;
-
   constructor(
-    linkName: SocialLinkNames,
     linkDetails: LinkDetailsType,
-    levels: {
-      koromaruWalks?: LinkLevels;
-      shrineLevels?: LinkLevels;
-      dormHangout1?: LinkLevels;
-      dormHangout2?: LinkLevels;
-      invitations?: LinkLevels;
-      mainLevels: LinkLevels;
-    }
+    linkName: SocialLinkNames,
+    levels: LinkLevels[]
   ) {
-    this.maxLevel = Math.max(
-      ...Object.keys(levels.mainLevels.levels).map((k) => Number(k))
-    );
-    this.koromaruWalks = levels?.koromaruWalks || new EmptyLevels();
-    this.shrineLevels = levels?.shrineLevels || new ShrineLevels();
-    this.dormHangout1 = levels?.dormHangout1 || new EmptyLevels();
-    this.dormHangout2 = levels?.dormHangout2 || new EmptyLevels();
-    this.invitations = levels?.invitations || new EmptyLevels();
-    this.mainLevels = levels.mainLevels;
     this.linkDetails = linkDetails;
     this.linkName = linkName;
-  }
+    this.levels = levels;
 
-  getLevels(
-    props: SocialLinkAvailableProps & {
-      previousWeek?: SingleDay;
-    },
-    route: Routes = Routes.Platonic
-  ): LinkLevels {
-    if (this.koromaruWalks.isAvailable(this, props, route))
-      return this.koromaruWalks;
-    if (this.dormHangout1.isAvailable(this, props, route))
-      return this.dormHangout1;
-    if (this.dormHangout2.isAvailable(this, props, route))
-      return this.dormHangout2;
-    if (this.invitations.isAvailable(this, props, route))
-      return this.invitations;
-    if (this.shrineLevels.isAvailable(this, props, route))
-      return this.shrineLevels;
-    return this.mainLevels;
-  }
-
-  getLevel({ romance, level }: SocialLinkStats) {
-    return this.mainLevels.levels[level][romance] as SocialLinkLevel;
-  }
-
-  isNewLevel(thisLink: SocialLinkStats) {
-    const currentLevel = this.getLevel(thisLink);
-    return (
-      thisLink.level < this.maxLevel && thisLink.points >= currentLevel.points
+    const mainLevel = levels.find(
+      (l) => l instanceof LinkMainLevels
+    ) as LinkMainLevels;
+    this.maxLevel = Math.max(
+      ...Object.keys(mainLevel.levels).map((k) => Number(k))
     );
   }
 
-  isAvailable(props: SocialLinkAvailableProps, route: Routes): boolean {
+  getLevels(props: AvailabilityProps): LinkLevels {
+    return (
+      this.levels.find((level) =>
+        level.isAvailable({ ...props, socialLink: this })
+      ) ?? (this.levels[0] as LinkLevels)
+    );
+  }
+
+  getLevel(props: SocialLinkStats): SocialLinkLevel {
+    const level = this.levels.find(
+      (l) => l instanceof LinkMainLevels
+    ) as LinkMainLevels;
+    return level.levels[props.level][props.romance] as SocialLinkLevel;
+  }
+
+  isNewLevel(props: SocialLinkStats) {
+    const level = this.getLevel(props);
+
+    return props.level < this.maxLevel && props.points >= level.points;
+  }
+
+  isAvailable(props: AvailabilityProps): boolean {
     if (!props.previousDay) return false;
 
-    return (
-      this.koromaruWalks.isAvailable(this, props, route) ||
-      this.shrineLevels.isAvailable(this, props, route) ||
-      this.dormHangout1.isAvailable(this, props, route) ||
-      this.dormHangout2.isAvailable(this, props, route) ||
-      this.invitations.isAvailable(this, props, route) ||
-      this.mainLevels.isAvailable(this, props, route)
+    const payload = this.levels.some((level) =>
+      level.isAvailable({ ...props, socialLink: this })
     );
+    return payload;
   }
 
   calculate(
@@ -104,37 +78,45 @@ export class SocialLink implements SocialLinkType {
     },
     route: Routes
   ) {
-    return this.getLevels(props, route).calculate(this, props, route);
+    return this.getLevels({
+      ...props,
+      route,
+      previousDay: props.previousDay as SingleDay,
+    }).calculate(this, props, route);
   }
 
   element(props: SocialLinkElementProps, route: Routes) {
     if (!props.previousDay) return null;
-    return this.getLevels(props, route).element(this, props, route);
+    return this.getLevels({
+      ...props,
+      route,
+      previousDay: props.previousDay as SingleDay,
+    }).element(this, props, route);
   }
 }
 
 export class SocialLinkAlwaysLevelUp extends SocialLink {
   constructor(
-    linkName: SocialLinkNames,
     linkDetails: LinkDetailsType,
-    levels?: { mainLevels?: LinkLevels }
+    linkName: SocialLinkNames,
+    levels?: LinkLevels[]
   ) {
-    super(linkName, linkDetails, {
-      mainLevels: levels?.mainLevels ?? new LinkMainLevelsChooseAny(),
-      shrineLevels: new EmptyLevels(),
-      invitations: new EmptyLevels(),
-    });
+    super(linkDetails, linkName, levels ?? [new LinkMainLevelsChooseAny()]);
   }
 
   getLevel({ level }: SocialLinkStats) {
     if (level === 0)
-      return this.mainLevels.levels[0].Platonic as SocialLinkLevel;
-    return this.mainLevels.levels[10].Platonic as SocialLinkLevel;
+      return this.levels[0].levels[0].Platonic as SocialLinkLevel;
+    return this.levels[0].levels[10].Platonic as SocialLinkLevel;
   }
 }
 
 export class SocialLinkEpisodes extends SocialLink {
   getLevel() {
-    return this.mainLevels.levels[5][Routes.Platonic] as SocialLinkLevel;
+    const level = this.levels.find(
+      (l) => l instanceof LinkMainLevelsEpisodes
+    ) as LinkMainLevelsEpisodes;
+
+    return level.levels[5][Routes.Platonic] as SocialLinkLevel;
   }
 }
