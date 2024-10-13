@@ -1,6 +1,7 @@
+import { SingleDay } from "@/constants/calendar/SingleDay";
+
 import { SocialLinkAlwaysLevelUp } from "./classes/SocialLink";
 import { LinkMainLevelsChooseAny } from "./classes/LinkLevels";
-import { SingleDay } from "@/constants/calendar/SingleDay";
 
 import {
   SocialLinkAvailableProps,
@@ -30,10 +31,10 @@ class DeathtMainLevels extends LinkMainLevelsChooseAny {
 }
 
 export const Death = new SocialLinkAlwaysLevelUp(
-  SocialLinkNames.Death,
   {
     name: "Pharos",
     place: "Main character room",
   },
-  { mainLevels: new DeathtMainLevels() }
+  SocialLinkNames.Death,
+  [new DeathtMainLevels()]
 );

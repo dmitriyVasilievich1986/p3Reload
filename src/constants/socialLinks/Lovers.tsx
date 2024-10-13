@@ -1,9 +1,10 @@
 import { QuestionsWrapper, EventCard, Question, Answer } from "@/components";
-import { createBondObject, LinkMaxedObject } from "./classes/GenericCard";
 import { StatsNames, stats } from "@/constants/stats";
 import { DaysNames } from "@/constants/monthsNames";
-import { SocialLink } from "./classes/SocialLink";
 import { Times } from "@/constants/events/types";
+
+import { createBondObject, LinkMaxedObject } from "./classes/GenericCard";
+import { SocialLink } from "./classes/SocialLink";
 
 import {
   KoromaruWalkLevels,
@@ -15,6 +16,7 @@ import {
 import {
   SocialLinkAvailableProps,
   SocialLinkElementProps,
+  EventAvailableProps,
   LabelHeadPrefixes,
   SocialLinkLevel,
   SocialLinkNames,
@@ -117,17 +119,13 @@ class LoversDVDActivityLevels extends DormHangoutLevels {
 }
 
 class LoversMainLevels extends LinkMainLevels {
-  isAvailable(
-    socialLink: SocialLinkType,
-    props: SocialLinkAvailableProps,
-    route: Routes
-  ): boolean {
-    const linkName = socialLink.linkName;
+  isAvailable(props: EventAvailableProps): boolean {
+    const linkName = props.socialLink.linkName;
     const charmLevel = stats[StatsNames.Charm].levels[5].value;
     const previousLink = props.previousDay!.links[linkName];
-    const isNewLevel = socialLink.isNewLevel(previousLink);
+    const isNewLevel = props.socialLink.isNewLevel(previousLink);
     const isRomance =
-      previousLink.level === 6 || previousLink.romance === route;
+      previousLink.level === 6 || previousLink.romance === props.route;
     const days = [
       DaysNames.monday,
       DaysNames.wednesday,
@@ -474,13 +472,13 @@ class LoversKoromaruWalkLevels extends KoromaruWalkLevels {
 }
 
 export const Lovers = new SocialLink(
-  SocialLinkNames.Lovers,
   { name: "Yukari Takeba", place: "Classroom 2F" },
-  {
-    dormHangout1: new LoversKitchenActivityLevels(),
-    koromaruWalks: new LoversKoromaruWalkLevels(),
-    dormHangout2: new LoversDVDActivityLevels(),
-    invitations: new LevelsInvitationLevels(),
-    mainLevels: new LoversMainLevels(),
-  }
+  SocialLinkNames.Lovers,
+  [
+    new LoversKitchenActivityLevels(),
+    new LoversKoromaruWalkLevels(),
+    new LoversDVDActivityLevels(),
+    new LevelsInvitationLevels(),
+    new LoversMainLevels(),
+  ]
 );

@@ -1,9 +1,11 @@
 import { SingleDay } from "@/constants/calendar/SingleDay";
-import { SocialLinkEpisodes } from "./classes/SocialLink";
 import { DaysNames } from "@/constants/monthsNames";
 import { Times } from "@/constants/events/types";
 import { StatsNames } from "@/constants/stats";
+
 import { EventCard } from "@/components";
+
+import { SocialLinkEpisodes } from "./classes/SocialLink";
 
 import {
   LinkMainLevelsEpisodes,
@@ -14,6 +16,7 @@ import {
 import {
   SocialLinkAvailableProps,
   SocialLinkElementProps,
+  EventAvailableProps,
   LabelHeadPrefixes,
   SocialLinkLevel,
   SocialLinkNames,
@@ -112,11 +115,8 @@ class SanadaDVDActivityLevels extends DormHangoutLevels {
 }
 
 class SanadaMainLevels extends LinkMainLevelsEpisodes {
-  isAvailable(
-    socialLink: SocialLinkType,
-    props: SocialLinkAvailableProps
-  ): boolean {
-    const linkName = socialLink.linkName;
+  isAvailable(props: EventAvailableProps): boolean {
+    const linkName = props.socialLink.linkName;
     const previousLink = props.previousDay!.links[linkName];
     const isTime = props.time === Times.Evening;
     let days = [DaysNames.monday, DaysNames.friday];
@@ -228,12 +228,12 @@ class SanadaKoromaruWalkLevels extends KoromaruWalkLevels {
 }
 
 export const Sanada = new SocialLinkEpisodes(
-  SocialLinkNames.Sanada,
   { name: "Akihiko Sanada" },
-  {
-    dormHangout1: new SanadaKitchenActivityLevels(),
-    koromaruWalks: new SanadaKoromaruWalkLevels(),
-    dormHangout2: new SanadaDVDActivityLevels(),
-    mainLevels: new SanadaMainLevels(),
-  }
+  SocialLinkNames.Sanada,
+  [
+    new SanadaKitchenActivityLevels(),
+    new SanadaKoromaruWalkLevels(),
+    new SanadaDVDActivityLevels(),
+    new SanadaMainLevels(),
+  ]
 );

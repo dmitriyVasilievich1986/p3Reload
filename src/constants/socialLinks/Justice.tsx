@@ -1,8 +1,17 @@
-import { createBondObject, LinkMaxedObject } from "./classes/GenericCard";
-import { QuestionsWrapper, Question, Answer } from "@/components";
 import { DaysNames } from "@/constants/monthsNames";
-import { SocialLink } from "./classes/SocialLink";
 import { Times } from "@/constants/events/types";
+
+import { QuestionsWrapper, Question, Answer } from "@/components";
+
+import { createBondObject, LinkMaxedObject } from "./classes/GenericCard";
+import { SocialLink } from "./classes/SocialLink";
+
+import {
+  EventAvailableProps,
+  SocialLinkNames,
+  LevelsType,
+  Routes,
+} from "./types";
 
 import {
   KoromaruWalkSocialLinkLevels,
@@ -10,25 +19,13 @@ import {
   LinkMainLevels,
 } from "./classes/LinkLevels";
 
-import {
-  SocialLinkAvailableProps,
-  SocialLinkNames,
-  SocialLinkType,
-  LevelsType,
-  Routes,
-} from "./types";
-
 class JusticeMainLevels extends LinkMainLevels {
-  isAvailable(
-    socialLink: SocialLinkType,
-    props: SocialLinkAvailableProps,
-    route: Routes
-  ): boolean {
-    const linkName = socialLink.linkName;
+  isAvailable(props: EventAvailableProps): boolean {
+    const linkName = props.socialLink.linkName;
     const previousLink = props.previousDay!.links[linkName];
-    const isNewLevel = socialLink.isNewLevel(previousLink);
+    const isNewLevel = props.socialLink.isNewLevel(previousLink);
     const isRomance =
-      previousLink.level === 4 || previousLink.romance === route;
+      previousLink.level === 4 || previousLink.romance === props.route;
     const days = [DaysNames.tuesday, DaysNames.thursday, DaysNames.saturday];
     const excludedDates: number[] = [
       new Date(2009, 10, 7).getTime(),
@@ -472,12 +469,11 @@ class JusticeKoromaruWalkSocialLinkLevels extends KoromaruWalkSocialLinkLevels {
 }
 
 export const Justice = new SocialLink(
-  SocialLinkNames.Justice,
   { name: "Chihiro Fushimi", place: "2nd Floor Hallway" },
-
-  {
-    koromaruWalks: new JusticeKoromaruWalkSocialLinkLevels(),
-    invitations: new JusticeInvitationLevels(),
-    mainLevels: new JusticeMainLevels(),
-  }
+  SocialLinkNames.Justice,
+  [
+    new JusticeKoromaruWalkSocialLinkLevels(),
+    new JusticeInvitationLevels(),
+    new JusticeMainLevels(),
+  ]
 );

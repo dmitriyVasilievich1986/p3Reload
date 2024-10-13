@@ -1,9 +1,11 @@
-import { createBondObject, LinkMaxedObject } from "./classes/GenericCard";
+import { SingleDay } from "@/constants/calendar/SingleDay";
+import { DaysNames } from "@/constants/monthsNames";
+import { Times } from "@/constants/events/types";
+
 import { QuestionsWrapper, Question, Answer } from "@/components";
+
+import { createBondObject, LinkMaxedObject } from "./classes/GenericCard";
 import { SocialLink } from "./classes/SocialLink";
-import { SingleDay } from "../calendar/SingleDay";
-import { DaysNames } from "../monthsNames";
-import { Times } from "../events/types";
 import { Strength } from "./Strength";
 
 import {
@@ -15,6 +17,7 @@ import {
 import {
   SocialLinkAvailableProps,
   SocialLinkElementProps,
+  EventAvailableProps,
   SocialLinkNames,
   SocialLinkType,
   LevelsType,
@@ -22,13 +25,10 @@ import {
 } from "./types";
 
 class ChariotMainLevels extends LinkMainLevels {
-  isAvailable(
-    socialLink: SocialLinkType,
-    props: SocialLinkAvailableProps
-  ): boolean {
-    const linkName = socialLink.linkName;
+  isAvailable(props: EventAvailableProps): boolean {
+    const linkName = props.socialLink.linkName;
     const previousLink = props.previousDay!.links[linkName];
-    const isNewLevel = socialLink.isNewLevel(previousLink);
+    const isNewLevel = props.socialLink.isNewLevel(previousLink);
     const days = [
       DaysNames.monday,
       DaysNames.tuesday,
@@ -357,20 +357,16 @@ class ChariotInvitationLevels extends InvitationLevels {
 class ChariotKoromaruWalkSocialLinkLevels extends KoromaruWalkSocialLinkLevels {
   dates = [new Date(2009, 9, 25).getTime(), new Date(2009, 10, 7).getTime()];
 
-  isAvailable(
-    socialLink: SocialLinkType,
-    props: SocialLinkAvailableProps,
-    route: Routes
-  ): boolean {
+  isAvailable(props: EventAvailableProps): boolean {
     if (props.previousDay === undefined) return false;
 
-    const linkName = socialLink.linkName;
+    const linkName = props.socialLink.linkName;
     const star = props.previousDay.links[SocialLinkNames.Star];
     const insteadStar =
       star.level >= 10 && this.dates.includes(props.currentDay.date.getTime());
 
     return (
-      props.previousDay!.links[linkName].romance === route &&
+      props.previousDay!.links[linkName].romance === props.route &&
       props.time === Times.Evening &&
       insteadStar
     );
@@ -378,11 +374,11 @@ class ChariotKoromaruWalkSocialLinkLevels extends KoromaruWalkSocialLinkLevels {
 }
 
 export const Chariot = new SocialLink(
-  SocialLinkNames.Chariot,
   { name: "Kazushi Miyamoto", place: "Classroom 2F" },
-  {
-    koromaruWalks: new ChariotKoromaruWalkSocialLinkLevels(),
-    invitations: new ChariotInvitationLevels(),
-    mainLevels: new ChariotMainLevels(),
-  }
+  SocialLinkNames.Chariot,
+  [
+    new ChariotKoromaruWalkSocialLinkLevels(),
+    new ChariotInvitationLevels(),
+    new ChariotMainLevels(),
+  ]
 );

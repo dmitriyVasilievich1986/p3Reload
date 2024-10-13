@@ -1,9 +1,11 @@
 import { QuestionsWrapper, EventCard, Question, Answer } from "@/components";
-import { createBondObject, LinkMaxedObject } from "./classes/GenericCard";
+
 import { StatsNames, stats } from "@/constants/stats";
 import { DaysNames } from "@/constants/monthsNames";
-import { SocialLink } from "./classes/SocialLink";
 import { Times } from "@/constants/events/types";
+
+import { createBondObject, LinkMaxedObject } from "./classes/GenericCard";
+import { SocialLink } from "./classes/SocialLink";
 
 import {
   KoromaruWalkLevels,
@@ -15,6 +17,7 @@ import {
 import {
   SocialLinkAvailableProps,
   SocialLinkElementProps,
+  EventAvailableProps,
   LabelHeadPrefixes,
   SocialLinkLevel,
   SocialLinkNames,
@@ -114,17 +117,13 @@ class PriestessBookActivityLevels extends DormHangoutLevels {
 }
 
 class PriestessMainLevels extends LinkMainLevels {
-  isAvailable(
-    socialLink: SocialLinkType,
-    props: SocialLinkAvailableProps,
-    route: Routes
-  ): boolean {
-    const linkName = socialLink.linkName;
+  isAvailable(props: EventAvailableProps): boolean {
+    const linkName = props.socialLink.linkName;
     const courageLevel = stats[StatsNames.Courage].levels[5].value;
     const previousLink = props.previousDay!.links[linkName];
-    const isNewLevel = socialLink.isNewLevel(previousLink);
+    const isNewLevel = props.socialLink.isNewLevel(previousLink);
     const isRomance =
-      previousLink.level === 6 || previousLink.romance === route;
+      previousLink.level === 6 || previousLink.romance === props.route;
     const days = [DaysNames.monday, DaysNames.friday, DaysNames.saturday];
     const excluded_days: number[] = [new Date(2009, 10, 6).getTime()];
 
@@ -547,13 +546,13 @@ class PriestessKoromaruWalkLevels extends KoromaruWalkLevels {
 }
 
 export const Priestess = new SocialLink(
-  SocialLinkNames.Priestess,
   { name: "Fuuka Yamagishi", place: "2nd Floor Hallway" },
-  {
-    dormHangout1: new PriestessGardenActivityLevels(),
-    koromaruWalks: new PriestessKoromaruWalkLevels(),
-    dormHangout2: new PriestessBookActivityLevels(),
-    invitations: new PriestessInvitationLevels(),
-    mainLevels: new PriestessMainLevels(),
-  }
+  SocialLinkNames.Priestess,
+  [
+    new PriestessGardenActivityLevels(),
+    new PriestessKoromaruWalkLevels(),
+    new PriestessBookActivityLevels(),
+    new PriestessInvitationLevels(),
+    new PriestessMainLevels(),
+  ]
 );

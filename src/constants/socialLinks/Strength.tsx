@@ -1,8 +1,10 @@
-import { createBondObject, LinkMaxedObject } from "./classes/GenericCard";
 import { QuestionsWrapper, Question, Answer } from "@/components";
+
 import { DaysNames } from "@/constants/monthsNames";
-import { SocialLink } from "./classes/SocialLink";
 import { Times } from "@/constants/events/types";
+
+import { createBondObject, LinkMaxedObject } from "./classes/GenericCard";
+import { SocialLink } from "./classes/SocialLink";
 
 import {
   KoromaruWalkSocialLinkLevels,
@@ -11,24 +13,19 @@ import {
 } from "./classes/LinkLevels";
 
 import {
-  SocialLinkAvailableProps,
+  EventAvailableProps,
   SocialLinkNames,
-  SocialLinkType,
   LevelsType,
   Routes,
 } from "./types";
 
 class StrengthMainLevels extends LinkMainLevels {
-  isAvailable(
-    socialLink: SocialLinkType,
-    props: SocialLinkAvailableProps,
-    route: Routes
-  ): boolean {
-    const linkName = socialLink.linkName;
+  isAvailable(props: EventAvailableProps): boolean {
+    const linkName = props.socialLink.linkName;
     const previousLink = props.previousDay!.links[linkName];
-    const isNewLevel = socialLink.isNewLevel(previousLink);
+    const isNewLevel = props.socialLink.isNewLevel(previousLink);
     const isRomance =
-      previousLink.level === 2 || previousLink.romance === route;
+      previousLink.level === 2 || previousLink.romance === props.route;
     const days = [DaysNames.wednesday, DaysNames.saturday];
 
     return (
@@ -562,12 +559,11 @@ class StrengthKoromaruWalkSocialLinkLevels extends KoromaruWalkSocialLinkLevels 
 }
 
 export const Strength = new SocialLink(
-  SocialLinkNames.Strength,
   { name: "Yuko Nishiwaki", place: "2F Classroom Hallway" },
-
-  {
-    koromaruWalks: new StrengthKoromaruWalkSocialLinkLevels(),
-    invitations: new StrengthInvitationLevels(),
-    mainLevels: new StrengthMainLevels(),
-  }
+  SocialLinkNames.Strength,
+  [
+    new StrengthKoromaruWalkSocialLinkLevels(),
+    new StrengthInvitationLevels(),
+    new StrengthMainLevels(),
+  ]
 );

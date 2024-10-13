@@ -1,27 +1,25 @@
-import { createBondObject, LinkMaxedObject } from "./classes/GenericCard";
 import { QuestionsWrapper, Question, Answer } from "@/components";
-import { LinkMainLevels } from "./classes/LinkLevels";
+
 import { StatsNames, stats } from "@/constants/stats";
-import { SocialLink } from "./classes/SocialLink";
 import { Times } from "@/constants/events/types";
 
+import { createBondObject, LinkMaxedObject } from "./classes/GenericCard";
+import { LinkMainLevels } from "./classes/LinkLevels";
+import { SocialLink } from "./classes/SocialLink";
+
 import {
-  SocialLinkAvailableProps,
+  EventAvailableProps,
   SocialLinkNames,
-  SocialLinkType,
   LevelsType,
   Routes,
 } from "./types";
 
 class MoonMainLevels extends LinkMainLevels {
-  isAvailable(
-    socialLink: SocialLinkType,
-    props: SocialLinkAvailableProps
-  ): boolean {
-    const linkName = socialLink.linkName;
+  isAvailable(props: EventAvailableProps): boolean {
+    const linkName = props.socialLink.linkName;
     const charmLevel = stats[StatsNames.Charm].levels[1].value;
     const previousLink = props.previousDay!.links[linkName];
-    const isNewLevel = socialLink.isNewLevel(previousLink);
+    const isNewLevel = props.socialLink.isNewLevel(previousLink);
     const firstLevel =
       props.currentDay.links[SocialLinkNames.Moon].level !== 0 ||
       !props.currentDay.isDayOff;
@@ -160,7 +158,7 @@ class MoonMainLevels extends LinkMainLevels {
 }
 
 export const Moon = new SocialLink(
-  SocialLinkNames.Moon,
   { name: "Nozomi Suemitsu", place: "Paulownia Mall" },
-  { mainLevels: new MoonMainLevels() }
+  SocialLinkNames.Moon,
+  [new MoonMainLevels()]
 );

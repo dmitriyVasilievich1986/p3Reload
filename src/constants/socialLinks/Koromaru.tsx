@@ -1,9 +1,11 @@
 import { SingleDay } from "@/constants/calendar/SingleDay";
-import { SocialLinkEpisodes } from "./classes/SocialLink";
 import { DaysNames } from "@/constants/monthsNames";
 import { Times } from "@/constants/events/types";
 import { StatsNames } from "@/constants/stats";
+
 import { EventCard } from "@/components";
+
+import { SocialLinkEpisodes } from "./classes/SocialLink";
 
 import {
   LinkMainLevelsEpisodes,
@@ -13,6 +15,7 @@ import {
 import {
   SocialLinkAvailableProps,
   SocialLinkElementProps,
+  EventAvailableProps,
   LabelHeadPrefixes,
   SocialLinkLevel,
   SocialLinkNames,
@@ -110,11 +113,8 @@ class KoromaruBrushLevels extends DormHangoutLevels {
 }
 
 class KoromaruMainLevels extends LinkMainLevelsEpisodes {
-  isAvailable(
-    socialLink: SocialLinkType,
-    props: SocialLinkAvailableProps
-  ): boolean {
-    const linkName = socialLink.linkName;
+  isAvailable(props: EventAvailableProps): boolean {
+    const linkName = props.socialLink.linkName;
     const previousLink = props.previousDay!.links[linkName];
     const isTime = props.time === Times.Day;
     let days = [DaysNames.tuesday, DaysNames.wednesday, DaysNames.friday];
@@ -269,11 +269,11 @@ class KoromaruMainLevels extends LinkMainLevelsEpisodes {
 }
 
 export const Koromaru = new SocialLinkEpisodes(
-  SocialLinkNames.Koromaru,
   { name: "Koromaru" },
-  {
-    dormHangout1: new KoromaruDVDActivityLevels(),
-    dormHangout2: new KoromaruBrushLevels(),
-    mainLevels: new KoromaruMainLevels(),
-  }
+  SocialLinkNames.Koromaru,
+  [
+    new KoromaruDVDActivityLevels(),
+    new KoromaruBrushLevels(),
+    new KoromaruMainLevels(),
+  ]
 );

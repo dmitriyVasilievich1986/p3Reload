@@ -1,28 +1,26 @@
-import { createBondObject, LinkMaxedObject } from "./classes/GenericCard";
-import { InvitationLevels, LinkMainLevels } from "./classes/LinkLevels";
 import { QuestionsWrapper, Question, Answer } from "@/components";
+
 import { StatsNames, stats } from "@/constants/stats";
 import { DaysNames } from "@/constants/monthsNames";
-import { SocialLink } from "./classes/SocialLink";
 import { Times } from "@/constants/events/types";
 
+import { createBondObject, LinkMaxedObject } from "./classes/GenericCard";
+import { InvitationLevels, LinkMainLevels } from "./classes/LinkLevels";
+import { SocialLink } from "./classes/SocialLink";
+
 import {
-  SocialLinkAvailableProps,
+  EventAvailableProps,
   SocialLinkNames,
-  SocialLinkType,
   LevelsType,
   Routes,
 } from "./types";
 
 class TemperanceMainLevels extends LinkMainLevels {
-  isAvailable(
-    socialLink: SocialLinkType,
-    props: SocialLinkAvailableProps
-  ): boolean {
-    const linkName = socialLink.linkName;
+  isAvailable(props: EventAvailableProps): boolean {
+    const linkName = props.socialLink.linkName;
     const academicsLevel = stats[StatsNames.Academics].levels[1].value;
     const previousLink = props.previousDay!.links[linkName];
-    const isNewLevel = socialLink.isNewLevel(previousLink);
+    const isNewLevel = props.socialLink.isNewLevel(previousLink);
     const days = [DaysNames.tuesday, DaysNames.wednesday, DaysNames.friday];
 
     return (
@@ -285,11 +283,7 @@ class TemperanceInvitationLevels extends InvitationLevels {
 }
 
 export const Temperance = new SocialLink(
-  SocialLinkNames.Temperance,
   { name: 'André Laurent Jean "Bebe" Geraux', place: "2F Classroom Hallway" },
-
-  {
-    invitations: new TemperanceInvitationLevels(),
-    mainLevels: new TemperanceMainLevels(),
-  }
+  SocialLinkNames.Temperance,
+  [new TemperanceInvitationLevels(), new TemperanceMainLevels()]
 );

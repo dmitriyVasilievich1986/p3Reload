@@ -1,8 +1,17 @@
-import { createBondObject, LinkMaxedObject } from "./classes/GenericCard";
-import { QuestionsWrapper, Question, Answer } from "@/components";
 import { DaysNames } from "@/constants/monthsNames";
-import { SocialLink } from "./classes/SocialLink";
 import { Times } from "@/constants/events/types";
+
+import { QuestionsWrapper, Question, Answer } from "@/components";
+
+import { createBondObject, LinkMaxedObject } from "./classes/GenericCard";
+import { SocialLink } from "./classes/SocialLink";
+
+import {
+  EventAvailableProps,
+  SocialLinkNames,
+  LevelsType,
+  Routes,
+} from "./types";
 
 import {
   KoromaruWalkSocialLinkLevels,
@@ -10,22 +19,11 @@ import {
   LinkMainLevels,
 } from "./classes/LinkLevels";
 
-import {
-  SocialLinkAvailableProps,
-  SocialLinkNames,
-  SocialLinkType,
-  LevelsType,
-  Routes,
-} from "./types";
-
 class FortuneMainLevels extends LinkMainLevels {
-  isAvailable(
-    socialLink: SocialLinkType,
-    props: SocialLinkAvailableProps
-  ): boolean {
-    const linkName = socialLink.linkName;
+  isAvailable(props: EventAvailableProps): boolean {
+    const linkName = props.socialLink.linkName;
     const previousLink = props.previousDay!.links[linkName];
-    const isNewLevel = socialLink.isNewLevel(previousLink);
+    const isNewLevel = props.socialLink.isNewLevel(previousLink);
     const days = [DaysNames.tuesday, DaysNames.wednesday, DaysNames.thursday];
     const excluded = [new Date(2009, 8, 8).getTime()];
 
@@ -303,14 +301,10 @@ class FortuneInvitationLevels extends InvitationLevels {
 class FortuneKoromaruWalkSocialLinkLevels extends KoromaruWalkSocialLinkLevels {
   dates = [new Date(2009, 9, 24).getTime()];
 
-  isAvailable(
-    socialLink: SocialLinkType,
-    props: SocialLinkAvailableProps,
-    route: Routes
-  ): boolean {
+  isAvailable(props: EventAvailableProps): boolean {
     if (props.previousDay === undefined) return false;
 
-    const linkName = socialLink.linkName;
+    const linkName = props.socialLink.linkName;
     const star = props.previousDay.links[SocialLinkNames.Star];
     const insteadStar =
       star.level >= 10 &&
@@ -319,7 +313,7 @@ class FortuneKoromaruWalkSocialLinkLevels extends KoromaruWalkSocialLinkLevels {
       this.dates.includes(props.currentDay.date.getTime()) || insteadStar;
 
     return (
-      props.previousDay!.links[linkName].romance === route &&
+      props.previousDay!.links[linkName].romance === props.route &&
       props.time === Times.Evening &&
       isDay
     );
@@ -327,12 +321,11 @@ class FortuneKoromaruWalkSocialLinkLevels extends KoromaruWalkSocialLinkLevels {
 }
 
 export const Fortune = new SocialLink(
-  SocialLinkNames.Fortune,
   { name: "Keisuke Hiraga", place: "Art Club Room" },
-
-  {
-    koromaruWalks: new FortuneKoromaruWalkSocialLinkLevels(),
-    invitations: new FortuneInvitationLevels(),
-    mainLevels: new FortuneMainLevels(),
-  }
+  SocialLinkNames.Fortune,
+  [
+    new FortuneKoromaruWalkSocialLinkLevels(),
+    new FortuneInvitationLevels(),
+    new FortuneMainLevels(),
+  ]
 );

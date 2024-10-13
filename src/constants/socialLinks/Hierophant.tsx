@@ -1,30 +1,28 @@
-import { createBondObject, LinkMaxedObject } from "./classes/GenericCard";
-import { QuestionsWrapper, Question, Answer } from "@/components";
 import { DaysNames } from "@/constants/monthsNames";
-import { SocialLink } from "./classes/SocialLink";
 import { Times } from "@/constants/events/types";
+
+import { QuestionsWrapper, Question, Answer } from "@/components";
+
+import { createBondObject, LinkMaxedObject } from "./classes/GenericCard";
+import { SocialLink } from "./classes/SocialLink";
+
+import {
+  EventAvailableProps,
+  SocialLinkNames,
+  LevelsType,
+  Routes,
+} from "./types";
 
 import {
   KoromaruWalkSocialLinkLevels,
   LinkMainLevels,
 } from "./classes/LinkLevels";
 
-import {
-  SocialLinkAvailableProps,
-  SocialLinkNames,
-  SocialLinkType,
-  LevelsType,
-  Routes,
-} from "./types";
-
 class HierophantMainLevels extends LinkMainLevels {
-  isAvailable(
-    socialLink: SocialLinkType,
-    props: SocialLinkAvailableProps
-  ): boolean {
-    const linkName = socialLink.linkName;
+  isAvailable(props: EventAvailableProps): boolean {
+    const linkName = props.socialLink.linkName;
     const previousLink = props.previousDay!.links[linkName];
-    const isNewLevel = socialLink.isNewLevel(previousLink);
+    const isNewLevel = props.socialLink.isNewLevel(previousLink);
     const days = [
       DaysNames.tuesday,
       DaysNames.wednesday,
@@ -240,10 +238,7 @@ class HierophantKoromaruWalkSocialLinkLevels extends KoromaruWalkSocialLinkLevel
 }
 
 export const Hierophant = new SocialLink(
-  SocialLinkNames.Hierophant,
   { name: "Bunkichi and Mitsuko", place: "Bookworms Used Books" },
-  {
-    koromaruWalks: new HierophantKoromaruWalkSocialLinkLevels(),
-    mainLevels: new HierophantMainLevels(),
-  }
+  SocialLinkNames.Hierophant,
+  [new HierophantKoromaruWalkSocialLinkLevels(), new HierophantMainLevels()]
 );

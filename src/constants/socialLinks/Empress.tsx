@@ -1,9 +1,11 @@
 import { QuestionsWrapper, EventCard, Question, Answer } from "@/components";
-import { createBondObject, LinkMaxedObject } from "./classes/GenericCard";
+
 import { StatsNames, stats } from "@/constants/stats";
 import { DaysNames } from "@/constants/monthsNames";
-import { SocialLink } from "./classes/SocialLink";
 import { Times } from "@/constants/events/types";
+
+import { createBondObject, LinkMaxedObject } from "./classes/GenericCard";
+import { SocialLink } from "./classes/SocialLink";
 
 import {
   KoromaruWalkLevels,
@@ -15,6 +17,7 @@ import {
 import {
   SocialLinkAvailableProps,
   SocialLinkElementProps,
+  EventAvailableProps,
   LabelHeadPrefixes,
   SocialLinkLevel,
   SocialLinkNames,
@@ -113,17 +116,13 @@ class EmpressBookActivityLevels extends DormHangoutLevels {
 }
 
 class EmpressMainLevels extends LinkMainLevels {
-  isAvailable(
-    socialLink: SocialLinkType,
-    props: SocialLinkAvailableProps,
-    route: Routes
-  ): boolean {
-    const linkName = socialLink.linkName;
+  isAvailable(props: EventAvailableProps): boolean {
+    const linkName = props.socialLink.linkName;
     const academicsLevel = stats[StatsNames.Academics].levels[5].value;
     const previousLink = props.previousDay!.links[linkName];
-    const isNewLevel = socialLink.isNewLevel(previousLink);
+    const isNewLevel = props.socialLink.isNewLevel(previousLink);
     const isRomance =
-      previousLink.level === 7 || previousLink.romance === route;
+      previousLink.level === 7 || previousLink.romance === props.route;
     const days = [
       DaysNames.tuesday,
       DaysNames.wednesday,
@@ -511,14 +510,13 @@ class EmpressKoromaruWalkLevels extends KoromaruWalkLevels {
 }
 
 export const Empress = new SocialLink(
-  SocialLinkNames.Empress,
   { name: "Mitsuru Kirijo", place: "Faculty Office Entrance" },
-
-  {
-    dormHangout1: new EmpressKitchenActivityLevels(),
-    koromaruWalks: new EmpressKoromaruWalkLevels(),
-    dormHangout2: new EmpressBookActivityLevels(),
-    invitations: new EmpressInvitationLevels(),
-    mainLevels: new EmpressMainLevels(),
-  }
+  SocialLinkNames.Empress,
+  [
+    new EmpressKitchenActivityLevels(),
+    new EmpressKoromaruWalkLevels(),
+    new EmpressBookActivityLevels(),
+    new EmpressInvitationLevels(),
+    new EmpressMainLevels(),
+  ]
 );

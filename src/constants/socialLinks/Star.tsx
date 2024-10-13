@@ -1,9 +1,11 @@
-import { createBondObject, LinkMaxedObject } from "./classes/GenericCard";
 import { QuestionsWrapper, Question, Answer } from "@/components";
+
 import { StatsNames, stats } from "@/constants/stats";
 import { DaysNames } from "@/constants/monthsNames";
-import { SocialLink } from "./classes/SocialLink";
 import { Times } from "@/constants/events/types";
+
+import { createBondObject, LinkMaxedObject } from "./classes/GenericCard";
+import { SocialLink } from "./classes/SocialLink";
 
 import {
   KoromaruWalkSocialLinkLevels,
@@ -11,22 +13,18 @@ import {
 } from "./classes/LinkLevels";
 
 import {
-  SocialLinkAvailableProps,
+  EventAvailableProps,
   SocialLinkNames,
-  SocialLinkType,
   LevelsType,
   Routes,
 } from "./types";
 
 class StarMainLevels extends LinkMainLevels {
-  isAvailable(
-    socialLink: SocialLinkType,
-    props: SocialLinkAvailableProps
-  ): boolean {
-    const linkName = socialLink.linkName;
+  isAvailable(props: EventAvailableProps): boolean {
+    const linkName = props.socialLink.linkName;
     const courageLevel = stats[StatsNames.Courage].levels[3].value;
     const previousLink = props.previousDay!.links[linkName];
-    const isNewLevel = socialLink.isNewLevel(previousLink);
+    const isNewLevel = props.socialLink.isNewLevel(previousLink);
     const days = [DaysNames.wednesday, DaysNames.friday, DaysNames.sunday];
 
     return (
@@ -222,19 +220,15 @@ class StarKoromaruWalkSocialLinkLevels extends KoromaruWalkSocialLinkLevels {
     new Date(2010, 0, 10).getTime(),
   ];
 
-  isAvailable(
-    socialLink: SocialLinkType,
-    props: SocialLinkAvailableProps,
-    route: Routes
-  ): boolean {
+  isAvailable(props: EventAvailableProps): boolean {
     if (props.previousDay === undefined) return false;
 
-    const linkName = socialLink.linkName;
+    const linkName = props.socialLink.linkName;
     const thisLink = props.previousDay.links[linkName];
 
     return (
       this.dates.includes(props.currentDay.date.getTime()) &&
-      props.previousDay!.links[linkName].romance === route &&
+      props.previousDay!.links[linkName].romance === props.route &&
       props.time === Times.Evening &&
       thisLink.level < 10
     );
@@ -242,10 +236,7 @@ class StarKoromaruWalkSocialLinkLevels extends KoromaruWalkSocialLinkLevels {
 }
 
 export const Star = new SocialLink(
-  SocialLinkNames.Star,
   { name: "Mamoru Hayase", place: "Iwatodai Station Strip Mall 1F" },
-  {
-    koromaruWalks: new StarKoromaruWalkSocialLinkLevels(),
-    mainLevels: new StarMainLevels(),
-  }
+  SocialLinkNames.Star,
+  [new StarKoromaruWalkSocialLinkLevels(), new StarMainLevels()]
 );

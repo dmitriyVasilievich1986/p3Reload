@@ -1,27 +1,25 @@
-import { createBondObject, LinkMaxedObject } from "./classes/GenericCard";
-import { QuestionsWrapper, Question, Answer } from "@/components";
-import { LinkMainLevels } from "./classes/LinkLevels";
 import { DaysNames } from "@/constants/monthsNames";
-import { SocialLink } from "./classes/SocialLink";
 import { Times } from "@/constants/events/types";
 
+import { QuestionsWrapper, Question, Answer } from "@/components";
+
+import { createBondObject, LinkMaxedObject } from "./classes/GenericCard";
+import { LinkMainLevels } from "./classes/LinkLevels";
+import { SocialLink } from "./classes/SocialLink";
+
 import {
-  SocialLinkAvailableProps,
+  EventAvailableProps,
   SocialLinkNames,
-  SocialLinkType,
   LevelsType,
   Routes,
 } from "./types";
 
 class EmperorMainLevels extends LinkMainLevels {
-  isAvailable(
-    socialLink: SocialLinkType,
-    props: SocialLinkAvailableProps
-  ): boolean {
+  isAvailable(props: EventAvailableProps): boolean {
     const days = [DaysNames.monday, DaysNames.wednesday, DaysNames.friday];
-    const linkName = socialLink.linkName;
+    const linkName = props.socialLink.linkName;
     const previousLink = props.previousDay!.links[linkName];
-    const isNewLevel = socialLink.isNewLevel(previousLink);
+    const isNewLevel = props.socialLink.isNewLevel(previousLink);
     const isJanuary =
       props.currentDay.date.getTime() >= new Date(2010, 0, 1).getTime() ||
       days.includes(props.currentDay.date.getDay());
@@ -162,7 +160,7 @@ class EmperorMainLevels extends LinkMainLevels {
 }
 
 export const Emperor = new SocialLink(
-  SocialLinkNames.Emperor,
   { name: "Hidetoshi Odagiri", place: "Student Council Room" },
-  { mainLevels: new EmperorMainLevels() }
+  SocialLinkNames.Emperor,
+  [new EmperorMainLevels()]
 );

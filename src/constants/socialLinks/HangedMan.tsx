@@ -1,26 +1,24 @@
-import { createBondObject, LinkMaxedObject } from "./classes/GenericCard";
-import { QuestionsWrapper, Question, Answer } from "@/components";
-import { LinkMainLevels } from "./classes/LinkLevels";
 import { DaysNames } from "@/constants/monthsNames";
-import { SocialLink } from "./classes/SocialLink";
 import { Times } from "@/constants/events/types";
 
+import { QuestionsWrapper, Question, Answer } from "@/components";
+
+import { createBondObject, LinkMaxedObject } from "./classes/GenericCard";
+import { LinkMainLevels } from "./classes/LinkLevels";
+import { SocialLink } from "./classes/SocialLink";
+
 import {
-  SocialLinkAvailableProps,
+  EventAvailableProps,
   SocialLinkNames,
-  SocialLinkType,
   LevelsType,
   Routes,
 } from "./types";
 
 class HangedManMainLevels extends LinkMainLevels {
-  isAvailable(
-    socialLink: SocialLinkType,
-    props: SocialLinkAvailableProps
-  ): boolean {
-    const linkName = socialLink.linkName;
+  isAvailable(props: EventAvailableProps): boolean {
+    const linkName = props.socialLink.linkName;
     const previousLink = props.previousDay!.links[linkName];
-    const isNewLevel = socialLink.isNewLevel(previousLink);
+    const isNewLevel = props.socialLink.isNewLevel(previousLink);
     const days = [DaysNames.monday, DaysNames.wednesday, DaysNames.saturday];
 
     return (
@@ -183,7 +181,7 @@ class HangedManMainLevels extends LinkMainLevels {
 }
 
 export const HangedMan = new SocialLink(
-  SocialLinkNames.HangedMan,
   { name: "Maiko Oohashi", place: "Naganaki Shrine" },
-  { mainLevels: new HangedManMainLevels() }
+  SocialLinkNames.HangedMan,
+  [new HangedManMainLevels()]
 );

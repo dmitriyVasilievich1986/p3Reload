@@ -25,10 +25,10 @@ class SocialLinkFool extends LinkMainLevelsChooseAny {
 }
 
 export const Fool = new SocialLinkAlwaysLevelUp(
-  SocialLinkNames.Fool,
   {
     name: "S.E.E.S.",
     place: "Tartarus",
   },
-  { mainLevels: new SocialLinkFool() }
+  SocialLinkNames.Fool,
+  [new SocialLinkFool()]
 );

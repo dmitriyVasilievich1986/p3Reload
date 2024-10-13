@@ -1,9 +1,11 @@
 import { QuestionsWrapper, EventCard, Question, Answer } from "@/components";
-import { createBondObject, LinkMaxedObject } from "./classes/GenericCard";
+
 import { DaysNames } from "@/constants/monthsNames";
-import { SocialLink } from "./classes/SocialLink";
 import { Times } from "@/constants/events/types";
 import { StatsNames } from "@/constants/stats";
+
+import { createBondObject, LinkMaxedObject } from "./classes/GenericCard";
+import { SocialLink } from "./classes/SocialLink";
 
 import {
   KoromaruWalkLevels,
@@ -14,6 +16,7 @@ import {
 import {
   SocialLinkAvailableProps,
   SocialLinkElementProps,
+  EventAvailableProps,
   LabelHeadPrefixes,
   SocialLinkLevel,
   SocialLinkNames,
@@ -109,16 +112,12 @@ class AeonBookActivityLevels extends DormHangoutLevels {
 }
 
 class AeonMainLevels extends LinkMainLevels {
-  isAvailable(
-    socialLink: SocialLinkType,
-    props: SocialLinkAvailableProps,
-    route: Routes
-  ): boolean {
-    const linkName = socialLink.linkName;
+  isAvailable(props: EventAvailableProps): boolean {
+    const linkName = props.socialLink.linkName;
     const previousLink = props.previousDay!.links[linkName];
-    const isNewLevel = socialLink.isNewLevel(previousLink);
+    const isNewLevel = props.socialLink.isNewLevel(previousLink);
     const isRomance =
-      previousLink.level === 7 || previousLink.romance === route;
+      previousLink.level === 7 || previousLink.romance === props.route;
     const days = [
       DaysNames.monday,
       DaysNames.tuesday,
@@ -373,12 +372,12 @@ class AeonKoromaruWalkLevels extends KoromaruWalkLevels {
 }
 
 export const Aeon = new SocialLink(
-  SocialLinkNames.Aeon,
   { name: "Aigis", place: "Classroom 2F" },
-  {
-    dormHangout1: new AeonGardenActivityLevels(),
-    koromaruWalks: new AeonKoromaruWalkLevels(),
-    dormHangout2: new AeonBookActivityLevels(),
-    mainLevels: new AeonMainLevels(),
-  }
+  SocialLinkNames.Aeon,
+  [
+    new AeonGardenActivityLevels(),
+    new AeonKoromaruWalkLevels(),
+    new AeonBookActivityLevels(),
+    new AeonMainLevels(),
+  ]
 );
