@@ -24,6 +24,13 @@ export const specialEvents: { [key in SpecialEventsNames]: Event } = {
     time: Times.Day,
     special: true,
   }),
+  [SpecialEventsNames.Notes]: new EventClass({
+    name: SpecialEventsNames.Notes,
+    category: Categories.Special,
+    availability: new False_(),
+    time: Times.AfterSchool,
+    special: true,
+  }),
   [SpecialEventsNames.Exams]: new EventClass({
     name: SpecialEventsNames.Exams,
     category: Categories.Exams,
