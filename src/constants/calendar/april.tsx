@@ -305,7 +305,7 @@ export const april: SingleDay[] = [
     date: new Date(2009, 3, 25),
     activities: [
       {
-        ...events[SpecialEventsNames.Special],
+        ...events[SpecialEventsNames.Notes],
         time: Times.AfterSchool,
         label: () => (
           <EventCard
@@ -366,7 +366,7 @@ export const april: SingleDay[] = [
     date: new Date(2009, 3, 28),
     activities: [
       {
-        ...events[SpecialEventsNames.Special],
+        ...events[SpecialEventsNames.Notes],
         time: Times.AfterSchool,
         label: () => (
           <EventCard
@@ -401,7 +401,7 @@ export const april: SingleDay[] = [
     activities: [
       events[statsEventsAcademicsNames.stayAwakeInClass],
       {
-        ...events[SpecialEventsNames.Special],
+        ...events[SpecialEventsNames.Notes],
         time: Times.AfterSchool,
         label: () => (
           <EventCard

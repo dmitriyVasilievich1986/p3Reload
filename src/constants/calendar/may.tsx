@@ -29,7 +29,7 @@ export const may: SingleDay[] = [
     date: new Date(2009, 4, 2),
     activities: [
       {
-        ...events[SpecialEventsNames.Special],
+        ...events[SpecialEventsNames.Notes],
         time: Times.AfterSchool,
         label: () => (
           <EventCard
@@ -93,7 +93,7 @@ export const may: SingleDay[] = [
         ),
       },
       {
-        ...events[SpecialEventsNames.Special],
+        ...events[SpecialEventsNames.Notes],
         time: Times.AfterSchool,
         label: () => (
           <EventCard

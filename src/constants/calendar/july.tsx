@@ -49,7 +49,7 @@ export const july: SingleDay[] = [
     activities: [
       events[SocialLinkNames.Strength],
       {
-        ...events[SpecialEventsNames.Special],
+        ...events[SpecialEventsNames.Notes],
         time: Times.EveningFreeTime,
         label: () => (
           <EventCard
@@ -185,7 +185,7 @@ export const july: SingleDay[] = [
       },
       events[SocialLinkNames.Hierophant],
       {
-        ...events[SpecialEventsNames.Special],
+        ...events[SpecialEventsNames.Notes],
         time: Times.EveningFreeTime,
         label: () => (
           <EventCard
@@ -460,7 +460,7 @@ export const july: SingleDay[] = [
         label: () => <EventCard head="Training for running competitions" />,
       },
       {
-        ...events[SpecialEventsNames.Special],
+        ...events[SpecialEventsNames.Notes],
         time: Times.EveningFreeTime,
         label: () => (
           <EventCard
