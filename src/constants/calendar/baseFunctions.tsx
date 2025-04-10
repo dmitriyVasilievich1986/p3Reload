@@ -132,7 +132,10 @@ export function LabelExamGrade(
 
 export function importCalendar(
   calendar: SingleDay[],
-  newCalendar: { date: Date; activities: allEventsNames[] }[]
+  newCalendar: {
+    date: Date;
+    activities: { name: allEventsNames; time: Times; label?: string }[];
+  }[]
 ) {
   if (calendar.length !== newCalendar.length)
     throw new Error("Calendar length mismatch");
@@ -141,18 +144,39 @@ export function importCalendar(
     const newDay = newCalendar[index];
     if (oldDay.date.getTime() !== newDay.date.getTime())
       throw new Error("New calendar date mismatch");
-    if (oldDay.activities.length !== newDay.activities.length)
-      throw new Error("Activities length mismatch");
 
-    const activities = oldDay.activities.map((a, i) => {
-      const newActivity = newDay.activities[i];
-      if (a.special && newActivity !== null)
-        throw new Error("Special mismatch");
-      else if (a.special) return a;
-      return events[newActivity];
+    const newActivities: Event[] = [];
+    [
+      Times.Morning,
+      Times.AfterSchool,
+      Times.Day,
+      Times.Evening,
+      Times.WholeDay,
+      Times.DarkHour,
+    ].forEach((time) => {
+      const oldActivity = oldDay.activities.find((a) => a.time === time);
+      const newActivity = newDay.activities.find((a) => a.time === time);
+
+      if (!oldActivity && !newActivity) return;
+      else if (newActivity?.name === SpecialEventsNames.Notes) {
+        const label = newActivity?.label || "";
+        newActivities.push({
+          ...events[SpecialEventsNames.Notes],
+          label: () => <div>{label}</div>,
+        });
+      } else if (
+        (oldActivity?.special || !newActivity) &&
+        oldActivity?.name !== SpecialEventsNames.Notes
+      )
+        newActivities.push(oldActivity as Event);
+      else if (!!newActivity) {
+        const event = events[newActivity.name];
+        if (!event) throw new Error("Event not found");
+        newActivities.push(event);
+      }
     });
 
-    return new SingleDay({ ...oldDay, activities });
+    return new SingleDay({ ...oldDay, activities: newActivities });
   });
 
   return initialCalculataion(payload);

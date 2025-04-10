@@ -35,6 +35,7 @@ export enum SpecialEventsNames {
   DoNothing = "Do Nothing",
   Tartarus = "Tartarus",
   Exams = "Exams",
+  Notes = "Notes",
 }
 
 export enum pcProgramsNames {
