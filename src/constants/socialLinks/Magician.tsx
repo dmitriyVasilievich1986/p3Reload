@@ -126,6 +126,7 @@ class MagicianMainLevels extends LinkMainLevels {
     },
     6: {
       [Routes.Platonic]: QuestionsWrapper({
+        // checked!
         points: 15,
         element: [
           <Question label="I can't eat...">
@@ -147,6 +148,7 @@ class MagicianMainLevels extends LinkMainLevels {
     },
     7: {
       [Routes.Platonic]: QuestionsWrapper({
+        // checked!
         points: 22,
         element: [
           <Question label="H-Hey, man. Sorry to make you come here. I, um... Ah, damn it...">
@@ -163,6 +165,7 @@ class MagicianMainLevels extends LinkMainLevels {
     },
     8: {
       [Routes.Platonic]: QuestionsWrapper({
+        // checked!
         points: 22,
         element: [
           <Question label="I was so excited about going with her that I...I...">
@@ -175,6 +178,7 @@ class MagicianMainLevels extends LinkMainLevels {
     },
     9: {
       [Routes.Platonic]: QuestionsWrapper({
+        // checked!
         points: 22,
         element: [
           <Question label="Ms. Kanou must be in Kyushu by now. I wonder if she had her wedding already.">
