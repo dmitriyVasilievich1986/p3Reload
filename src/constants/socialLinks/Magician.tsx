@@ -44,6 +44,7 @@ class MagicianMainLevels extends LinkMainLevels {
     },
     1: {
       [Routes.Platonic]: QuestionsWrapper({
+        // checked!
         points: 0,
         element: [
           <Question label="Can you, like, just waltz on into Takeba-san's room and stuff?">
@@ -61,6 +62,7 @@ class MagicianMainLevels extends LinkMainLevels {
     },
     2: {
       [Routes.Platonic]: QuestionsWrapper({
+        // checked!
         points: 0,
         element: [
           <Question label="Maaan... I'm so sick of this, dude.">
@@ -77,6 +79,7 @@ class MagicianMainLevels extends LinkMainLevels {
     },
     3: {
       [Routes.Platonic]: QuestionsWrapper({
+        // checked!
         points: 15,
         element: [
           <Question label="Hey, thanks for coming, man. You mind waiting here for a sec?">
@@ -93,6 +96,7 @@ class MagicianMainLevels extends LinkMainLevels {
     },
     4: {
       [Routes.Platonic]: QuestionsWrapper({
+        // checked!
         points: 15,
         element: [
           <Question label="Yeah, good-looking people just flock together, y'know? It's like a law of attraction.">
@@ -105,6 +109,7 @@ class MagicianMainLevels extends LinkMainLevels {
     },
     5: {
       [Routes.Platonic]: QuestionsWrapper({
+        // checked!
         points: 15,
         element: [
           <Question label="Sorry, man, but I've gotta pass this time.">
