@@ -15,6 +15,7 @@ import {
   DormHangoutLevels,
   InvitationLevels,
   LinkMainLevels,
+  ShrineLevels,
 } from "@/constants/socialLinks/classes/LinkLevels";
 import {
   SocialLinkAvailableProps,
@@ -476,5 +477,6 @@ export const Lovers = new SocialLink(
     new LoversDVDActivityLevels(),
     new LevelsInvitationLevels(),
     new LoversMainLevels(),
+    new ShrineLevels(),
   ]
 );

@@ -4,12 +4,15 @@ import availables from "@/constants/availability/AvailableClass";
 import { Times } from "@/constants/events/types";
 import { StatsNames } from "@/constants/stats";
 
-import { LinkMainLevels } from "@/constants/socialLinks/classes/LinkLevels";
 import { SocialLink } from "@/constants/socialLinks/classes/SocialLink";
 import {
   createBondObject,
   LinkMaxedObject,
 } from "@/constants/socialLinks/classes/GenericCard.tsx";
+import {
+  LinkMainLevels,
+  ShrineLevels,
+} from "@/constants/socialLinks/classes/LinkLevels";
 import {
   SocialLinkNames,
   LevelsType,
@@ -164,5 +167,5 @@ class MoonMainLevels extends LinkMainLevels {
 export const Moon = new SocialLink(
   { name: "Nozomi Suemitsu", place: "Paulownia Mall" },
   SocialLinkNames.Moon,
-  [new MoonMainLevels()]
+  [new MoonMainLevels(), new ShrineLevels()]
 );

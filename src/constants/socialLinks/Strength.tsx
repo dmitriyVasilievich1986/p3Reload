@@ -13,6 +13,7 @@ import {
   KoromaruWalkSocialLinkLevels,
   InvitationLevels,
   LinkMainLevels,
+  ShrineLevels,
 } from "@/constants/socialLinks/classes/LinkLevels";
 import {
   SocialLinkNames,
@@ -561,5 +562,6 @@ export const Strength = new SocialLink(
     new StrengthKoromaruWalkSocialLinkLevels(),
     new StrengthInvitationLevels(),
     new StrengthMainLevels(),
+    new ShrineLevels(),
   ]
 );

@@ -4,12 +4,15 @@ import availables from "@/constants/availability/AvailableClass";
 import { DaysNames } from "@/constants/monthsNames";
 import { Times } from "@/constants/events/types";
 
-import { LinkMainLevels } from "@/constants/socialLinks/classes/LinkLevels";
 import { SocialLink } from "@/constants/socialLinks/classes/SocialLink";
 import {
   createBondObject,
   LinkMaxedObject,
 } from "@/constants/socialLinks/classes/GenericCard.tsx";
+import {
+  LinkMainLevels,
+  ShrineLevels,
+} from "@/constants/socialLinks/classes/LinkLevels";
 import {
   SocialLinkNames,
   LevelsType,
@@ -180,5 +183,5 @@ class HangedManMainLevels extends LinkMainLevels {
 export const HangedMan = new SocialLink(
   { name: "Maiko Oohashi", place: "Naganaki Shrine" },
   SocialLinkNames.HangedMan,
-  [new HangedManMainLevels()]
+  [new HangedManMainLevels(), new ShrineLevels()]
 );

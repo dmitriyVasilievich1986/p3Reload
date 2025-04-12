@@ -14,6 +14,7 @@ import {
   KoromaruWalkSocialLinkLevels,
   InvitationLevels,
   LinkMainLevels,
+  ShrineLevels,
 } from "@/constants/socialLinks/classes/LinkLevels";
 import {
   SocialLinkAvailableProps,
@@ -384,5 +385,6 @@ export const Chariot = new SocialLink(
     new ChariotKoromaruWalkSocialLinkLevels(),
     new ChariotInvitationLevels(),
     new ChariotMainLevels(),
+    new ShrineLevels(),
   ]
 );

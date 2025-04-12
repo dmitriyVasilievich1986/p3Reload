@@ -5,12 +5,15 @@ import { DaysNames } from "@/constants/monthsNames";
 import { Times } from "@/constants/events/types";
 import { StatsNames } from "@/constants/stats";
 
-import { LinkMainLevels } from "@/constants/socialLinks/classes/LinkLevels";
 import { SocialLink } from "@/constants/socialLinks/classes/SocialLink";
 import {
   createBondObject,
   LinkMaxedObject,
 } from "@/constants/socialLinks/classes/GenericCard.tsx";
+import {
+  LinkMainLevels,
+  ShrineLevels,
+} from "@/constants/socialLinks/classes/LinkLevels";
 import {
   SocialLinkNames,
   LevelsType,
@@ -188,5 +191,5 @@ class TowerMainLevels extends LinkMainLevels {
 export const Tower = new SocialLink(
   { name: "Mutatsu", place: "Club Escapade" },
   SocialLinkNames.Tower,
-  [new TowerMainLevels()]
+  [new TowerMainLevels(), new ShrineLevels()]
 );

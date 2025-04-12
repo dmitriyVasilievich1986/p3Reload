@@ -13,12 +13,15 @@ import {
   Or_,
 } from "@/constants/availability/AvailableClass";
 
-import { LinkMainLevels } from "@/constants/socialLinks/classes/LinkLevels";
 import { SocialLink } from "@/constants/socialLinks/classes/SocialLink";
 import {
   createBondObject,
   LinkMaxedObject,
 } from "@/constants/socialLinks/classes/GenericCard.tsx";
+import {
+  LinkMainLevels,
+  ShrineLevels,
+} from "@/constants/socialLinks/classes/LinkLevels";
 import {
   SocialLinkNames,
   LevelsType,
@@ -167,5 +170,5 @@ class EmperorMainLevels extends LinkMainLevels {
 export const Emperor = new SocialLink(
   { name: "Hidetoshi Odagiri", place: "Student Council Room" },
   SocialLinkNames.Emperor,
-  [new EmperorMainLevels()]
+  [new EmperorMainLevels(), new ShrineLevels()]
 );

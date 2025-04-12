@@ -13,6 +13,7 @@ import {
   KoromaruWalkSocialLinkLevels,
   InvitationLevels,
   LinkMainLevels,
+  ShrineLevels,
 } from "@/constants/socialLinks/classes/LinkLevels";
 import {
   EventAvailableProps,
@@ -325,5 +326,6 @@ export const Fortune = new SocialLink(
     new FortuneKoromaruWalkSocialLinkLevels(),
     new FortuneInvitationLevels(),
     new FortuneMainLevels(),
+    new ShrineLevels(),
   ]
 );

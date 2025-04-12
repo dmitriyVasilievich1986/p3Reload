@@ -4,12 +4,15 @@ import availables from "@/constants/availability/AvailableClass";
 import { DaysNames } from "@/constants/monthsNames";
 import { Times } from "@/constants/events/types";
 
-import { LinkMainLevels } from "@/constants/socialLinks/classes/LinkLevels";
 import { SocialLink } from "@/constants/socialLinks/classes/SocialLink";
 import {
   createBondObject,
   LinkMaxedObject,
 } from "@/constants/socialLinks/classes/GenericCard.tsx";
+import {
+  LinkMainLevels,
+  ShrineLevels,
+} from "@/constants/socialLinks/classes/LinkLevels";
 import {
   SocialLinkNames,
   LevelsType,
@@ -192,5 +195,5 @@ class HermitMainLevels extends LinkMainLevels {
 export const Hermit = new SocialLink(
   { name: "Maya", place: "Laptop at the Protagonist's room" },
   SocialLinkNames.Hermit,
-  [new HermitMainLevels()]
+  [new HermitMainLevels(), new ShrineLevels()]
 );

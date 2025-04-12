@@ -13,6 +13,7 @@ import {
   KoromaruWalkSocialLinkLevels,
   InvitationLevels,
   LinkMainLevels,
+  ShrineLevels,
 } from "@/constants/socialLinks/classes/LinkLevels";
 import {
   SocialLinkNames,
@@ -473,5 +474,6 @@ export const Justice = new SocialLink(
     new JusticeKoromaruWalkSocialLinkLevels(),
     new JusticeInvitationLevels(),
     new JusticeMainLevels(),
+    new ShrineLevels(),
   ]
 );

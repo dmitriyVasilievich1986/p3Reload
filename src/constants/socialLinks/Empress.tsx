@@ -15,6 +15,7 @@ import {
   DormHangoutLevels,
   InvitationLevels,
   LinkMainLevels,
+  ShrineLevels,
 } from "@/constants/socialLinks/classes/LinkLevels";
 import {
   SocialLinkAvailableProps,
@@ -528,5 +529,6 @@ export const Empress = new SocialLink(
     new EmpressBookActivityLevels(),
     new EmpressInvitationLevels(),
     new EmpressMainLevels(),
+    new ShrineLevels(),
   ]
 );

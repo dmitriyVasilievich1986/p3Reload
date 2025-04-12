@@ -23,6 +23,7 @@ import {
   KoromaruWalkLevels,
   DormHangoutLevels,
   LinkMainLevels,
+  ShrineLevels,
 } from "@/constants/socialLinks/classes/LinkLevels";
 import {
   SocialLinkAvailableProps,
@@ -381,5 +382,6 @@ export const Aeon = new SocialLink(
     new AeonKoromaruWalkLevels(),
     new AeonBookActivityLevels(),
     new AeonMainLevels(),
+    new ShrineLevels(),
   ]
 );

@@ -21,6 +21,7 @@ import {
   KoromaruWalkSocialLinkLevels,
   InvitationLevels,
   LinkMainLevels,
+  ShrineLevels,
 } from "@/constants/socialLinks/classes/LinkLevels";
 import {
   SocialLinkNames,
@@ -335,5 +336,6 @@ export const Magician = new SocialLink(
     new MagicianKoromaruWalkSocialLinkLevels(),
     new MagicianInvitationLevels(),
     new MagicianMainLevels(),
+    new ShrineLevels(),
   ]
 );

@@ -13,6 +13,7 @@ import {
 import {
   KoromaruWalkSocialLinkLevels,
   LinkMainLevels,
+  ShrineLevels,
 } from "@/constants/socialLinks/classes/LinkLevels";
 import {
   EventAvailableProps,
@@ -237,5 +238,9 @@ class StarKoromaruWalkSocialLinkLevels extends KoromaruWalkSocialLinkLevels {
 export const Star = new SocialLink(
   { name: "Mamoru Hayase", place: "Iwatodai Station Strip Mall 1F" },
   SocialLinkNames.Star,
-  [new StarKoromaruWalkSocialLinkLevels(), new StarMainLevels()]
+  [
+    new StarKoromaruWalkSocialLinkLevels(),
+    new StarMainLevels(),
+    new ShrineLevels(),
+  ]
 );

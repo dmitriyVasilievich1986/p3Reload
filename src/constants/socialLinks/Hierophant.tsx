@@ -12,6 +12,7 @@ import {
 import {
   KoromaruWalkSocialLinkLevels,
   LinkMainLevels,
+  ShrineLevels,
 } from "@/constants/socialLinks/classes/LinkLevels";
 import {
   SocialLinkNames,
@@ -237,5 +238,9 @@ class HierophantKoromaruWalkSocialLinkLevels extends KoromaruWalkSocialLinkLevel
 export const Hierophant = new SocialLink(
   { name: "Bunkichi and Mitsuko", place: "Bookworms Used Books" },
   SocialLinkNames.Hierophant,
-  [new HierophantKoromaruWalkSocialLinkLevels(), new HierophantMainLevels()]
+  [
+    new HierophantKoromaruWalkSocialLinkLevels(),
+    new HierophantMainLevels(),
+    new ShrineLevels(),
+  ]
 );

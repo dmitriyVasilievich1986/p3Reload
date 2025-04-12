@@ -13,6 +13,7 @@ import {
 import {
   InvitationLevels,
   LinkMainLevels,
+  ShrineLevels,
 } from "@/constants/socialLinks/classes/LinkLevels";
 import {
   SocialLinkNames,
@@ -289,5 +290,9 @@ class TemperanceInvitationLevels extends InvitationLevels {
 export const Temperance = new SocialLink(
   { name: 'André Laurent Jean "Bebe" Geraux', place: "2F Classroom Hallway" },
   SocialLinkNames.Temperance,
-  [new TemperanceInvitationLevels(), new TemperanceMainLevels()]
+  [
+    new TemperanceInvitationLevels(),
+    new TemperanceMainLevels(),
+    new ShrineLevels(),
+  ]
 );
