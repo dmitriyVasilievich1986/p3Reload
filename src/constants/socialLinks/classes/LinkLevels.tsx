@@ -140,7 +140,9 @@ export abstract class LinkMainLevelsEpisodes extends LinkMainLevels {
 }
 
 export class LinkMainLevelsChooseAny extends LinkMainLevels {
-  isAvailable = new availables.False_().available;
+  isAvailable(_props: EventAvailableProps): boolean {
+    return false;
+  }
 
   calculate(socialLink: SocialLinkType, props: SocialLinkAvailableProps) {
     const linkName = socialLink.linkName;
