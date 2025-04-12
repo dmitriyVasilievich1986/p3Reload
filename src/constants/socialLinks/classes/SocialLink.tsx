@@ -42,6 +42,12 @@ export class SocialLink implements SocialLinkType {
     );
   }
 
+  getMainLevel(): LinkMainLevels {
+    return this.levels.find(
+      (l) => l instanceof LinkMainLevels
+    ) as LinkMainLevels;
+  }
+
   getLevels(props: AvailabilityProps): LinkLevels {
     return (
       this.levels.find((level) =>
