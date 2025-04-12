@@ -239,6 +239,32 @@ export class AvailableLinkIsNewLevel extends Available<boolean> {
   }
 }
 
+export class AvailableLinkRoute extends Available<Routes> {
+  operation: Operations = Operations.Equal;
+  forkLevel: number;
+
+  constructor(props: { forkLevel: number; reverse?: boolean }) {
+    super(props);
+    this.forkLevel = props.forkLevel;
+
+    this.getLeft = this.getLeft.bind(this);
+  }
+
+  getLeft(props: AvailabilityProps) {
+    const linkName = props.socialLink!.linkName;
+    const previousLink = props.previousDay!.links[linkName];
+    return (
+      previousLink.level === this.forkLevel
+        ? props!.route
+        : previousLink!.romance
+    ) as Routes;
+  }
+
+  getRight(props: AvailabilityProps) {
+    return props!.route as Routes;
+  }
+}
+
 export class AvailableStatGreater extends Available<number> {
   operation: Operations = Operations.GreaterOrEqueal;
   name: StatsNames;
