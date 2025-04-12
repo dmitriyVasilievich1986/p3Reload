@@ -339,3 +339,24 @@ export class False_ extends AvailabilityArray {
     return false;
   }
 }
+
+export const availables = {
+  AvailableSingleTimeEventsIsIn,
+  AvailableLinkLevelGreater,
+  AvailableLinkLevelEqual,
+  AvailableLinkIsNewLevel,
+  AvailableLinkLevelLess,
+  AvailableDaysNamesIsIn,
+  AvailableLinkMaxLevel,
+  AvailableStatGreater,
+  AvailableDateGreater,
+  AvailableTimesIsIn,
+  AvailableLinkRoute,
+  AvailableDateIsIn,
+  AvailableStatLess,
+  AvailableIsDayOff,
+  False_,
+  True_,
+  And_,
+  Or_,
+};
