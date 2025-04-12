@@ -1,29 +1,31 @@
 import { QuestionsWrapper, EventCard, Question, Answer } from "@/components";
-import { StatsNames, stats } from "@/constants/stats";
+
+import availables from "@/constants/availability/AvailableClass";
 import { DaysNames } from "@/constants/monthsNames";
 import { Times } from "@/constants/events/types";
+import { StatsNames } from "@/constants/stats";
 
-import { createBondObject, LinkMaxedObject } from "./classes/GenericCard";
-import { SocialLink } from "./classes/SocialLink";
-
+import { SocialLink } from "@/constants/socialLinks/classes/SocialLink";
+import {
+  createBondObject,
+  LinkMaxedObject,
+} from "@/constants/socialLinks/classes/GenericCard.tsx";
 import {
   KoromaruWalkLevels,
   DormHangoutLevels,
   InvitationLevels,
   LinkMainLevels,
-} from "./classes/LinkLevels";
-
+} from "@/constants/socialLinks/classes/LinkLevels";
 import {
   SocialLinkAvailableProps,
   SocialLinkElementProps,
-  EventAvailableProps,
   LabelHeadPrefixes,
   SocialLinkLevel,
   SocialLinkNames,
   SocialLinkType,
   LevelsType,
   Routes,
-} from "./types";
+} from "@/constants/socialLinks/types";
 
 class LoversKitchenActivityLevels extends DormHangoutLevels {
   headPostfix: LabelHeadPrefixes = LabelHeadPrefixes.KitchenActivity;
@@ -119,31 +121,25 @@ class LoversDVDActivityLevels extends DormHangoutLevels {
 }
 
 class LoversMainLevels extends LinkMainLevels {
-  isAvailable(props: EventAvailableProps): boolean {
-    const linkName = props.socialLink.linkName;
-    const charmLevel = stats[StatsNames.Charm].levels[5].value;
-    const previousLink = props.previousDay!.links[linkName];
-    const isNewLevel = props.socialLink.isNewLevel(previousLink);
-    const isRomance =
-      previousLink.level === 6 || previousLink.romance === props.route;
-    const days = [
-      DaysNames.monday,
-      DaysNames.wednesday,
-      DaysNames.thursday,
-      DaysNames.saturday,
-    ];
-
-    return (
-      props.currentDay.date.getTime() >= new Date(2009, 6, 25).getTime() &&
-      props.previousDay!.stats[StatsNames.Charm] >= charmLevel &&
-      days.includes(props.currentDay.date.getDay()) &&
-      !props.currentDay.isDayOff &&
-      props.time === Times.Day &&
-      !props.currentDay.exams &&
-      isNewLevel &&
-      isRomance
-    );
-  }
+  isAvailable = new availables.And_([
+    new availables.AvailableIsDayOff({ reverse: true, isExamIncluded: true }),
+    new availables.AvailableDateGreater({ date: new Date(2009, 6, 25) }),
+    new availables.AvailableTimesIsIn({ times: [Times.Day] }),
+    new availables.AvailableLinkRoute({ forkLevel: 6 }),
+    new availables.AvailableLinkIsNewLevel(),
+    new availables.AvailableStatGreater({
+      name: StatsNames.Charm,
+      level: 5,
+    }),
+    new availables.AvailableDaysNamesIsIn({
+      days: [
+        DaysNames.monday,
+        DaysNames.wednesday,
+        DaysNames.thursday,
+        DaysNames.saturday,
+      ],
+    }),
+  ]).available;
 
   levels: LevelsType = {
     0: {
