@@ -1,18 +1,9 @@
 import { QuestionsWrapper, EventCard, Question, Answer } from "@/components";
 
+import availables from "@/constants/availability/AvailableClass";
 import { DaysNames } from "@/constants/monthsNames";
 import { Times } from "@/constants/events/types";
 import { StatsNames } from "@/constants/stats";
-
-import {
-  AvailableLinkIsNewLevel,
-  AvailableDaysNamesIsIn,
-  AvailableDateGreater,
-  AvailableTimesIsIn,
-  AvailableLinkRoute,
-  AvailableDateIsIn,
-  And_,
-} from "@/constants/availability/AvailableClass";
 
 import { SocialLink } from "@/constants/socialLinks/classes/SocialLink";
 import {
@@ -123,13 +114,16 @@ class AeonBookActivityLevels extends DormHangoutLevels {
 }
 
 class AeonMainLevels extends LinkMainLevels {
-  isAvailable = new And_([
-    new AvailableDateIsIn({ date: [new Date(2010, 0, 25)], reverse: true }),
-    new AvailableDateGreater({ date: new Date(2010, 0, 8) }),
-    new AvailableTimesIsIn({ times: [Times.Day] }),
-    new AvailableLinkRoute({ forkLevel: 7 }),
-    new AvailableLinkIsNewLevel(),
-    new AvailableDaysNamesIsIn({
+  isAvailable = new availables.And_([
+    new availables.AvailableDateIsIn({
+      date: [new Date(2010, 0, 25)],
+      reverse: true,
+    }),
+    new availables.AvailableDateGreater({ date: new Date(2010, 0, 8) }),
+    new availables.AvailableTimesIsIn({ times: [Times.Day] }),
+    new availables.AvailableLinkRoute({ forkLevel: 7 }),
+    new availables.AvailableLinkIsNewLevel(),
+    new availables.AvailableDaysNamesIsIn({
       days: [
         DaysNames.monday,
         DaysNames.tuesday,

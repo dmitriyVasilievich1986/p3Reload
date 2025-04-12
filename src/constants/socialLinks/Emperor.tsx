@@ -1,17 +1,8 @@
-import { DaysNames } from "@/constants/monthsNames";
-import { Times } from "@/constants/events/types";
-
 import { QuestionsWrapper, Question, Answer } from "@/components";
 
-import {
-  AvailableLinkIsNewLevel,
-  AvailableDaysNamesIsIn,
-  AvailableDateGreater,
-  AvailableTimesIsIn,
-  AvailableIsDayOff,
-  And_,
-  Or_,
-} from "@/constants/availability/AvailableClass";
+import availables from "@/constants/availability/AvailableClass";
+import { DaysNames } from "@/constants/monthsNames";
+import { Times } from "@/constants/events/types";
 
 import { SocialLink } from "@/constants/socialLinks/classes/SocialLink";
 import {
@@ -29,14 +20,14 @@ import {
 } from "@/constants/socialLinks/types";
 
 class EmperorMainLevels extends LinkMainLevels {
-  isAvailable = new And_([
-    new AvailableIsDayOff({ reverse: true, isExamIncluded: true }),
-    new AvailableDateGreater({ date: new Date(2009, 3, 27) }),
-    new AvailableTimesIsIn({ times: [Times.Day] }),
-    new AvailableLinkIsNewLevel(),
-    new Or_([
-      new AvailableDateGreater({ date: new Date(2010, 0, 1) }),
-      new AvailableDaysNamesIsIn({
+  isAvailable = new availables.And_([
+    new availables.AvailableIsDayOff({ reverse: true, isExamIncluded: true }),
+    new availables.AvailableDateGreater({ date: new Date(2009, 3, 27) }),
+    new availables.AvailableTimesIsIn({ times: [Times.Day] }),
+    new availables.AvailableLinkIsNewLevel(),
+    new availables.Or_([
+      new availables.AvailableDateGreater({ date: new Date(2010, 0, 1) }),
+      new availables.AvailableDaysNamesIsIn({
         days: [DaysNames.monday, DaysNames.wednesday, DaysNames.friday],
       }),
     ]),

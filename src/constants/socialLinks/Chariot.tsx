@@ -1,8 +1,9 @@
+import { QuestionsWrapper, Question, Answer } from "@/components";
+
+import availables from "@/constants/availability/AvailableClass";
 import { SingleDay } from "@/constants/calendar/SingleDay";
 import { DaysNames } from "@/constants/monthsNames";
 import { Times } from "@/constants/events/types";
-
-import { QuestionsWrapper, Question, Answer } from "@/components";
 
 import { SocialLink } from "@/constants/socialLinks/classes/SocialLink";
 import { Strength } from "@/constants/socialLinks/Strength";
@@ -26,22 +27,13 @@ import {
   Routes,
 } from "@/constants/socialLinks/types";
 
-import {
-  AvailableLinkIsNewLevel,
-  AvailableDaysNamesIsIn,
-  AvailableDateGreater,
-  AvailableTimesIsIn,
-  AvailableIsDayOff,
-  And_,
-} from "@/constants/availability/AvailableClass";
-
 class ChariotMainLevels extends LinkMainLevels {
-  isAvailable = new And_([
-    new AvailableIsDayOff({ reverse: true, isExamIncluded: true }),
-    new AvailableDateGreater({ date: new Date(2009, 3, 23) }),
-    new AvailableTimesIsIn({ times: [Times.Day] }),
-    new AvailableLinkIsNewLevel(),
-    new AvailableDaysNamesIsIn({
+  isAvailable = new availables.And_([
+    new availables.AvailableIsDayOff({ reverse: true, isExamIncluded: true }),
+    new availables.AvailableDateGreater({ date: new Date(2009, 3, 23) }),
+    new availables.AvailableTimesIsIn({ times: [Times.Day] }),
+    new availables.AvailableLinkIsNewLevel(),
+    new availables.AvailableDaysNamesIsIn({
       days: [
         DaysNames.monday,
         DaysNames.tuesday,
