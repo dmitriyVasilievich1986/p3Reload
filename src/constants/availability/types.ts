@@ -1,6 +1,7 @@
 import { SingleDay } from "@/constants/calendar/SingleDay";
 import { Times } from "@/constants/events/types";
 
+import { SocialLink } from "@/constants/socialLinks/classes/SocialLink";
 import {
   SocialLinkAvailableProps,
   Routes,
@@ -20,6 +21,7 @@ export type AvailabilityType = {
 };
 
 export type AvailabilityProps = {
+  socialLink?: SocialLink;
   previousDay: SingleDay;
   currentDay: SingleDay;
   route?: Routes;
