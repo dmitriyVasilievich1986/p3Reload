@@ -1,50 +1,48 @@
+import { QuestionsWrapper, Question, Answer } from "@/components";
+
+import availables from "@/constants/availability/AvailableClass";
 import { DaysNames } from "@/constants/monthsNames";
 import { Times } from "@/constants/events/types";
 
-import { QuestionsWrapper, Question, Answer } from "@/components";
-
-import { createBondObject, LinkMaxedObject } from "./classes/GenericCard";
-import { SocialLink } from "./classes/SocialLink";
-
+import { SocialLink } from "@/constants/socialLinks/classes/SocialLink";
 import {
-  EventAvailableProps,
-  SocialLinkNames,
-  LevelsType,
-  Routes,
-} from "./types";
-
+  createBondObject,
+  LinkMaxedObject,
+} from "@/constants/socialLinks/classes/GenericCard.tsx";
 import {
   KoromaruWalkSocialLinkLevels,
   InvitationLevels,
   LinkMainLevels,
-} from "./classes/LinkLevels";
+} from "@/constants/socialLinks/classes/LinkLevels";
+import {
+  SocialLinkNames,
+  LevelsType,
+  Routes,
+} from "@/constants/socialLinks/types";
 
 class JusticeMainLevels extends LinkMainLevels {
-  isAvailable(props: EventAvailableProps): boolean {
-    const linkName = props.socialLink.linkName;
-    const previousLink = props.previousDay!.links[linkName];
-    const isNewLevel = props.socialLink.isNewLevel(previousLink);
-    const isRomance =
-      previousLink.level === 4 || previousLink.romance === props.route;
-    const days = [DaysNames.tuesday, DaysNames.thursday, DaysNames.saturday];
-    const excludedDates: number[] = [
-      new Date(2009, 10, 7).getTime(),
-      new Date(2009, 10, 10).getTime(),
-      new Date(2009, 10, 12).getTime(),
-    ];
-
-    return (
-      props.currentDay.date.getTime() >= new Date(2009, 4, 7).getTime() &&
-      props.previousDay!.links[SocialLinkNames.Emperor].level > 0 &&
-      !excludedDates.includes(props.currentDay.date.getTime()) &&
-      days.includes(props.currentDay.date.getDay()) &&
-      !props.currentDay.isDayOff &&
-      props.time === Times.Day &&
-      !props.currentDay.exams &&
-      isNewLevel &&
-      isRomance
-    );
-  }
+  isAvailable = new availables.And_([
+    new availables.AvailableIsDayOff({ reverse: true, isExamIncluded: true }),
+    new availables.AvailableDateGreater({ date: new Date(2009, 4, 7) }),
+    new availables.AvailableTimesIsIn({ times: [Times.Day] }),
+    new availables.AvailableLinkRoute({ forkLevel: 4 }),
+    new availables.AvailableLinkIsNewLevel(),
+    new availables.AvailableDateIsIn({
+      date: [
+        new Date(2009, 10, 7),
+        new Date(2009, 10, 10),
+        new Date(2009, 10, 12),
+      ],
+      reverse: true,
+    }),
+    new availables.AvailableLinkLevelGreater({
+      name: SocialLinkNames.Emperor,
+      level: 1,
+    }),
+    new availables.AvailableDaysNamesIsIn({
+      days: [DaysNames.tuesday, DaysNames.thursday, DaysNames.saturday],
+    }),
+  ]).available;
 
   levels: LevelsType = {
     0: {
