@@ -325,17 +325,12 @@ export class ShrineLevels extends LinkLevels {
     },
   };
 
-  isAvailable(props: EventAvailableProps): boolean {
-    const linkName = props.socialLink.linkName;
-
-    return (
-      props.previousDay!.links[linkName].level < props.socialLink.maxLevel &&
-      !props.socialLink.isNewLevel(props.previousDay!.links[linkName]) &&
-      props.previousDay!.links[linkName].romance === props.route &&
-      props.previousDay!.links[linkName].level > 0 &&
-      props.time === Times.Day
-    );
-  }
+  isAvailable = new availables.And_([
+    new availables.AvailableLinkIsNewLevel({ reverse: true }),
+    new availables.AvailableTimesIsIn({ times: [Times.Day] }),
+    new availables.AvailableLinkMaxLevel({ reverse: true }),
+    new availables.AvailableLinkLevelGreater({ level: 1 }),
+  ]).available;
 
   calculate(
     socialLink: SocialLinkType,
