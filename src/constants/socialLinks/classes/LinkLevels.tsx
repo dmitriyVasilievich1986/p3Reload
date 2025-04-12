@@ -1,18 +1,18 @@
-import { upgradeResponse, Times } from "@/constants/events/types";
-import { SingleDay } from "@/constants/calendar/SingleDay";
-import { StatsNames, stats } from "@/constants/stats";
 import { EventCard } from "@/components";
 
-import { getCalulateFunction } from "./calculationFunctions";
+import { upgradeResponse, Times } from "@/constants/events/types";
+import availables from "@/constants/availability/AvailableClass";
+import { SingleDay } from "@/constants/calendar/SingleDay";
+import { StatsNames, stats } from "@/constants/stats";
 
+import { getCalulateFunction } from "@/constants/socialLinks/classes/calculationFunctions";
 import {
   SpendingTimeObject,
   createBondObject,
   LinkMaxedObject,
   ChooseAnyObject,
   SpendingTime,
-} from "./GenericCard";
-
+} from "@/constants/socialLinks/classes/GenericCard.tsx";
 import {
   SocialLinkAvailableProps,
   SocialLinkElementProps,
@@ -23,7 +23,7 @@ import {
   SocialLinkType,
   LevelsType,
   Routes,
-} from "../types";
+} from "@/constants/socialLinks/types";
 
 export abstract class LinkLevels {
   abstract levels: LevelsType;
@@ -56,9 +56,7 @@ export class EmptyLevels extends LinkLevels {
     return null;
   }
 
-  isAvailable() {
-    return false;
-  }
+  isAvailable = new availables.False_().available;
 }
 
 export abstract class LinkMainLevels extends LinkLevels {
@@ -142,9 +140,7 @@ export abstract class LinkMainLevelsEpisodes extends LinkMainLevels {
 }
 
 export class LinkMainLevelsChooseAny extends LinkMainLevels {
-  isAvailable(_props: EventAvailableProps): boolean {
-    return false;
-  }
+  isAvailable = new availables.False_().available;
 
   calculate(socialLink: SocialLinkType, props: SocialLinkAvailableProps) {
     const linkName = socialLink.linkName;
