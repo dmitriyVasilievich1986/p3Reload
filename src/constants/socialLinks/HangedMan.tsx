@@ -1,33 +1,30 @@
+import { QuestionsWrapper, Question, Answer } from "@/components";
+
+import availables from "@/constants/availability/AvailableClass";
 import { DaysNames } from "@/constants/monthsNames";
 import { Times } from "@/constants/events/types";
 
-import { QuestionsWrapper, Question, Answer } from "@/components";
-
-import { createBondObject, LinkMaxedObject } from "./classes/GenericCard";
-import { LinkMainLevels } from "./classes/LinkLevels";
-import { SocialLink } from "./classes/SocialLink";
-
+import { LinkMainLevels } from "@/constants/socialLinks/classes/LinkLevels";
+import { SocialLink } from "@/constants/socialLinks/classes/SocialLink";
 import {
-  EventAvailableProps,
+  createBondObject,
+  LinkMaxedObject,
+} from "@/constants/socialLinks/classes/GenericCard.tsx";
+import {
   SocialLinkNames,
   LevelsType,
   Routes,
-} from "./types";
+} from "@/constants/socialLinks/types";
 
 class HangedManMainLevels extends LinkMainLevels {
-  isAvailable(props: EventAvailableProps): boolean {
-    const linkName = props.socialLink.linkName;
-    const previousLink = props.previousDay!.links[linkName];
-    const isNewLevel = props.socialLink.isNewLevel(previousLink);
-    const days = [DaysNames.monday, DaysNames.wednesday, DaysNames.saturday];
-
-    return (
-      props.currentDay.date.getTime() >= new Date(2009, 4, 6).getTime() &&
-      days.includes(props.currentDay.date.getDay()) &&
-      props.time === Times.Day &&
-      isNewLevel
-    );
-  }
+  isAvailable = new availables.And_([
+    new availables.AvailableDateGreater({ date: new Date(2009, 4, 6) }),
+    new availables.AvailableTimesIsIn({ times: [Times.Day] }),
+    new availables.AvailableLinkIsNewLevel(),
+    new availables.AvailableDaysNamesIsIn({
+      days: [DaysNames.monday, DaysNames.wednesday, DaysNames.saturday],
+    }),
+  ]).available;
 
   levels: LevelsType = {
     0: {
