@@ -340,7 +340,7 @@ export class False_ extends AvailabilityArray {
   }
 }
 
-export const availables = {
+const availables = {
   AvailableSingleTimeEventsIsIn,
   AvailableLinkLevelGreater,
   AvailableLinkLevelEqual,
@@ -360,3 +360,5 @@ export const availables = {
   And_,
   Or_,
 };
+
+export default availables;
