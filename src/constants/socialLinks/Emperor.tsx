@@ -3,36 +3,41 @@ import { Times } from "@/constants/events/types";
 
 import { QuestionsWrapper, Question, Answer } from "@/components";
 
-import { createBondObject, LinkMaxedObject } from "./classes/GenericCard";
-import { LinkMainLevels } from "./classes/LinkLevels";
-import { SocialLink } from "./classes/SocialLink";
-
 import {
-  EventAvailableProps,
+  AvailableLinkIsNewLevel,
+  AvailableDaysNamesIsIn,
+  AvailableDateGreater,
+  AvailableTimesIsIn,
+  AvailableIsDayOff,
+  And_,
+  Or_,
+} from "@/constants/availability/AvailableClass";
+
+import { LinkMainLevels } from "@/constants/socialLinks/classes/LinkLevels";
+import { SocialLink } from "@/constants/socialLinks/classes/SocialLink";
+import {
+  createBondObject,
+  LinkMaxedObject,
+} from "@/constants/socialLinks/classes/GenericCard.tsx";
+import {
   SocialLinkNames,
   LevelsType,
   Routes,
-} from "./types";
+} from "@/constants/socialLinks/types";
 
 class EmperorMainLevels extends LinkMainLevels {
-  isAvailable(props: EventAvailableProps): boolean {
-    const days = [DaysNames.monday, DaysNames.wednesday, DaysNames.friday];
-    const linkName = props.socialLink.linkName;
-    const previousLink = props.previousDay!.links[linkName];
-    const isNewLevel = props.socialLink.isNewLevel(previousLink);
-    const isJanuary =
-      props.currentDay.date.getTime() >= new Date(2010, 0, 1).getTime() ||
-      days.includes(props.currentDay.date.getDay());
-
-    return (
-      props.currentDay.date.getTime() >= new Date(2009, 3, 27).getTime() &&
-      !props.currentDay.isDayOff &&
-      props.time === Times.Day &&
-      !props.currentDay.exams &&
-      isNewLevel &&
-      isJanuary
-    );
-  }
+  isAvailable = new And_([
+    new AvailableIsDayOff({ reverse: true, isExamIncluded: true }),
+    new AvailableDateGreater({ date: new Date(2009, 3, 27) }),
+    new AvailableTimesIsIn({ times: [Times.Day] }),
+    new AvailableLinkIsNewLevel(),
+    new Or_([
+      new AvailableDateGreater({ date: new Date(2010, 0, 1) }),
+      new AvailableDaysNamesIsIn({
+        days: [DaysNames.monday, DaysNames.wednesday, DaysNames.friday],
+      }),
+    ]),
+  ]).available;
 
   levels: LevelsType = {
     0: {
