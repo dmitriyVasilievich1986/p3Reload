@@ -1,27 +1,27 @@
-import { StatsNames, stats } from "@/constants/stats";
+import availables from "@/constants/availability/AvailableClass";
 import { DaysNames } from "@/constants/monthsNames";
 import { Times } from "@/constants/events/types";
+import { StatsNames } from "@/constants/stats";
 
-import { LinkMainLevelsChooseAny } from "./classes/LinkLevels";
-import { SocialLinkAlwaysLevelUp } from "./classes/SocialLink";
-import { EventAvailableProps, SocialLinkNames } from "./types";
+import { SocialLinkAlwaysLevelUp } from "@/constants/socialLinks/classes/SocialLink";
+import { LinkMainLevelsChooseAny } from "@/constants/socialLinks/classes/LinkLevels";
+import { SocialLinkNames } from "@/constants/socialLinks/types";
 
 class SunMainLevels extends LinkMainLevelsChooseAny {
-  isAvailable(props: EventAvailableProps): boolean {
-    const linkName = props.socialLink.linkName;
-    const academicsLevel = stats[StatsNames.Academics].levels[3].value;
-    const previousLink = props.previousDay!.links[linkName];
-    const isNewLevel = props.socialLink.isNewLevel(previousLink);
-
-    return (
-      props.currentDay.date.getTime() >= new Date(2009, 7, 9).getTime() &&
-      props.previousDay!.stats[StatsNames.Academics] >= academicsLevel &&
-      props.previousDay!.links[SocialLinkNames.HangedMan].level >= 3 &&
-      props.currentDay.date.getDay() == DaysNames.sunday &&
-      props.time === Times.Day &&
-      isNewLevel
-    );
-  }
+  isAvailable = new availables.And_([
+    new availables.AvailableDateGreater({ date: new Date(2009, 7, 9) }),
+    new availables.AvailableDaysNamesIsIn({ days: [DaysNames.sunday] }),
+    new availables.AvailableTimesIsIn({ times: [Times.Day] }),
+    new availables.AvailableLinkIsNewLevel(),
+    new availables.AvailableLinkLevelGreater({
+      name: SocialLinkNames.HangedMan,
+      level: 3,
+    }),
+    new availables.AvailableStatGreater({
+      name: StatsNames.Academics,
+      level: 3,
+    }),
+  ]).available;
 }
 
 export const Sun = new SocialLinkAlwaysLevelUp(
