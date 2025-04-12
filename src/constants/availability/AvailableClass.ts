@@ -169,11 +169,11 @@ export class AvailableLinkMaxLevel extends Available<number> {
 
 export class AvailableLinkLevelGreater extends Available<number> {
   operation: Operations = Operations.GreaterOrEqueal;
-  name: SocialLinkNames;
+  name?: SocialLinkNames;
   level: number;
 
   constructor(props: {
-    name: SocialLinkNames;
+    name?: SocialLinkNames;
     level: number;
     reverse?: boolean;
   }) {
@@ -186,7 +186,8 @@ export class AvailableLinkLevelGreater extends Available<number> {
   }
 
   getLeft(props: AvailabilityProps) {
-    const previousLink = props.previousDay!.links[this.name];
+    const name = this.name ?? props.socialLink!.linkName;
+    const previousLink = props.previousDay!.links[name];
     return previousLink.level;
   }
 
