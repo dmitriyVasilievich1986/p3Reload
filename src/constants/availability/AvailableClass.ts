@@ -228,10 +228,6 @@ export class AvailableLinkLevelLess extends AvailableLinkLevelGreater {
 export class AvailableLinkIsNewLevel extends Available<boolean> {
   operation: Operations = Operations.Equal;
 
-  constructor(props?: { reverse?: boolean }) {
-    super(props);
-  }
-
   getLeft(props: AvailabilityProps) {
     const linkName = props.socialLink!.linkName;
     const previousLink = props.previousDay!.links[linkName];
