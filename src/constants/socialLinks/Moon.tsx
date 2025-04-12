@@ -1,40 +1,45 @@
-import { createBondObject, LinkMaxedObject } from "./classes/GenericCard";
 import { QuestionsWrapper, Question, Answer } from "@/components";
-import { LinkMainLevels } from "./classes/LinkLevels";
-import { StatsNames, stats } from "@/constants/stats";
-import { SocialLink } from "./classes/SocialLink";
-import { Times } from "@/constants/events/types";
 
+import availables from "@/constants/availability/AvailableClass";
+import { Times } from "@/constants/events/types";
+import { StatsNames } from "@/constants/stats";
+
+import { SocialLink } from "@/constants/socialLinks/classes/SocialLink";
 import {
-  SocialLinkAvailableProps,
+  createBondObject,
+  LinkMaxedObject,
+} from "@/constants/socialLinks/classes/GenericCard.tsx";
+import {
+  LinkMainLevels,
+  ShrineLevels,
+} from "@/constants/socialLinks/classes/LinkLevels";
+import {
   SocialLinkNames,
-  SocialLinkType,
   LevelsType,
   Routes,
-} from "./types";
+} from "@/constants/socialLinks/types";
 
 class MoonMainLevels extends LinkMainLevels {
-  isAvailable(
-    socialLink: SocialLinkType,
-    props: SocialLinkAvailableProps
-  ): boolean {
-    const linkName = socialLink.linkName;
-    const charmLevel = stats[StatsNames.Charm].levels[1].value;
-    const previousLink = props.previousDay!.links[linkName];
-    const isNewLevel = socialLink.isNewLevel(previousLink);
-    const firstLevel =
-      props.currentDay.links[SocialLinkNames.Moon].level !== 0 ||
-      !props.currentDay.isDayOff;
-
-    return (
-      props.currentDay.date.getTime() >= new Date(2009, 3, 28).getTime() &&
-      props.previousDay!.links[SocialLinkNames.Magician].level >= 3 &&
-      props.previousDay!.stats[StatsNames.Charm] >= charmLevel &&
-      props.time === Times.Day &&
-      firstLevel &&
-      isNewLevel
-    );
-  }
+  isAvailable = new availables.And_([
+    new availables.AvailableDateGreater({ date: new Date(2009, 3, 28) }),
+    new availables.AvailableTimesIsIn({ times: [Times.Day] }),
+    new availables.AvailableLinkIsNewLevel(),
+    new availables.AvailableLinkLevelGreater({
+      name: SocialLinkNames.Magician,
+      level: 3,
+    }),
+    new availables.AvailableStatGreater({
+      name: StatsNames.Charm,
+      level: 1,
+    }),
+    new availables.Or_([
+      new availables.AvailableIsDayOff({ reverse: true, isExamIncluded: true }),
+      new availables.AvailableLinkLevelGreater({
+        name: SocialLinkNames.Moon,
+        level: 0,
+      }),
+    ]),
+  ]).available;
 
   levels: LevelsType = {
     0: {
@@ -160,7 +165,7 @@ class MoonMainLevels extends LinkMainLevels {
 }
 
 export const Moon = new SocialLink(
-  SocialLinkNames.Moon,
   { name: "Nozomi Suemitsu", place: "Paulownia Mall" },
-  { mainLevels: new MoonMainLevels() }
+  SocialLinkNames.Moon,
+  [new MoonMainLevels(), new ShrineLevels()]
 );

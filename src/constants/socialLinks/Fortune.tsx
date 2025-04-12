@@ -1,44 +1,41 @@
-import { createBondObject, LinkMaxedObject } from "./classes/GenericCard";
 import { QuestionsWrapper, Question, Answer } from "@/components";
+
+import availables from "@/constants/availability/AvailableClass";
 import { DaysNames } from "@/constants/monthsNames";
-import { SocialLink } from "./classes/SocialLink";
 import { Times } from "@/constants/events/types";
 
+import { SocialLink } from "@/constants/socialLinks/classes/SocialLink";
+import {
+  createBondObject,
+  LinkMaxedObject,
+} from "@/constants/socialLinks/classes/GenericCard.tsx";
 import {
   KoromaruWalkSocialLinkLevels,
   InvitationLevels,
   LinkMainLevels,
-} from "./classes/LinkLevels";
-
+  ShrineLevels,
+} from "@/constants/socialLinks/classes/LinkLevels";
 import {
-  SocialLinkAvailableProps,
+  EventAvailableProps,
   SocialLinkNames,
-  SocialLinkType,
   LevelsType,
   Routes,
-} from "./types";
+} from "@/constants/socialLinks/types";
 
 class FortuneMainLevels extends LinkMainLevels {
-  isAvailable(
-    socialLink: SocialLinkType,
-    props: SocialLinkAvailableProps
-  ): boolean {
-    const linkName = socialLink.linkName;
-    const previousLink = props.previousDay!.links[linkName];
-    const isNewLevel = socialLink.isNewLevel(previousLink);
-    const days = [DaysNames.tuesday, DaysNames.wednesday, DaysNames.thursday];
-    const excluded = [new Date(2009, 8, 8).getTime()];
-
-    return (
-      props.currentDay.date.getTime() >= new Date(2009, 5, 17).getTime() &&
-      !excluded.includes(props.currentDay.date.getTime()) &&
-      days.includes(props.currentDay.date.getDay()) &&
-      !props.currentDay.isDayOff &&
-      props.time === Times.Day &&
-      !props.currentDay.exams &&
-      isNewLevel
-    );
-  }
+  isAvailable = new availables.And_([
+    new availables.AvailableIsDayOff({ reverse: true, isExamIncluded: true }),
+    new availables.AvailableDateGreater({ date: new Date(2009, 5, 17) }),
+    new availables.AvailableTimesIsIn({ times: [Times.Day] }),
+    new availables.AvailableLinkIsNewLevel(),
+    new availables.AvailableDateIsIn({
+      date: [new Date(2009, 8, 8)],
+      reverse: true,
+    }),
+    new availables.AvailableDaysNamesIsIn({
+      days: [DaysNames.tuesday, DaysNames.wednesday, DaysNames.thursday],
+    }),
+  ]).available;
 
   levels: LevelsType = {
     0: {
@@ -303,14 +300,10 @@ class FortuneInvitationLevels extends InvitationLevels {
 class FortuneKoromaruWalkSocialLinkLevels extends KoromaruWalkSocialLinkLevels {
   dates = [new Date(2009, 9, 24).getTime()];
 
-  isAvailable(
-    socialLink: SocialLinkType,
-    props: SocialLinkAvailableProps,
-    route: Routes
-  ): boolean {
+  isAvailable(props: EventAvailableProps): boolean {
     if (props.previousDay === undefined) return false;
 
-    const linkName = socialLink.linkName;
+    const linkName = props.socialLink.linkName;
     const star = props.previousDay.links[SocialLinkNames.Star];
     const insteadStar =
       star.level >= 10 &&
@@ -319,7 +312,7 @@ class FortuneKoromaruWalkSocialLinkLevels extends KoromaruWalkSocialLinkLevels {
       this.dates.includes(props.currentDay.date.getTime()) || insteadStar;
 
     return (
-      props.previousDay!.links[linkName].romance === route &&
+      props.previousDay!.links[linkName].romance === props.route &&
       props.time === Times.Evening &&
       isDay
     );
@@ -327,12 +320,12 @@ class FortuneKoromaruWalkSocialLinkLevels extends KoromaruWalkSocialLinkLevels {
 }
 
 export const Fortune = new SocialLink(
-  SocialLinkNames.Fortune,
   { name: "Keisuke Hiraga", place: "Art Club Room" },
-
-  {
-    koromaruWalks: new FortuneKoromaruWalkSocialLinkLevels(),
-    invitations: new FortuneInvitationLevels(),
-    mainLevels: new FortuneMainLevels(),
-  }
+  SocialLinkNames.Fortune,
+  [
+    new FortuneKoromaruWalkSocialLinkLevels(),
+    new FortuneInvitationLevels(),
+    new FortuneMainLevels(),
+    new ShrineLevels(),
+  ]
 );

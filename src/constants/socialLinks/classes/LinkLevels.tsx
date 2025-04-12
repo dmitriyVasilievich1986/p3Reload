@@ -1,27 +1,29 @@
-import { upgradeResponse, Times } from "@/constants/events/types";
-import { getCalulateFunction } from "./calculationFunctions";
-import { SingleDay } from "@/constants/calendar/SingleDay";
-import { StatsNames, stats } from "@/constants/stats";
 import { EventCard } from "@/components";
 
+import { upgradeResponse, Times } from "@/constants/events/types";
+import availables from "@/constants/availability/AvailableClass";
+import { SingleDay } from "@/constants/calendar/SingleDay";
+import { StatsNames, stats } from "@/constants/stats";
+
+import { getCalulateFunction } from "@/constants/socialLinks/classes/calculationFunctions";
 import {
   SpendingTimeObject,
   createBondObject,
+  LinkMaxedObject,
   ChooseAnyObject,
   SpendingTime,
-  LinkMaxedObject,
-} from "./GenericCard";
-
+} from "@/constants/socialLinks/classes/GenericCard.tsx";
 import {
   SocialLinkAvailableProps,
   SocialLinkElementProps,
+  EventAvailableProps,
   LabelHeadPrefixes,
   SocialLinkStats,
   SocialLinkLevel,
   SocialLinkType,
   LevelsType,
   Routes,
-} from "../types";
+} from "@/constants/socialLinks/types";
 
 export abstract class LinkLevels {
   abstract levels: LevelsType;
@@ -40,11 +42,7 @@ export abstract class LinkLevels {
     route: Routes
   ): React.ReactNode;
 
-  abstract isAvailable(
-    socialLink: SocialLinkType,
-    props: SocialLinkAvailableProps,
-    route: Routes
-  ): boolean;
+  abstract isAvailable(props: EventAvailableProps): boolean;
 }
 
 export class EmptyLevels extends LinkLevels {
@@ -58,9 +56,7 @@ export class EmptyLevels extends LinkLevels {
     return null;
   }
 
-  isAvailable() {
-    return false;
-  }
+  isAvailable = new availables.False_().available;
 }
 
 export abstract class LinkMainLevels extends LinkLevels {
@@ -144,11 +140,7 @@ export abstract class LinkMainLevelsEpisodes extends LinkMainLevels {
 }
 
 export class LinkMainLevelsChooseAny extends LinkMainLevels {
-  isAvailable(
-    _socialLink: SocialLinkType,
-    _props: SocialLinkAvailableProps,
-    _route: Routes
-  ): boolean {
+  isAvailable(_props: EventAvailableProps): boolean {
     return false;
   }
 
@@ -177,16 +169,12 @@ export class LinkMainLevelsChooseAny extends LinkMainLevels {
 export abstract class InvitationLevels extends LinkLevels {
   abstract dates: number[];
 
-  isAvailable(
-    socialLink: SocialLinkType,
-    props: SocialLinkAvailableProps,
-    route: Routes
-  ): boolean {
-    const linkName = socialLink.linkName;
+  isAvailable(props: EventAvailableProps): boolean {
+    const linkName = props.socialLink.linkName;
 
     return (
+      props.previousDay!.links[linkName].romance === props.route &&
       props.currentDay.links[linkName].level in this.levels &&
-      props.previousDay!.links[linkName].romance === route &&
       this.dates.includes(props.currentDay.date.getTime()) &&
       props.time === Times.Day
     );
@@ -247,15 +235,11 @@ export abstract class KoromaruWalkLevels extends LinkLevels {
     },
   };
 
-  isAvailable(
-    socialLink: SocialLinkType,
-    props: SocialLinkAvailableProps,
-    route: Routes
-  ): boolean {
-    const linkName = socialLink.linkName;
+  isAvailable(props: EventAvailableProps): boolean {
+    const linkName = props.socialLink.linkName;
 
     return (
-      props.previousDay!.links[linkName].romance === route &&
+      props.previousDay!.links[linkName].romance === props.route &&
       this.dates.includes(props.currentDay.date.getTime()) &&
       props.time === Times.Evening
     );
@@ -343,21 +327,12 @@ export class ShrineLevels extends LinkLevels {
     },
   };
 
-  isAvailable(
-    socialLink: SocialLinkType,
-    props: SocialLinkAvailableProps,
-    route: Routes
-  ): boolean {
-    const linkName = socialLink.linkName;
-
-    return (
-      props.previousDay!.links[linkName].level < socialLink.maxLevel &&
-      !socialLink.isNewLevel(props.previousDay!.links[linkName]) &&
-      props.previousDay!.links[linkName].romance === route &&
-      props.previousDay!.links[linkName].level > 0 &&
-      props.time === Times.Day
-    );
-  }
+  isAvailable = new availables.And_([
+    new availables.AvailableLinkIsNewLevel({ reverse: true }),
+    new availables.AvailableTimesIsIn({ times: [Times.Day] }),
+    new availables.AvailableLinkMaxLevel({ reverse: true }),
+    new availables.AvailableLinkLevelGreater({ level: 1 }),
+  ]).available;
 
   calculate(
     socialLink: SocialLinkType,
@@ -415,18 +390,14 @@ export abstract class DormHangoutLevels extends LinkLevels {
     },
   };
 
-  isAvailable(
-    socialLink: SocialLinkType,
-    props: SocialLinkAvailableProps,
-    route: Routes
-  ): boolean {
-    const linkName = socialLink.linkName;
+  isAvailable(props: EventAvailableProps): boolean {
+    const linkName = props.socialLink.linkName;
     const previousLink = props.previousDay!.links[linkName];
 
     return (
       this.dates.includes(props.currentDay.date.getTime()) &&
       previousLink[this.dormName] < 3 &&
-      previousLink.romance === route &&
+      previousLink.romance === props.route &&
       props.time === Times.Evening
     );
   }

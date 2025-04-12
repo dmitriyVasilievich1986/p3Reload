@@ -1,40 +1,37 @@
-import { createBondObject, LinkMaxedObject } from "./classes/GenericCard";
 import { QuestionsWrapper, Question, Answer } from "@/components";
-import { LinkMainLevels } from "./classes/LinkLevels";
+
+import availables from "@/constants/availability/AvailableClass";
 import { DaysNames } from "@/constants/monthsNames";
-import { SocialLink } from "./classes/SocialLink";
 import { Times } from "@/constants/events/types";
 
+import { SocialLink } from "@/constants/socialLinks/classes/SocialLink";
 import {
-  SocialLinkAvailableProps,
+  createBondObject,
+  LinkMaxedObject,
+} from "@/constants/socialLinks/classes/GenericCard.tsx";
+import {
+  LinkMainLevels,
+  ShrineLevels,
+} from "@/constants/socialLinks/classes/LinkLevels";
+import {
   SocialLinkNames,
-  SocialLinkType,
   LevelsType,
   Routes,
-} from "./types";
+} from "@/constants/socialLinks/types";
 
 class EmperorMainLevels extends LinkMainLevels {
-  isAvailable(
-    socialLink: SocialLinkType,
-    props: SocialLinkAvailableProps
-  ): boolean {
-    const days = [DaysNames.monday, DaysNames.wednesday, DaysNames.friday];
-    const linkName = socialLink.linkName;
-    const previousLink = props.previousDay!.links[linkName];
-    const isNewLevel = socialLink.isNewLevel(previousLink);
-    const isJanuary =
-      props.currentDay.date.getTime() >= new Date(2010, 0, 1).getTime() ||
-      days.includes(props.currentDay.date.getDay());
-
-    return (
-      props.currentDay.date.getTime() >= new Date(2009, 3, 27).getTime() &&
-      !props.currentDay.isDayOff &&
-      props.time === Times.Day &&
-      !props.currentDay.exams &&
-      isNewLevel &&
-      isJanuary
-    );
-  }
+  isAvailable = new availables.And_([
+    new availables.AvailableIsDayOff({ reverse: true, isExamIncluded: true }),
+    new availables.AvailableDateGreater({ date: new Date(2009, 3, 27) }),
+    new availables.AvailableTimesIsIn({ times: [Times.Day] }),
+    new availables.AvailableLinkIsNewLevel(),
+    new availables.Or_([
+      new availables.AvailableDateGreater({ date: new Date(2010, 0, 1) }),
+      new availables.AvailableDaysNamesIsIn({
+        days: [DaysNames.monday, DaysNames.wednesday, DaysNames.friday],
+      }),
+    ]),
+  ]).available;
 
   levels: LevelsType = {
     0: {
@@ -162,7 +159,7 @@ class EmperorMainLevels extends LinkMainLevels {
 }
 
 export const Emperor = new SocialLink(
-  SocialLinkNames.Emperor,
   { name: "Hidetoshi Odagiri", place: "Student Council Room" },
-  { mainLevels: new EmperorMainLevels() }
+  SocialLinkNames.Emperor,
+  [new EmperorMainLevels(), new ShrineLevels()]
 );

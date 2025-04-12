@@ -1,42 +1,44 @@
-import { createBondObject, LinkMaxedObject } from "./classes/GenericCard";
 import { QuestionsWrapper, Question, Answer } from "@/components";
+
 import { DaysNames } from "@/constants/monthsNames";
-import { SocialLink } from "./classes/SocialLink";
 import { Times } from "@/constants/events/types";
 
+import {
+  AvailableLinkIsNewLevel,
+  AvailableDaysNamesIsIn,
+  AvailableDateGreater,
+  AvailableTimesIsIn,
+  AvailableIsDayOff,
+  And_,
+} from "@/constants/availability/AvailableClass";
+
+import { SocialLink } from "@/constants/socialLinks/classes/SocialLink";
+import {
+  createBondObject,
+  LinkMaxedObject,
+} from "@/constants/socialLinks/classes/GenericCard.tsx";
 import {
   KoromaruWalkSocialLinkLevels,
   InvitationLevels,
   LinkMainLevels,
-} from "./classes/LinkLevels";
-
+  ShrineLevels,
+} from "@/constants/socialLinks/classes/LinkLevels";
 import {
-  SocialLinkAvailableProps,
   SocialLinkNames,
-  SocialLinkType,
   LevelsType,
   Routes,
-} from "./types";
+} from "@/constants/socialLinks/types";
 
 class MagicianMainLevels extends LinkMainLevels {
-  isAvailable(
-    socialLink: SocialLinkType,
-    props: SocialLinkAvailableProps
-  ): boolean {
-    const linkName = socialLink.linkName;
-    const previousLink = props.previousDay!.links[linkName];
-    const isNewLevel = socialLink.isNewLevel(previousLink);
-    const days = [DaysNames.tuesday, DaysNames.thursday, DaysNames.friday];
-
-    return (
-      props.currentDay.date.getTime() >= new Date(2009, 3, 22).getTime() &&
-      days.includes(props.currentDay.date.getDay()) &&
-      !props.currentDay.isDayOff &&
-      props.time === Times.Day &&
-      !props.currentDay.exams &&
-      isNewLevel
-    );
-  }
+  isAvailable = new And_([
+    new AvailableIsDayOff({ reverse: true, isExamIncluded: true }),
+    new AvailableDateGreater({ date: new Date(2009, 3, 22) }),
+    new AvailableTimesIsIn({ times: [Times.Day] }),
+    new AvailableLinkIsNewLevel(),
+    new AvailableDaysNamesIsIn({
+      days: [DaysNames.tuesday, DaysNames.thursday, DaysNames.friday],
+    }),
+  ]).available;
 
   levels: LevelsType = {
     0: {
@@ -337,12 +339,12 @@ class MagicianKoromaruWalkSocialLinkLevels extends KoromaruWalkSocialLinkLevels 
 }
 
 export const Magician = new SocialLink(
-  SocialLinkNames.Magician,
   { name: "Kenji Tomochika", place: "Classroom 2F" },
-
-  {
-    koromaruWalks: new MagicianKoromaruWalkSocialLinkLevels(),
-    invitations: new MagicianInvitationLevels(),
-    mainLevels: new MagicianMainLevels(),
-  }
+  SocialLinkNames.Magician,
+  [
+    new MagicianKoromaruWalkSocialLinkLevels(),
+    new MagicianInvitationLevels(),
+    new MagicianMainLevels(),
+    new ShrineLevels(),
+  ]
 );

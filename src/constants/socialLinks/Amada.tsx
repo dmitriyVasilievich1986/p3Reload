@@ -1,9 +1,10 @@
 import { SingleDay } from "@/constants/calendar/SingleDay";
-import { SocialLinkEpisodes } from "./classes/SocialLink";
 import { DaysNames } from "@/constants/monthsNames";
 import { Times } from "@/constants/events/types";
 import { StatsNames } from "@/constants/stats";
 import { EventCard } from "@/components";
+
+import { SocialLinkEpisodes } from "./classes/SocialLink";
 
 import {
   LinkMainLevelsEpisodes,
@@ -14,6 +15,7 @@ import {
 import {
   SocialLinkAvailableProps,
   SocialLinkElementProps,
+  EventAvailableProps,
   LabelHeadPrefixes,
   SocialLinkLevel,
   SocialLinkNames,
@@ -104,11 +106,8 @@ class AmadaDVDActivityLevels extends DormHangoutLevels {
 }
 
 class AmadaMainLevels extends LinkMainLevelsEpisodes {
-  isAvailable(
-    socialLink: SocialLinkType,
-    props: SocialLinkAvailableProps
-  ): boolean {
-    const linkName = socialLink.linkName;
+  isAvailable(props: EventAvailableProps): boolean {
+    const linkName = props.socialLink.linkName;
     const previousLink = props.previousDay!.links[linkName];
     const isTime = props.time === Times.Evening;
     let days = [DaysNames.tuesday, DaysNames.wednesday];
@@ -246,12 +245,12 @@ class AmadaKoromaruWalkLevels extends KoromaruWalkLevels {
 }
 
 export const Amada = new SocialLinkEpisodes(
-  SocialLinkNames.Amada,
   { name: "Ken Amada" },
-  {
-    dormHangout1: new AmadaKitchenActivityLevels(),
-    koromaruWalks: new AmadaKoromaruWalkLevels(),
-    dormHangout2: new AmadaDVDActivityLevels(),
-    mainLevels: new AmadaMainLevels(),
-  }
+  SocialLinkNames.Amada,
+  [
+    new AmadaKitchenActivityLevels(),
+    new AmadaKoromaruWalkLevels(),
+    new AmadaDVDActivityLevels(),
+    new AmadaMainLevels(),
+  ]
 );

@@ -1,9 +1,11 @@
 import { SingleDay } from "@/constants/calendar/SingleDay";
-import { SocialLinkEpisodes } from "./classes/SocialLink";
 import { DaysNames } from "@/constants/monthsNames";
 import { Times } from "@/constants/events/types";
 import { StatsNames } from "@/constants/stats";
+
 import { EventCard } from "@/components";
+
+import { SocialLinkEpisodes } from "./classes/SocialLink";
 
 import {
   LinkMainLevelsEpisodes,
@@ -14,6 +16,7 @@ import {
 import {
   SocialLinkAvailableProps,
   SocialLinkElementProps,
+  EventAvailableProps,
   LabelHeadPrefixes,
   SocialLinkLevel,
   SocialLinkNames,
@@ -112,11 +115,8 @@ class IoriBookActivityLevels extends DormHangoutLevels {
 }
 
 class IoriMainLevels extends LinkMainLevelsEpisodes {
-  isAvailable(
-    socialLink: SocialLinkType,
-    props: SocialLinkAvailableProps
-  ): boolean {
-    const linkName = socialLink.linkName;
+  isAvailable(props: EventAvailableProps): boolean {
+    const linkName = props.socialLink.linkName;
     const previousLink = props.previousDay!.links[linkName];
     const isTime = props.time === Times.Day;
     let days = [DaysNames.tuesday, DaysNames.friday];
@@ -254,12 +254,12 @@ class IoriKoromaruWalkLevels extends KoromaruWalkLevels {
 }
 
 export const Iori = new SocialLinkEpisodes(
-  SocialLinkNames.Iori,
   { name: "Junpei Iori" },
-  {
-    dormHangout1: new IoriGardenActivityLevels(),
-    koromaruWalks: new IoriKoromaruWalkLevels(),
-    dormHangout2: new IoriBookActivityLevels(),
-    mainLevels: new IoriMainLevels(),
-  }
+  SocialLinkNames.Iori,
+  [
+    new IoriGardenActivityLevels(),
+    new IoriKoromaruWalkLevels(),
+    new IoriBookActivityLevels(),
+    new IoriMainLevels(),
+  ]
 );

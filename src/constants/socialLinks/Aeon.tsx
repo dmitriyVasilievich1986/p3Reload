@@ -1,16 +1,21 @@
 import { QuestionsWrapper, EventCard, Question, Answer } from "@/components";
-import { createBondObject, LinkMaxedObject } from "./classes/GenericCard";
+
+import availables from "@/constants/availability/AvailableClass";
 import { DaysNames } from "@/constants/monthsNames";
-import { SocialLink } from "./classes/SocialLink";
 import { Times } from "@/constants/events/types";
 import { StatsNames } from "@/constants/stats";
 
+import { SocialLink } from "@/constants/socialLinks/classes/SocialLink";
+import {
+  createBondObject,
+  LinkMaxedObject,
+} from "@/constants/socialLinks/classes/GenericCard.tsx";
 import {
   KoromaruWalkLevels,
   DormHangoutLevels,
   LinkMainLevels,
-} from "./classes/LinkLevels";
-
+  ShrineLevels,
+} from "@/constants/socialLinks/classes/LinkLevels";
 import {
   SocialLinkAvailableProps,
   SocialLinkElementProps,
@@ -20,7 +25,7 @@ import {
   SocialLinkType,
   LevelsType,
   Routes,
-} from "./types";
+} from "@/constants/socialLinks/types";
 
 class AeonGardenActivityLevels extends DormHangoutLevels {
   headPostfix: LabelHeadPrefixes = LabelHeadPrefixes.GardenActivity;
@@ -109,35 +114,26 @@ class AeonBookActivityLevels extends DormHangoutLevels {
 }
 
 class AeonMainLevels extends LinkMainLevels {
-  isAvailable(
-    socialLink: SocialLinkType,
-    props: SocialLinkAvailableProps,
-    route: Routes
-  ): boolean {
-    const linkName = socialLink.linkName;
-    const previousLink = props.previousDay!.links[linkName];
-    const isNewLevel = socialLink.isNewLevel(previousLink);
-    const isRomance =
-      previousLink.level === 7 || previousLink.romance === route;
-    const days = [
-      DaysNames.monday,
-      DaysNames.tuesday,
-      DaysNames.wednesday,
-      DaysNames.thursday,
-      DaysNames.friday,
-      DaysNames.saturday,
-    ];
-    const excluded_days = [new Date(2010, 0, 25).getTime()];
-
-    return (
-      props.currentDay.date.getTime() >= new Date(2010, 0, 8).getTime() &&
-      !excluded_days.includes(props.currentDay.date.getTime()) &&
-      days.includes(props.currentDay.date.getDay()) &&
-      props.time === Times.Day &&
-      isNewLevel &&
-      isRomance
-    );
-  }
+  isAvailable = new availables.And_([
+    new availables.AvailableDateIsIn({
+      date: [new Date(2010, 0, 25)],
+      reverse: true,
+    }),
+    new availables.AvailableDateGreater({ date: new Date(2010, 0, 8) }),
+    new availables.AvailableTimesIsIn({ times: [Times.Day] }),
+    new availables.AvailableLinkRoute({ forkLevel: 7 }),
+    new availables.AvailableLinkIsNewLevel(),
+    new availables.AvailableDaysNamesIsIn({
+      days: [
+        DaysNames.monday,
+        DaysNames.tuesday,
+        DaysNames.wednesday,
+        DaysNames.thursday,
+        DaysNames.friday,
+        DaysNames.saturday,
+      ],
+    }),
+  ]).available;
 
   levels: LevelsType = {
     0: {
@@ -373,12 +369,13 @@ class AeonKoromaruWalkLevels extends KoromaruWalkLevels {
 }
 
 export const Aeon = new SocialLink(
-  SocialLinkNames.Aeon,
   { name: "Aigis", place: "Classroom 2F" },
-  {
-    dormHangout1: new AeonGardenActivityLevels(),
-    koromaruWalks: new AeonKoromaruWalkLevels(),
-    dormHangout2: new AeonBookActivityLevels(),
-    mainLevels: new AeonMainLevels(),
-  }
+  SocialLinkNames.Aeon,
+  [
+    new AeonGardenActivityLevels(),
+    new AeonKoromaruWalkLevels(),
+    new AeonBookActivityLevels(),
+    new AeonMainLevels(),
+    new ShrineLevels(),
+  ]
 );

@@ -1,46 +1,42 @@
-import { createBondObject, LinkMaxedObject } from "./classes/GenericCard";
 import { QuestionsWrapper, Question, Answer } from "@/components";
+
+import availables from "@/constants/availability/AvailableClass";
 import { DaysNames } from "@/constants/monthsNames";
-import { SocialLink } from "./classes/SocialLink";
 import { Times } from "@/constants/events/types";
 
+import { SocialLink } from "@/constants/socialLinks/classes/SocialLink";
+import {
+  createBondObject,
+  LinkMaxedObject,
+} from "@/constants/socialLinks/classes/GenericCard.tsx";
 import {
   KoromaruWalkSocialLinkLevels,
   LinkMainLevels,
-} from "./classes/LinkLevels";
-
+  ShrineLevels,
+} from "@/constants/socialLinks/classes/LinkLevels";
 import {
-  SocialLinkAvailableProps,
   SocialLinkNames,
-  SocialLinkType,
   LevelsType,
   Routes,
-} from "./types";
+} from "@/constants/socialLinks/types";
 
 class HierophantMainLevels extends LinkMainLevels {
-  isAvailable(
-    socialLink: SocialLinkType,
-    props: SocialLinkAvailableProps
-  ): boolean {
-    const linkName = socialLink.linkName;
-    const previousLink = props.previousDay!.links[linkName];
-    const isNewLevel = socialLink.isNewLevel(previousLink);
-    const days = [
-      DaysNames.tuesday,
-      DaysNames.wednesday,
-      DaysNames.thursday,
-      DaysNames.friday,
-      DaysNames.saturday,
-      DaysNames.sunday,
-    ];
+  isAvailable = new availables.And_([
+    new availables.AvailableDateGreater({ date: new Date(2009, 3, 25) }),
+    new availables.AvailableTimesIsIn({ times: [Times.Day] }),
+    new availables.AvailableLinkIsNewLevel(),
+    new availables.AvailableDaysNamesIsIn({
+      days: [
+        DaysNames.tuesday,
+        DaysNames.wednesday,
+        DaysNames.thursday,
+        DaysNames.friday,
+        DaysNames.saturday,
+        DaysNames.sunday,
+      ],
+    }),
+  ]).available;
 
-    return (
-      props.currentDay.date.getTime() >= new Date(2009, 3, 25).getTime() &&
-      days.includes(props.currentDay.date.getDay()) &&
-      props.time === Times.Day &&
-      isNewLevel
-    );
-  }
   levels: LevelsType = {
     0: {
       [Routes.Platonic]: createBondObject,
@@ -240,10 +236,11 @@ class HierophantKoromaruWalkSocialLinkLevels extends KoromaruWalkSocialLinkLevel
 }
 
 export const Hierophant = new SocialLink(
-  SocialLinkNames.Hierophant,
   { name: "Bunkichi and Mitsuko", place: "Bookworms Used Books" },
-  {
-    koromaruWalks: new HierophantKoromaruWalkSocialLinkLevels(),
-    mainLevels: new HierophantMainLevels(),
-  }
+  SocialLinkNames.Hierophant,
+  [
+    new HierophantKoromaruWalkSocialLinkLevels(),
+    new HierophantMainLevels(),
+    new ShrineLevels(),
+  ]
 );

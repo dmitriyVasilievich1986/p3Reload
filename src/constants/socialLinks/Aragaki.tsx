@@ -1,9 +1,11 @@
 import { SingleDay } from "@/constants/calendar/SingleDay";
-import { SocialLinkEpisodes } from "./classes/SocialLink";
 import { DaysNames } from "@/constants/monthsNames";
 import { Times } from "@/constants/events/types";
 import { StatsNames } from "@/constants/stats";
+
 import { EventCard } from "@/components";
+
+import { SocialLinkEpisodes } from "./classes/SocialLink";
 
 import {
   LinkMainLevelsEpisodes,
@@ -14,6 +16,7 @@ import {
 import {
   SocialLinkAvailableProps,
   SocialLinkElementProps,
+  EventAvailableProps,
   LabelHeadPrefixes,
   SocialLinkLevel,
   SocialLinkNames,
@@ -53,11 +56,8 @@ class AragakiGardenActivityLevels extends DormHangoutLevels {
 }
 
 class AragakiMainLevels extends LinkMainLevelsEpisodes {
-  isAvailable(
-    socialLink: SocialLinkType,
-    props: SocialLinkAvailableProps
-  ): boolean {
-    const linkName = socialLink.linkName;
+  isAvailable(props: EventAvailableProps): boolean {
+    const linkName = props.socialLink.linkName;
     const previousLink = props.previousDay!.links[linkName];
     const isTime = props.time === Times.Day;
     let days = [
@@ -218,12 +218,12 @@ class AragakiKoromaruWalkLevels extends KoromaruWalkLevels {
 }
 
 export const Aragaki = new SocialLinkEpisodes(
-  SocialLinkNames.Aragaki,
   { name: "Shinjiro Aragaki" },
-  {
-    dormHangout1: new AragakiKitchenActivityLevels(),
-    dormHangout2: new AragakiGardenActivityLevels(),
-    koromaruWalks: new AragakiKoromaruWalkLevels(),
-    mainLevels: new AragakiMainLevels(),
-  }
+  SocialLinkNames.Aragaki,
+  [
+    new AragakiKitchenActivityLevels(),
+    new AragakiGardenActivityLevels(),
+    new AragakiKoromaruWalkLevels(),
+    new AragakiMainLevels(),
+  ]
 );

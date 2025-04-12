@@ -1,6 +1,11 @@
-import { SocialLinkAvailableProps } from "@/constants/socialLinks/types";
 import { SingleDay } from "@/constants/calendar/SingleDay";
 import { Times } from "@/constants/events/types";
+
+import { SocialLink } from "@/constants/socialLinks/classes/SocialLink";
+import {
+  SocialLinkAvailableProps,
+  Routes,
+} from "@/constants/socialLinks/types";
 
 export enum Operations {
   "Equal" = "Equal",
@@ -11,22 +16,22 @@ export enum Operations {
   "IsIn" = "IsIn",
 }
 
+export type AvailabilityType = {
+  available(props: SocialLinkAvailableProps): boolean;
+};
+
 export type AvailabilityProps = {
+  socialLink?: SocialLink;
   previousDay: SingleDay;
   currentDay: SingleDay;
+  route?: Routes;
   time: Times;
 };
 
-export type AvailableType<K> = {
+export type AvailableType<K> = AvailabilityType & {
   operation: Operations;
   reverse: boolean;
 
   getRight(props: AvailabilityProps): K | K[];
   getLeft(props: AvailabilityProps): K;
-  available(props: AvailabilityProps): boolean;
-};
-
-export type AvailabilityType = {
-  availabilities: (AvailableType<any> | AvailabilityType)[];
-  available(props: SocialLinkAvailableProps): boolean;
 };
