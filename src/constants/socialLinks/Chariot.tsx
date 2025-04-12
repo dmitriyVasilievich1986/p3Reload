@@ -100,6 +100,7 @@ class ChariotMainLevels extends LinkMainLevels {
     },
     1: {
       [Routes.Platonic]: QuestionsWrapper({
+        // checked!
         points: 0,
         element: [
           <Question label="M-My side is killing me... I might've overdone it a bit.">
@@ -119,6 +120,7 @@ class ChariotMainLevels extends LinkMainLevels {
     },
     2: {
       [Routes.Platonic]: QuestionsWrapper({
+        // checked!
         points: 0,
         element: [
           <Question label="It's just, um... my anemia's acting up.">
@@ -134,6 +136,7 @@ class ChariotMainLevels extends LinkMainLevels {
     },
     3: {
       [Routes.Platonic]: QuestionsWrapper({
+        // checked!
         points: 15,
         element: [
           <Question label="Wh-What's up? I was just gonna sneak back into practice.">
@@ -149,6 +152,7 @@ class ChariotMainLevels extends LinkMainLevels {
     },
     4: {
       [Routes.Platonic]: QuestionsWrapper({
+        // checked!
         points: 15,
         element: [
           <Question label="Man... I keep running into you at the weirdest times.">
@@ -165,6 +169,7 @@ class ChariotMainLevels extends LinkMainLevels {
     },
     5: {
       [Routes.Platonic]: QuestionsWrapper({
+        // checked!
         points: 15,
         element: [
           <Question label="I want to win, so I have to practice.">
@@ -184,6 +189,7 @@ class ChariotMainLevels extends LinkMainLevels {
     },
     6: {
       [Routes.Platonic]: QuestionsWrapper({
+        // checked!
         points: 15,
         element: [
           <Question label="I know you didn't say anything. I just think he can tell something's up.">
@@ -200,6 +206,7 @@ class ChariotMainLevels extends LinkMainLevels {
     },
     7: {
       [Routes.Platonic]: QuestionsWrapper({
+        // checked!
         points: 22,
         element: [
           <Question label="You must know what's going on.">
@@ -211,6 +218,7 @@ class ChariotMainLevels extends LinkMainLevels {
     },
     8: {
       [Routes.Platonic]: QuestionsWrapper({
+        // checked!
         points: 22,
         element: [
           <Question label="I'm sure you love lugging all this dead weight around, huh?">
@@ -223,6 +231,7 @@ class ChariotMainLevels extends LinkMainLevels {
     },
     9: {
       [Routes.Platonic]: QuestionsWrapper({
+        // checked!
         points: 22,
         element: [
           <Question label="There's something I wanna talk to you about.">
@@ -322,7 +331,9 @@ class ChariotInvitationLevels extends InvitationLevels {
         points: 0,
         element: [
           <Question label="You know, that Apathy Syndrome thing.">
+            <Answer label="I doubt it." />
             <Answer label="That's worrying." points={30} />
+            <Answer label="Hang in there." />
           </Question>,
         ],
       }),
