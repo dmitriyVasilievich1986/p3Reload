@@ -1,13 +1,8 @@
+import { SocialLinkType, Routes } from "@/constants/socialLinks/types";
 import { allEventsNames, Times } from "@/constants/events/types";
 import { StatsNames, stats } from "@/constants/stats";
 import { DaysNames } from "@/constants/monthsNames";
 import { SingleDay } from "@/constants/calendar";
-
-import {
-  SocialLinkAvailableProps,
-  SocialLinkType,
-  Routes,
-} from "@/constants/socialLinks/types";
 
 import {
   AvailabilityProps,
@@ -152,24 +147,6 @@ export class AvailableDaysNamesIsIn extends Available<DaysNames> {
 
   getRight() {
     return this.days;
-  }
-}
-
-export class AvailableLinkRouteEqual extends Available<Routes> {
-  operation: Operations = Operations.Equal;
-
-  constructor(props: { socialLink: SocialLinkType; reverse?: boolean }) {
-    super(props);
-
-    this.getLeft = this.getLeft.bind(props.socialLink);
-  }
-
-  getLeft(this: SocialLinkType, props: AvailabilityProps) {
-    return props.previousDay.links[this.linkName].romance;
-  }
-
-  getRight(props: AvailabilityProps) {
-    return props.route as Routes;
   }
 }
 
