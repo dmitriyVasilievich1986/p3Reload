@@ -1,41 +1,44 @@
-import { createBondObject, LinkMaxedObject } from "./classes/GenericCard";
-import { InvitationLevels, LinkMainLevels } from "./classes/LinkLevels";
 import { QuestionsWrapper, Question, Answer } from "@/components";
-import { StatsNames, stats } from "@/constants/stats";
-import { DaysNames } from "@/constants/monthsNames";
-import { SocialLink } from "./classes/SocialLink";
-import { Times } from "@/constants/events/types";
 
+import availables from "@/constants/availability/AvailableClass";
+import { DaysNames } from "@/constants/monthsNames";
+import { Times } from "@/constants/events/types";
+import { StatsNames } from "@/constants/stats";
+
+import { SocialLink } from "@/constants/socialLinks/classes/SocialLink";
 import {
-  SocialLinkAvailableProps,
+  createBondObject,
+  LinkMaxedObject,
+} from "@/constants/socialLinks/classes/GenericCard.tsx";
+import {
+  InvitationLevels,
+  LinkMainLevels,
+  ShrineLevels,
+} from "@/constants/socialLinks/classes/LinkLevels";
+import {
   SocialLinkNames,
-  SocialLinkType,
   LevelsType,
   Routes,
-} from "./types";
+} from "@/constants/socialLinks/types";
 
 class TemperanceMainLevels extends LinkMainLevels {
-  isAvailable(
-    socialLink: SocialLinkType,
-    props: SocialLinkAvailableProps
-  ): boolean {
-    const linkName = socialLink.linkName;
-    const academicsLevel = stats[StatsNames.Academics].levels[1].value;
-    const previousLink = props.previousDay!.links[linkName];
-    const isNewLevel = socialLink.isNewLevel(previousLink);
-    const days = [DaysNames.tuesday, DaysNames.wednesday, DaysNames.friday];
-
-    return (
-      props.currentDay.date.getTime() >= new Date(2009, 4, 8).getTime() &&
-      props.previousDay!.stats[StatsNames.Academics] >= academicsLevel &&
-      props.previousDay!.links[SocialLinkNames.Hierophant].level >= 3 &&
-      days.includes(props.currentDay.date.getDay()) &&
-      !props.currentDay.isDayOff &&
-      props.time === Times.Day &&
-      !props.currentDay.exams &&
-      isNewLevel
-    );
-  }
+  isAvailable = new availables.And_([
+    new availables.AvailableIsDayOff({ reverse: true, isExamIncluded: true }),
+    new availables.AvailableDateGreater({ date: new Date(2009, 4, 8) }),
+    new availables.AvailableTimesIsIn({ times: [Times.Day] }),
+    new availables.AvailableLinkIsNewLevel(),
+    new availables.AvailableLinkLevelGreater({
+      name: SocialLinkNames.Hierophant,
+      level: 3,
+    }),
+    new availables.AvailableStatGreater({
+      name: StatsNames.Academics,
+      level: 1,
+    }),
+    new availables.AvailableDaysNamesIsIn({
+      days: [DaysNames.tuesday, DaysNames.wednesday, DaysNames.friday],
+    }),
+  ]).available;
 
   levels: LevelsType = {
     0: {
@@ -285,11 +288,11 @@ class TemperanceInvitationLevels extends InvitationLevels {
 }
 
 export const Temperance = new SocialLink(
-  SocialLinkNames.Temperance,
   { name: 'André Laurent Jean "Bebe" Geraux', place: "2F Classroom Hallway" },
-
-  {
-    invitations: new TemperanceInvitationLevels(),
-    mainLevels: new TemperanceMainLevels(),
-  }
+  SocialLinkNames.Temperance,
+  [
+    new TemperanceInvitationLevels(),
+    new TemperanceMainLevels(),
+    new ShrineLevels(),
+  ]
 );

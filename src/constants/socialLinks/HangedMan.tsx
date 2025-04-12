@@ -1,35 +1,33 @@
-import { createBondObject, LinkMaxedObject } from "./classes/GenericCard";
 import { QuestionsWrapper, Question, Answer } from "@/components";
-import { LinkMainLevels } from "./classes/LinkLevels";
+
+import availables from "@/constants/availability/AvailableClass";
 import { DaysNames } from "@/constants/monthsNames";
-import { SocialLink } from "./classes/SocialLink";
 import { Times } from "@/constants/events/types";
 
+import { SocialLink } from "@/constants/socialLinks/classes/SocialLink";
 import {
-  SocialLinkAvailableProps,
+  createBondObject,
+  LinkMaxedObject,
+} from "@/constants/socialLinks/classes/GenericCard.tsx";
+import {
+  LinkMainLevels,
+  ShrineLevels,
+} from "@/constants/socialLinks/classes/LinkLevels";
+import {
   SocialLinkNames,
-  SocialLinkType,
   LevelsType,
   Routes,
-} from "./types";
+} from "@/constants/socialLinks/types";
 
 class HangedManMainLevels extends LinkMainLevels {
-  isAvailable(
-    socialLink: SocialLinkType,
-    props: SocialLinkAvailableProps
-  ): boolean {
-    const linkName = socialLink.linkName;
-    const previousLink = props.previousDay!.links[linkName];
-    const isNewLevel = socialLink.isNewLevel(previousLink);
-    const days = [DaysNames.monday, DaysNames.wednesday, DaysNames.saturday];
-
-    return (
-      props.currentDay.date.getTime() >= new Date(2009, 4, 6).getTime() &&
-      days.includes(props.currentDay.date.getDay()) &&
-      props.time === Times.Day &&
-      isNewLevel
-    );
-  }
+  isAvailable = new availables.And_([
+    new availables.AvailableDateGreater({ date: new Date(2009, 4, 6) }),
+    new availables.AvailableTimesIsIn({ times: [Times.Day] }),
+    new availables.AvailableLinkIsNewLevel(),
+    new availables.AvailableDaysNamesIsIn({
+      days: [DaysNames.monday, DaysNames.wednesday, DaysNames.saturday],
+    }),
+  ]).available;
 
   levels: LevelsType = {
     0: {
@@ -183,7 +181,7 @@ class HangedManMainLevels extends LinkMainLevels {
 }
 
 export const HangedMan = new SocialLink(
-  SocialLinkNames.HangedMan,
   { name: "Maiko Oohashi", place: "Naganaki Shrine" },
-  { mainLevels: new HangedManMainLevels() }
+  SocialLinkNames.HangedMan,
+  [new HangedManMainLevels(), new ShrineLevels()]
 );

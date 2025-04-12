@@ -1,17 +1,22 @@
 import { QuestionsWrapper, EventCard, Question, Answer } from "@/components";
-import { createBondObject, LinkMaxedObject } from "./classes/GenericCard";
-import { StatsNames, stats } from "@/constants/stats";
-import { DaysNames } from "@/constants/monthsNames";
-import { SocialLink } from "./classes/SocialLink";
-import { Times } from "@/constants/events/types";
 
+import availables from "@/constants/availability/AvailableClass";
+import { DaysNames } from "@/constants/monthsNames";
+import { Times } from "@/constants/events/types";
+import { StatsNames } from "@/constants/stats";
+
+import { SocialLink } from "@/constants/socialLinks/classes/SocialLink";
+import {
+  createBondObject,
+  LinkMaxedObject,
+} from "@/constants/socialLinks/classes/GenericCard.tsx";
 import {
   KoromaruWalkLevels,
   DormHangoutLevels,
   InvitationLevels,
   LinkMainLevels,
-} from "./classes/LinkLevels";
-
+  ShrineLevels,
+} from "@/constants/socialLinks/classes/LinkLevels";
 import {
   SocialLinkAvailableProps,
   SocialLinkElementProps,
@@ -21,7 +26,7 @@ import {
   SocialLinkType,
   LevelsType,
   Routes,
-} from "./types";
+} from "@/constants/socialLinks/types";
 
 class PriestessGardenActivityLevels extends DormHangoutLevels {
   headPostfix: LabelHeadPrefixes = LabelHeadPrefixes.GardenActivity;
@@ -114,33 +119,28 @@ class PriestessBookActivityLevels extends DormHangoutLevels {
 }
 
 class PriestessMainLevels extends LinkMainLevels {
-  isAvailable(
-    socialLink: SocialLinkType,
-    props: SocialLinkAvailableProps,
-    route: Routes
-  ): boolean {
-    const linkName = socialLink.linkName;
-    const courageLevel = stats[StatsNames.Courage].levels[5].value;
-    const previousLink = props.previousDay!.links[linkName];
-    const isNewLevel = socialLink.isNewLevel(previousLink);
-    const isRomance =
-      previousLink.level === 6 || previousLink.romance === route;
-    const days = [DaysNames.monday, DaysNames.friday, DaysNames.saturday];
-    const excluded_days: number[] = [new Date(2009, 10, 6).getTime()];
-
-    return (
-      props.currentDay.date.getTime() >= new Date(2009, 5, 19).getTime() &&
-      props.previousDay!.stats[StatsNames.Courage] >= courageLevel &&
-      props.previousDay!.links[SocialLinkNames.Fortune].level > 0 &&
-      !excluded_days.includes(props.currentDay.date.getTime()) &&
-      days.includes(props.currentDay.date.getDay()) &&
-      !props.currentDay.isDayOff &&
-      props.time === Times.Day &&
-      !props.currentDay.exams &&
-      isNewLevel &&
-      isRomance
-    );
-  }
+  isAvailable = new availables.And_([
+    new availables.AvailableIsDayOff({ reverse: true, isExamIncluded: true }),
+    new availables.AvailableDateGreater({ date: new Date(2009, 5, 19) }),
+    new availables.AvailableTimesIsIn({ times: [Times.Day] }),
+    new availables.AvailableLinkRoute({ forkLevel: 6 }),
+    new availables.AvailableLinkIsNewLevel(),
+    new availables.AvailableDateIsIn({
+      date: [new Date(2009, 10, 6)],
+      reverse: true,
+    }),
+    new availables.AvailableLinkLevelGreater({
+      name: SocialLinkNames.Fortune,
+      level: 1,
+    }),
+    new availables.AvailableStatGreater({
+      name: StatsNames.Courage,
+      level: 5,
+    }),
+    new availables.AvailableDaysNamesIsIn({
+      days: [DaysNames.monday, DaysNames.friday, DaysNames.saturday],
+    }),
+  ]).available;
 
   levels: LevelsType = {
     0: {
@@ -547,13 +547,14 @@ class PriestessKoromaruWalkLevels extends KoromaruWalkLevels {
 }
 
 export const Priestess = new SocialLink(
-  SocialLinkNames.Priestess,
   { name: "Fuuka Yamagishi", place: "2nd Floor Hallway" },
-  {
-    dormHangout1: new PriestessGardenActivityLevels(),
-    koromaruWalks: new PriestessKoromaruWalkLevels(),
-    dormHangout2: new PriestessBookActivityLevels(),
-    invitations: new PriestessInvitationLevels(),
-    mainLevels: new PriestessMainLevels(),
-  }
+  SocialLinkNames.Priestess,
+  [
+    new PriestessGardenActivityLevels(),
+    new PriestessKoromaruWalkLevels(),
+    new PriestessBookActivityLevels(),
+    new PriestessInvitationLevels(),
+    new PriestessMainLevels(),
+    new ShrineLevels(),
+  ]
 );

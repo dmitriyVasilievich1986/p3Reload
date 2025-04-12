@@ -1,42 +1,40 @@
-import { createBondObject, LinkMaxedObject } from "./classes/GenericCard";
 import { QuestionsWrapper, Question, Answer } from "@/components";
-import { StatsNames, stats } from "@/constants/stats";
-import { DaysNames } from "@/constants/monthsNames";
-import { SocialLink } from "./classes/SocialLink";
-import { Times } from "@/constants/events/types";
 
+import availables from "@/constants/availability/AvailableClass";
+import { DaysNames } from "@/constants/monthsNames";
+import { Times } from "@/constants/events/types";
+import { StatsNames } from "@/constants/stats";
+
+import { SocialLink } from "@/constants/socialLinks/classes/SocialLink";
+import {
+  createBondObject,
+  LinkMaxedObject,
+} from "@/constants/socialLinks/classes/GenericCard.tsx";
 import {
   KoromaruWalkSocialLinkLevels,
   LinkMainLevels,
-} from "./classes/LinkLevels";
-
+  ShrineLevels,
+} from "@/constants/socialLinks/classes/LinkLevels";
 import {
-  SocialLinkAvailableProps,
+  EventAvailableProps,
   SocialLinkNames,
-  SocialLinkType,
   LevelsType,
   Routes,
-} from "./types";
+} from "@/constants/socialLinks/types";
 
 class StarMainLevels extends LinkMainLevels {
-  isAvailable(
-    socialLink: SocialLinkType,
-    props: SocialLinkAvailableProps
-  ): boolean {
-    const linkName = socialLink.linkName;
-    const courageLevel = stats[StatsNames.Courage].levels[3].value;
-    const previousLink = props.previousDay!.links[linkName];
-    const isNewLevel = socialLink.isNewLevel(previousLink);
-    const days = [DaysNames.wednesday, DaysNames.friday, DaysNames.sunday];
-
-    return (
-      props.currentDay.date.getTime() >= new Date(2009, 7, 5).getTime() &&
-      props.previousDay!.stats[StatsNames.Courage] >= courageLevel &&
-      days.includes(props.currentDay.date.getDay()) &&
-      props.time === Times.Day &&
-      isNewLevel
-    );
-  }
+  isAvailable = new availables.And_([
+    new availables.AvailableDateGreater({ date: new Date(2009, 7, 5) }),
+    new availables.AvailableTimesIsIn({ times: [Times.Day] }),
+    new availables.AvailableLinkIsNewLevel(),
+    new availables.AvailableStatGreater({
+      name: StatsNames.Courage,
+      level: 3,
+    }),
+    new availables.AvailableDaysNamesIsIn({
+      days: [DaysNames.wednesday, DaysNames.friday, DaysNames.sunday],
+    }),
+  ]).available;
 
   levels: LevelsType = {
     0: {
@@ -222,19 +220,15 @@ class StarKoromaruWalkSocialLinkLevels extends KoromaruWalkSocialLinkLevels {
     new Date(2010, 0, 10).getTime(),
   ];
 
-  isAvailable(
-    socialLink: SocialLinkType,
-    props: SocialLinkAvailableProps,
-    route: Routes
-  ): boolean {
+  isAvailable(props: EventAvailableProps): boolean {
     if (props.previousDay === undefined) return false;
 
-    const linkName = socialLink.linkName;
+    const linkName = props.socialLink.linkName;
     const thisLink = props.previousDay.links[linkName];
 
     return (
       this.dates.includes(props.currentDay.date.getTime()) &&
-      props.previousDay!.links[linkName].romance === route &&
+      props.previousDay!.links[linkName].romance === props.route &&
       props.time === Times.Evening &&
       thisLink.level < 10
     );
@@ -242,10 +236,11 @@ class StarKoromaruWalkSocialLinkLevels extends KoromaruWalkSocialLinkLevels {
 }
 
 export const Star = new SocialLink(
-  SocialLinkNames.Star,
   { name: "Mamoru Hayase", place: "Iwatodai Station Strip Mall 1F" },
-  {
-    koromaruWalks: new StarKoromaruWalkSocialLinkLevels(),
-    mainLevels: new StarMainLevels(),
-  }
+  SocialLinkNames.Star,
+  [
+    new StarKoromaruWalkSocialLinkLevels(),
+    new StarMainLevels(),
+    new ShrineLevels(),
+  ]
 );

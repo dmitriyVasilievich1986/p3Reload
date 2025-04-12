@@ -51,9 +51,15 @@ export class SocialLinkEvent implements Event {
   }
 
   available(props: SocialLinkAvailableProps): boolean {
+    if (props.previousDay === undefined) return false;
+
     return socialLinks[this.linkName].isAvailable.bind(
       socialLinks[this.linkName]
-    )(props, this.romance);
+    )({
+      ...props,
+      previousDay: props.previousDay as SingleDay,
+      route: this.romance,
+    });
   }
 
   upgrade(

@@ -1,50 +1,47 @@
-import { createBondObject, LinkMaxedObject } from "./classes/GenericCard";
 import { QuestionsWrapper, Question, Answer } from "@/components";
-import { SocialLink } from "./classes/SocialLink";
-import { SingleDay } from "../calendar/SingleDay";
-import { DaysNames } from "../monthsNames";
-import { Times } from "../events/types";
-import { Strength } from "./Strength";
 
+import availables from "@/constants/availability/AvailableClass";
+import { SingleDay } from "@/constants/calendar/SingleDay";
+import { DaysNames } from "@/constants/monthsNames";
+import { Times } from "@/constants/events/types";
+
+import { SocialLink } from "@/constants/socialLinks/classes/SocialLink";
+import { Strength } from "@/constants/socialLinks/Strength";
+import {
+  createBondObject,
+  LinkMaxedObject,
+} from "@/constants/socialLinks/classes/GenericCard.tsx";
 import {
   KoromaruWalkSocialLinkLevels,
   InvitationLevels,
   LinkMainLevels,
-} from "./classes/LinkLevels";
-
+  ShrineLevels,
+} from "@/constants/socialLinks/classes/LinkLevels";
 import {
   SocialLinkAvailableProps,
   SocialLinkElementProps,
+  EventAvailableProps,
   SocialLinkNames,
   SocialLinkType,
   LevelsType,
   Routes,
-} from "./types";
+} from "@/constants/socialLinks/types";
 
 class ChariotMainLevels extends LinkMainLevels {
-  isAvailable(
-    socialLink: SocialLinkType,
-    props: SocialLinkAvailableProps
-  ): boolean {
-    const linkName = socialLink.linkName;
-    const previousLink = props.previousDay!.links[linkName];
-    const isNewLevel = socialLink.isNewLevel(previousLink);
-    const days = [
-      DaysNames.monday,
-      DaysNames.tuesday,
-      DaysNames.thursday,
-      DaysNames.friday,
-    ];
-
-    return (
-      props.currentDay.date.getTime() >= new Date(2009, 3, 23).getTime() &&
-      days.includes(props.currentDay.date.getDay()) &&
-      !props.currentDay.isDayOff &&
-      props.time === Times.Day &&
-      !props.currentDay.exams &&
-      isNewLevel
-    );
-  }
+  isAvailable = new availables.And_([
+    new availables.AvailableIsDayOff({ reverse: true, isExamIncluded: true }),
+    new availables.AvailableDateGreater({ date: new Date(2009, 3, 23) }),
+    new availables.AvailableTimesIsIn({ times: [Times.Day] }),
+    new availables.AvailableLinkIsNewLevel(),
+    new availables.AvailableDaysNamesIsIn({
+      days: [
+        DaysNames.monday,
+        DaysNames.tuesday,
+        DaysNames.thursday,
+        DaysNames.friday,
+      ],
+    }),
+  ]).available;
 
   calculate(
     socialLink: SocialLinkType,
@@ -368,20 +365,16 @@ class ChariotInvitationLevels extends InvitationLevels {
 class ChariotKoromaruWalkSocialLinkLevels extends KoromaruWalkSocialLinkLevels {
   dates = [new Date(2009, 9, 25).getTime(), new Date(2009, 10, 7).getTime()];
 
-  isAvailable(
-    socialLink: SocialLinkType,
-    props: SocialLinkAvailableProps,
-    route: Routes
-  ): boolean {
+  isAvailable(props: EventAvailableProps): boolean {
     if (props.previousDay === undefined) return false;
 
-    const linkName = socialLink.linkName;
+    const linkName = props.socialLink.linkName;
     const star = props.previousDay.links[SocialLinkNames.Star];
     const insteadStar =
       star.level >= 10 && this.dates.includes(props.currentDay.date.getTime());
 
     return (
-      props.previousDay!.links[linkName].romance === route &&
+      props.previousDay!.links[linkName].romance === props.route &&
       props.time === Times.Evening &&
       insteadStar
     );
@@ -389,11 +382,12 @@ class ChariotKoromaruWalkSocialLinkLevels extends KoromaruWalkSocialLinkLevels {
 }
 
 export const Chariot = new SocialLink(
-  SocialLinkNames.Chariot,
   { name: "Kazushi Miyamoto", place: "Classroom 2F" },
-  {
-    koromaruWalks: new ChariotKoromaruWalkSocialLinkLevels(),
-    invitations: new ChariotInvitationLevels(),
-    mainLevels: new ChariotMainLevels(),
-  }
+  SocialLinkNames.Chariot,
+  [
+    new ChariotKoromaruWalkSocialLinkLevels(),
+    new ChariotInvitationLevels(),
+    new ChariotMainLevels(),
+    new ShrineLevels(),
+  ]
 );

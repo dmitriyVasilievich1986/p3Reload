@@ -1,44 +1,47 @@
-import { createBondObject, LinkMaxedObject } from "./classes/GenericCard";
 import { QuestionsWrapper, Question, Answer } from "@/components";
-import { LinkMainLevels } from "./classes/LinkLevels";
-import { StatsNames, stats } from "@/constants/stats";
-import { DaysNames } from "@/constants/monthsNames";
-import { SocialLink } from "./classes/SocialLink";
-import { Times } from "@/constants/events/types";
 
+import availables from "@/constants/availability/AvailableClass";
+import { DaysNames } from "@/constants/monthsNames";
+import { Times } from "@/constants/events/types";
+import { StatsNames } from "@/constants/stats";
+
+import { SocialLink } from "@/constants/socialLinks/classes/SocialLink";
 import {
-  SocialLinkAvailableProps,
+  createBondObject,
+  LinkMaxedObject,
+} from "@/constants/socialLinks/classes/GenericCard.tsx";
+import {
+  LinkMainLevels,
+  ShrineLevels,
+} from "@/constants/socialLinks/classes/LinkLevels";
+import {
   SocialLinkNames,
-  SocialLinkType,
   LevelsType,
   Routes,
-} from "./types";
+} from "@/constants/socialLinks/types";
 
 class TowerMainLevels extends LinkMainLevels {
-  isAvailable(
-    socialLink: SocialLinkType,
-    props: SocialLinkAvailableProps
-  ): boolean {
-    const linkName = socialLink.linkName;
-    const courageLevel = stats[StatsNames.Courage].levels[1].value;
-    const previousLink = props.previousDay!.links[linkName];
-    const isNewLevel = socialLink.isNewLevel(previousLink);
-    const days = [
-      DaysNames.thursday,
-      DaysNames.friday,
-      DaysNames.saturday,
-      DaysNames.sunday,
-    ];
-
-    return (
-      props.currentDay.date.getTime() >= new Date(2009, 4, 23).getTime() &&
-      props.previousDay!.links[SocialLinkNames.Strength].level >= 4 &&
-      props.previousDay!.stats[StatsNames.Courage] >= courageLevel &&
-      days.includes(props.currentDay.date.getDay()) &&
-      props.time === Times.Evening &&
-      isNewLevel
-    );
-  }
+  isAvailable = new availables.And_([
+    new availables.AvailableDateGreater({ date: new Date(2009, 4, 23) }),
+    new availables.AvailableTimesIsIn({ times: [Times.Evening] }),
+    new availables.AvailableLinkIsNewLevel(),
+    new availables.AvailableLinkLevelGreater({
+      name: SocialLinkNames.Strength,
+      level: 4,
+    }),
+    new availables.AvailableStatGreater({
+      name: StatsNames.Courage,
+      level: 1,
+    }),
+    new availables.AvailableDaysNamesIsIn({
+      days: [
+        DaysNames.thursday,
+        DaysNames.friday,
+        DaysNames.saturday,
+        DaysNames.sunday,
+      ],
+    }),
+  ]).available;
 
   levels: LevelsType = {
     0: {
@@ -186,7 +189,7 @@ class TowerMainLevels extends LinkMainLevels {
 }
 
 export const Tower = new SocialLink(
-  SocialLinkNames.Tower,
   { name: "Mutatsu", place: "Club Escapade" },
-  { mainLevels: new TowerMainLevels() }
+  SocialLinkNames.Tower,
+  [new TowerMainLevels(), new ShrineLevels()]
 );

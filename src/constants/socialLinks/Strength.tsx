@@ -1,47 +1,41 @@
-import { createBondObject, LinkMaxedObject } from "./classes/GenericCard";
 import { QuestionsWrapper, Question, Answer } from "@/components";
+
+import availables from "@/constants/availability/AvailableClass";
 import { DaysNames } from "@/constants/monthsNames";
-import { SocialLink } from "./classes/SocialLink";
 import { Times } from "@/constants/events/types";
 
+import { SocialLink } from "@/constants/socialLinks/classes/SocialLink";
+import {
+  createBondObject,
+  LinkMaxedObject,
+} from "@/constants/socialLinks/classes/GenericCard.tsx";
 import {
   KoromaruWalkSocialLinkLevels,
   InvitationLevels,
   LinkMainLevels,
-} from "./classes/LinkLevels";
-
+  ShrineLevels,
+} from "@/constants/socialLinks/classes/LinkLevels";
 import {
-  SocialLinkAvailableProps,
   SocialLinkNames,
-  SocialLinkType,
   LevelsType,
   Routes,
-} from "./types";
+} from "@/constants/socialLinks/types";
 
 class StrengthMainLevels extends LinkMainLevels {
-  isAvailable(
-    socialLink: SocialLinkType,
-    props: SocialLinkAvailableProps,
-    route: Routes
-  ): boolean {
-    const linkName = socialLink.linkName;
-    const previousLink = props.previousDay!.links[linkName];
-    const isNewLevel = socialLink.isNewLevel(previousLink);
-    const isRomance =
-      previousLink.level === 2 || previousLink.romance === route;
-    const days = [DaysNames.wednesday, DaysNames.saturday];
-
-    return (
-      props.currentDay.date.getTime() >= new Date(2009, 3, 24).getTime() &&
-      props.previousDay!.links[SocialLinkNames.Chariot].level >= 2 &&
-      days.includes(props.currentDay.date.getDay()) &&
-      !props.currentDay.isDayOff &&
-      props.time === Times.Day &&
-      !props.currentDay.exams &&
-      isNewLevel &&
-      isRomance
-    );
-  }
+  isAvailable = new availables.And_([
+    new availables.AvailableIsDayOff({ reverse: true, isExamIncluded: true }),
+    new availables.AvailableDateGreater({ date: new Date(2009, 3, 24) }),
+    new availables.AvailableTimesIsIn({ times: [Times.Day] }),
+    new availables.AvailableLinkRoute({ forkLevel: 2 }),
+    new availables.AvailableLinkIsNewLevel(),
+    new availables.AvailableLinkLevelGreater({
+      name: SocialLinkNames.Chariot,
+      level: 2,
+    }),
+    new availables.AvailableDaysNamesIsIn({
+      days: [DaysNames.wednesday, DaysNames.saturday],
+    }),
+  ]).available;
 
   levels: LevelsType = {
     0: {
@@ -562,12 +556,12 @@ class StrengthKoromaruWalkSocialLinkLevels extends KoromaruWalkSocialLinkLevels 
 }
 
 export const Strength = new SocialLink(
-  SocialLinkNames.Strength,
   { name: "Yuko Nishiwaki", place: "2F Classroom Hallway" },
-
-  {
-    koromaruWalks: new StrengthKoromaruWalkSocialLinkLevels(),
-    invitations: new StrengthInvitationLevels(),
-    mainLevels: new StrengthMainLevels(),
-  }
+  SocialLinkNames.Strength,
+  [
+    new StrengthKoromaruWalkSocialLinkLevels(),
+    new StrengthInvitationLevels(),
+    new StrengthMainLevels(),
+    new ShrineLevels(),
+  ]
 );
