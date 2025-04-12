@@ -119,10 +119,10 @@ class EmpressBookActivityLevels extends DormHangoutLevels {
 
 class EmpressMainLevels extends LinkMainLevels {
   isAvailable = new availables.And_([
-    new availables.AvailableIsDayOff({ reverse: true, isExamIncluded: true }),
     new availables.AvailableDateGreater({ date: new Date(2009, 10, 21) }),
     new availables.AvailableTimesIsIn({ times: [Times.Day] }),
     new availables.AvailableLinkRoute({ forkLevel: 7 }),
+    new availables.AvailableIsDayOff({ reverse: true }),
     new availables.AvailableLinkIsNewLevel(),
     new availables.AvailableStatGreater({
       name: StatsNames.Academics,
