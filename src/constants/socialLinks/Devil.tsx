@@ -1,28 +1,26 @@
-import { StatsNames, stats } from "@/constants/stats";
+import availables from "@/constants/availability/AvailableClass";
 import { DaysNames } from "@/constants/monthsNames";
 import { Times } from "@/constants/events/types";
+import { StatsNames } from "@/constants/stats";
 
-import { SocialLinkAlwaysLevelUp } from "./classes/SocialLink";
-import { LinkMainLevelsChooseAny } from "./classes/LinkLevels";
-import { EventAvailableProps, SocialLinkNames } from "./types";
+import { SocialLinkAlwaysLevelUp } from "@/constants/socialLinks/classes/SocialLink";
+import { LinkMainLevelsChooseAny } from "@/constants/socialLinks/classes/LinkLevels";
+import { SocialLinkNames } from "@/constants/socialLinks/types";
 
 class DevilMainLevels extends LinkMainLevelsChooseAny {
-  isAvailable(props: EventAvailableProps): boolean {
-    const linkName = props.socialLink.linkName;
-    const previousLink = props.previousDay!.links[linkName];
-    const isNewLevel = props.socialLink.isNewLevel(previousLink);
-    const days = [DaysNames.tuesday, DaysNames.saturday];
-    const charmLevel = stats[StatsNames.Charm].levels[3].value;
-
-    return (
-      props.currentDay.date.getTime() >= new Date(2009, 4, 16).getTime() &&
-      props.previousDay!.links[SocialLinkNames.Hermit].level >= 4 &&
-      props.previousDay!.stats[StatsNames.Charm] >= charmLevel &&
-      days.includes(props.currentDay.date.getDay()) &&
-      props.time === Times.Evening &&
-      isNewLevel
-    );
-  }
+  isAvailable = new availables.And_([
+    new availables.AvailableStatGreater({ name: StatsNames.Charm, level: 3 }),
+    new availables.AvailableDateGreater({ date: new Date(2009, 4, 16) }),
+    new availables.AvailableTimesIsIn({ times: [Times.Evening] }),
+    new availables.AvailableLinkIsNewLevel(),
+    new availables.AvailableLinkLevelGreater({
+      name: SocialLinkNames.Hermit,
+      level: 4,
+    }),
+    new availables.AvailableDaysNamesIsIn({
+      days: [DaysNames.tuesday, DaysNames.saturday],
+    }),
+  ]).available;
 }
 
 export const Devil = new SocialLinkAlwaysLevelUp(
