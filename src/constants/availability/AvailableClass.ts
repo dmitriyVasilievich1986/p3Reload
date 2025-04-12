@@ -157,19 +157,13 @@ export class AvailableDaysNamesIsIn extends Available<DaysNames> {
 export class AvailableLinkMaxLevel extends Available<number> {
   operation: Operations = Operations.GreaterOrEqueal;
 
-  constructor(props: { socialLink: SocialLinkType; reverse?: boolean }) {
-    super(props);
-
-    this.getRight = this.getRight.bind(props.socialLink);
-    this.getLeft = this.getLeft.bind(props.socialLink);
+  getLeft(props: AvailabilityProps) {
+    const name = props.socialLink!.linkName;
+    return props.previousDay.links[name].level;
   }
 
-  getLeft(this: SocialLinkType, props: AvailabilityProps) {
-    return props.previousDay.links[this.linkName].level;
-  }
-
-  getRight(this: SocialLinkType) {
-    return this.maxLevel;
+  getRight(props: AvailabilityProps) {
+    return props.socialLink!.maxLevel;
   }
 }
 
