@@ -1,4 +1,8 @@
-import { SocialLinkType, Routes } from "@/constants/socialLinks/types";
+import {
+  SocialLinkType,
+  SocialLinkNames,
+  Routes,
+} from "@/constants/socialLinks/types";
 import { allEventsNames, Times } from "@/constants/events/types";
 import { StatsNames, stats } from "@/constants/stats";
 import { DaysNames } from "@/constants/monthsNames";
@@ -171,22 +175,25 @@ export class AvailableLinkMaxLevel extends Available<number> {
 
 export class AvailableLinkLevelGreater extends Available<number> {
   operation: Operations = Operations.GreaterOrEqueal;
+  name: SocialLinkNames;
   level: number;
 
   constructor(props: {
-    socialLink: SocialLinkType;
+    name: SocialLinkNames;
     level: number;
     reverse?: boolean;
   }) {
     super(props);
     this.level = props.level;
+    this.name = props.name;
 
-    this.getLeft = this.getLeft.bind(props.socialLink);
     this.getRight = this.getRight.bind(this);
+    this.getLeft = this.getLeft.bind(this);
   }
 
-  getLeft(this: SocialLinkType, props: AvailabilityProps) {
-    return props.previousDay.links[this.linkName].level;
+  getLeft(props: AvailabilityProps) {
+    const previousLink = props.previousDay!.links[this.name];
+    return previousLink.level;
   }
 
   getRight() {
