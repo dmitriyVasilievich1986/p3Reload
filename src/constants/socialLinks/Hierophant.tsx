@@ -1,44 +1,41 @@
+import { QuestionsWrapper, Question, Answer } from "@/components";
+
+import availables from "@/constants/availability/AvailableClass";
 import { DaysNames } from "@/constants/monthsNames";
 import { Times } from "@/constants/events/types";
 
-import { QuestionsWrapper, Question, Answer } from "@/components";
-
-import { createBondObject, LinkMaxedObject } from "./classes/GenericCard";
-import { SocialLink } from "./classes/SocialLink";
-
+import { SocialLink } from "@/constants/socialLinks/classes/SocialLink";
 import {
-  EventAvailableProps,
-  SocialLinkNames,
-  LevelsType,
-  Routes,
-} from "./types";
-
+  createBondObject,
+  LinkMaxedObject,
+} from "@/constants/socialLinks/classes/GenericCard.tsx";
 import {
   KoromaruWalkSocialLinkLevels,
   LinkMainLevels,
-} from "./classes/LinkLevels";
+} from "@/constants/socialLinks/classes/LinkLevels";
+import {
+  SocialLinkNames,
+  LevelsType,
+  Routes,
+} from "@/constants/socialLinks/types";
 
 class HierophantMainLevels extends LinkMainLevels {
-  isAvailable(props: EventAvailableProps): boolean {
-    const linkName = props.socialLink.linkName;
-    const previousLink = props.previousDay!.links[linkName];
-    const isNewLevel = props.socialLink.isNewLevel(previousLink);
-    const days = [
-      DaysNames.tuesday,
-      DaysNames.wednesday,
-      DaysNames.thursday,
-      DaysNames.friday,
-      DaysNames.saturday,
-      DaysNames.sunday,
-    ];
+  isAvailable = new availables.And_([
+    new availables.AvailableDateGreater({ date: new Date(2009, 3, 25) }),
+    new availables.AvailableTimesIsIn({ times: [Times.Day] }),
+    new availables.AvailableLinkIsNewLevel(),
+    new availables.AvailableDaysNamesIsIn({
+      days: [
+        DaysNames.tuesday,
+        DaysNames.wednesday,
+        DaysNames.thursday,
+        DaysNames.friday,
+        DaysNames.saturday,
+        DaysNames.sunday,
+      ],
+    }),
+  ]).available;
 
-    return (
-      props.currentDay.date.getTime() >= new Date(2009, 3, 25).getTime() &&
-      days.includes(props.currentDay.date.getDay()) &&
-      props.time === Times.Day &&
-      isNewLevel
-    );
-  }
   levels: LevelsType = {
     0: {
       [Routes.Platonic]: createBondObject,
