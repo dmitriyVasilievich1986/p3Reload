@@ -1,42 +1,44 @@
 import { QuestionsWrapper, Question, Answer } from "@/components";
 
-import { StatsNames, stats } from "@/constants/stats";
+import availables from "@/constants/availability/AvailableClass";
 import { DaysNames } from "@/constants/monthsNames";
 import { Times } from "@/constants/events/types";
+import { StatsNames } from "@/constants/stats";
 
-import { createBondObject, LinkMaxedObject } from "./classes/GenericCard";
-import { LinkMainLevels } from "./classes/LinkLevels";
-import { SocialLink } from "./classes/SocialLink";
-
+import { LinkMainLevels } from "@/constants/socialLinks/classes/LinkLevels";
+import { SocialLink } from "@/constants/socialLinks/classes/SocialLink";
 import {
-  EventAvailableProps,
+  createBondObject,
+  LinkMaxedObject,
+} from "@/constants/socialLinks/classes/GenericCard.tsx";
+import {
   SocialLinkNames,
   LevelsType,
   Routes,
-} from "./types";
+} from "@/constants/socialLinks/types";
 
 class TowerMainLevels extends LinkMainLevels {
-  isAvailable(props: EventAvailableProps): boolean {
-    const linkName = props.socialLink.linkName;
-    const courageLevel = stats[StatsNames.Courage].levels[1].value;
-    const previousLink = props.previousDay!.links[linkName];
-    const isNewLevel = props.socialLink.isNewLevel(previousLink);
-    const days = [
-      DaysNames.thursday,
-      DaysNames.friday,
-      DaysNames.saturday,
-      DaysNames.sunday,
-    ];
-
-    return (
-      props.currentDay.date.getTime() >= new Date(2009, 4, 23).getTime() &&
-      props.previousDay!.links[SocialLinkNames.Strength].level >= 4 &&
-      props.previousDay!.stats[StatsNames.Courage] >= courageLevel &&
-      days.includes(props.currentDay.date.getDay()) &&
-      props.time === Times.Evening &&
-      isNewLevel
-    );
-  }
+  isAvailable = new availables.And_([
+    new availables.AvailableDateGreater({ date: new Date(2009, 4, 23) }),
+    new availables.AvailableTimesIsIn({ times: [Times.Evening] }),
+    new availables.AvailableLinkIsNewLevel(),
+    new availables.AvailableLinkLevelGreater({
+      name: SocialLinkNames.Strength,
+      level: 4,
+    }),
+    new availables.AvailableStatGreater({
+      name: StatsNames.Courage,
+      level: 1,
+    }),
+    new availables.AvailableDaysNamesIsIn({
+      days: [
+        DaysNames.thursday,
+        DaysNames.friday,
+        DaysNames.saturday,
+        DaysNames.sunday,
+      ],
+    }),
+  ]).available;
 
   levels: LevelsType = {
     0: {
