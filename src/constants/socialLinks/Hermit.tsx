@@ -1,44 +1,41 @@
+import { QuestionsWrapper, Question, Answer } from "@/components";
+
+import availables from "@/constants/availability/AvailableClass";
 import { DaysNames } from "@/constants/monthsNames";
 import { Times } from "@/constants/events/types";
 
-import { QuestionsWrapper, Question, Answer } from "@/components";
-
-import { createBondObject, LinkMaxedObject } from "./classes/GenericCard";
-import { LinkMainLevels } from "./classes/LinkLevels";
-import { SocialLink } from "./classes/SocialLink";
-
+import { LinkMainLevels } from "@/constants/socialLinks/classes/LinkLevels";
+import { SocialLink } from "@/constants/socialLinks/classes/SocialLink";
 import {
-  EventAvailableProps,
+  createBondObject,
+  LinkMaxedObject,
+} from "@/constants/socialLinks/classes/GenericCard.tsx";
+import {
   SocialLinkNames,
   LevelsType,
   Routes,
-} from "./types";
+} from "@/constants/socialLinks/types";
 
 class HermitMainLevels extends LinkMainLevels {
-  isAvailable(props: EventAvailableProps): boolean {
-    const linkName = props.socialLink.linkName;
-    const previousLink = props.previousDay!.links[linkName];
-    const isNewLevel = props.socialLink.isNewLevel(previousLink);
-    const days = [
-      new Date(2009, 3, 29).getTime(),
-      new Date(2009, 4, 4).getTime(),
-      new Date(2009, 4, 5).getTime(),
-      new Date(2009, 8, 21).getTime(),
-      new Date(2009, 8, 22).getTime(),
-      new Date(2009, 8, 23).getTime(),
-      new Date(2009, 9, 12).getTime(),
-    ];
-    const isToday =
-      props.currentDay.date.getDay() === DaysNames.sunday ||
-      days.includes(props.currentDay.date.getTime());
-
-    return (
-      props.currentDay.date.getTime() >= new Date(2009, 3, 29).getTime() &&
-      props.time === Times.Day &&
-      isNewLevel &&
-      isToday
-    );
-  }
+  isAvailable = new availables.And_([
+    new availables.AvailableDateGreater({ date: new Date(2009, 3, 29) }),
+    new availables.AvailableTimesIsIn({ times: [Times.Day] }),
+    new availables.AvailableLinkIsNewLevel(),
+    new availables.Or_([
+      new availables.AvailableDaysNamesIsIn({ days: [DaysNames.sunday] }),
+      new availables.AvailableDateIsIn({
+        date: [
+          new Date(2009, 3, 29),
+          new Date(2009, 4, 4),
+          new Date(2009, 4, 5),
+          new Date(2009, 8, 21),
+          new Date(2009, 8, 22),
+          new Date(2009, 8, 23),
+          new Date(2009, 9, 12),
+        ],
+      }),
+    ]),
+  ]).available;
 
   levels: LevelsType = {
     0: {
