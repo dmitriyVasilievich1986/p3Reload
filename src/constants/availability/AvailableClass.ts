@@ -1,8 +1,4 @@
-import {
-  SocialLinkType,
-  SocialLinkNames,
-  Routes,
-} from "@/constants/socialLinks/types";
+import { SocialLinkNames, Routes } from "@/constants/socialLinks/types";
 import { allEventsNames, Times } from "@/constants/events/types";
 import { StatsNames, stats } from "@/constants/stats";
 import { DaysNames } from "@/constants/monthsNames";
