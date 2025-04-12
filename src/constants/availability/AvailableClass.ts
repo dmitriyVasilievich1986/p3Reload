@@ -228,16 +228,14 @@ export class AvailableLinkLevelLess extends AvailableLinkLevelGreater {
 export class AvailableLinkIsNewLevel extends Available<boolean> {
   operation: Operations = Operations.Equal;
 
-  constructor(props: { socialLink: SocialLinkType; reverse?: boolean }) {
+  constructor(props?: { reverse?: boolean }) {
     super(props);
-
-    this.getLeft = this.getLeft.bind(props.socialLink);
   }
 
-  getLeft(this: SocialLinkType, props: SocialLinkAvailableProps) {
-    const linkName = this.linkName;
+  getLeft(props: AvailabilityProps) {
+    const linkName = props.socialLink!.linkName;
     const previousLink = props.previousDay!.links[linkName];
-    return this.isNewLevel(previousLink);
+    return props.socialLink!.isNewLevel(previousLink);
   }
 
   getRight() {
@@ -273,9 +271,18 @@ export class AvailableStatLess extends AvailableStatGreater {
 
 export class AvailableIsDayOff extends Available<boolean> {
   operation: Operations = Operations.Equal;
+  isExamIncluded?: boolean;
+
+  constructor(props?: { isExamIncluded?: boolean; reverse?: boolean }) {
+    super(props);
+    this.isExamIncluded = props?.isExamIncluded;
+
+    this.getLeft = this.getLeft.bind(this);
+  }
 
   getLeft(props: AvailabilityProps) {
-    return !!props.currentDay.isDayOff;
+    const exam = this.isExamIncluded ? !!props.currentDay.exams : false;
+    return !!props.currentDay.isDayOff || exam;
   }
 
   getRight() {
