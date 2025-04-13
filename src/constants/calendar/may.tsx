@@ -92,36 +92,6 @@ export const may: SingleDay[] = [
           </Question>
         ),
       },
-      {
-        ...events[SpecialEventsNames.Notes],
-        time: Times.AfterSchool,
-        label: () => (
-          <EventCard
-            {...socialLinks[SocialLinkNames.HangedMan].linkDetails}
-            head={`${SocialLinkNames.HangedMan} (Prerequisite)`}
-          >
-            <ul>
-              <li>
-                <p>
-                  Buy Weird Takoyaki from Octopia at Iwatodai Station Strip Mall
-                  1F.
-                </p>
-              </li>
-              <li>
-                <p>
-                  Buy Mad Bull from the vending machine at Iwatodai Station.
-                </p>
-              </li>
-              <li>
-                <p>Give them to Maiko at Naganaki Shrine.</p>
-              </li>
-              <li>
-                <p>Promise to play with her.</p>
-              </li>
-            </ul>
-          </EventCard>
-        ),
-      },
       events[SocialLinkNames.Emperor],
       events[pcProgramsNames.lobbyPCLanguageMadeEasy],
     ],

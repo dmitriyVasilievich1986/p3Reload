@@ -5,6 +5,7 @@ import { DaysNames } from "@/constants/monthsNames";
 import { StatsNames } from "@/constants/stats";
 
 import { Hierophant } from "@/constants/socialLinks/Hierophant";
+import { HangedMan } from "@/constants/socialLinks/HangedMan";
 import { Magician } from "@/constants/socialLinks/Magician";
 import {
   SocialLinkAvailableProps,
@@ -105,6 +106,38 @@ export const prerequisitsEvents: { [key in PrerequisitsEventsNames]: Event } = {
             <p>
               Retrieve a Persimmon Leaf from Gekkoukan High School, Corridor.
             </p>
+          </li>
+        </ul>
+      </EventCard>
+    ),
+  }),
+  [PrerequisitsEventsNames.HangedManPrerequisit]: new PrerequisitsEventClass({
+    name: PrerequisitsEventsNames.HangedManPrerequisit,
+    category: Categories.Prerequisits,
+    time: Times.Prerequisits,
+    availability: new availables.And_([
+      new availables.AvailableDateIsIn({ date: [new Date(2009, 4, 6)] }),
+      new availables.AvailableTimesIsIn({ times: [Times.Prerequisits] }),
+    ]),
+    label: () => (
+      <EventCard
+        head={`${SocialLinkNames.HangedMan} (Prerequisite)`}
+        {...HangedMan.linkDetails}
+      >
+        <ul>
+          <li>
+            <p>
+              Buy Weird Takoyaki from Octopia at Iwatodai Station Strip Mall 1F.
+            </p>
+          </li>
+          <li>
+            <p>Buy Mad Bull from the vending machine at Iwatodai Station.</p>
+          </li>
+          <li>
+            <p>Give them to Maiko at Naganaki Shrine.</p>
+          </li>
+          <li>
+            <p>Promise to play with her.</p>
           </li>
         </ul>
       </EventCard>

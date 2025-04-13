@@ -42,6 +42,7 @@ export enum SpecialEventsNames {
 
 export enum PrerequisitsEventsNames {
   HierophantPrerequisit = "HierophantPrerequisit",
+  HangedManPrerequisit = "HangedManPrerequisit",
   MoonPrerequisit = "MoonPrerequisit",
 }
 

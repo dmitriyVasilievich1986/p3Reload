@@ -45,6 +45,10 @@ function calculateSingleDay(
     { name: statsEventsCourageNames.drinkMedicine, time: Times.AfterSchool },
     { name: PrerequisitsEventsNames.MoonPrerequisit, time: Times.Prerequisits },
     {
+      name: PrerequisitsEventsNames.HangedManPrerequisit,
+      time: Times.Prerequisits,
+    },
+    {
       name: PrerequisitsEventsNames.HierophantPrerequisit,
       time: Times.Prerequisits,
     },
