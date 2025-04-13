@@ -1,5 +1,5 @@
 import { SocialLinkNames, Routes } from "@/constants/socialLinks/types";
-import { allEventsNames, Times } from "@/constants/events/types";
+import { allEventsNames, Categories, Times } from "@/constants/events/types";
 import { StatsNames, stats } from "@/constants/stats";
 import { DaysNames } from "@/constants/monthsNames";
 import { SingleDay } from "@/constants/calendar";
@@ -110,9 +110,11 @@ export class AvailableSingleTimeEventsIsIn extends Available<allEventsNames> {
   }
 }
 
-export class AvailablePreviousDayContains extends Available<allEventsNames> {
+export class AvailablePreviousDayContains extends Available<
+  allEventsNames | Categories
+> {
   operation: Operations = Operations.IsIn;
-  name: allEventsNames;
+  name: allEventsNames | Categories;
 
   constructor(props: { name: allEventsNames; reverse?: boolean }) {
     super(props);
@@ -126,7 +128,9 @@ export class AvailablePreviousDayContains extends Available<allEventsNames> {
   }
 
   getRight(props: AvailabilityProps) {
-    return props.previousDay.activities.map((a) => a.name);
+    const categories = props.previousDay.activities.map((a) => a.category);
+    const names = props.previousDay.activities.map((a) => a.name);
+    return [...names, ...categories];
   }
 }
 
