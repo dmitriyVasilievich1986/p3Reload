@@ -11,6 +11,7 @@ import {
 } from "@/constants/socialLinks/types";
 
 export enum Categories {
+  Prerequisits = "Prerequisits",
   Invitation = "Invitation",
   Tartarus = "Tartarus",
   Special = "Special",
