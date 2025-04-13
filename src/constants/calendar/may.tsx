@@ -1,6 +1,6 @@
-import { SocialLinkNames, socialLinks } from "@/constants/socialLinks";
 import { EventCard, WideEvent, Question, Answer } from "@/components";
 import { LabelExamGrade, classmates } from "./baseFunctions";
+import { SocialLinkNames } from "@/constants/socialLinks";
 import { events, Times } from "@/constants/events";
 import { StatsNames } from "@/constants/stats";
 import { SingleDay } from "./SingleDay";
@@ -28,25 +28,6 @@ export const may: SingleDay[] = [
   new SingleDay({
     date: new Date(2009, 4, 2),
     activities: [
-      {
-        ...events[SpecialEventsNames.Notes],
-        time: Times.AfterSchool,
-        label: () => (
-          <EventCard
-            {...socialLinks[SocialLinkNames.Justice].linkDetails}
-            head={`${SocialLinkNames.Justice} (Prerequisite)`}
-          >
-            <ul>
-              <li>
-                <p>Talk to Chihiro.</p>
-              </li>
-              <li>
-                <p>Choose "Let's hang out."</p>
-              </li>
-            </ul>
-          </EventCard>
-        ),
-      },
       events[SocialLinkNames.Hierophant],
       events[statsEventsAcademicsNames.gameParadeAcademics],
     ],
@@ -90,36 +71,6 @@ export const may: SingleDay[] = [
             <Answer label="A piston." />
             <Answer label="A master controller." />
           </Question>
-        ),
-      },
-      {
-        ...events[SpecialEventsNames.Notes],
-        time: Times.AfterSchool,
-        label: () => (
-          <EventCard
-            {...socialLinks[SocialLinkNames.HangedMan].linkDetails}
-            head={`${SocialLinkNames.HangedMan} (Prerequisite)`}
-          >
-            <ul>
-              <li>
-                <p>
-                  Buy Weird Takoyaki from Octopia at Iwatodai Station Strip Mall
-                  1F.
-                </p>
-              </li>
-              <li>
-                <p>
-                  Buy Mad Bull from the vending machine at Iwatodai Station.
-                </p>
-              </li>
-              <li>
-                <p>Give them to Maiko at Naganaki Shrine.</p>
-              </li>
-              <li>
-                <p>Promise to play with her.</p>
-              </li>
-            </ul>
-          </EventCard>
         ),
       },
       events[SocialLinkNames.Emperor],
