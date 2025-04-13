@@ -118,7 +118,6 @@ export const july: SingleDay[] = [
           </Question>
         ),
       },
-      events[statsEventsCourageNames.drinkMedicine],
       events[SocialLinkNames.HangedMan],
       events[statsEventsAcademicsNames.gameParadeAcademics],
     ],

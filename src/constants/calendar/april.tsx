@@ -256,7 +256,6 @@ export const april: SingleDay[] = [
     date: new Date(2009, 3, 21),
     activities: [
       events[statsEventsAcademicsNames.stayAwakeInClass],
-      events[statsEventsCourageNames.drinkMedicine],
       { ...events[statsEventsCourageNames.gameParadeCourage], time: Times.Day },
       events[statsEventsCourageNames.gameParadeCourage],
     ],
@@ -289,7 +288,6 @@ export const april: SingleDay[] = [
   new SingleDay({
     date: new Date(2009, 3, 23),
     activities: [
-      events[statsEventsCourageNames.drinkMedicine],
       events[SocialLinkNames.Chariot],
       events[statsEventsCharmNames.gameParadeCharm],
     ],

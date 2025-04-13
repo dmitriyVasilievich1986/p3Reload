@@ -83,7 +83,6 @@ export const june: SingleDay[] = [
   new SingleDay({
     date: new Date(2009, 5, 9),
     activities: [
-      events[statsEventsCourageNames.drinkMedicine],
       events[SocialLinkNames.Temperance],
       events[statsEventsCharmNames.hagakureRamenSpecial],
     ],
@@ -332,7 +331,6 @@ export const june: SingleDay[] = [
   new SingleDay({
     date: new Date(2009, 5, 30),
     activities: [
-      events[statsEventsCourageNames.drinkMedicine],
       events[SocialLinkNames.Fortune],
       { ...events[SocialLinkNames.Lovers], time: Times.Evening },
     ],
