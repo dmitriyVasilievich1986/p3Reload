@@ -1,6 +1,6 @@
-import { SocialLinkNames, socialLinks } from "@/constants/socialLinks";
 import { EventCard, WideEvent, Question, Answer } from "@/components";
 import { Categories, events, Times } from "@/constants/events";
+import { SocialLinkNames } from "@/constants/socialLinks";
 import { SingleDay } from "./SingleDay";
 
 import {

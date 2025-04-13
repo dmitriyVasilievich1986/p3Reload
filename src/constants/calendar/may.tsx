@@ -1,6 +1,6 @@
-import { SocialLinkNames, socialLinks } from "@/constants/socialLinks";
 import { EventCard, WideEvent, Question, Answer } from "@/components";
 import { LabelExamGrade, classmates } from "./baseFunctions";
+import { SocialLinkNames } from "@/constants/socialLinks";
 import { events, Times } from "@/constants/events";
 import { StatsNames } from "@/constants/stats";
 import { SingleDay } from "./SingleDay";
