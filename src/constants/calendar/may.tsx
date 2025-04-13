@@ -195,7 +195,6 @@ export const may: SingleDay[] = [
     exams: true,
     activities: [
       events[statsEventsAcademicsNames.stayAwakeInClass],
-      events[statsEventsCourageNames.drinkMedicine],
       events[SocialLinkNames.HangedMan],
       events[statsEventsAcademicsNames.wakatsuKitchenSpecial],
     ],

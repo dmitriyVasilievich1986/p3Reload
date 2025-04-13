@@ -8,6 +8,7 @@ import {
   AvailableStatGreater,
   AvailableDateGreater,
   AvailableTimesIsIn,
+  AvailableFreeTime,
   And_,
 } from "@/constants/availability/AvailableClass";
 
@@ -33,6 +34,7 @@ export const statsEventsCourage: {
     special: true,
     availability: new And_([
       new AvailablePreviousDayContains({ name: SpecialEventsNames.Tartarus }),
+      new AvailableFreeTime({ time: Times.Day }),
     ]),
   }),
   [statsEventsCourageNames.sleepDuringClass]: new StatsEvents({

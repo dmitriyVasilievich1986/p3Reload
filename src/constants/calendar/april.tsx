@@ -256,7 +256,6 @@ export const april: SingleDay[] = [
     date: new Date(2009, 3, 21),
     activities: [
       events[statsEventsAcademicsNames.stayAwakeInClass],
-      events[statsEventsCourageNames.drinkMedicine],
       { ...events[statsEventsCourageNames.gameParadeCourage], time: Times.Day },
       events[statsEventsCourageNames.gameParadeCourage],
     ],
@@ -289,7 +288,6 @@ export const april: SingleDay[] = [
   new SingleDay({
     date: new Date(2009, 3, 23),
     activities: [
-      events[statsEventsCourageNames.drinkMedicine],
       events[SocialLinkNames.Chariot],
       events[statsEventsCharmNames.gameParadeCharm],
     ],
@@ -304,28 +302,6 @@ export const april: SingleDay[] = [
   new SingleDay({
     date: new Date(2009, 3, 25),
     activities: [
-      {
-        ...events[SpecialEventsNames.Notes],
-        time: Times.AfterSchool,
-        label: () => (
-          <EventCard
-            {...socialLinks[SocialLinkNames.Hierophant].linkDetails}
-            head={`${SocialLinkNames.Hierophant} (Prerequisite)`}
-          >
-            <ul>
-              <li>
-                <p>Enter Bookworms bookstore to talk to them.</p>
-              </li>
-              <li>
-                <p>
-                  Retrieve a Persimmon Leaf from Gekkoukan High School,
-                  Corridor.
-                </p>
-              </li>
-            </ul>
-          </EventCard>
-        ),
-      },
       events[SocialLinkNames.Strength],
       events[statsEventsAcademicsNames.gameParadeAcademics],
     ],

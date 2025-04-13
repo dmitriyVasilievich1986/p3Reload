@@ -1,6 +1,6 @@
 import { SocialLinkNames, socialLinks } from "@/constants/socialLinks";
+import { Times, Event, Categories } from "@/constants/events/types";
 import { SingleDay } from "@/constants/calendar/SingleDay";
-import { Times, Event } from "@/constants/events/types";
 
 import { Tooltip } from "@/components/tootlip";
 import { Badge } from "@/components/badge";
@@ -59,7 +59,9 @@ export function Activity(props: {
   return (
     <Card
       badge={<LinkBadge {...props} />}
-      enable={!props.event.special}
+      enable={
+        !props.event.special && props.event.category !== Categories.Prerequisits
+      }
       highlited={props.highlited}
       head={props.event.time}
       onClick={clickHandler}

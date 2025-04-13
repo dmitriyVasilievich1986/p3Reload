@@ -11,6 +11,7 @@ import {
 } from "@/constants/socialLinks/types";
 
 export enum Categories {
+  Prerequisits = "Prerequisits",
   Invitation = "Invitation",
   Tartarus = "Tartarus",
   Special = "Special",
@@ -21,6 +22,7 @@ export enum Categories {
 }
 
 export enum Times {
+  Prerequisits = "Prerequisits",
   Morning = "Morning",
   AfterSchool = "After School",
   Day = "Day",
@@ -36,6 +38,11 @@ export enum SpecialEventsNames {
   Tartarus = "Tartarus",
   Exams = "Exams",
   Notes = "Notes",
+}
+
+export enum PrerequisitsEventsNames {
+  HierophantPrerequisit = "HierophantPrerequisit",
+  MoonPrerequisit = "MoonPrerequisit",
 }
 
 export enum pcProgramsNames {
@@ -103,6 +110,7 @@ const allNames = {
   ...statsEventsCourageNames,
   ...SocialLinkNames,
   ...socialLinkRomanceNames,
+  ...PrerequisitsEventsNames,
 };
 
 export type allEventsNames = (typeof allNames)[keyof typeof allNames];
