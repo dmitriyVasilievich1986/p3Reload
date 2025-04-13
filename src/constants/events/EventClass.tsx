@@ -67,7 +67,7 @@ export class EventClass implements Event {
     };
   }
 
-  label(_props: SocialLinkElementProps) {
+  label(_props: SocialLinkElementProps): React.ReactNode {
     const statsRepresentation = this.stats
       .map((s) => (typeof s === "string" ? s : s.toString()))
       .join(" | ");
