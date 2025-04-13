@@ -110,6 +110,26 @@ export class AvailableSingleTimeEventsIsIn extends Available<allEventsNames> {
   }
 }
 
+export class AvailablePreviousDayContains extends Available<allEventsNames> {
+  operation: Operations = Operations.IsIn;
+  name: allEventsNames;
+
+  constructor(props: { name: allEventsNames; reverse?: boolean }) {
+    super(props);
+    this.name = props.name;
+
+    this.getLeft = this.getLeft.bind(this);
+  }
+
+  getLeft() {
+    return this.name;
+  }
+
+  getRight(props: AvailabilityProps) {
+    return props.previousDay.activities.map((a) => a.name);
+  }
+}
+
 export class AvailableTimesIsIn extends Available<Times> {
   operation: Operations = Operations.IsIn;
   times: Times[];
@@ -340,6 +360,7 @@ export class False_ extends AvailabilityArray {
 
 const availables = {
   AvailableSingleTimeEventsIsIn,
+  AvailablePreviousDayContains,
   AvailableLinkLevelGreater,
   AvailableLinkLevelEqual,
   AvailableLinkIsNewLevel,

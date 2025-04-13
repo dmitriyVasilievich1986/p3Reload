@@ -91,6 +91,7 @@ export type LinkDetailsType = {
 };
 
 export type SocialLinkAvailableProps = {
+  previousWeek?: SingleDay;
   previousDay?: SingleDay;
   currentDay: SingleDay;
   time: Times;
