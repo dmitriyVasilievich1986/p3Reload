@@ -189,6 +189,7 @@ export function importCalendar(
         newActivities.push({
           ...events[SpecialEventsNames.Notes],
           label: () => <div>{label}</div>,
+          time: newActivity.time,
         });
       } else if (
         (oldActivity?.special || !newActivity) &&
@@ -198,7 +199,7 @@ export function importCalendar(
       else if (!!newActivity) {
         const event = events[newActivity.name];
         if (!event) throw new Error("Event not found");
-        newActivities.push(event);
+        newActivities.push({ ...event, time: newActivity.time });
       }
     });
 
