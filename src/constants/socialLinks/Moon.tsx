@@ -1,8 +1,7 @@
 import { QuestionsWrapper, Question, Answer } from "@/components";
 
+import { PrerequisitsEventsNames, Times } from "@/constants/events/types";
 import availables from "@/constants/availability/AvailableClass";
-import { Times } from "@/constants/events/types";
-import { StatsNames } from "@/constants/stats";
 
 import { SocialLink } from "@/constants/socialLinks/classes/SocialLink";
 import {
@@ -21,22 +20,16 @@ import {
 
 class MoonMainLevels extends LinkMainLevels {
   isAvailable = new availables.And_([
-    new availables.AvailableDateGreater({ date: new Date(2009, 3, 28) }),
     new availables.AvailableTimesIsIn({ times: [Times.Day] }),
     new availables.AvailableLinkIsNewLevel(),
-    new availables.AvailableLinkLevelGreater({
-      name: SocialLinkNames.Magician,
-      level: 3,
-    }),
-    new availables.AvailableStatGreater({
-      name: StatsNames.Charm,
-      level: 1,
+    new availables.AvailableSingleTimeEventsIsIn({
+      name: PrerequisitsEventsNames.MoonPrerequisit,
     }),
     new availables.Or_([
-      new availables.AvailableIsDayOff({ reverse: true, isExamIncluded: true }),
+      new availables.AvailableIsDayOff({ reverse: true }),
       new availables.AvailableLinkLevelGreater({
         name: SocialLinkNames.Moon,
-        level: 0,
+        level: 1,
       }),
     ]),
   ]).available;

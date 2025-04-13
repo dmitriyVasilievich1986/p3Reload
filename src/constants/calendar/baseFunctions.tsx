@@ -1,19 +1,21 @@
+import { EventCard } from "@/components";
+
 import { SocialLinkElementProps } from "@/constants/socialLinks/types";
 import { SocialLinkNames } from "@/constants/socialLinks/types";
+
+import { EventClass } from "@/constants/events/EventClass";
 import { events } from "@/constants/events";
 import {
   statsEventsAcademicsNames,
   statsEventsCourageNames,
+  PrerequisitsEventsNames,
   SpecialEventsNames,
   allEventsNames,
   Event,
   Times,
 } from "@/constants/events/types";
 
-import { EventCard } from "@/components";
-
-import { SingleDay } from "./SingleDay";
-import { EventClass } from "../events/EventClass";
+import { SingleDay } from "@/constants/calendar/SingleDay";
 
 export const classmates: SocialLinkNames[] = [
   SocialLinkNames.Magician,
@@ -41,6 +43,7 @@ function calculateSingleDay(
 
   const pushEvents: { name: allEventsNames; time: Times }[] = [
     { name: statsEventsCourageNames.drinkMedicine, time: Times.AfterSchool },
+    { name: PrerequisitsEventsNames.MoonPrerequisit, time: Times.Prerequisits },
   ];
   const pushEventsNames: allEventsNames[] = pushEvents.map((e) => e.name);
 

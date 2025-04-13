@@ -1,3 +1,4 @@
+import { prerequisitsEvents } from "./prerequisits";
 import { socialLinksEvents } from "./socialLinks";
 import { specialEvents } from "./specialEvents";
 import { pcPrograms } from "./pcPrograms";
@@ -11,6 +12,7 @@ import {
 import { allEventsNames, Categories, Times, Event } from "./types";
 
 const events: { [key in allEventsNames]: Event } = {
+  ...prerequisitsEvents,
   ...socialLinksEvents,
   ...specialEvents,
   ...pcPrograms,
