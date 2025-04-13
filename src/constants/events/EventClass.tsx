@@ -8,7 +8,14 @@ import {
 
 import { EventCard, WideEvent } from "@/components";
 
-import { allEventsNames, Categories, eventProps, Times, Event } from "./types";
+import {
+  upgradeResponse,
+  allEventsNames,
+  Categories,
+  eventProps,
+  Times,
+  Event,
+} from "./types";
 import React from "react";
 
 export class EventClass implements Event {
@@ -39,11 +46,11 @@ export class EventClass implements Event {
     this.label = this.label.bind(this);
   }
 
-  available(props: SocialLinkAvailableProps) {
+  available(props: SocialLinkAvailableProps): boolean {
     return this.availability.available.bind(this.availability)(props);
   }
 
-  upgrade(props: SocialLinkAvailableProps) {
+  upgrade(props: SocialLinkAvailableProps): upgradeResponse {
     const newStats: { [key in StatsNames]?: number } = {};
 
     this.stats
