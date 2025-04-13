@@ -154,6 +154,28 @@ export class AvailableTimesIsIn extends Available<Times> {
   }
 }
 
+export class AvailableFreeTime extends Available<Times> {
+  operation: Operations = Operations.IsIn;
+  time: Times;
+
+  constructor(props: { time: Times; reverse?: boolean }) {
+    super(props);
+    this.time = props.time;
+
+    this.getRight = this.getRight.bind(this);
+  }
+
+  getLeft() {
+    return this.time;
+  }
+
+  getRight(props: AvailabilityProps) {
+    return props.currentDay.activities
+      .filter((a) => !a.special)
+      .map((a) => a.time);
+  }
+}
+
 export class AvailableDaysNamesIsIn extends Available<DaysNames> {
   operation: Operations = Operations.IsIn;
   days: DaysNames[];
@@ -378,6 +400,7 @@ const availables = {
   AvailableDateIsIn,
   AvailableStatLess,
   AvailableIsDayOff,
+  AvailableFreeTime,
   False_,
   True_,
   And_,
