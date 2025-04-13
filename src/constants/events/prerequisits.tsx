@@ -4,6 +4,7 @@ import availables from "@/constants/availability/AvailableClass";
 import { DaysNames } from "@/constants/monthsNames";
 import { StatsNames } from "@/constants/stats";
 
+import { Hierophant } from "@/constants/socialLinks/Hierophant";
 import { Magician } from "@/constants/socialLinks/Magician";
 import {
   SocialLinkAvailableProps,
@@ -66,11 +67,46 @@ export const prerequisitsEvents: { [key in PrerequisitsEventsNames]: Event } = {
       }),
     ]),
     label: () => (
-      <EventCard head="Moon Prerequisits">
+      <EventCard
+        head={`${SocialLinkNames.Moon} (Prerequisite)`}
+        {...Magician.linkDetails}
+      >
         <p style={{ textAlign: "center" }}>
           Talk to {Magician.linkDetails.name} to gain an inforamtion about
           "Gourmet King"
         </p>
+      </EventCard>
+    ),
+  }),
+  [PrerequisitsEventsNames.HierophantPrerequisit]: new PrerequisitsEventClass({
+    name: PrerequisitsEventsNames.HierophantPrerequisit,
+    category: Categories.Prerequisits,
+    time: Times.Prerequisits,
+    availability: new availables.And_([
+      new availables.AvailableDateGreater({ date: new Date(2009, 3, 25) }),
+      new availables.AvailableTimesIsIn({ times: [Times.Prerequisits] }),
+      new availables.AvailableFreeTime({ time: Times.Day }),
+      new availables.AvailableIsDayOff({ reverse: true }),
+      new availables.AvailableSingleTimeEventsIsIn({
+        name: PrerequisitsEventsNames.HierophantPrerequisit,
+        reverse: true,
+      }),
+    ]),
+    label: () => (
+      <EventCard
+        head={`${SocialLinkNames.Hierophant} (Prerequisite)`}
+        {...Hierophant.linkDetails}
+      >
+        <ul>
+          <li>
+            <p>Enter Bookworms bookstore to talk to them.</p>
+          </li>
+          <li>
+            <p>
+              Retrieve a Persimmon Leaf from Gekkoukan High School, Corridor.
+            </p>
+          </li>
+        </ul>
       </EventCard>
     ),
   }),

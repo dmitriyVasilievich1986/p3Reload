@@ -44,6 +44,10 @@ function calculateSingleDay(
   const pushEvents: { name: allEventsNames; time: Times }[] = [
     { name: statsEventsCourageNames.drinkMedicine, time: Times.AfterSchool },
     { name: PrerequisitsEventsNames.MoonPrerequisit, time: Times.Prerequisits },
+    {
+      name: PrerequisitsEventsNames.HierophantPrerequisit,
+      time: Times.Prerequisits,
+    },
   ];
   const pushEventsNames: allEventsNames[] = pushEvents.map((e) => e.name);
 
