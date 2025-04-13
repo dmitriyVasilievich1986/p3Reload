@@ -3,16 +3,24 @@ import { DaysNames } from "@/constants/monthsNames";
 
 import {
   AvailableSingleTimeEventsIsIn,
+  AvailablePreviousDayContains,
   AvailableDaysNamesIsIn,
   AvailableStatGreater,
   AvailableDateGreater,
   AvailableTimesIsIn,
-  False_,
   And_,
 } from "@/constants/availability/AvailableClass";
 
-import { wilduckBigEaterChallengeEvent, StatsEvents } from "./statsClass";
-import { statsEventsCourageNames, Times, Event } from "../types";
+import {
+  wilduckBigEaterChallengeEvent,
+  StatsEvents,
+} from "@/constants/events/stats/statsClass";
+import {
+  statsEventsCourageNames,
+  SpecialEventsNames,
+  Times,
+  Event,
+} from "@/constants/events/types";
 
 export const statsEventsCourage: {
   [key in statsEventsCourageNames]: Event;
@@ -20,10 +28,12 @@ export const statsEventsCourage: {
   [statsEventsCourageNames.drinkMedicine]: new StatsEvents({
     stats: [new StatsRepresentation(StatsNames.Courage, 2)],
     name: statsEventsCourageNames.drinkMedicine,
-    availability: new False_(),
     place: "Nurse's Office",
     time: Times.AfterSchool,
     special: true,
+    availability: new And_([
+      new AvailablePreviousDayContains({ name: SpecialEventsNames.Tartarus }),
+    ]),
   }),
   [statsEventsCourageNames.sleepDuringClass]: new StatsEvents({
     stats: [new StatsRepresentation(StatsNames.Courage, 2)],
