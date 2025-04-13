@@ -7,6 +7,7 @@ import { StatsNames } from "@/constants/stats";
 import { Hierophant } from "@/constants/socialLinks/Hierophant";
 import { HangedMan } from "@/constants/socialLinks/HangedMan";
 import { Magician } from "@/constants/socialLinks/Magician";
+import { Justice } from "@/constants/socialLinks/Justice";
 import {
   SocialLinkAvailableProps,
   SocialLinkNames,
@@ -138,6 +139,109 @@ export const prerequisitsEvents: { [key in PrerequisitsEventsNames]: Event } = {
           </li>
           <li>
             <p>Promise to play with her.</p>
+          </li>
+        </ul>
+      </EventCard>
+    ),
+  }),
+  [PrerequisitsEventsNames.JusticePrerequisit1]: new PrerequisitsEventClass({
+    name: PrerequisitsEventsNames.JusticePrerequisit1,
+    category: Categories.Prerequisits,
+    time: Times.Prerequisits,
+    availability: new availables.And_([
+      new availables.AvailableTimesIsIn({ times: [Times.Prerequisits] }),
+      new availables.AvailableFreeTime({ time: Times.Day }),
+      new availables.AvailableIsDayOff({ reverse: true }),
+      new availables.AvailableDaysNamesIsIn({
+        days: [DaysNames.tuesday, DaysNames.thursday, DaysNames.saturday],
+      }),
+      new availables.AvailableSingleTimeEventsIsIn({
+        name: PrerequisitsEventsNames.JusticePrerequisit1,
+        reverse: true,
+      }),
+      new availables.AvailableLinkLevelGreater({
+        name: SocialLinkNames.Emperor,
+        level: 1,
+      }),
+    ]),
+    label: () => (
+      <EventCard
+        head={`${SocialLinkNames.Justice} (Prerequisite)`}
+        {...Justice.linkDetails}
+      >
+        <ul>
+          <li>
+            <p>Talk to Chihiro.</p>
+          </li>
+          <li>
+            <p>Choose "Let's hang out."</p>
+          </li>
+        </ul>
+      </EventCard>
+    ),
+  }),
+  [PrerequisitsEventsNames.JusticePrerequisit2]: new PrerequisitsEventClass({
+    name: PrerequisitsEventsNames.JusticePrerequisit2,
+    category: Categories.Prerequisits,
+    time: Times.Prerequisits,
+    availability: new availables.And_([
+      new availables.AvailableTimesIsIn({ times: [Times.Prerequisits] }),
+      new availables.AvailableFreeTime({ time: Times.Day }),
+      new availables.AvailableIsDayOff({ reverse: true }),
+      new availables.AvailableDaysNamesIsIn({
+        days: [DaysNames.tuesday, DaysNames.thursday, DaysNames.saturday],
+      }),
+      new availables.AvailableSingleTimeEventsIsIn({
+        name: PrerequisitsEventsNames.JusticePrerequisit1,
+      }),
+      new availables.AvailableSingleTimeEventsIsIn({
+        name: PrerequisitsEventsNames.JusticePrerequisit2,
+        reverse: true,
+      }),
+    ]),
+    label: () => (
+      <EventCard
+        head={`${SocialLinkNames.Justice} (Prerequisite)`}
+        {...Justice.linkDetails}
+      >
+        <ul>
+          <li>
+            <p>Talk to Chihiro.</p>
+          </li>
+        </ul>
+      </EventCard>
+    ),
+  }),
+  [PrerequisitsEventsNames.JusticePrerequisit3]: new PrerequisitsEventClass({
+    name: PrerequisitsEventsNames.JusticePrerequisit3,
+    category: Categories.Prerequisits,
+    time: Times.Prerequisits,
+    availability: new availables.And_([
+      new availables.AvailableTimesIsIn({ times: [Times.Prerequisits] }),
+      new availables.AvailableFreeTime({ time: Times.Day }),
+      new availables.AvailableIsDayOff({ reverse: true }),
+      new availables.AvailableDaysNamesIsIn({
+        days: [DaysNames.tuesday, DaysNames.thursday, DaysNames.saturday],
+      }),
+      new availables.AvailableSingleTimeEventsIsIn({
+        name: PrerequisitsEventsNames.JusticePrerequisit2,
+      }),
+      new availables.AvailableSingleTimeEventsIsIn({
+        name: PrerequisitsEventsNames.JusticePrerequisit3,
+        reverse: true,
+      }),
+    ]),
+    label: () => (
+      <EventCard
+        head={`${SocialLinkNames.Justice} (Prerequisite)`}
+        {...Justice.linkDetails}
+      >
+        <ul>
+          <li>
+            <p>Talk to Chihiro.</p>
+          </li>
+          <li>
+            <p>Choose "Let's hang out."</p>
           </li>
         </ul>
       </EventCard>

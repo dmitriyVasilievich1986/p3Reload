@@ -341,25 +341,6 @@ export const april: SingleDay[] = [
   new SingleDay({
     date: new Date(2009, 3, 28),
     activities: [
-      {
-        ...events[SpecialEventsNames.Notes],
-        time: Times.AfterSchool,
-        label: () => (
-          <EventCard
-            {...socialLinks[SocialLinkNames.Justice].linkDetails}
-            head={`${SocialLinkNames.Justice} (Prerequisite)`}
-          >
-            <ul>
-              <li>
-                <p>Talk to Chihiro.</p>
-              </li>
-              <li>
-                <p>Choose "Let's hang out."</p>
-              </li>
-            </ul>
-          </EventCard>
-        ),
-      },
       events[SocialLinkNames.Magician],
       events[statsEventsCourageNames.gameParadeCourage],
     ],
@@ -376,22 +357,6 @@ export const april: SingleDay[] = [
     date: new Date(2009, 3, 30),
     activities: [
       events[statsEventsAcademicsNames.stayAwakeInClass],
-      {
-        ...events[SpecialEventsNames.Notes],
-        time: Times.AfterSchool,
-        label: () => (
-          <EventCard
-            {...socialLinks[SocialLinkNames.Justice].linkDetails}
-            head={`${SocialLinkNames.Justice} (Prerequisite)`}
-          >
-            <ul>
-              <li>
-                <p>Talk to Chihiro.</p>
-              </li>
-            </ul>
-          </EventCard>
-        ),
-      },
       events[SocialLinkNames.Magician],
       events[statsEventsCharmNames.gameParadeCharm],
     ],

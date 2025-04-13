@@ -28,25 +28,6 @@ export const may: SingleDay[] = [
   new SingleDay({
     date: new Date(2009, 4, 2),
     activities: [
-      {
-        ...events[SpecialEventsNames.Notes],
-        time: Times.AfterSchool,
-        label: () => (
-          <EventCard
-            {...socialLinks[SocialLinkNames.Justice].linkDetails}
-            head={`${SocialLinkNames.Justice} (Prerequisite)`}
-          >
-            <ul>
-              <li>
-                <p>Talk to Chihiro.</p>
-              </li>
-              <li>
-                <p>Choose "Let's hang out."</p>
-              </li>
-            </ul>
-          </EventCard>
-        ),
-      },
       events[SocialLinkNames.Hierophant],
       events[statsEventsAcademicsNames.gameParadeAcademics],
     ],

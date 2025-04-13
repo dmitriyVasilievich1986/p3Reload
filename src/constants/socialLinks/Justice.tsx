@@ -1,8 +1,8 @@
 import { QuestionsWrapper, Question, Answer } from "@/components";
 
+import { PrerequisitsEventsNames, Times } from "@/constants/events/types";
 import availables from "@/constants/availability/AvailableClass";
 import { DaysNames } from "@/constants/monthsNames";
-import { Times } from "@/constants/events/types";
 
 import { SocialLink } from "@/constants/socialLinks/classes/SocialLink";
 import {
@@ -24,10 +24,15 @@ import {
 class JusticeMainLevels extends LinkMainLevels {
   isAvailable = new availables.And_([
     new availables.AvailableIsDayOff({ reverse: true, isExamIncluded: true }),
-    new availables.AvailableDateGreater({ date: new Date(2009, 4, 7) }),
     new availables.AvailableTimesIsIn({ times: [Times.Day] }),
     new availables.AvailableLinkRoute({ forkLevel: 4 }),
     new availables.AvailableLinkIsNewLevel(),
+    new availables.AvailableSingleTimeEventsIsIn({
+      name: PrerequisitsEventsNames.JusticePrerequisit3,
+    }),
+    new availables.AvailableDaysNamesIsIn({
+      days: [DaysNames.tuesday, DaysNames.thursday, DaysNames.saturday],
+    }),
     new availables.AvailableDateIsIn({
       date: [
         new Date(2009, 10, 7),
@@ -35,13 +40,6 @@ class JusticeMainLevels extends LinkMainLevels {
         new Date(2009, 10, 12),
       ],
       reverse: true,
-    }),
-    new availables.AvailableLinkLevelGreater({
-      name: SocialLinkNames.Emperor,
-      level: 1,
-    }),
-    new availables.AvailableDaysNamesIsIn({
-      days: [DaysNames.tuesday, DaysNames.thursday, DaysNames.saturday],
     }),
   ]).available;
 
