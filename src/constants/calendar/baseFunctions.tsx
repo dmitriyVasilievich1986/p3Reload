@@ -6,7 +6,6 @@ import {
   statsEventsCourageNames,
   SpecialEventsNames,
   allEventsNames,
-  Categories,
   Event,
   Times,
 } from "@/constants/events/types";
@@ -14,6 +13,7 @@ import {
 import { EventCard } from "@/components";
 
 import { SingleDay } from "./SingleDay";
+import { EventClass } from "../events/EventClass";
 
 export const classmates: SocialLinkNames[] = [
   SocialLinkNames.Magician,
@@ -30,26 +30,69 @@ export const classmates: SocialLinkNames[] = [
   SocialLinkNames.Aeon,
 ];
 
+function calculateSingleDay(
+  currentDay: SingleDay,
+  previousDay: SingleDay,
+  previousWeek?: SingleDay
+) {
+  currentDay.singleTimeEvents = previousDay.singleTimeEvents;
+  currentDay.stats = previousDay.stats;
+  currentDay.links = previousDay.links;
+
+  const pushEvents: { name: allEventsNames; time: Times }[] = [
+    { name: statsEventsCourageNames.drinkMedicine, time: Times.AfterSchool },
+  ];
+  const pushEventsNames: allEventsNames[] = pushEvents.map((e) => e.name);
+
+  currentDay.activities = currentDay.activities.filter((activity) => {
+    if (pushEventsNames.includes(activity.name)) return false;
+    if (activity.special) return true;
+    const isAvailable = activity.available({
+      currentDay,
+      previousDay,
+      previousWeek,
+      time: activity.time,
+    });
+    if (!isAvailable) {
+      console.warn(
+        `Event ${activity.name} is not available for the ${currentDay.date}`
+      );
+      return;
+    }
+    return isAvailable;
+  });
+  pushEvents
+    .filter(({ name, time }) =>
+      (events[name] as EventClass).available({
+        currentDay,
+        previousDay,
+        previousWeek,
+        time: time,
+      })
+    )
+    .forEach(({ name }) => {
+      currentDay.activities.unshift(events[name] as EventClass);
+    });
+
+  currentDay.activities.forEach((activity) => {
+    const response = activity.upgrade({
+      currentDay,
+      previousDay,
+      previousWeek,
+      time: activity.time,
+    });
+    currentDay.singleTimeEvents =
+      response?.singleTimeEvents || currentDay.singleTimeEvents;
+    currentDay.stats = response?.stats || currentDay.stats;
+    currentDay.links = response?.links || currentDay.links;
+  });
+}
+
 export function initialCalculataion(calendar: SingleDay[]) {
   (Object.values(calendar) as Array<SingleDay>).forEach((c, i, cArray) => {
     const previousDay: SingleDay = cArray?.[i - 1] || new SingleDay();
     const previousWeek: SingleDay | undefined = cArray?.[i - 1];
-
-    c.singleTimeEvents = previousDay.singleTimeEvents;
-    c.stats = previousDay.stats;
-    c.links = previousDay.links;
-
-    c.activities.forEach((activity) => {
-      const response = activity.upgrade({
-        time: activity.time,
-        currentDay: c,
-        previousWeek,
-        previousDay,
-      });
-      c.singleTimeEvents = response?.singleTimeEvents || c.singleTimeEvents;
-      c.stats = response?.stats || c.stats;
-      c.links = response?.links || c.links;
-    });
+    calculateSingleDay(c, previousDay, previousWeek);
   });
 
   return calendar;
@@ -71,38 +114,21 @@ export function getCalculatedCalendar(props: {
           a.time === props.time ? { ...props.newEvent, time: props.time } : a
         ),
       });
-    } else if (
-      i > props.dayIndex &&
-      props.newEvent.category === Categories.Tartarus
-    ) {
-      const activities = c.activities
-        .filter((a) => a !== events[statsEventsCourageNames.drinkMedicine])
-        .map((a) =>
-          a.special
-            ? a
-            : { ...events[SpecialEventsNames.DoNothing], time: a.time }
-        );
-      if (!c.isDayOff) {
-        activities.splice(1, 0, events[statsEventsCourageNames.drinkMedicine]);
-      }
-
-      return new SingleDay({ ...c, activities });
-    } else if (i > props.dayIndex)
+    } else if (i > props.dayIndex) {
       return new SingleDay({
         ...c,
         arcanes: [],
-        activities: c.activities
-          .filter((a) => a !== events[statsEventsCourageNames.drinkMedicine])
-          .map((a) => {
-            if (a.special) return a;
-            else if (a.time === Times.Morning)
-              return events[statsEventsAcademicsNames.stayAwakeInClass];
-            return {
-              ...events[SpecialEventsNames.DoNothing],
-              time: a.time,
-            };
-          }),
+        activities: c.activities.map((a) => {
+          if (a.special) return a;
+          else if (a.time === Times.Morning)
+            return events[statsEventsAcademicsNames.stayAwakeInClass];
+          return {
+            ...events[SpecialEventsNames.DoNothing],
+            time: a.time,
+          };
+        }),
       });
+    }
     return c;
   });
   return initialCalculataion(newCalendar);
