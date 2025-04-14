@@ -174,7 +174,7 @@ export const prerequisitsEvents: { [key in PrerequisitsEventsNames]: Event } = {
             <p>Talk to Chihiro.</p>
           </li>
           <li>
-            <p>Choose "Let's hang out."</p>
+            <p>Choose "I just wanted to talk..."</p>
           </li>
         </ul>
       </EventCard>
