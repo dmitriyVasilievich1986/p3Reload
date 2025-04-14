@@ -39,6 +39,7 @@ class EmperorMainLevels extends LinkMainLevels {
     },
     1: {
       [Routes.Platonic]: QuestionsWrapper({
+        // checked
         points: 0,
         element: [
           <Question label="Some students think the school uniform should be abolished, and they're recruiting supporters.">
@@ -50,6 +51,7 @@ class EmperorMainLevels extends LinkMainLevels {
     },
     2: {
       [Routes.Platonic]: QuestionsWrapper({
+        // checked
         points: 0,
         element: [
           <Question label="What!? You can't decide something like that without talking to the president first.">
@@ -61,6 +63,7 @@ class EmperorMainLevels extends LinkMainLevels {
     },
     3: {
       [Routes.Platonic]: QuestionsWrapper({
+        // checked
         points: 0,
         element: [
           <Question label="This guy looks like he's about to hit Odagiri!">
@@ -76,6 +79,7 @@ class EmperorMainLevels extends LinkMainLevels {
     },
     4: {
       [Routes.Platonic]: QuestionsWrapper({
+        // checked
         points: 15,
         element: [
           <Question label="...Bunch of neanderthals">
@@ -87,6 +91,7 @@ class EmperorMainLevels extends LinkMainLevels {
     },
     5: {
       [Routes.Platonic]: QuestionsWrapper({
+        // checked
         points: 15,
         element: [
           <Question label="It's nice not having those hyenas around.">
@@ -102,6 +107,7 @@ class EmperorMainLevels extends LinkMainLevels {
     },
     6: {
       [Routes.Platonic]: QuestionsWrapper({
+        // checked
         points: 15,
         element: [
           <Question label="About the smoker's punishment, I mean.">
@@ -113,6 +119,7 @@ class EmperorMainLevels extends LinkMainLevels {
     },
     7: {
       [Routes.Platonic]: QuestionsWrapper({
+        // checked
         points: 15,
         element: [
           <Question label="Um, did Odagiri-san do something?">
@@ -128,6 +135,7 @@ class EmperorMainLevels extends LinkMainLevels {
     },
     8: {
       [Routes.Platonic]: QuestionsWrapper({
+        // checked
         points: 22,
         element: [
           <Question label="I rambled on about rules and fairness, but all I really proved was that I was desperate for power.">
@@ -139,6 +147,7 @@ class EmperorMainLevels extends LinkMainLevels {
     },
     9: {
       [Routes.Platonic]: QuestionsWrapper({
+        // checked
         points: 22,
         element: [
           <Question label="So, how did I do? What'd everyone think?">

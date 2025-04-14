@@ -35,6 +35,7 @@ class HangedManMainLevels extends LinkMainLevels {
     },
     1: {
       [Routes.Platonic]: QuestionsWrapper({
+        // checked
         points: 0,
         element: [
           <Question label="My tummy's grumbling! Can we go to Wilduck?">
@@ -55,6 +56,7 @@ class HangedManMainLevels extends LinkMainLevels {
     },
     2: {
       [Routes.Platonic]: QuestionsWrapper({
+        // checked
         points: 0,
         element: [
           <Question label="...And who are you?">
@@ -71,6 +73,7 @@ class HangedManMainLevels extends LinkMainLevels {
     },
     3: {
       [Routes.Platonic]: QuestionsWrapper({
+        // checked
         points: 20,
         element: [
           <Question label="They really do care about me!">
@@ -83,6 +86,7 @@ class HangedManMainLevels extends LinkMainLevels {
     },
     4: {
       [Routes.Platonic]: QuestionsWrapper({
+        // checked
         points: 20,
         element: [
           <Question label="He's so mean. It's not fair!">
@@ -98,6 +102,7 @@ class HangedManMainLevels extends LinkMainLevels {
     },
     5: {
       [Routes.Platonic]: QuestionsWrapper({
+        // checked
         points: 20,
         element: [
           <Question label="I made up my mind! I have to run away from home!">
@@ -114,6 +119,7 @@ class HangedManMainLevels extends LinkMainLevels {
     },
     6: {
       [Routes.Platonic]: QuestionsWrapper({
+        // checked
         points: 30,
         element: [
           <Question label="She's never done anything like this before!">
@@ -130,6 +136,7 @@ class HangedManMainLevels extends LinkMainLevels {
     },
     7: {
       [Routes.Platonic]: QuestionsWrapper({
+        // checked
         points: 15,
         element: [
           <Question label="What do you wanna get?">
@@ -150,6 +157,7 @@ class HangedManMainLevels extends LinkMainLevels {
     },
     8: {
       [Routes.Platonic]: QuestionsWrapper({
+        // checked
         points: 30,
         element: [
           <Question label="Even if I'm gone... we'll still be friends, right?">
@@ -161,6 +169,7 @@ class HangedManMainLevels extends LinkMainLevels {
     },
     9: {
       [Routes.Platonic]: QuestionsWrapper({
+        // checked
         points: 30,
         element: [
           <Question label="Do you think I'll have a family of my own one day?">

@@ -49,6 +49,7 @@ class JusticeMainLevels extends LinkMainLevels {
     },
     1: {
       [Routes.Platonic]: QuestionsWrapper({
+        // checked
         points: 0,
         element: [
           <Question label="Sorry to drag you along while I go shopping...">
@@ -79,6 +80,7 @@ class JusticeMainLevels extends LinkMainLevels {
     },
     2: {
       [Routes.Platonic]: QuestionsWrapper({
+        // checked
         points: 0,
         element: [
           <Question label="...Do they not know where they are!?">
@@ -96,6 +98,7 @@ class JusticeMainLevels extends LinkMainLevels {
     },
     3: {
       [Routes.Platonic]: QuestionsWrapper({
+        // checked
         points: 22,
         element: [
           <Question label="${mainCharName}-san!">
@@ -112,6 +115,7 @@ class JusticeMainLevels extends LinkMainLevels {
     },
     4: {
       [Routes.Platonic]: QuestionsWrapper({
+        // checked
         points: 22,
         element: [
           <Question label="So, um... there was something I needed to ask you...">
@@ -133,6 +137,7 @@ class JusticeMainLevels extends LinkMainLevels {
         ],
       }),
       [Routes.Romantic]: QuestionsWrapper({
+        // checked
         points: 22,
         element: [
           <Question label="So, um... there was something I needed to ask you...">
@@ -157,6 +162,7 @@ class JusticeMainLevels extends LinkMainLevels {
     },
     5: {
       [Routes.Platonic]: QuestionsWrapper({
+        // checked
         points: 22,
         element: [
           <Question label="Wh-What should I do...?">
@@ -170,6 +176,7 @@ class JusticeMainLevels extends LinkMainLevels {
         ],
       }),
       [Routes.Romantic]: QuestionsWrapper({
+        // checked
         points: 22,
         element: [
           <Question label="Wh-What should I do...?">
@@ -185,6 +192,7 @@ class JusticeMainLevels extends LinkMainLevels {
     },
     6: {
       [Routes.Platonic]: QuestionsWrapper({
+        // checked
         points: 30,
         element: [
           <Question label="${mainCharName}-san...">
@@ -198,6 +206,7 @@ class JusticeMainLevels extends LinkMainLevels {
         ],
       }),
       [Routes.Romantic]: QuestionsWrapper({
+        // checked
         points: 30,
         element: [
           <Question label="${mainCharName}-san...">
@@ -213,6 +222,7 @@ class JusticeMainLevels extends LinkMainLevels {
     },
     7: {
       [Routes.Platonic]: QuestionsWrapper({
+        // checked
         points: 30,
         element: [
           <Question label="See, how could it not be her!? And with such an innocent face, too...">
@@ -227,6 +237,7 @@ class JusticeMainLevels extends LinkMainLevels {
         ],
       }),
       [Routes.Romantic]: QuestionsWrapper({
+        // checked
         points: 30,
         element: [
           <Question label="See, how could it not be her!? And with such an innocent face, too...">
@@ -243,6 +254,7 @@ class JusticeMainLevels extends LinkMainLevels {
     },
     8: {
       [Routes.Platonic]: QuestionsWrapper({
+        // checked
         points: 30,
         element: [
           <Question label="D-Don't tell me she thinks I stole the money too!">
@@ -264,6 +276,7 @@ class JusticeMainLevels extends LinkMainLevels {
         ],
       }),
       [Routes.Romantic]: QuestionsWrapper({
+        // checked
         points: 30,
         element: [
           <Question label="D-Don't tell me she thinks I stole the money too!">
@@ -295,7 +308,8 @@ class JusticeMainLevels extends LinkMainLevels {
     },
     9: {
       [Routes.Platonic]: QuestionsWrapper({
-        points: 30,
+        // checked
+        points: 40,
         element: [
           <Question label="I wonder if this is going to be enough flyers...">
             <Answer label="Looks tough." />
@@ -316,7 +330,8 @@ class JusticeMainLevels extends LinkMainLevels {
         ],
       }),
       [Routes.Romantic]: QuestionsWrapper({
-        points: 30,
+        // checked
+        points: 40,
         element: [
           <Question label="Just promise to think of me when you read it…">
             <Answer label="Thank you." points={15} />
@@ -380,6 +395,8 @@ class JusticeInvitationLevels extends InvitationLevels {
         element: [
           <Question label="I-I was afraid that I might see that guy from before who tried to, um...">
             <Answer label="I'd help you again." points={30} />
+            <Answer label="It could happen anytime." />
+            <Answer label="Don't let it bother you." />
           </Question>,
         ],
       }),

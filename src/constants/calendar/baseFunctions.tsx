@@ -197,10 +197,10 @@ export function importCalendar(
     const newActivities: Event[] = [];
     [
       Times.Morning,
+      Times.WholeDay,
       Times.AfterSchool,
       Times.Day,
       Times.Evening,
-      Times.WholeDay,
       Times.DarkHour,
     ].forEach((time) => {
       const oldActivity = oldDay.activities.find((a) => a.time === time);

@@ -43,6 +43,7 @@ class HierophantMainLevels extends LinkMainLevels {
     },
     1: {
       [Routes.Platonic]: QuestionsWrapper({
+        // checked
         points: 0,
         element: [
           <Question label="What was your name again?">
@@ -70,6 +71,7 @@ class HierophantMainLevels extends LinkMainLevels {
     },
     2: {
       [Routes.Platonic]: QuestionsWrapper({
+        // checked
         points: 0,
         element: [
           <Question label="I don't see it anywhere...">
@@ -101,6 +103,7 @@ class HierophantMainLevels extends LinkMainLevels {
     },
     3: {
       [Routes.Platonic]: QuestionsWrapper({
+        // checked
         points: 20,
         element: [
           <Question label="My wife just headed out to Gekkoukan.">
@@ -120,6 +123,7 @@ class HierophantMainLevels extends LinkMainLevels {
     },
     4: {
       [Routes.Platonic]: QuestionsWrapper({
+        // checked
         points: 20,
         element: [
           <Question label="We've been feeling a bit guilty for troubling you about the persimmon tree...">
@@ -135,6 +139,7 @@ class HierophantMainLevels extends LinkMainLevels {
     },
     5: {
       [Routes.Platonic]: QuestionsWrapper({
+        // checked
         points: 20,
         element: [
           <Question label="If we lose that tree... it would be like losing our son all over again...">
@@ -150,6 +155,7 @@ class HierophantMainLevels extends LinkMainLevels {
     },
     6: {
       [Routes.Platonic]: QuestionsWrapper({
+        // checked
         points: 20,
         element: [
           <Question label="Ah...">
@@ -170,6 +176,7 @@ class HierophantMainLevels extends LinkMainLevels {
     },
     7: {
       [Routes.Platonic]: QuestionsWrapper({
+        // checked
         points: 20,
         element: [
           <Question label="Who do you think it was? Here's a hint: 'signature.'">
@@ -189,6 +196,7 @@ class HierophantMainLevels extends LinkMainLevels {
     },
     8: {
       [Routes.Platonic]: QuestionsWrapper({
+        // checked
         points: 20,
         element: [
           <Question label="What, is that surprising? I'm actually quite the net surfer, you know!">
@@ -204,6 +212,7 @@ class HierophantMainLevels extends LinkMainLevels {
     },
     9: {
       [Routes.Platonic]: QuestionsWrapper({
+        // checked
         points: 30,
         element: [
           <Question label="Bunkichi is sleep talking. Looks like he's taking a nap.">
@@ -216,7 +225,7 @@ class HierophantMainLevels extends LinkMainLevels {
           </Question>,
           <Question label="We asked them to go ahead and cut the persimmon tree down.">
             <Answer label="But.. why?" points={15} />
-            <Answer label="Oh well." />
+            <Answer label="Oh well." points={5} />
           </Question>,
           <Question label="He was a teacher after all.">
             <Answer label="That's true." />
