@@ -19,7 +19,7 @@ export const may: SingleDay[] = [
     activities: [
       {
         ...events[SpecialEventsNames.Special],
-        time: Times.WholeDay,
+        time: Times.Day,
         label: () => <EventCard head="Akihiko's check up" />,
       },
       events[pcProgramsNames.lobbyPCLessonsInEtiquette],
