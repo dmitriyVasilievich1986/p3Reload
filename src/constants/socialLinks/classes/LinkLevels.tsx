@@ -332,6 +332,7 @@ export class ShrineLevels extends LinkLevels {
     new availables.AvailableTimesIsIn({ times: [Times.Day] }),
     new availables.AvailableLinkMaxLevel({ reverse: true }),
     new availables.AvailableLinkLevelGreater({ level: 1 }),
+    new availables.AvailableLinkRoute({ forkLevel: -1 }),
   ]).available;
 
   calculate(
