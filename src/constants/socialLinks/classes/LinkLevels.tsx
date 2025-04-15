@@ -117,7 +117,10 @@ export abstract class LinkMainLevels extends LinkLevels {
     const linkName = socialLink.linkName;
     const previousLink = props.previousDay!.links[linkName];
     const isNewLevel = socialLink.isNewLevel(previousLink);
-    const previousLevel = socialLink.getLevel(previousLink);
+    const previousLevel = socialLink.getLevel({
+      ...previousLink,
+      romance: route,
+    });
     const maxPoints = isNewLevel ? previousLevel.maxPoints : [10];
 
     return getCalulateFunction(
