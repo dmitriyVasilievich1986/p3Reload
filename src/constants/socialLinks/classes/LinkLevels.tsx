@@ -117,7 +117,10 @@ export abstract class LinkMainLevels extends LinkLevels {
     const linkName = socialLink.linkName;
     const previousLink = props.previousDay!.links[linkName];
     const isNewLevel = socialLink.isNewLevel(previousLink);
-    const previousLevel = socialLink.getLevel(previousLink);
+    const previousLevel = socialLink.getLevel({
+      ...previousLink,
+      romance: route,
+    });
     const maxPoints = isNewLevel ? previousLevel.maxPoints : [10];
 
     return getCalulateFunction(
@@ -332,6 +335,7 @@ export class ShrineLevels extends LinkLevels {
     new availables.AvailableTimesIsIn({ times: [Times.Day] }),
     new availables.AvailableLinkMaxLevel({ reverse: true }),
     new availables.AvailableLinkLevelGreater({ level: 1 }),
+    new availables.AvailableLinkRoute({ forkLevel: -1 }),
   ]).available;
 
   calculate(

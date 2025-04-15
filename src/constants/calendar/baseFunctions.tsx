@@ -214,14 +214,11 @@ export function importCalendar(
           label: () => <div>{label}</div>,
           time: newActivity.time,
         });
-      } else if (
-        (oldActivity?.special || !newActivity) &&
-        oldActivity?.name !== SpecialEventsNames.Notes
-      )
+      } else if (oldActivity?.special || !newActivity) {
         newActivities.push(oldActivity as Event);
-      else if (!!newActivity) {
+      } else if (!!newActivity && newActivity.name) {
         const event = events[newActivity.name];
-        if (!event) throw new Error("Event not found");
+        if (!event) throw new Error(`[${newActivity.name}] Event not found`);
         newActivities.push({ ...event, time: newActivity.time });
       }
     });
