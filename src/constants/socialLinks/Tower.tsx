@@ -1,9 +1,8 @@
 import { QuestionsWrapper, Question, Answer } from "@/components";
 
+import { PrerequisitsEventsNames, Times } from "@/constants/events/types";
 import availables from "@/constants/availability/AvailableClass";
 import { DaysNames } from "@/constants/monthsNames";
-import { Times } from "@/constants/events/types";
-import { StatsNames } from "@/constants/stats";
 
 import { SocialLink } from "@/constants/socialLinks/classes/SocialLink";
 import {
@@ -22,16 +21,10 @@ import {
 
 class TowerMainLevels extends LinkMainLevels {
   isAvailable = new availables.And_([
-    new availables.AvailableDateGreater({ date: new Date(2009, 4, 23) }),
     new availables.AvailableTimesIsIn({ times: [Times.Evening] }),
     new availables.AvailableLinkIsNewLevel(),
-    new availables.AvailableLinkLevelGreater({
-      name: SocialLinkNames.Strength,
-      level: 4,
-    }),
-    new availables.AvailableStatGreater({
-      name: StatsNames.Courage,
-      level: 1,
+    new availables.AvailableSingleTimeEventsIsIn({
+      name: PrerequisitsEventsNames.TowerPrerequisit,
     }),
     new availables.AvailableDaysNamesIsIn({
       days: [
@@ -152,7 +145,7 @@ class TowerMainLevels extends LinkMainLevels {
     },
     8: {
       [Routes.Platonic]: QuestionsWrapper({
-        points: 40,
+        points: 45,
         element: [
           <Question label="I'm workin' memorial service after memorial service 24/7, as if my little temple was some kinda convenience store...">
             <Answer label="Why not take a break?" points={5} />
@@ -171,7 +164,7 @@ class TowerMainLevels extends LinkMainLevels {
     },
     9: {
       [Routes.Platonic]: QuestionsWrapper({
-        points: 30,
+        points: 45,
         element: [
           <Question
             label={`I'm gonna say, "I wanna recite the sutras with you by my side, for the rest of my life." ... Well? How's that sound?`}
