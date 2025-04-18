@@ -26,7 +26,7 @@ class StrengthMainLevels extends LinkMainLevels {
     new availables.AvailableIsDayOff({ reverse: true, isExamIncluded: true }),
     new availables.AvailableDateGreater({ date: new Date(2009, 3, 24) }),
     new availables.AvailableTimesIsIn({ times: [Times.Day] }),
-    new availables.AvailableLinkRoute({ forkLevel: 2 }),
+    new availables.AvailableLinkRoute({ forkLevel: 6 }),
     new availables.AvailableLinkIsNewLevel(),
     new availables.AvailableLinkLevelGreater({
       name: SocialLinkNames.Chariot,
@@ -43,6 +43,7 @@ class StrengthMainLevels extends LinkMainLevels {
     },
     1: {
       [Routes.Platonic]: QuestionsWrapper({
+        // checked
         points: 0,
         element: [
           <Question label="Also, I wasn't really in the mental state to do this alone today.">
@@ -63,6 +64,7 @@ class StrengthMainLevels extends LinkMainLevels {
     },
     2: {
       [Routes.Platonic]: QuestionsWrapper({
+        // checked
         points: 0,
         element: [
           <Question label="Going that far would've been crossing the line.">
@@ -81,6 +83,7 @@ class StrengthMainLevels extends LinkMainLevels {
         ],
       }),
       [Routes.Romantic]: QuestionsWrapper({
+        // checked
         points: 0,
         element: [
           <Question label="Going that far would've been crossing the line.">
@@ -101,6 +104,7 @@ class StrengthMainLevels extends LinkMainLevels {
     },
     3: {
       [Routes.Platonic]: QuestionsWrapper({
+        // checked
         points: 15,
         element: [
           <Question label="${mainCharName}-kun, what do you think I should do?">
@@ -114,6 +118,7 @@ class StrengthMainLevels extends LinkMainLevels {
         ],
       }),
       [Routes.Romantic]: QuestionsWrapper({
+        // checked
         points: 15,
         element: [
           <Question label="${mainCharName}-kun, what do you think I should do?">
@@ -129,6 +134,7 @@ class StrengthMainLevels extends LinkMainLevels {
     },
     4: {
       [Routes.Platonic]: QuestionsWrapper({
+        // checked
         points: 15,
         element: [
           <Question label="Elementary school kids really learn fast don't you think?">
@@ -139,11 +145,12 @@ class StrengthMainLevels extends LinkMainLevels {
           <Question label="Should I change the training routine? Maybe they should be running more.">
             <Answer label="You shouldn't change it." fork={true} points={5} />
             <Answer label="Maybe you should rethink it." />
-            <Answer label="I trust whatever you decide Yuko." />
+            <Answer label="I trust whatever you decide Yuko." points={5} />
           </Question>,
         ],
       }),
       [Routes.Romantic]: QuestionsWrapper({
+        // checked
         points: 15,
         element: [
           <Question label="Elementary school kids really learn fast don't you think?">
@@ -152,7 +159,7 @@ class StrengthMainLevels extends LinkMainLevels {
             <Answer label="It's because you teach so well." points={10} />
           </Question>,
           <Question label="Should I change the training routine? Maybe they should be running more.">
-            <Answer label="You shouldn't change it." />
+            <Answer label="You shouldn't change it." points={5} />
             <Answer label="Maybe you should rethink it." />
             <Answer
               label="I trust whatever you decide Yuko."
@@ -165,6 +172,7 @@ class StrengthMainLevels extends LinkMainLevels {
     },
     5: {
       [Routes.Platonic]: QuestionsWrapper({
+        // checked
         points: 22,
         element: [
           <Question label="...Oh, ${mainCharName}-kun, why don't you give them some advice too?">
@@ -178,6 +186,7 @@ class StrengthMainLevels extends LinkMainLevels {
         ],
       }),
       [Routes.Romantic]: QuestionsWrapper({
+        // checked
         points: 22,
         element: [
           <Question label="...Oh, ${mainCharName}-kun, why don't you give them some advice too?">
@@ -193,6 +202,7 @@ class StrengthMainLevels extends LinkMainLevels {
     },
     6: {
       [Routes.Platonic]: QuestionsWrapper({
+        // checked
         points: 22,
         element: [
           <Question label="They called you my boyfriend till the very end...">
@@ -231,6 +241,7 @@ class StrengthMainLevels extends LinkMainLevels {
     },
     7: {
       [Routes.Platonic]: QuestionsWrapper({
+        // checked
         points: 35,
         element: [
           <Question label="Which one sounds better to you, ${mainCharName}-kun?">
@@ -266,6 +277,7 @@ class StrengthMainLevels extends LinkMainLevels {
     },
     8: {
       [Routes.Platonic]: QuestionsWrapper({
+        // checked
         points: 40,
         element: [
           <Question label="I thought my stomach was gonna explode!">
@@ -319,6 +331,7 @@ class StrengthMainLevels extends LinkMainLevels {
     },
     9: {
       [Routes.Platonic]: QuestionsWrapper({
+        // checked
         points: 40,
         element: [
           <Question label="Ugh, this is so heavy. I should't have crammed everything in there...">
@@ -530,6 +543,8 @@ class StrengthInvitationLevels extends InvitationLevels {
         points: 0,
         element: [
           <Question label="I must be in my prime!">
+            <Answer label="Hopefully." />
+            <Answer label="Definitelly." />
             <Answer label="This is only the beginning." points={30} />
           </Question>,
         ],
@@ -538,6 +553,8 @@ class StrengthInvitationLevels extends InvitationLevels {
         points: 0,
         element: [
           <Question label="I must be in my prime!">
+            <Answer label="Hopefully." />
+            <Answer label="Definitelly." />
             <Answer label="This is only the beginning." points={30} />
           </Question>,
         ],

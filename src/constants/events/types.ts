@@ -46,6 +46,7 @@ export enum PrerequisitsEventsNames {
   JusticePrerequisit1 = "JusticePrerequisit1",
   JusticePrerequisit2 = "JusticePrerequisit2",
   JusticePrerequisit3 = "JusticePrerequisit3",
+  TowerPrerequisit = "TowerPrerequisit",
   MoonPrerequisit = "MoonPrerequisit",
 }
 
