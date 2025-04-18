@@ -46,6 +46,7 @@ class TemperanceMainLevels extends LinkMainLevels {
     },
     1: {
       [Routes.Platonic]: QuestionsWrapper({
+        // checked
         points: 0,
         element: [
           <Question label="It will be my first time going. Will you maybe, how do you say, show me the ropes?">
@@ -63,6 +64,7 @@ class TemperanceMainLevels extends LinkMainLevels {
     },
     2: {
       [Routes.Platonic]: QuestionsWrapper({
+        // checked
         points: 0,
         element: [
           <Question label="You have gotten much better at this, ${mainCharName}-dono! Subarashii-wonderful!">
@@ -79,6 +81,7 @@ class TemperanceMainLevels extends LinkMainLevels {
     },
     3: {
       [Routes.Platonic]: QuestionsWrapper({
+        // checked
         points: 15,
         element: [
           <Question label="......">
@@ -96,6 +99,7 @@ class TemperanceMainLevels extends LinkMainLevels {
     },
     4: {
       [Routes.Platonic]: QuestionsWrapper({
+        // checked
         points: 15,
         element: [
           <Question label="Could we go somwhere to eat after this?">
@@ -111,6 +115,7 @@ class TemperanceMainLevels extends LinkMainLevels {
     },
     5: {
       [Routes.Platonic]: QuestionsWrapper({
+        // checked
         points: 15,
         element: [
           <Question label="I have barely sewn anything at all.">
@@ -130,6 +135,7 @@ class TemperanceMainLevels extends LinkMainLevels {
     },
     6: {
       [Routes.Platonic]: QuestionsWrapper({
+        // checked
         points: 15,
         element: [
           <Question label="I will show him a kimono! When he sees it, he will understand the beauty of Nihon!">
@@ -141,6 +147,7 @@ class TemperanceMainLevels extends LinkMainLevels {
     },
     7: {
       [Routes.Platonic]: QuestionsWrapper({
+        // checked
         points: 10,
         element: [
           <Question label="When my uncle sees this, I know he'll agree with me about how great Nihon is!">
@@ -153,6 +160,7 @@ class TemperanceMainLevels extends LinkMainLevels {
     },
     8: {
       [Routes.Platonic]: QuestionsWrapper({
+        // checked
         points: 22,
         element: [
           <Question label="And thanks to all your help, the kimono is almost finished! I feel so blessed!">
@@ -165,6 +173,7 @@ class TemperanceMainLevels extends LinkMainLevels {
     },
     9: {
       [Routes.Platonic]: QuestionsWrapper({
+        // checked
         points: 22,
         element: [
           <Question label="At last, it is fini!">
