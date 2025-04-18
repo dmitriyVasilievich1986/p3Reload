@@ -7,6 +7,7 @@ import { StatsNames } from "@/constants/stats";
 import { Hierophant } from "@/constants/socialLinks/Hierophant";
 import { HangedMan } from "@/constants/socialLinks/HangedMan";
 import { Magician } from "@/constants/socialLinks/Magician";
+import { Strength } from "@/constants/socialLinks/Strength";
 import { Justice } from "@/constants/socialLinks/Justice";
 import {
   SocialLinkAvailableProps,
@@ -76,6 +77,42 @@ export const prerequisitsEvents: { [key in PrerequisitsEventsNames]: Event } = {
         <p style={{ textAlign: "center" }}>
           Talk to {Magician.linkDetails.name} to gain an inforamtion about
           "Gourmet King"
+        </p>
+      </EventCard>
+    ),
+  }),
+  [PrerequisitsEventsNames.TowerPrerequisit]: new PrerequisitsEventClass({
+    name: PrerequisitsEventsNames.TowerPrerequisit,
+    category: Categories.Prerequisits,
+    time: Times.Prerequisits,
+    availability: new availables.And_([
+      new availables.AvailableTimesIsIn({ times: [Times.Prerequisits] }),
+      new availables.AvailableIsDayOff({ reverse: true }),
+      new availables.AvailableFreeTime({ time: Times.Day }),
+      new availables.AvailableDaysNamesIsIn({
+        days: [DaysNames.wednesday, DaysNames.saturday],
+      }),
+      new availables.AvailableSingleTimeEventsIsIn({
+        name: PrerequisitsEventsNames.TowerPrerequisit,
+        reverse: true,
+      }),
+      new availables.AvailableLinkLevelGreater({
+        name: SocialLinkNames.Strength,
+        level: 4,
+      }),
+      new availables.AvailableStatGreater({
+        name: StatsNames.Courage,
+        level: 2,
+      }),
+    ]),
+    label: () => (
+      <EventCard
+        head={`${SocialLinkNames.Tower} (Prerequisite)`}
+        {...Strength.linkDetails}
+      >
+        <p style={{ textAlign: "center" }}>
+          Talk to {Strength.linkDetails.name} to gain an inforamtion about
+          "Unconventional Monk"
         </p>
       </EventCard>
     ),
