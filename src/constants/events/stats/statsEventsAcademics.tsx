@@ -7,8 +7,10 @@ import {
   AvailableStatGreater,
   AvailableTimesIsIn,
   AvailableDateIsIn,
+  AvailableIsDayOff,
   False_,
   And_,
+  Or_,
 } from "@/constants/availability/AvailableClass";
 
 import { statsEventsAcademicsNames, Times, Event } from "../types";
@@ -56,7 +58,10 @@ export const statsEventsAcademics: {
     ]),
   }),
   [statsEventsAcademicsNames.studyAtLibrary]: new StatsEvents({
-    availability: new And_([new AvailableTimesIsIn({ times: [Times.Day] })]),
+    availability: new And_([
+      new AvailableTimesIsIn({ times: [Times.Day] }),
+      new AvailableIsDayOff({ reverse: true }),
+    ]),
     stats: [new StatsRepresentation(StatsNames.Academics, 2)],
     name: statsEventsAcademicsNames.studyAtLibrary,
     place: "Gekkoukan High School",
@@ -66,8 +71,9 @@ export const statsEventsAcademics: {
     name: statsEventsAcademicsNames.studyAtHome,
     place: "Protagonist's Room",
     time: Times.Evening,
-    availability: new And_([
+    availability: new Or_([
       new AvailableTimesIsIn({ times: [Times.Evening] }),
+      new AvailableIsDayOff(),
     ]),
   }),
   [statsEventsAcademicsNames.summerSchool]: new StatsEvents({
