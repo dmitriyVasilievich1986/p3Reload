@@ -376,6 +376,57 @@ export class ShrineLevels extends LinkLevels {
     );
   }
 }
+export class SpendTimeLevels extends LinkLevels {
+  levels: LevelsType = {
+    0: {
+      [Routes.Platonic]: SpendingTimeObject,
+    },
+  };
+
+  isAvailable = new availables.And_([
+    new availables.AvailableTimesIsIn({ times: [Times.Evening] }),
+    new availables.AvailableLinkIsNewLevel({ reverse: true }),
+    new availables.AvailableLinkMaxLevel({ reverse: true }),
+    new availables.AvailableLinkLevelGreater({ level: 1 }),
+    new availables.AvailableLinkRoute({ forkLevel: -1 }),
+  ]).available;
+
+  calculate(
+    socialLink: SocialLinkType,
+    props: SocialLinkAvailableProps & {
+      previousWeek?: SingleDay;
+    },
+    route: Routes
+  ) {
+    const linkName = socialLink.linkName;
+    const previousLink = props.previousDay!.links[linkName];
+
+    return {
+      links: {
+        ...props.currentDay.links,
+        [linkName]: {
+          ...previousLink,
+          points: previousLink.points + 10,
+          romance: route,
+        },
+      },
+    };
+  }
+
+  element(socialLink: SocialLinkType, props: SocialLinkElementProps) {
+    if (!props.previousDay) return null;
+
+    return (
+      <div>
+        <EventCard
+          head={`${socialLink.linkName} (Spending time)`}
+          {...socialLink.linkDetails}
+        />
+        {SpendingTime()}
+      </div>
+    );
+  }
+}
 
 export abstract class DormHangoutLevels extends LinkLevels {
   abstract headPostfix: LabelHeadPrefixes;
