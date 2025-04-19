@@ -11,8 +11,32 @@ import {
   Or_,
 } from "@/constants/availability/AvailableClass";
 
-import { StatsEveningSingleEvent, StatsEvents } from "./statsClass";
 import { statsEventsCharmNames, Times, Event } from "../types";
+import { StatsEvents } from "./statsClass";
+
+class HagakureSingleEvent extends StatsEvents {
+  upgrade(props: any) {
+    const payload = super.upgrade(props);
+    const days = [DaysNames.tuesday, DaysNames.wednesday, DaysNames.friday];
+    const isFirstTime =
+      !props.currentDay.singleTimeEvents.includes(
+        statsEventsCharmNames.hagakureRamen
+      ) &&
+      props.time === Times.Evening &&
+      days.includes(props.currentDay.dayName);
+    const singleTimeEvents = isFirstTime
+      ? props.currentDay.singleTimeEvents
+      : [
+          ...props.currentDay.singleTimeEvents,
+          statsEventsCharmNames.hagakureRamen,
+        ];
+
+    return {
+      ...payload,
+      singleTimeEvents,
+    };
+  }
+}
 
 export const statsEventsCharm: {
   [key in statsEventsCharmNames]: Event;
@@ -41,7 +65,7 @@ export const statsEventsCharm: {
     time: Times.Morning,
     special: true,
   }),
-  [statsEventsCharmNames.hagakureRamen]: new StatsEveningSingleEvent({
+  [statsEventsCharmNames.hagakureRamen]: new HagakureSingleEvent({
     stats: [new StatsRepresentation(StatsNames.Charm, 3)],
     name: statsEventsCharmNames.hagakureRamen,
     place: "Iwatodai Strip Mall",

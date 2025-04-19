@@ -7,12 +7,43 @@ import {
   AvailableStatGreater,
   AvailableTimesIsIn,
   AvailableDateIsIn,
+  AvailableIsDayOff,
   False_,
   And_,
+  Or_,
 } from "@/constants/availability/AvailableClass";
 
 import { statsEventsAcademicsNames, Times, Event } from "../types";
-import { StatsEveningSingleEvent, StatsEvents } from "./statsClass";
+import { StatsEvents } from "./statsClass";
+
+class WakatsuSingleEvent extends StatsEvents {
+  upgrade(props: any) {
+    const payload = super.upgrade(props);
+    const days = [
+      DaysNames.monday,
+      DaysNames.thursday,
+      DaysNames.friday,
+      DaysNames.sunday,
+    ];
+    const isFirstTime =
+      !props.currentDay.singleTimeEvents.includes(
+        statsEventsAcademicsNames.wakatsuKitchen
+      ) &&
+      props.time === Times.Evening &&
+      days.includes(props.currentDay.dayName);
+    const singleTimeEvents = isFirstTime
+      ? props.currentDay.singleTimeEvents
+      : [
+          ...props.currentDay.singleTimeEvents,
+          statsEventsAcademicsNames.wakatsuKitchen,
+        ];
+
+    return {
+      ...payload,
+      singleTimeEvents,
+    };
+  }
+}
 
 export const statsEventsAcademics: {
   [key in statsEventsAcademicsNames]: Event;
@@ -27,7 +58,10 @@ export const statsEventsAcademics: {
     ]),
   }),
   [statsEventsAcademicsNames.studyAtLibrary]: new StatsEvents({
-    availability: new And_([new AvailableTimesIsIn({ times: [Times.Day] })]),
+    availability: new And_([
+      new AvailableTimesIsIn({ times: [Times.Day] }),
+      new AvailableIsDayOff({ reverse: true }),
+    ]),
     stats: [new StatsRepresentation(StatsNames.Academics, 2)],
     name: statsEventsAcademicsNames.studyAtLibrary,
     place: "Gekkoukan High School",
@@ -37,8 +71,9 @@ export const statsEventsAcademics: {
     name: statsEventsAcademicsNames.studyAtHome,
     place: "Protagonist's Room",
     time: Times.Evening,
-    availability: new And_([
+    availability: new Or_([
       new AvailableTimesIsIn({ times: [Times.Evening] }),
+      new AvailableIsDayOff(),
     ]),
   }),
   [statsEventsAcademicsNames.summerSchool]: new StatsEvents({
@@ -50,7 +85,7 @@ export const statsEventsAcademics: {
     special: true,
     wide: true,
   }),
-  [statsEventsAcademicsNames.wakatsuKitchen]: new StatsEveningSingleEvent({
+  [statsEventsAcademicsNames.wakatsuKitchen]: new WakatsuSingleEvent({
     stats: [new StatsRepresentation(StatsNames.Academics, 3)],
     name: statsEventsAcademicsNames.wakatsuKitchen,
     place: "Iwatodai Strip Mall",
@@ -60,6 +95,8 @@ export const statsEventsAcademics: {
       new AvailableTimesIsIn({ times: [Times.Day, Times.Evening] }),
       new AvailableDaysNamesIsIn({
         days: [
+          DaysNames.monday,
+          DaysNames.wednesday,
           DaysNames.thursday,
           DaysNames.friday,
           DaysNames.saturday,

@@ -10,6 +10,7 @@ import {
   LinkMaxedObject,
 } from "@/constants/socialLinks/classes/GenericCard.tsx";
 import {
+  SpendTimeLevels,
   LinkMainLevels,
   ShrineLevels,
 } from "@/constants/socialLinks/classes/LinkLevels";
@@ -184,5 +185,5 @@ class TowerMainLevels extends LinkMainLevels {
 export const Tower = new SocialLink(
   { name: "Mutatsu", place: "Club Escapade" },
   SocialLinkNames.Tower,
-  [new TowerMainLevels(), new ShrineLevels()]
+  [new SpendTimeLevels(), new TowerMainLevels(), new ShrineLevels()]
 );
