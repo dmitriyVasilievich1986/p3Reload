@@ -46,6 +46,7 @@ class HermitMainLevels extends LinkMainLevels {
     },
     1: {
       [Routes.Platonic]: QuestionsWrapper({
+        // Checked
         points: 0,
         element: [
           <Question label="u remember me rite? :O">
@@ -62,6 +63,7 @@ class HermitMainLevels extends LinkMainLevels {
     },
     2: {
       [Routes.Platonic]: QuestionsWrapper({
+        // Checked
         points: 0,
         element: [
           <Question label="so ummmmm…… i'm drunk! xD">
@@ -77,6 +79,7 @@ class HermitMainLevels extends LinkMainLevels {
     },
     3: {
       [Routes.Platonic]: QuestionsWrapper({
+        // Checked
         points: 20,
         element: [
           <Question label="Its like all she cares about is marrying me off to some dude >=/ whys it her problem?">
@@ -89,6 +92,7 @@ class HermitMainLevels extends LinkMainLevels {
     },
     4: {
       [Routes.Platonic]: QuestionsWrapper({
+        // Checked
         points: 20,
         element: [
           <Question label="Mr. E is such a stupid eh so bee!! t(-_-t)">
@@ -106,6 +110,7 @@ class HermitMainLevels extends LinkMainLevels {
     },
     5: {
       [Routes.Platonic]: QuestionsWrapper({
+        // Checked
         points: 20,
         element: [
           <Question label="actually, i only went cuz i was so pissed at that bastard! >=/">
@@ -117,6 +122,7 @@ class HermitMainLevels extends LinkMainLevels {
     },
     6: {
       [Routes.Platonic]: QuestionsWrapper({
+        // Checked
         points: 20,
         element: [
           <Question label="…do men only want younger women? b honest ._.">
@@ -133,6 +139,7 @@ class HermitMainLevels extends LinkMainLevels {
     },
     7: {
       [Routes.Platonic]: QuestionsWrapper({
+        // Checked
         points: 20,
         element: [
           <Question label="oh noes… now im starting to get sweaty =/">
@@ -148,6 +155,7 @@ class HermitMainLevels extends LinkMainLevels {
     },
     8: {
       [Routes.Platonic]: QuestionsWrapper({
+        // Checked
         points: 20,
         element: [
           <Question label="it said their canceling innocent sin. …think its for real?">
@@ -169,6 +177,7 @@ class HermitMainLevels extends LinkMainLevels {
     },
     9: {
       [Routes.Platonic]: QuestionsWrapper({
+        // Checked
         points: 20,
         element: [
           <Question label="…i should apologize">
