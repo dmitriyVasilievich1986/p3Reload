@@ -148,6 +148,7 @@ class PriestessMainLevels extends LinkMainLevels {
     },
     1: {
       [Routes.Platonic]: QuestionsWrapper({
+        // Checked
         points: 0,
         element: [
           <Question label="Maybe I should give him some food. What do you think, ${mainCharName}-kun?">
@@ -167,6 +168,7 @@ class PriestessMainLevels extends LinkMainLevels {
     },
     2: {
       [Routes.Platonic]: QuestionsWrapper({
+        // Checked
         points: 0,
         element: [
           <Question label="I still don't have a feel for how much salt to add. How do you do it, ${mainCharName}-kun?">
@@ -188,6 +190,7 @@ class PriestessMainLevels extends LinkMainLevels {
     },
     3: {
       [Routes.Platonic]: QuestionsWrapper({
+        // Checked
         points: 15,
         element: [
           <Question label="But I couldn't really decide, and I wasn't sure how to use whatever I'd buy...">
@@ -209,6 +212,7 @@ class PriestessMainLevels extends LinkMainLevels {
     },
     4: {
       [Routes.Platonic]: QuestionsWrapper({
+        // Checked
         points: 22,
         element: [
           <Question label="W-Well... How is it?">
@@ -229,6 +233,7 @@ class PriestessMainLevels extends LinkMainLevels {
     },
     5: {
       [Routes.Platonic]: QuestionsWrapper({
+        // Checked
         points: 30,
         element: [
           <Question label="I promise I'm going to do the best I can. So can I count on you?">
@@ -245,6 +250,7 @@ class PriestessMainLevels extends LinkMainLevels {
     },
     6: {
       [Routes.Platonic]: QuestionsWrapper({
+        // Checked
         points: 30,
         element: [
           <Question label="......">
@@ -267,6 +273,7 @@ class PriestessMainLevels extends LinkMainLevels {
         ],
       }),
       [Routes.Romantic]: QuestionsWrapper({
+        // Checked
         points: 30,
         element: [
           <Question label="......">
@@ -291,6 +298,7 @@ class PriestessMainLevels extends LinkMainLevels {
     },
     7: {
       [Routes.Platonic]: QuestionsWrapper({
+        // Checked
         points: 35,
         element: [
           <Question label="I am curious about that one, but it sounds like a lot of food.">
@@ -325,6 +333,7 @@ class PriestessMainLevels extends LinkMainLevels {
     },
     8: {
       [Routes.Platonic]: QuestionsWrapper({
+        // Checked
         points: 40,
         element: [
           <Question
@@ -369,7 +378,8 @@ class PriestessMainLevels extends LinkMainLevels {
     },
     9: {
       [Routes.Platonic]: QuestionsWrapper({
-        points: 55,
+        // Checked
+        points: 52,
         element: [
           <Question label="I thought it might be nice to add some texture, so I made sure there's plenty of vegetables mixed in.">
             <Answer label="How bold." />
@@ -387,7 +397,7 @@ class PriestessMainLevels extends LinkMainLevels {
         ],
       }),
       [Routes.Romantic]: QuestionsWrapper({
-        points: 55,
+        points: 52,
         element: [
           <Question label="Sorry, I don't know what I'm talking about...">
             <Answer label="Are you nervous?" />

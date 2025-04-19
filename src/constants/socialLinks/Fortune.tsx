@@ -43,6 +43,7 @@ class FortuneMainLevels extends LinkMainLevels {
     },
     1: {
       [Routes.Platonic]: QuestionsWrapper({
+        // Checked
         points: 0,
         element: [
           <Question label="...!">
@@ -58,6 +59,7 @@ class FortuneMainLevels extends LinkMainLevels {
     },
     2: {
       [Routes.Platonic]: QuestionsWrapper({
+        // Checked
         points: 0,
         element: [
           <Question label="It really helped apply the paint to the canvas, so I'm sure that's the only reason the judges even noticed.">
@@ -73,6 +75,7 @@ class FortuneMainLevels extends LinkMainLevels {
     },
     3: {
       [Routes.Platonic]: QuestionsWrapper({
+        // Checked
         points: 15,
         element: [
           <Question label="Did you... hear everything?">
@@ -88,6 +91,7 @@ class FortuneMainLevels extends LinkMainLevels {
     },
     4: {
       [Routes.Platonic]: QuestionsWrapper({
+        // Checked
         points: 15,
         element: [
           <Question label="Wait. Then... that means...">
@@ -99,6 +103,7 @@ class FortuneMainLevels extends LinkMainLevels {
     },
     5: {
       [Routes.Platonic]: QuestionsWrapper({
+        // Checked
         points: 15,
         element: [
           <Question label="Everyone's working so hard...">
@@ -114,6 +119,7 @@ class FortuneMainLevels extends LinkMainLevels {
     },
     6: {
       [Routes.Platonic]: QuestionsWrapper({
+        // Checked
         points: 15,
         element: [
           <Question label="It's like he's suddenly trying to be more understanding. It's weird.">
@@ -125,6 +131,7 @@ class FortuneMainLevels extends LinkMainLevels {
     },
     7: {
       [Routes.Platonic]: QuestionsWrapper({
+        // Checked
         points: 15,
         element: [
           <Question label="Can you remember your name?">
@@ -145,6 +152,7 @@ class FortuneMainLevels extends LinkMainLevels {
     },
     8: {
       [Routes.Platonic]: QuestionsWrapper({
+        // Checked
         points: 22,
         element: [
           <Question label="Tell the others I said goodbye!">
@@ -174,6 +182,7 @@ class FortuneMainLevels extends LinkMainLevels {
     },
     9: {
       [Routes.Platonic]: QuestionsWrapper({
+        // Checked
         points: 22,
         element: [
           <Question label="That's why I want you to have it.">
