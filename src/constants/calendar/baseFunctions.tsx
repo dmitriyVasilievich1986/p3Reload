@@ -71,23 +71,25 @@ function calculateSingleDay(
   ];
   const pushEventsNames: allEventsNames[] = pushEvents.map((e) => e.name);
 
-  currentDay.activities = currentDay.activities.filter((activity) => {
-    if (pushEventsNames.includes(activity.name)) return false;
-    if (activity.special) return true;
-    const isAvailable = activity.available({
-      currentDay,
-      previousDay,
-      previousWeek,
-      time: activity.time,
+  currentDay.activities = currentDay.activities
+    .filter((activity) => !pushEventsNames.includes(activity.name))
+    .map((activity) => {
+      if (activity.special) return activity;
+      const isAvailable = activity.available({
+        currentDay,
+        previousDay,
+        previousWeek,
+        time: activity.time,
+      });
+      if (!isAvailable) {
+        console.warn(
+          `Event ${activity.name} is not available for the ${currentDay.date}`
+        );
+        return { ...events[SpecialEventsNames.DoNothing], time: activity.time };
+      }
+      return activity;
     });
-    if (!isAvailable) {
-      console.warn(
-        `Event ${activity.name} is not available for the ${currentDay.date}`
-      );
-      return;
-    }
-    return isAvailable;
-  });
+
   pushEvents
     .filter(({ name, time }) =>
       (events[name] as EventClass).available({
