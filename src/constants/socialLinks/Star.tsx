@@ -42,6 +42,7 @@ class StarMainLevels extends LinkMainLevels {
     },
     1: {
       [Routes.Platonic]: QuestionsWrapper({
+        // Checked
         points: 0,
         element: [
           <Question label="That's why I have to make it big-it's for everyone who's been helping me.">
@@ -57,6 +58,7 @@ class StarMainLevels extends LinkMainLevels {
     },
     2: {
       [Routes.Platonic]: QuestionsWrapper({
+        // Checked
         points: 0,
         element: [
           <Question label="Maybe I should get some for them, too...">
@@ -72,6 +74,7 @@ class StarMainLevels extends LinkMainLevels {
     },
     3: {
       [Routes.Platonic]: QuestionsWrapper({
+        // Checked
         points: 20,
         element: [
           <Question label="...All right, just one more!">
@@ -91,6 +94,7 @@ class StarMainLevels extends LinkMainLevels {
     },
     4: {
       [Routes.Platonic]: QuestionsWrapper({
+        // Checked
         points: 20,
         element: [
           <Question label="*huff* *huff* Sorry I kept you waiting...">
@@ -106,6 +110,7 @@ class StarMainLevels extends LinkMainLevels {
     },
     5: {
       [Routes.Platonic]: QuestionsWrapper({
+        // Checked
         points: 20,
         element: [
           <Question label="Let's see.">
@@ -129,6 +134,7 @@ class StarMainLevels extends LinkMainLevels {
     },
     6: {
       [Routes.Platonic]: QuestionsWrapper({
+        // Checked
         points: 20,
         element: [
           <Question label="Thanks for coming all the way here for this.">
@@ -152,6 +158,7 @@ class StarMainLevels extends LinkMainLevels {
     },
     7: {
       [Routes.Platonic]: QuestionsWrapper({
+        // Checked
         points: 30,
         element: [
           <Question label="Hmmm...">
@@ -167,6 +174,7 @@ class StarMainLevels extends LinkMainLevels {
     },
     8: {
       [Routes.Platonic]: QuestionsWrapper({
+        // Checked
         points: 30,
         element: [
           <Question label="So, uh, the big meet for that scholarship was yesterday.">
@@ -190,6 +198,7 @@ class StarMainLevels extends LinkMainLevels {
     },
     9: {
       [Routes.Platonic]: QuestionsWrapper({
+        // Checked
         points: 30,
         element: [
           <Question label="Glad we could meet up one more time before I take off.">
