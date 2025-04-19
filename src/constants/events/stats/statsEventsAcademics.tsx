@@ -12,7 +12,36 @@ import {
 } from "@/constants/availability/AvailableClass";
 
 import { statsEventsAcademicsNames, Times, Event } from "../types";
-import { StatsEveningSingleEvent, StatsEvents } from "./statsClass";
+import { StatsEvents } from "./statsClass";
+
+class WakatsuSingleEvent extends StatsEvents {
+  upgrade(props: any) {
+    const payload = super.upgrade(props);
+    const days = [
+      DaysNames.monday,
+      DaysNames.thursday,
+      DaysNames.friday,
+      DaysNames.sunday,
+    ];
+    const isFirstTime =
+      !props.currentDay.singleTimeEvents.includes(
+        statsEventsAcademicsNames.wakatsuKitchen
+      ) &&
+      props.time === Times.Evening &&
+      days.includes(props.currentDay.dayName);
+    const singleTimeEvents = isFirstTime
+      ? props.currentDay.singleTimeEvents
+      : [
+          ...props.currentDay.singleTimeEvents,
+          statsEventsAcademicsNames.wakatsuKitchen,
+        ];
+
+    return {
+      ...payload,
+      singleTimeEvents,
+    };
+  }
+}
 
 export const statsEventsAcademics: {
   [key in statsEventsAcademicsNames]: Event;
@@ -50,7 +79,7 @@ export const statsEventsAcademics: {
     special: true,
     wide: true,
   }),
-  [statsEventsAcademicsNames.wakatsuKitchen]: new StatsEveningSingleEvent({
+  [statsEventsAcademicsNames.wakatsuKitchen]: new WakatsuSingleEvent({
     stats: [new StatsRepresentation(StatsNames.Academics, 3)],
     name: statsEventsAcademicsNames.wakatsuKitchen,
     place: "Iwatodai Strip Mall",
@@ -60,6 +89,8 @@ export const statsEventsAcademics: {
       new AvailableTimesIsIn({ times: [Times.Day, Times.Evening] }),
       new AvailableDaysNamesIsIn({
         days: [
+          DaysNames.monday,
+          DaysNames.wednesday,
           DaysNames.thursday,
           DaysNames.friday,
           DaysNames.saturday,
