@@ -72,7 +72,13 @@ function calculateSingleDay(
   const pushEventsNames: allEventsNames[] = pushEvents.map((e) => e.name);
 
   currentDay.activities = currentDay.activities
-    .filter((activity) => !pushEventsNames.includes(activity.name))
+    .filter(
+      (activity) =>
+        !(
+          pushEventsNames.includes(activity.name) ||
+          activity.time === Times.Prerequisits
+        )
+    )
     .map((activity) => {
       if (activity.special) return activity;
       const isAvailable = activity.available({
