@@ -126,7 +126,7 @@ class LoversMainLevels extends LinkMainLevels {
     new availables.AvailableIsDayOff({ reverse: true, isExamIncluded: true }),
     new availables.AvailableDateGreater({ date: new Date(2009, 6, 25) }),
     new availables.AvailableTimesIsIn({ times: [Times.Day] }),
-    new availables.AvailableLinkRoute({ forkLevel: 6 }),
+    new availables.AvailableLinkRoute({ forkLevel: 8 }),
     new availables.AvailableLinkIsNewLevel(),
     new availables.AvailableStatGreater({
       name: StatsNames.Charm,
@@ -148,6 +148,7 @@ class LoversMainLevels extends LinkMainLevels {
     },
     1: {
       [Routes.Platonic]: QuestionsWrapper({
+        // Checked
         points: 0,
         element: [
           <Question label="I think I'll go with the gerberas. What color do you think should I get?">
@@ -165,6 +166,7 @@ class LoversMainLevels extends LinkMainLevels {
     },
     2: {
       [Routes.Platonic]: QuestionsWrapper({
+        // Checked
         points: 0,
         element: [
           <Question label="I guess my own mom's no different.">
@@ -176,6 +178,7 @@ class LoversMainLevels extends LinkMainLevels {
     },
     3: {
       [Routes.Platonic]: QuestionsWrapper({
+        // Checked
         points: 15,
         element: [
           <Question label="Sorry.">
@@ -188,6 +191,7 @@ class LoversMainLevels extends LinkMainLevels {
     },
     4: {
       [Routes.Platonic]: QuestionsWrapper({
+        // Checked
         points: 22,
         element: [
           <Question label="What should I do?">
@@ -200,8 +204,37 @@ class LoversMainLevels extends LinkMainLevels {
           </Question>,
           <Question label="......">
             <Answer label="I'll take you on." />
-            <Answer label="Her friend." />
+            <Answer label="I'll call the police." />
+            <Answer label="What's going on?" />
+          </Question>,
+          <Question label="Huh? Who the hell are you?">
+            <Answer label="Her boyfriend." />
+            <Answer label="Her friend." fork={true} />
             <Answer label="Just a passerby." />
+          </Question>,
+          <Question label="I didn't need your help!">
+            <Answer label="I'm sorry." points={15} />
+            <Answer label="It's okay to rely on others." />
+            <Answer label="You're a girl, so..." />
+          </Question>,
+        ],
+      }),
+      [Routes.Romantic]: QuestionsWrapper({
+        // Checked
+        points: 22,
+        element: [
+          <Question label="What should I do?">
+            <Answer label="Look around" />
+            <Answer label="Wait here" />
+          </Question>,
+          <Question label="Did something happen...?">
+            <Answer label="Go look for her" />
+            <Answer label="Wait a bit longer" />
+          </Question>,
+          <Question label="......">
+            <Answer label="I'll take you on." />
+            <Answer label="I'll call the police." />
+            <Answer label="What's going on?" />
           </Question>,
           <Question label="Huh? Who the hell are you?">
             <Answer label="Her boyfriend." fork={true} />
@@ -218,12 +251,13 @@ class LoversMainLevels extends LinkMainLevels {
     },
     5: {
       [Routes.Platonic]: QuestionsWrapper({
+        // Checked
         points: 0,
         element: [
           <Question label="Thanks for your help back then. I really appreciate it.">
             <Answer label="You're quite welcome." points={5} />
             <Answer label="Anytime." points={15} />
-            <Answer label="Thank you, too." />
+            <Answer label="Thank you, too." points={5} />
           </Question>,
           <Question label="Wouldn't that be annoying, ${mainCharName}-kun? Y'know, if people assumed we were dating...">
             <Answer label="I wouldn't mind." points={5} />
@@ -232,12 +266,13 @@ class LoversMainLevels extends LinkMainLevels {
         ],
       }),
       [Routes.Romantic]: QuestionsWrapper({
+        // Checked
         points: 0,
         element: [
           <Question label="Thanks for your help back then. I really appreciate it.">
             <Answer label="You're quite welcome." points={5} />
             <Answer label="Anytime." points={15} />
-            <Answer label="Thank you, too." />
+            <Answer label="Thank you, too." points={5} />
           </Question>,
           <Question label="Wouldn't that be annoying, ${mainCharName}-kun? Y'know, if people assumed we were dating...">
             <Answer label="I wouldn't mind." points={5} />
@@ -248,22 +283,24 @@ class LoversMainLevels extends LinkMainLevels {
     },
     6: {
       [Routes.Platonic]: QuestionsWrapper({
+        // Checked
         points: 35,
         element: [
           <Question label="We could have lunch outdoors. Maybe we'll even see a deer or something. Whaddya think?">
             <Answer label="Sounds good." points={15} />
-            <Answer label="Let's go with everyone." />
+            <Answer label="Let's go with everyone." points={5} />
             <Answer label="Let's go just the two of us." points={15} />
             <Answer label="No thanks." />
           </Question>,
         ],
       }),
       [Routes.Romantic]: QuestionsWrapper({
+        // Checked
         points: 35,
         element: [
           <Question label="We could have lunch outdoors. Maybe we'll even see a deer or something. Whaddya think?">
             <Answer label="Sounds good." points={15} />
-            <Answer label="Let's go with everyone." />
+            <Answer label="Let's go with everyone." points={5} />
             <Answer label="Let's go just the two of us." points={15} />
             <Answer label="No thanks." />
           </Question>,
@@ -272,6 +309,7 @@ class LoversMainLevels extends LinkMainLevels {
     },
     7: {
       [Routes.Platonic]: QuestionsWrapper({
+        // Checked
         points: 35,
         element: [
           <Question label="I know! Why don't you come help me pick something out, ${mainCharName}-kun?">
@@ -285,6 +323,7 @@ class LoversMainLevels extends LinkMainLevels {
         ],
       }),
       [Routes.Romantic]: QuestionsWrapper({
+        // Checked
         points: 35,
         element: [
           <Question label="I know! Why don't you come help me pick something out, ${mainCharName}-kun?">
@@ -300,6 +339,7 @@ class LoversMainLevels extends LinkMainLevels {
     },
     8: {
       [Routes.Platonic]: QuestionsWrapper({
+        // Checked
         points: 40,
         element: [
           <Question label="......">
@@ -308,12 +348,13 @@ class LoversMainLevels extends LinkMainLevels {
             <Answer label="If it's nothing, I'm leaving." />
           </Question>,
           <Question label="What do you really think of me?">
-            <Answer label="I love you." fork={true} />
-            <Answer label="You're a precious friend." />
+            <Answer label="I love you." />
+            <Answer label="You're a precious friend." fork={true} />
           </Question>,
         ],
       }),
       [Routes.Romantic]: QuestionsWrapper({
+        // Checked
         points: 40,
         element: [
           <Question label="......">
@@ -330,6 +371,7 @@ class LoversMainLevels extends LinkMainLevels {
     },
     9: {
       [Routes.Platonic]: QuestionsWrapper({
+        // Checked
         points: 55,
         element: [
           <Question label="He was with his mother today, huh...">
@@ -338,8 +380,8 @@ class LoversMainLevels extends LinkMainLevels {
           </Question>,
           <Question label="Gee, what should I do? If only someone would come with me...">
             <Answer label="I'll go." points={10} />
-            <Answer label="Good luck." />
-            <Answer label="What's the magic word?" />
+            <Answer label="Good luck." points={5} />
+            <Answer label="What's the magic word?" points={5} />
           </Question>,
           <Question label="So I was just thinking, maybe it could help you in some way too.">
             <Answer label="Can I really have this?" />
@@ -348,11 +390,12 @@ class LoversMainLevels extends LinkMainLevels {
         ],
       }),
       [Routes.Romantic]: QuestionsWrapper({
+        // Checked
         points: 55,
         element: [
           <Question label="Wait, I didn't mean it like that! Don't get the wrong idea, okay!?">
             <Answer label="Too late." points={15} />
-            <Answer label="I didn't hear anything." points={15} />
+            <Answer label="I didn't hear anything." points={5} />
           </Question>,
         ],
       }),
