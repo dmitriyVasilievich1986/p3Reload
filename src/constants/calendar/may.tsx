@@ -115,7 +115,7 @@ export const may: SingleDay[] = [
           <EventCard head="Tartarus">
             <ul>
               <li>
-                <p>Have at least ¥51,300</p>
+                <p>Have at least ¥41,750</p>
               </li>
               <li>
                 <p>Be at least level 12</p>
