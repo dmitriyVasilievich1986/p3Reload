@@ -80,7 +80,7 @@ function calculateSingleDay(
         )
     )
     .map((activity) => {
-      if (activity.special) return activity;
+      if (activity.special || activity.time === Times.Morning) return activity;
       const isAvailable = activity.available({
         currentDay,
         previousDay,
