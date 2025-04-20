@@ -49,6 +49,7 @@ export function DormHangoutStats({
     SocialLinkNames.Aeon,
     SocialLinkNames.Amada,
     SocialLinkNames.Koromaru,
+    SocialLinkNames.Aragaki,
   ];
 
   return (
