@@ -7,6 +7,7 @@ import {
   statsEventsAcademicsNames,
   statsEventsCharmNames,
   SpecialEventsNames,
+  pcProgramsNames,
 } from "@/constants/events/types";
 
 export const september: SingleDay[] = [
@@ -34,7 +35,7 @@ export const september: SingleDay[] = [
         ...events[SpecialEventsNames.Special],
         label: () => <EventCard head="Aragaki joins the team" />,
       },
-      { ...events[SocialLinkNames.Aeon], time: Times.Evening },
+      events[pcProgramsNames.lobbyPCVeggieFarmerSim],
     ],
   }),
   new SingleDay({
@@ -146,7 +147,7 @@ export const september: SingleDay[] = [
         ),
       },
       events[SocialLinkNames.Aragaki],
-      { ...events[SocialLinkNames.Amada], time: Times.Evening },
+      events[pcProgramsNames.lobbyPCAssassinWebsiteNote],
     ],
   }),
   new SingleDay({
@@ -163,7 +164,7 @@ export const september: SingleDay[] = [
     isDayOff: true,
     activities: [
       events[SocialLinkNames.Aragaki],
-      { ...events[SocialLinkNames.Empress], time: Times.Evening },
+      events[pcProgramsNames.lobbyPCHistoryWebsiteNote],
     ],
   }),
   new SingleDay({

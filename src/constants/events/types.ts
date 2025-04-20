@@ -51,12 +51,17 @@ export enum PrerequisitsEventsNames {
 }
 
 export enum pcProgramsNames {
+  lobbyPCAssassinWebsiteNote = 'Lobby PC ("Assassin Website Note")',
   lobbyPCLessonsInEtiquette = 'Lobby PC ("Lessons in Etiquette")',
+  lobbyPCHistoryWebsiteNote = 'Lobby PC ("History Website Note")',
   lobbyPCDigitalCramSchool = 'Lobby PC ("Digital Cram School")',
   lobbyPCIwatodaiForumNote = 'Lobby PC ("Iwatodai Forum Note")',
   lobbyPCLanguageMadeEasy = 'Lobby PC ("Language Made Easy")',
+  lobbyPCSecuritySiteNote = 'Lobby PC ("Security Site Note")',
   lobbyPCSchoolXSiteNote = 'Lobby PC ("School X Site Note")',
   lobbyPCMindfulBootCamp = 'Lobby PC ("Mindful Boot Camp")',
+  lobbyPCVeggieFarmerSim = 'Lobby PC ("Veggie Farmer Sim")',
+  lobbyPCRevengeSiteNote = 'Lobby PC ("Revenge Site Note")',
   lobbyPCMuscleBootCamp = 'Lobby PC ("Muscle Boot Camp")',
   lobbyPCUmiushiFanBook = 'Lobby PC ("Umiushi Fan Book")',
   lobbyPCAnimalOthello = 'Lobby PC ("Animal Othello")',
