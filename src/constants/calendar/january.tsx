@@ -50,7 +50,7 @@ export const january: SingleDay[] = [
     date: new Date(2010, 0, 5),
     isDayOff: true,
     activities: [
-      events[SpecialEventsNames.DoNothing],
+      events[SocialLinkNames.Koromaru],
       { ...events[SpecialEventsNames.DoNothing], time: Times.Evening },
     ],
   }),
@@ -85,7 +85,7 @@ export const january: SingleDay[] = [
           </Question>
         ),
       },
-      events[SocialLinkNames.Priestess],
+      events[SocialLinkNames.Aeon],
       { ...events[SpecialEventsNames.DoNothing], time: Times.Evening },
     ],
   }),
@@ -100,7 +100,7 @@ export const january: SingleDay[] = [
     date: new Date(2010, 0, 10),
     isDayOff: true,
     activities: [
-      events[SocialLinkNames.Priestess],
+      events[SpecialEventsNames.DoNothing],
       { ...events[SpecialEventsNames.DoNothing], time: Times.Evening },
     ],
   }),
@@ -108,7 +108,7 @@ export const january: SingleDay[] = [
     date: new Date(2010, 0, 11),
     isDayOff: true,
     activities: [
-      events[SpecialEventsNames.DoNothing],
+      events[SocialLinkNames.Aeon],
       { ...events[SpecialEventsNames.DoNothing], time: Times.Evening },
     ],
   }),
@@ -116,21 +116,21 @@ export const january: SingleDay[] = [
     date: new Date(2010, 0, 12),
     activities: [
       events[statsEventsAcademicsNames.stayAwakeInClass],
-      events[SocialLinkNames.Magician],
+      events[SocialLinkNames.Aeon],
       { ...events[SpecialEventsNames.DoNothing], time: Times.Evening },
     ],
   }),
   new SingleDay({
     date: new Date(2010, 0, 13),
     activities: [
-      events[SocialLinkNames.Fortune],
+      events[SocialLinkNames.Aeon],
       { ...events[SpecialEventsNames.DoNothing], time: Times.Evening },
     ],
   }),
   new SingleDay({
     date: new Date(2010, 0, 14),
     activities: [
-      events[SocialLinkNames.Magician],
+      events[SocialLinkNames.Aeon],
       { ...events[SpecialEventsNames.DoNothing], time: Times.Evening },
     ],
   }),
@@ -176,14 +176,14 @@ export const january: SingleDay[] = [
   }),
   new SingleDay({
     date: new Date(2010, 0, 19),
-    activities: [
-      events[SocialLinkNames.Fortune],
-      { ...events[SpecialEventsNames.DoNothing], time: Times.Evening },
-    ],
+    activities: [events[SocialLinkNames.Aeon], events[SocialLinkNames.Amada]],
   }),
   new SingleDay({
     date: new Date(2010, 0, 20),
-    activities: [events[SocialLinkNames.Aeon], events[SocialLinkNames.Amada]],
+    activities: [
+      events[SocialLinkNames.Aeon],
+      { ...events[SpecialEventsNames.DoNothing], time: Times.Evening },
+    ],
   }),
   new SingleDay({
     date: new Date(2010, 0, 21),
@@ -199,14 +199,14 @@ export const january: SingleDay[] = [
     date: new Date(2010, 0, 22),
     activities: [
       events[statsEventsAcademicsNames.stayAwakeInClass],
-      events[SocialLinkNames.Aeon],
+      events[SpecialEventsNames.DoNothing],
       { ...events[SpecialEventsNames.DoNothing], time: Times.Evening },
     ],
   }),
   new SingleDay({
     date: new Date(2010, 0, 23),
     activities: [
-      events[SocialLinkNames.Aeon],
+      events[SpecialEventsNames.DoNothing],
       { ...events[SpecialEventsNames.DoNothing], time: Times.Evening },
     ],
   }),
@@ -222,21 +222,21 @@ export const january: SingleDay[] = [
     date: new Date(2010, 0, 25),
     activities: [
       events[statsEventsAcademicsNames.stayAwakeInClass],
-      events[SocialLinkNames.Priestess],
+      events[SpecialEventsNames.DoNothing],
       { ...events[SpecialEventsNames.DoNothing], time: Times.Evening },
     ],
   }),
   new SingleDay({
     date: new Date(2010, 0, 26),
     activities: [
-      events[SocialLinkNames.Aeon],
+      events[SpecialEventsNames.DoNothing],
       { ...events[SpecialEventsNames.DoNothing], time: Times.Evening },
     ],
   }),
   new SingleDay({
     date: new Date(2010, 0, 27),
     activities: [
-      events[SocialLinkNames.Aeon],
+      events[SpecialEventsNames.DoNothing],
       { ...events[SpecialEventsNames.DoNothing], time: Times.Evening },
     ],
   }),
@@ -244,14 +244,14 @@ export const january: SingleDay[] = [
     date: new Date(2010, 0, 28),
     activities: [
       events[statsEventsAcademicsNames.stayAwakeInClass],
-      events[SocialLinkNames.Aeon],
+      events[SpecialEventsNames.DoNothing],
       { ...events[SpecialEventsNames.DoNothing], time: Times.Evening },
     ],
   }),
   new SingleDay({
     date: new Date(2010, 0, 29),
     activities: [
-      events[SocialLinkNames.Aeon],
+      events[SpecialEventsNames.DoNothing],
       { ...events[SpecialEventsNames.DoNothing], time: Times.Evening },
     ],
   }),

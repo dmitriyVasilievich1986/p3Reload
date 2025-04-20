@@ -7,6 +7,7 @@ import { SingleDay } from "./SingleDay";
 
 import {
   statsEventsAcademicsNames,
+  statsEventsCourageNames,
   statsEventsCharmNames,
   SpecialEventsNames,
 } from "@/constants/events/types";
@@ -22,7 +23,7 @@ export const july: SingleDay[] = [
   new SingleDay({
     date: new Date(2009, 6, 2),
     activities: [
-      events[SocialLinkNames.Justice],
+      events[SocialLinkNames.Fortune],
       events[statsEventsAcademicsNames.wakatsuKitchenSpecial],
     ],
   }),
@@ -40,7 +41,7 @@ export const july: SingleDay[] = [
         ),
       },
       events[SocialLinkNames.Emperor],
-      events[statsEventsCharmNames.hagakureRamenSpecial],
+      { ...events[SocialLinkNames.Lovers], time: Times.Evening },
     ],
   }),
   new SingleDay({
@@ -198,7 +199,7 @@ export const july: SingleDay[] = [
           </EventCard>
         ),
       },
-      events[statsEventsAcademicsNames.gameParadeAcademics],
+      events[statsEventsCourageNames.wilduckBurgeWeekendWilduckSet],
     ],
   }),
   new SingleDay({
@@ -207,7 +208,7 @@ export const july: SingleDay[] = [
     exams: true,
     activities: [
       events[SocialLinkNames.Hermit],
-      { ...events[SpecialEventsNames.DoNothing], time: Times.Evening },
+      events[statsEventsAcademicsNames.wakatsuKitchenSpecial],
       events[SocialLinkNames.Death],
     ],
   }),
@@ -312,7 +313,7 @@ export const july: SingleDay[] = [
         ...events[SpecialEventsNames.Special],
         label: () => <EventCard head="Introduction to Ken" />,
       },
-      events[statsEventsAcademicsNames.gameParadeAcademics],
+      events[statsEventsCourageNames.wilduckBurgeWeekendWilduckSet],
     ],
   }),
   new SingleDay({
@@ -437,7 +438,7 @@ export const july: SingleDay[] = [
     isDayOff: true,
     activities: [
       events[SocialLinkNames.Hermit],
-      events[statsEventsAcademicsNames.wakatsuKitchenSpecial],
+      { ...events[SocialLinkNames.Empress], time: Times.Evening },
     ],
   }),
   new SingleDay({
@@ -447,7 +448,7 @@ export const july: SingleDay[] = [
         ...events[SpecialEventsNames.Special],
         label: () => <EventCard head="Training for running competitions" />,
       },
-      events[statsEventsAcademicsNames.wakatsuKitchenSpecial],
+      { ...events[SocialLinkNames.Empress], time: Times.Evening },
     ],
   }),
   new SingleDay({

@@ -331,7 +331,7 @@ export const may: SingleDay[] = [
     activities: [
       { ...events[SpecialEventsNames.Exams], time: Times.Morning },
       events[SocialLinkNames.Justice],
-      events[statsEventsAcademicsNames.gameParadeAcademics],
+      events[pcProgramsNames.lobbyPCIwatodaiForumNote],
     ],
   }),
   new SingleDay({
@@ -339,7 +339,7 @@ export const may: SingleDay[] = [
     isDayOff: true,
     activities: [
       events[SocialLinkNames.Moon],
-      events[statsEventsAcademicsNames.wakatsuKitchenSpecial],
+      events[pcProgramsNames.lobbyPCSchoolXSiteNote],
     ],
   }),
   new SingleDay({
@@ -390,7 +390,7 @@ export const may: SingleDay[] = [
         },
       },
       events[SocialLinkNames.Emperor],
-      events[statsEventsAcademicsNames.wakatsuKitchenSpecial],
+      events[pcProgramsNames.lobbyPCUmiushiFanBook],
     ],
   }),
   new SingleDay({
@@ -412,7 +412,7 @@ export const may: SingleDay[] = [
     activities: [
       events[statsEventsAcademicsNames.stayAwakeInClass],
       events[SocialLinkNames.Chariot],
-      events[statsEventsAcademicsNames.wakatsuKitchenSpecial],
+      events[pcProgramsNames.lobbyPCMindfulBootCamp],
     ],
   }),
   new SingleDay({
@@ -427,7 +427,7 @@ export const may: SingleDay[] = [
     date: new Date(2009, 4, 30),
     activities: [
       events[SocialLinkNames.Justice],
-      events[statsEventsAcademicsNames.gameParadeAcademics],
+      events[pcProgramsNames.lobbyPCMuscleBootCamp],
     ],
   }),
   new SingleDay({
