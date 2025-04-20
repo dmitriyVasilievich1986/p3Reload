@@ -47,7 +47,7 @@ export const pcPrograms: { [key in pcProgramsNames]: Event } = {
   [pcProgramsNames.lobbyPCVeggieFarmerSim]: new pcProgram({
     stats: ["More vegetables when harvesting rooftop planters"],
     name: pcProgramsNames.lobbyPCVeggieFarmerSim,
-    startDate: new Date(2009, 8, 6),
+    startDate: new Date(2009, 8, 1),
     price: 4_500,
   }),
   [pcProgramsNames.lobbyPCUmiushiFanBook]: new pcProgram({
@@ -68,8 +68,8 @@ export const pcPrograms: { [key in pcProgramsNames]: Event } = {
   [pcProgramsNames.lobbyPCSecuritySiteNote]: new pcProgramSuspicious({
     name: pcProgramsNames.lobbyPCSecuritySiteNote,
     stats: ["Unlocks Ambush ability"],
-    startDate: new Date(2009, 7, 9),
-    price: 12_000,
+    startDate: new Date(2009, 6, 9),
+    price: 5_000,
   }),
   [pcProgramsNames.lobbyPCHistoryWebsiteNote]: new pcProgramSuspicious({
     stats: ["Ambushes add to Theurgy Gauge"],
