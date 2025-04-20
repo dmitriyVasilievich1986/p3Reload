@@ -59,7 +59,7 @@ export const june: SingleDay[] = [
     isDayOff: true,
     activities: [
       events[SocialLinkNames.Moon],
-      events[statsEventsAcademicsNames.wakatsuKitchenSpecial],
+      events[statsEventsCourageNames.wilduckBurgeWeekendWilduckSet],
     ],
   }),
   new SingleDay({
@@ -106,7 +106,7 @@ export const june: SingleDay[] = [
     date: new Date(2009, 5, 12),
     activities: [
       events[SocialLinkNames.Magician],
-      events[statsEventsAcademicsNames.wakatsuKitchenSpecial],
+      events[statsEventsCharmNames.hagakureRamenSpecial],
       events[SocialLinkNames.Death],
     ],
   }),
@@ -147,7 +147,7 @@ export const june: SingleDay[] = [
         ),
       },
       events[SocialLinkNames.Emperor],
-      { ...events[SpecialEventsNames.DoNothing], time: Times.Evening },
+      events[statsEventsAcademicsNames.wakatsuKitchenSpecial],
     ],
   }),
   new SingleDay({
@@ -187,7 +187,7 @@ export const june: SingleDay[] = [
     date: new Date(2009, 5, 19),
     activities: [
       events[SocialLinkNames.Temperance],
-      events[statsEventsAcademicsNames.wakatsuKitchenSpecial],
+      events[statsEventsCharmNames.hagakureRamenSpecial],
     ],
   }),
   new SingleDay({
@@ -222,7 +222,7 @@ export const june: SingleDay[] = [
         ),
       },
       events[SocialLinkNames.Emperor],
-      events[statsEventsCharmNames.gameParadeCharm],
+      { ...events[SocialLinkNames.Iori], time: Times.Evening },
     ],
   }),
   new SingleDay({

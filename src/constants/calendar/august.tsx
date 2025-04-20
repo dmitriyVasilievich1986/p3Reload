@@ -27,7 +27,7 @@ export const august: SingleDay[] = [
         ...events[SpecialEventsNames.Special],
         label: () => <EventCard head="Running competitions" />,
       },
-      events[statsEventsAcademicsNames.wakatsuKitchenSpecial],
+      events[SocialLinkNames.Tower],
     ],
   }),
   new SingleDay({
@@ -75,7 +75,7 @@ export const august: SingleDay[] = [
     isDayOff: true,
     activities: [
       events[SocialLinkNames.Star],
-      { ...events[SpecialEventsNames.DoNothing], time: Times.Evening },
+      { ...events[SocialLinkNames.Sanada], time: Times.Evening },
     ],
   }),
   new SingleDay({
@@ -161,7 +161,7 @@ export const august: SingleDay[] = [
     isDayOff: true,
     activities: [
       events[SocialLinkNames.HangedMan],
-      events[statsEventsAcademicsNames.wakatsuKitchenSpecial],
+      { ...events[SocialLinkNames.Koromaru], time: Times.Evening },
     ],
   }),
   new SingleDay({
@@ -174,7 +174,7 @@ export const august: SingleDay[] = [
     isDayOff: true,
     activities: [
       events[SocialLinkNames.Star],
-      { ...events[SpecialEventsNames.DoNothing], time: Times.Evening },
+      { ...events[SocialLinkNames.Sanada], time: Times.Evening },
     ],
   }),
   new SingleDay({
@@ -208,7 +208,7 @@ export const august: SingleDay[] = [
     isDayOff: true,
     activities: [
       events[SocialLinkNames.Moon],
-      { ...events[SpecialEventsNames.DoNothing], time: Times.Evening },
+      { ...events[SocialLinkNames.Koromaru], time: Times.Evening },
     ],
   }),
   new SingleDay({
@@ -224,7 +224,7 @@ export const august: SingleDay[] = [
     isDayOff: true,
     activities: [
       events[SocialLinkNames.Star],
-      { ...events[SpecialEventsNames.DoNothing], time: Times.Evening },
+      events[statsEventsAcademicsNames.gameParadeAcademics],
     ],
   }),
   new SingleDay({
@@ -251,17 +251,14 @@ export const august: SingleDay[] = [
   new SingleDay({
     date: new Date(2009, 7, 30),
     isDayOff: true,
-    activities: [
-      events[SocialLinkNames.Sun],
-      { ...events[SpecialEventsNames.DoNothing], time: Times.Evening },
-    ],
+    activities: [events[SocialLinkNames.Sun], events[SocialLinkNames.Tower]],
   }),
   new SingleDay({
     date: new Date(2009, 7, 31),
     isDayOff: true,
     activities: [
       events[SocialLinkNames.Moon],
-      { ...events[SpecialEventsNames.DoNothing], time: Times.Evening },
+      { ...events[SocialLinkNames.Koromaru], time: Times.Evening },
     ],
   }),
 ];
