@@ -65,6 +65,12 @@ export const pcPrograms: { [key in pcProgramsNames]: Event } = {
     name: pcProgramsNames.lobbyPCIwatodaiForumNote,
     price: 500,
   }),
+  [pcProgramsNames.lobbyPCRevengeSiteNote]: new pcProgramSuspicious({
+    stats: [new StatsRepresentation(StatsNames.Courage, 4)],
+    name: pcProgramsNames.lobbyPCRevengeSiteNote,
+    startDate: new Date(2009, 5, 23),
+    price: 500,
+  }),
   [pcProgramsNames.lobbyPCSecuritySiteNote]: new pcProgramSuspicious({
     name: pcProgramsNames.lobbyPCSecuritySiteNote,
     stats: ["Unlocks Ambush ability"],
