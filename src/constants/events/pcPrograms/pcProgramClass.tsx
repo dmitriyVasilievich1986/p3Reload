@@ -1,6 +1,7 @@
 import { SocialLinkAvailableProps } from "@/constants/socialLinks/types";
 import { StatsRepresentation, StatsNames } from "@/constants/stats";
 
+import { AvailabilityType } from "@/constants/availability/types";
 import {
   AvailableSingleTimeEventsIsIn,
   AvailableStatGreater,
@@ -59,24 +60,27 @@ export class pcProgramSuspicious extends EventClass {
   constructor(props: {
     name: allEventsNames;
     stats?: (StatsRepresentation | string)[];
+    availability?: AvailabilityType;
     startDate?: Date;
     place?: string;
     price?: number;
   }) {
     const date = props.startDate ?? new Date(2009, 3, 29);
 
-    const availability = new And_([
-      new AvailableSingleTimeEventsIsIn({ name: props.name, reverse: true }),
-      new AvailableStatGreater({ name: StatsNames.Courage, level: 1 }),
-      new AvailableDateGreater({ date }),
-      new Or_([
-        new AvailableTimesIsIn({ times: [Times.Evening] }),
-        new And_([
-          new AvailableIsDayOff(),
-          new AvailableTimesIsIn({ times: [Times.Day] }),
+    const availability =
+      props.availability ??
+      new And_([
+        new AvailableSingleTimeEventsIsIn({ name: props.name, reverse: true }),
+        new AvailableStatGreater({ name: StatsNames.Courage, level: 1 }),
+        new AvailableDateGreater({ date }),
+        new Or_([
+          new AvailableTimesIsIn({ times: [Times.Evening] }),
+          new And_([
+            new AvailableIsDayOff(),
+            new AvailableTimesIsIn({ times: [Times.Day] }),
+          ]),
         ]),
-      ]),
-    ]);
+      ]);
 
     super({
       ...props,
