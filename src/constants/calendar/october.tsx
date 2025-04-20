@@ -341,7 +341,7 @@ export const october: SingleDay[] = [
     date: new Date(2009, 9, 24),
     activities: [
       events[SocialLinkNames.Lovers],
-      { ...events[SpecialEventsNames.DoNothing], time: Times.Evening },
+      { ...events[SocialLinkNames.Aeon], time: Times.Evening },
     ],
   }),
   new SingleDay({
@@ -390,7 +390,7 @@ export const october: SingleDay[] = [
     activities: [
       events[statsEventsAcademicsNames.stayAwakeInClass],
       events[SocialLinkNames.Fortune],
-      { ...events[SpecialEventsNames.DoNothing], time: Times.Evening },
+      events[SpecialEventsNames.Tartarus],
     ],
   }),
   new SingleDay({
@@ -407,7 +407,7 @@ export const october: SingleDay[] = [
         ),
       },
       events[SocialLinkNames.Temperance],
-      events[SpecialEventsNames.Tartarus],
+      { ...events[SocialLinkNames.Amada], time: Times.Evening },
     ],
   }),
   new SingleDay({

@@ -306,7 +306,7 @@ export const november: SingleDay[] = [
     date: new Date(2009, 10, 28),
     activities: [
       events[SocialLinkNames.Priestess],
-      { ...events[SpecialEventsNames.DoNothing], time: Times.Evening },
+      events[SpecialEventsNames.Tartarus],
       events[SocialLinkNames.Fool],
     ],
   }),
@@ -315,7 +315,7 @@ export const november: SingleDay[] = [
     isDayOff: true,
     activities: [
       events[SocialLinkNames.Priestess],
-      events[SpecialEventsNames.Tartarus],
+      { ...events[SocialLinkNames.Empress], time: Times.Evening },
     ],
   }),
   new SingleDay({

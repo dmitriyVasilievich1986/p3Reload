@@ -10,6 +10,7 @@ import {
   statsEventsCourageNames,
   statsEventsCharmNames,
   SpecialEventsNames,
+  pcProgramsNames,
 } from "@/constants/events/types";
 
 export const july: SingleDay[] = [
@@ -199,7 +200,7 @@ export const july: SingleDay[] = [
           </EventCard>
         ),
       },
-      events[statsEventsCourageNames.wilduckBurgeWeekendWilduckSet],
+      events[pcProgramsNames.lobbyPCRevengeSiteNote],
     ],
   }),
   new SingleDay({
@@ -208,7 +209,7 @@ export const july: SingleDay[] = [
     exams: true,
     activities: [
       events[SocialLinkNames.Hermit],
-      events[statsEventsAcademicsNames.wakatsuKitchenSpecial],
+      events[pcProgramsNames.lobbyPCSecuritySiteNote],
       events[SocialLinkNames.Death],
     ],
   }),
