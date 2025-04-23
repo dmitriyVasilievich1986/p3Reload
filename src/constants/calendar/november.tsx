@@ -306,7 +306,19 @@ export const november: SingleDay[] = [
     date: new Date(2009, 10, 28),
     activities: [
       events[SocialLinkNames.Priestess],
-      events[SpecialEventsNames.Tartarus],
+      {
+        ...events[SpecialEventsNames.Tartarus],
+        time: Times.Evening,
+        label: () => (
+          <EventCard head="Tartarus">
+            <ul>
+              <li>
+                <p>Have {SocialLinkNames.HangedMan} card</p>
+              </li>
+            </ul>
+          </EventCard>
+        ),
+      },
       events[SocialLinkNames.Fool],
     ],
   }),

@@ -51,9 +51,6 @@ export const august: SingleDay[] = [
                 <p>Have {SocialLinkNames.Star} card</p>
               </li>
               <li>
-                <p>Have {SocialLinkNames.HangedMan} card</p>
-              </li>
-              <li>
                 <p>Have {SocialLinkNames.Hierophant} card</p>
               </li>
             </ul>

@@ -127,10 +127,10 @@ export const may: SingleDay[] = [
                 <p>Have {SocialLinkNames.Chariot} card</p>
               </li>
               <li>
-                <p>Have {SocialLinkNames.Temperance} card</p>
+                <p>Have {SocialLinkNames.Justice} card</p>
               </li>
               <li>
-                <p>Have {SocialLinkNames.Justice} card</p>
+                <p>Have {SocialLinkNames.Temperance} card</p>
               </li>
               <li>
                 <p>Have {SocialLinkNames.Strength} card</p>

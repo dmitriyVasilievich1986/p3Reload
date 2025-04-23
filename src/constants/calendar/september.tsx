@@ -49,10 +49,10 @@ export const september: SingleDay[] = [
           <EventCard head="Tartarus">
             <ul>
               <li>
-                <p>Have {SocialLinkNames.Hermit} card</p>
+                <p>Have {SocialLinkNames.Justice} card</p>
               </li>
               <li>
-                <p>Have {SocialLinkNames.Justice} card</p>
+                <p>Have {SocialLinkNames.Hermit} card</p>
               </li>
             </ul>
           </EventCard>
@@ -272,9 +272,6 @@ export const september: SingleDay[] = [
           <EventCard head="Tartarus">
             <ul>
               <li>
-                <p>Have {SocialLinkNames.Lovers} card</p>
-              </li>
-              <li>
                 <p>Have {SocialLinkNames.Strength} card</p>
               </li>
               <li>
@@ -282,6 +279,12 @@ export const september: SingleDay[] = [
               </li>
               <li>
                 <p>Have {SocialLinkNames.Priestess} card</p>
+              </li>
+              <li>
+                <p>Have {SocialLinkNames.Justice} card</p>
+              </li>
+              <li>
+                <p>Have {SocialLinkNames.Lovers} card</p>
               </li>
             </ul>
           </EventCard>

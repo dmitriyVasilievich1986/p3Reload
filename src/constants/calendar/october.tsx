@@ -390,7 +390,22 @@ export const october: SingleDay[] = [
     activities: [
       events[statsEventsAcademicsNames.stayAwakeInClass],
       events[SocialLinkNames.Fortune],
-      events[SpecialEventsNames.Tartarus],
+      {
+        ...events[SpecialEventsNames.Tartarus],
+        time: Times.Evening,
+        label: () => (
+          <EventCard head="Tartarus">
+            <ul>
+              <li>
+                <p>Have {SocialLinkNames.Star} card</p>
+              </li>
+              <li>
+                <p>Have {SocialLinkNames.Strength} card</p>
+              </li>
+            </ul>
+          </EventCard>
+        ),
+      },
     ],
   }),
   new SingleDay({

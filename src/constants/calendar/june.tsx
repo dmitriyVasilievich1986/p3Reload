@@ -311,16 +311,16 @@ export const june: SingleDay[] = [
                 <p>Be at least level 10</p>
               </li>
               <li>
-                <p>Have {SocialLinkNames.Hermit} card</p>
+                <p>Have {SocialLinkNames.Strength} card</p>
               </li>
               <li>
                 <p>Have {SocialLinkNames.Hierophant} card</p>
               </li>
               <li>
-                <p>Have {SocialLinkNames.HangedMan} card</p>
+                <p>Have {SocialLinkNames.Hermit} card</p>
               </li>
               <li>
-                <p>Have {SocialLinkNames.Strength} card</p>
+                <p>Have {SocialLinkNames.HangedMan} card</p>
               </li>
             </ul>
           </EventCard>
