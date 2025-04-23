@@ -315,7 +315,7 @@ export const july: SingleDay[] = [
         ...events[SpecialEventsNames.Special],
         label: () => <EventCard head="Introduction to Ken" />,
       },
-      events[statsEventsCourageNames.wilduckBurgeWeekendWilduckSet],
+      events[SocialLinkNames.Devil],
     ],
   }),
   new SingleDay({

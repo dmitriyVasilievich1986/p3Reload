@@ -329,7 +329,7 @@ export const november: SingleDay[] = [
     isDayOff: true,
     activities: [
       events[SocialLinkNames.Priestess],
-      { ...events[SocialLinkNames.Empress], time: Times.Evening },
+      { ...events[SpecialEventsNames.DoNothing], time: Times.Evening },
     ],
   }),
   new SingleDay({
