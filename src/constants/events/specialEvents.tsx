@@ -47,6 +47,8 @@ export const specialEvents: { [key in SpecialEventsNames]: Event } = {
       new AvailableDateIsIn({
         reverse: true,
         date: [
+          new Date(2009, 3, 29),
+          new Date(2009, 4, 5),
           new Date(2009, 4, 16),
           new Date(2009, 4, 17),
           new Date(2009, 4, 25),
