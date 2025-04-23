@@ -133,7 +133,7 @@ export const statsEventsCourage: {
       name: statsEventsCourageNames.wilduckBigEaterChallenge,
       place: "Port Island Station",
       time: Times.Evening,
-      price: 1_500,
+      price: 1_800,
       stats: [
         new StatsRepresentation(StatsNames.Courage, 4),
         new StatsRepresentation(StatsNames.Charm, 4),
