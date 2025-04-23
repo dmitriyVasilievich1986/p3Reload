@@ -267,8 +267,9 @@ export const january: SingleDay[] = [
     isDayOff: true,
     activities: [
       {
-        ...events[SpecialEventsNames.Special],
+        ...events[SpecialEventsNames.Tartarus],
         time: Times.WholeDay,
+        special: true,
         label: () => (
           <WideEvent>
             <EventCard head="Nyx Boss Fight" place="Tartarus" />

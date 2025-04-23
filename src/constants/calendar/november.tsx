@@ -32,8 +32,9 @@ export const november: SingleDay[] = [
     foolMoon: true,
     activities: [
       {
-        ...events[SpecialEventsNames.Special],
+        ...events[SpecialEventsNames.Tartarus],
         time: Times.WholeDay,
+        special: true,
         label: () => (
           <WideEvent>
             <EventCard
@@ -235,8 +236,9 @@ export const november: SingleDay[] = [
       events[SocialLinkNames.Sun],
       { ...events[SpecialEventsNames.DoNothing], time: Times.Evening },
       {
-        ...events[SpecialEventsNames.Special],
+        ...events[SpecialEventsNames.Tartarus],
         time: Times.DarkHour,
+        special: true,
         label: () => <EventCard head="Chidori Boss Fight" place="Tartarus" />,
       },
     ],

@@ -81,8 +81,9 @@ export const august: SingleDay[] = [
     isDayOff: true,
     activities: [
       {
-        ...events[SpecialEventsNames.Special],
+        ...events[SpecialEventsNames.Tartarus],
         time: Times.WholeDay,
+        special: true,
         label: () => (
           <WideEvent>
             <EventCard head="Chariot and Justice Boss Fight" place="Tartarus" />

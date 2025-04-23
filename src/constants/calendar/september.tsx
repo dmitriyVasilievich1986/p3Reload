@@ -72,8 +72,9 @@ export const september: SingleDay[] = [
     foolMoon: true,
     activities: [
       {
-        ...events[SpecialEventsNames.Special],
+        ...events[SpecialEventsNames.Tartarus],
         time: Times.WholeDay,
+        special: true,
         label: () => (
           <WideEvent>
             <EventCard head="Hermit Boss Fight" place="Tartarus" />
