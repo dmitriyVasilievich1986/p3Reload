@@ -96,8 +96,9 @@ export const may: SingleDay[] = [
     foolMoon: true,
     activities: [
       {
-        ...events[SpecialEventsNames.Special],
+        ...events[SpecialEventsNames.Tartarus],
         time: Times.WholeDay,
+        special: true,
         label: () => <EventCard head="Priestess Boss Fight" place="Tartarus" />,
       },
       { ...events[SocialLinkNames.Fool], time: Times.DarkHour },
@@ -127,10 +128,10 @@ export const may: SingleDay[] = [
                 <p>Have {SocialLinkNames.Chariot} card</p>
               </li>
               <li>
-                <p>Have {SocialLinkNames.Temperance} card</p>
+                <p>Have {SocialLinkNames.Justice} card</p>
               </li>
               <li>
-                <p>Have {SocialLinkNames.Justice} card</p>
+                <p>Have {SocialLinkNames.Temperance} card</p>
               </li>
               <li>
                 <p>Have {SocialLinkNames.Strength} card</p>

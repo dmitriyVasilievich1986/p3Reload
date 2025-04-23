@@ -49,10 +49,10 @@ export const september: SingleDay[] = [
           <EventCard head="Tartarus">
             <ul>
               <li>
-                <p>Have {SocialLinkNames.Hermit} card</p>
+                <p>Have {SocialLinkNames.Justice} card</p>
               </li>
               <li>
-                <p>Have {SocialLinkNames.Justice} card</p>
+                <p>Have {SocialLinkNames.Hermit} card</p>
               </li>
             </ul>
           </EventCard>
@@ -72,8 +72,9 @@ export const september: SingleDay[] = [
     foolMoon: true,
     activities: [
       {
-        ...events[SpecialEventsNames.Special],
+        ...events[SpecialEventsNames.Tartarus],
         time: Times.WholeDay,
+        special: true,
         label: () => (
           <WideEvent>
             <EventCard head="Hermit Boss Fight" place="Tartarus" />
@@ -272,9 +273,6 @@ export const september: SingleDay[] = [
           <EventCard head="Tartarus">
             <ul>
               <li>
-                <p>Have {SocialLinkNames.Lovers} card</p>
-              </li>
-              <li>
                 <p>Have {SocialLinkNames.Strength} card</p>
               </li>
               <li>
@@ -282,6 +280,12 @@ export const september: SingleDay[] = [
               </li>
               <li>
                 <p>Have {SocialLinkNames.Priestess} card</p>
+              </li>
+              <li>
+                <p>Have {SocialLinkNames.Justice} card</p>
+              </li>
+              <li>
+                <p>Have {SocialLinkNames.Lovers} card</p>
               </li>
             </ul>
           </EventCard>
@@ -332,10 +336,7 @@ export const september: SingleDay[] = [
   new SingleDay({
     date: new Date(2009, 8, 27),
     isDayOff: true,
-    activities: [
-      events[SocialLinkNames.Sun],
-      events[statsEventsAcademicsNames.wakatsuKitchenSpecial],
-    ],
+    activities: [events[SocialLinkNames.Sun], events[SocialLinkNames.Tower]],
   }),
   new SingleDay({
     date: new Date(2009, 8, 28),

@@ -89,8 +89,9 @@ export const july: SingleDay[] = [
     exams: true,
     activities: [
       {
-        ...events[SpecialEventsNames.Special],
+        ...events[SpecialEventsNames.Tartarus],
         time: Times.WholeDay,
+        special: true,
         label: () => (
           <WideEvent>
             <EventCard
@@ -505,7 +506,7 @@ export const july: SingleDay[] = [
         ...events[SpecialEventsNames.Special],
         label: () => <EventCard head="Training for running competitions" />,
       },
-      events[SocialLinkNames.Tower],
+      events[statsEventsAcademicsNames.wakatsuKitchenSpecial],
     ],
   }),
 ];

@@ -27,7 +27,7 @@ export const august: SingleDay[] = [
         ...events[SpecialEventsNames.Special],
         label: () => <EventCard head="Running competitions" />,
       },
-      events[SocialLinkNames.Tower],
+      events[statsEventsAcademicsNames.wakatsuKitchenSpecial],
     ],
   }),
   new SingleDay({
@@ -49,9 +49,6 @@ export const august: SingleDay[] = [
               </li>
               <li>
                 <p>Have {SocialLinkNames.Star} card</p>
-              </li>
-              <li>
-                <p>Have {SocialLinkNames.HangedMan} card</p>
               </li>
               <li>
                 <p>Have {SocialLinkNames.Hierophant} card</p>
@@ -84,8 +81,9 @@ export const august: SingleDay[] = [
     isDayOff: true,
     activities: [
       {
-        ...events[SpecialEventsNames.Special],
+        ...events[SpecialEventsNames.Tartarus],
         time: Times.WholeDay,
+        special: true,
         label: () => (
           <WideEvent>
             <EventCard head="Chariot and Justice Boss Fight" place="Tartarus" />

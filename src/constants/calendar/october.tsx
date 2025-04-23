@@ -24,7 +24,7 @@ export const october: SingleDay[] = [
     date: new Date(2009, 9, 2),
     activities: [
       events[SocialLinkNames.Priestess],
-      events[statsEventsAcademicsNames.wakatsuKitchenSpecial],
+      events[SocialLinkNames.Tower],
     ],
   }),
   new SingleDay({
@@ -41,8 +41,9 @@ export const october: SingleDay[] = [
     isDayOff: true,
     activities: [
       {
-        ...events[SpecialEventsNames.Special],
+        ...events[SpecialEventsNames.Tartarus],
         time: Times.WholeDay,
+        special: true,
         label: () => (
           <WideEvent>
             <EventCard
@@ -390,7 +391,22 @@ export const october: SingleDay[] = [
     activities: [
       events[statsEventsAcademicsNames.stayAwakeInClass],
       events[SocialLinkNames.Fortune],
-      events[SpecialEventsNames.Tartarus],
+      {
+        ...events[SpecialEventsNames.Tartarus],
+        time: Times.Evening,
+        label: () => (
+          <EventCard head="Tartarus">
+            <ul>
+              <li>
+                <p>Have {SocialLinkNames.Star} card</p>
+              </li>
+              <li>
+                <p>Have {SocialLinkNames.Strength} card</p>
+              </li>
+            </ul>
+          </EventCard>
+        ),
+      },
     ],
   }),
   new SingleDay({
