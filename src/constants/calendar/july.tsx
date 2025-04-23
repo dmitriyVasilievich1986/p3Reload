@@ -314,6 +314,22 @@ export const july: SingleDay[] = [
         ...events[SpecialEventsNames.Special],
         label: () => <EventCard head="Introduction to Ken" />,
       },
+      {
+        ...events[SpecialEventsNames.Notes],
+        time: Times.EveningFreeTime,
+        label: () => (
+          <EventCard
+            {...socialLinks[SocialLinkNames.Devil].linkDetails}
+            head={`${SocialLinkNames.Devil} (Prerequisite)`}
+          >
+            <ul>
+              <li>
+                <p>Give President Tanaka ¥10,000.</p>
+              </li>
+            </ul>
+          </EventCard>
+        ),
+      },
       events[SocialLinkNames.Devil],
     ],
   }),
@@ -458,22 +474,6 @@ export const july: SingleDay[] = [
       {
         ...events[SpecialEventsNames.Special],
         label: () => <EventCard head="Training for running competitions" />,
-      },
-      {
-        ...events[SpecialEventsNames.Notes],
-        time: Times.EveningFreeTime,
-        label: () => (
-          <EventCard
-            {...socialLinks[SocialLinkNames.Devil].linkDetails}
-            head={`${SocialLinkNames.Devil} (Prerequisite)`}
-          >
-            <ul>
-              <li>
-                <p>Give President Tanaka ¥10,000.</p>
-              </li>
-            </ul>
-          </EventCard>
-        ),
       },
       events[SocialLinkNames.Devil],
     ],
