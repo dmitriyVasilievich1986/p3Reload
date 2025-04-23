@@ -7,7 +7,6 @@ import { SingleDay } from "./SingleDay";
 
 import {
   statsEventsAcademicsNames,
-  statsEventsCourageNames,
   statsEventsCharmNames,
   SpecialEventsNames,
   pcProgramsNames,
