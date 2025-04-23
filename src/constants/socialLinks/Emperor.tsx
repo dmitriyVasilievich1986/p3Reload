@@ -42,7 +42,7 @@ class EmperorMainLevels extends LinkMainLevels {
         // checked
         points: 0,
         element: [
-          <Question label="Some students think the school uniform should be abolished, and they're recruiting supporters.">
+          <Question label="Some students think the school uniform should be abolished, and they're gathering supporters.">
             <Answer label="They've got a point." />
             <Answer label="Sounds like nonsense." points={15} />
           </Question>,
