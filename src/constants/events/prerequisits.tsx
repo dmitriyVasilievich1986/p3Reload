@@ -50,8 +50,8 @@ export const prerequisitsEvents: { [key in PrerequisitsEventsNames]: Event } = {
     category: Categories.Prerequisits,
     time: Times.Prerequisits,
     availability: new availables.And_([
-      new availables.AvailableTimesIsIn({ times: [Times.Prerequisits] }),
       new availables.AvailableIsDayOff({ reverse: true, isExamIncluded: true }),
+      new availables.AvailableTimesIsIn({ times: [Times.Prerequisits] }),
       new availables.AvailableFreeTime({ time: Times.Day }),
       new availables.AvailableDaysNamesIsIn({
         days: [DaysNames.tuesday, DaysNames.thursday, DaysNames.friday],
@@ -86,8 +86,8 @@ export const prerequisitsEvents: { [key in PrerequisitsEventsNames]: Event } = {
     category: Categories.Prerequisits,
     time: Times.Prerequisits,
     availability: new availables.And_([
+      new availables.AvailableIsDayOff({ reverse: true, isExamIncluded: true }),
       new availables.AvailableTimesIsIn({ times: [Times.Prerequisits] }),
-      new availables.AvailableIsDayOff({ reverse: true }),
       new availables.AvailableFreeTime({ time: Times.Day }),
       new availables.AvailableDaysNamesIsIn({
         days: [DaysNames.wednesday, DaysNames.saturday],
@@ -186,9 +186,9 @@ export const prerequisitsEvents: { [key in PrerequisitsEventsNames]: Event } = {
     category: Categories.Prerequisits,
     time: Times.Prerequisits,
     availability: new availables.And_([
+      new availables.AvailableIsDayOff({ reverse: true, isExamIncluded: true }),
       new availables.AvailableTimesIsIn({ times: [Times.Prerequisits] }),
       new availables.AvailableFreeTime({ time: Times.Day }),
-      new availables.AvailableIsDayOff({ reverse: true }),
       new availables.AvailableDaysNamesIsIn({
         days: [DaysNames.tuesday, DaysNames.thursday, DaysNames.saturday],
       }),
@@ -222,9 +222,9 @@ export const prerequisitsEvents: { [key in PrerequisitsEventsNames]: Event } = {
     category: Categories.Prerequisits,
     time: Times.Prerequisits,
     availability: new availables.And_([
+      new availables.AvailableIsDayOff({ reverse: true, isExamIncluded: true }),
       new availables.AvailableTimesIsIn({ times: [Times.Prerequisits] }),
       new availables.AvailableFreeTime({ time: Times.Day }),
-      new availables.AvailableIsDayOff({ reverse: true }),
       new availables.AvailableDaysNamesIsIn({
         days: [DaysNames.tuesday, DaysNames.thursday, DaysNames.saturday],
       }),
@@ -254,9 +254,9 @@ export const prerequisitsEvents: { [key in PrerequisitsEventsNames]: Event } = {
     category: Categories.Prerequisits,
     time: Times.Prerequisits,
     availability: new availables.And_([
+      new availables.AvailableIsDayOff({ reverse: true, isExamIncluded: true }),
       new availables.AvailableTimesIsIn({ times: [Times.Prerequisits] }),
       new availables.AvailableFreeTime({ time: Times.Day }),
-      new availables.AvailableIsDayOff({ reverse: true }),
       new availables.AvailableDaysNamesIsIn({
         days: [DaysNames.tuesday, DaysNames.thursday, DaysNames.saturday],
       }),

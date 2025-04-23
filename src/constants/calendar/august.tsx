@@ -16,7 +16,7 @@ export const august: SingleDay[] = [
         ...events[SpecialEventsNames.Special],
         label: () => <EventCard head="Training for running competitions" />,
       },
-      events[SocialLinkNames.Devil],
+      { ...events[SocialLinkNames.Empress], time: Times.Evening },
     ],
   }),
   new SingleDay({
