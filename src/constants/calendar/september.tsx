@@ -332,10 +332,7 @@ export const september: SingleDay[] = [
   new SingleDay({
     date: new Date(2009, 8, 27),
     isDayOff: true,
-    activities: [
-      events[SocialLinkNames.Sun],
-      events[statsEventsAcademicsNames.wakatsuKitchenSpecial],
-    ],
+    activities: [events[SocialLinkNames.Sun], events[SocialLinkNames.Tower]],
   }),
   new SingleDay({
     date: new Date(2009, 8, 28),

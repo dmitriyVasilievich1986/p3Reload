@@ -505,7 +505,7 @@ export const july: SingleDay[] = [
         ...events[SpecialEventsNames.Special],
         label: () => <EventCard head="Training for running competitions" />,
       },
-      events[SocialLinkNames.Tower],
+      events[statsEventsAcademicsNames.wakatsuKitchenSpecial],
     ],
   }),
 ];
