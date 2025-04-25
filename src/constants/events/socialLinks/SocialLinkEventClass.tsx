@@ -14,7 +14,7 @@ import {
   Categories,
   Times,
   Event,
-} from "../types";
+} from "@/constants/events/types";
 
 export class SocialLinkEvent implements Event {
   name: allEventsNames;
