@@ -466,6 +466,8 @@ class StrengthInvitationLevels extends InvitationLevels {
         element: [
           <Question label="I wonder what I'll be doing then...">
             <Answer label="Studying for entrance exams." points={30} />
+            <Answer label="Looking for a job." />
+            <Answer label="Nothing new." />
           </Question>,
         ],
       }),
@@ -474,6 +476,8 @@ class StrengthInvitationLevels extends InvitationLevels {
         element: [
           <Question label="I wonder what I'll be doing then...">
             <Answer label="Studying for entrance exams." points={30} />
+            <Answer label="Looking for a job." />
+            <Answer label="Nothing new." />
           </Question>,
         ],
       }),
