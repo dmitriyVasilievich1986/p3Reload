@@ -1,19 +1,10 @@
 import { SocialLinkAvailableProps } from "@/constants/socialLinks/types";
 import { StatsRepresentation, StatsNames } from "@/constants/stats";
-
 import { AvailabilityType } from "@/constants/availability/types";
-import {
-  AvailableSingleTimeEventsIsIn,
-  AvailableStatGreater,
-  AvailableDateGreater,
-  AvailableTimesIsIn,
-  AvailableIsDayOff,
-  And_,
-  Or_,
-} from "@/constants/availability/AvailableClass";
+import availables from "@/constants/availability/AvailableClass";
 
-import { allEventsNames, Categories, Times } from "../types";
-import { EventClass } from "../EventClass";
+import { allEventsNames, Categories, Times } from "@/constants/events/types";
+import { EventClass } from "@/constants/events/EventClass";
 
 export class pcProgram extends EventClass {
   constructor(props: {
@@ -25,14 +16,23 @@ export class pcProgram extends EventClass {
   }) {
     const date = props.startDate ?? new Date(2009, 3, 29);
 
-    const availability = new And_([
-      new AvailableSingleTimeEventsIsIn({ name: props.name, reverse: true }),
-      new AvailableDateGreater({ date }),
-      new Or_([
-        new AvailableTimesIsIn({ times: [Times.Evening] }),
-        new And_([
-          new AvailableIsDayOff(),
-          new AvailableTimesIsIn({ times: [Times.Day] }),
+    const availability = new availables.And_([
+      new availables.AvailableSingleTimeEventsIsIn({
+        name: props.name,
+        reverse: true,
+      }),
+      new availables.And_([
+        new availables.AvailableDateGreater({ date }),
+        new availables.AvailableDateIsIn({
+          date: [new Date(2009, 5, 1)],
+          reverse: true,
+        }),
+      ]),
+      new availables.Or_([
+        new availables.AvailableTimesIsIn({ times: [Times.Evening] }),
+        new availables.And_([
+          new availables.AvailableIsDayOff(),
+          new availables.AvailableTimesIsIn({ times: [Times.Day] }),
         ]),
       ]),
     ]);
@@ -69,15 +69,27 @@ export class pcProgramSuspicious extends EventClass {
 
     const availability =
       props.availability ??
-      new And_([
-        new AvailableSingleTimeEventsIsIn({ name: props.name, reverse: true }),
-        new AvailableStatGreater({ name: StatsNames.Courage, level: 1 }),
-        new AvailableDateGreater({ date }),
-        new Or_([
-          new AvailableTimesIsIn({ times: [Times.Evening] }),
-          new And_([
-            new AvailableIsDayOff(),
-            new AvailableTimesIsIn({ times: [Times.Day] }),
+      new availables.And_([
+        new availables.AvailableSingleTimeEventsIsIn({
+          name: props.name,
+          reverse: true,
+        }),
+        new availables.AvailableStatGreater({
+          name: StatsNames.Courage,
+          level: 1,
+        }),
+        new availables.And_([
+          new availables.AvailableDateGreater({ date }),
+          new availables.AvailableDateIsIn({
+            date: [new Date(2009, 5, 1)],
+            reverse: true,
+          }),
+        ]),
+        new availables.Or_([
+          new availables.AvailableTimesIsIn({ times: [Times.Evening] }),
+          new availables.And_([
+            new availables.AvailableIsDayOff(),
+            new availables.AvailableTimesIsIn({ times: [Times.Day] }),
           ]),
         ]),
       ]);

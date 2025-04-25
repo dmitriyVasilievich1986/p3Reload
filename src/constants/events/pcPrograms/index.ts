@@ -1,8 +1,11 @@
 import { StatsRepresentation, StatsNames } from "@/constants/stats";
-
 import availables from "@/constants/availability/AvailableClass";
-import { pcProgramSuspicious, pcProgram } from "./pcProgramClass";
-import { pcProgramsNames, Event, Times } from "../types";
+
+import { pcProgramsNames, Event, Times } from "@/constants/events/types";
+import {
+  pcProgramSuspicious,
+  pcProgram,
+} from "@/constants/events/pcPrograms/pcProgramClass";
 
 export const pcPrograms: { [key in pcProgramsNames]: Event } = {
   [pcProgramsNames.lobbyPCDigitalCramSchool]: new pcProgram({

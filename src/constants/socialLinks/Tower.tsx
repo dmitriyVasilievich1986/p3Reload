@@ -26,6 +26,7 @@ class TowerMainLevels extends LinkMainLevels {
     new availables.AvailableLinkIsNewLevel(),
     new availables.AvailableSingleTimeEventsIsIn({
       name: PrerequisitsEventsNames.TowerPrerequisit,
+      isCurrentDay: true,
     }),
     new availables.AvailableDaysNamesIsIn({
       days: [

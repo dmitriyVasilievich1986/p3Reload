@@ -92,10 +92,16 @@ export class AvailableDateIsIn extends Available<number> {
 
 export class AvailableSingleTimeEventsIsIn extends Available<allEventsNames> {
   operation: Operations = Operations.IsIn;
+  isCurrentDay?: boolean;
   name: allEventsNames;
 
-  constructor(props: { name: allEventsNames; reverse?: boolean }) {
+  constructor(props: {
+    name: allEventsNames;
+    isCurrentDay?: boolean;
+    reverse?: boolean;
+  }) {
     super(props);
+    this.isCurrentDay = props.isCurrentDay;
     this.name = props.name;
 
     this.getLeft = this.getLeft.bind(this);
@@ -106,7 +112,8 @@ export class AvailableSingleTimeEventsIsIn extends Available<allEventsNames> {
   }
 
   getRight(props: AvailabilityProps) {
-    return props.previousDay.singleTimeEvents.map((name) => name);
+    const day = this.isCurrentDay ? props.currentDay : props.previousDay;
+    return day.singleTimeEvents.map((name) => name);
   }
 }
 

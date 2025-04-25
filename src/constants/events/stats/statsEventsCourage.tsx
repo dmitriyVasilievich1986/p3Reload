@@ -1,17 +1,8 @@
 import { StatsRepresentation, StatsNames } from "@/constants/stats";
+import availables from "@/constants/availability/AvailableClass";
 import { DaysNames } from "@/constants/monthsNames";
 
-import {
-  AvailableSingleTimeEventsIsIn,
-  AvailablePreviousDayContains,
-  AvailableDaysNamesIsIn,
-  AvailableStatGreater,
-  AvailableDateGreater,
-  AvailableTimesIsIn,
-  AvailableFreeTime,
-  And_,
-} from "@/constants/availability/AvailableClass";
-
+import { EventClass } from "@/constants/events/EventClass";
 import {
   wilduckBigEaterChallengeEvent,
   StatsEvents,
@@ -19,6 +10,7 @@ import {
 import {
   statsEventsCourageNames,
   SpecialEventsNames,
+  Categories,
   Times,
   Event,
 } from "@/constants/events/types";
@@ -32,19 +24,20 @@ export const statsEventsCourage: {
     place: "Nurse's Office",
     time: Times.AfterSchool,
     special: true,
-    availability: new And_([
-      new AvailablePreviousDayContains({ name: SpecialEventsNames.Tartarus }),
-      new AvailableFreeTime({ time: Times.Day }),
+    availability: new availables.And_([
+      new availables.AvailablePreviousDayContains({
+        name: SpecialEventsNames.Tartarus,
+      }),
+      new availables.AvailableFreeTime({ time: Times.Day }),
     ]),
   }),
-  [statsEventsCourageNames.sleepDuringClass]: new StatsEvents({
+  [statsEventsCourageNames.sleepDuringClass]: new EventClass({
+    availability: new availables.AvailableTimesIsIn({ times: [Times.Morning] }),
     stats: [new StatsRepresentation(StatsNames.Courage, 2)],
     name: statsEventsCourageNames.sleepDuringClass,
     place: "Gekkoukan High School",
+    category: Categories.Stats,
     time: Times.Morning,
-    availability: new And_([
-      new AvailableTimesIsIn({ times: [Times.Morning] }),
-    ]),
   }),
   [statsEventsCourageNames.Mandragora]: new StatsEvents({
     stats: [new StatsRepresentation(StatsNames.Courage, 2)],
@@ -52,9 +45,9 @@ export const statsEventsCourage: {
     place: "Paulownia Mall",
     time: Times.Evening,
     price: 800,
-    availability: new And_([
-      new AvailableTimesIsIn({ times: [Times.Day, Times.Evening] }),
-      new AvailableDaysNamesIsIn({
+    availability: new availables.And_([
+      new availables.AvailableTimesIsIn({ times: [Times.Day, Times.Evening] }),
+      new availables.AvailableDaysNamesIsIn({
         days: [
           DaysNames.monday,
           DaysNames.tuesday,
@@ -72,9 +65,9 @@ export const statsEventsCourage: {
     place: "Iwatodai Strip Mall",
     time: Times.Evening,
     price: 1_000,
-    availability: new And_([
-      new AvailableTimesIsIn({ times: [Times.Day, Times.Evening] }),
-      new AvailableDaysNamesIsIn({
+    availability: new availables.And_([
+      new availables.AvailableTimesIsIn({ times: [Times.Day, Times.Evening] }),
+      new availables.AvailableDaysNamesIsIn({
         days: [
           DaysNames.monday,
           DaysNames.tuesday,
@@ -92,9 +85,9 @@ export const statsEventsCourage: {
     place: "Paulownia Mall",
     time: Times.Evening,
     price: 3_000,
-    availability: new And_([
-      new AvailableTimesIsIn({ times: [Times.Day, Times.Evening] }),
-      new AvailableDaysNamesIsIn({
+    availability: new availables.And_([
+      new availables.AvailableTimesIsIn({ times: [Times.Day, Times.Evening] }),
+      new availables.AvailableDaysNamesIsIn({
         days: [DaysNames.tuesday, DaysNames.friday],
       }),
     ]),
@@ -105,12 +98,12 @@ export const statsEventsCourage: {
     place: "Iwatodai Strip Mall",
     time: Times.Evening,
     price: 1_200,
-    availability: new And_([
-      new AvailableTimesIsIn({ times: [Times.Day, Times.Evening] }),
-      new AvailableSingleTimeEventsIsIn({
+    availability: new availables.And_([
+      new availables.AvailableTimesIsIn({ times: [Times.Day, Times.Evening] }),
+      new availables.AvailableSingleTimeEventsIsIn({
         name: statsEventsCourageNames.wilduckBigEaterChallenge,
       }),
-      new AvailableDaysNamesIsIn({
+      new availables.AvailableDaysNamesIsIn({
         days: [DaysNames.saturday, DaysNames.sunday],
       }),
     ]),
@@ -121,9 +114,9 @@ export const statsEventsCourage: {
     place: "Port Island Station",
     time: Times.Day,
     price: 1_500,
-    availability: new And_([
-      new AvailableTimesIsIn({ times: [Times.Day] }),
-      new AvailableDaysNamesIsIn({
+    availability: new availables.And_([
+      new availables.AvailableTimesIsIn({ times: [Times.Day] }),
+      new availables.AvailableDaysNamesIsIn({
         days: [DaysNames.monday, DaysNames.thursday],
       }),
     ]),
@@ -139,15 +132,18 @@ export const statsEventsCourage: {
         new StatsRepresentation(StatsNames.Charm, 4),
         new StatsRepresentation(StatsNames.Academics, 4),
       ],
-      availability: new And_([
-        new AvailableStatGreater({ name: StatsNames.Courage, level: 3 }),
-        new AvailableDateGreater({ date: new Date(2009, 4, 10) }),
-        new AvailableTimesIsIn({ times: [Times.Evening] }),
-        new AvailableSingleTimeEventsIsIn({
+      availability: new availables.And_([
+        new availables.AvailableStatGreater({
+          name: StatsNames.Courage,
+          level: 3,
+        }),
+        new availables.AvailableDateGreater({ date: new Date(2009, 4, 10) }),
+        new availables.AvailableTimesIsIn({ times: [Times.Evening] }),
+        new availables.AvailableSingleTimeEventsIsIn({
           name: statsEventsCourageNames.wilduckBigEaterChallenge,
           reverse: true,
         }),
-        new AvailableDaysNamesIsIn({
+        new availables.AvailableDaysNamesIsIn({
           days: [
             DaysNames.monday,
             DaysNames.tuesday,

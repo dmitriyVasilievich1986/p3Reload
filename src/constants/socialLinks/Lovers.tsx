@@ -36,6 +36,7 @@ class LoversKitchenActivityLevels extends DormHangoutLevels {
     new Date(2009, 5, 19).getTime(),
     new Date(2009, 5, 26).getTime(),
     new Date(2009, 6, 3).getTime(),
+    new Date(2009, 6, 31).getTime(),
     new Date(2009, 7, 7).getTime(),
     new Date(2009, 7, 21).getTime(),
     new Date(2009, 8, 11).getTime(),
