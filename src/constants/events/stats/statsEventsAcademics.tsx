@@ -1,21 +1,15 @@
 import { StatsRepresentation, StatsNames } from "@/constants/stats";
+import availables from "@/constants/availability/AvailableClass";
 import { DaysNames } from "@/constants/monthsNames";
 
+import { StatsEvents } from "@/constants/events/stats/statsClass";
+import { EventClass } from "@/constants/events/EventClass";
 import {
-  AvailableSingleTimeEventsIsIn,
-  AvailableDaysNamesIsIn,
-  AvailableStatGreater,
-  AvailableTimesIsIn,
-  AvailableDateIsIn,
-  AvailableIsDayOff,
-  False_,
-  And_,
-  Or_,
-} from "@/constants/availability/AvailableClass";
-
-import { statsEventsAcademicsNames, Times, Event, Categories } from "../types";
-import { StatsEvents } from "./statsClass";
-import { EventClass } from "../EventClass";
+  statsEventsAcademicsNames,
+  Categories,
+  Times,
+  Event,
+} from "@/constants/events/types";
 
 class WakatsuSingleEvent extends StatsEvents {
   upgrade(props: any) {
@@ -50,7 +44,7 @@ export const statsEventsAcademics: {
   [key in statsEventsAcademicsNames]: Event;
 } = {
   [statsEventsAcademicsNames.stayAwakeInClass]: new EventClass({
-    availability: new AvailableTimesIsIn({ times: [Times.Morning] }),
+    availability: new availables.AvailableTimesIsIn({ times: [Times.Morning] }),
     stats: [new StatsRepresentation(StatsNames.Academics, 2)],
     name: statsEventsAcademicsNames.stayAwakeInClass,
     place: "Gekkoukan High School",
@@ -58,9 +52,9 @@ export const statsEventsAcademics: {
     time: Times.Morning,
   }),
   [statsEventsAcademicsNames.studyAtLibrary]: new StatsEvents({
-    availability: new And_([
-      new AvailableTimesIsIn({ times: [Times.Day] }),
-      new AvailableIsDayOff({ reverse: true }),
+    availability: new availables.And_([
+      new availables.AvailableTimesIsIn({ times: [Times.Day] }),
+      new availables.AvailableIsDayOff({ reverse: true }),
     ]),
     stats: [new StatsRepresentation(StatsNames.Academics, 2)],
     name: statsEventsAcademicsNames.studyAtLibrary,
@@ -71,15 +65,15 @@ export const statsEventsAcademics: {
     name: statsEventsAcademicsNames.studyAtHome,
     place: "Protagonist's Room",
     time: Times.Evening,
-    availability: new Or_([
-      new AvailableTimesIsIn({ times: [Times.Evening] }),
-      new AvailableIsDayOff(),
+    availability: new availables.Or_([
+      new availables.AvailableTimesIsIn({ times: [Times.Evening] }),
+      new availables.AvailableIsDayOff(),
     ]),
   }),
   [statsEventsAcademicsNames.summerSchool]: new StatsEvents({
     stats: [new StatsRepresentation(StatsNames.Academics, 3)],
     name: statsEventsAcademicsNames.summerSchool,
-    availability: new And_([new False_()]),
+    availability: new availables.False_(),
     place: "Gekkoukan High School",
     time: Times.WholeDay,
     special: true,
@@ -91,9 +85,9 @@ export const statsEventsAcademics: {
     place: "Iwatodai Strip Mall",
     time: Times.Evening,
     price: 680,
-    availability: new And_([
-      new AvailableTimesIsIn({ times: [Times.Day, Times.Evening] }),
-      new AvailableDaysNamesIsIn({
+    availability: new availables.And_([
+      new availables.AvailableTimesIsIn({ times: [Times.Day, Times.Evening] }),
+      new availables.AvailableDaysNamesIsIn({
         days: [
           DaysNames.monday,
           DaysNames.wednesday,
@@ -110,9 +104,9 @@ export const statsEventsAcademics: {
     name: statsEventsAcademicsNames.cinemaTheaterAcademics,
     place: "Port Island Station",
     price: 1_500,
-    availability: new And_([
-      new AvailableTimesIsIn({ times: [Times.Day] }),
-      new AvailableDaysNamesIsIn({
+    availability: new availables.And_([
+      new availables.AvailableTimesIsIn({ times: [Times.Day] }),
+      new availables.AvailableDaysNamesIsIn({
         days: [DaysNames.wednesday, DaysNames.saturday],
       }),
     ]),
@@ -123,13 +117,13 @@ export const statsEventsAcademics: {
     place: "Iwatodai Strip Mall",
     time: Times.Evening,
     price: 900,
-    availability: new And_([
-      new AvailableStatGreater({ name: StatsNames.Charm, level: 2 }),
-      new AvailableTimesIsIn({ times: [Times.Evening] }),
-      new AvailableSingleTimeEventsIsIn({
+    availability: new availables.And_([
+      new availables.AvailableStatGreater({ name: StatsNames.Charm, level: 2 }),
+      new availables.AvailableTimesIsIn({ times: [Times.Evening] }),
+      new availables.AvailableSingleTimeEventsIsIn({
         name: statsEventsAcademicsNames.wakatsuKitchen,
       }),
-      new AvailableDaysNamesIsIn({
+      new availables.AvailableDaysNamesIsIn({
         days: [
           DaysNames.monday,
           DaysNames.thursday,
@@ -145,9 +139,9 @@ export const statsEventsAcademics: {
     place: "Paulownia Mall",
     time: Times.Evening,
     price: 3_000,
-    availability: new And_([
-      new AvailableTimesIsIn({ times: [Times.Day, Times.Evening] }),
-      new AvailableDaysNamesIsIn({
+    availability: new availables.And_([
+      new availables.AvailableTimesIsIn({ times: [Times.Day, Times.Evening] }),
+      new availables.AvailableDaysNamesIsIn({
         days: [DaysNames.wednesday, DaysNames.saturday],
       }),
     ]),
@@ -157,9 +151,9 @@ export const statsEventsAcademics: {
     name: statsEventsAcademicsNames.dormExamStudyingGroup,
     time: Times.Evening,
     place: "Dorm",
-    availability: new And_([
-      new AvailableTimesIsIn({ times: [Times.Evening] }),
-      new AvailableDateIsIn({
+    availability: new availables.And_([
+      new availables.AvailableTimesIsIn({ times: [Times.Evening] }),
+      new availables.AvailableDateIsIn({
         date: [
           new Date(2009, 4, 15),
           new Date(2009, 4, 16),
@@ -180,9 +174,9 @@ export const statsEventsAcademics: {
     name: statsEventsAcademicsNames.dormExamStudyingTeam,
     time: Times.Evening,
     place: "Dorm",
-    availability: new And_([
-      new AvailableTimesIsIn({ times: [Times.Evening] }),
-      new AvailableDateIsIn({
+    availability: new availables.And_([
+      new availables.AvailableTimesIsIn({ times: [Times.Evening] }),
+      new availables.AvailableDateIsIn({
         date: [
           new Date(2009, 4, 17),
           new Date(2009, 6, 13),
