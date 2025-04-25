@@ -71,30 +71,13 @@ function calculateSingleDay(
   ];
   const pushEventsNames: allEventsNames[] = pushEvents.map((e) => e.name);
 
-  currentDay.activities = currentDay.activities
-    .filter(
-      (activity) =>
-        !(
-          pushEventsNames.includes(activity.name) ||
-          activity.time === Times.Prerequisits
-        )
-    )
-    .map((activity) => {
-      if (activity.special) return activity;
-      const isAvailable = activity.available({
-        currentDay,
-        previousDay,
-        previousWeek,
-        time: activity.time,
-      });
-      if (!isAvailable) {
-        console.warn(
-          `Event ${activity.name} is not available for the ${currentDay.date}`
-        );
-        return { ...events[SpecialEventsNames.DoNothing], time: activity.time };
-      }
-      return activity;
-    });
+  currentDay.activities = currentDay.activities.filter(
+    (activity) =>
+      !(
+        pushEventsNames.includes(activity.name) ||
+        activity.time === Times.Prerequisits
+      )
+  );
 
   pushEvents
     .filter(({ name, time }) =>
@@ -109,7 +92,19 @@ function calculateSingleDay(
       currentDay.activities.unshift(events[name] as EventClass);
     });
 
-  currentDay.activities.forEach((activity) => {
+  currentDay.activities = currentDay.activities.map((activity) => {
+    const isAvailable = activity.available({
+      currentDay,
+      previousDay,
+      previousWeek,
+      time: activity.time,
+    });
+    if (!isAvailable && !activity.special) {
+      console.warn(
+        `Event ${activity.name} is not available for the ${currentDay.date}`
+      );
+      return { ...events[SpecialEventsNames.DoNothing], time: activity.time };
+    }
     const response = activity.upgrade({
       currentDay,
       previousDay,
@@ -120,6 +115,8 @@ function calculateSingleDay(
       response?.singleTimeEvents || currentDay.singleTimeEvents;
     currentDay.stats = response?.stats || currentDay.stats;
     currentDay.links = response?.links || currentDay.links;
+
+    return activity;
   });
 }
 
