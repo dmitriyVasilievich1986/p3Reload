@@ -21,7 +21,13 @@ export class pcProgram extends EventClass {
         name: props.name,
         reverse: true,
       }),
-      new availables.AvailableDateGreater({ date }),
+      new availables.And_([
+        new availables.AvailableDateGreater({ date }),
+        new availables.AvailableDateIsIn({
+          date: [new Date(2009, 5, 1)],
+          reverse: true,
+        }),
+      ]),
       new availables.Or_([
         new availables.AvailableTimesIsIn({ times: [Times.Evening] }),
         new availables.And_([
@@ -72,7 +78,13 @@ export class pcProgramSuspicious extends EventClass {
           name: StatsNames.Courage,
           level: 1,
         }),
-        new availables.AvailableDateGreater({ date }),
+        new availables.And_([
+          new availables.AvailableDateGreater({ date }),
+          new availables.AvailableDateIsIn({
+            date: [new Date(2009, 5, 1)],
+            reverse: true,
+          }),
+        ]),
         new availables.Or_([
           new availables.AvailableTimesIsIn({ times: [Times.Evening] }),
           new availables.And_([
