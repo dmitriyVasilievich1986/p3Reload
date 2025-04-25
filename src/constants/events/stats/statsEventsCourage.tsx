@@ -16,9 +16,11 @@ import {
   wilduckBigEaterChallengeEvent,
   StatsEvents,
 } from "@/constants/events/stats/statsClass";
+import { EventClass } from "@/constants/events/EventClass";
 import {
   statsEventsCourageNames,
   SpecialEventsNames,
+  Categories,
   Times,
   Event,
 } from "@/constants/events/types";
@@ -37,14 +39,13 @@ export const statsEventsCourage: {
       new AvailableFreeTime({ time: Times.Day }),
     ]),
   }),
-  [statsEventsCourageNames.sleepDuringClass]: new StatsEvents({
+  [statsEventsCourageNames.sleepDuringClass]: new EventClass({
+    availability: new AvailableTimesIsIn({ times: [Times.Morning] }),
     stats: [new StatsRepresentation(StatsNames.Courage, 2)],
     name: statsEventsCourageNames.sleepDuringClass,
     place: "Gekkoukan High School",
+    category: Categories.Stats,
     time: Times.Morning,
-    availability: new And_([
-      new AvailableTimesIsIn({ times: [Times.Morning] }),
-    ]),
   }),
   [statsEventsCourageNames.Mandragora]: new StatsEvents({
     stats: [new StatsRepresentation(StatsNames.Courage, 2)],

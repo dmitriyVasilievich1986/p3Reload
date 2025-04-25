@@ -13,8 +13,9 @@ import {
   Or_,
 } from "@/constants/availability/AvailableClass";
 
-import { statsEventsAcademicsNames, Times, Event } from "../types";
+import { statsEventsAcademicsNames, Times, Event, Categories } from "../types";
 import { StatsEvents } from "./statsClass";
+import { EventClass } from "../EventClass";
 
 class WakatsuSingleEvent extends StatsEvents {
   upgrade(props: any) {
@@ -48,14 +49,13 @@ class WakatsuSingleEvent extends StatsEvents {
 export const statsEventsAcademics: {
   [key in statsEventsAcademicsNames]: Event;
 } = {
-  [statsEventsAcademicsNames.stayAwakeInClass]: new StatsEvents({
+  [statsEventsAcademicsNames.stayAwakeInClass]: new EventClass({
+    availability: new AvailableTimesIsIn({ times: [Times.Morning] }),
     stats: [new StatsRepresentation(StatsNames.Academics, 2)],
     name: statsEventsAcademicsNames.stayAwakeInClass,
     place: "Gekkoukan High School",
+    category: Categories.Stats,
     time: Times.Morning,
-    availability: new And_([
-      new AvailableTimesIsIn({ times: [Times.Morning] }),
-    ]),
   }),
   [statsEventsAcademicsNames.studyAtLibrary]: new StatsEvents({
     availability: new And_([
