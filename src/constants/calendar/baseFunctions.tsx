@@ -69,24 +69,39 @@ function calculateSingleDay(
       time: Times.Prerequisits,
     },
   ];
-  const pushEventsNames: allEventsNames[] = pushEvents.map((e) => e.name);
 
-  currentDay.activities = currentDay.activities.filter(
-    (activity) =>
-      !(
-        pushEventsNames.includes(activity.name) ||
-        activity.time === Times.Prerequisits
-      )
-  );
+  currentDay.activities = currentDay.activities.filter((activity) => {
+    if (
+      (activity.special && activity.name !== SocialLinkNames.Aragaki) ||
+      [Times.Morning, Times.Day, Times.Evening].includes(activity.time)
+    ) {
+      return true;
+    }
+    const isAvailable = (events[activity.name] as EventClass).available({
+      currentDay,
+      previousDay,
+      previousWeek,
+      time: activity.time,
+    });
+    if (!isAvailable) {
+      console.warn(
+        `Removing ${activity.name} event for the ${currentDay.date}`
+      );
+    }
+    return isAvailable;
+  });
 
+  const currentEventsNames = currentDay.activities.map((a) => a.name);
   pushEvents
-    .filter(({ name, time }) =>
-      (events[name] as EventClass).available({
-        currentDay,
-        previousDay,
-        previousWeek,
-        time: time,
-      })
+    .filter(
+      ({ name, time }) =>
+        !currentEventsNames.includes(name) &&
+        (events[name] as EventClass).available({
+          currentDay,
+          previousDay,
+          previousWeek,
+          time: time,
+        })
     )
     .forEach(({ name }) => {
       currentDay.activities.unshift(events[name] as EventClass);
