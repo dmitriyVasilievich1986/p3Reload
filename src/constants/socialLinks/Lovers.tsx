@@ -470,6 +470,8 @@ class LevelsInvitationLevels extends InvitationLevels {
         points: 0,
         element: [
           <Question label="What's your favorite color, ${mainCharName}-kun?">
+            <Answer label="Blue." />
+            <Answer label="Black." />
             <Answer label="Green." points={30} />
           </Question>,
         ],
