@@ -299,6 +299,8 @@ class FortuneInvitationLevels extends InvitationLevels {
         element: [
           <Question label="Even if your life is predestined, I think you should give it your all while on that path.">
             <Answer label="You have a point." points={30} />
+            <Answer label="That's just giving up." />
+            <Answer label="Sounds like an excuse." />
           </Question>,
         ],
       }),
