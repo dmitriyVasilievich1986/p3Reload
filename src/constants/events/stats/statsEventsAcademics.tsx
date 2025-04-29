@@ -60,6 +60,14 @@ export const statsEventsAcademics: {
     name: statsEventsAcademicsNames.studyAtLibrary,
     place: "Gekkoukan High School",
   }),
+  [statsEventsAcademicsNames.quest75]: new StatsEvents({
+    stats: [new StatsRepresentation(StatsNames.Academics, 2)],
+    name: statsEventsAcademicsNames.quest75,
+    availability: new availables.False_(),
+    place: "Gekkoukan High School",
+    time: Times.AfterSchool,
+    special: true,
+  }),
   [statsEventsAcademicsNames.studyAtHome]: new StatsEvents({
     stats: [new StatsRepresentation(StatsNames.Academics, 2)],
     name: statsEventsAcademicsNames.studyAtHome,

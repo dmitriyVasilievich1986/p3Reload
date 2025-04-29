@@ -82,6 +82,7 @@ export enum statsEventsAcademicsNames {
   dormExamStudyingTeam = "Dorm exam studying (Team)",
   stayAwakeInClass = "Stay awake in class",
   studyAtLibrary = "Study at library",
+  quest75 = "Elizabeth's Request #75",
   summerSchool = "Summer School",
   studyAtHome = "Study at home",
 }
