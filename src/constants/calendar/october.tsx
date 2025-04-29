@@ -155,7 +155,7 @@ export const october: SingleDay[] = [
     exams: true,
     activities: [
       events[SocialLinkNames.Lovers],
-      events[statsEventsAcademicsNames.dormExamStudyingTeam],
+      { ...events[SpecialEventsNames.DoNothing], time: Times.Evening },
     ],
   }),
   new SingleDay({
