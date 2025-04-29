@@ -9,6 +9,7 @@ import {
   statsEventsAcademicsNames,
   statsEventsCharmNames,
   SpecialEventsNames,
+  pcProgramsNames,
 } from "@/constants/events/types";
 
 export const october: SingleDay[] = [
@@ -71,8 +72,14 @@ export const october: SingleDay[] = [
     date: new Date(2009, 9, 6),
     exams: true,
     activities: [
-      events[SocialLinkNames.Aragaki],
-      { ...events[SpecialEventsNames.DoNothing], time: Times.Evening },
+      events[SpecialEventsNames.DoNothing],
+      events[statsEventsAcademicsNames.quest75],
+      {
+        ...events[SocialLinkNames.Aragaki],
+        time: Times.AfterSchool,
+        special: true,
+      },
+      events[pcProgramsNames.lobbyPCMentalInstructor],
       events[SocialLinkNames.Death],
     ],
   }),
@@ -90,6 +97,7 @@ export const october: SingleDay[] = [
           </Question>
         ),
       },
+      events[statsEventsAcademicsNames.quest75],
       events[SocialLinkNames.Star],
       events[statsEventsAcademicsNames.gameParadeAcademics],
     ],
@@ -98,6 +106,7 @@ export const october: SingleDay[] = [
     date: new Date(2009, 9, 8),
     exams: true,
     activities: [
+      events[statsEventsAcademicsNames.quest75],
       events[SocialLinkNames.Chariot],
       events[statsEventsAcademicsNames.dormExamStudyingGroup],
     ],
@@ -107,6 +116,7 @@ export const october: SingleDay[] = [
     exams: true,
     activities: [
       events[statsEventsAcademicsNames.stayAwakeInClass],
+      events[statsEventsAcademicsNames.quest75],
       events[SocialLinkNames.Star],
       events[statsEventsAcademicsNames.dormExamStudyingGroup],
     ],
@@ -125,6 +135,7 @@ export const october: SingleDay[] = [
           </Question>
         ),
       },
+      events[statsEventsAcademicsNames.quest75],
       events[SocialLinkNames.Justice],
       events[statsEventsAcademicsNames.gameParadeAcademics],
     ],
@@ -144,7 +155,7 @@ export const october: SingleDay[] = [
     exams: true,
     activities: [
       events[SocialLinkNames.Lovers],
-      events[statsEventsAcademicsNames.dormExamStudyingTeam],
+      { ...events[SpecialEventsNames.DoNothing], time: Times.Evening },
     ],
   }),
   new SingleDay({
@@ -227,6 +238,7 @@ export const october: SingleDay[] = [
     date: new Date(2009, 9, 17),
     activities: [
       { ...events[SpecialEventsNames.Exams], time: Times.Morning },
+      events[statsEventsAcademicsNames.quest75],
       events[SocialLinkNames.Priestess],
       { ...events[SocialLinkNames.Iori], time: Times.Evening },
     ],
@@ -295,6 +307,7 @@ export const october: SingleDay[] = [
           };
         },
       },
+      events[statsEventsAcademicsNames.quest75],
       events[SocialLinkNames.Lovers],
       { ...events[SocialLinkNames.Sanada], time: Times.Evening },
     ],
@@ -302,6 +315,7 @@ export const october: SingleDay[] = [
   new SingleDay({
     date: new Date(2009, 9, 20),
     activities: [
+      events[statsEventsAcademicsNames.quest75],
       events[SocialLinkNames.Justice],
       { ...events[SocialLinkNames.Aeon], time: Times.Evening },
     ],
@@ -383,7 +397,7 @@ export const october: SingleDay[] = [
     date: new Date(2009, 9, 28),
     activities: [
       events[SocialLinkNames.Lovers],
-      { ...events[SpecialEventsNames.DoNothing], time: Times.Evening },
+      events[pcProgramsNames.lobbyPCImageMuscleTrainer],
     ],
   }),
   new SingleDay({

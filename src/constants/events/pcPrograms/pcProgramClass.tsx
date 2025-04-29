@@ -81,7 +81,7 @@ export class pcProgramSuspicious extends EventClass {
         new availables.And_([
           new availables.AvailableDateGreater({ date }),
           new availables.AvailableDateIsIn({
-            date: [new Date(2009, 5, 1)],
+            date: [new Date(2009, 5, 1), new Date(2009, 8, 30)],
             reverse: true,
           }),
         ]),

@@ -47,6 +47,18 @@ export const pcPrograms: { [key in pcProgramsNames]: Event } = {
     stats: ["Max HP Boost"],
     price: 2_000,
   }),
+  [pcProgramsNames.lobbyPCImageMuscleTrainer]: new pcProgram({
+    name: pcProgramsNames.lobbyPCImageMuscleTrainer,
+    startDate: new Date(2009, 9, 5),
+    stats: ["Max HP Boost"],
+    price: 4_000,
+  }),
+  [pcProgramsNames.lobbyPCMentalInstructor]: new pcProgram({
+    name: pcProgramsNames.lobbyPCMentalInstructor,
+    startDate: new Date(2009, 9, 5),
+    stats: ["Max SP Boost"],
+    price: 4_000,
+  }),
   [pcProgramsNames.lobbyPCVeggieFarmerSim]: new pcProgram({
     stats: ["More vegetables when harvesting rooftop planters"],
     name: pcProgramsNames.lobbyPCVeggieFarmerSim,
@@ -72,6 +84,12 @@ export const pcPrograms: { [key in pcProgramsNames]: Event } = {
     stats: [new StatsRepresentation(StatsNames.Courage, 4)],
     name: pcProgramsNames.lobbyPCRevengeSiteNote,
     startDate: new Date(2009, 5, 23),
+    price: 500,
+  }),
+  [pcProgramsNames.lobbyPCTVeggieBlogNote]: new pcProgramSuspicious({
+    stats: ["Golden tomato available at Rafflesia"],
+    name: pcProgramsNames.lobbyPCTVeggieBlogNote,
+    startDate: new Date(2009, 9, 6),
     price: 500,
   }),
   [pcProgramsNames.lobbyPCSecuritySiteNote]: new pcProgramSuspicious({

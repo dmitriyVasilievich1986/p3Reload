@@ -451,6 +451,8 @@ class PriestessInvitationLevels extends InvitationLevels {
         element: [
           <Question label="Um, ${mainCharName}-kun. Do you like sweets?">
             <Answer label="I do." points={30} />
+            <Answer label="Not really." />
+            <Answer label="Never thought about it." />
           </Question>,
         ],
       }),

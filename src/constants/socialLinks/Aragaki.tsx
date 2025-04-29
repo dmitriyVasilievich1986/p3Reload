@@ -119,9 +119,8 @@ class AragakiMainLevels extends LinkMainLevelsEpisodes {
         );
       case 4:
         return (
-          props.currentDay.date.getTime() >= new Date(2009, 9, 5).getTime() &&
-          props.currentDay.date.getTime() <= new Date(2009, 9, 31).getTime() &&
-          isTime
+          props.currentDay.date.getTime() === new Date(2009, 9, 6).getTime() &&
+          props.time === Times.AfterSchool
         );
       default:
         return false;

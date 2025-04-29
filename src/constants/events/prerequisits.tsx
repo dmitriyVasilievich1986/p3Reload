@@ -24,6 +24,8 @@ import {
 } from "@/constants/events/types";
 
 export class PrerequisitsEventClass extends EventClass {
+  special?: boolean = true;
+
   constructor(
     props: eventProps & {
       label?: (_props: SocialLinkAvailableProps) => React.ReactNode;
