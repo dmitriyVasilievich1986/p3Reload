@@ -299,7 +299,9 @@ class MagicianInvitationLevels extends InvitationLevels {
         points: 0,
         element: [
           <Question label="Do you think I can make her happy?">
+            <Answer label="You'll do fine." />
             <Answer label="Just do your best." points={30} />
+            <Answer label="Probably not." />
           </Question>,
         ],
       }),
