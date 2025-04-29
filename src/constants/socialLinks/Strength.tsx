@@ -509,7 +509,9 @@ class StrengthInvitationLevels extends InvitationLevels {
         points: 0,
         element: [
           <Question label="You still have some time, right? What do you wanna do now?">
+            <Answer label="Let's go to your place." />
             <Answer label="Let's go to a café." points={30} />
+            <Answer label="Let's go to Wakatsu." />
           </Question>,
         ],
       }),
@@ -517,7 +519,9 @@ class StrengthInvitationLevels extends InvitationLevels {
         points: 0,
         element: [
           <Question label="You still have some time, right? What do you wanna do now?">
+            <Answer label="Let's go to your place." />
             <Answer label="Let's go to a café." points={30} />
+            <Answer label="Let's go to Wakatsu." />
           </Question>,
         ],
       }),
@@ -527,6 +531,8 @@ class StrengthInvitationLevels extends InvitationLevels {
         points: 0,
         element: [
           <Question label="Hey, ${mainCharName}-kun, you got some sauce around your mouth.">
+            <Answer label="Oh, thanks." />
+            <Answer label="It's fine." />
             <Answer label="It's a fashion statement." points={30} />
           </Question>,
         ],
