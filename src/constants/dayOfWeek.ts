@@ -6,7 +6,7 @@ export const DayOfWeek: Record<string, string> = {
   Friday: 'Friday',
   Saturday: 'Saturday',
   Sunday: 'Sunday',
-};
+} as const;
 
 export type DayOfWeekType = (typeof DayOfWeek)[keyof typeof DayOfWeek];
 

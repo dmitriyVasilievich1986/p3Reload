@@ -1,4 +1,4 @@
-export const Times = {
+export const Times: Record<string, string> = {
   Morning: 'Morning',
   DayFreeTime: 'Day Free Time',
   Day: 'Day',
@@ -6,6 +6,6 @@ export const Times = {
   Evening: 'Evening',
   Night: 'Night',
   DarkHour: 'Dark Hour',
-};
+} as const;
 
 export type TimesType = (typeof Times)[keyof typeof Times];
