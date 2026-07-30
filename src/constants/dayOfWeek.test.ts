@@ -15,7 +15,9 @@ describe('DayOfWeekPosition', () => {
       [DayOfWeek.Sunday]: '2009-04-12',
     };
 
-    for (const [day, date] of Object.entries(datesByDay)) {
+    for (const [day, date] of Object.entries(datesByDay) as Array<
+      [keyof typeof DayOfWeekPosition, string]
+    >) {
       expect(DayOfWeekPosition[day]).toBe(dayjs(date).day());
     }
   });
