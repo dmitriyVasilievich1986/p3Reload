@@ -73,6 +73,19 @@ export class CharacterStats {
   }
 
   /**
+   * Returns the charm modifier for the character.
+   * @param this - The character stats instance.
+   * @returns The charm modifier.
+   */
+  getCharmModifier(this: CharacterStats): number {
+    const level = (this.constructor as typeof CharacterStats).getCharacterStatsLevelFromPoints(
+      CharacterStatsNames.Charm,
+      this[CharacterStatsNames.Charm]
+    );
+    return level.maxLevel ? 1.51 : 1;
+  }
+
+  /**
    * Resolves the rank for a stat given its current point total.
    * Levels are matched by the highest threshold the points meet
    * (tables are ordered highest-first).

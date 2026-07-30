@@ -140,4 +140,30 @@ describe('CharacterStats', () => {
       expect(level.name).toBe('Determined');
     });
   });
+
+  describe('getCharmModifier', () => {
+    it('returns 1 when Charm is below max level', () => {
+      const stats = new CharacterStats({
+        [CharacterStatsNames.Charm]: 99,
+      });
+
+      expect(stats.getCharmModifier()).toBe(1);
+    });
+
+    it('returns 1.51 when Charm is at max level', () => {
+      const stats = new CharacterStats({
+        [CharacterStatsNames.Charm]: 100,
+      });
+
+      expect(stats.getCharmModifier()).toBe(1.51);
+    });
+
+    it('returns 1.51 when Charm exceeds the max threshold', () => {
+      const stats = new CharacterStats({
+        [CharacterStatsNames.Charm]: 150,
+      });
+
+      expect(stats.getCharmModifier()).toBe(1.51);
+    });
+  });
 });
