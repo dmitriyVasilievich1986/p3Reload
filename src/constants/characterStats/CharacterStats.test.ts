@@ -86,7 +86,7 @@ describe('CharacterStats', () => {
 
     expect(() =>
       stats.modify([{ name: CharacterStatsNames.Courage, operator: '-', value: 3 }])
-    ).toThrow('Invalid value: -1');
+    ).toThrow('Stat Courage cannot be less than 0');
   });
 
   describe('getCharacterStatsLevelFromPoints', () => {
