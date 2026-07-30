@@ -187,6 +187,7 @@ export default defineConfig(({ mode }) => {
       alias: {
         '@components': resolve(__dirname, './src/components'),
         '@constants': resolve(__dirname, './src/constants'),
+        '@services': resolve(__dirname, './src/services'),
       },
     },
     test: {
