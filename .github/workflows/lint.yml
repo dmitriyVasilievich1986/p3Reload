@@ -1,0 +1,39 @@
+name: Lint
+
+on:
+  push:
+    branches:
+      - master
+      - development
+  pull_request:
+    branches:
+      - master
+      - development
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+concurrency:
+  group: lint-${{ github.ref }}
+  cancel-in-progress: true
+
+jobs:
+  lint:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Set up Vite+
+        uses: voidzero-dev/setup-vp@v1
+        with:
+          version-file: package.json
+          node-version: 24
+          cache: true
+
+      - name: Lint
+        run: vp run lint
+
+      - name: Build
+        run: vp run build
