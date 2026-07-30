@@ -6,7 +6,7 @@
   "scripts": {
     "dev": "vp dev",
     "build": "tsc -b && vp build",
-    "lint": "eslint . --ext js,jsx --report-unused-disable-directives --max-warnings 0",
+    "lint": "vp fmt . && vp lint --fix . && tsc --noEmit --pretty",
     "preview": "vp preview",
     "prepare": "vp config"
   },
