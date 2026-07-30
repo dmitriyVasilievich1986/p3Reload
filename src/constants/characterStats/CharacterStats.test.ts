@@ -1,6 +1,7 @@
 import { describe, expect, it } from 'vite-plus/test';
 
 import { CharacterStats } from './CharacterStats';
+import { CharacterStatsLevels } from './const';
 import { CharacterStatsNames } from './types';
 
 describe('CharacterStats', () => {
@@ -76,5 +77,67 @@ describe('CharacterStats', () => {
     ]);
 
     expect(next[CharacterStatsNames.Academics]).toBe(5);
+  });
+
+  describe('getCharacterStatsLevelFromPoints', () => {
+    it('returns the lowest level for 0 points', () => {
+      const level = CharacterStats.getCharacterStatsLevelFromPoints(
+        CharacterStatsNames.Academics,
+        0
+      );
+
+      expect(level).toEqual(
+        CharacterStatsLevels[CharacterStatsNames.Academics].find((entry) => entry.level === 1)
+      );
+    });
+
+    it('returns the highest level whose threshold is met', () => {
+      const level = CharacterStats.getCharacterStatsLevelFromPoints(
+        CharacterStatsNames.Academics,
+        100
+      );
+
+      expect(level).toEqual(
+        CharacterStatsLevels[CharacterStatsNames.Academics].find((entry) => entry.level === 4)
+      );
+    });
+
+    it('returns the previous level when points are below the next threshold', () => {
+      const level = CharacterStats.getCharacterStatsLevelFromPoints(
+        CharacterStatsNames.Courage,
+        59
+      );
+
+      expect(level).toEqual(
+        CharacterStatsLevels[CharacterStatsNames.Courage].find((entry) => entry.level === 4)
+      );
+    });
+
+    it('returns max level when points meet or exceed the top threshold', () => {
+      const level = CharacterStats.getCharacterStatsLevelFromPoints(CharacterStatsNames.Charm, 100);
+
+      expect(level).toEqual(
+        CharacterStatsLevels[CharacterStatsNames.Charm].find((entry) => entry.maxLevel)
+      );
+    });
+
+    it('returns max level for points above the top threshold', () => {
+      const level = CharacterStats.getCharacterStatsLevelFromPoints(
+        CharacterStatsNames.Academics,
+        999
+      );
+
+      expect(level.level).toBe(6);
+      expect(level.maxLevel).toBe(true);
+    });
+  });
+
+  describe('getCharacterStatsLevelByLevel', () => {
+    it('returns the level matching the given level number', () => {
+      const level = CharacterStats.getCharacterStatsLevelByLevel(CharacterStatsNames.Courage, 3);
+
+      expect(level.level).toBe(3);
+      expect(level.name).toBe('Determined');
+    });
   });
 });
