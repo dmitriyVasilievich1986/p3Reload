@@ -18,5 +18,5 @@ export const DayOfWeekPosition: Record<DayOfWeekType, number> = {
   [DayOfWeek.Thursday]: 4,
   [DayOfWeek.Friday]: 5,
   [DayOfWeek.Saturday]: 6,
-  [DayOfWeek.Sunday]: 7,
+  [DayOfWeek.Sunday]: 0,
 };
