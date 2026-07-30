@@ -1,4 +1,4 @@
-export const Times: Record<string, string> = {
+export const Times = {
   Morning: 'Morning',
   DayFreeTime: 'Day Free Time',
   Day: 'Day',
