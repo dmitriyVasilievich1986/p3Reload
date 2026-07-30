@@ -17,9 +17,9 @@ import {
  * {@link CharacterStatsLevels}.
  */
 export class CharacterStats {
-  [CharacterStatsNames.Academics]!: number;
-  [CharacterStatsNames.Courage]!: number;
-  [CharacterStatsNames.Charm]!: number;
+  readonly [CharacterStatsNames.Academics]!: number;
+  readonly [CharacterStatsNames.Courage]!: number;
+  readonly [CharacterStatsNames.Charm]!: number;
 
   /**
    * Creates a stats instance. Omitted stats default to `0`.
