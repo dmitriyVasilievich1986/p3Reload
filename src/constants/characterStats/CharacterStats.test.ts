@@ -79,6 +79,16 @@ describe('CharacterStats', () => {
     expect(next[CharacterStatsNames.Academics]).toBe(5);
   });
 
+  it('throws when a modifier would reduce a stat below 0', () => {
+    const stats = new CharacterStats({
+      [CharacterStatsNames.Courage]: 2,
+    });
+
+    expect(() =>
+      stats.modify([{ name: CharacterStatsNames.Courage, operator: '-', value: 3 }])
+    ).toThrow('Invalid value: -1');
+  });
+
   describe('getCharacterStatsLevelFromPoints', () => {
     it('returns the lowest level for 0 points', () => {
       const level = CharacterStats.getCharacterStatsLevelFromPoints(
