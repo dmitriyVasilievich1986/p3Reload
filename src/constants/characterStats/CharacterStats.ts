@@ -54,7 +54,10 @@ export class CharacterStats {
         break;
       default:
         console.warn(`Invalid operator: ${modifier.operator}`);
-        break;
+        throw new Error(`Invalid operator: ${modifier.operator}`);
+    }
+    if (newValue < 0) {
+      throw new Error(`Invalid value: ${newValue}`);
     }
     return new CharacterStats({
       ...currentStats,
