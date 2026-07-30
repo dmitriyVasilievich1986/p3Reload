@@ -15,6 +15,7 @@
     "@testing-library/react": "^16.3.2",
     "@testing-library/user-event": "^14.6.1",
     "@types/jsdom": "^28.0.3",
+    "@types/lodash": "^4.17.24",
     "@types/node": "^26.1.2",
     "@types/react": "^19.2.17",
     "@types/react-dom": "^19.2.3",
@@ -36,6 +37,7 @@
     "vite": "npm:@voidzero-dev/vite-plus-core@0.2.6"
   },
   "dependencies": {
+    "lodash": "^4.18.1",
     "react": "^19.2.8",
     "react-dom": "^19.2.8",
     "react-router": "^8.3.0"
