@@ -4,10 +4,11 @@
   "version": "0.0.0",
   "type": "module",
   "scripts": {
-    "dev": "vite",
-    "build": "tsc -b && vite build",
+    "dev": "vp dev",
+    "build": "tsc -b && vp build",
     "lint": "eslint . --ext js,jsx --report-unused-disable-directives --max-warnings 0",
-    "preview": "vite preview"
+    "preview": "vp preview",
+    "prepare": "vp config"
   },
   "dependencies": {
     "react": "^18.2.0",
@@ -18,14 +19,21 @@
     "@types/node": "^20.14.8",
     "@types/react": "^18.3.3",
     "@types/react-dom": "^18.3.0",
-    "@vitejs/plugin-react": "^4.2.1",
+    "@vitejs/plugin-react": "^6.0.4",
     "classnames": "^2.5.1",
-    "eslint": "^8.57.0",
-    "eslint-plugin-react": "^7.34.1",
-    "eslint-plugin-react-hooks": "^4.6.0",
-    "eslint-plugin-react-refresh": "^0.4.6",
     "sass": "^1.77.5",
     "typescript": "^5.5.2",
-    "vite": "^5.2.0"
+    "vite": "npm:@voidzero-dev/vite-plus-core@0.2.6",
+    "vite-plus": "0.2.6"
+  },
+  "devEngines": {
+    "packageManager": {
+      "name": "npm",
+      "version": "12.0.2",
+      "onFail": "download"
+    }
+  },
+  "overrides": {
+    "vite": "npm:@voidzero-dev/vite-plus-core@0.2.6"
   }
 }
