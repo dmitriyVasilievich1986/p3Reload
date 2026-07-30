@@ -57,7 +57,8 @@ export class CharacterStats {
         throw new Error(`Invalid operator: ${modifier.operator}`);
     }
     if (newValue < 0) {
-      throw new Error(`Invalid value: ${newValue}`);
+      // should never happen
+      throw new Error(`Stat ${modifier.name} cannot be less than 0`);
     }
     return new CharacterStats({
       ...currentStats,
