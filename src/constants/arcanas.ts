@@ -1,0 +1,25 @@
+export const Arcanas = {
+  Aeon: 'Aeon',
+  Chariot: 'Chariot',
+  Devil: 'Devil',
+  Emperor: 'Emperor',
+  Empress: 'Empress',
+  Fool: 'Fool',
+  Fortune: 'Fortune',
+  HangedMan: 'Hanged Man',
+  Hermit: 'Hermit',
+  Hierophant: 'Hierophant',
+  Justice: 'Justice',
+  Lovers: 'Lovers',
+  Magician: 'Magician',
+  Moon: 'Moon',
+  Priestess: 'Priestess',
+  Star: 'Star',
+  Strength: 'Strength',
+  Sun: 'Sun',
+  Temperance: 'Temperance',
+  Tower: 'Tower',
+  Death: 'Death',
+} as const;
+
+export type ArcanasType = (typeof Arcanas)[keyof typeof Arcanas];
