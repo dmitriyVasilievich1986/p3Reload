@@ -22,4 +22,4 @@ export const Arcanas = {
   Death: 'Death',
 } as const;
 
-export type Arcanas = (typeof Arcanas)[keyof typeof Arcanas];
+export type ArcanasType = (typeof Arcanas)[keyof typeof Arcanas];
