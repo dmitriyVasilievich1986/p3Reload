@@ -20,7 +20,7 @@ export class AdditionalStats {
    * @param props - Optional initial events set and after-exam modifier.
    */
   constructor(props?: AdditionalStatsProps) {
-    this.singleTimeEvents = props?.singleTimeEvents ?? new Set();
+    this.singleTimeEvents = new Set(props?.singleTimeEvents ?? []);
     this.afterExamModifier = props?.afterExamModifier ?? 1;
   }
 
