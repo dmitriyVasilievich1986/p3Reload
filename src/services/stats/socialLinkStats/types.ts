@@ -1,4 +1,4 @@
-import { SocialLinkLevel } from '@services/socialLinkLevel/socialLinkLevel';
+import { SocialLinkLevel } from '@services/stats/socialLinkLevel/socialLinkLevel';
 
 import type { ArcanasType } from '@constants/arcanas';
 
