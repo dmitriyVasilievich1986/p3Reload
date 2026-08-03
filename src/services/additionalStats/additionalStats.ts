@@ -15,12 +15,12 @@ export class AdditionalStats {
 
   /**
    * Creates an additional-stats instance.
-   * Omitted `SingleTimeEvents` defaults to an empty set; omitted `afterExamModifier` defaults to `1`.
+   * Omitted `singleTimeEvents` defaults to an empty set; omitted `afterExamModifier` defaults to `1`.
    *
    * @param props - Optional initial events set and after-exam modifier.
    */
   constructor(props?: AdditionalStatsProps) {
-    this.singleTimeEvents = props?.SingleTimeEvents ?? new Set();
+    this.singleTimeEvents = props?.singleTimeEvents ?? new Set();
     this.afterExamModifier = props?.afterExamModifier ?? 1;
   }
 
@@ -44,7 +44,7 @@ export class AdditionalStats {
   addEvent(this: AdditionalStats, eventName: string): AdditionalStats {
     const newEventsList = new Set<string>([...this.singleTimeEvents, eventName]);
     return new AdditionalStats({
-      SingleTimeEvents: newEventsList,
+      singleTimeEvents: newEventsList,
       afterExamModifier: this.afterExamModifier,
     });
   }
@@ -57,7 +57,7 @@ export class AdditionalStats {
    */
   updateAfterExamModifier(this: AdditionalStats, modifier: number): AdditionalStats {
     return new AdditionalStats({
-      SingleTimeEvents: this.singleTimeEvents,
+      singleTimeEvents: this.singleTimeEvents,
       afterExamModifier: modifier,
     });
   }

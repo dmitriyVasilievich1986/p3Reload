@@ -1,4 +1,4 @@
 export type AdditionalStatsProps = {
-  SingleTimeEvents?: Set<string>;
+  singleTimeEvents?: Set<string>;
   afterExamModifier?: number;
 };

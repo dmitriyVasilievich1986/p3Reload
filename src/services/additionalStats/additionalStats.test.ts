@@ -11,10 +11,10 @@ describe('AdditionalStats', () => {
       expect(stats.afterExamModifier).toBe(1);
     });
 
-    it('accepts initial SingleTimeEvents and afterExamModifier', () => {
+    it('accepts initial singleTimeEvents and afterExamModifier', () => {
       const events = new Set(['event-a', 'event-b']);
       const stats = new AdditionalStats({
-        SingleTimeEvents: events,
+        singleTimeEvents: events,
         afterExamModifier: 1.5,
       });
 
@@ -26,7 +26,7 @@ describe('AdditionalStats', () => {
   describe('isEventHappened', () => {
     it('returns true when the event is in the set', () => {
       const stats = new AdditionalStats({
-        SingleTimeEvents: new Set(['school-festival']),
+        singleTimeEvents: new Set(['school-festival']),
       });
 
       expect(stats.isEventHappened('school-festival')).toBe(true);
@@ -34,7 +34,7 @@ describe('AdditionalStats', () => {
 
     it('returns false when the event is not in the set', () => {
       const stats = new AdditionalStats({
-        SingleTimeEvents: new Set(['school-festival']),
+        singleTimeEvents: new Set(['school-festival']),
       });
 
       expect(stats.isEventHappened('summer-festival')).toBe(false);
@@ -60,7 +60,7 @@ describe('AdditionalStats', () => {
 
     it('preserves existing events and afterExamModifier', () => {
       const stats = new AdditionalStats({
-        SingleTimeEvents: new Set(['event-a']),
+        singleTimeEvents: new Set(['event-a']),
         afterExamModifier: 2,
       });
 
@@ -72,7 +72,7 @@ describe('AdditionalStats', () => {
 
     it('does not duplicate an event that already exists', () => {
       const stats = new AdditionalStats({
-        SingleTimeEvents: new Set(['event-a']),
+        singleTimeEvents: new Set(['event-a']),
       });
 
       const next = stats.addEvent('event-a');
@@ -96,7 +96,7 @@ describe('AdditionalStats', () => {
     it('preserves singleTimeEvents', () => {
       const events = new Set(['event-a', 'event-b']);
       const stats = new AdditionalStats({
-        SingleTimeEvents: events,
+        singleTimeEvents: events,
         afterExamModifier: 1,
       });
 
