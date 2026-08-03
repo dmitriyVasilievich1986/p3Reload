@@ -3,3 +3,4 @@
  */
 
 export { AdditionalStats } from './additionalStats';
+export type { AdditionalStatsProps } from './types';
