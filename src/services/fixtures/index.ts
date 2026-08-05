@@ -1,22 +1,16 @@
 import { test } from 'vite-plus/test';
 
-/**
- * Shared test fixtures for service-layer unit tests.
- *
- * Provides default {@link IsAvailableProps} values and a Vitest `test.extend`
- * helper so availability (and other) tests can reuse the same baseline state.
- */
 import { Times, type TimesType } from '@constants/times';
-import { AdditionalStats, type AdditionalStatsProps } from '@services/additionalStats';
+import { AdditionalStats, type AdditionalStatsProps } from '@services/stats/additionalStats';
 import {
   CharacterStats,
   CharacterStatsNames,
   type CharacterStatsProps,
-} from '@services/characterStats';
-import { SocialLinkStats } from '@services/socialLinkStats';
+} from '@services/stats/characterStats';
+import { SocialLinkStats } from '@services/stats/socialLinkStats';
 
 import type { IsAvailableProps } from '@services/availability';
-import type { SocialLinkStatsProps } from '@services/socialLinkStats/types';
+import type { SocialLinkStatsProps } from '@services/stats/socialLinkStats/types';
 
 /** Baseline point totals used by {@link createCharacterStatsFixture}. */
 export const DEFAULT_CHARACTER_STATS: Required<CharacterStatsProps> = {

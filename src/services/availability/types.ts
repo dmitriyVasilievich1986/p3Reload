@@ -1,10 +1,10 @@
 import type { TimesType } from '@constants/times';
-import type { AdditionalStats } from '@services/additionalStats';
-import type { CharacterStats } from '@services/characterStats';
+import type { AdditionalStats } from '@services/stats/additionalStats';
+import type { CharacterStats } from '@services/stats/characterStats';
 /**
  * Type definitions and constants for availability model props.
  */
-import type { SocialLinkStats } from '@services/socialLinkStats';
+import type { SocialLinkStats } from '@services/stats/socialLinkStats';
 
 export type IsAvailableProps = {
   time: TimesType;

@@ -1,8 +1,5 @@
 import { expect } from 'vite-plus/test';
 
-/**
- * Vitest tests for the TimeAvailability class.
- */
 import { Times } from '@constants/times';
 import { isAvailableFixtures, createIsAvailablePropsFixture } from '@services/fixtures';
 
