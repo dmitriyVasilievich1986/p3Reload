@@ -4,7 +4,7 @@ import type { ArcanasType } from '@constants/arcanas';
 
 export type SocialLinkStatsType = {
   level: number;
-  isRomatic: boolean;
+  isRomantic: boolean;
   currentPoints: number;
   currentSocialLinkLevel: SocialLinkLevel;
 };

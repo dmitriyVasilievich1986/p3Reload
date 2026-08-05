@@ -7,3 +7,4 @@
  */
 
 export { SocialLinkStats } from './socialLinkStats';
+export type { SocialLinkStatsProps, SocialLinkStatsType } from './types';

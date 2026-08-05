@@ -25,7 +25,7 @@ function createLevel(
 function createArcanaStats(overrides: Partial<SocialLinkStatsType> = {}): SocialLinkStatsType {
   return {
     level: 1,
-    isRomatic: false,
+    isRomantic: false,
     currentPoints: 5,
     currentSocialLinkLevel: createLevel(),
     ...overrides,
@@ -39,7 +39,7 @@ describe('SocialLinkStats', () => {
 
       for (const arcana of Object.values(Arcanas)) {
         expect(stats[arcana].level).toBe(0);
-        expect(stats[arcana].isRomatic).toBe(false);
+        expect(stats[arcana].isRomantic).toBe(false);
         expect(stats[arcana].currentPoints).toBe(0);
         expect(stats[arcana].currentSocialLinkLevel.level).toBe(0);
         expect(stats[arcana].currentSocialLinkLevel.pointsToNextLevel).toBe(0);
@@ -50,7 +50,7 @@ describe('SocialLinkStats', () => {
       const magicianLevel = createLevel({ level: 2, pointsToNextLevel: 30 });
       const magician = createArcanaStats({
         level: 2,
-        isRomatic: true,
+        isRomantic: true,
         currentPoints: 12,
         currentSocialLinkLevel: magicianLevel,
       });
@@ -72,7 +72,7 @@ describe('SocialLinkStats', () => {
         [Arcanas.Lovers]: createArcanaStats({
           level: 1,
           currentPoints: 18,
-          isRomatic: false,
+          isRomantic: false,
         }),
       });
 
@@ -84,18 +84,18 @@ describe('SocialLinkStats', () => {
       expect(stats[Arcanas.Lovers]).toEqual({
         level: 2,
         currentPoints: 0,
-        isRomatic: false,
+        isRomantic: false,
         currentSocialLinkLevel: nextLevel,
       });
     });
 
-    it('uses optional amountOfLevels, currentPoints, and isRomatic when provided', () => {
+    it('uses optional amountOfLevels, currentPoints, and isRomantic when provided', () => {
       const nextLevel = createLevel({ level: 4, isRomantic: true });
       const stats = new SocialLinkStats({
         [Arcanas.Lovers]: createArcanaStats({
           level: 1,
           currentPoints: 8,
-          isRomatic: false,
+          isRomantic: false,
         }),
       });
 
@@ -104,13 +104,13 @@ describe('SocialLinkStats', () => {
         level: nextLevel,
         amountOfLevels: 3,
         currentPoints: 4,
-        isRomatic: true,
+        isRomantic: true,
       });
 
       expect(stats[Arcanas.Lovers]).toEqual({
         level: 4,
         currentPoints: 4,
-        isRomatic: true,
+        isRomantic: true,
         currentSocialLinkLevel: nextLevel,
       });
     });
@@ -138,7 +138,7 @@ describe('SocialLinkStats', () => {
         [Arcanas.Emperor]: createArcanaStats({
           level: 2,
           currentPoints: 10,
-          isRomatic: true,
+          isRomantic: true,
           currentSocialLinkLevel: level,
         }),
       });
@@ -148,7 +148,7 @@ describe('SocialLinkStats', () => {
       expect(stats[Arcanas.Emperor]).toEqual({
         level: 2,
         currentPoints: 15,
-        isRomatic: true,
+        isRomantic: true,
         currentSocialLinkLevel: level,
       });
     });
@@ -166,24 +166,24 @@ describe('SocialLinkStats', () => {
     });
   });
 
-  describe('updateIsRomatic', () => {
-    it('updates isRomatic and preserves other fields', () => {
+  describe('updateIsRomantic', () => {
+    it('updates isRomantic and preserves other fields', () => {
       const level = createLevel({ level: 3 });
       const stats = new SocialLinkStats({
         [Arcanas.Priestess]: createArcanaStats({
           level: 3,
           currentPoints: 9,
-          isRomatic: false,
+          isRomantic: false,
           currentSocialLinkLevel: level,
         }),
       });
 
-      stats.updateIsRomatic({ arcana: Arcanas.Priestess, isRomatic: true });
+      stats.updateIsRomantic({ arcana: Arcanas.Priestess, isRomantic: true });
 
       expect(stats[Arcanas.Priestess]).toEqual({
         level: 3,
         currentPoints: 9,
-        isRomatic: true,
+        isRomantic: true,
         currentSocialLinkLevel: level,
       });
     });
