@@ -166,7 +166,7 @@ describe('SocialLinkStats', () => {
     });
   });
 
-  describe('updateIsRomatic', () => {
+  describe('updateIsRomantic', () => {
     it('updates isRomantic and preserves other fields', () => {
       const level = createLevel({ level: 3 });
       const stats = new SocialLinkStats({
@@ -178,7 +178,7 @@ describe('SocialLinkStats', () => {
         }),
       });
 
-      stats.updateIsRomatic({ arcana: Arcanas.Priestess, isRomantic: true });
+      stats.updateIsRomantic({ arcana: Arcanas.Priestess, isRomantic: true });
 
       expect(stats[Arcanas.Priestess]).toEqual({
         level: 3,

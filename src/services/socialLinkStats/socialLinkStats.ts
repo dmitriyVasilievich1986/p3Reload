@@ -112,7 +112,7 @@ export class SocialLinkStats {
    * @param props.arcana - Arcana to update.
    * @param props.isRomantic - New romantic-path value.
    */
-  updateIsRomatic(this: SocialLinkStats, props: { arcana: ArcanasType; isRomantic: boolean }) {
+  updateIsRomantic(this: SocialLinkStats, props: { arcana: ArcanasType; isRomantic: boolean }) {
     this[props.arcana] = {
       level: this[props.arcana].level,
       currentPoints: this[props.arcana].currentPoints,
