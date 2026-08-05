@@ -1,27 +1,27 @@
 import _ from 'lodash';
 
-/**
- * Date-based availability rule for gating events to specific calendar days.
- */
 import { AvailabilityBase } from '../../base';
 
 import type { IsAvailableProps } from '../../types';
+import type { DateAvailabilityProps, operator } from './types';
 import type { Dayjs } from 'dayjs';
 
 /**
  * Evaluates whether an event is available on one of the configured dates.
  */
 export class DateAvailability extends AvailabilityBase {
-  readonly dates: Dayjs[];
+  readonly operator: operator;
+  readonly value: Dayjs | Dayjs[];
 
   /**
    * Create a new date-based availability rule.
    *
-   * @param {{dates: Dayjs[]}} props - Configuration for allowed calendar days.
+   * @param {DateAvailabilityProps} props - Configuration for allowed calendar days.
    */
-  constructor(props: { dates: Dayjs[] }) {
+  constructor(props: DateAvailabilityProps) {
     super();
-    this.dates = props.dates;
+    this.operator = props.operator;
+    this.value = props.value;
   }
 
   /**
@@ -31,6 +31,29 @@ export class DateAvailability extends AvailabilityBase {
    * @returns {boolean} True when the date matches one of the configured days.
    */
   isAvailable(props: IsAvailableProps): boolean {
-    return _.some(this.dates, (date) => date.isSame(props.date, 'day'));
+    switch (this.operator) {
+      case 'in':
+        return _.some(this.value as Dayjs[], (date) => date.isSame(props.date, 'day'));
+      case 'notIn':
+        return !_.some(this.value as Dayjs[], (date) => date.isSame(props.date, 'day'));
+      case 'ge':
+        return (
+          props.date.isAfter(this.value as Dayjs) || props.date.isSame(this.value as Dayjs, 'day')
+        );
+      case 'gt':
+        return props.date.isAfter(this.value as Dayjs);
+      case 'le':
+        return (
+          props.date.isBefore(this.value as Dayjs) || props.date.isSame(this.value as Dayjs, 'day')
+        );
+      case 'lt':
+        return props.date.isBefore(this.value as Dayjs);
+      case 'eq':
+        return props.date.isSame(this.value as Dayjs, 'day');
+      case 'neq':
+        return !props.date.isSame(this.value as Dayjs, 'day');
+      default:
+        throw new Error(`Invalid operator: ${this.operator}`);
+    }
   }
 }
