@@ -2,7 +2,6 @@
  * Vitest tests for the SocialLinkLevelAvailability class.
  */
 
-import _ from 'lodash';
 import { expect } from 'vite-plus/test';
 
 import { Arcanas } from '@constants/arcanas';
