@@ -1,3 +1,4 @@
+import dayjs, { Dayjs } from 'dayjs';
 import { test } from 'vite-plus/test';
 
 import { Times, type TimesType } from '@constants/times';
@@ -26,6 +27,15 @@ export const DEFAULT_CHARACTER_STATS: Required<CharacterStatsProps> = {
  */
 export function createTimeFixture(time: TimesType = Times.Day): TimesType {
   return time;
+}
+
+/**
+ * Builds a {@link Dayjs} fixture.
+ *
+ * @param date - Optional override; defaults to {@link dayjs('2009-05-15')}.
+ */
+export function createDateFixture(date: Dayjs = dayjs('2009-05-15')): Dayjs {
+  return dayjs(date);
 }
 
 /**
@@ -70,6 +80,7 @@ export function createIsAvailablePropsFixture(
 ): IsAvailableProps {
   return {
     time: createTimeFixture(),
+    date: createDateFixture(),
     characterStats: createCharacterStatsFixture(),
     socialLinkStats: createSocialLinkStatsFixture(),
     additionalStats: createAdditionalStatsFixture(),
@@ -83,7 +94,7 @@ export function createIsAvailablePropsFixture(
  * Use when a test needs individual fixture fields from the shared baseline:
  *
  * ```ts
- * isAvailableFixtures('example', ({ time, characterStats, socialLinkStats, additionalStats }) => {
+ * isAvailableFixtures('example', ({ time, date, characterStats, socialLinkStats, additionalStats }) => {
  *   // ...
  * });
  * ```
@@ -92,6 +103,10 @@ export const isAvailableFixtures = test.extend<IsAvailableProps>({
   // eslint-disable-next-line no-empty-pattern -- Vitest fixtures require a deps object
   time: async ({}, provide) => {
     await provide(createTimeFixture());
+  },
+  // eslint-disable-next-line no-empty-pattern -- Vitest fixtures require a deps object
+  date: async ({}, provide) => {
+    await provide(createDateFixture());
   },
   // eslint-disable-next-line no-empty-pattern -- Vitest fixtures require a deps object
   characterStats: async ({}, provide) => {
