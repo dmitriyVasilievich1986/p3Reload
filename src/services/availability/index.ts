@@ -14,4 +14,5 @@ export {
   SocialLinkLevelAvailability,
   IsEventInHistoryAvailability,
   IsLevelUpAvailable,
+  DayOfWeekAvailability,
 } from './models';
