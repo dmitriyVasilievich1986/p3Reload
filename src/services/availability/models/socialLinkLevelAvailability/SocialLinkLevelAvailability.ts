@@ -13,7 +13,7 @@ import type { OperatorType } from './types';
  */
 export class SocialLinkLevelAvailability extends AvailabilityBase {
   readonly name: ArcanasType;
-  operator: OperatorType;
+  readonly operator: OperatorType;
   readonly level: number | number[];
 
   /**
