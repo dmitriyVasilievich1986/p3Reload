@@ -43,7 +43,7 @@ export class SocialLinkStats {
     Object.values(Arcanas).forEach((arcanaName) => {
       this[arcanaName] = props?.[arcanaName] ?? {
         level: 0,
-        isRomatic: false,
+        isRomantic: false,
         currentPoints: 0,
         currentSocialLinkLevel: new SocialLinkLevel({
           level: 0,
@@ -62,14 +62,14 @@ export class SocialLinkStats {
    * Advances the given arcana's Social Link rank and replaces its active level definition.
    * Mutates this instance.
    *
-   * Defaults: `amountOfLevels` is `1`, `currentPoints` resets to `0`, and `isRomatic`
+   * Defaults: `amountOfLevels` is `1`, `currentPoints` resets to `0`, and `isRomantic`
    * keeps its existing value unless overridden.
    *
    * @param props.arcana - Arcana to advance.
    * @param props.level - {@link SocialLinkLevel} that becomes the new current level.
    * @param props.amountOfLevels - How many ranks to add (default `1`).
    * @param props.currentPoints - Points to carry into the new rank (default `0`).
-   * @param props.isRomatic - Romantic-path flag; omitted keeps the current value.
+   * @param props.isRomantic - Romantic-path flag; omitted keeps the current value.
    */
   increaseLevel(
     this: SocialLinkStats,
@@ -78,13 +78,13 @@ export class SocialLinkStats {
       level: SocialLinkLevel;
       amountOfLevels?: number;
       currentPoints?: number;
-      isRomatic?: boolean;
+      isRomantic?: boolean;
     }
   ) {
     this[props.arcana] = {
       level: this[props.arcana].level + (props.amountOfLevels ?? 1),
       currentPoints: props.currentPoints ?? 0,
-      isRomatic: props.isRomatic ?? this[props.arcana].isRomatic,
+      isRomantic: props.isRomantic ?? this[props.arcana].isRomantic,
       currentSocialLinkLevel: props.level,
     };
   }
@@ -100,7 +100,7 @@ export class SocialLinkStats {
     this[props.arcana] = {
       level: this[props.arcana].level,
       currentPoints: this[props.arcana].currentPoints + props.points,
-      isRomatic: this[props.arcana].isRomatic,
+      isRomantic: this[props.arcana].isRomantic,
       currentSocialLinkLevel: this[props.arcana].currentSocialLinkLevel,
     };
   }
@@ -110,13 +110,13 @@ export class SocialLinkStats {
    * Mutates this instance.
    *
    * @param props.arcana - Arcana to update.
-   * @param props.isRomatic - New romantic-path value.
+   * @param props.isRomantic - New romantic-path value.
    */
-  updateIsRomatic(this: SocialLinkStats, props: { arcana: ArcanasType; isRomatic: boolean }) {
+  updateIsRomantic(this: SocialLinkStats, props: { arcana: ArcanasType; isRomantic: boolean }) {
     this[props.arcana] = {
       level: this[props.arcana].level,
       currentPoints: this[props.arcana].currentPoints,
-      isRomatic: props.isRomatic,
+      isRomantic: props.isRomantic,
       currentSocialLinkLevel: this[props.arcana].currentSocialLinkLevel,
     };
   }
