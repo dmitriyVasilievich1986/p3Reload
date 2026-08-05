@@ -8,6 +8,7 @@ export { AvailabilityBase } from './base';
 export {
   CharacterStatsAvailability,
   TimeAvailability,
+  DateAvailability,
   AndAvailability,
   OrAvailability,
   SocialLinkLevelAvailability,
