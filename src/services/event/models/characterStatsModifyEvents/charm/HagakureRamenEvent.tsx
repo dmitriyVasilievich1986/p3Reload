@@ -54,12 +54,12 @@ export class HagakureRamenEvent extends CharacterStatsModifyEventBase {
    * @returns {stats: Stats; socialLinksStats: SocialLinksStats} Stat totals after the modifier has been applied.
    */
   override calculateStats(this: HagakureRamenEvent, props: IsAvailableProps): CalculateStatsResult {
+    const result = super.calculateStats(props);
     const isFirstTime =
       !this.additionalStats.isEventHappened(charmStatModifyNames.hagakureRamen) &&
       props.time === Times.Evening;
     return {
-      characterStats: this.characterStats,
-      socialLinkStats: this.socialLinkStats,
+      ...result,
       additionalStats: isFirstTime
         ? this.additionalStats.addEvent(charmStatModifyNames.hagakureRamen)
         : this.additionalStats,

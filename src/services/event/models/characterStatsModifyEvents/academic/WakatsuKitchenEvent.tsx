@@ -58,12 +58,12 @@ export class WakatsuKitchenEvent extends CharacterStatsModifyEventBase {
     this: WakatsuKitchenEvent,
     props: IsAvailableProps
   ): CalculateStatsResult {
+    const result = super.calculateStats(props);
     const isFirstTime =
       !this.additionalStats.isEventHappened(academicStatModifyNames.wakatsuKitchen) &&
       props.time === Times.Evening;
     return {
-      characterStats: this.characterStats,
-      socialLinkStats: this.socialLinkStats,
+      ...result,
       additionalStats: isFirstTime
         ? this.additionalStats.addEvent(academicStatModifyNames.wakatsuKitchen)
         : this.additionalStats,
