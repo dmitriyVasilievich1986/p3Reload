@@ -16,9 +16,9 @@ export class DayOfWeekAvailability extends AvailabilityBase {
   readonly daysOfWeek: number[];
 
   /**
-   * Create a new time-based availability rule.
+   * Create a new day of week-based availability rule.
    *
-   * @param {{daysOfWeek: DayOfWeekType[]}} props - Configuration for allowed time slots.
+   * @param {{daysOfWeek: DayOfWeekType[]}} props - Configuration for allowed days of the week.
    */
   constructor(props: { daysOfWeek: DayOfWeekType[] }) {
     super();
@@ -26,10 +26,10 @@ export class DayOfWeekAvailability extends AvailabilityBase {
   }
 
   /**
-   * Check whether the given time slot is included in this rule's allowed times.
+   * Check whether the given day of the week is included in this rule's allowed days of the week.
    *
    * @param {IsAvailableProps} props - The properties to evaluate.
-   * @returns {boolean} True when the time is one of the configured slots.
+   * @returns {boolean} True when the day of the week is one of the configured days of the week.
    */
   isAvailable(props: IsAvailableProps): boolean {
     return _.includes(this.daysOfWeek, props.date.day());
