@@ -26,10 +26,12 @@ import type { IsAvailableProps } from '@services/availability/types';
 import type { CalculateStatsResult } from '@services/event/types';
 
 /**
- * Courage activity at Wilduck Burger in Iwatodai Strip Mall.
+ * Wilduck Burger big eater challenge event at Iwatodai Strip Mall.
  *
- * Costs 1,800 yen and grants +4 Courage. Available during the evening on
- * Mondays, Tuesdays, Wednesdays, Fridays, Saturdays, and Sundays.
+ * Costs 1,800 yen and grants +4 Academics, +4 Courage, and +4 Charm.
+ * Available during the evening on Mondays, Tuesdays, Wednesdays, Fridays, Saturdays, and Sundays.
+ *
+ * This event is only available if the Big Eater Challenge event has not been completed at least once.
  */
 export class WilduckBigEaterChallengeEvent extends CharacterStatsModifyEventBase {
   static readonly name: CourageStatModifyNamesType =
