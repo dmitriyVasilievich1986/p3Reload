@@ -15,4 +15,5 @@ export {
   IsEventInHistoryAvailability,
   IsLevelUpAvailable,
   DayOfWeekAvailability,
+  DayOffAvailability,
 } from './models';
