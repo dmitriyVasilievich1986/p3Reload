@@ -1,10 +1,7 @@
-/**
- * Vitest tests for the IsEventInHistoryAvailability class.
- */
 import { expect } from 'vite-plus/test';
 
-import { AdditionalStats } from '@services/additionalStats';
 import { isAvailableFixtures, createIsAvailablePropsFixture } from '@services/fixtures';
+import { AdditionalStats } from '@services/stats/additionalStats';
 
 import { IsEventInHistoryAvailability } from './IsEventInHistoryAvailability';
 

@@ -1,3 +1,7 @@
+import _ from 'lodash';
+
+import { type ArcanasType, Arcanas } from '@constants/arcanas';
+
 import type { AdditionalStatsProps } from './types';
 
 /**
@@ -60,5 +64,35 @@ export class AdditionalStats {
       singleTimeEvents: this.singleTimeEvents,
       afterExamModifier: modifier,
     });
+  }
+
+  /**
+   * Returns the after-exam Social Link multiplier for the given arcana.
+   *
+   * Only a fixed set of school-related arcanas use {@link AdditionalStats.afterExamModifier};
+   * all other arcanas always resolve to `1`.
+   *
+   * @param arcana - Arcana whose post-exam multiplier should be resolved.
+   * @returns The stored after-exam modifier when the arcana uses it; otherwise `1`.
+   */
+  getAfterExamModifier(this: AdditionalStats, arcana: ArcanasType): number {
+    const isUsingModifier = _.includes(
+      [
+        Arcanas.Aeon,
+        Arcanas.Chariot,
+        Arcanas.Emperor,
+        Arcanas.Empress,
+        Arcanas.Fortune,
+        Arcanas.Justice,
+        Arcanas.Lovers,
+        Arcanas.Magician,
+        Arcanas.Moon,
+        Arcanas.Priestess,
+        Arcanas.Strength,
+        Arcanas.Temperance,
+      ] as ArcanasType[],
+      arcana
+    );
+    return isUsingModifier ? this.afterExamModifier : 1;
   }
 }

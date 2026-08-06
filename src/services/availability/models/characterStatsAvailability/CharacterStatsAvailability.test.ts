@@ -1,11 +1,8 @@
 import { expect } from 'vite-plus/test';
 
-import { CharacterStats } from '@services/characterStats';
-/**
- * Vitest tests for the CharacterStatsAvailability class.
- */
-import { CharacterStatsNames } from '@services/characterStats/types';
 import { isAvailableFixtures, createIsAvailablePropsFixture } from '@services/fixtures';
+import { CharacterStats } from '@services/stats/characterStats';
+import { CharacterStatsNames } from '@services/stats/characterStats/types';
 
 import { CharacterStatsAvailability } from './CharacterStatsAvailability';
 

@@ -1,13 +1,10 @@
-import { CharacterStats } from '@services/characterStats';
+import { CharacterStats } from '@services/stats/characterStats';
 
-/**
- * Stats-based availability rule for gating events by Academics, Courage, or Charm.
- */
 import { AvailabilityBase } from '../../base';
 
 import type { IsAvailableProps } from '../../types';
 import type { Operators } from './types';
-import type { CharacterStatsNamesType } from '@services/characterStats/types';
+import type { CharacterStatsNamesType } from '@services/stats/characterStats/types';
 
 /**
  * Evaluates whether an event is available based on one of the three social stats.

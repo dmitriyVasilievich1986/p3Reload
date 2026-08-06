@@ -1,13 +1,9 @@
-/**
- * Vitest tests for the SocialLinkLevelAvailability class.
- */
-
 import { expect } from 'vite-plus/test';
 
 import { Arcanas } from '@constants/arcanas';
 import { isAvailableFixtures, createIsAvailablePropsFixture } from '@services/fixtures';
-import { SocialLinkLevel } from '@services/socialLinkLevel/socialLinkLevel';
-import { SocialLinkStats } from '@services/socialLinkStats';
+import { SocialLinkLevel } from '@services/stats/socialLinkLevel';
+import { SocialLinkStats } from '@services/stats/socialLinkStats';
 
 import { SocialLinkLevelAvailability } from './SocialLinkLevelAvailability';
 

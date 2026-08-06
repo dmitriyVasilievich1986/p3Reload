@@ -1,11 +1,8 @@
 import { expect } from 'vite-plus/test';
 
-/**
- * Vitest tests for the AndAvailability class.
- */
 import { Times } from '@constants/times';
-import { CharacterStatsNames } from '@services/characterStats/types';
 import { isAvailableFixtures, createIsAvailablePropsFixture } from '@services/fixtures';
+import { CharacterStatsNames } from '@services/stats/characterStats/types';
 
 import { CharacterStatsAvailability } from '../characterStatsAvailability/CharacterStatsAvailability';
 import { TimeAvailability } from '../timeAvailability/TimeAvailability';

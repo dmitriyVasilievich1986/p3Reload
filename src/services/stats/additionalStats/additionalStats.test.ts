@@ -1,6 +1,35 @@
 import { describe, expect, it } from 'vite-plus/test';
 
+import { Arcanas } from '@constants/arcanas';
+
 import { AdditionalStats } from './additionalStats';
+
+const arcanasUsingModifier = [
+  Arcanas.Aeon,
+  Arcanas.Chariot,
+  Arcanas.Emperor,
+  Arcanas.Empress,
+  Arcanas.Fortune,
+  Arcanas.Justice,
+  Arcanas.Lovers,
+  Arcanas.Magician,
+  Arcanas.Moon,
+  Arcanas.Priestess,
+  Arcanas.Strength,
+  Arcanas.Temperance,
+] as const;
+
+const arcanasIgnoringModifier = [
+  Arcanas.Devil,
+  Arcanas.Fool,
+  Arcanas.HangedMan,
+  Arcanas.Hermit,
+  Arcanas.Hierophant,
+  Arcanas.Star,
+  Arcanas.Sun,
+  Arcanas.Tower,
+  Arcanas.Death,
+] as const;
 
 describe('AdditionalStats', () => {
   describe('constructor', () => {
@@ -104,6 +133,30 @@ describe('AdditionalStats', () => {
 
       expect(next.singleTimeEvents).toEqual(events);
       expect(next.afterExamModifier).toBe(2);
+    });
+  });
+
+  describe('getAfterExamModifier', () => {
+    it('returns the stored modifier for school-related arcanas', () => {
+      const stats = new AdditionalStats({ afterExamModifier: 1.5 });
+
+      for (const arcana of arcanasUsingModifier) {
+        expect(stats.getAfterExamModifier(arcana)).toBe(1.5);
+      }
+    });
+
+    it('returns 1 for arcanas that do not use the after-exam modifier', () => {
+      const stats = new AdditionalStats({ afterExamModifier: 1.5 });
+
+      for (const arcana of arcanasIgnoringModifier) {
+        expect(stats.getAfterExamModifier(arcana)).toBe(1);
+      }
+    });
+
+    it('returns 1 for school-related arcanas when the stored modifier is the default', () => {
+      const stats = new AdditionalStats();
+
+      expect(stats.getAfterExamModifier(Arcanas.Magician)).toBe(1);
     });
   });
 });

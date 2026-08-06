@@ -1,5 +1,5 @@
 import { Arcanas, type ArcanasType } from '@constants/arcanas';
-import { SocialLinkLevel } from '@services/socialLinkLevel/socialLinkLevel';
+import { SocialLinkLevel } from '@services/stats/socialLinkLevel/socialLinkLevel';
 
 import type { SocialLinkStatsProps, SocialLinkStatsType } from './types';
 
