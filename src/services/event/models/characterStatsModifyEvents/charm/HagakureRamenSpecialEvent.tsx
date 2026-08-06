@@ -20,10 +20,12 @@ import { CharacterStatsModifyEventBase } from '../base';
 import { type CharmStatModifyNamesType, charmStatModifyNames } from './types';
 
 /**
- * Charm activity at Hagakure Ramen in Iwatodai Strip Mall.
+ * Special Hagakure Ramen charm event at Iwatodai Strip Mall.
  *
- * Costs 900 yen and grants +3 Charm. Available during the day or evening on
- * Mondays, Tuesdays, Wednesdays, Thursdays, and Fridays.
+ * Costs 1200 yen and grants +4 Charm. Available during the evening on
+ * Tuesdays, Wednesdays, and Fridays.
+ *
+ * This event is only available if the Hagakure Ramen event has been completed at least once.
  */
 export class HagakureRamenSpecialEvent extends CharacterStatsModifyEventBase {
   static readonly name: CharmStatModifyNamesType = charmStatModifyNames.hagakureRamenSpecial;
