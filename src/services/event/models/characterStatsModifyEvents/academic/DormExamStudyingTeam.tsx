@@ -17,7 +17,7 @@ import { type AcademicStatModifyNamesType, academicStatModifyNames } from './typ
 /**
  * Academics activity at Dorm exam studying (Team) in Iwatodai Dormitory.
  *
- * Grants +4 Academics. Available during the evening on
+ * Grants +5 Academics. Available during the evening on
  * May 17, July 13, October 12, December 13.
  */
 export class DormExamStudyingTeamEvent extends CharacterStatsModifyEventBase {
