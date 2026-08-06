@@ -10,4 +10,4 @@ export type DateAvailabilityProps =
       value: Dayjs;
     };
 
-export type operator = DateAvailabilityProps['operator'];
+export type Operator = DateAvailabilityProps['operator'];

@@ -3,14 +3,14 @@ import _ from 'lodash';
 import { AvailabilityBase } from '../../base';
 
 import type { IsAvailableProps } from '../../types';
-import type { DateAvailabilityProps, operator } from './types';
+import type { DateAvailabilityProps, Operator } from './types';
 import type { Dayjs } from 'dayjs';
 
 /**
  * Evaluates whether an event is available on one of the configured dates.
  */
 export class DateAvailability extends AvailabilityBase {
-  readonly operator: operator;
+  readonly operator: Operator;
   readonly value: Dayjs | Dayjs[];
 
   /**
