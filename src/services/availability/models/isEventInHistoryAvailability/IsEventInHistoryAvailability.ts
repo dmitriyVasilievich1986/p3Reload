@@ -34,7 +34,7 @@ export class IsEventInHistoryAvailability extends AvailabilityBase {
    * @returns {boolean} True when history presence matches `isInHistory`.
    */
   isAvailable(props: IsAvailableProps): boolean {
-    const payload = props.additionalStats.isEventHappened(this.name);
+    const payload = props.stats.additionalStats.isEventHappened(this.name);
     return this.isInHistory ? payload : !payload;
   }
 }

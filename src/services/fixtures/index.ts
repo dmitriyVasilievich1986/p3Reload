@@ -2,6 +2,7 @@ import dayjs, { Dayjs } from 'dayjs';
 import { test } from 'vite-plus/test';
 
 import { Times, type TimesType } from '@constants/times';
+import { Stats, type StatsProps } from '@services/stats';
 import { AdditionalStats, type AdditionalStatsProps } from '@services/stats/additionalStats';
 import {
   CharacterStats,
@@ -71,6 +72,20 @@ export function createAdditionalStatsFixture(overrides?: AdditionalStatsProps): 
 }
 
 /**
+ * Builds a {@link Stats} fixture from the shared stat fixtures.
+ *
+ * @param overrides - Partial stats merged over the default fixtures.
+ */
+export function createStatsFixture(overrides?: StatsProps): Stats {
+  return new Stats({
+    characterStats: createCharacterStatsFixture(),
+    socialLinkStats: createSocialLinkStatsFixture(),
+    additionalStats: createAdditionalStatsFixture(),
+    ...overrides,
+  });
+}
+
+/**
  * Builds a full {@link IsAvailableProps} object from the shared field fixtures.
  *
  * @param overrides - Partial props merged over the default fixtures.
@@ -81,9 +96,7 @@ export function createIsAvailablePropsFixture(
   return {
     time: createTimeFixture(),
     date: createDateFixture(),
-    characterStats: createCharacterStatsFixture(),
-    socialLinkStats: createSocialLinkStatsFixture(),
-    additionalStats: createAdditionalStatsFixture(),
+    stats: createStatsFixture(),
     ...overrides,
   };
 }
@@ -94,7 +107,7 @@ export function createIsAvailablePropsFixture(
  * Use when a test needs individual fixture fields from the shared baseline:
  *
  * ```ts
- * isAvailableFixtures('example', ({ time, date, characterStats, socialLinkStats, additionalStats }) => {
+ * isAvailableFixtures('example', ({ time, date, stats }) => {
  *   // ...
  * });
  * ```
@@ -109,15 +122,7 @@ export const isAvailableFixtures = test.extend<IsAvailableProps>({
     await provide(createDateFixture());
   },
   // eslint-disable-next-line no-empty-pattern -- Vitest fixtures require a deps object
-  characterStats: async ({}, provide) => {
-    await provide(createCharacterStatsFixture());
-  },
-  // eslint-disable-next-line no-empty-pattern -- Vitest fixtures require a deps object
-  socialLinkStats: async ({}, provide) => {
-    await provide(createSocialLinkStatsFixture());
-  },
-  // eslint-disable-next-line no-empty-pattern -- Vitest fixtures require a deps object
-  additionalStats: async ({}, provide) => {
-    await provide(createAdditionalStatsFixture());
+  stats: async ({}, provide) => {
+    await provide(createStatsFixture());
   },
 });

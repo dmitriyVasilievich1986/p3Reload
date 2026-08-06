@@ -14,7 +14,7 @@ import { CharacterStatsModifyEventBase } from '../base';
 import { type AcademicStatModifyNamesType, academicStatModifyNames } from './types';
 
 import type { IsAvailableProps } from '@services/availability';
-import type { CalculateStatsResult } from '@services/event/types';
+import type { Stats } from '@services/stats';
 
 /**
  * Academics activity at Wakatsu Kitchen in Iwatodai Strip Mall.
@@ -52,21 +52,17 @@ export class WakatsuKitchenEvent extends CharacterStatsModifyEventBase {
   /**
    * Apply this event's Academics modifier to its current stats and return the result.
    *
-   * @returns {stats: Stats; socialLinksStats: SocialLinksStats} Stat totals after the modifier has been applied.
+   * @returns {Stats} Stats after the modifier has been applied.
    */
-  override calculateStats(
-    this: WakatsuKitchenEvent,
-    props: IsAvailableProps
-  ): CalculateStatsResult {
+  override calculateStats(this: WakatsuKitchenEvent, props: IsAvailableProps): Stats {
     const result = super.calculateStats(props);
     const isFirstTime =
-      !this.additionalStats.isEventHappened(academicStatModifyNames.wakatsuKitchen) &&
+      !result.additionalStats.isEventHappened(academicStatModifyNames.wakatsuKitchen) &&
       props.time === Times.Evening;
-    return {
-      ...result,
-      additionalStats: isFirstTime
-        ? this.additionalStats.addEvent(academicStatModifyNames.wakatsuKitchen)
-        : this.additionalStats,
-    };
+    return isFirstTime
+      ? result.updateAdditionalStats(
+          result.additionalStats.addEvent(academicStatModifyNames.wakatsuKitchen)
+        )
+      : result;
   }
 }

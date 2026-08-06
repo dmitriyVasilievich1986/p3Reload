@@ -2,6 +2,7 @@ import { describe, expect, it } from 'vite-plus/test';
 
 import { Times } from '@constants/times';
 import { createIsAvailablePropsFixture } from '@services/fixtures';
+import { Stats } from '@services/stats';
 import { CharacterStats } from '@services/stats/characterStats';
 import { CharacterStatsNames } from '@services/stats/characterStats/types';
 
@@ -64,8 +65,10 @@ describe('SchoolQuestionsEvent', () => {
       ...baseEventProps,
       time: Times.Morning,
       questions,
-      characterStats: new CharacterStats({
-        [CharacterStatsNames.Charm]: 1,
+      stats: new Stats({
+        characterStats: new CharacterStats({
+          [CharacterStatsNames.Charm]: 1,
+        }),
       }),
     });
 

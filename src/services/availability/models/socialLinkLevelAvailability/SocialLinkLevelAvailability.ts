@@ -42,7 +42,7 @@ export class SocialLinkLevelAvailability extends AvailabilityBase {
    * @returns {boolean} True when the link level matches the configured operator and threshold(s).
    */
   isAvailable(props: IsAvailableProps): boolean {
-    const level = props.socialLinkStats[this.name].level;
+    const level = props.stats.socialLinkStats[this.name].level;
     switch (this.operator) {
       case 'gt':
         return level > (this.level as number);

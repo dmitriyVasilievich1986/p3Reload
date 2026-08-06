@@ -2,6 +2,7 @@ import { expect } from 'vite-plus/test';
 
 import { Arcanas } from '@constants/arcanas';
 import { isAvailableFixtures, createIsAvailablePropsFixture } from '@services/fixtures';
+import { Stats } from '@services/stats';
 import { SocialLinkLevel } from '@services/stats/socialLinkLevel';
 import { SocialLinkStats } from '@services/stats/socialLinkStats';
 
@@ -28,35 +29,39 @@ function createSocialLinkStatsWithLevelUpReady(isReady: boolean): SocialLinkStat
 
 isAvailableFixtures('should be available', () => {
   const socialLinkStats = createSocialLinkStatsWithLevelUpReady(true);
+  const stats = new Stats({ socialLinkStats });
   const availability = new IsLevelUpAvailable({
     name: Arcanas.Chariot,
   });
-  expect(availability.isAvailable(createIsAvailablePropsFixture({ socialLinkStats }))).toBe(true);
+  expect(availability.isAvailable(createIsAvailablePropsFixture({ stats }))).toBe(true);
 });
 
 isAvailableFixtures('should be unavailable', () => {
   const socialLinkStats = createSocialLinkStatsWithLevelUpReady(false);
+  const stats = new Stats({ socialLinkStats });
   const availability = new IsLevelUpAvailable({
     name: Arcanas.Chariot,
     isLevelUpAvailable: true,
   });
-  expect(availability.isAvailable(createIsAvailablePropsFixture({ socialLinkStats }))).toBe(false);
+  expect(availability.isAvailable(createIsAvailablePropsFixture({ stats }))).toBe(false);
 });
 
 isAvailableFixtures('should be unavailable with reverse logic', () => {
   const socialLinkStats = createSocialLinkStatsWithLevelUpReady(true);
+  const stats = new Stats({ socialLinkStats });
   const availability = new IsLevelUpAvailable({
     name: Arcanas.Chariot,
     isLevelUpAvailable: false,
   });
-  expect(availability.isAvailable(createIsAvailablePropsFixture({ socialLinkStats }))).toBe(false);
+  expect(availability.isAvailable(createIsAvailablePropsFixture({ stats }))).toBe(false);
 });
 
 isAvailableFixtures('should be available with reverse logic', () => {
   const socialLinkStats = createSocialLinkStatsWithLevelUpReady(false);
+  const stats = new Stats({ socialLinkStats });
   const availability = new IsLevelUpAvailable({
     name: Arcanas.Chariot,
     isLevelUpAvailable: false,
   });
-  expect(availability.isAvailable(createIsAvailablePropsFixture({ socialLinkStats }))).toBe(true);
+  expect(availability.isAvailable(createIsAvailablePropsFixture({ stats }))).toBe(true);
 });

@@ -23,7 +23,7 @@ import { CharacterStatsModifyEventBase } from '../base';
 import { type CourageStatModifyNamesType, courageStatModifyNames } from './types';
 
 import type { IsAvailableProps } from '@services/availability/types';
-import type { CalculateStatsResult } from '@services/event/types';
+import type { Stats } from '@services/stats';
 
 /**
  * Wilduck Burger big eater challenge event at Iwatodai Strip Mall.
@@ -73,20 +73,13 @@ export class WilduckBigEaterChallengeEvent extends CharacterStatsModifyEventBase
     }),
   ];
 
-  override calculateStats(
-    this: CharacterStatsModifyEventBase,
-    _props: IsAvailableProps
-  ): CalculateStatsResult {
-    const additionalStats = this.additionalStats.addEvent(
+  override calculateStats(this: CharacterStatsModifyEventBase, _props: IsAvailableProps): Stats {
+    const additionalStats = this.stats.additionalStats.addEvent(
       courageStatModifyNames.wilduckBigEaterChallenge
     );
-    const characterStats = this.characterStats.modify(
+    const characterStats = this.stats.characterStats.modify(
       (this.constructor as typeof CharacterStatsModifyEventBase).modifiers
     );
-    return {
-      socialLinkStats: this.socialLinkStats,
-      characterStats,
-      additionalStats,
-    };
+    return this.stats.updateAdditionalStats(additionalStats).updateCharacterStats(characterStats);
   }
 }

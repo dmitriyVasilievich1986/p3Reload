@@ -1,15 +1,11 @@
 import type { TimesType } from '@constants/times';
-import type { AdditionalStats } from '@services/stats/additionalStats';
-import type { CharacterStats } from '@services/stats/characterStats';
-import type { SocialLinkStats } from '@services/stats/socialLinkStats';
+import type { Stats } from '@services/stats';
 import type { Dayjs } from 'dayjs';
 
 export type IsAvailableProps = {
   time: TimesType;
   date: Dayjs;
-  characterStats: CharacterStats;
-  socialLinkStats: SocialLinkStats;
-  additionalStats: AdditionalStats;
+  stats: Stats;
 };
 
 /** Contract implemented by concrete availability rule classes. */
