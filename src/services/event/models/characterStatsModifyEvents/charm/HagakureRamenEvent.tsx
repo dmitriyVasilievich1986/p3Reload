@@ -2,9 +2,6 @@ import { DayOfWeek } from '@constants/dayOfWeek';
 import { Places, Districts } from '@constants/places';
 import { Times } from '@constants/times';
 import { AvailabilityBase, TimeAvailability, DayOfWeekAvailability } from '@services/availability';
-/**
- * Hagakure Ramen charm event at Iwatodai Strip Mall.
- */
 import {
   CharacterStatsNames,
   type CharacterStatsModifierType,
@@ -49,9 +46,10 @@ export class HagakureRamenEvent extends CharacterStatsModifyEventBase {
   ];
 
   /**
-   * Apply this event's Academics modifier to its current stats and return the result.
+   * Calculate the stats for this event.
    *
-   * @returns {Stats} Stats after the modifier has been applied.
+   * @param {IsAvailableProps} props - The properties of the event.
+   * @returns {Stats} The stats for this event.
    */
   override calculateStats(this: HagakureRamenEvent, props: IsAvailableProps): Stats {
     const result = super.calculateStats(props);
