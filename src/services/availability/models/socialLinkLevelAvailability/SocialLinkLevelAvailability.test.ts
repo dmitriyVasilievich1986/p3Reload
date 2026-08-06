@@ -2,6 +2,7 @@ import { expect } from 'vite-plus/test';
 
 import { Arcanas } from '@constants/arcanas';
 import { isAvailableFixtures, createIsAvailablePropsFixture } from '@services/fixtures';
+import { Stats } from '@services/stats';
 import { SocialLinkLevel } from '@services/stats/socialLinkLevel';
 import { SocialLinkStats } from '@services/stats/socialLinkStats';
 
@@ -29,9 +30,8 @@ isAvailableFixtures('should be available', () => {
       }),
     },
   });
-  expect(availability.isAvailable(createIsAvailablePropsFixture({ socialLinkStats }))).toEqual(
-    true
-  );
+  const stats = new Stats({ socialLinkStats });
+  expect(availability.isAvailable(createIsAvailablePropsFixture({ stats }))).toEqual(true);
 });
 
 isAvailableFixtures('should not be available', () => {
@@ -56,7 +56,6 @@ isAvailableFixtures('should not be available', () => {
       }),
     },
   });
-  expect(availability.isAvailable(createIsAvailablePropsFixture({ socialLinkStats }))).toEqual(
-    false
-  );
+  const stats = new Stats({ socialLinkStats });
+  expect(availability.isAvailable(createIsAvailablePropsFixture({ stats }))).toEqual(false);
 });

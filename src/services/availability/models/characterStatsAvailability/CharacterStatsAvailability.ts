@@ -35,7 +35,7 @@ export class CharacterStatsAvailability extends AvailabilityBase {
   isAvailable(props: IsAvailableProps): boolean {
     const level = CharacterStats.getCharacterStatsLevelFromPoints(
       this.name,
-      props.characterStats[this.name]
+      props.stats.characterStats[this.name]
     ).level;
     switch (this.operator) {
       case 'gt':

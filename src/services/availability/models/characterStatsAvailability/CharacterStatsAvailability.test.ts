@@ -1,6 +1,7 @@
 import { expect } from 'vite-plus/test';
 
 import { isAvailableFixtures, createIsAvailablePropsFixture } from '@services/fixtures';
+import { Stats } from '@services/stats';
 import { CharacterStats } from '@services/stats/characterStats';
 import { CharacterStatsNames } from '@services/stats/characterStats/types';
 
@@ -19,7 +20,8 @@ isAvailableFixtures('should be available', () => {
   const characterStats = new CharacterStats({
     [CharacterStatsNames.Academics]: points,
   });
-  expect(availability.isAvailable(createIsAvailablePropsFixture({ characterStats }))).toEqual(true);
+  const stats = new Stats({ characterStats });
+  expect(availability.isAvailable(createIsAvailablePropsFixture({ stats }))).toEqual(true);
 });
 
 isAvailableFixtures('should be unavailable', () => {
@@ -35,7 +37,6 @@ isAvailableFixtures('should be unavailable', () => {
   const characterStats = new CharacterStats({
     [CharacterStatsNames.Academics]: points,
   });
-  expect(availability.isAvailable(createIsAvailablePropsFixture({ characterStats }))).toEqual(
-    false
-  );
+  const stats = new Stats({ characterStats });
+  expect(availability.isAvailable(createIsAvailablePropsFixture({ stats }))).toEqual(false);
 });

@@ -2,9 +2,9 @@ import _ from 'lodash';
 import React from 'react';
 
 import { type TimesType } from '@constants/times';
-import { AdditionalStats, CharacterStats, SocialLinkStats } from '@services/stats';
+import { Stats } from '@services/stats';
 
-import type { EventProps, EventNamesType, CalculateStatsResult } from './types';
+import type { EventProps, EventNamesType } from './types';
 import type { AvailabilityBase } from '@services/availability/base';
 import type { IsAvailableProps } from '@services/availability/types';
 
@@ -16,18 +16,14 @@ export abstract class BaseEvent {
   readonly skipCheck: boolean;
   readonly isChangeable: boolean;
 
-  additionalStats: AdditionalStats;
-  characterStats: CharacterStats;
-  socialLinkStats: SocialLinkStats;
+  stats: Stats;
 
   constructor(props: EventProps) {
     this.time = props.time;
     this.skipCheck = props.skipCheck;
     this.isChangeable = props.isChangeable;
 
-    this.additionalStats = props?.additionalStats ?? new AdditionalStats();
-    this.characterStats = props?.characterStats ?? new CharacterStats();
-    this.socialLinkStats = props?.socialLinkStats ?? new SocialLinkStats();
+    this.stats = props.stats ?? new Stats();
   }
 
   static isAvailable(this: typeof BaseEvent, props: IsAvailableProps): boolean {
@@ -44,7 +40,7 @@ export abstract class BaseEvent {
 
   abstract render(props: IsAvailableProps): React.ReactNode;
 
-  abstract calculateStats(props: IsAvailableProps): CalculateStatsResult;
+  abstract calculateStats(props: IsAvailableProps): Stats;
 
   serialize(): { name: EventNamesType; props: EventProps } {
     return {

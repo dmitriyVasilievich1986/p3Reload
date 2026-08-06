@@ -2,21 +2,13 @@ import { characterStatsModifyNames } from './models/characterStatsModifyEvents/t
 import { schoolQuestionEventsNames } from './models/schoolQuestions/types';
 
 import type { TimesType } from '@constants/times';
-import type { AdditionalStats, CharacterStats, SocialLinkStats } from '@services/stats';
+import type { Stats } from '@services/stats';
 
 export type EventProps = {
   time: TimesType;
   skipCheck: boolean;
   isChangeable: boolean;
-  additionalStats?: AdditionalStats;
-  characterStats?: CharacterStats;
-  socialLinkStats?: SocialLinkStats;
-};
-
-export type CalculateStatsResult = {
-  additionalStats: AdditionalStats;
-  characterStats: CharacterStats;
-  socialLinkStats: SocialLinkStats;
+  stats?: Stats;
 };
 
 export const EventNames = {
