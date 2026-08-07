@@ -66,11 +66,13 @@ export class Day {
    * @throws {Error} If the event is not found.
    */
   getEvent(this: Day, time: TimesType): BaseEvent {
-    const event = _.find(this.events, (event) => event.time === time);
-    if (!event) {
-      throw new Error(`Event not found for time: ${time}`);
+    const events = _.filter(this.events, (event) => event.time === time);
+    if (events.length > 1) {
+      throw new Error(`Multiple events found for time: ${time}`);
+    } else if (events.length === 0) {
+      throw new Error(`No events found for time: ${time}`);
     }
-    return event;
+    return events[0];
   }
 
   /**
