@@ -127,9 +127,19 @@ export class Day {
   static filterEvents(
     events: BaseEvent[],
     props: IsAvailableProps,
-    throwAnErrorIfNotAvailable: boolean = false
+    throwAnErrorIfNotAvailable: boolean = false,
+    throwAnErrorIfMultipleEvents: boolean = false
   ): BaseEvent[] {
+    const seenTimes = new Set<TimesType>();
     return _.filter(events, (event) => {
+      if (seenTimes.has(event.time)) {
+        if (throwAnErrorIfMultipleEvents) {
+          throw new Error(`Multiple events found at time ${event.time}.`);
+        } else {
+          console.warn(`Multiple events found at time ${event.time}.`);
+        }
+      }
+      seenTimes.add(event.time);
       if (event.skipCheck) {
         return true;
       }

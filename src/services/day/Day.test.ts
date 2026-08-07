@@ -235,6 +235,38 @@ describe('Day', () => {
         `Event ${charmStatModifyNames.chagallCafeCharm} is not available at this time.`
       );
     });
+
+    it('warns when multiple events share the same time by default', () => {
+      const warnSpy = vi.spyOn(console, 'warn').mockImplementation(() => undefined);
+      const first = createStayAwakeEvent({ skipCheck: true });
+      const second = createSleepDuringClassEvent({ time: Times.Morning, skipCheck: true });
+      const props = createIsAvailablePropsFixture({ time: Times.Morning });
+
+      expect(Day.filterEvents([first, second], props)).toEqual([first, second]);
+      expect(warnSpy).toHaveBeenCalledWith(`Multiple events found at time ${Times.Morning}.`);
+    });
+
+    it('throws when multiple events share the same time and throwAnErrorIfMultipleEvents is true', () => {
+      const first = createStayAwakeEvent({ skipCheck: true });
+      const second = createSleepDuringClassEvent({ time: Times.Morning, skipCheck: true });
+      const props = createIsAvailablePropsFixture({ time: Times.Morning });
+
+      expect(() => Day.filterEvents([first, second], props, false, true)).toThrow(
+        `Multiple events found at time ${Times.Morning}.`
+      );
+    });
+
+    it('does not warn about duplicates when event times are unique', () => {
+      const warnSpy = vi.spyOn(console, 'warn').mockImplementation(() => undefined);
+      const morning = createStayAwakeEvent({ skipCheck: true });
+      const evening = createChagallCafeEvent({ skipCheck: true });
+      const props = createIsAvailablePropsFixture();
+
+      expect(Day.filterEvents([morning, evening], props)).toEqual([morning, evening]);
+      expect(warnSpy).not.toHaveBeenCalledWith(
+        expect.stringContaining('Multiple events found at time')
+      );
+    });
   });
 
   describe('calculateStats', () => {
