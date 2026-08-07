@@ -62,7 +62,7 @@ export class Day {
    * Normalizes a mixed list of event instances and serialized event payloads
    * into {@link BaseEvent} instances via {@link eventFactory}.
    *
-   * @param events - Existing events or `{ name, props }` factory inputs.
+   * @param events - Existing events or serialized event payloads.
    * @returns The same events as {@link BaseEvent} instances.
    */
   static processEvents(
