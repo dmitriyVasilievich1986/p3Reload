@@ -59,6 +59,23 @@ export class Day {
   }
 
   /**
+   * Gets an event by time.
+   *
+   * @param time - Time of the event to get.
+   * @returns The event.
+   * @throws {Error} If the event is not found.
+   */
+  getEvent(this: Day, time: TimesType): BaseEvent {
+    const events = _.filter(this.events, (event) => event.time === time);
+    if (events.length > 1) {
+      throw new Error(`Multiple events found for time: ${time}`);
+    } else if (events.length === 0) {
+      throw new Error(`No events found for time: ${time}`);
+    }
+    return events[0];
+  }
+
+  /**
    * Normalizes a mixed list of event instances and serialized event payloads
    * into {@link BaseEvent} instances via {@link eventFactory}.
    *
