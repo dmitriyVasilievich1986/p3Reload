@@ -168,7 +168,7 @@ export class Day {
 
     events.forEach((event) => {
       event.stats = stats_;
-      stats_ = event.calculateStats(props);
+      stats_ = event.calculateStats({ ...props, stats: stats_, event, time: event.time });
     });
 
     return { events, startingStats, endingStats: stats_ };
