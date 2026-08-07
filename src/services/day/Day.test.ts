@@ -90,6 +90,48 @@ describe('Day', () => {
     });
   });
 
+  describe('getEvent', () => {
+    it('returns the event at the given time', () => {
+      const morning = createStayAwakeEvent();
+      const evening = createChagallCafeEvent();
+      const day = new Day({
+        statsAtStartOfDay: createStatsFixture(),
+        statsAtEndOfDay: createStatsFixture(),
+        events: [morning, evening],
+        date: createDateFixture(),
+      });
+
+      expect(day.getEvent(Times.Morning)).toBe(morning);
+      expect(day.getEvent(Times.Evening)).toBe(evening);
+    });
+
+    it('throws when no event matches the time', () => {
+      const day = new Day({
+        statsAtStartOfDay: createStatsFixture(),
+        statsAtEndOfDay: createStatsFixture(),
+        events: [createChagallCafeEvent()],
+        date: createDateFixture(),
+      });
+
+      expect(() => day.getEvent(Times.Morning)).toThrow(
+        `No events found for time: ${Times.Morning}`
+      );
+    });
+
+    it('throws when multiple events share the same time', () => {
+      const day = new Day({
+        statsAtStartOfDay: createStatsFixture(),
+        statsAtEndOfDay: createStatsFixture(),
+        events: [createStayAwakeEvent(), createSleepDuringClassEvent({ time: Times.Morning })],
+        date: createDateFixture(),
+      });
+
+      expect(() => day.getEvent(Times.Morning)).toThrow(
+        `Multiple events found for time: ${Times.Morning}`
+      );
+    });
+  });
+
   describe('processEvents', () => {
     it('returns BaseEvent instances unchanged', () => {
       const events = [createStayAwakeEvent(), createChagallCafeEvent()];
