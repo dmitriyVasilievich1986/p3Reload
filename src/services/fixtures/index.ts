@@ -2,6 +2,8 @@ import dayjs, { Dayjs } from 'dayjs';
 import { test } from 'vite-plus/test';
 
 import { Times, type TimesType } from '@constants/times';
+import { Day } from '@services/day';
+import { StayAwakeAcademicsEvent } from '@services/event/models/characterStatsModifyEvents/academic';
 import { Stats, type StatsProps } from '@services/stats';
 import { AdditionalStats, type AdditionalStatsProps } from '@services/stats/additionalStats';
 import {
@@ -12,6 +14,9 @@ import {
 import { SocialLinkStats } from '@services/stats/socialLinkStats';
 
 import type { IsAvailableProps } from '@services/availability';
+import type { DayProps } from '@services/day/types';
+import type { BaseEvent } from '@services/event/base';
+import type { EventProps } from '@services/event/types';
 import type { SocialLinkStatsProps } from '@services/stats/socialLinkStats/types';
 
 /** Baseline point totals used by {@link createCharacterStatsFixture}. */
@@ -86,6 +91,38 @@ export function createStatsFixture(overrides?: StatsProps): Stats {
 }
 
 /**
+ * Builds a {@link BaseEvent} fixture.
+ *
+ * Uses {@link StayAwakeAcademicsEvent} as a concrete stand-in.
+ *
+ * @param overrides - Partial event props merged over the defaults.
+ */
+export function createEventFixture(overrides?: Partial<EventProps>): BaseEvent {
+  return new StayAwakeAcademicsEvent({
+    time: createTimeFixture(),
+    skipCheck: true,
+    isChangeable: true,
+    ...overrides,
+  });
+}
+
+/**
+ * Builds a {@link Day} fixture.
+ *
+ * @param overrides - Partial day props merged over the defaults.
+ */
+export function createDayFixture(overrides?: Partial<DayProps>): Day {
+  const statsAtStartOfDay = overrides?.statsAtStartOfDay ?? createStatsFixture();
+  return new Day({
+    date: createDateFixture(),
+    statsAtStartOfDay,
+    statsAtEndOfDay: statsAtStartOfDay,
+    events: [],
+    ...overrides,
+  });
+}
+
+/**
  * Builds a full {@link IsAvailableProps} object from the shared field fixtures.
  *
  * @param overrides - Partial props merged over the default fixtures.
@@ -93,11 +130,26 @@ export function createStatsFixture(overrides?: StatsProps): Stats {
 export function createIsAvailablePropsFixture(
   overrides?: Partial<IsAvailableProps>
 ): IsAvailableProps {
+  const date = overrides?.date ?? createDateFixture();
+  const time = overrides?.time ?? createTimeFixture();
+  const stats = overrides?.stats ?? createStatsFixture();
+  const event = overrides?.event ?? createEventFixture({ time, stats });
+
   return {
-    time: createTimeFixture(),
-    date: createDateFixture(),
-    stats: createStatsFixture(),
-    ...overrides,
+    time,
+    date,
+    stats,
+    event,
+    currentDay:
+      overrides?.currentDay ??
+      createDayFixture({
+        date,
+        events: [event],
+        statsAtStartOfDay: stats,
+        statsAtEndOfDay: stats,
+      }),
+    previousDay: overrides?.previousDay ?? createDayFixture({ date: date.subtract(1, 'day') }),
+    dayWeekBefore: overrides?.dayWeekBefore ?? createDayFixture({ date: date.subtract(7, 'day') }),
   };
 }
 
@@ -107,7 +159,7 @@ export function createIsAvailablePropsFixture(
  * Use when a test needs individual fixture fields from the shared baseline:
  *
  * ```ts
- * isAvailableFixtures('example', ({ time, date, stats }) => {
+ * isAvailableFixtures('example', ({ time, date, stats, event, currentDay }) => {
  *   // ...
  * });
  * ```
@@ -124,5 +176,25 @@ export const isAvailableFixtures = test.extend<IsAvailableProps>({
   // eslint-disable-next-line no-empty-pattern -- Vitest fixtures require a deps object
   stats: async ({}, provide) => {
     await provide(createStatsFixture());
+  },
+  // eslint-disable-next-line no-empty-pattern -- Vitest fixtures require a deps object
+  event: async ({}, provide) => {
+    await provide(createEventFixture());
+  },
+  currentDay: async ({ date, event, stats }, provide) => {
+    await provide(
+      createDayFixture({
+        date,
+        events: [event],
+        statsAtStartOfDay: stats,
+        statsAtEndOfDay: stats,
+      })
+    );
+  },
+  previousDay: async ({ date }, provide) => {
+    await provide(createDayFixture({ date: date.subtract(1, 'day') }));
+  },
+  dayWeekBefore: async ({ date }, provide) => {
+    await provide(createDayFixture({ date: date.subtract(7, 'day') }));
   },
 });
