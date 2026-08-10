@@ -27,6 +27,7 @@ export function Card({
   badge,
   isSelected = false,
   isSelectable = true,
+  isTall = false,
   onClick,
   className,
 }: CardProps) {
@@ -46,6 +47,7 @@ export function Card({
         isSelected &&
           'border-sky-400 ring-2 ring-sky-400/70 dark:border-sky-500 dark:ring-sky-500/60',
         !isSelectable && 'cursor-not-allowed opacity-60',
+        isTall && 'min-h-[300px]',
         className
       )}
     >

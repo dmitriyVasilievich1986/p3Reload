@@ -112,4 +112,20 @@ describe('Card', () => {
     expect(article).toHaveClass('dark:bg-slate-900');
     expect(article).toHaveClass('dark:border-slate-700');
   });
+
+  it('applies min-height when isTall is true', () => {
+    const { container } = render(<Card isTall body={<span>Content</span>} />);
+
+    const article = container.querySelector('article');
+
+    expect(article).toHaveClass('min-h-[300px]');
+  });
+
+  it('does not apply min-height by default', () => {
+    const { container } = render(<Card body={<span>Content</span>} />);
+
+    const article = container.querySelector('article');
+
+    expect(article).not.toHaveClass('min-h-[300px]');
+  });
 });

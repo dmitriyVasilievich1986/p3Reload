@@ -15,6 +15,8 @@ export type CardProps = {
   isSelected?: boolean;
   /** When false, the card is disabled and non-interactive. Defaults to true. */
   isSelectable?: boolean;
+  /** When true, applies a default min-height (300px) to the card. */
+  isTall?: boolean;
   onClick?: () => void;
   className?: string;
 };
