@@ -17,7 +17,7 @@ import {
 } from '@services/stats/characterStats/types';
 
 import { CharacterStatsModifyEventBase } from '../base';
-import { type AcademicStatModifyNamesType, academicStatModifyNames } from './types';
+import { type AcademicStatModifyNamesType, AcademicStatModifyNames } from './types';
 
 /**
  * Academics activity at Wakatsu Kitchen in Iwatodai Strip Mall (Seafood Full Course).
@@ -26,7 +26,7 @@ import { type AcademicStatModifyNamesType, academicStatModifyNames } from './typ
  * Mondays, Thursdays, Fridays, and Sundays.
  */
 export class WakatsuKitchenSpecialEvent extends CharacterStatsModifyEventBase {
-  static readonly name: AcademicStatModifyNamesType = academicStatModifyNames.wakatsuKitchenSpecial;
+  static readonly name: AcademicStatModifyNamesType = AcademicStatModifyNames.wakatsuKitchenSpecial;
 
   static readonly header: string = 'Seafood Full Course';
   static readonly place: string = Places.WakatsuKitchen;
@@ -49,7 +49,7 @@ export class WakatsuKitchenSpecialEvent extends CharacterStatsModifyEventBase {
       level: 2,
     }),
     new IsEventInHistoryAvailability({
-      name: academicStatModifyNames.wakatsuKitchen,
+      name: AcademicStatModifyNames.wakatsuKitchen,
       isInHistory: true,
     }),
   ];

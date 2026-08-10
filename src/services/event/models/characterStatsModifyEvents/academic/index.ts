@@ -3,12 +3,12 @@ import { DormExamStudyingTeamEvent } from './DormExamStudyingTeam';
 import { GameParadeAcademicsEvent } from './GameParadeAcademics';
 import { StayAwakeAcademicsEvent } from './StayAwake';
 import { SummerSchoolEvent } from './SummerSchoolEvent';
-import { academicStatModifyNames, type AcademicStatModifyNamesType } from './types';
+import { AcademicStatModifyNames, type AcademicStatModifyNamesType } from './types';
 import { WakatsuKitchenEvent } from './WakatsuKitchenEvent';
 import { WakatsuKitchenSpecialEvent } from './WakatsuKitchenSpecial';
 
 export {
-  academicStatModifyNames,
+  AcademicStatModifyNames,
   type AcademicStatModifyNamesType,
   DormExamStudyingGroupEvent,
   DormExamStudyingTeamEvent,
@@ -20,11 +20,11 @@ export {
 };
 
 export const academicStatModifyEvents = {
-  [academicStatModifyNames.dormExamStudyingGroup]: DormExamStudyingGroupEvent,
-  [academicStatModifyNames.dormExamStudyingTeam]: DormExamStudyingTeamEvent,
-  [academicStatModifyNames.wakatsuKitchen]: WakatsuKitchenEvent,
-  [academicStatModifyNames.wakatsuKitchenSpecial]: WakatsuKitchenSpecialEvent,
-  [academicStatModifyNames.stayAwake]: StayAwakeAcademicsEvent,
-  [academicStatModifyNames.summerSchool]: SummerSchoolEvent,
-  [academicStatModifyNames.gameParadeAcademics]: GameParadeAcademicsEvent,
+  [AcademicStatModifyNames.dormExamStudyingGroup]: DormExamStudyingGroupEvent,
+  [AcademicStatModifyNames.dormExamStudyingTeam]: DormExamStudyingTeamEvent,
+  [AcademicStatModifyNames.wakatsuKitchen]: WakatsuKitchenEvent,
+  [AcademicStatModifyNames.wakatsuKitchenSpecial]: WakatsuKitchenSpecialEvent,
+  [AcademicStatModifyNames.stayAwake]: StayAwakeAcademicsEvent,
+  [AcademicStatModifyNames.summerSchool]: SummerSchoolEvent,
+  [AcademicStatModifyNames.gameParadeAcademics]: GameParadeAcademicsEvent,
 } as const;

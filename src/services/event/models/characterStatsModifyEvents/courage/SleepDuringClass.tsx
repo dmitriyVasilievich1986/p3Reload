@@ -10,7 +10,7 @@ import {
 } from '@services/stats/characterStats/types';
 
 import { CharacterStatsModifyEventBase } from '../base';
-import { type CourageStatModifyNamesType, courageStatModifyNames } from './types';
+import { type CourageStatModifyNamesType, CourageStatModifyNames } from './types';
 
 /**
  * Sleep during class courage event at Gekkoukan High School.
@@ -18,7 +18,7 @@ import { type CourageStatModifyNamesType, courageStatModifyNames } from './types
  * Grants +2 Courage.
  */
 export class SleepDuringClassCourageEvent extends CharacterStatsModifyEventBase {
-  static readonly name: CourageStatModifyNamesType = courageStatModifyNames.sleepDuringClass;
+  static readonly name: CourageStatModifyNamesType = CourageStatModifyNames.sleepDuringClass;
 
   static readonly header: string = 'Sleep during class';
   static readonly district: string = Districts.GekkoukanHighSchool;

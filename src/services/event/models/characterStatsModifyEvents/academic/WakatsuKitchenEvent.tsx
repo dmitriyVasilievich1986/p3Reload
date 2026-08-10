@@ -11,7 +11,7 @@ import {
 } from '@services/stats/characterStats/types';
 
 import { CharacterStatsModifyEventBase } from '../base';
-import { type AcademicStatModifyNamesType, academicStatModifyNames } from './types';
+import { type AcademicStatModifyNamesType, AcademicStatModifyNames } from './types';
 
 import type { IsAvailableProps } from '@services/availability';
 import type { Stats } from '@services/stats';
@@ -23,7 +23,7 @@ import type { Stats } from '@services/stats';
  * Mondays, Wednesdays, Thursdays, Fridays, Saturdays, and Sundays.
  */
 export class WakatsuKitchenEvent extends CharacterStatsModifyEventBase {
-  static readonly name: AcademicStatModifyNamesType = academicStatModifyNames.wakatsuKitchen;
+  static readonly name: AcademicStatModifyNamesType = AcademicStatModifyNames.wakatsuKitchen;
 
   static readonly header: string = 'Prodigy Platter';
   static readonly place: string = Places.WakatsuKitchen;
@@ -57,11 +57,11 @@ export class WakatsuKitchenEvent extends CharacterStatsModifyEventBase {
   override calculateStats(this: WakatsuKitchenEvent, props: IsAvailableProps): Stats {
     const result = super.calculateStats(props);
     const isFirstTime =
-      !result.additionalStats.isEventHappened(academicStatModifyNames.wakatsuKitchen) &&
+      !result.additionalStats.isEventHappened(AcademicStatModifyNames.wakatsuKitchen) &&
       props.time === Times.Evening;
     return isFirstTime
       ? result.updateAdditionalStats(
-          result.additionalStats.addEvent(academicStatModifyNames.wakatsuKitchen)
+          result.additionalStats.addEvent(AcademicStatModifyNames.wakatsuKitchen)
         )
       : result;
   }

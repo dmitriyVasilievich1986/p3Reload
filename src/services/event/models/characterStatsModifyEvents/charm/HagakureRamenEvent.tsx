@@ -8,7 +8,7 @@ import {
 } from '@services/stats/characterStats/types';
 
 import { CharacterStatsModifyEventBase } from '../base';
-import { type CharmStatModifyNamesType, charmStatModifyNames } from './types';
+import { type CharmStatModifyNamesType, CharmStatModifyNames } from './types';
 
 import type { IsAvailableProps } from '@services/availability';
 import type { Stats } from '@services/stats';
@@ -20,7 +20,7 @@ import type { Stats } from '@services/stats';
  * Mondays, Tuesdays, Wednesdays, Thursdays, and Fridays.
  */
 export class HagakureRamenEvent extends CharacterStatsModifyEventBase {
-  static readonly name: CharmStatModifyNamesType = charmStatModifyNames.hagakureRamen;
+  static readonly name: CharmStatModifyNamesType = CharmStatModifyNames.hagakureRamen;
 
   static readonly header: string = 'Pork Ramen';
   static readonly place: string = Places.HagakureRamen;
@@ -54,11 +54,11 @@ export class HagakureRamenEvent extends CharacterStatsModifyEventBase {
   override calculateStats(this: HagakureRamenEvent, props: IsAvailableProps): Stats {
     const result = super.calculateStats(props);
     const isFirstTime =
-      !result.additionalStats.isEventHappened(charmStatModifyNames.hagakureRamen) &&
+      !result.additionalStats.isEventHappened(CharmStatModifyNames.hagakureRamen) &&
       props.time === Times.Evening;
     return isFirstTime
       ? result.updateAdditionalStats(
-          result.additionalStats.addEvent(charmStatModifyNames.hagakureRamen)
+          result.additionalStats.addEvent(CharmStatModifyNames.hagakureRamen)
         )
       : result;
   }

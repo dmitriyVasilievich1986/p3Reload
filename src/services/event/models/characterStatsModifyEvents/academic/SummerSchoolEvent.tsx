@@ -8,7 +8,7 @@ import {
 } from '@services/stats/characterStats/types';
 
 import { CharacterStatsModifyEventBase } from '../base';
-import { type AcademicStatModifyNamesType, academicStatModifyNames } from './types';
+import { type AcademicStatModifyNamesType, AcademicStatModifyNames } from './types';
 
 /**
  * Academics activity at Summer School in Gekkoukan High School.
@@ -16,7 +16,7 @@ import { type AcademicStatModifyNamesType, academicStatModifyNames } from './typ
  * Grants +3 Academics.
  */
 export class SummerSchoolEvent extends CharacterStatsModifyEventBase {
-  static readonly name: AcademicStatModifyNamesType = academicStatModifyNames.summerSchool;
+  static readonly name: AcademicStatModifyNamesType = AcademicStatModifyNames.summerSchool;
 
   readonly isChangeable: boolean = false;
   readonly skipCheck: boolean = true;

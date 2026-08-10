@@ -5,7 +5,7 @@ import { DatesFormat } from '@constants/dates';
 import { Times } from '@constants/times';
 import { Day } from '@services/day';
 import { StayAwakeAcademicsEvent } from '@services/event/models/characterStatsModifyEvents/academic';
-import { academicStatModifyNames } from '@services/event/models/characterStatsModifyEvents/academic/types';
+import { AcademicStatModifyNames } from '@services/event/models/characterStatsModifyEvents/academic/types';
 import { ChagalCafeCharmEvent } from '@services/event/models/characterStatsModifyEvents/charm';
 import { createDateFixture, createDayFixture, createStatsFixture } from '@services/fixtures';
 import { Stats } from '@services/stats';
@@ -206,7 +206,7 @@ describe('Calendar', () => {
       });
 
       expect(() => Calendar.calculateStats([day])).toThrow(
-        `Event ${academicStatModifyNames.stayAwake} is not available at this time.`
+        `Event ${AcademicStatModifyNames.stayAwake} is not available at this time.`
       );
     });
 

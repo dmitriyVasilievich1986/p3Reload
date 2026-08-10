@@ -9,7 +9,7 @@ import { AvailabilityBase, TimeAvailability, DateAvailability } from '@services/
 import { CharacterStatsNames } from '@services/stats/characterStats/types';
 
 import { CharacterStatsModifyEventBase } from '../base';
-import { type AcademicStatModifyNamesType, academicStatModifyNames } from './types';
+import { type AcademicStatModifyNamesType, AcademicStatModifyNames } from './types';
 
 import type { CharacterStatsModifierType } from '@services/stats/characterStats';
 
@@ -20,7 +20,7 @@ import type { CharacterStatsModifierType } from '@services/stats/characterStats'
  * May 15, May 16, July 9, July 10, October 8, October 9, October 11, December 9, December 11, December 12.
  */
 export class DormExamStudyingGroupEvent extends CharacterStatsModifyEventBase {
-  static readonly name: AcademicStatModifyNamesType = academicStatModifyNames.dormExamStudyingGroup;
+  static readonly name: AcademicStatModifyNamesType = AcademicStatModifyNames.dormExamStudyingGroup;
 
   static readonly header: string = 'Dorm exam studying[Group]';
   static readonly place: string = Places.Dorm;

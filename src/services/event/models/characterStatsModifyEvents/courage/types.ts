@@ -1,4 +1,4 @@
-export const courageStatModifyNames = {
+export const CourageStatModifyNames = {
   sleepDuringClass: 'SleepDuringClassCourageEvent',
   gameParadeCourage: 'GameParadeCourageEvent',
   edogawaMedicine: 'EdogawaMedicineEvent',
@@ -7,4 +7,4 @@ export const courageStatModifyNames = {
 } as const;
 
 export type CourageStatModifyNamesType =
-  (typeof courageStatModifyNames)[keyof typeof courageStatModifyNames];
+  (typeof CourageStatModifyNames)[keyof typeof CourageStatModifyNames];

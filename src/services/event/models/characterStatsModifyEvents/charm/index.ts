@@ -2,10 +2,10 @@ import { ChagalCafeCharmEvent } from './ChagalCafe';
 import { GameParadeCharmEvent } from './GameParadeCharm';
 import { HagakureRamenEvent } from './HagakureRamenEvent';
 import { HagakureRamenSpecialEvent } from './HagakureRamenSpecialEvent';
-import { charmStatModifyNames, type CharmStatModifyNamesType } from './types';
+import { CharmStatModifyNames, type CharmStatModifyNamesType } from './types';
 
 export {
-  charmStatModifyNames,
+  CharmStatModifyNames,
   type CharmStatModifyNamesType,
   ChagalCafeCharmEvent,
   GameParadeCharmEvent,
@@ -14,8 +14,8 @@ export {
 };
 
 export const charmStatModifyEvents = {
-  [charmStatModifyNames.chagallCafeCharm]: ChagalCafeCharmEvent,
-  [charmStatModifyNames.gameParadeCharm]: GameParadeCharmEvent,
-  [charmStatModifyNames.hagakureRamen]: HagakureRamenEvent,
-  [charmStatModifyNames.hagakureRamenSpecial]: HagakureRamenSpecialEvent,
+  [CharmStatModifyNames.chagallCafeCharm]: ChagalCafeCharmEvent,
+  [CharmStatModifyNames.gameParadeCharm]: GameParadeCharmEvent,
+  [CharmStatModifyNames.hagakureRamen]: HagakureRamenEvent,
+  [CharmStatModifyNames.hagakureRamenSpecial]: HagakureRamenSpecialEvent,
 } as const;

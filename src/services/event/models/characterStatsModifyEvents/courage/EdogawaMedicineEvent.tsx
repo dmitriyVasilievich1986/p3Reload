@@ -13,7 +13,7 @@ import {
 } from '@services/stats/characterStats/types';
 
 import { CharacterStatsModifyEventBase } from '../base';
-import { type CourageStatModifyNamesType, courageStatModifyNames } from './types';
+import { type CourageStatModifyNamesType, CourageStatModifyNames } from './types';
 
 /**
  * Drink Mr. Edogawa's medicine.
@@ -22,7 +22,7 @@ export class EdogawaMedicineEvent extends CharacterStatsModifyEventBase {
   readonly isChangeable: boolean = false;
   readonly skipCheck: boolean = false;
 
-  static readonly name: CourageStatModifyNamesType = courageStatModifyNames.edogawaMedicine;
+  static readonly name: CourageStatModifyNamesType = CourageStatModifyNames.edogawaMedicine;
 
   static readonly header: string = "Drink Mr. Edogawa's medicine";
   static readonly place: string = Places.NurseOffice;

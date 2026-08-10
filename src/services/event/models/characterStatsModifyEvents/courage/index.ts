@@ -1,11 +1,11 @@
 import { EdogawaMedicineEvent } from './EdogawaMedicineEvent';
 import { SleepDuringClassCourageEvent } from './SleepDuringClass';
-import { courageStatModifyNames, type CourageStatModifyNamesType } from './types';
+import { CourageStatModifyNames, type CourageStatModifyNamesType } from './types';
 import { WilduckBigEaterChallengeEvent } from './WilduckBigEaterChallenge';
 import { WilduckBurgerWeekendWilduckSetEvent } from './WilduckBurgerWeekendWilduckSet';
 
 export {
-  courageStatModifyNames,
+  CourageStatModifyNames,
   type CourageStatModifyNamesType,
   WilduckBigEaterChallengeEvent,
   WilduckBurgerWeekendWilduckSetEvent,
@@ -14,8 +14,8 @@ export {
 };
 
 export const courageStatModifyEvents = {
-  [courageStatModifyNames.wilduckBigEaterChallenge]: WilduckBigEaterChallengeEvent,
-  [courageStatModifyNames.wilduckBurgerWeekendWilduckSet]: WilduckBurgerWeekendWilduckSetEvent,
-  [courageStatModifyNames.edogawaMedicine]: EdogawaMedicineEvent,
-  [courageStatModifyNames.sleepDuringClass]: SleepDuringClassCourageEvent,
+  [CourageStatModifyNames.wilduckBigEaterChallenge]: WilduckBigEaterChallengeEvent,
+  [CourageStatModifyNames.wilduckBurgerWeekendWilduckSet]: WilduckBurgerWeekendWilduckSetEvent,
+  [CourageStatModifyNames.edogawaMedicine]: EdogawaMedicineEvent,
+  [CourageStatModifyNames.sleepDuringClass]: SleepDuringClassCourageEvent,
 };

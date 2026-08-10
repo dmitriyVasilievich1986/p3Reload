@@ -16,7 +16,7 @@ import {
 } from '@services/stats/characterStats/types';
 
 import { CharacterStatsModifyEventBase } from '../base';
-import { type CourageStatModifyNamesType, courageStatModifyNames } from './types';
+import { type CourageStatModifyNamesType, CourageStatModifyNames } from './types';
 
 /**
  * Courage activity at Wilduck Burger in Iwatodai Strip Mall.
@@ -26,7 +26,7 @@ import { type CourageStatModifyNamesType, courageStatModifyNames } from './types
  */
 export class WilduckBurgerWeekendWilduckSetEvent extends CharacterStatsModifyEventBase {
   static readonly name: CourageStatModifyNamesType =
-    courageStatModifyNames.wilduckBurgerWeekendWilduckSet;
+    CourageStatModifyNames.wilduckBurgerWeekendWilduckSet;
 
   static readonly header: string = 'Weekend Wilduck Set';
   static readonly place: string = Places.WilduckBurger;
@@ -41,7 +41,7 @@ export class WilduckBurgerWeekendWilduckSetEvent extends CharacterStatsModifyEve
   static readonly availabilities: AvailabilityBase[] = [
     new TimeAvailability({ times: [Times.Day, Times.Evening] }),
     new IsEventInHistoryAvailability({
-      name: courageStatModifyNames.wilduckBigEaterChallenge,
+      name: CourageStatModifyNames.wilduckBigEaterChallenge,
       isInHistory: true,
     }),
     new DayOfWeekAvailability({

@@ -1,4 +1,4 @@
-export const charmStatModifyNames = {
+export const CharmStatModifyNames = {
   chagallCafeCharm: 'ChagalCafeCharmEvent',
   gameParadeCharm: 'GameParadeCharmEvent',
   hagakureRamen: 'HagakureRamenEvent',
@@ -6,4 +6,4 @@ export const charmStatModifyNames = {
 } as const;
 
 export type CharmStatModifyNamesType =
-  (typeof charmStatModifyNames)[keyof typeof charmStatModifyNames];
+  (typeof CharmStatModifyNames)[keyof typeof CharmStatModifyNames];

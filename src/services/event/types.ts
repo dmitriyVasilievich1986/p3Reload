@@ -1,4 +1,4 @@
-import { characterStatsModifyNames } from './models/characterStatsModifyEvents/types';
+import { CharacterStatsModifyNames } from './models/characterStatsModifyEvents/types';
 import { SchoolQuestionEventsNames } from './models/schoolQuestions/types';
 import { SpecialEventsNames } from './models/specialEvents/types';
 
@@ -13,7 +13,7 @@ export type EventProps = {
 };
 
 export const EventNames = {
-  ...characterStatsModifyNames,
+  ...CharacterStatsModifyNames,
   ...SchoolQuestionEventsNames,
   ...SpecialEventsNames,
 } as const;

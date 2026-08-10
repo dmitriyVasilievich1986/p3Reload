@@ -11,7 +11,7 @@ import {
 } from '@services/stats/characterStats/types';
 
 import { CharacterStatsModifyEventBase } from '../base';
-import { type AcademicStatModifyNamesType, academicStatModifyNames } from './types';
+import { type AcademicStatModifyNamesType, AcademicStatModifyNames } from './types';
 
 /**
  * Academics activity at Game Parade's Play "You're the Answer" in Paulownia Mall.
@@ -20,7 +20,7 @@ import { type AcademicStatModifyNamesType, academicStatModifyNames } from './typ
  * Wednesdays and Saturdays.
  */
 export class GameParadeAcademicsEvent extends CharacterStatsModifyEventBase {
-  static readonly name: AcademicStatModifyNamesType = academicStatModifyNames.gameParadeAcademics;
+  static readonly name: AcademicStatModifyNamesType = AcademicStatModifyNames.gameParadeAcademics;
 
   static readonly header: string = '"You\'re the Answer"';
   static readonly place: string = Places.GameParade;

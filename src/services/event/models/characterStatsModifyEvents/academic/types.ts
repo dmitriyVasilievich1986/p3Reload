@@ -1,7 +1,7 @@
 /**
  * Type definitions for academics stat-modify event models.
  */
-export const academicStatModifyNames = {
+export const AcademicStatModifyNames = {
   stayAwake: 'StayAwakeAcademicsEvent',
   gameParadeAcademics: 'GameParadeAcademicsEvent',
   wakatsuKitchen: 'WakatsuKitchenEvent',
@@ -12,4 +12,4 @@ export const academicStatModifyNames = {
 } as const;
 
 export type AcademicStatModifyNamesType =
-  (typeof academicStatModifyNames)[keyof typeof academicStatModifyNames];
+  (typeof AcademicStatModifyNames)[keyof typeof AcademicStatModifyNames];
