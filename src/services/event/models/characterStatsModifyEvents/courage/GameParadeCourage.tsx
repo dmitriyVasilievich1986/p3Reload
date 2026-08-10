@@ -11,7 +11,7 @@ import {
 } from '@services/stats/characterStats/types';
 
 import { CharacterStatsModifyEventBase } from '../base';
-import { type CourageStatModifyNamesType, courageStatModifyNames } from './types';
+import { type CourageStatModifyNamesType, CourageStatModifyNames } from './types';
 
 /**
  * Courage activity at Game Parade's House of the Deceased in Paulownia Mall.
@@ -20,7 +20,7 @@ import { type CourageStatModifyNamesType, courageStatModifyNames } from './types
  * Tuesdays and Fridays.
  */
 export class GameParadeCourageEvent extends CharacterStatsModifyEventBase {
-  static readonly name: CourageStatModifyNamesType = courageStatModifyNames.gameParadeCourage;
+  static readonly name: CourageStatModifyNamesType = CourageStatModifyNames.gameParadeCourage;
 
   static readonly header: string = '"High School of Youth"';
   static readonly place: string = Places.GameParade;

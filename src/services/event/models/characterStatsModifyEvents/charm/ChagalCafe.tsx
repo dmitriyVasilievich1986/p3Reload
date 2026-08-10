@@ -17,7 +17,7 @@ import {
 } from '@services/stats/characterStats/types';
 
 import { CharacterStatsModifyEventBase } from '../base';
-import { type CharmStatModifyNamesType, charmStatModifyNames } from './types';
+import { type CharmStatModifyNamesType, CharmStatModifyNames } from './types';
 
 /**
  * Evening charm activity at Chagall Cafe in Paulownia Mall.
@@ -25,7 +25,7 @@ import { type CharmStatModifyNamesType, charmStatModifyNames } from './types';
  * Costs 500 yen and grants +2 Charm.
  */
 export class ChagalCafeCharmEvent extends CharacterStatsModifyEventBase {
-  static readonly name: CharmStatModifyNamesType = charmStatModifyNames.chagallCafeCharm;
+  static readonly name: CharmStatModifyNamesType = CharmStatModifyNames.chagallCafeCharm;
 
   static readonly header: string = 'Pheromone Coffee';
   static readonly place: string = Places.ChagallCafe;

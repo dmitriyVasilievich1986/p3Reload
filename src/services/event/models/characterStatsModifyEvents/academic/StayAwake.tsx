@@ -10,7 +10,7 @@ import {
 } from '@services/stats/characterStats/types';
 
 import { CharacterStatsModifyEventBase } from '../base';
-import { type AcademicStatModifyNamesType, academicStatModifyNames } from './types';
+import { type AcademicStatModifyNamesType, AcademicStatModifyNames } from './types';
 
 /**
  * Stay awake academics event at Gekkoukan High School.
@@ -18,7 +18,7 @@ import { type AcademicStatModifyNamesType, academicStatModifyNames } from './typ
  * Grants +2 Academics.
  */
 export class StayAwakeAcademicsEvent extends CharacterStatsModifyEventBase {
-  static readonly name: AcademicStatModifyNamesType = academicStatModifyNames.stayAwake;
+  static readonly name: AcademicStatModifyNamesType = AcademicStatModifyNames.stayAwake;
 
   static readonly header: string = 'Stay awake';
   static readonly district: string = Districts.GekkoukanHighSchool;

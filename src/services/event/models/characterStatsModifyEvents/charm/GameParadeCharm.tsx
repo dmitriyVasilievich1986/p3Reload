@@ -11,7 +11,7 @@ import {
 } from '@services/stats/characterStats/types';
 
 import { CharacterStatsModifyEventBase } from '../base';
-import { type CharmStatModifyNamesType, charmStatModifyNames } from './types';
+import { type CharmStatModifyNamesType, CharmStatModifyNames } from './types';
 
 /**
  * Charm activity at Game Parade's House of the Deceased in Paulownia Mall.
@@ -20,7 +20,7 @@ import { type CharmStatModifyNamesType, charmStatModifyNames } from './types';
  * Mondays and Thursdays.
  */
 export class GameParadeCharmEvent extends CharacterStatsModifyEventBase {
-  static readonly name: CharmStatModifyNamesType = charmStatModifyNames.gameParadeCharm;
+  static readonly name: CharmStatModifyNamesType = CharmStatModifyNames.gameParadeCharm;
 
   static readonly header: string = '"High School of Youth"';
   static readonly place: string = Places.GameParade;

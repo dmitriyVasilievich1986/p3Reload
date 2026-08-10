@@ -1,12 +1,12 @@
-import { academicStatModifyNames } from './academic/types';
-import { charmStatModifyNames } from './charm/types';
-import { courageStatModifyNames } from './courage/types';
+import { AcademicStatModifyNames } from './academic/types';
+import { CharmStatModifyNames } from './charm/types';
+import { CourageStatModifyNames } from './courage/types';
 
-export const characterStatsModifyNames = {
-  ...academicStatModifyNames,
-  ...courageStatModifyNames,
-  ...charmStatModifyNames,
+export const CharacterStatsModifyNames = {
+  ...AcademicStatModifyNames,
+  ...CourageStatModifyNames,
+  ...CharmStatModifyNames,
 } as const;
 
 export type CharacterStatsModifyNamesType =
-  (typeof characterStatsModifyNames)[keyof typeof characterStatsModifyNames];
+  (typeof CharacterStatsModifyNames)[keyof typeof CharacterStatsModifyNames];

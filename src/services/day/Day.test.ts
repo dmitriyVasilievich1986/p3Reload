@@ -3,9 +3,9 @@ import { beforeEach, describe, expect, it, vi } from 'vite-plus/test';
 
 import { Times } from '@constants/times';
 import { StayAwakeAcademicsEvent } from '@services/event/models/characterStatsModifyEvents/academic';
-import { academicStatModifyNames } from '@services/event/models/characterStatsModifyEvents/academic/types';
+import { AcademicStatModifyNames } from '@services/event/models/characterStatsModifyEvents/academic/types';
 import { ChagalCafeCharmEvent } from '@services/event/models/characterStatsModifyEvents/charm';
-import { charmStatModifyNames } from '@services/event/models/characterStatsModifyEvents/charm/types';
+import { CharmStatModifyNames } from '@services/event/models/characterStatsModifyEvents/charm/types';
 import { SleepDuringClassCourageEvent } from '@services/event/models/characterStatsModifyEvents/courage';
 import {
   createDateFixture,
@@ -142,11 +142,11 @@ describe('Day', () => {
     it('builds events from serialized name/props pairs', () => {
       const processed = Day.processEvents([
         {
-          name: academicStatModifyNames.stayAwake,
+          name: AcademicStatModifyNames.stayAwake,
           props: { ...baseEventProps, time: Times.Morning },
         },
         {
-          name: charmStatModifyNames.chagallCafeCharm,
+          name: CharmStatModifyNames.chagallCafeCharm,
           props: { ...baseEventProps, time: Times.Evening },
         },
       ]);
@@ -154,11 +154,11 @@ describe('Day', () => {
       expect(processed[0]).toBeInstanceOf(StayAwakeAcademicsEvent);
       expect(processed[1]).toBeInstanceOf(ChagalCafeCharmEvent);
       expect(processed[0]?.serialize()).toEqual({
-        name: academicStatModifyNames.stayAwake,
+        name: AcademicStatModifyNames.stayAwake,
         props: { ...baseEventProps, time: Times.Morning },
       });
       expect(processed[1]?.serialize()).toEqual({
-        name: charmStatModifyNames.chagallCafeCharm,
+        name: CharmStatModifyNames.chagallCafeCharm,
         props: { ...baseEventProps, time: Times.Evening },
       });
     });
@@ -223,7 +223,7 @@ describe('Day', () => {
 
       expect(Day.filterEvents([eveningEvent], props)).toEqual([]);
       expect(warnSpy).toHaveBeenCalledWith(
-        `Event ${charmStatModifyNames.chagallCafeCharm} is not available at this time.`
+        `Event ${CharmStatModifyNames.chagallCafeCharm} is not available at this time.`
       );
     });
 
@@ -232,7 +232,39 @@ describe('Day', () => {
       const props = createIsAvailablePropsFixture({ time: Times.Morning });
 
       expect(() => Day.filterEvents([eveningEvent], props, true)).toThrow(
-        `Event ${charmStatModifyNames.chagallCafeCharm} is not available at this time.`
+        `Event ${CharmStatModifyNames.chagallCafeCharm} is not available at this time.`
+      );
+    });
+
+    it('warns when multiple events share the same time by default', () => {
+      const warnSpy = vi.spyOn(console, 'warn').mockImplementation(() => undefined);
+      const first = createStayAwakeEvent({ skipCheck: true });
+      const second = createSleepDuringClassEvent({ time: Times.Morning, skipCheck: true });
+      const props = createIsAvailablePropsFixture({ time: Times.Morning });
+
+      expect(Day.filterEvents([first, second], props)).toEqual([first, second]);
+      expect(warnSpy).toHaveBeenCalledWith(`Multiple events found at time ${Times.Morning}.`);
+    });
+
+    it('throws when multiple events share the same time and throwAnErrorIfMultipleEvents is true', () => {
+      const first = createStayAwakeEvent({ skipCheck: true });
+      const second = createSleepDuringClassEvent({ time: Times.Morning, skipCheck: true });
+      const props = createIsAvailablePropsFixture({ time: Times.Morning });
+
+      expect(() => Day.filterEvents([first, second], props, false, true)).toThrow(
+        `Multiple events found at time ${Times.Morning}.`
+      );
+    });
+
+    it('does not warn about duplicates when event times are unique', () => {
+      const warnSpy = vi.spyOn(console, 'warn').mockImplementation(() => undefined);
+      const morning = createStayAwakeEvent({ skipCheck: true });
+      const evening = createChagallCafeEvent({ skipCheck: true });
+      const props = createIsAvailablePropsFixture();
+
+      expect(Day.filterEvents([morning, evening], props)).toEqual([morning, evening]);
+      expect(warnSpy).not.toHaveBeenCalledWith(
+        expect.stringContaining('Multiple events found at time')
       );
     });
   });

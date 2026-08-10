@@ -10,13 +10,13 @@ export type QuestionType = {
   answers: AnswerType[];
 };
 
-export const schoolQuestionEventsNames = {
+export const SchoolQuestionEventsNames = {
   schoolQuestion: 'SchoolQuestionsEvent',
   examQuestion: 'ExamQuestionsEvent',
 } as const;
 
 export type SchoolQuestionEventsNamesType =
-  (typeof schoolQuestionEventsNames)[keyof typeof schoolQuestionEventsNames];
+  (typeof SchoolQuestionEventsNames)[keyof typeof SchoolQuestionEventsNames];
 
 export type SchoolQuestionEventProps = EventProps & {
   questions: QuestionType[];

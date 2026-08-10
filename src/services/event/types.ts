@@ -1,5 +1,6 @@
-import { characterStatsModifyNames } from './models/characterStatsModifyEvents/types';
-import { schoolQuestionEventsNames } from './models/schoolQuestions/types';
+import { CharacterStatsModifyNames } from './models/characterStatsModifyEvents/types';
+import { SchoolQuestionEventsNames } from './models/schoolQuestions/types';
+import { SpecialEventsNames } from './models/specialEvents/types';
 
 import type { TimesType } from '@constants/times';
 import type { Stats } from '@services/stats';
@@ -12,8 +13,9 @@ export type EventProps = {
 };
 
 export const EventNames = {
-  ...characterStatsModifyNames,
-  ...schoolQuestionEventsNames,
+  ...CharacterStatsModifyNames,
+  ...SchoolQuestionEventsNames,
+  ...SpecialEventsNames,
 } as const;
 
 export type EventNamesType = (typeof EventNames)[keyof typeof EventNames];

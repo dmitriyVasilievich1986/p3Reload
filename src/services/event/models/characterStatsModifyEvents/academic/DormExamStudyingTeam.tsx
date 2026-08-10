@@ -12,7 +12,7 @@ import {
 } from '@services/stats/characterStats/types';
 
 import { CharacterStatsModifyEventBase } from '../base';
-import { type AcademicStatModifyNamesType, academicStatModifyNames } from './types';
+import { type AcademicStatModifyNamesType, AcademicStatModifyNames } from './types';
 
 /**
  * Academics activity at Dorm exam studying (Team) in Iwatodai Dormitory.
@@ -21,7 +21,7 @@ import { type AcademicStatModifyNamesType, academicStatModifyNames } from './typ
  * May 17, July 13, October 12, December 13.
  */
 export class DormExamStudyingTeamEvent extends CharacterStatsModifyEventBase {
-  static readonly name: AcademicStatModifyNamesType = academicStatModifyNames.dormExamStudyingTeam;
+  static readonly name: AcademicStatModifyNamesType = AcademicStatModifyNames.dormExamStudyingTeam;
 
   static readonly header: string = 'Dorm exam studying[Team]';
   static readonly place: string = Places.Dorm;

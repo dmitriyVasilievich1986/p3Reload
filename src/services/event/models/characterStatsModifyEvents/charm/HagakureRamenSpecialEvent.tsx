@@ -17,7 +17,7 @@ import {
 } from '@services/stats/characterStats/types';
 
 import { CharacterStatsModifyEventBase } from '../base';
-import { type CharmStatModifyNamesType, charmStatModifyNames } from './types';
+import { type CharmStatModifyNamesType, CharmStatModifyNames } from './types';
 
 /**
  * Special Hagakure Ramen charm event at Iwatodai Strip Mall.
@@ -28,7 +28,7 @@ import { type CharmStatModifyNamesType, charmStatModifyNames } from './types';
  * This event is only available if the Hagakure Ramen event has been completed at least once.
  */
 export class HagakureRamenSpecialEvent extends CharacterStatsModifyEventBase {
-  static readonly name: CharmStatModifyNamesType = charmStatModifyNames.hagakureRamenSpecial;
+  static readonly name: CharmStatModifyNamesType = CharmStatModifyNames.hagakureRamenSpecial;
 
   static readonly header: string = 'Special Hagakure Bowl';
   static readonly place: string = Places.HagakureRamen;
@@ -43,7 +43,7 @@ export class HagakureRamenSpecialEvent extends CharacterStatsModifyEventBase {
   static readonly availabilities: AvailabilityBase[] = [
     new TimeAvailability({ times: [Times.Evening] }),
     new IsEventInHistoryAvailability({
-      name: charmStatModifyNames.hagakureRamen,
+      name: CharmStatModifyNames.hagakureRamen,
       isInHistory: true,
     }),
     new CharacterStatsAvailability({

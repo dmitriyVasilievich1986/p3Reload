@@ -6,7 +6,7 @@ import { Stats } from '@services/stats';
 import { CharacterStats } from '@services/stats/characterStats';
 import { CharacterStatsNames } from '@services/stats/characterStats/types';
 
-import { schoolQuestionEventsNames } from '../types';
+import { SchoolQuestionEventsNames } from '../types';
 import { SchoolQuestionsEvent } from './SchoolQuestions';
 
 const questions = [
@@ -34,7 +34,7 @@ describe('SchoolQuestionsEvent', () => {
     const serialized = JSON.parse(JSON.stringify(event.serialize()));
 
     expect(serialized).toEqual({
-      name: schoolQuestionEventsNames.schoolQuestion,
+      name: SchoolQuestionEventsNames.schoolQuestion,
       props: {
         ...baseEventProps,
         time: Times.Morning,

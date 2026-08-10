@@ -1,6 +1,6 @@
 import { SchoolQuestionsEvent, ExamQuestionsEvent } from './models';
 import {
-  schoolQuestionEventsNames,
+  SchoolQuestionEventsNames,
   type SchoolQuestionEventsNamesType,
   type SchoolQuestionEventProps,
 } from './types';
@@ -8,12 +8,12 @@ import {
 export {
   SchoolQuestionsEvent,
   ExamQuestionsEvent,
-  schoolQuestionEventsNames,
+  SchoolQuestionEventsNames,
   type SchoolQuestionEventsNamesType,
   type SchoolQuestionEventProps,
 };
 
 export const schoolQuestionsEvents = {
-  [schoolQuestionEventsNames.schoolQuestion]: SchoolQuestionsEvent,
-  [schoolQuestionEventsNames.examQuestion]: ExamQuestionsEvent,
+  [SchoolQuestionEventsNames.schoolQuestion]: SchoolQuestionsEvent,
+  [SchoolQuestionEventsNames.examQuestion]: ExamQuestionsEvent,
 } as const;

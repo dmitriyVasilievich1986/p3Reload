@@ -20,7 +20,7 @@ import {
 } from '@services/stats/characterStats/types';
 
 import { CharacterStatsModifyEventBase } from '../base';
-import { type CourageStatModifyNamesType, courageStatModifyNames } from './types';
+import { type CourageStatModifyNamesType, CourageStatModifyNames } from './types';
 
 import type { IsAvailableProps } from '@services/availability/types';
 import type { Stats } from '@services/stats';
@@ -35,7 +35,7 @@ import type { Stats } from '@services/stats';
  */
 export class WilduckBigEaterChallengeEvent extends CharacterStatsModifyEventBase {
   static readonly name: CourageStatModifyNamesType =
-    courageStatModifyNames.wilduckBigEaterChallenge;
+    CourageStatModifyNames.wilduckBigEaterChallenge;
 
   static readonly header: string = 'Big Eater Challenge';
   static readonly place: string = Places.WilduckBurger;
@@ -53,7 +53,7 @@ export class WilduckBigEaterChallengeEvent extends CharacterStatsModifyEventBase
     new TimeAvailability({ times: [Times.Evening] }),
     new DateAvailability({ operator: 'ge', value: dayjs('2009-05-10') }),
     new IsEventInHistoryAvailability({
-      name: courageStatModifyNames.wilduckBigEaterChallenge,
+      name: CourageStatModifyNames.wilduckBigEaterChallenge,
       isInHistory: false,
     }),
     new CharacterStatsAvailability({
@@ -75,7 +75,7 @@ export class WilduckBigEaterChallengeEvent extends CharacterStatsModifyEventBase
 
   override calculateStats(this: CharacterStatsModifyEventBase, _props: IsAvailableProps): Stats {
     const additionalStats = this.stats.additionalStats.addEvent(
-      courageStatModifyNames.wilduckBigEaterChallenge
+      CourageStatModifyNames.wilduckBigEaterChallenge
     );
     const characterStats = this.stats.characterStats.modify(
       (this.constructor as typeof CharacterStatsModifyEventBase).modifiers
