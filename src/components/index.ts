@@ -1,4 +1,5 @@
 export { Badge, BadgeColors, BadgeSizes } from './badge';
+export { Card } from './card';
 export { DarkThemeSwitch } from './darkThemeSwitch';
 export {
   LEFT_DRAWER_COLLAPSED_WIDTH_PX,
@@ -9,6 +10,7 @@ export { AnswerPoints, QuestionCard } from './questionCard';
 export { Tooltip, TooltipPositions } from './tooltip';
 
 export type { BadgeColor, BadgeProps, BadgeSize } from './badge';
+export type { CardProps } from './card';
 export type { DarkThemeSwitchProps } from './darkThemeSwitch';
 export type { LeftDrawerProps } from './leftDrawer';
 export type { AnswerPoint, QuestionCardAnswer, QuestionCardProps } from './questionCard';
