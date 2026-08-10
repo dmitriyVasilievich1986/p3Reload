@@ -1,8 +1,8 @@
 import { EmptyEvent } from './EmptyEvent';
-import { specialEventsNames, type specialEventsNamesType } from './types';
+import { SpecialEventsNames, type SpecialEventsNamesType } from './types';
 
-export { EmptyEvent, specialEventsNames, type specialEventsNamesType };
+export { EmptyEvent, SpecialEventsNames, type SpecialEventsNamesType };
 
 export const specialEvents = {
-  [specialEventsNames.Empty]: EmptyEvent,
+  [SpecialEventsNames.Empty]: EmptyEvent,
 } as const;

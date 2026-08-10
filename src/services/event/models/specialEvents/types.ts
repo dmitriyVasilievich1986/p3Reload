@@ -1,5 +1,5 @@
-export const specialEventsNames = {
+export const SpecialEventsNames = {
   Empty: 'EmptyEvent',
 } as const;
 
-export type specialEventsNamesType = (typeof specialEventsNames)[keyof typeof specialEventsNames];
+export type SpecialEventsNamesType = (typeof SpecialEventsNames)[keyof typeof SpecialEventsNames];
