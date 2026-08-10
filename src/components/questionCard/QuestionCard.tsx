@@ -1,5 +1,6 @@
 import classNames from 'classnames';
 
+import { Tooltip, TooltipPositions } from '../tooltip';
 import { AnswerPoints, type AnswerPoint, type QuestionCardProps } from './types';
 
 const answerPointClasses: Record<AnswerPoint, string> = {
@@ -25,13 +26,13 @@ export function QuestionCard({ question, answers }: QuestionCardProps) {
   return (
     <article
       className={classNames(
-        'overflow-hidden rounded-xl border border-slate-200 bg-white shadow-sm',
+        'rounded-xl border border-slate-200 bg-white shadow-sm',
         'dark:border-slate-700 dark:bg-slate-900 dark:shadow-none'
       )}
     >
       <header
         className={classNames(
-          'border-b border-slate-200 px-4 py-3',
+          'rounded-t-xl border-b border-slate-200 px-4 py-3',
           'bg-slate-50 text-slate-900',
           'dark:border-slate-700 dark:bg-slate-800 dark:text-slate-50'
         )}
@@ -56,7 +57,13 @@ export function QuestionCard({ question, answers }: QuestionCardProps) {
                 answerPointClasses[pointKey]
               )}
             >
-              {answer.text}
+              <Tooltip
+                className="w-full"
+                content={`${answer.points} points`}
+                position={TooltipPositions.top}
+              >
+                <span className="block w-full">{answer.text}</span>
+              </Tooltip>
             </li>
           );
         })}
