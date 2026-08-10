@@ -2,7 +2,7 @@ import type { TimesType } from '@constants/times';
 import type { Calendar } from '@services/calendar';
 import type { Day } from '@services/day';
 
-export type MainStoreInitialState = {
+export type MainStoreType = {
   isLoading: boolean;
   calendar: Calendar | null;
   currentDay: Day | null;

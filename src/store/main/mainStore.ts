@@ -1,12 +1,12 @@
 import { create } from 'zustand';
 import { devtools } from 'zustand/middleware';
 
-import type { MainStoreInitialState } from './types';
+import type { MainStoreType } from './types';
 import type { TimesType } from '@constants/times';
 import type { Calendar } from '@services/calendar';
 import type { Day } from '@services/day';
 
-export const useMainStore = create<MainStoreInitialState>()(
+export const useMainStore = create<MainStoreType>()(
   devtools((set) => ({
     isLoading: false,
     calendar: null,
