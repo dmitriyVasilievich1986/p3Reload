@@ -10,7 +10,7 @@ import { charmStatModifyNames } from './models/characterStatsModifyEvents/charm/
 import { SleepDuringClassCourageEvent } from './models/characterStatsModifyEvents/courage';
 import { courageStatModifyNames } from './models/characterStatsModifyEvents/courage/types';
 import { SchoolQuestionsEvent } from './models/schoolQuestions';
-import { schoolQuestionEventsNames } from './models/schoolQuestions/types';
+import { SchoolQuestionEventsNames } from './models/schoolQuestions/types';
 
 const questions = [
   {
@@ -29,7 +29,7 @@ const baseEventProps = {
 
 describe('eventFactory', () => {
   it('creates a SchoolQuestionEventsNamesType event', () => {
-    const event = eventFactory(schoolQuestionEventsNames.schoolQuestion, {
+    const event = eventFactory(SchoolQuestionEventsNames.schoolQuestion, {
       skipCheck: false,
       isChangeable: false,
       time: Times.Morning,
@@ -38,7 +38,7 @@ describe('eventFactory', () => {
 
     expect(event).toBeInstanceOf(SchoolQuestionsEvent);
     expect(event.serialize()).toEqual({
-      name: schoolQuestionEventsNames.schoolQuestion,
+      name: SchoolQuestionEventsNames.schoolQuestion,
       props: {
         skipCheck: false,
         isChangeable: false,
