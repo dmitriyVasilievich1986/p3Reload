@@ -2,6 +2,8 @@ import dayjs, { type Dayjs } from 'dayjs';
 
 export const DatesFormat = 'YYYY-MM-DD';
 
+export const DEFAULT_DAY = dayjs('2009-04-07').format(DatesFormat);
+
 /** Calendar dates on which a full moon occurs in the game year (2009). */
 export const FullMoonDays: Dayjs[] = [
   dayjs('2009-04-09'),
