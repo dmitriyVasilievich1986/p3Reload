@@ -13,7 +13,7 @@ export const RowNames = {
 
 export type RowName = (typeof RowNames)[keyof typeof RowNames];
 
-type RowPropsByName = {
+export type RowPropsByName = {
   [RowNames.LabelRow]: LabelRowProps;
   [RowNames.CheckboxRow]: CheckboxRowProps;
   [RowNames.TextRow]: TextRowProps;
@@ -22,7 +22,7 @@ type RowPropsByName = {
 /**
  * Creates a row element by name with the props for that row type.
  */
-export function rowFactory<N extends RowName>(name: N, props: RowPropsByName[N]): ReactElement {
+export function rowFactory(name: string, props: Record<string, unknown>): ReactElement {
   switch (name) {
     case RowNames.LabelRow:
       return <LabelRow {...(props as LabelRowProps)} />;
@@ -30,9 +30,7 @@ export function rowFactory<N extends RowName>(name: N, props: RowPropsByName[N])
       return <CheckboxRow {...(props as CheckboxRowProps)} />;
     case RowNames.TextRow:
       return <TextRow {...(props as TextRowProps)} />;
-    default: {
-      const _exhaustive: never = name;
-      throw new Error(`Unknown row: ${_exhaustive}`);
-    }
+    default:
+      throw new Error(`Unknown row: ${name}`);
   }
 }
