@@ -1,3 +1,4 @@
+import dayjs from 'dayjs';
 import _ from 'lodash';
 
 import { DatesFormat } from '@constants/dates';
@@ -90,6 +91,26 @@ export class Day {
         return event;
       }
       return eventFactory(event.name, event.props);
+    });
+  }
+
+  /**
+   * Rebuilds a {@link Day} from a {@link DaySerializedType} payload.
+   *
+   * Hydrates events through {@link Day.processEvents} and seeds empty
+   * start/end {@link Stats}; callers that need scored stats should run
+   * {@link Day.calculateStats} afterward.
+   *
+   * @param data - Serialized date string and event payloads.
+   * @returns A new {@link Day} for the given date and events.
+   */
+  static deserialize(data: DaySerializedType): Day {
+    const events = this.processEvents(data.events);
+    return new Day({
+      statsAtStartOfDay: new Stats(),
+      statsAtEndOfDay: new Stats(),
+      date: dayjs(data.date),
+      events: events,
     });
   }
 
