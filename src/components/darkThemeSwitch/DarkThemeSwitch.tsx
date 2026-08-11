@@ -2,8 +2,8 @@ import classNames from 'classnames';
 import { useState } from 'react';
 import { useSearchParams } from 'react-router';
 
-import dayIcon from '../../assets/day.svg';
-import nightIcon from '../../assets/night.svg';
+import dayIcon from '@assets/day.svg';
+import nightIcon from '@assets/night.svg';
 
 import type { DarkThemeSwitchProps } from './types';
 

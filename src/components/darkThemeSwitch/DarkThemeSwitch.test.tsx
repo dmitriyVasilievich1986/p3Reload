@@ -3,8 +3,8 @@ import userEvent from '@testing-library/user-event';
 import { MemoryRouter, useSearchParams } from 'react-router';
 import { afterEach, describe, expect, it } from 'vite-plus/test';
 
-import dayIcon from '../../assets/day.svg';
-import nightIcon from '../../assets/night.svg';
+import dayIcon from '@assets/day.svg';
+import nightIcon from '@assets/night.svg';
 import { DarkThemeSwitch } from './DarkThemeSwitch';
 
 function SearchParamsProbe() {
