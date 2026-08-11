@@ -73,4 +73,11 @@ describe('useMainStore', () => {
 
     expect(useMainStore.getState()).toMatchObject(initialState);
   });
+
+  it('setCurrentDay accepts undefined', () => {
+    useMainStore.getState().setCurrentDay(createDayFixture());
+    useMainStore.getState().setCurrentDay(undefined);
+
+    expect(useMainStore.getState().currentDay).toBeUndefined();
+  });
 });

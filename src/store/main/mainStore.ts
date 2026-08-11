@@ -14,7 +14,8 @@ export const useMainStore = create<MainStoreType>()(
     selectedTimes: null,
     setIsLoading: (isLoading: boolean) => set({ isLoading }, undefined, 'setIsLoading'),
     setCalendar: (calendar: Calendar | null) => set({ calendar }, undefined, 'setCalendar'),
-    setCurrentDay: (currentDay: Day | null) => set({ currentDay }, undefined, 'setCurrentDay'),
+    setCurrentDay: (currentDay: Day | null | undefined) =>
+      set({ currentDay }, undefined, 'setCurrentDay'),
     setSelectedTimes: (time: TimesType | null) =>
       set({ selectedTimes: time }, undefined, 'setSelectedTimes'),
   }))
