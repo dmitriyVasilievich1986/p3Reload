@@ -18,7 +18,7 @@ describe('LabelRow', () => {
     const text = screen.getByText('Admin');
 
     expect(label).toHaveClass('font-bold');
-    expect(label).toHaveClass('w-[30%]');
-    expect(text).toHaveClass('w-[70%]');
+    expect(label).toHaveClass('w-[20%]');
+    expect(text).toHaveClass('w-[80%]');
   });
 });

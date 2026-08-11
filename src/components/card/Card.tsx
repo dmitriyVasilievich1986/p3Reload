@@ -83,7 +83,9 @@ export function Card({
 
       <div className="flex h-full flex-1 flex-col items-center justify-center gap-2 p-3">
         {bodyItems.map((item, index) => (
-          <div className="w-full" key={isValidElement(item) && item.key != null ? item.key : index}>{item}</div>
+          <div className="w-full" key={isValidElement(item) && item.key != null ? item.key : index}>
+            {item}
+          </div>
         ))}
       </div>
     </article>

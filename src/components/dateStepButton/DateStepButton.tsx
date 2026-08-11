@@ -1,9 +1,9 @@
 import classNames from 'classnames';
 import { useSearchParams } from 'react-router';
 
+import leftIcon from '@assets/left.svg';
 import { DatesFormat } from '@constants/dates';
 
-import leftIcon from '@assets/left.svg';
 import { DateStepDirections, type DateStepButtonProps } from './types';
 
 /**

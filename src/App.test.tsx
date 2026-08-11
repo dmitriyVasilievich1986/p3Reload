@@ -1,6 +1,8 @@
 import { cleanup, render, screen, waitFor } from '@testing-library/react';
 import { MemoryRouter, useSearchParams } from 'react-router';
-import { afterEach, describe, expect, it, vi } from 'vite-plus/test';
+import { afterEach, beforeEach, describe, expect, it, vi } from 'vite-plus/test';
+
+import { useMainStore } from '@store/main';
 
 import { App } from './App';
 
@@ -20,6 +22,15 @@ function renderApp(initialEntry: string) {
 }
 
 describe('App', () => {
+  beforeEach(() => {
+    useMainStore.setState({
+      isLoading: false,
+      calendar: null,
+      currentDay: null,
+      selectedTimes: null,
+    });
+  });
+
   afterEach(() => {
     cleanup();
     vi.restoreAllMocks();
@@ -71,7 +82,7 @@ describe('App', () => {
     });
   });
 
-  it('renders the left drawer and a 1:2:1 scrollable body layout', () => {
+  it('renders the left drawer and a 1:2:1 scrollable body layout', async () => {
     renderApp('/p3Reload/?darkTheme=false');
 
     expect(screen.getByRole('navigation', { name: 'Navigation' })).toBeInTheDocument();
@@ -81,6 +92,8 @@ describe('App', () => {
 
     expect(left).toHaveClass('flex-1', 'overflow-y-auto');
     expect(right).toHaveClass('flex-1', 'overflow-y-auto');
-    expect(screen.queryByRole('region', { name: 'Center panel' })).not.toBeInTheDocument();
+
+    const center = await screen.findByRole('region', { name: 'Center panel' });
+    expect(center).toHaveClass('flex-[2]', 'overflow-y-auto');
   });
 });
