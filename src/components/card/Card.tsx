@@ -39,7 +39,7 @@ export function Card({
       aria-selected={isSelected}
       onClick={isSelectable ? onClick : undefined}
       className={classNames(
-        'relative rounded-xl border bg-white shadow-sm',
+        'relative flex flex-col rounded-xl border bg-white shadow-sm',
         'border-slate-200 dark:border-slate-700 dark:bg-slate-900 dark:shadow-none',
         'transition-[box-shadow,border-color,opacity] duration-150 ease-out',
         isSelectable &&
@@ -81,9 +81,9 @@ export function Card({
         <div className="h-3" aria-hidden="true" />
       )}
 
-      <div className="flex flex-col gap-2 p-3">
+      <div className="flex h-full flex-1 flex-col items-center justify-center gap-2 p-3">
         {bodyItems.map((item, index) => (
-          <div key={isValidElement(item) && item.key != null ? item.key : index}>{item}</div>
+          <div className="w-full" key={isValidElement(item) && item.key != null ? item.key : index}>{item}</div>
         ))}
       </div>
     </article>
