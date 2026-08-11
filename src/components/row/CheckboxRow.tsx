@@ -5,7 +5,7 @@ import type { CheckboxRowProps } from './types';
  */
 export function CheckboxRow({ text }: CheckboxRowProps) {
   return (
-    <label className="flex w-full items-center gap-2 text-sm text-slate-800 dark:text-slate-100">
+    <label className="flex w-full items-center justify-start gap-2 text-sm text-slate-800 dark:text-slate-100">
       <input
         type="checkbox"
         className="size-4 shrink-0 rounded border-slate-300 text-sky-600 focus:ring-sky-400 dark:border-slate-600 dark:bg-slate-800"
