@@ -9,8 +9,8 @@ export type TextAlign = (typeof TextAligns)[keyof typeof TextAligns];
 export type LabelRowProps = {
   /** Bold label shown on the left (30% width). */
   label: string;
-  /** Text shown on the right (70% width). */
-  text: string;
+  /** Text shown on the right (70% width). When omitted, the row is not rendered. */
+  text?: string;
 };
 
 export type CheckboxRowProps = {

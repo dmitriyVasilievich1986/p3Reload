@@ -11,6 +11,12 @@ describe('LabelRow', () => {
     expect(screen.getByText('Alice')).toBeInTheDocument();
   });
 
+  it('returns null when text is undefined', () => {
+    const { container } = render(<LabelRow label="Stats:" />);
+
+    expect(container).toBeEmptyDOMElement();
+  });
+
   it('makes the label bold and uses a 30/70 width split', () => {
     render(<LabelRow label="Role" text="Admin" />);
 
