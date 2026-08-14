@@ -7,6 +7,7 @@ import { Day } from '@services/day';
 import { StayAwakeAcademicsEvent } from '@services/event/models/characterStatsModifyEvents/academic';
 import { AcademicStatModifyNames } from '@services/event/models/characterStatsModifyEvents/academic/types';
 import { ChagalCafeCharmEvent } from '@services/event/models/characterStatsModifyEvents/charm';
+import { SleepDuringClassCourageEvent } from '@services/event/models/characterStatsModifyEvents/courage';
 import { createDateFixture, createDayFixture, createStatsFixture } from '@services/fixtures';
 import { Stats } from '@services/stats';
 import { CharacterStatsNames } from '@services/stats/characterStats/types';
@@ -34,6 +35,16 @@ function createChagallCafeEvent(
   return new ChagalCafeCharmEvent({
     ...baseEventProps,
     time: Times.Evening,
+    ...overrides,
+  });
+}
+
+function createSleepDuringClassEvent(
+  overrides?: Partial<ConstructorParameters<typeof SleepDuringClassCourageEvent>[0]>
+) {
+  return new SleepDuringClassCourageEvent({
+    ...baseEventProps,
+    time: Times.Morning,
     ...overrides,
   });
 }
@@ -199,13 +210,13 @@ describe('Calendar', () => {
     });
 
     it('throws when an event is unavailable', () => {
-      const unavailable = createStayAwakeEvent({ skipCheck: false });
+      const unavailable = createStayAwakeEvent({ skipCheck: false, time: Times.Evening });
       const day = createDayFixture({
         date: createDateFixture(dayjs('2009-04-20')),
         events: [unavailable],
       });
 
-      expect(() => Calendar.calculateStats([day])).toThrow(
+      expect(() => Calendar.calculateStats([day], undefined, true, true)).toThrow(
         `Event ${AcademicStatModifyNames.stayAwake} is not available at this time.`
       );
     });
@@ -237,6 +248,87 @@ describe('Calendar', () => {
       expect(resultDay?.events[1]).toBe(evening);
       expect(resultDay?.statsAtEndOfDay.characterStats[CharacterStatsNames.Academics]).toBe(2);
       expect(resultDay?.statsAtEndOfDay.characterStats[CharacterStatsNames.Charm]).toBe(2);
+    });
+  });
+
+  describe('replaceEvent', () => {
+    it('replaces the event and returns a new calendar with recalculated stats', () => {
+      const morning = createStayAwakeEvent();
+      const evening = createChagallCafeEvent();
+      const calendar = new Calendar({
+        days: [
+          createDayFixture({
+            date: createDateFixture(dayjs('2009-04-20')),
+            events: [morning],
+          }),
+          createDayFixture({
+            date: createDateFixture(dayjs('2009-04-21')),
+            events: [evening],
+          }),
+        ],
+      });
+      const replacement = createSleepDuringClassEvent();
+
+      const result = calendar.replaceEvent(dayjs('2009-04-20'), Times.Morning, replacement);
+
+      expect(result).not.toBe(calendar);
+      expect(result.days[0]?.events).toEqual([replacement]);
+      expect(result.days[0]?.statsAtEndOfDay.characterStats[CharacterStatsNames.Courage]).toBe(2);
+      expect(result.days[0]?.statsAtEndOfDay.characterStats[CharacterStatsNames.Academics]).toBe(0);
+      expect(result.days[1]?.statsAtStartOfDay.characterStats[CharacterStatsNames.Courage]).toBe(2);
+      expect(result.days[1]?.statsAtEndOfDay.characterStats[CharacterStatsNames.Charm]).toBe(2);
+    });
+
+    it('keeps days before the replacement date unchanged', () => {
+      const preservedStart = createStatsFixture();
+      const preservedEnd = createStatsFixture({
+        characterStats: createStatsFixture().characterStats.modify([
+          { name: CharacterStatsNames.Academics, operator: '+', value: 4 },
+        ]),
+      });
+      const preservedDay = new Day({
+        date: createDateFixture(dayjs('2009-04-20')),
+        statsAtStartOfDay: preservedStart,
+        statsAtEndOfDay: preservedEnd,
+        events: [createStayAwakeEvent()],
+      });
+      const targetDay = createDayFixture({
+        date: createDateFixture(dayjs('2009-04-21')),
+        events: [createStayAwakeEvent()],
+      });
+      const calendar = new Calendar({ days: [preservedDay, targetDay] });
+      const replacement = createSleepDuringClassEvent();
+
+      const result = calendar.replaceEvent(dayjs('2009-04-21'), Times.Morning, replacement);
+
+      expect(result.days[0]).toBe(preservedDay);
+      expect(result.days[1]?.events).toEqual([replacement]);
+      expect(result.days[1]?.statsAtStartOfDay).toBe(preservedEnd);
+      expect(result.days[1]?.statsAtEndOfDay.characterStats[CharacterStatsNames.Courage]).toBe(
+        preservedEnd.characterStats[CharacterStatsNames.Courage] + 2
+      );
+    });
+
+    it('throws when no day matches the date', () => {
+      const calendar = new Calendar({
+        days: [createDayFixture({ date: createDateFixture(dayjs('2009-04-20')) })],
+      });
+
+      expect(() =>
+        calendar.replaceEvent(dayjs('2009-04-21'), Times.Morning, createSleepDuringClassEvent())
+      ).toThrow(`Day not found for date: ${dayjs('2009-04-21').format(DatesFormat)}`);
+    });
+
+    it('throws when multiple events share the same time', () => {
+      const day = createDayFixture({
+        date: createDateFixture(dayjs('2009-04-20')),
+        events: [createStayAwakeEvent(), createSleepDuringClassEvent()],
+      });
+      const calendar = new Calendar({ days: [day] });
+
+      expect(() =>
+        calendar.replaceEvent(dayjs('2009-04-20'), Times.Morning, createChagallCafeEvent())
+      ).toThrow(`Multiple events found at time ${Times.Morning}.`);
     });
   });
 });

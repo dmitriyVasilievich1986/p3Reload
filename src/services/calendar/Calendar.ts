@@ -9,6 +9,7 @@ import { Stats } from '@services/stats';
 import type { TimesType } from '@constants/times';
 import type { IsAvailableProps } from '@services/availability/types';
 import type { DaySerializedType } from '@services/day/types';
+import type { BaseEvent } from '@services/event/base';
 import type { Dayjs } from 'dayjs';
 
 /**
@@ -174,7 +175,12 @@ export class Calendar {
    * @returns New {@link Day} instances with updated start/end stats and events
    *   (plus any preserved days before `startFrom`).
    */
-  static calculateStats(days: Day[], startFrom?: Dayjs): Day[] {
+  static calculateStats(
+    days: Day[],
+    startFrom?: Dayjs,
+    throwAnErrorIfNotAvailable: boolean = true,
+    throwAnErrorIfMultipleEvents: boolean = true
+  ): Day[] {
     let stats = new Stats();
     const event = new EmptyEvent({ time: Times.Day, skipCheck: true, isChangeable: true });
     const payload: Day[] = [];
@@ -210,9 +216,20 @@ export class Calendar {
           }),
       };
       let events = day.events;
-      events = Day.filterEvents(events, isAvailableProps, true, true);
+      events = Day.filterEvents(
+        events,
+        isAvailableProps,
+        throwAnErrorIfNotAvailable,
+        throwAnErrorIfMultipleEvents
+      );
       events = Day.sortEvents(events);
-      const result = Day.calculateStats(events, isAvailableProps, stats);
+      const result = Day.calculateStats(
+        events,
+        isAvailableProps,
+        stats,
+        throwAnErrorIfNotAvailable,
+        throwAnErrorIfMultipleEvents
+      );
       stats = result.endingStats;
       payload.push(
         new Day({
@@ -225,5 +242,25 @@ export class Calendar {
     }
 
     return payload;
+  }
+
+  /**
+   * Replaces the single event scheduled at `date`/`time` with `newEvent`.
+   *
+   * @param date - Date of the day to replace the event on.
+   * @param time - Time slot whose event should be replaced.
+   * @param newEvent - Event to insert at that time.
+   * @returns A new {@link Calendar} instance.
+   */
+  replaceEvent(this: Calendar, date: Dayjs, time: TimesType, newEvent: BaseEvent): Calendar {
+    const [day] = this.getDay(date);
+    day.replaceEvent(time, newEvent);
+    const days = (this.constructor as typeof Calendar).calculateStats(
+      this.days,
+      date,
+      false,
+      false
+    );
+    return new Calendar({ days: days });
   }
 }
