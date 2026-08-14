@@ -1,5 +1,5 @@
 import dayjs from 'dayjs';
-import { describe, expect, it } from 'vite-plus/test';
+import { beforeEach, describe, expect, it, vi } from 'vite-plus/test';
 
 import { DatesFormat } from '@constants/dates';
 import { Times } from '@constants/times';
@@ -13,6 +13,13 @@ import { Stats } from '@services/stats';
 import { CharacterStatsNames } from '@services/stats/characterStats/types';
 
 import { Calendar } from './Calendar';
+import aprilData from './data/april.json';
+
+import type { DaySerializedType } from '@services/day/types';
+
+const calendarMonthData: { name: string; data: DaySerializedType[] }[] = [
+  { name: 'april', data: aprilData as DaySerializedType[] },
+];
 
 const baseEventProps = {
   skipCheck: true,
@@ -329,6 +336,25 @@ describe('Calendar', () => {
       expect(() =>
         calendar.replaceEvent(dayjs('2009-04-20'), Times.Morning, createChagallCafeEvent())
       ).toThrow(`Multiple events found at time ${Times.Morning}.`);
+    });
+  });
+
+  describe.each(calendarMonthData)('$name data', ({ data }) => {
+    beforeEach(() => {
+      vi.restoreAllMocks();
+    });
+
+    it('calculates stats without errors or warnings', () => {
+      const warnSpy = vi.spyOn(console, 'warn').mockImplementation(() => undefined);
+      const errorSpy = vi.spyOn(console, 'error').mockImplementation(() => undefined);
+      const days = data.map((day) => Day.deserialize(day));
+      const calendar = new Calendar({ days });
+
+      const result = Calendar.calculateStats(calendar.days);
+
+      expect(result).toHaveLength(data.length);
+      expect(warnSpy).not.toHaveBeenCalled();
+      expect(errorSpy).not.toHaveBeenCalled();
     });
   });
 });
