@@ -1,8 +1,7 @@
 import { beforeEach, describe, expect, it } from 'vite-plus/test';
 
-import { Times } from '@constants/times';
 import { Calendar } from '@services/calendar';
-import { createDayFixture } from '@services/fixtures';
+import { createDayFixture, createEventFixture } from '@services/fixtures';
 
 import { useMainStore } from './mainStore';
 
@@ -10,7 +9,7 @@ const initialState = {
   isLoading: false,
   calendar: null,
   currentDay: null,
-  selectedTimes: null,
+  selectedEvent: null,
 };
 
 describe('useMainStore', () => {
@@ -24,7 +23,7 @@ describe('useMainStore', () => {
     expect(state.isLoading).toBe(false);
     expect(state.calendar).toBeNull();
     expect(state.currentDay).toBeNull();
-    expect(state.selectedTimes).toBeNull();
+    expect(state.selectedEvent).toBeNull();
   });
 
   it('setIsLoading updates isLoading', () => {
@@ -49,27 +48,30 @@ describe('useMainStore', () => {
     expect(useMainStore.getState().currentDay).toBe(currentDay);
   });
 
-  it('setSelectedTimes updates selectedTimes', () => {
-    useMainStore.getState().setSelectedTimes(Times.Morning);
+  it('setSelectedEvent updates selectedEvent', () => {
+    const selectedEvent = createEventFixture();
 
-    expect(useMainStore.getState().selectedTimes).toBe(Times.Morning);
+    useMainStore.getState().setSelectedEvent(selectedEvent);
+
+    expect(useMainStore.getState().selectedEvent).toBe(selectedEvent);
   });
 
   it('setters accept null to clear values', () => {
     const calendar = new Calendar({ days: [createDayFixture()] });
     const currentDay = createDayFixture();
+    const selectedEvent = createEventFixture();
 
     useMainStore.setState({
       isLoading: true,
       calendar,
       currentDay,
-      selectedTimes: Times.Evening,
+      selectedEvent,
     });
 
     useMainStore.getState().setIsLoading(false);
     useMainStore.getState().setCalendar(null);
     useMainStore.getState().setCurrentDay(null);
-    useMainStore.getState().setSelectedTimes(null);
+    useMainStore.getState().setSelectedEvent(null);
 
     expect(useMainStore.getState()).toMatchObject(initialState);
   });
