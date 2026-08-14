@@ -190,6 +190,7 @@ export default defineConfig(({ mode }) => {
         '@services': resolve(__dirname, './src/services'),
         '@assets': resolve(__dirname, './src/assets'),
         '@store': resolve(__dirname, './src/store'),
+        '@utils': resolve(__dirname, './src/utils'),
       },
     },
     test: {
