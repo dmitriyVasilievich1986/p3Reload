@@ -27,7 +27,7 @@ describe('App', () => {
       isLoading: false,
       calendar: null,
       currentDay: null,
-      selectedTimes: null,
+      selectedEvent: null,
     });
   });
 
