@@ -49,7 +49,9 @@ describe('CenterPanel', () => {
       expect(screen.getByTestId('search')).not.toHaveTextContent('day=');
     });
     expect(useMainStore.getState().currentDay).toBeNull();
-    expect(screen.queryByRole('region', { name: 'Center panel' })).not.toBeInTheDocument();
+    expect(screen.getByRole('region', { name: 'Center panel' })).toBeInTheDocument();
+    expect(screen.queryByText('Date not found')).not.toBeInTheDocument();
+    expect(screen.queryByRole('banner', { name: 'Day navigation' })).not.toBeInTheDocument();
   });
 
   it('sets the default day param and currentDay when calendar is set', async () => {
@@ -109,9 +111,11 @@ describe('CenterPanel', () => {
 
     await waitFor(() => {
       expect(useMainStore.getState().currentDay).toBeUndefined();
-      expect(screen.getByText('Error')).toBeInTheDocument();
+      expect(screen.getByText('Date not found')).toBeInTheDocument();
     });
     expect(screen.getByTestId('search')).toHaveTextContent('day=2009-12-25');
+    expect(screen.getByRole('region', { name: 'Center panel' })).toBeInTheDocument();
+    expect(screen.queryByRole('banner', { name: 'Day navigation' })).not.toBeInTheDocument();
   });
 
   it('does not replace currentDay when it already matches the day param', async () => {
