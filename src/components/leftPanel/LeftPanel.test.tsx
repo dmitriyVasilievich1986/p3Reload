@@ -152,15 +152,15 @@ describe('LeftPanel', () => {
     );
     expect(screen.getByRole('list', { name: 'Character stats' })).toBeInTheDocument();
 
-    const academics = rowFor('Genius');
+    const academics = rowFor('Academics: Genius');
     expect(academics).not.toBeNull();
     expect(within(academics!).getByText('6')).toHaveClass('rounded-full');
 
-    const courage = rowFor('Tough');
+    const courage = rowFor('Courage: Tough');
     expect(courage).not.toBeNull();
     expect(within(courage!).getByText('4')).toHaveClass('rounded-full');
 
-    const charm = rowFor('Unpolished');
+    const charm = rowFor('Charm: Unpolished');
     expect(charm).not.toBeNull();
     expect(within(charm!).getByText('2')).toHaveClass('rounded-full');
   });
@@ -176,7 +176,7 @@ describe('LeftPanel', () => {
 
     render(<LeftPanel />);
 
-    await user.hover(within(rowFor('Tough')!).getByText('4'));
+    await user.hover(within(rowFor('Courage: Tough')!).getByText('4'));
 
     const courageTooltip = screen.getByRole('tooltip');
     expect(courageTooltip.querySelector('dl')).toHaveClass('flex', 'flex-col');
@@ -186,8 +186,8 @@ describe('LeftPanel', () => {
       expect(within(pair!).getByText(row.value)).toBeInTheDocument();
     });
 
-    await user.unhover(within(rowFor('Tough')!).getByText('4'));
-    await user.hover(within(rowFor('Genius')!).getByText('6'));
+    await user.unhover(within(rowFor('Courage: Tough')!).getByText('4'));
+    await user.hover(within(rowFor('Academics: Genius')!).getByText('6'));
 
     const geniusTooltip = screen.getByRole('tooltip');
     expect(within(geniusTooltip).getByText('Current')).toBeInTheDocument();
@@ -213,7 +213,7 @@ describe('LeftPanel', () => {
 
     render(<LeftPanel />);
 
-    await user.hover(within(rowFor('Ordinary')!).getByText('2'));
+    await user.hover(within(rowFor('Courage: Ordinary')!).getByText('2'));
 
     expect(within(screen.getByRole('tooltip')).getByText('15 -> 25 pts.')).toBeInTheDocument();
   });

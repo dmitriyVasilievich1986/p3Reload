@@ -67,7 +67,7 @@ export function LeftPanel() {
             <StatRow
               key={statName}
               level={level.level}
-              name={level.name}
+              name={`${statName}: ${level.name}`}
               color={CHARACTER_STAT_BADGE_COLORS[statName]}
               tooltip={
                 <StatPointsTooltipContent
