@@ -1,9 +1,9 @@
-import { academicStatModifyEvents } from './academic';
-import { charmStatModifyEvents } from './charm';
-import { courageStatModifyEvents } from './courage';
+import { AcademicStatModifyEvents } from './academic';
+import { CharmStatModifyEvents } from './charm';
+import { CourageStatModifyEvents } from './courage';
 
-export const characterStatsModifyEvents = {
-  ...academicStatModifyEvents,
-  ...courageStatModifyEvents,
-  ...charmStatModifyEvents,
+export const CharacterStatsModifyEvents = {
+  ...AcademicStatModifyEvents,
+  ...CourageStatModifyEvents,
+  ...CharmStatModifyEvents,
 } as const;

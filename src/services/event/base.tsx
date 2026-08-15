@@ -26,6 +26,10 @@ export abstract class BaseEvent {
     this.stats = props.stats ?? new Stats();
   }
 
+  getName(): EventNamesType {
+    return (this.constructor as typeof BaseEvent).name;
+  }
+
   static isAvailable(this: typeof BaseEvent, props: IsAvailableProps): boolean {
     return _.every(this.availabilities, (availability) => availability.isAvailable(props));
   }

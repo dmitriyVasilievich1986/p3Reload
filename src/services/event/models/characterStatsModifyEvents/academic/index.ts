@@ -19,7 +19,7 @@ export {
   GameParadeAcademicsEvent,
 };
 
-export const academicStatModifyEvents = {
+export const AcademicStatModifyEvents = {
   [AcademicStatModifyNames.dormExamStudyingGroup]: DormExamStudyingGroupEvent,
   [AcademicStatModifyNames.dormExamStudyingTeam]: DormExamStudyingTeamEvent,
   [AcademicStatModifyNames.wakatsuKitchen]: WakatsuKitchenEvent,

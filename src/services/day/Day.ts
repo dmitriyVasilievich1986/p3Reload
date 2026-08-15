@@ -1,3 +1,4 @@
+import dayjs from 'dayjs';
 import _ from 'lodash';
 
 import { DatesFormat } from '@constants/dates';
@@ -10,6 +11,7 @@ import type { DayProps, DaySerializedType } from './types';
 import type { IsAvailableProps } from '@services/availability/types';
 import type { EventNamesType } from '@services/event/types';
 import type { Dayjs } from 'dayjs';
+import { FullMoonDays, ExamDays, DayOffDays } from '@constants/dates';
 
 /**
  * A single calendar day of scheduled events and character stats.
@@ -94,6 +96,26 @@ export class Day {
   }
 
   /**
+   * Rebuilds a {@link Day} from a {@link DaySerializedType} payload.
+   *
+   * Hydrates events through {@link Day.processEvents} and seeds empty
+   * start/end {@link Stats}; callers that need scored stats should run
+   * {@link Day.calculateStats} afterward.
+   *
+   * @param data - Serialized date string and event payloads.
+   * @returns A new {@link Day} for the given date and events.
+   */
+  static deserialize(data: DaySerializedType): Day {
+    const events = this.processEvents(data.events);
+    return new Day({
+      statsAtStartOfDay: new Stats(),
+      statsAtEndOfDay: new Stats(),
+      date: dayjs(data.date),
+      events: events,
+    });
+  }
+
+  /**
    * Sorts events into chronological time-of-day order
    * (Morning → Day Free Time → Day → Evening Free Time → Evening → Night → Dark Hour).
    *
@@ -143,7 +165,12 @@ export class Day {
       if (event.skipCheck) {
         return true;
       }
-      const isAvailable = event.isAvailable(props);
+      const isAvailable = event.isAvailable({
+        ...props,
+        event,
+        time: event.time,
+        stats: event.stats,
+      });
       if (throwAnErrorIfNotAvailable && !isAvailable) {
         throw new Error(
           `Event ${(event.constructor as typeof BaseEvent).name} is not available at this time.`
@@ -171,17 +198,45 @@ export class Day {
   static calculateStats(
     events: BaseEvent[],
     props: IsAvailableProps,
-    stats?: Stats
+    stats?: Stats,
+    throwAnErrorIfNotAvailable: boolean = false,
+    throwAnErrorIfMultipleEvents: boolean = false
   ): { events: BaseEvent[]; startingStats: Stats; endingStats: Stats } {
     const startingStats = stats || new Stats();
     let stats_ = startingStats;
+    const payload: BaseEvent[] = [];
+    const seenTimes = new Set<TimesType>();
 
     events.forEach((event) => {
+      if (
+        !event.skipCheck &&
+        !event.isAvailable({ ...props, event, time: event.time, stats: stats_ })
+      ) {
+        if (throwAnErrorIfNotAvailable) {
+          throw new Error(
+            `Event ${(event.constructor as typeof BaseEvent).name} is not available at this time.`
+          );
+        }
+        console.warn(
+          `Event ${(event.constructor as typeof BaseEvent).name} is not available at this time.`
+        );
+        return;
+      }
+      if (seenTimes.has(event.time)) {
+        if (throwAnErrorIfMultipleEvents) {
+          throw new Error(`Multiple events found at time ${event.time}.`);
+        }
+        console.warn(`Multiple events found at time ${event.time}.`);
+      }
+      if (!event.skipCheck) {
+        seenTimes.add(event.time);
+      }
       event.stats = stats_;
       stats_ = event.calculateStats({ ...props, stats: stats_, event, time: event.time });
+      payload.push(event);
     });
 
-    return { events, startingStats, endingStats: stats_ };
+    return { events: payload, startingStats, endingStats: stats_ };
   }
 
   /**
@@ -201,9 +256,38 @@ export class Day {
           throw new Error(`Multiple events found at time ${time}.`);
         }
         isReplaced = true;
+        newEvent.stats = event.stats;
         return newEvent;
       }
       return event;
     });
+  }
+
+  /**
+   * Replaces the single event scheduled at `time` with `newEvent`.
+   *
+   * @param time - Time slot whose event should be replaced.
+   * @param newEvent - Event to insert at that time.
+   */
+  replaceEvent(this: Day, time: TimesType, newEvent: BaseEvent): void {
+    this.events = (this.constructor as typeof Day).replaceEvent(this.events, time, newEvent);
+  }
+
+  
+  /**
+   * Checks if the day is a full moon.
+   *
+   * @returns True if the day is a full moon, false otherwise.
+   */
+  isFullMoon(this: Day): boolean {
+    return _.some(FullMoonDays, (day) => day.isSame(this.date, 'day'));
+  }
+
+  isExamDay(this: Day): boolean {
+    return _.some(ExamDays, (day) => day.isSame(this.date, 'day'));
+  }
+
+  isDayOff(this: Day): boolean {
+    return _.some(DayOffDays, (day) => day.isSame(this.date, 'day'));
   }
 }

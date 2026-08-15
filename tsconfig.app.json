@@ -25,6 +25,7 @@
       "@store/*": ["./src/store/*"],
       "@pages/*": ["./src/pages/*"],
       "@assets/*": ["./src/assets/*"],
+      "@assets": ["./src/assets"],
       "@utils/*": ["./src/utils/*"]
     },
 

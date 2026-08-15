@@ -1,3 +1,5 @@
+import { Card } from '@components/card';
+import { QuestionCard, type QuestionCardAnswer } from '@components/questionCard';
 import { Districts } from '@constants/places';
 import { BaseEvent } from '@services/event/base';
 
@@ -23,7 +25,19 @@ export abstract class SchoolQuestionEventBase extends BaseEvent {
   }
 
   render(this: SchoolQuestionEventBase, _props: IsAvailableProps): React.ReactNode {
-    return null;
+    return (
+      <Card
+        isSelectable={this.isChangeable}
+        time={this.time}
+        body={this.questions.map((question) => (
+          <QuestionCard
+            key={question.text}
+            question={question.text}
+            answers={question.answers as QuestionCardAnswer[]}
+          />
+        ))}
+      />
+    );
   }
 
   override serialize(this: SchoolQuestionEventBase): {

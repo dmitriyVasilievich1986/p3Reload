@@ -13,9 +13,9 @@ export {
   SleepDuringClassCourageEvent,
 };
 
-export const courageStatModifyEvents = {
+export const CourageStatModifyEvents = {
   [CourageStatModifyNames.wilduckBigEaterChallenge]: WilduckBigEaterChallengeEvent,
   [CourageStatModifyNames.wilduckBurgerWeekendWilduckSet]: WilduckBurgerWeekendWilduckSetEvent,
   [CourageStatModifyNames.edogawaMedicine]: EdogawaMedicineEvent,
   [CourageStatModifyNames.sleepDuringClass]: SleepDuringClassCourageEvent,
-};
+} as const;

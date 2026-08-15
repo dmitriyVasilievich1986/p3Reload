@@ -1,3 +1,4 @@
+import { render, screen } from '@testing-library/react';
 import { describe, expect, it } from 'vite-plus/test';
 
 import { Times } from '@constants/times';
@@ -58,6 +59,32 @@ describe('SchoolQuestionsEvent', () => {
     expect(restored.isChangeable).toEqual(event.isChangeable);
     expect(restored.questions).toEqual(event.questions);
     expect(JSON.parse(JSON.stringify(restored.serialize()))).toEqual(serialized);
+  });
+
+  it('renders a QuestionCard for each question', () => {
+    const event = new SchoolQuestionsEvent({
+      ...baseEventProps,
+      time: Times.Morning,
+      questions: [
+        ...questions,
+        {
+          text: 'What is 2 + 2?',
+          answers: [
+            { text: '4', points: 15 },
+            { text: '5', points: 0 },
+          ],
+        },
+      ],
+    });
+
+    render(event.render(createIsAvailablePropsFixture()));
+
+    expect(screen.getByText('What is the capital of Japan?')).toBeInTheDocument();
+    expect(screen.getByText('Tokyo')).toBeInTheDocument();
+    expect(screen.getByText('Osaka')).toBeInTheDocument();
+    expect(screen.getByText('What is 2 + 2?')).toBeInTheDocument();
+    expect(screen.getByText('4')).toBeInTheDocument();
+    expect(screen.getByText('5')).toBeInTheDocument();
   });
 
   it('adds 2 Charm when calculating stats', () => {

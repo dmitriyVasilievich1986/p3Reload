@@ -13,7 +13,7 @@ export {
   type SchoolQuestionEventProps,
 };
 
-export const schoolQuestionsEvents = {
+export const SchoolQuestionsEvents = {
   [SchoolQuestionEventsNames.schoolQuestion]: SchoolQuestionsEvent,
   [SchoolQuestionEventsNames.examQuestion]: ExamQuestionsEvent,
 } as const;
