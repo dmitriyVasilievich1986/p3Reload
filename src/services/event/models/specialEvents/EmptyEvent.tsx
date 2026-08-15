@@ -1,4 +1,4 @@
-import { Card } from '@components/card';
+import { Card, type CardProps } from '@components/card';
 import { TextRow } from '@components/row';
 import { BaseEvent } from '@services/event/base';
 
@@ -6,6 +6,7 @@ import { SpecialEventsNames, type SpecialEventsNamesType } from './types';
 
 import type { IsAvailableProps } from '@services/availability/types';
 import type { Stats } from '@services/stats';
+import { cloneElement, isValidElement, type ReactElement } from 'react';
 
 export class EmptyEvent extends BaseEvent {
   static readonly name: SpecialEventsNamesType = SpecialEventsNames.Empty;
@@ -19,8 +20,11 @@ export class EmptyEvent extends BaseEvent {
     );
   }
 
-  render(this: EmptyEvent, props: IsAvailableProps): React.ReactNode {
-    return (this.constructor as typeof EmptyEvent).render(props);
+  render(props: IsAvailableProps): React.ReactNode {
+    const node = (this.constructor as typeof EmptyEvent).render(props);
+    return isValidElement(node)
+      ? cloneElement(node as ReactElement<CardProps>, { time: props.time })
+      : node;
   }
 
   calculateStats(this: EmptyEvent, _props: IsAvailableProps): Stats {

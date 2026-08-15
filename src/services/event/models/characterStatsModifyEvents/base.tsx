@@ -1,4 +1,6 @@
-import { Card } from '@components/card';
+import { cloneElement, isValidElement, type ReactElement } from 'react';
+
+import { Card, type CardProps } from '@components/card';
 import { LabelRow } from '@components/row';
 import { BaseEvent } from '@services/event/base';
 import { priceFormatter } from '@utils/priceFormatter';
@@ -54,6 +56,9 @@ export abstract class CharacterStatsModifyEventBase extends BaseEvent {
   }
 
   render(props: IsAvailableProps): React.ReactNode {
-    return (this.constructor as typeof CharacterStatsModifyEventBase).render(props);
+    const node = (this.constructor as typeof CharacterStatsModifyEventBase).render(props);
+    return isValidElement(node)
+      ? cloneElement(node as ReactElement<CardProps>, { time: props.time })
+      : node;
   }
 }
