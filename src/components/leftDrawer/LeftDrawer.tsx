@@ -1,6 +1,7 @@
 import classNames from 'classnames';
 import { useState, type FocusEvent } from 'react';
 
+import { LeftDrawerContext } from './context';
 import {
   LEFT_DRAWER_COLLAPSED_WIDTH_PX,
   LEFT_DRAWER_EXPANDED_WIDTH_PX,
@@ -47,9 +48,11 @@ export function LeftDrawer({
         className
       )}
     >
-      <div className="flex h-full flex-col" style={{ width: LEFT_DRAWER_EXPANDED_WIDTH_PX }}>
-        {children}
-      </div>
+      <LeftDrawerContext.Provider value={{ isExpanded }}>
+        <div className="flex h-full flex-col" style={{ width: LEFT_DRAWER_EXPANDED_WIDTH_PX }}>
+          {children}
+        </div>
+      </LeftDrawerContext.Provider>
     </aside>
   );
 }

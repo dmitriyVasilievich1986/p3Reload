@@ -82,6 +82,16 @@ describe('App', () => {
     });
   });
 
+  it('renders month navigation in the left drawer after the calendar loads', async () => {
+    renderApp('/p3Reload/?darkTheme=false');
+
+    await waitFor(() => {
+      expect(screen.getByRole('region', { name: 'April' })).toBeInTheDocument();
+    });
+
+    expect(screen.getByRole('heading', { name: 'April' })).toHaveTextContent(/^A$/);
+  });
+
   it('renders the left drawer and a 1:2:1 scrollable body layout', async () => {
     renderApp('/p3Reload/?darkTheme=false');
 

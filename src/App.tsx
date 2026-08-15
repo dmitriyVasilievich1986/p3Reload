@@ -4,6 +4,7 @@ import {
   LEFT_DRAWER_COLLAPSED_WIDTH_PX,
   LeftDrawer,
   LeftPanel,
+  MonthContainer,
   RightPanel,
 } from '@components';
 import { useEffect } from 'react';
@@ -60,6 +61,15 @@ export function App() {
       <LeftDrawer>
         <div className="pt-3" style={{ marginLeft: (LEFT_DRAWER_COLLAPSED_WIDTH_PX - 30) / 2 }}>
           <DarkThemeSwitch />
+        </div>
+        <div className="mt-3 flex min-h-0 flex-1 flex-col overflow-y-auto">
+          {(calendar?.getDatesByMonth() ?? []).map((dates) => {
+            const firstDate = dates[0];
+
+            return firstDate === undefined ? null : (
+              <MonthContainer key={firstDate.format('YYYY-MM')} dates={dates} />
+            );
+          })}
         </div>
       </LeftDrawer>
 
