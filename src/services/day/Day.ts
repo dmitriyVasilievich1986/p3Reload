@@ -256,6 +256,7 @@ export class Day {
           throw new Error(`Multiple events found at time ${time}.`);
         }
         isReplaced = true;
+        newEvent.stats = event.stats;
         return newEvent;
       }
       return event;
