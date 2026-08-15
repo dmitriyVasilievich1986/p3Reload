@@ -36,7 +36,7 @@ export function CenterPanel() {
 
     if (currentDay === null || !currentDay?.date.isSame(dayjs(dayParam), 'day')) {
       try {
-        const [day] = calendar.getDay(dayjs(dayParam));
+        const { currentDay: day } = calendar.getDay(dayjs(dayParam));
         setCurrentDay(day);
       } catch {
         setCurrentDay(undefined);
@@ -71,9 +71,9 @@ export function CenterPanel() {
 
   if (calendar !== null) {
     try {
-      const [, index] = calendar.getDay(currentDay.date);
-      previousDate = calendar.days[index - 1]?.date;
-      nextDate = calendar.days[index + 1]?.date;
+      const { previousDayIndex, nextDayIndex } = calendar.getDay(currentDay.date);
+      previousDate = calendar.days[previousDayIndex]?.date;
+      nextDate = calendar.days[nextDayIndex]?.date;
     } catch {
       previousDate = undefined;
       nextDate = undefined;

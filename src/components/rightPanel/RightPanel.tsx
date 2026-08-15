@@ -49,7 +49,7 @@ export function RightPanel() {
       isChangeable: selectedEvent.isChangeable,
     });
     const nextCalendar = calendar.replaceEvent(currentDay.date, selectedEvent.time, newEvent);
-    const [nextDay] = nextCalendar.getDay(currentDay.date);
+    const { currentDay: nextDay } = nextCalendar.getDay(currentDay.date);
     setCalendar(nextCalendar);
     setCurrentDay(nextDay);
     setSelectedEvent(nextDay.getEvent(selectedEvent.time));

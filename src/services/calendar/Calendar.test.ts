@@ -70,6 +70,18 @@ describe('Calendar', () => {
     });
   });
 
+  describe('createEmptyDay', () => {
+    it('creates a day with empty stats and no events', () => {
+      const date = dayjs('2009-04-19');
+      const day = Calendar.createEmptyDay(date);
+
+      expect(day.date).toBe(date);
+      expect(day.events).toEqual([]);
+      expect(day.statsAtStartOfDay).toEqual(new Stats());
+      expect(day.statsAtEndOfDay).toEqual(new Stats());
+    });
+  });
+
   describe('serialize', () => {
     it('serializes each day', () => {
       const days = [
@@ -91,13 +103,56 @@ describe('Calendar', () => {
   });
 
   describe('getDay', () => {
-    it('returns the day and its index', () => {
+    it('returns the current day with neighboring days and indexes', () => {
       const first = createDayFixture({ date: createDateFixture(dayjs('2009-04-20')) });
       const second = createDayFixture({ date: createDateFixture(dayjs('2009-04-21')) });
       const calendar = new Calendar({ days: [first, second] });
 
-      expect(calendar.getDay(dayjs('2009-04-20'))).toEqual([first, 0]);
-      expect(calendar.getDay(dayjs('2009-04-21'))).toEqual([second, 1]);
+      const firstResult = calendar.getDay(dayjs('2009-04-20'));
+      expect(firstResult.currentDay).toBe(first);
+      expect(firstResult.currentDayIndex).toBe(0);
+      expect(firstResult.previousDay.date.isSame(dayjs('2009-04-19'), 'day')).toBe(true);
+      expect(firstResult.previousDay.events).toEqual([]);
+      expect(firstResult.previousDay.statsAtStartOfDay).toEqual(new Stats());
+      expect(firstResult.previousDayIndex).toBe(-1);
+      expect(firstResult.nextDay).toBe(second);
+      expect(firstResult.nextDayIndex).toBe(1);
+      expect(firstResult.weekAgoDay.date.isSame(dayjs('2009-04-13'), 'day')).toBe(true);
+      expect(firstResult.weekAgoDay.events).toEqual([]);
+      expect(firstResult.weekAgoDay.statsAtStartOfDay).toEqual(new Stats());
+      expect(firstResult.weekAgoDayIndex).toBe(-7);
+
+      const secondResult = calendar.getDay(dayjs('2009-04-21'));
+      expect(secondResult.currentDay).toBe(second);
+      expect(secondResult.currentDayIndex).toBe(1);
+      expect(secondResult.previousDay).toBe(first);
+      expect(secondResult.previousDayIndex).toBe(0);
+      expect(secondResult.nextDay.date.isSame(dayjs('2009-04-22'), 'day')).toBe(true);
+      expect(secondResult.nextDay.events).toEqual([]);
+      expect(secondResult.nextDayIndex).toBe(2);
+      expect(secondResult.weekAgoDay.date.isSame(dayjs('2009-04-14'), 'day')).toBe(true);
+      expect(secondResult.weekAgoDayIndex).toBe(-6);
+    });
+
+    it('returns existing week-ago and next days when they are in the calendar', () => {
+      const days = Array.from({ length: 8 }, (_, index) =>
+        createDayFixture({
+          date: createDateFixture(dayjs('2009-04-13').add(index, 'day')),
+        })
+      );
+      const calendar = new Calendar({ days });
+
+      const result = calendar.getDay(dayjs('2009-04-20'));
+
+      expect(result.currentDay).toBe(days[7]);
+      expect(result.currentDayIndex).toBe(7);
+      expect(result.previousDay).toBe(days[6]);
+      expect(result.previousDayIndex).toBe(6);
+      expect(result.nextDay.date.isSame(dayjs('2009-04-21'), 'day')).toBe(true);
+      expect(result.nextDay.events).toEqual([]);
+      expect(result.nextDayIndex).toBe(8);
+      expect(result.weekAgoDay).toBe(days[0]);
+      expect(result.weekAgoDayIndex).toBe(0);
     });
 
     it('throws when no day matches the date', () => {

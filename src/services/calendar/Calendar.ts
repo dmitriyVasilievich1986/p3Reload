@@ -6,6 +6,7 @@ import { Day } from '@services/day';
 import { EmptyEvent } from '@services/event/models/specialEvents';
 import { Stats } from '@services/stats';
 
+import type { GetDayResult } from './types';
 import type { TimesType } from '@constants/times';
 import type { IsAvailableProps } from '@services/availability/types';
 import type { DaySerializedType } from '@services/day/types';
@@ -43,18 +44,61 @@ export class Calendar {
   }
 
   /**
-   * Finds the day matching `date` and its index in {@link Calendar.days}.
+   * Replaces the single event scheduled at `date`/`time` with `newEvent`.
+   *
+   * @param date - Date of the day to replace the event on.
+   * @param time - Time slot whose event should be replaced.
+   * @param newEvent - Event to insert at that time.
+   * @returns A new {@link Calendar} instance.
+   */
+  replaceEvent(this: Calendar, date: Dayjs, time: TimesType, newEvent: BaseEvent): Calendar {
+    const { currentDay } = this.getDay(date);
+    currentDay.replaceEvent(time, newEvent);
+    const days = (this.constructor as typeof Calendar).calculateStats(
+      this.days,
+      date,
+      false,
+      false
+    );
+    return new Calendar({ days: days });
+  }
+
+  /**
+   * Finds the day matching `date` and the neighboring days around it.
+   *
+   * Missing previous, next, or week-ago days are replaced with empty
+   * {@link Day} instances for the corresponding dates.
    *
    * @param date - Calendar date to look up (compared by day).
-   * @returns The matching day and its index.
+   * @returns The current day, its neighbors, and their indexes.
    * @throws {Error} If no day matches `date`.
    */
-  getDay(this: Calendar, date: Dayjs): [Day, number] {
-    const dayIndex = _.findIndex(this.days, (day) => day.date.isSame(date, 'day'));
-    if (dayIndex === -1) {
+  getDay(this: Calendar, date: Dayjs): GetDayResult {
+    const currentDayIndex = _.findIndex(this.days, (day) => day.date.isSame(date, 'day'));
+    if (currentDayIndex === -1) {
       throw new Error(`Day not found for date: ${date.format(DatesFormat)}`);
     }
-    return [this.days[dayIndex], dayIndex];
+
+    const previousDayIndex = currentDayIndex - 1;
+    const nextDayIndex = currentDayIndex + 1;
+    const weekAgoDayIndex = currentDayIndex - 7;
+
+    return {
+      currentDay: this.days[currentDayIndex],
+      currentDayIndex,
+      previousDay:
+        this.days[previousDayIndex] ??
+        (this.constructor as typeof Calendar).createEmptyDay(date.subtract(1, 'day')),
+      previousDayIndex,
+      nextDay:
+        this.days[nextDayIndex] ??
+        (this.constructor as typeof Calendar).createEmptyDay(date.add(1, 'day')),
+      nextDayIndex,
+      weekAgoDay:
+        this.days[weekAgoDayIndex] ??
+        (this.constructor as typeof Calendar).createEmptyDay(date.subtract(7, 'day')),
+      weekAgoDayIndex,
+    };
   }
 
   /**
@@ -69,23 +113,7 @@ export class Calendar {
    * @throws {Error} If the day or the event at `time` is missing.
    */
   getIsAvailableProps(this: Calendar, date: Dayjs, time: TimesType): IsAvailableProps {
-    const [currentDay, dayIndex] = this.getDay(date);
-    const previousDay =
-      this.days[dayIndex - 1] ??
-      new Day({
-        date: date.subtract(1, 'day'),
-        statsAtStartOfDay: new Stats(),
-        statsAtEndOfDay: new Stats(),
-        events: [],
-      });
-    const dayWeekBefore =
-      this.days[dayIndex - 7] ??
-      new Day({
-        date: date.subtract(7, 'day'),
-        statsAtStartOfDay: new Stats(),
-        statsAtEndOfDay: new Stats(),
-        events: [],
-      });
+    const { currentDay, previousDay, weekAgoDay } = this.getDay(date);
     const event = currentDay.getEvent(time);
     return {
       time: time,
@@ -94,7 +122,7 @@ export class Calendar {
       event: event,
       currentDay: currentDay,
       previousDay: previousDay,
-      dayWeekBefore: dayWeekBefore,
+      dayWeekBefore: weekAgoDay,
     };
   }
 
@@ -124,21 +152,9 @@ export class Calendar {
         event: event,
         currentDay: days[index],
         previousDay:
-          days[index - 1] ??
-          new Day({
-            date: days[index].date.subtract(1, 'day'),
-            statsAtStartOfDay: new Stats(),
-            statsAtEndOfDay: new Stats(),
-            events: [],
-          }),
+          days[index - 1] ?? Calendar.createEmptyDay(days[index].date.subtract(1, 'day')),
         dayWeekBefore:
-          days[index - 7] ??
-          new Day({
-            date: days[index].date.subtract(7, 'day'),
-            statsAtStartOfDay: new Stats(),
-            statsAtEndOfDay: new Stats(),
-            events: [],
-          }),
+          days[index - 7] ?? Calendar.createEmptyDay(days[index].date.subtract(7, 'day')),
       };
       let events = Day.filterEvents(
         days[index].events,
@@ -198,22 +214,8 @@ export class Calendar {
         stats,
         event, // not important
         currentDay: day,
-        previousDay:
-          days[index - 1] ??
-          new Day({
-            date: day.date.subtract(1, 'day'),
-            statsAtStartOfDay: new Stats(),
-            statsAtEndOfDay: new Stats(),
-            events: [],
-          }),
-        dayWeekBefore:
-          days[index - 7] ??
-          new Day({
-            date: day.date.subtract(7, 'day'),
-            statsAtStartOfDay: new Stats(),
-            statsAtEndOfDay: new Stats(),
-            events: [],
-          }),
+        previousDay: days[index - 1] ?? Calendar.createEmptyDay(day.date.subtract(1, 'day')),
+        dayWeekBefore: days[index - 7] ?? Calendar.createEmptyDay(day.date.subtract(7, 'day')),
       };
       let events = day.events;
       events = Day.filterEvents(
@@ -245,22 +247,17 @@ export class Calendar {
   }
 
   /**
-   * Replaces the single event scheduled at `date`/`time` with `newEvent`.
+   * Creates a placeholder {@link Day} with empty stats and no events.
    *
-   * @param date - Date of the day to replace the event on.
-   * @param time - Time slot whose event should be replaced.
-   * @param newEvent - Event to insert at that time.
-   * @returns A new {@link Calendar} instance.
+   * @param date - Calendar date the placeholder represents.
+   * @returns A new empty {@link Day} instance.
    */
-  replaceEvent(this: Calendar, date: Dayjs, time: TimesType, newEvent: BaseEvent): Calendar {
-    const [day] = this.getDay(date);
-    day.replaceEvent(time, newEvent);
-    const days = (this.constructor as typeof Calendar).calculateStats(
-      this.days,
+  static createEmptyDay(date: Dayjs): Day {
+    return new Day({
       date,
-      false,
-      false
-    );
-    return new Calendar({ days: days });
+      statsAtStartOfDay: new Stats(),
+      statsAtEndOfDay: new Stats(),
+      events: [],
+    });
   }
 }
