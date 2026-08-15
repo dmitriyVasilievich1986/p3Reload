@@ -81,6 +81,8 @@ describe('Card', () => {
     expect(article).toHaveClass('bg-slate-100', 'dark:bg-slate-800');
     expect(article).not.toHaveClass('opacity-60');
     expect(article).not.toHaveClass('hover:shadow-md');
+    expect(article).not.toHaveClass('transition-[box-shadow,border-color,background-color]');
+    expect(article).not.toHaveClass('duration-150');
 
     await user.click(screen.getByText('Locked'));
 
@@ -99,10 +101,49 @@ describe('Card', () => {
 
     expect(article).toHaveClass('hover:shadow-md');
     expect(article).toHaveClass('active:shadow-sm');
+    expect(article).toHaveClass('transition-[box-shadow,border-color,background-color]');
+    expect(article).toHaveClass('duration-150');
 
     await user.click(screen.getByText('Pick me'));
 
     expect(onClick).toHaveBeenCalledOnce();
+  });
+
+  it('is keyboard-accessible when selectable and has onClick', async () => {
+    const user = userEvent.setup();
+    const onClick = vi.fn();
+
+    const { container } = render(
+      <Card time={Times.Morning} onClick={onClick} body={<span>Pick me</span>} />
+    );
+
+    const article = container.querySelector('article');
+
+    expect(article).toHaveAttribute('tabIndex', '0');
+
+    await user.tab();
+    expect(article).toHaveFocus();
+
+    await user.keyboard('{Enter}');
+    expect(onClick).toHaveBeenCalledOnce();
+
+    await user.keyboard(' ');
+    expect(onClick).toHaveBeenCalledTimes(2);
+  });
+
+  it('is not keyboard-accessible when not selectable', () => {
+    const { container } = render(
+      <Card
+        time={Times.Morning}
+        isSelectable={false}
+        onClick={vi.fn()}
+        body={<span>Locked</span>}
+      />
+    );
+
+    const article = container.querySelector('article');
+
+    expect(article).not.toHaveAttribute('tabIndex');
   });
 
   it('includes dark-mode classes', () => {

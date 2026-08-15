@@ -1,5 +1,5 @@
 import classNames from 'classnames';
-import { Children, isValidElement } from 'react';
+import { Children, isValidElement, type KeyboardEvent } from 'react';
 
 import { Times, type TimesType } from '@constants/times';
 
@@ -32,19 +32,32 @@ export function Card({
   className,
 }: CardProps) {
   const bodyItems = Children.toArray(body);
+  const isInteractive = isSelectable && onClick != null;
+
+  function handleKeyDown(event: KeyboardEvent<HTMLElement>) {
+    if (event.key !== 'Enter' && event.key !== ' ') {
+      return;
+    }
+
+    event.preventDefault();
+    onClick?.();
+  }
 
   return (
     <article
       aria-disabled={!isSelectable}
       aria-selected={isSelected}
-      onClick={isSelectable ? onClick : undefined}
+      tabIndex={isInteractive ? 0 : undefined}
+      onClick={isInteractive ? onClick : undefined}
+      onKeyDown={isInteractive ? handleKeyDown : undefined}
       className={classNames(
         'relative flex flex-col rounded-xl border shadow-sm',
         'border-slate-200 dark:border-slate-700 dark:shadow-none',
-        'transition-[box-shadow,border-color,background-color] duration-150 ease-out',
         isSelectable
-          ? 'cursor-pointer bg-white hover:border-slate-300 hover:shadow-md active:shadow-sm dark:bg-slate-900 dark:hover:border-slate-600'
+          ? 'cursor-pointer bg-white transition-[box-shadow,border-color,background-color] duration-150 ease-out hover:border-slate-300 hover:shadow-md active:shadow-sm dark:bg-slate-900 dark:hover:border-slate-600'
           : 'cursor-not-allowed bg-slate-100 dark:bg-slate-800',
+        isInteractive &&
+          'focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-slate-400 dark:focus-visible:ring-slate-500',
         isSelected &&
           'border-sky-400 ring-2 ring-sky-400/70 dark:border-sky-500 dark:ring-sky-500/60',
         isTall && 'min-h-[300px]',
