@@ -82,6 +82,30 @@ describe('Calendar', () => {
     });
   });
 
+  describe('getDatesByMonth', () => {
+    it('returns an empty list when the calendar has no days', () => {
+      const calendar = new Calendar({ days: [] });
+
+      expect(calendar.getDatesByMonth()).toEqual([]);
+    });
+
+    it('groups dates by year-month in first-seen order', () => {
+      const aprilSeventh = createDayFixture({ date: createDateFixture(dayjs('2009-04-07')) });
+      const aprilEighth = createDayFixture({ date: createDateFixture(dayjs('2009-04-08')) });
+      const mayFirst = createDayFixture({ date: createDateFixture(dayjs('2009-05-01')) });
+      const calendar = new Calendar({ days: [aprilSeventh, aprilEighth, mayFirst] });
+
+      const groups = calendar.getDatesByMonth();
+
+      expect(groups).toHaveLength(2);
+      expect(groups[0]?.map((date) => date.format(DatesFormat))).toEqual([
+        '2009-04-07',
+        '2009-04-08',
+      ]);
+      expect(groups[1]?.map((date) => date.format(DatesFormat))).toEqual(['2009-05-01']);
+    });
+  });
+
   describe('serialize', () => {
     it('serializes each day', () => {
       const days = [

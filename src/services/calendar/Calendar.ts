@@ -44,6 +44,28 @@ export class Calendar {
   }
 
   /**
+   * Groups the dates of {@link Calendar.days} by year-month, in first-seen order.
+   *
+   * @returns Arrays of dates, one per month present in this calendar.
+   */
+  getDatesByMonth(this: Calendar): Dayjs[][] {
+    const groups = new Map<string, Dayjs[]>();
+
+    for (const day of this.days) {
+      const key = day.date.format('YYYY-MM');
+      const group = groups.get(key);
+
+      if (group === undefined) {
+        groups.set(key, [day.date]);
+      } else {
+        group.push(day.date);
+      }
+    }
+
+    return [...groups.values()];
+  }
+
+  /**
    * Replaces the single event scheduled at `date`/`time` with `newEvent`.
    *
    * @param date - Date of the day to replace the event on.
