@@ -5,7 +5,7 @@ import type { TabItem } from '../tabs';
 
 export const LeftPanelTabNames = {
   Character: 'Character',
-  SocialLinks: 'S Links',
+  SocialLinks: 'SLinks',
 } as const;
 
 export const LEFT_PANEL_TABS: TabItem[] = [
