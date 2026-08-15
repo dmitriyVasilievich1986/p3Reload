@@ -2,10 +2,60 @@ import dayjs, { type Dayjs } from 'dayjs';
 import { cloneElement, isValidElement, useEffect, type ReactElement } from 'react';
 import { useSearchParams } from 'react-router';
 
+import holidayIcon from '@assets/holiday.svg';
+import moonIcon from '@assets/moon.svg';
+import studyIcon from '@assets/study.svg';
 import { type CardProps } from '@components/card';
 import { DateStepButton, DateStepDirections } from '@components/dateStepButton';
+import { Tooltip, TooltipPositions } from '@components/tooltip';
 import { DEFAULT_DAY } from '@constants/dates';
 import { useMainStore } from '@store/main';
+
+import type { Day } from '@services/day';
+
+function SpecialDayIcon({
+  src,
+  alt,
+  tooltip,
+  invert = false,
+}: {
+  src: string;
+  alt: string;
+  tooltip: string;
+  invert?: boolean;
+}) {
+  return (
+    <Tooltip content={tooltip} position={TooltipPositions.bottom}>
+      <img src={src} alt={alt} className={invert ? 'size-6 dark:invert' : 'size-6'} />
+    </Tooltip>
+  );
+}
+
+function SpecialDayIcons({ day }: { day: Day }) {
+  return (
+    <>
+      {day.isFullMoon() ? (
+        <SpecialDayIcon src={moonIcon} alt="Full moon" tooltip="A full moon occurs on this day" />
+      ) : null}
+      {day.isDayOff() ? (
+        <SpecialDayIcon
+          src={holidayIcon}
+          alt="Holiday"
+          tooltip="School is closed on this day"
+          invert
+        />
+      ) : null}
+      {day.isExamDay() ? (
+        <SpecialDayIcon
+          src={studyIcon}
+          alt="Exam day"
+          tooltip="Exams are held on this day"
+          invert
+        />
+      ) : null}
+    </>
+  );
+}
 
 /**
  * Center column of the main app body.
@@ -92,8 +142,9 @@ export function CenterPanel() {
         <div className="flex justify-start">
           <DateStepButton date={previousDate} direction={DateStepDirections.left} />
         </div>
-        <div className="text-center text-sm font-semibold text-slate-900 dark:text-slate-50">
-          {currentDay.date.format('MMMM D, dddd')}
+        <div className="flex items-center justify-center gap-1.5 text-sm font-semibold text-slate-900 dark:text-slate-50">
+          <span>{currentDay.date.format('MMMM D, dddd')}</span>
+          <SpecialDayIcons day={currentDay} />
         </div>
         <div className="flex justify-end">
           <DateStepButton date={nextDate} direction={DateStepDirections.right} />

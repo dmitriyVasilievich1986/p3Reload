@@ -11,6 +11,7 @@ import type { DayProps, DaySerializedType } from './types';
 import type { IsAvailableProps } from '@services/availability/types';
 import type { EventNamesType } from '@services/event/types';
 import type { Dayjs } from 'dayjs';
+import { FullMoonDays, ExamDays, DayOffDays } from '@constants/dates';
 
 /**
  * A single calendar day of scheduled events and character stats.
@@ -269,5 +270,23 @@ export class Day {
    */
   replaceEvent(this: Day, time: TimesType, newEvent: BaseEvent): void {
     this.events = (this.constructor as typeof Day).replaceEvent(this.events, time, newEvent);
+  }
+
+  
+  /**
+   * Checks if the day is a full moon.
+   *
+   * @returns True if the day is a full moon, false otherwise.
+   */
+  isFullMoon(this: Day): boolean {
+    return _.some(FullMoonDays, (day) => day.isSame(this.date, 'day'));
+  }
+
+  isExamDay(this: Day): boolean {
+    return _.some(ExamDays, (day) => day.isSame(this.date, 'day'));
+  }
+
+  isDayOff(this: Day): boolean {
+    return _.some(DayOffDays, (day) => day.isSame(this.date, 'day'));
   }
 }

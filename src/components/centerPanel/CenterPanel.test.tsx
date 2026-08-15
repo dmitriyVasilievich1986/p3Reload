@@ -4,6 +4,9 @@ import dayjs from 'dayjs';
 import { MemoryRouter, useSearchParams } from 'react-router';
 import { afterEach, beforeEach, describe, expect, it } from 'vite-plus/test';
 
+import holidayIcon from '@assets/holiday.svg';
+import moonIcon from '@assets/moon.svg';
+import studyIcon from '@assets/study.svg';
 import { DEFAULT_DAY } from '@constants/dates';
 import { Times } from '@constants/times';
 import { Calendar } from '@services/calendar';
@@ -70,6 +73,9 @@ describe('CenterPanel', () => {
     );
     expect(screen.getByRole('banner', { name: 'Day navigation' })).toHaveClass('sticky');
     expect(screen.getByText('April 7, Tuesday')).toBeInTheDocument();
+    expect(screen.queryByRole('img', { name: 'Full moon' })).not.toBeInTheDocument();
+    expect(screen.queryByRole('img', { name: 'Holiday' })).not.toBeInTheDocument();
+    expect(screen.queryByRole('img', { name: 'Exam day' })).not.toBeInTheDocument();
     expect(screen.queryByRole('button', { name: /Previous day/ })).not.toBeInTheDocument();
     expect(screen.queryByRole('button', { name: /Next day/ })).not.toBeInTheDocument();
   });
@@ -101,6 +107,63 @@ describe('CenterPanel', () => {
       expect(screen.getByTestId('search')).toHaveTextContent('day=2009-05-15');
       expect(useMainStore.getState().currentDay).toBe(day);
     });
+    const examIcon = screen.getByRole('img', { name: 'Exam day' });
+    expect(examIcon).toHaveAttribute('src', studyIcon);
+
+    await userEvent.setup().hover(examIcon);
+    expect(screen.getByRole('tooltip')).toHaveTextContent('Exams are held on this day');
+  });
+
+  it('shows a full moon icon on full moon days', async () => {
+    const day = createDayFixture({ date: dayjs('2009-04-09') });
+    useMainStore.getState().setCalendar(new Calendar({ days: [day] }));
+
+    renderCenterPanel('/p3Reload/?darkTheme=false&day=2009-04-09');
+
+    await waitFor(() => {
+      expect(useMainStore.getState().currentDay).toBe(day);
+    });
+
+    const fullMoonIcon = screen.getByRole('img', { name: 'Full moon' });
+    expect(fullMoonIcon).toHaveAttribute('src', moonIcon);
+    expect(screen.queryByRole('img', { name: 'Holiday' })).not.toBeInTheDocument();
+    expect(screen.queryByRole('img', { name: 'Exam day' })).not.toBeInTheDocument();
+
+    await userEvent.setup().hover(fullMoonIcon);
+    expect(screen.getByRole('tooltip')).toHaveTextContent('A full moon occurs on this day');
+  });
+
+  it('shows a holiday icon on day-off days', async () => {
+    const day = createDayFixture({ date: dayjs('2009-04-29') });
+    useMainStore.getState().setCalendar(new Calendar({ days: [day] }));
+
+    renderCenterPanel('/p3Reload/?darkTheme=false&day=2009-04-29');
+
+    await waitFor(() => {
+      expect(useMainStore.getState().currentDay).toBe(day);
+    });
+
+    const holiday = screen.getByRole('img', { name: 'Holiday' });
+    expect(holiday).toHaveAttribute('src', holidayIcon);
+    expect(screen.queryByRole('img', { name: 'Full moon' })).not.toBeInTheDocument();
+    expect(screen.queryByRole('img', { name: 'Exam day' })).not.toBeInTheDocument();
+
+    await userEvent.setup().hover(holiday);
+    expect(screen.getByRole('tooltip')).toHaveTextContent('School is closed on this day');
+  });
+
+  it('shows every matching special-day icon', async () => {
+    const day = createDayFixture({ date: dayjs('2009-08-06') });
+    useMainStore.getState().setCalendar(new Calendar({ days: [day] }));
+
+    renderCenterPanel('/p3Reload/?darkTheme=false&day=2009-08-06');
+
+    await waitFor(() => {
+      expect(useMainStore.getState().currentDay).toBe(day);
+    });
+
+    expect(screen.getByRole('img', { name: 'Full moon' })).toHaveAttribute('src', moonIcon);
+    expect(screen.getByRole('img', { name: 'Holiday' })).toHaveAttribute('src', holidayIcon);
   });
 
   it('sets currentDay to undefined when getDay throws', async () => {
