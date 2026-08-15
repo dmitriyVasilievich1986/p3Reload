@@ -13,7 +13,7 @@ export {
   HagakureRamenSpecialEvent,
 };
 
-export const charmStatModifyEvents = {
+export const CharmStatModifyEvents = {
   [CharmStatModifyNames.chagallCafeCharm]: ChagalCafeCharmEvent,
   [CharmStatModifyNames.gameParadeCharm]: GameParadeCharmEvent,
   [CharmStatModifyNames.hagakureRamen]: HagakureRamenEvent,
