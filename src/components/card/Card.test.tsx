@@ -78,7 +78,8 @@ describe('Card', () => {
     const article = container.querySelector('article');
 
     expect(article).toHaveAttribute('aria-disabled', 'true');
-    expect(article).toHaveClass('opacity-60');
+    expect(article).toHaveClass('bg-slate-100', 'dark:bg-slate-800');
+    expect(article).not.toHaveClass('opacity-60');
     expect(article).not.toHaveClass('hover:shadow-md');
 
     await user.click(screen.getByText('Locked'));

@@ -39,14 +39,14 @@ export function Card({
       aria-selected={isSelected}
       onClick={isSelectable ? onClick : undefined}
       className={classNames(
-        'relative flex flex-col rounded-xl border bg-white shadow-sm',
-        'border-slate-200 dark:border-slate-700 dark:bg-slate-900 dark:shadow-none',
-        'transition-[box-shadow,border-color,opacity] duration-150 ease-out',
-        isSelectable &&
-          'cursor-pointer hover:border-slate-300 hover:shadow-md active:shadow-sm dark:hover:border-slate-600',
+        'relative flex flex-col rounded-xl border shadow-sm',
+        'border-slate-200 dark:border-slate-700 dark:shadow-none',
+        'transition-[box-shadow,border-color,background-color] duration-150 ease-out',
+        isSelectable
+          ? 'cursor-pointer bg-white hover:border-slate-300 hover:shadow-md active:shadow-sm dark:bg-slate-900 dark:hover:border-slate-600'
+          : 'cursor-not-allowed bg-slate-100 dark:bg-slate-800',
         isSelected &&
           'border-sky-400 ring-2 ring-sky-400/70 dark:border-sky-500 dark:ring-sky-500/60',
-        !isSelectable && 'cursor-not-allowed opacity-60',
         isTall && 'min-h-[300px]',
         className
       )}
@@ -67,8 +67,8 @@ export function Card({
         <header
           className={classNames(
             'rounded-t-xl border-b border-slate-200 px-4 pb-3 pt-5',
-            'bg-slate-50 text-slate-900',
-            'dark:border-slate-700 dark:bg-slate-800 dark:text-slate-50'
+            'text-slate-900 dark:border-slate-700 dark:text-slate-50',
+            isSelectable ? 'bg-slate-50 dark:bg-slate-800' : 'bg-slate-200 dark:bg-slate-700'
           )}
         >
           {typeof header === 'string' || typeof header === 'number' ? (
