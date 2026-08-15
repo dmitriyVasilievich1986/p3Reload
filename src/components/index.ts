@@ -9,6 +9,7 @@ export {
   LeftDrawer,
 } from './leftDrawer';
 export { LeftPanel } from './leftPanel';
+export { MonthContainer } from './monthContainer';
 export { AnswerPoints, QuestionCard } from './questionCard';
 export { RightPanel } from './rightPanel';
 export { CheckboxRow, LabelRow, rowFactory, RowNames, TextAligns, TextRow } from './row';
@@ -20,6 +21,7 @@ export type { CardProps } from './card';
 export type { DarkThemeSwitchProps } from './darkThemeSwitch';
 export type { DateStepButtonProps, DateStepDirection } from './dateStepButton';
 export type { LeftDrawerProps } from './leftDrawer';
+export type { MonthContainerProps } from './monthContainer';
 export type { AnswerPoint, QuestionCardAnswer, QuestionCardProps } from './questionCard';
 export type { CheckboxRowProps, LabelRowProps, RowName, TextAlign, TextRowProps } from './row';
 export type { TabItem, TabsProps } from './tabs';
