@@ -10,7 +10,7 @@ export const TooltipPositions = {
 export type TooltipPosition = (typeof TooltipPositions)[keyof typeof TooltipPositions];
 
 export type TooltipProps = {
-  content: string;
+  content: ReactNode;
   position?: TooltipPosition;
   children: ReactNode;
   className?: string;

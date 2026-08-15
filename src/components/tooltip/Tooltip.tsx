@@ -35,7 +35,7 @@ export function Tooltip({
       </span>
 
       {isVisible ? (
-        <span
+        <div
           id={tooltipId}
           role="tooltip"
           className={classNames(
@@ -46,7 +46,7 @@ export function Tooltip({
           )}
         >
           {content}
-        </span>
+        </div>
       ) : null}
     </span>
   );
