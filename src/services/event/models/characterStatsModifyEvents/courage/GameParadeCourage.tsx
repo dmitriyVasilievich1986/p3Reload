@@ -22,7 +22,7 @@ import { type CourageStatModifyNamesType, CourageStatModifyNames } from './types
 export class GameParadeCourageEvent extends CharacterStatsModifyEventBase {
   static readonly name: CourageStatModifyNamesType = CourageStatModifyNames.gameParadeCourage;
 
-  static readonly header: string = '"High School of Youth"';
+  static readonly header: string = '"House of the Deceased"';
   static readonly place: string = Places.GameParade;
   static readonly district: string = Districts.PaulowniaMall;
   static readonly price: number = 3_000;
