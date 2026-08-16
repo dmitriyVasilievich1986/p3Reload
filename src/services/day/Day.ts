@@ -1,7 +1,7 @@
 import dayjs from 'dayjs';
 import _ from 'lodash';
 
-import { DatesFormat } from '@constants/dates';
+import { DatesFormat, FullMoonDays, ExamDays, DayOffDays } from '@constants/dates';
 import { Times, type TimesType } from '@constants/times';
 import { BaseEvent } from '@services/event/base';
 import { eventFactory } from '@services/event/factory';
@@ -11,7 +11,6 @@ import type { DayProps, DaySerializedType } from './types';
 import type { IsAvailableProps } from '@services/availability/types';
 import type { EventNamesType } from '@services/event/types';
 import type { Dayjs } from 'dayjs';
-import { FullMoonDays, ExamDays, DayOffDays } from '@constants/dates';
 
 /**
  * A single calendar day of scheduled events and character stats.
@@ -273,7 +272,6 @@ export class Day {
     this.events = (this.constructor as typeof Day).replaceEvent(this.events, time, newEvent);
   }
 
-  
   /**
    * Checks if the day is a full moon.
    *

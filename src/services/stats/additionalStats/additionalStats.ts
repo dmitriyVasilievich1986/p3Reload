@@ -69,7 +69,6 @@ export class AdditionalStats {
   /**
    * Returns the after-exam Social Link multiplier for the given arcana.
    *
-   * Only a fixed set of school-related arcanas use {@link AdditionalStats.afterExamModifier};
    * all other arcanas always resolve to `1`.
    *
    * @param arcana - Arcana whose post-exam multiplier should be resolved.
