@@ -60,7 +60,7 @@ export class SocialLinkStats {
 
   /**
    * Advances the given arcana's Social Link rank and replaces its active level definition.
-   * Mutates this instance.
+   * Returns a new {@link SocialLinkStats} instance; this instance is not mutated.
    *
    * Defaults: `amountOfLevels` is `1`, `currentPoints` resets to `0`, and `isRomantic`
    * keeps its existing value unless overridden.
@@ -70,6 +70,7 @@ export class SocialLinkStats {
    * @param props.amountOfLevels - How many ranks to add (default `1`).
    * @param props.currentPoints - Points to carry into the new rank (default `0`).
    * @param props.isRomantic - Romantic-path flag; omitted keeps the current value.
+   * @returns A new stats instance with the updated arcana rank.
    */
   increaseLevel(
     this: SocialLinkStats,
@@ -80,29 +81,39 @@ export class SocialLinkStats {
       currentPoints?: number;
       isRomantic?: boolean;
     }
-  ) {
-    this[props.arcana] = {
+  ): SocialLinkStats {
+    const newLevel = {
       level: this[props.arcana].level + (props.amountOfLevels ?? 1),
       currentPoints: props.currentPoints ?? 0,
       isRomantic: props.isRomantic ?? this[props.arcana].isRomantic,
       currentSocialLinkLevel: props.level,
     };
+    return new SocialLinkStats({
+      ...this,
+      [props.arcana]: newLevel,
+    });
   }
 
   /**
    * Adds affinity points to the given arcana without changing its rank or level definition.
-   * Mutates this instance.
+   * Returns a new {@link SocialLinkStats} instance; this instance is not mutated.
    *
    * @param props.arcana - Arcana to update.
    * @param props.points - Points to add to `currentPoints`.
+   * @returns A new stats instance with the updated arcana points.
    */
-  increasePoints(this: SocialLinkStats, props: { arcana: ArcanasType; points: number }) {
-    this[props.arcana] = {
-      level: this[props.arcana].level,
+  increasePoints(
+    this: SocialLinkStats,
+    props: { arcana: ArcanasType; points: number }
+  ): SocialLinkStats {
+    const newLevel = {
+      ...this[props.arcana],
       currentPoints: this[props.arcana].currentPoints + props.points,
-      isRomantic: this[props.arcana].isRomantic,
-      currentSocialLinkLevel: this[props.arcana].currentSocialLinkLevel,
     };
+    return new SocialLinkStats({
+      ...this,
+      [props.arcana]: newLevel,
+    });
   }
 
   /**

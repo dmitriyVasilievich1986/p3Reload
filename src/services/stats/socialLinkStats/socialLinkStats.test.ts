@@ -66,22 +66,25 @@ describe('SocialLinkStats', () => {
   });
 
   describe('increaseLevel', () => {
-    it('increases level by 1, resets points to 0, and sets the provided social link level', () => {
+    it('returns a new instance with level increased by 1, points reset, and the provided social link level', () => {
       const nextLevel = createLevel({ level: 2, pointsToNextLevel: 25 });
+      const loversBefore = createArcanaStats({
+        level: 1,
+        currentPoints: 18,
+        isRomantic: false,
+      });
       const stats = new SocialLinkStats({
-        [Arcanas.Lovers]: createArcanaStats({
-          level: 1,
-          currentPoints: 18,
-          isRomantic: false,
-        }),
+        [Arcanas.Lovers]: loversBefore,
       });
 
-      stats.increaseLevel({
+      const result = stats.increaseLevel({
         arcana: Arcanas.Lovers,
         level: nextLevel,
       });
 
-      expect(stats[Arcanas.Lovers]).toEqual({
+      expect(result).not.toBe(stats);
+      expect(stats[Arcanas.Lovers]).toEqual(loversBefore);
+      expect(result[Arcanas.Lovers]).toEqual({
         level: 2,
         currentPoints: 0,
         isRomantic: false,
@@ -91,15 +94,16 @@ describe('SocialLinkStats', () => {
 
     it('uses optional amountOfLevels, currentPoints, and isRomantic when provided', () => {
       const nextLevel = createLevel({ level: 4, isRomantic: true });
+      const loversBefore = createArcanaStats({
+        level: 1,
+        currentPoints: 8,
+        isRomantic: false,
+      });
       const stats = new SocialLinkStats({
-        [Arcanas.Lovers]: createArcanaStats({
-          level: 1,
-          currentPoints: 8,
-          isRomantic: false,
-        }),
+        [Arcanas.Lovers]: loversBefore,
       });
 
-      stats.increaseLevel({
+      const result = stats.increaseLevel({
         arcana: Arcanas.Lovers,
         level: nextLevel,
         amountOfLevels: 3,
@@ -107,7 +111,9 @@ describe('SocialLinkStats', () => {
         isRomantic: true,
       });
 
-      expect(stats[Arcanas.Lovers]).toEqual({
+      expect(result).not.toBe(stats);
+      expect(stats[Arcanas.Lovers]).toEqual(loversBefore);
+      expect(result[Arcanas.Lovers]).toEqual({
         level: 4,
         currentPoints: 4,
         isRomantic: true,
@@ -121,31 +127,36 @@ describe('SocialLinkStats', () => {
       });
       const magicianBefore = { ...stats[Arcanas.Magician] };
 
-      stats.increaseLevel({
+      const result = stats.increaseLevel({
         arcana: Arcanas.Fool,
         level: createLevel({ level: 1 }),
       });
 
-      expect(stats[Arcanas.Magician]).toEqual(magicianBefore);
-      expect(stats[Arcanas.Fool].level).toBe(1);
+      expect(result).not.toBe(stats);
+      expect(result[Arcanas.Magician]).toEqual(magicianBefore);
+      expect(result[Arcanas.Fool].level).toBe(1);
+      expect(stats[Arcanas.Fool].level).toBe(0);
     });
   });
 
   describe('increasePoints', () => {
-    it('adds points to the selected arcana and preserves other fields', () => {
+    it('returns a new instance with points added and other fields preserved', () => {
       const level = createLevel({ level: 2, pointsToNextLevel: 40 });
+      const emperorBefore = createArcanaStats({
+        level: 2,
+        currentPoints: 10,
+        isRomantic: true,
+        currentSocialLinkLevel: level,
+      });
       const stats = new SocialLinkStats({
-        [Arcanas.Emperor]: createArcanaStats({
-          level: 2,
-          currentPoints: 10,
-          isRomantic: true,
-          currentSocialLinkLevel: level,
-        }),
+        [Arcanas.Emperor]: emperorBefore,
       });
 
-      stats.increasePoints({ arcana: Arcanas.Emperor, points: 5 });
+      const result = stats.increasePoints({ arcana: Arcanas.Emperor, points: 5 });
 
-      expect(stats[Arcanas.Emperor]).toEqual({
+      expect(result).not.toBe(stats);
+      expect(stats[Arcanas.Emperor]).toEqual(emperorBefore);
+      expect(result[Arcanas.Emperor]).toEqual({
         level: 2,
         currentPoints: 15,
         isRomantic: true,
@@ -159,10 +170,12 @@ describe('SocialLinkStats', () => {
       });
       const sunBefore = { ...stats[Arcanas.Sun] };
 
-      stats.increasePoints({ arcana: Arcanas.Moon, points: 10 });
+      const result = stats.increasePoints({ arcana: Arcanas.Moon, points: 10 });
 
-      expect(stats[Arcanas.Sun]).toEqual(sunBefore);
-      expect(stats[Arcanas.Moon].currentPoints).toBe(10);
+      expect(result).not.toBe(stats);
+      expect(result[Arcanas.Sun]).toEqual(sunBefore);
+      expect(result[Arcanas.Moon].currentPoints).toBe(10);
+      expect(stats[Arcanas.Moon].currentPoints).toBe(0);
     });
   });
 
