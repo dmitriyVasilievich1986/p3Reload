@@ -66,7 +66,11 @@ describe('SocialLinkLevel', () => {
         questions,
       });
 
-      expect(level.getIsCardNeeded({ modifier: 1 })).toBe(false);
+      expect(level.getIsCardNeeded({ modifier: 1 })).toEqual({
+        isCardNeeded: false,
+        pointsWithoutCard: 15,
+        pointsWithCard: 22,
+      });
     });
 
     it('returns false when points without a card exceed points needed for the next level', () => {
@@ -75,7 +79,11 @@ describe('SocialLinkLevel', () => {
         questions,
       });
 
-      expect(level.getIsCardNeeded({ modifier: 1 })).toBe(false);
+      expect(level.getIsCardNeeded({ modifier: 1 })).toEqual({
+        isCardNeeded: false,
+        pointsWithoutCard: 15,
+        pointsWithCard: 22,
+      });
     });
 
     it('returns true when only points with a card are enough to reach the next level', () => {
@@ -84,7 +92,11 @@ describe('SocialLinkLevel', () => {
         questions,
       });
 
-      expect(level.getIsCardNeeded({ modifier: 1 })).toBe(true);
+      expect(level.getIsCardNeeded({ modifier: 1 })).toEqual({
+        isCardNeeded: true,
+        pointsWithoutCard: 15,
+        pointsWithCard: 22,
+      });
     });
 
     it('returns true when neither hangout reaches the next level but a card reduces remaining hangouts', () => {
@@ -93,41 +105,65 @@ describe('SocialLinkLevel', () => {
         questions,
       });
 
-      expect(level.getIsCardNeeded({ modifier: 1 })).toBe(true);
+      expect(level.getIsCardNeeded({ modifier: 1 })).toEqual({
+        isCardNeeded: true,
+        pointsWithoutCard: 15,
+        pointsWithCard: 22,
+      });
     });
 
     it('sums max points across multiple questions when applying the modifier', () => {
       // without card: floor(15*1) + floor(10*1) = 25
       // with card: floor(15*1.51) + floor(10*1.51) = 22 + 15 = 37
-      const level = createLevel({
-        pointsToNextLevel: 30,
-        questions: [question([answer(15)]), question([answer(10)])],
-      });
+      const questionsForSum = [question([answer(15)]), question([answer(10)])];
 
-      expect(level.getIsCardNeeded({ modifier: 1 })).toBe(true);
+      expect(
+        createLevel({
+          pointsToNextLevel: 30,
+          questions: questionsForSum,
+        }).getIsCardNeeded({ modifier: 1 })
+      ).toEqual({
+        isCardNeeded: true,
+        pointsWithoutCard: 25,
+        pointsWithCard: 37,
+      });
       expect(
         createLevel({
           pointsToNextLevel: 25,
-          questions: [question([answer(15)]), question([answer(10)])],
+          questions: questionsForSum,
         }).getIsCardNeeded({ modifier: 1 })
-      ).toBe(false);
+      ).toEqual({
+        isCardNeeded: false,
+        pointsWithoutCard: 25,
+        pointsWithCard: 37,
+      });
     });
 
     it('floors each question contribution when applying the modifier', () => {
       // without card: floor(15 * 1.51) = 22
       // with card: floor(15 * 1.51 * 1.51) = floor(34.2765) = 34
-      const level = createLevel({
-        pointsToNextLevel: 30,
-        questions: [question([answer(15)])],
-      });
+      const singleQuestion = [question([answer(15)])];
 
-      expect(level.getIsCardNeeded({ modifier: 1.51 })).toBe(true);
+      expect(
+        createLevel({
+          pointsToNextLevel: 30,
+          questions: singleQuestion,
+        }).getIsCardNeeded({ modifier: 1.51 })
+      ).toEqual({
+        isCardNeeded: true,
+        pointsWithoutCard: 22,
+        pointsWithCard: 34,
+      });
       expect(
         createLevel({
           pointsToNextLevel: 22,
-          questions: [question([answer(15)])],
+          questions: singleQuestion,
         }).getIsCardNeeded({ modifier: 1.51 })
-      ).toBe(false);
+      ).toEqual({
+        isCardNeeded: false,
+        pointsWithoutCard: 22,
+        pointsWithCard: 34,
+      });
     });
 
     it('uses optional arguments when provided instead of defaults', () => {
@@ -147,7 +183,11 @@ describe('SocialLinkLevel', () => {
           pointsWithCard: 5,
           pointsForCalculation: 10,
         })
-      ).toBe(false);
+      ).toEqual({
+        isCardNeeded: false,
+        pointsWithoutCard: 20,
+        pointsWithCard: 5,
+      });
     });
   });
 });

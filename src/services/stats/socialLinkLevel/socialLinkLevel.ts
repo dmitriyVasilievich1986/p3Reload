@@ -2,7 +2,7 @@ import _ from 'lodash';
 
 import { Question } from './question';
 
-import type { SocialLinkLevelProps } from './types';
+import type { GetIsCardNeededResult, SocialLinkLevelProps } from './types';
 
 export class SocialLinkLevel {
   readonly level: number;
@@ -23,33 +23,52 @@ export class SocialLinkLevel {
     this.questions = props.questions.map((questionProps) => new Question(questionProps));
   }
 
-  private getPointsWithModifier(this: SocialLinkLevel, modifier: number): number {
+  getPointsWithModifier(this: SocialLinkLevel, modifier: number): number {
     return _.sumBy(this.questions, (question) => Math.floor(question.maxPoints * modifier));
   }
 
+  /**
+   * Whether a persona card is the better way to reach the next rank, plus the
+   * hangout point totals used to decide that.
+   *
+   * @param props.modifier - Charm / exam multiplier applied to hangout answers.
+   * @param props.currentPoints - Points already earned toward the next rank (default `0`).
+   * @param props.pointsForCalculation - Placeholder hangout value used when neither
+   *   option reaches the next rank (default `10`).
+   * @param props.pointsWithoutCard - Override for hangout points without a card.
+   * @param props.pointsWithCard - Override for hangout points with a card.
+   * @returns Whether a card is needed and the with/without-card point totals.
+   */
   getIsCardNeeded(props: {
     modifier: number;
     currentPoints?: number;
     pointsForCalculation?: number;
     pointsWithCard?: number;
     pointsWithoutCard?: number;
-  }): boolean {
+  }): GetIsCardNeededResult {
     const pointsWithoutCard = props.pointsWithoutCard ?? this.getPointsWithModifier(props.modifier);
     const pointsWithCard =
       props.pointsWithCard ?? this.getPointsWithModifier(props.modifier * 1.51);
     const currentPoints = props.currentPoints ?? 0;
     const pointsToNextLevel = this.pointsToNextLevel - currentPoints;
 
+    let isCardNeeded: boolean;
+
     if (pointsToNextLevel <= pointsWithoutCard) {
-      return false;
+      isCardNeeded = false;
     } else if (pointsToNextLevel <= pointsWithCard) {
-      return true;
+      isCardNeeded = true;
+    } else {
+      const pointsForCalculation = props.pointsForCalculation ?? 10;
+      isCardNeeded =
+        (pointsToNextLevel - pointsWithoutCard) / (pointsForCalculation * props.modifier) >
+        (pointsToNextLevel - pointsWithCard) / (pointsForCalculation * props.modifier * 1.51);
     }
 
-    const pointsForCalculation = props.pointsForCalculation ?? 10;
-    return (
-      (pointsToNextLevel - pointsWithoutCard) / (pointsForCalculation * props.modifier) >
-      (pointsToNextLevel - pointsWithCard) / (pointsForCalculation * props.modifier * 1.51)
-    );
+    return {
+      isCardNeeded,
+      pointsWithoutCard,
+      pointsWithCard,
+    };
   }
 }
