@@ -8,6 +8,7 @@ import {
   SleepDuringClassCourageEvent,
   CourageStatModifyEvents,
 } from '@services/event/models/characterStatsModifyEvents/courage';
+import { SocialLinkEvents } from '@services/event/models/socialLinkEvents';
 
 import type { RightPanelTab } from './types';
 
@@ -34,6 +35,33 @@ export const events: Record<string, RightPanelTab[]> = {
       name: 'Charm',
       color: 'violet',
       events: Object.values(CharmStatModifyEvents),
+    },
+    {
+      name: 'Social Link',
+      color: 'teal',
+      events: Object.values(SocialLinkEvents),
+    },
+  ],
+  [Times.Evening]: [
+    {
+      name: 'Academic',
+      color: 'green',
+      events: Object.values(AcademicStatModifyEvents),
+    },
+    {
+      name: 'Courage',
+      color: 'red',
+      events: Object.values(CourageStatModifyEvents),
+    },
+    {
+      name: 'Charm',
+      color: 'violet',
+      events: Object.values(CharmStatModifyEvents),
+    },
+    {
+      name: 'Social Link',
+      color: 'teal',
+      events: Object.values(SocialLinkEvents),
     },
   ],
 };
