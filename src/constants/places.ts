@@ -7,6 +7,7 @@ export const Places = {
   HagakureRamen: 'Hagakure Ramen',
   Tartarus: 'Tartarus',
   WilduckBurger: 'Wilduck Burger',
+  Classroom2F: 'Classroom 2F',
 } as const;
 
 export const Districts = {
