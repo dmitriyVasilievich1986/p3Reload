@@ -2,6 +2,7 @@ import _ from 'lodash';
 import { cloneElement, isValidElement, useMemo, useState, type ReactElement } from 'react';
 
 import { type CardProps } from '@components/card';
+import { BaseEvent } from '@services/event/base';
 import { eventFactory } from '@services/event/factory';
 import { useMainStore } from '@store/main';
 
@@ -70,7 +71,7 @@ export function RightPanel() {
     );
 
   const selectedTab = tabs.find((tab) => tab.name === selected) ?? tabs[0];
-  const selectedNode = selectedEvent.render(isAvailableProps);
+  const selectedNode = (selectedEvent.constructor as typeof BaseEvent).render(isAvailableProps);
   const selectedContent = isValidElement(selectedNode)
     ? cloneElement(selectedNode as ReactElement<CardProps>, { isSelected: true })
     : selectedNode;
