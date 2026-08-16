@@ -1,6 +1,7 @@
 import type { EventProps } from '../../types';
 
 export const SpecialEventsNames = {
+  Tartarus: 'TartarusEvent',
   Empty: 'EmptyEvent',
   Text: 'TextEvent',
 } as const;
