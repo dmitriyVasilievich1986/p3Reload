@@ -9,6 +9,7 @@ import { CharmStatModifyNames } from '@services/event/models/characterStatsModif
 import { SleepDuringClassCourageEvent } from '@services/event/models/characterStatsModifyEvents/courage';
 import {
   createDateFixture,
+  createDayFixture,
   createIsAvailablePropsFixture,
   createStatsFixture,
 } from '@services/fixtures';
@@ -276,28 +277,31 @@ describe('Day', () => {
     it('uses empty Stats when none are provided and chains event modifications', () => {
       const stayAwake = createStayAwakeEvent();
       const chagallCafe = createChagallCafeEvent();
+      const day = createDayFixture({ events: [stayAwake, chagallCafe] });
       const props = createIsAvailablePropsFixture();
 
-      const result = Day.calculateStats([stayAwake, chagallCafe], props);
+      const result = Day.calculateStats(day, props);
 
-      expect(result.startingStats.characterStats[CharacterStatsNames.Academics]).toBe(0);
-      expect(result.startingStats.characterStats[CharacterStatsNames.Charm]).toBe(0);
-      expect(result.endingStats.characterStats[CharacterStatsNames.Academics]).toBe(2);
-      expect(result.endingStats.characterStats[CharacterStatsNames.Charm]).toBe(2);
-      expect(stayAwake.stats).toBe(result.startingStats);
+      expect(result.statsAtStartOfDay.characterStats[CharacterStatsNames.Academics]).toBe(0);
+      expect(result.statsAtStartOfDay.characterStats[CharacterStatsNames.Charm]).toBe(0);
+      expect(result.statsAtEndOfDay.characterStats[CharacterStatsNames.Academics]).toBe(2);
+      expect(result.statsAtEndOfDay.characterStats[CharacterStatsNames.Charm]).toBe(2);
+      expect(stayAwake.stats).toBe(result.statsAtStartOfDay);
       expect(chagallCafe.stats.characterStats[CharacterStatsNames.Academics]).toBe(2);
       expect(result.events).toEqual([stayAwake, chagallCafe]);
+      expect(result.date).toBe(day.date);
     });
 
     it('starts from the provided stats', () => {
       const stayAwake = createStayAwakeEvent();
       const startingStats = createStatsFixture();
       const props = createIsAvailablePropsFixture({ stats: startingStats });
+      const day = createDayFixture({ events: [stayAwake] });
 
-      const result = Day.calculateStats([stayAwake], props, startingStats);
+      const result = Day.calculateStats(day, props, startingStats);
 
-      expect(result.startingStats).toBe(startingStats);
-      expect(result.endingStats.characterStats[CharacterStatsNames.Academics]).toBe(
+      expect(result.statsAtStartOfDay).toBe(startingStats);
+      expect(result.statsAtEndOfDay.characterStats[CharacterStatsNames.Academics]).toBe(
         startingStats.characterStats[CharacterStatsNames.Academics] + 2
       );
     });
