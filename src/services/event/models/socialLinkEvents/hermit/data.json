@@ -1,0 +1,271 @@
+[
+  {
+    "level": 0,
+    "pointsToNextLevel": 0,
+    "nextLevelPointsToNextLevel": 0,
+    "previousLevelPointsToNextLevel": 0,
+    "isRomantic": false,
+    "isFork": false,
+    "questions": []
+  },
+  {
+    "level": 1,
+    "pointsToNextLevel": 0,
+    "nextLevelPointsToNextLevel": 20,
+    "previousLevelPointsToNextLevel": 0,
+    "isRomantic": false,
+    "isFork": false,
+    "questions": [
+      {
+        "text": "u remember me rite? :O",
+        "answers": [
+          { "text": "Of course.", "points": 15, "isFork": false },
+          { "text": "...Have we met?", "points": 0, "isFork": false }
+        ]
+      },
+      {
+        "text": "hmmm... what kinda people r we, playing inside on such a beautiful day?",
+        "answers": [
+          {
+            "text": "Don't you like video games?",
+            "points": 0,
+            "isFork": false
+          },
+          { "text": "Sunshine is overrated.", "points": 5, "isFork": false },
+          { "text": "Guess we're loners.", "points": 0, "isFork": false }
+        ]
+      }
+    ]
+  },
+  {
+    "level": 2,
+    "pointsToNextLevel": 20,
+    "nextLevelPointsToNextLevel": 20,
+    "previousLevelPointsToNextLevel": 0,
+    "isRomantic": false,
+    "isFork": false,
+    "questions": [
+      {
+        "text": "so ummmmm…… i'm drunk! xD",
+        "answers": [
+          { "text": "Oh really? o_O", "points": 5, "isFork": false },
+          { "text": "Are you an adult?", "points": 0, "isFork": false }
+        ]
+      },
+      {
+        "text": "but lately i cant get motivated to get work done @ work. =/",
+        "answers": [
+          { "text": "You don't like your job?", "points": 15, "isFork": false },
+          { "text": "Are you burned out?", "points": 0, "isFork": false }
+        ]
+      }
+    ]
+  },
+  {
+    "level": 3,
+    "pointsToNextLevel": 20,
+    "nextLevelPointsToNextLevel": 20,
+    "previousLevelPointsToNextLevel": 20,
+    "isRomantic": false,
+    "isFork": false,
+    "questions": [
+      {
+        "text": "Its like all she cares about is marrying me off to some dude >=/ whys it her problem?",
+        "answers": [
+          { "text": "Don't wanna get married?", "points": 0, "isFork": false },
+          {
+            "text": "You'll need a boyfriend first.",
+            "points": 0,
+            "isFork": false
+          },
+          {
+            "text": "Let's plan our wedding, then.",
+            "points": 15,
+            "isFork": false
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "level": 4,
+    "pointsToNextLevel": 20,
+    "nextLevelPointsToNextLevel": 20,
+    "previousLevelPointsToNextLevel": 20,
+    "isRomantic": false,
+    "isFork": false,
+    "questions": [
+      {
+        "text": "Mr. E is such a stupid eh so bee!! t(-_-t)",
+        "answers": [
+          { "text": "Who's Mr. E?", "points": 5, "isFork": false },
+          { "text": "Are you drunk again?", "points": 0, "isFork": false },
+          { "text": "Do you mean S.O.B.?", "points": 5, "isFork": false }
+        ]
+      },
+      {
+        "text": "…oh noes! u cant figure out what my job is can u? O_o",
+        "answers": [
+          { "text": "A drunken master?", "points": 5, "isFork": false },
+          { "text": "Maya's a reporter, right?", "points": 0, "isFork": false },
+          { "text": "Are you a teacher?", "points": 5, "isFork": false }
+        ]
+      }
+    ]
+  },
+  {
+    "level": 5,
+    "pointsToNextLevel": 20,
+    "nextLevelPointsToNextLevel": 20,
+    "previousLevelPointsToNextLevel": 20,
+    "isRomantic": false,
+    "isFork": false,
+    "questions": [
+      {
+        "text": "actually, i only went cuz i was so pissed at that bastard! >=/",
+        "answers": [
+          { "text": "Calm down.", "points": 0, "isFork": false },
+          { "text": "What bastard?", "points": 15, "isFork": false }
+        ]
+      }
+    ]
+  },
+  {
+    "level": 6,
+    "pointsToNextLevel": 20,
+    "nextLevelPointsToNextLevel": 20,
+    "previousLevelPointsToNextLevel": 20,
+    "isRomantic": false,
+    "isFork": false,
+    "questions": [
+      {
+        "text": "…do men only want younger women? b honest ._.",
+        "answers": [
+          {
+            "text": "What are you talking about?",
+            "points": 0,
+            "isFork": false
+          },
+          { "text": "Age isn't the point.", "points": 5, "isFork": false },
+          { "text": "Well, yeah.", "points": 15, "isFork": false }
+        ]
+      },
+      {
+        "text": "she even stuffs her bra!! lol",
+        "answers": [
+          { "text": "She, um… what?", "points": 5, "isFork": false },
+          { "text": "Calm down.", "points": 5, "isFork": false }
+        ]
+      }
+    ]
+  },
+  {
+    "level": 7,
+    "pointsToNextLevel": 20,
+    "nextLevelPointsToNextLevel": 20,
+    "previousLevelPointsToNextLevel": 20,
+    "isRomantic": false,
+    "isFork": false,
+    "questions": [
+      {
+        "text": "oh noes… now im starting to get sweaty =/",
+        "answers": [
+          {
+            "text": "Are you talking to yourself?",
+            "points": 0,
+            "isFork": false
+          },
+          { "text": "Hurry up and tell me.", "points": 15, "isFork": false }
+        ]
+      },
+      {
+        "text": "thats kinda crazy even for me >_>;",
+        "answers": [
+          { "text": "What is he like?", "points": 5, "isFork": false },
+          { "text": "Are you gonna ask him out?", "points": 0, "isFork": false }
+        ]
+      }
+    ]
+  },
+  {
+    "level": 8,
+    "pointsToNextLevel": 20,
+    "nextLevelPointsToNextLevel": 20,
+    "previousLevelPointsToNextLevel": 20,
+    "isRomantic": false,
+    "isFork": false,
+    "questions": [
+      {
+        "text": "it said their canceling innocent sin. …think its for real?",
+        "answers": [
+          { "text": "Not much we can do.", "points": 0, "isFork": false },
+          { "text": "No way!", "points": 5, "isFork": false },
+          { "text": "Whatever, I guess.", "points": 0, "isFork": false }
+        ]
+      },
+      {
+        "text": "tatsuya... do u think we'll still be able to see each other? T_T",
+        "answers": [
+          { "text": "I think so.", "points": 0, "isFork": false },
+          { "text": "No, this is the end.", "points": 0, "isFork": false },
+          { "text": "Don't worry about that.", "points": 0, "isFork": false }
+        ]
+      },
+      {
+        "text": "maya's not goin quietly! >=/ i'll beat em to the punch!",
+        "answers": [
+          { "text": "What are you planning?", "points": 5, "isFork": false },
+          {
+            "text": "This won't change anything.",
+            "points": 0,
+            "isFork": false
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "level": 9,
+    "pointsToNextLevel": 20,
+    "nextLevelPointsToNextLevel": 0,
+    "previousLevelPointsToNextLevel": 20,
+    "isRomantic": false,
+    "isFork": false,
+    "questions": [
+      {
+        "text": "…i should apologize",
+        "answers": [
+          { "text": "About what?", "points": 0, "isFork": false },
+          { "text": "Oh, no worries.", "points": 5, "isFork": false }
+        ]
+      },
+      {
+        "text": "i dun think i will...",
+        "answers": [
+          {
+            "text": "Now they'll end it for sure.",
+            "points": 0,
+            "isFork": false
+          },
+          { "text": "Is that why you're sorry?", "points": 5, "isFork": false }
+        ]
+      },
+      {
+        "text": "im thinkin bout quittin the MMO today. i… dun think i'll c u again T_T",
+        "answers": [
+          { "text": "This is sudden...", "points": 0, "isFork": false },
+          { "text": "I'll miss you.", "points": 15, "isFork": false }
+        ]
+      }
+    ]
+  },
+  {
+    "level": 10,
+    "pointsToNextLevel": 0,
+    "nextLevelPointsToNextLevel": 0,
+    "previousLevelPointsToNextLevel": 20,
+    "isRomantic": false,
+    "isFork": false,
+    "questions": []
+  }
+]

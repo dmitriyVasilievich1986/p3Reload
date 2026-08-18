@@ -1,18 +1,32 @@
 import { Arcanas } from '@constants/arcanas';
 
 import { ChariotEvent } from './chariot';
-import { MagicianEvent } from './magician';
-import { StrengthEvent } from './strength';
-import { TemperanceEvent } from './temperance';
-import { HierophantEvent } from './hierophant';
 import { EmperorEvent } from './emperor';
 import { FortuneEvent } from './fortune';
 import { HangedManEvent } from './hangedMan';
-import { TowerEvent } from './tower';
-import { StarEvent } from './star';
+import { HermitEvent } from './hermit';
+import { HierophantEvent } from './hierophant';
+import { MagicianEvent } from './magician';
 import { MoonEvent } from './moon';
+import { StarEvent } from './star';
+import { StrengthEvent } from './strength';
+import { TemperanceEvent } from './temperance';
+import { TowerEvent } from './tower';
 
-export { MagicianEvent, ChariotEvent, StrengthEvent, HierophantEvent, TemperanceEvent, EmperorEvent, FortuneEvent, HangedManEvent, TowerEvent, StarEvent, MoonEvent };
+export {
+  MagicianEvent,
+  ChariotEvent,
+  StrengthEvent,
+  HierophantEvent,
+  TemperanceEvent,
+  EmperorEvent,
+  FortuneEvent,
+  HangedManEvent,
+  TowerEvent,
+  StarEvent,
+  MoonEvent,
+  HermitEvent,
+};
 
 export const SocialLinkEvents = {
   [Arcanas.Strength]: StrengthEvent,
@@ -26,4 +40,5 @@ export const SocialLinkEvents = {
   [Arcanas.Tower]: TowerEvent,
   [Arcanas.Star]: StarEvent,
   [Arcanas.Moon]: MoonEvent,
+  [Arcanas.Hermit]: HermitEvent,
 } as const;
