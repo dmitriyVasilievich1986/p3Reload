@@ -8,6 +8,7 @@ export const Places = {
   Tartarus: 'Tartarus',
   WilduckBurger: 'Wilduck Burger',
   Classroom2F: 'Classroom 2F',
+  Classroom2FHallway: 'Classroom 2F Hallway',
   BookwormsUsedBooks: 'Bookworms Used Books',
 } as const;
 
