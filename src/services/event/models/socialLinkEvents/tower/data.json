@@ -1,0 +1,243 @@
+[
+  {
+    "level": 0,
+    "pointsToNextLevel": 0,
+    "nextLevelPointsToNextLevel": 0,
+    "previousLevelPointsToNextLevel": 0,
+    "isRomantic": false,
+    "isFork": false,
+    "questions": []
+  },
+  {
+    "level": 1,
+    "pointsToNextLevel": 0,
+    "nextLevelPointsToNextLevel": 25,
+    "previousLevelPointsToNextLevel": 0,
+    "isRomantic": false,
+    "isFork": false,
+    "questions": [
+      {
+        "text": "What'cha doin' here today, kid?",
+        "answers": [
+          {
+            "text": "I came to see you, old man.",
+            "points": 0,
+            "isFork": false
+          },
+          { "text": "None of your business.", "points": 15, "isFork": false }
+        ]
+      },
+      {
+        "text": "You don't have to revere me, but at least show some proper respect.",
+        "answers": [
+          { "text": "How should I address you?", "points": 5, "isFork": false },
+          { "text": "Show respect?", "points": 0, "isFork": false }
+        ]
+      }
+    ]
+  },
+  {
+    "level": 2,
+    "pointsToNextLevel": 25,
+    "nextLevelPointsToNextLevel": 25,
+    "previousLevelPointsToNextLevel": 0,
+    "isRomantic": false,
+    "isFork": false,
+    "questions": [
+      {
+        "text": "How come you're always alone when I see ya? Don'tcha got any friends?",
+        "answers": [
+          { "text": "I can't say I don't.", "points": 0, "isFork": false },
+          { "text": "I don't have any friends.", "points": 15, "isFork": false }
+        ]
+      }
+    ]
+  },
+  {
+    "level": 3,
+    "pointsToNextLevel": 25,
+    "nextLevelPointsToNextLevel": 25,
+    "previousLevelPointsToNextLevel": 25,
+    "isRomantic": false,
+    "isFork": false,
+    "questions": [
+      {
+        "text": "You should cut it. No, better yet, shave it all off... Give the bald look a try.",
+        "answers": [
+          {
+            "text": "Yeah, that might look cool.",
+            "points": 15,
+            "isFork": false
+          },
+          { "text": "Yeah, I dunno...", "points": 0, "isFork": false }
+        ]
+      }
+    ]
+  },
+  {
+    "level": 4,
+    "pointsToNextLevel": 25,
+    "nextLevelPointsToNextLevel": 30,
+    "previousLevelPointsToNextLevel": 25,
+    "isRomantic": false,
+    "isFork": false,
+    "questions": [
+      {
+        "text": "High school kids don't have much money, do they? At least, I never gave much to my son.",
+        "answers": [
+          { "text": "I have enough.", "points": 5, "isFork": false },
+          { "text": "I am not NOT struggling...", "points": 0, "isFork": false }
+        ]
+      },
+      {
+        "text": "...And I mean something you can buy with money. Not some crap like \"love\" or \"a sense of humor.\"",
+        "answers": [
+          { "text": "Yes.", "points": 5, "isFork": false },
+          { "text": "No.", "points": 15, "isFork": false }
+        ]
+      }
+    ]
+  },
+  {
+    "level": 5,
+    "pointsToNextLevel": 30,
+    "nextLevelPointsToNextLevel": 30,
+    "previousLevelPointsToNextLevel": 25,
+    "isRomantic": false,
+    "isFork": false,
+    "questions": [
+      {
+        "text": "Ugh... I'm in bad shape... You should go home.",
+        "answers": [
+          { "text": "Are you okay?", "points": 0, "isFork": false },
+          { "text": "You should go home.", "points": 15, "isFork": false }
+        ]
+      },
+      {
+        "text": "It's always in times like these... ah... when it's hardest to be alone... You live by yourself?",
+        "answers": [
+          { "text": "You live by yourself?", "points": 0, "isFork": false },
+          { "text": "Do you have any coworkers?", "points": 5, "isFork": false }
+        ]
+      }
+    ]
+  },
+  {
+    "level": 6,
+    "pointsToNextLevel": 30,
+    "nextLevelPointsToNextLevel": 45,
+    "previousLevelPointsToNextLevel": 30,
+    "isRomantic": false,
+    "isFork": false,
+    "questions": [
+      {
+        "text": "...Hey! There's a microphone over there. Bring it over, kid! I'll perform a live sutra reading.",
+        "answers": [
+          { "text": "Really?", "points": 0, "isFork": false },
+          { "text": "You probably shouldn't...", "points": 15, "isFork": false }
+        ]
+      }
+    ]
+  },
+  {
+    "level": 7,
+    "pointsToNextLevel": 45,
+    "nextLevelPointsToNextLevel": 45,
+    "previousLevelPointsToNextLevel": 30,
+    "isRomantic": false,
+    "isFork": false,
+    "questions": [
+      {
+        "text": "Didn't dad tell you not to do that, huh?",
+        "answers": [
+          { "text": "Dad?", "points": 15, "isFork": false },
+          {
+            "text": "It's my first time hearing it.",
+            "points": 5,
+            "isFork": false
+          },
+          { "text": "......", "points": 0, "isFork": false }
+        ]
+      },
+      {
+        "text": "Where the hell were ya wanderin' around? Iss late!",
+        "answers": [
+          { "text": "I was with a friend.", "points": 5, "isFork": false },
+          { "text": "I was studying.", "points": 0, "isFork": false },
+          { "text": "None of your business.", "points": 5, "isFork": false }
+        ]
+      },
+      {
+        "text": "I wonder if they felt the same way I did, when I was waiting for you earlier...",
+        "answers": [
+          { "text": "Who's \"they\"?", "points": 0, "isFork": false },
+          { "text": "What're you talking about?", "points": 0, "isFork": false }
+        ]
+      },
+      {
+        "text": "...Now when I go home, I don't know what to do with myself, so I just come here and drink every night.",
+        "answers": [
+          { "text": "Do you miss your family?", "points": 0, "isFork": false },
+          { "text": "Are you running away?", "points": 5, "isFork": false }
+        ]
+      }
+    ]
+  },
+  {
+    "level": 8,
+    "pointsToNextLevel": 45,
+    "nextLevelPointsToNextLevel": 45,
+    "previousLevelPointsToNextLevel": 45,
+    "isRomantic": false,
+    "isFork": false,
+    "questions": [
+      {
+        "text": "I'm workin' memorial service after memorial service 24/7, as if my little temple was some kinda convenience store...",
+        "answers": [
+          { "text": "Why not take a break?", "points": 5, "isFork": false },
+          { "text": "Poor men know no leisure.", "points": 5, "isFork": false }
+        ]
+      },
+      {
+        "text": "I've been drinkin' too much lately… Makin' a fool of myself like I did the other day.",
+        "answers": [
+          { "text": "Hang in there.", "points": 5, "isFork": false },
+          { "text": "Time to retire?", "points": 5, "isFork": false }
+        ]
+      },
+      {
+        "text": "Whaddya think?",
+        "answers": [
+          { "text": "What's this about?", "points": 5, "isFork": false },
+          { "text": "I don't really care.", "points": 5, "isFork": false }
+        ]
+      }
+    ]
+  },
+  {
+    "level": 9,
+    "pointsToNextLevel": 45,
+    "nextLevelPointsToNextLevel": 0,
+    "previousLevelPointsToNextLevel": 45,
+    "isRomantic": false,
+    "isFork": false,
+    "questions": [
+      {
+        "text": "I'm gonna say, \"I wanna recite the sutras with you by my side, for the rest of my life.\" ... Well? How's that sound?",
+        "answers": [
+          { "text": "That's awesome.", "points": 15, "isFork": false },
+          { "text": "It's missing something.", "points": 15, "isFork": false }
+        ]
+      }
+    ]
+  },
+  {
+    "level": 10,
+    "pointsToNextLevel": 0,
+    "nextLevelPointsToNextLevel": 0,
+    "previousLevelPointsToNextLevel": 22,
+    "isRomantic": false,
+    "isFork": false,
+    "questions": []
+  }
+]
