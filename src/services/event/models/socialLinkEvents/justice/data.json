@@ -1,0 +1,466 @@
+[
+  {
+    "level": 0,
+    "pointsToNextLevel": 0,
+    "nextLevelPointsToNextLevel": 0,
+    "previousLevelPointsToNextLevel": 0,
+    "isRomantic": false,
+    "isFork": false,
+    "questions": []
+  },
+  {
+    "level": 1,
+    "pointsToNextLevel": 0,
+    "nextLevelPointsToNextLevel": 22,
+    "previousLevelPointsToNextLevel": 0,
+    "isRomantic": false,
+    "isFork": false,
+    "questions": [
+      {
+        "text": "Sorry to drag you along while I go shopping...",
+        "answers": [
+          { "text": "Don't worry about it.", "points": 15, "isFork": false },
+          { "text": "I was bored anyway.", "points": 0, "isFork": false }
+        ]
+      },
+      {
+        "text": "...Um, do you read much, ${mainCharName}-san?",
+        "answers": [
+          { "text": "I read the classics.", "points": 5, "isFork": false },
+          { "text": "I read manga.", "points": 5, "isFork": false },
+          { "text": "I read fashion magazines.", "points": 0, "isFork": false },
+          { "text": "I don't read books.", "points": 0, "isFork": false }
+        ]
+      },
+      {
+        "text": "Is it boring for you to hang around with, um... someone like me?",
+        "answers": [
+          { "text": "I'm having fun.", "points": 5, "isFork": false },
+          { "text": "Yeah, it's a drag.", "points": 0, "isFork": false },
+          { "text": "I'm indifferent.", "points": 0, "isFork": false }
+        ]
+      },
+      {
+        "text": "But I'm always so scared, that all I can do is nod...",
+        "answers": [
+          {
+            "text": "Are you only like this with guys?",
+            "points": 0,
+            "isFork": false
+          },
+          { "text": "Why are you so afraid?", "points": 0, "isFork": false }
+        ]
+      },
+      {
+        "text": "So... whenever I see a man now, all I can think of is that face...",
+        "answers": [
+          { "text": "I shouldn't have asked.", "points": 0, "isFork": false },
+          { "text": "I'm sorry.", "points": 0, "isFork": false }
+        ]
+      }
+    ]
+  },
+  {
+    "level": 2,
+    "pointsToNextLevel": 22,
+    "nextLevelPointsToNextLevel": 22,
+    "previousLevelPointsToNextLevel": 0,
+    "isRomantic": false,
+    "isFork": false,
+    "questions": [
+      {
+        "text": "...Do they not know where they are!?",
+        "answers": [
+          { "text": "They have no shame.", "points": 5, "isFork": false },
+          { "text": "They're gonna...kiss?", "points": 0, "isFork": false },
+          { "text": "Where did they go?", "points": 0, "isFork": false }
+        ]
+      },
+      {
+        "text": "We should notify the student council president right away, and discuss this at our next meeting!",
+        "answers": [
+          { "text": "I agree.", "points": 5, "isFork": false },
+          { "text": "That's kind of extreme...", "points": 0, "isFork": false },
+          { "text": "You don't like kissing?", "points": 0, "isFork": false }
+        ]
+      }
+    ]
+  },
+  {
+    "level": 3,
+    "pointsToNextLevel": 22,
+    "nextLevelPointsToNextLevel": 22,
+    "previousLevelPointsToNextLevel": 22,
+    "isRomantic": false,
+    "isFork": false,
+    "questions": [
+      {
+        "text": "${mainCharName}-san!",
+        "answers": [
+          { "text": "Get lost.", "points": 0, "isFork": false },
+          { "text": "...Hey.", "points": 0, "isFork": false }
+        ]
+      },
+      {
+        "text": "Why am I still shaking?",
+        "answers": [
+          { "text": "Let's hold hands.", "points": 0, "isFork": false },
+          { "text": "I'm here for you.", "points": 15, "isFork": false },
+          { "text": "Take a deep breath.", "points": 0, "isFork": false }
+        ]
+      }
+    ]
+  },
+  {
+    "level": 4,
+    "pointsToNextLevel": 22,
+    "nextLevelPointsToNextLevel": 22,
+    "previousLevelPointsToNextLevel": 30,
+    "isFork": false,
+    "isRomantic": false,
+    "questions": [
+      {
+        "text": "So, um... there was something I needed to ask you...",
+        "answers": [
+          { "text": "I'm all ears.", "points": 10, "isFork": false },
+          { "text": "Something on your mind?", "points": 0, "isFork": false }
+        ]
+      },
+      {
+        "text": "Is she in love right now!?",
+        "answers": [
+          { "text": "Yeah, she's in love.", "points": 15, "isFork": false },
+          {
+            "text": "You're jumping to conclusions.",
+            "points": 5,
+            "isFork": true
+          }
+        ]
+      },
+      {
+        "text": "Sorry for asking you about such a weird topic.",
+        "answers": [
+          { "text": "Happy to help.", "points": 10, "isFork": false },
+          { "text": "Don't worry about it.", "points": 0, "isFork": false }
+        ]
+      }
+    ]
+  },
+  {
+    "level": 4,
+    "pointsToNextLevel": 22,
+    "nextLevelPointsToNextLevel": 22,
+    "previousLevelPointsToNextLevel": 30,
+    "isFork": false,
+    "isRomantic": true,
+    "questions": [
+      {
+        "text": "So, um... there was something I needed to ask you...",
+        "answers": [
+          { "text": "I'm all ears.", "points": 10, "isFork": false },
+          { "text": "Something on your mind?", "points": 0, "isFork": false }
+        ]
+      },
+      {
+        "text": "Is she in love right now!?",
+        "answers": [
+          { "text": "Yeah, she's in love.", "points": 15, "isFork": true },
+          {
+            "text": "You're jumping to conclusions.",
+            "points": 5,
+            "isFork": false
+          }
+        ]
+      },
+      {
+        "text": "Sorry for asking you about such a weird topic.",
+        "answers": [
+          { "text": "Happy to help.", "points": 10, "isFork": false },
+          { "text": "Don't worry about it.", "points": 0, "isFork": false }
+        ]
+      },
+      {
+        "text": "What should i do...?",
+        "answers": [
+          { "text": "Hold her hand", "points": 15, "isFork": false },
+          { "text": "Kiss her", "points": 0, "isFork": false },
+          { "text": "Speak to her softly", "points": 0, "isFork": false }
+        ]
+      }
+    ]
+  },
+  {
+    "level": 5,
+    "pointsToNextLevel": 30,
+    "nextLevelPointsToNextLevel": 22,
+    "previousLevelPointsToNextLevel": 30,
+    "isFork": false,
+    "isRomantic": false,
+    "questions": [
+      {
+        "text": "Wh-What should I do...?",
+        "answers": [
+          { "text": "Is it good?", "points": 15, "isFork": false },
+          { "text": "You're not buying it?", "points": 0, "isFork": false }
+        ]
+      },
+      {
+        "text": "That is, until recently...",
+        "answers": [
+          { "text": "What do you think now?", "points": 0, "isFork": false },
+          { "text": "What do you mean?", "points": 5, "isFork": false }
+        ]
+      }
+    ]
+  },
+  {
+    "level": 6,
+    "pointsToNextLevel": 30,
+    "nextLevelPointsToNextLevel": 30,
+    "previousLevelPointsToNextLevel": 30,
+    "isFork": false,
+    "isRomantic": false,
+    "questions": [
+      {
+        "text": "${mainCharName}-san...",
+        "answers": [
+          { "text": "Try to remember.", "points": 0, "isFork": false },
+          {
+            "text": "It's gotta be a misunderstanding.",
+            "points": 5,
+            "isFork": false
+          }
+        ]
+      },
+      {
+        "text": "I-I couldn't stand up to them, but I... I didn't take anything!",
+        "answers": [
+          { "text": "Don't worry.", "points": 0, "isFork": false },
+          { "text": "We have to do something...", "points": 5, "isFork": false }
+        ]
+      }
+    ]
+  },
+  {
+    "level": 7,
+    "pointsToNextLevel": 30,
+    "nextLevelPointsToNextLevel": 40,
+    "previousLevelPointsToNextLevel": 30,
+    "isFork": false,
+    "isRomantic": false,
+    "questions": [
+      {
+        "text": "See, how could it not be her!? And with such an innocent face, too...",
+        "answers": [
+          {
+            "text": "That's all a misunderstanding.",
+            "points": 0,
+            "isFork": false
+          },
+          { "text": "......", "points": 0, "isFork": false }
+        ]
+      },
+      {
+        "text": "I don't really have anyone else I can count on...",
+        "answers": [
+          {
+            "text": "The rumors will stop soon.",
+            "points": 0,
+            "isFork": false
+          },
+          { "text": "I know you're innocent.", "points": 5, "isFork": false },
+          { "text": "Be strong.", "points": 0, "isFork": false }
+        ]
+      }
+    ]
+  },
+  {
+    "level": 8,
+    "pointsToNextLevel": 40,
+    "nextLevelPointsToNextLevel": 40,
+    "previousLevelPointsToNextLevel": 30,
+    "isFork": false,
+    "isRomantic": false,
+    "questions": [
+      {
+        "text": "D-Don't tell me she thinks I stole the money too!",
+        "answers": [
+          {
+            "text": "Don't worry, she'll help us.",
+            "points": 5,
+            "isFork": false
+          },
+          { "text": "Mitsuru's not like that.", "points": 0, "isFork": false }
+        ]
+      },
+      {
+        "text": "......",
+        "answers": [
+          { "text": "Chihiro is innocent.", "points": 5, "isFork": false },
+          {
+            "text": "You need to tell her yourself.",
+            "points": 5,
+            "isFork": false
+          }
+        ]
+      },
+      {
+        "text": "Give me a hand, will you, ${mainCharName}?",
+        "answers": [
+          { "text": "Why me?", "points": 0, "isFork": false },
+          { "text": "All right.", "points": 0, "isFork": false }
+        ]
+      },
+      {
+        "text": "And I stood up to Mr. Takenozuka... An actual adult man!",
+        "answers": [
+          { "text": "I saw the whole thing.", "points": 5, "isFork": false },
+          { "text": "What're you talking about?", "points": 0, "isFork": false }
+        ]
+      }
+    ]
+  },
+  {
+    "level": 8,
+    "pointsToNextLevel": 40,
+    "nextLevelPointsToNextLevel": 40,
+    "previousLevelPointsToNextLevel": 40,
+    "isFork": false,
+    "isRomantic": true,
+    "questions": [
+      {
+        "text": "D-Don't tell me she thinks I stole the money too!",
+        "answers": [
+          {
+            "text": "Don't worry, she'll help us.",
+            "points": 5,
+            "isFork": false
+          },
+          { "text": "Mitsuru's not like that.", "points": 0, "isFork": false }
+        ]
+      },
+      {
+        "text": "......",
+        "answers": [
+          { "text": "Chihiro is innocent.", "points": 5, "isFork": false },
+          {
+            "text": "You need to tell her yourself.",
+            "points": 5,
+            "isFork": false
+          }
+        ]
+      },
+      {
+        "text": "Give me a hand, will you, ${mainCharName}?",
+        "answers": [
+          { "text": "Why me?", "points": 0, "isFork": false },
+          { "text": "All right.", "points": 0, "isFork": false }
+        ]
+      },
+      {
+        "text": "Ehehehehe!",
+        "answers": [
+          { "text": "What's gotten into you?", "points": 5, "isFork": false },
+          { "text": "So you ARE guilty.", "points": 0, "isFork": false }
+        ]
+      },
+      {
+        "text": "I love you!",
+        "answers": [
+          { "text": "I feel the same, Chihiro.", "points": 0, "isFork": true },
+          {
+            "text": "I like working with you, but...",
+            "points": 0,
+            "isFork": false
+          }
+        ]
+      },
+      {
+        "text": "Huh? What did you say...?",
+        "answers": [
+          { "text": "I said I feel the same.", "points": 0, "isFork": false },
+          { "text": "I love you", "points": 0, "isFork": false }
+        ]
+      }
+    ]
+  },
+  {
+    "level": 9,
+    "pointsToNextLevel": 40,
+    "nextLevelPointsToNextLevel": 0,
+    "previousLevelPointsToNextLevel": 40,
+    "isFork": false,
+    "isRomantic": false,
+    "questions": [
+      {
+        "text": "I wonder if this is going to be enough flyers...",
+        "answers": [
+          { "text": "Looks tough.", "points": 0, "isFork": false },
+          {
+            "text": "Where you forced into this?",
+            "points": 0,
+            "isFork": false
+          }
+        ]
+      },
+      {
+        "text": "Oh, but, um... I'd appreciate it if you could still help me every now and then, just like today.",
+        "answers": [
+          { "text": "You can do it.", "points": 10, "isFork": false },
+          {
+            "text": "I believe in you, Chihiro.",
+            "points": 10,
+            "isFork": false
+          }
+        ]
+      },
+      {
+        "text": "Could I ask that you be the first of those many readers?",
+        "answers": [
+          { "text": "Thanks.", "points": 0, "isFork": false },
+          { "text": "I'll take it", "points": 0, "isFork": false }
+        ]
+      },
+      {
+        "text": "I'll handle the rest by myself.",
+        "answers": [
+          { "text": "I can tag along.", "points": 0, "isFork": false },
+          { "text": "Are you sure?", "points": 0, "isFork": false }
+        ]
+      }
+    ]
+  },
+  {
+    "level": 9,
+    "pointsToNextLevel": 40,
+    "nextLevelPointsToNextLevel": 0,
+    "previousLevelPointsToNextLevel": 40,
+    "isFork": false,
+    "isRomantic": true,
+    "questions": [
+      {
+        "text": "Just promise to think of me when you read it…",
+        "answers": [
+          { "text": "Thank you.", "points": 15, "isFork": false },
+          { "text": "I don't read shoujo manga.", "points": 0, "isFork": false }
+        ]
+      },
+      {
+        "text": "I-I don't have to spell it out, do I!?",
+        "answers": [
+          { "text": "It's getting late...", "points": 0, "isFork": false },
+          { "text": "Lock your doors.", "points": 0, "isFork": false }
+        ]
+      }
+    ]
+  },
+  {
+    "level": 10,
+    "pointsToNextLevel": 0,
+    "nextLevelPointsToNextLevel": 0,
+    "previousLevelPointsToNextLevel": 40,
+    "isRomantic": false,
+    "isFork": false,
+    "questions": []
+  }
+]

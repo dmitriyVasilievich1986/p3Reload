@@ -8,6 +8,7 @@ import { FortuneEvent } from './fortune';
 import { HangedManEvent } from './hangedMan';
 import { HermitEvent } from './hermit';
 import { HierophantEvent } from './hierophant';
+import { JusticeEvent } from './justice';
 import { MagicianEvent } from './magician';
 import { MoonEvent } from './moon';
 import { StarEvent } from './star';
@@ -30,6 +31,7 @@ export {
   HermitEvent,
   AeonEvent,
   EmpressEvent,
+  JusticeEvent,
 };
 
 export const SocialLinkEvents = {
@@ -47,4 +49,5 @@ export const SocialLinkEvents = {
   [Arcanas.Hermit]: HermitEvent,
   [Arcanas.Aeon]: AeonEvent,
   [Arcanas.Empress]: EmpressEvent,
+  [Arcanas.Justice]: JusticeEvent,
 } as const;
