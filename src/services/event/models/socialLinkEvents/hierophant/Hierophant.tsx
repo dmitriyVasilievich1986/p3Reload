@@ -33,7 +33,7 @@ export class HierophantEvent extends SocialLinkEventBase {
     new SocialLinkLevelAvailability({ name: Arcanas.Hierophant, operator: 'lt', level: 10 }),
     new DateAvailability({ operator: 'gt', value: dayjs('2009-04-25') }),
     new TimeAvailability({ times: [Times.Day] }),
-    new IsLevelUpAvailable({ name: Arcanas.Hierophant, isLevelUpAvailable: false }),
+    new IsLevelUpAvailable({ name: Arcanas.Hierophant, isLevelUpAvailable: true }),
     new DayOfWeekAvailability({
       daysOfWeek: [
         DayOfWeek.Tuesday,

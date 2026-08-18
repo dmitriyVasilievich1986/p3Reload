@@ -41,7 +41,7 @@ export class TemperanceEvent extends SocialLinkEventBase {
     }),
     new DateAvailability({ operator: 'ge', value: dayjs('2009-05-08') }),
     new TimeAvailability({ times: [Times.Day] }),
-    new IsLevelUpAvailable({ name: Arcanas.Temperance, isLevelUpAvailable: false }),
+    new IsLevelUpAvailable({ name: Arcanas.Temperance, isLevelUpAvailable: true }),
     new DayOfWeekAvailability({
       daysOfWeek: [DayOfWeek.Tuesday, DayOfWeek.Wednesday, DayOfWeek.Friday],
     }),
