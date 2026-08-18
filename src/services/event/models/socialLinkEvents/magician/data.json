@@ -1,0 +1,272 @@
+[
+  {
+    "level": 0,
+    "pointsToNextLevel": 0,
+    "nextLevelPointsToNextLevel": 0,
+    "previousLevelPointsToNextLevel": 0,
+    "isRomantic": false,
+    "isFork": false,
+    "questions": []
+  },
+  {
+    "level": 1,
+    "pointsToNextLevel": 0,
+    "nextLevelPointsToNextLevel": 0,
+    "previousLevelPointsToNextLevel": 0,
+    "isRomantic": false,
+    "isFork": false,
+    "questions": [
+      {
+        "text": "Can you, like, just waltz on into Takeba-san's room and stuff?",
+        "answers": [
+          { "text": "Of course.", "points": 0, "isFork": false },
+          { "text": "No way.", "points": 5, "isFork": false },
+          { "text": "That's a secret.", "points": 5, "isFork": false }
+        ]
+      },
+      {
+        "text": "I'm more into older women. How 'bout you?",
+        "answers": [
+          {
+            "text": "I'm into older women, too.",
+            "points": 5,
+            "isFork": false
+          },
+          { "text": "I prefer girls my age.", "points": 0, "isFork": false },
+          { "text": "I like them all!", "points": 5, "isFork": false }
+        ]
+      }
+    ]
+  },
+  {
+    "level": 2,
+    "pointsToNextLevel": 0,
+    "nextLevelPointsToNextLevel": 15,
+    "previousLevelPointsToNextLevel": 0,
+    "isRomantic": false,
+    "isFork": false,
+    "questions": [
+      {
+        "text": "Maaan... I'm so sick of this, dude.",
+        "answers": [
+          { "text": "What, of ramen?", "points": 0, "isFork": false },
+          { "text": "What, of school?", "points": 0, "isFork": false },
+          { "text": "What, life?", "points": 15, "isFork": false }
+        ]
+      },
+      {
+        "text": "Okay, that settles it, ${mainCharName}. I'm gonna get myself a girlfriend! Right now!",
+        "answers": [
+          { "text": "Sounds Impossible.", "points": 0, "isFork": false },
+          { "text": "Good luck!", "points": 5, "isFork": false }
+        ]
+      }
+    ]
+  },
+  {
+    "level": 3,
+    "pointsToNextLevel": 15,
+    "nextLevelPointsToNextLevel": 15,
+    "previousLevelPointsToNextLevel": 0,
+    "isRomantic": false,
+    "isFork": false,
+    "questions": [
+      {
+        "text": "Hey, thanks for coming, man. You mind waiting here for a sec?",
+        "answers": [
+          { "text": "Sure.", "points": 0, "isFork": false },
+          { "text": "Why?", "points": 0, "isFork": false }
+        ]
+      },
+      {
+        "text": "I'm gonna go ask Ms. Kanou out! Like, right now!",
+        "answers": [
+          { "text": "Good luck!", "points": 15, "isFork": false },
+          { "text": "Don't do it.", "points": 0, "isFork": false },
+          { "text": "Whatever, man.", "points": 0, "isFork": false }
+        ]
+      }
+    ]
+  },
+  {
+    "level": 4,
+    "pointsToNextLevel": 15,
+    "nextLevelPointsToNextLevel": 15,
+    "previousLevelPointsToNextLevel": 15,
+    "isRomantic": false,
+    "isFork": false,
+    "questions": [
+      {
+        "text": "Yeah, good-looking people just flock together, y'know? It's like a law of attraction.",
+        "answers": [
+          { "text": "...Is that so?", "points": 5, "isFork": false },
+          { "text": "Okay...", "points": 15, "isFork": false },
+          { "text": "Good-looking, huh?", "points": 0, "isFork": false }
+        ]
+      }
+    ]
+  },
+  {
+    "level": 5,
+    "pointsToNextLevel": 15,
+    "nextLevelPointsToNextLevel": 22,
+    "previousLevelPointsToNextLevel": 15,
+    "isRomantic": false,
+    "isFork": false,
+    "questions": [
+      {
+        "text": "Sorry, man, but I've gotta pass this time.",
+        "answers": [
+          { "text": "Just like that?", "points": 0, "isFork": false },
+          { "text": "Why?", "points": 0, "isFork": false }
+        ]
+      },
+      {
+        "text": "I mean, getting into college is pretty important, don't ya think? You think about the future too, right?",
+        "answers": [
+          { "text": "I've got plans already.", "points": 15, "isFork": false },
+          { "text": "Yeah, more than you do.", "points": 0, "isFork": false },
+          { "text": "Not even a little.", "points": 0, "isFork": false }
+        ]
+      }
+    ]
+  },
+  {
+    "level": 6,
+    "pointsToNextLevel": 22,
+    "nextLevelPointsToNextLevel": 22,
+    "previousLevelPointsToNextLevel": 15,
+    "isRomantic": false,
+    "isFork": false,
+    "questions": [
+      {
+        "text": "I can't eat...",
+        "answers": [
+          { "text": "What happened?", "points": 5, "isFork": false },
+          { "text": "I'll eat it for you.", "points": 0, "isFork": false }
+        ]
+      },
+      {
+        "text": "I saw a magazine in Emiri's room. Guess what it was called.",
+        "answers": [
+          { "text": "In Fashion?", "points": 0, "isFork": false },
+          { "text": "Occult Living?", "points": 0, "isFork": false },
+          { "text": "Bride-To-Be?", "points": 5, "isFork": false }
+        ]
+      },
+      {
+        "text": "You think that's a good plan?",
+        "answers": [
+          { "text": "Congrats!", "points": 5, "isFork": false },
+          { "text": "You're rushing things.", "points": 0, "isFork": false },
+          { "text": "Sure, whatever.", "points": 0, "isFork": false }
+        ]
+      }
+    ]
+  },
+  {
+    "level": 7,
+    "pointsToNextLevel": 22,
+    "nextLevelPointsToNextLevel": 22,
+    "previousLevelPointsToNextLevel": 22,
+    "isRomantic": false,
+    "isFork": false,
+    "questions": [
+      {
+        "text": "H-Hey, man. Sorry to make you come here. I, um... Ah, damn it...",
+        "answers": [
+          { "text": "Spit it out!", "points": 5, "isFork": false },
+          { "text": "Are you in trouble?", "points": 15, "isFork": false }
+        ]
+      },
+      {
+        "text": "And now she's being transferred to a school in Kyushu. What do I do!?",
+        "answers": [
+          { "text": "You should go with her.", "points": 5, "isFork": false },
+          {
+            "text": "You two should talk it out.",
+            "points": 5,
+            "isFork": false
+          },
+          { "text": "Figure it out yourself.", "points": 0, "isFork": false }
+        ]
+      }
+    ]
+  },
+  {
+    "level": 8,
+    "pointsToNextLevel": 22,
+    "nextLevelPointsToNextLevel": 22,
+    "previousLevelPointsToNextLevel": 22,
+    "isRomantic": false,
+    "isFork": false,
+    "questions": [
+      {
+        "text": "I was so excited about going with her that I...I...",
+        "answers": [
+          { "text": "Cheer up, man.", "points": 0, "isFork": false },
+          { "text": "Let me handle this!", "points": 15, "isFork": false },
+          { "text": "Haha.", "points": 0, "isFork": false }
+        ]
+      }
+    ]
+  },
+  {
+    "level": 9,
+    "pointsToNextLevel": 22,
+    "nextLevelPointsToNextLevel": 0,
+    "previousLevelPointsToNextLevel": 22,
+    "isRomantic": false,
+    "isFork": false,
+    "questions": [
+      {
+        "text": "Ms. Kanou must be in Kyushu by now. I wonder if she had her wedding already.",
+        "answers": [
+          { "text": "......", "points": 5, "isFork": false },
+          { "text": "Maybe she did.", "points": 0, "isFork": false },
+          { "text": "I'm stealing your egg!", "points": 0, "isFork": false }
+        ]
+      },
+      {
+        "text": "Man, it's always a blast hanging out with you. That said... I still want a girlfriend!",
+        "answers": [
+          {
+            "text": "You don't know when to give up...",
+            "points": 5,
+            "isFork": false
+          },
+          { "text": "You've got this!", "points": 15, "isFork": false },
+          {
+            "text": "Want me to find you a girl?",
+            "points": 15,
+            "isFork": false
+          }
+        ]
+      },
+      {
+        "text": "What I did figure out is... you're a true friend.",
+        "answers": [
+          {
+            "text": "...Are we still talking about love?",
+            "points": 0,
+            "isFork": false
+          },
+          {
+            "text": "That's right! We're great friends.",
+            "points": 0,
+            "isFork": false
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "level": 10,
+    "pointsToNextLevel": 0,
+    "nextLevelPointsToNextLevel": 0,
+    "previousLevelPointsToNextLevel": 22,
+    "isRomantic": false,
+    "isFork": false,
+    "questions": []
+  }
+]
