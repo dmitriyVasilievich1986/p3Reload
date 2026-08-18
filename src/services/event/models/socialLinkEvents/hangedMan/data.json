@@ -1,0 +1,246 @@
+[
+  {
+    "level": 0,
+    "pointsToNextLevel": 0,
+    "nextLevelPointsToNextLevel": 0,
+    "previousLevelPointsToNextLevel": 0,
+    "isRomantic": false,
+    "isFork": false,
+    "questions": []
+  },
+  {
+    "level": 1,
+    "pointsToNextLevel": 0,
+    "nextLevelPointsToNextLevel": 20,
+    "previousLevelPointsToNextLevel": 0,
+    "isRomantic": false,
+    "isFork": false,
+    "questions": [
+      {
+        "text": "My tummy's grumbling! Can we go to Wilduck?",
+        "answers": [
+          { "text": "Sure, let's go.", "points": 15, "isFork": false },
+          { "text": "Let's keep playing.", "points": 0, "isFork": false }
+        ]
+      },
+      {
+        "text": "Why would they get a divorce?",
+        "answers": [
+          { "text": "They fell out of love.", "points": 0, "isFork": false },
+          { "text": "It's probably your fault.", "points": 0, "isFork": false },
+          { "text": "I don't know.", "points": 0, "isFork": false }
+        ]
+      },
+      {
+        "text": "...She's sobbing loudly. What should I do?",
+        "answers": [
+          { "text": "Calm her down", "points": 0, "isFork": false },
+          { "text": "Wait for her to finish.", "points": 0, "isFork": false }
+        ]
+      }
+    ]
+  },
+  {
+    "level": 2,
+    "pointsToNextLevel": 20,
+    "nextLevelPointsToNextLevel": 20,
+    "previousLevelPointsToNextLevel": 0,
+    "isRomantic": false,
+    "isFork": false,
+    "questions": [
+      {
+        "text": "...And who are you?",
+        "answers": [
+          { "text": "I'm Maiko's friend.", "points": 0, "isFork": false },
+          { "text": "Just a random passerby.", "points": 0, "isFork": false }
+        ]
+      },
+      {
+        "text": "Do you think he'll come home and see me?",
+        "answers": [
+          { "text": "He'll probably forget.", "points": 0, "isFork": false },
+          { "text": "I really can't say.", "points": 0, "isFork": false },
+          {
+            "text": "Don't worry, he'll be there.",
+            "points": 15,
+            "isFork": false
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "level": 3,
+    "pointsToNextLevel": 20,
+    "nextLevelPointsToNextLevel": 20,
+    "previousLevelPointsToNextLevel": 20,
+    "isRomantic": false,
+    "isFork": false,
+    "questions": [
+      {
+        "text": "They really do care about me!",
+        "answers": [
+          { "text": "That's great news!", "points": 15, "isFork": false },
+          { "text": "Of course they care.", "points": 15, "isFork": false },
+          { "text": "Nah, they don't care.", "points": 0, "isFork": false }
+        ]
+      }
+    ]
+  },
+  {
+    "level": 4,
+    "pointsToNextLevel": 20,
+    "nextLevelPointsToNextLevel": 30,
+    "previousLevelPointsToNextLevel": 20,
+    "isRomantic": false,
+    "isFork": false,
+    "questions": [
+      {
+        "text": "He's so mean. It's not fair!",
+        "answers": [
+          { "text": "That's awful.", "points": 15, "isFork": false },
+          { "text": "Why would he do that?", "points": 0, "isFork": false }
+        ]
+      },
+      {
+        "text": "Do they just wish I would disappear?",
+        "answers": [
+          { "text": "It's possible.", "points": 0, "isFork": false },
+          { "text": "They would never.", "points": 5, "isFork": false }
+        ]
+      }
+    ]
+  },
+  {
+    "level": 5,
+    "pointsToNextLevel": 30,
+    "nextLevelPointsToNextLevel": 15,
+    "previousLevelPointsToNextLevel": 20,
+    "isRomantic": false,
+    "isFork": false,
+    "questions": [
+      {
+        "text": "I made up my mind! I have to run away from home!",
+        "answers": [
+          { "text": "Don't do it.", "points": 0, "isFork": false },
+          { "text": "Calm down.", "points": 5, "isFork": false },
+          { "text": "It's up to you.", "points": 5, "isFork": false }
+        ]
+      },
+      {
+        "text": "I need lots of snacks, right? And my...insurance card?",
+        "answers": [
+          { "text": "That should be enough.", "points": 15, "isFork": false },
+          { "text": "It'll take more than that.", "points": 0, "isFork": false }
+        ]
+      }
+    ]
+  },
+  {
+    "level": 6,
+    "pointsToNextLevel": 15,
+    "nextLevelPointsToNextLevel": 30,
+    "previousLevelPointsToNextLevel": 30,
+    "isRomantic": false,
+    "isFork": false,
+    "questions": [
+      {
+        "text": "She's never done anything like this before!",
+        "answers": [
+          { "text": "We should look for her.", "points": 0, "isFork": false },
+          { "text": "It's probably your fault.", "points": 0, "isFork": false },
+          { "text": "Just leave her alone.", "points": 0, "isFork": false }
+        ]
+      },
+      {
+        "text": "If you have any idea where she is, I'm begging you to tell us.",
+        "answers": [
+          { "text": "Maybe the music store.", "points": 0, "isFork": false },
+          { "text": "Maybe the takoyaki stand.", "points": 0, "isFork": false }
+        ]
+      }
+    ]
+  },
+  {
+    "level": 7,
+    "pointsToNextLevel": 30,
+    "nextLevelPointsToNextLevel": 30,
+    "previousLevelPointsToNextLevel": 15,
+    "isRomantic": false,
+    "isFork": false,
+    "questions": [
+      {
+        "text": "What do you wanna get?",
+        "answers": [
+          { "text": "Hamburgers.", "points": 5, "isFork": false },
+          { "text": "Japanese food.", "points": 0, "isFork": false }
+        ]
+      },
+      {
+        "text": "It was sad, but I listened to the whole thing. Did I do good?",
+        "answers": [
+          { "text": "You're a good girl.", "points": 15, "isFork": false },
+          { "text": "Not really.", "points": 0, "isFork": false }
+        ]
+      },
+      {
+        "text": "Who do you think I should pick?",
+        "answers": [
+          { "text": "Your dad.", "points": 15, "isFork": false },
+          { "text": "Your mom.", "points": 0, "isFork": false },
+          { "text": "You decide.", "points": 0, "isFork": false }
+        ]
+      }
+    ]
+  },
+  {
+    "level": 8,
+    "pointsToNextLevel": 30,
+    "nextLevelPointsToNextLevel": 30,
+    "previousLevelPointsToNextLevel": 30,
+    "isRomantic": false,
+    "isFork": false,
+    "questions": [
+      {
+        "text": "Even if I'm gone... we'll still be friends, right?",
+        "answers": [
+          { "text": "Friends forever.", "points": 15, "isFork": false },
+          { "text": "I might forget about you.", "points": 0, "isFork": false }
+        ]
+      }
+    ]
+  },
+  {
+    "level": 9,
+    "pointsToNextLevel": 30,
+    "nextLevelPointsToNextLevel": 0,
+    "previousLevelPointsToNextLevel": 30,
+    "isRomantic": false,
+    "isFork": false,
+    "questions": [
+      {
+        "text": "Do you think I'll have a family of my own one day?",
+        "answers": [
+          { "text": "I'm sure you will.", "points": 15, "isFork": false },
+          { "text": "No idea.", "points": 0, "isFork": false }
+        ]
+      },
+      {
+        "text": "Can we get married?",
+        "answers": [
+          { "text": "Sure.", "points": 15, "isFork": false },
+          { "text": "I'll think about it.", "points": 0, "isFork": false }
+        ]
+      }
+    ]
+  },
+  {
+    "level": 10,
+    "pointsToNextLevel": 0,
+    "nextLevelPointsToNextLevel": 0,
+    "previousLevelPointsToNextLevel": 30,
+    "isRomantic": false,
+    "isFork": false,
+    "questions": []
+  }
+]
