@@ -3,6 +3,7 @@ import { Arcanas } from '@constants/arcanas';
 import { AeonEvent } from './aeon';
 import { ChariotEvent } from './chariot';
 import { EmperorEvent } from './emperor';
+import { EmpressEvent } from './empress';
 import { FortuneEvent } from './fortune';
 import { HangedManEvent } from './hangedMan';
 import { HermitEvent } from './hermit';
@@ -28,6 +29,7 @@ export {
   MoonEvent,
   HermitEvent,
   AeonEvent,
+  EmpressEvent,
 };
 
 export const SocialLinkEvents = {
@@ -44,4 +46,5 @@ export const SocialLinkEvents = {
   [Arcanas.Moon]: MoonEvent,
   [Arcanas.Hermit]: HermitEvent,
   [Arcanas.Aeon]: AeonEvent,
+  [Arcanas.Empress]: EmpressEvent,
 } as const;
