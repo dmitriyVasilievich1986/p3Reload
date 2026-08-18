@@ -1,4 +1,6 @@
 export const Places = {
+  FacultyOfficeEntrance: 'Faculty Office Entrance',
+  LaptopAtTheProtagonistsRoom: "Laptop at the Protagonist's room",
   ArtClubRoom: 'Art Club Room',
   StudentCouncilRoom: 'Student Council Room',
   NurseOffice: 'Nurse Office',
@@ -12,9 +14,12 @@ export const Places = {
   Classroom2F: 'Classroom 2F',
   Classroom2FHallway: 'Classroom 2F Hallway',
   BookwormsUsedBooks: 'Bookworms Used Books',
+  IwatodaiStationStripMall1F: 'Iwatodai Station Strip Mall 1F',
+  ClubEscapade: 'Club Escapade',
 } as const;
 
 export const Districts = {
+  IwatodaiStation: 'Iwatodai Station',
   NaganakiShrine: 'Naganaki Shrine',
   IwatodaiDormitory: 'Iwatodai Dormitory',
   PaulowniaMall: 'Paulownia Mall',

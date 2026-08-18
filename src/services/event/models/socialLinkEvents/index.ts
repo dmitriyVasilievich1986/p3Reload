@@ -12,6 +12,7 @@ import { JusticeEvent } from './justice';
 import { LoversEvent } from './lovers';
 import { MagicianEvent } from './magician';
 import { MoonEvent } from './moon';
+import { PriestessEvent } from './priestess';
 import { StarEvent } from './star';
 import { StrengthEvent } from './strength';
 import { TemperanceEvent } from './temperance';
@@ -34,6 +35,7 @@ export {
   EmpressEvent,
   JusticeEvent,
   LoversEvent,
+  PriestessEvent,
 };
 
 export const SocialLinkEvents = {
@@ -53,4 +55,5 @@ export const SocialLinkEvents = {
   [Arcanas.Empress]: EmpressEvent,
   [Arcanas.Justice]: JusticeEvent,
   [Arcanas.Lovers]: LoversEvent,
+  [Arcanas.Priestess]: PriestessEvent,
 } as const;
