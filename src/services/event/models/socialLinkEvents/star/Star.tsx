@@ -14,11 +14,10 @@ import {
   CharacterStatsAvailability,
 } from '@services/availability';
 import { SocialLinkLevel } from '@services/stats';
+import { CharacterStatsNames } from '@services/stats/characterStats';
 
 import { SocialLinkEventBase } from '../base';
 import data from './data.json';
-import { CharacterStatsNames } from '@services/stats/characterStats';
-
 
 export class StarEvent extends SocialLinkEventBase {
   /** Arcana identifier for this social link. */

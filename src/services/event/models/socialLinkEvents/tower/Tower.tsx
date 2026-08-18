@@ -10,11 +10,10 @@ import {
   DayOfWeekAvailability,
 } from '@services/availability';
 import { SocialLinkLevel } from '@services/stats';
+import { CharacterStatsNames } from '@services/stats/characterStats';
 
 import { SocialLinkEventBase } from '../base';
 import data from './data.json';
-import { CharacterStatsNames } from '@services/stats/characterStats';
-
 
 export class TowerEvent extends SocialLinkEventBase {
   /** Arcana identifier for this social link. */
@@ -38,12 +37,7 @@ export class TowerEvent extends SocialLinkEventBase {
     }),
     new TimeAvailability({ times: [Times.Evening] }),
     new DayOfWeekAvailability({
-      daysOfWeek: [
-        DayOfWeek.Thursday,
-        DayOfWeek.Friday,
-        DayOfWeek.Saturday,
-        DayOfWeek.Sunday,
-      ],
+      daysOfWeek: [DayOfWeek.Thursday, DayOfWeek.Friday, DayOfWeek.Saturday, DayOfWeek.Sunday],
     }),
   ];
 }

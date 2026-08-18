@@ -14,7 +14,6 @@ import { SocialLinkLevel } from '@services/stats';
 import { SocialLinkEventBase } from '../base';
 import data from './data.json';
 
-
 export class MoonEvent extends SocialLinkEventBase {
   /** Arcana identifier for this social link. */
   static readonly name: ArcanasType = Arcanas.Moon;
