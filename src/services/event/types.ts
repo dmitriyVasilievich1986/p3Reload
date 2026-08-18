@@ -1,3 +1,5 @@
+import { Arcanas } from '@constants/arcanas';
+
 import { CharacterStatsModifyNames } from './models/characterStatsModifyEvents/types';
 import { SchoolQuestionEventsNames } from './models/schoolQuestions/types';
 import { SpecialEventsNames } from './models/specialEvents/types';
@@ -16,6 +18,7 @@ export const EventNames = {
   ...CharacterStatsModifyNames,
   ...SchoolQuestionEventsNames,
   ...SpecialEventsNames,
+  ...Arcanas,
 } as const;
 
 export type EventNamesType = (typeof EventNames)[keyof typeof EventNames];
