@@ -1,0 +1,266 @@
+[
+  {
+    "level": 0,
+    "pointsToNextLevel": 0,
+    "nextLevelPointsToNextLevel": 0,
+    "previousLevelPointsToNextLevel": 0,
+    "isRomantic": false,
+    "isFork": false,
+    "questions": [
+      {
+        "text": "Something something",
+        "answers": [
+          { "text": "Invite Yuko", "points": 0, "isFork": true },
+          { "text": "Ignore her", "points": 0, "isFork": false }
+        ]
+      }
+    ]
+  },
+  {
+    "level": 1,
+    "pointsToNextLevel": 0,
+    "nextLevelPointsToNextLevel": 0,
+    "previousLevelPointsToNextLevel": 0,
+    "isRomantic": false,
+    "isFork": false,
+    "questions": [
+      {
+        "text": "M-My side is killing me... I might've overdone it a bit.",
+        "answers": [
+          { "text": "Don't push yourself.", "points": 0, "isFork": false },
+          { "text": "Toughen up!", "points": 5, "isFork": false }
+        ]
+      },
+      {
+        "text": "You don't even look tired... Uh, what kind of training regimen do you have?",
+        "answers": [
+          { "text": "Just a normal routine.", "points": 0, "isFork": false },
+          { "text": "A very special routine.", "points": 0, "isFork": false }
+        ]
+      },
+      {
+        "text": "Let's get go- Argh!",
+        "answers": [
+          { "text": "What's wrong?", "points": 0, "isFork": false },
+          { "text": "Come on, hurry up.", "points": 0, "isFork": false }
+        ]
+      }
+    ]
+  },
+  {
+    "level": 2,
+    "pointsToNextLevel": 15,
+    "nextLevelPointsToNextLevel": 15,
+    "previousLevelPointsToNextLevel": 0,
+    "isRomantic": false,
+    "isFork": false,
+    "questions": [
+      {
+        "text": "It's just, um... my anemia's acting up.",
+        "answers": [
+          { "text": "Sorry, that sounds awful!", "points": 0, "isFork": false },
+          { "text": "Are you going to be okay?", "points": 5, "isFork": false }
+        ]
+      },
+      {
+        "text": "I tried medicine, I tried wrapping it, but the pain won't stop.",
+        "answers": [
+          { "text": "Will it heal?", "points": 5, "isFork": false },
+          {
+            "text": "Take a break from practice.",
+            "points": 0,
+            "isFork": false
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "level": 3,
+    "pointsToNextLevel": 15,
+    "nextLevelPointsToNextLevel": 15,
+    "previousLevelPointsToNextLevel": 15,
+    "isRomantic": false,
+    "isFork": false,
+    "questions": [
+      {
+        "text": "Wh-What's up? I was just gonna sneak back into practice.",
+        "answers": [
+          { "text": "Where have you been?", "points": 0, "isFork": false },
+          { "text": "Did you ditch?", "points": 0, "isFork": false }
+        ]
+      },
+      {
+        "text": "She made the appointment without telling me, so there was nothing I could do!",
+        "answers": [
+          { "text": "How did it go?", "points": 0, "isFork": false },
+          { "text": "That really sucks.", "points": 15, "isFork": false }
+        ]
+      }
+    ]
+  },
+  {
+    "level": 4,
+    "pointsToNextLevel": 15,
+    "nextLevelPointsToNextLevel": 15,
+    "previousLevelPointsToNextLevel": 15,
+    "isRomantic": false,
+    "isFork": false,
+    "questions": [
+      {
+        "text": "Man... I keep running into you at the weirdest times.",
+        "answers": [
+          { "text": "Back from the hospital?", "points": 5, "isFork": false },
+          { "text": "Did you ditched?", "points": 0, "isFork": false }
+        ]
+      },
+      {
+        "text": "You gotta be kidding... Why can't I... stand up!?",
+        "answers": [
+          { "text": "Take my shoulder!", "points": 15, "isFork": false },
+          { "text": "I'll carry you!", "points": 5, "isFork": false },
+          { "text": "I'll go get help!", "points": 0, "isFork": false }
+        ]
+      }
+    ]
+  },
+  {
+    "level": 5,
+    "pointsToNextLevel": 15,
+    "nextLevelPointsToNextLevel": 22,
+    "previousLevelPointsToNextLevel": 15,
+    "isRomantic": false,
+    "isFork": false,
+    "questions": [
+      {
+        "text": "I want to win, so I have to practice.",
+        "answers": [
+          {
+            "text": "There's nothing you can do.",
+            "points": 0,
+            "isFork": false
+          },
+          { "text": "Show some guts, man!", "points": 5, "isFork": false }
+        ]
+      },
+      {
+        "text": "I promised I'd win at next year's meet and become the number one athlete in Japan.",
+        "answers": [
+          { "text": "You promised?", "points": 0, "isFork": false },
+          { "text": "Why go so far?", "points": 5, "isFork": false }
+        ]
+      },
+      {
+        "text": "That's why I have to win this meet-so I can make it to nationals!",
+        "answers": [
+          { "text": "Do you think you can win?", "points": 0, "isFork": false },
+          { "text": "What about your knee?", "points": 5, "isFork": false }
+        ]
+      }
+    ]
+  },
+  {
+    "level": 6,
+    "pointsToNextLevel": 22,
+    "nextLevelPointsToNextLevel": 22,
+    "previousLevelPointsToNextLevel": 15,
+    "isRomantic": false,
+    "isFork": false,
+    "questions": [
+      {
+        "text": "I know you didn't say anything. I just think he can tell something's up.",
+        "answers": [
+          { "text": "How's your knee?", "points": 5, "isFork": false },
+          { "text": "Can you hide it?", "points": 0, "isFork": false }
+        ]
+      },
+      {
+        "text": "Otherwise, I won't be able to keep my promise to my nephew!",
+        "answers": [
+          { "text": "You need to get tougher.", "points": 15, "isFork": false },
+          { "text": "You can't win like this.", "points": 5, "isFork": false },
+          { "text": "You need to take a break.", "points": 0, "isFork": false }
+        ]
+      }
+    ]
+  },
+  {
+    "level": 7,
+    "pointsToNextLevel": 22,
+    "nextLevelPointsToNextLevel": 22,
+    "previousLevelPointsToNextLevel": 22,
+    "isRomantic": false,
+    "isFork": false,
+    "questions": [
+      {
+        "text": "You must know what's going on.",
+        "answers": [
+          { "text": "I don't know anything.", "points": 0, "isFork": false },
+          { "text": "......", "points": 5, "isFork": false }
+        ]
+      }
+    ]
+  },
+  {
+    "level": 8,
+    "pointsToNextLevel": 22,
+    "nextLevelPointsToNextLevel": 22,
+    "previousLevelPointsToNextLevel": 22,
+    "isRomantic": false,
+    "isFork": false,
+    "questions": [
+      {
+        "text": "I'm sure you love lugging all this dead weight around, huh?",
+        "answers": [
+          { "text": "I don't mind at all.", "points": 15, "isFork": false },
+          { "text": "No, not exactly.", "points": 0, "isFork": false },
+          {
+            "text": "It's fine-I'm tough as hell.",
+            "points": 5,
+            "isFork": false
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "level": 9,
+    "pointsToNextLevel": 22,
+    "nextLevelPointsToNextLevel": 0,
+    "previousLevelPointsToNextLevel": 22,
+    "isRomantic": false,
+    "isFork": false,
+    "questions": [
+      {
+        "text": "There's something I wanna talk to you about.",
+        "answers": [
+          { "text": "Okay, let's hear it.", "points": 0, "isFork": false },
+          { "text": "What is it about?", "points": 0, "isFork": false }
+        ]
+      },
+      {
+        "text": "I've made up my mind. I'm going to have surgery to fix my knee.",
+        "answers": [
+          { "text": "What about the big meet?", "points": 15, "isFork": false },
+          { "text": "What about your promise?", "points": 0, "isFork": false }
+        ]
+      },
+      {
+        "text": "I'm not gonna worry about winning races. I'm gonna focus on winning back my health instead.",
+        "answers": [
+          { "text": "You've got this!", "points": 5, "isFork": false },
+          { "text": "You've really grown up.", "points": 5, "isFork": false }
+        ]
+      }
+    ]
+  },
+  {
+    "level": 10,
+    "pointsToNextLevel": 0,
+    "nextLevelPointsToNextLevel": 0,
+    "previousLevelPointsToNextLevel": 22,
+    "isRomantic": false,
+    "isFork": false,
+    "questions": []
+  }
+]
