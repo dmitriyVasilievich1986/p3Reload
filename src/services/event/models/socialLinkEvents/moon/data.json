@@ -1,0 +1,193 @@
+[
+  {
+    "level": 0,
+    "pointsToNextLevel": 0,
+    "nextLevelPointsToNextLevel": 0,
+    "previousLevelPointsToNextLevel": 0,
+    "isRomantic": false,
+    "isFork": false,
+    "questions": []
+  },
+  {
+    "level": 1,
+    "pointsToNextLevel": 0,
+    "nextLevelPointsToNextLevel": 15,
+    "previousLevelPointsToNextLevel": 0,
+    "isRomantic": false,
+    "isFork": false,
+    "questions": [
+      {
+        "text": "Well? Would you wanna be... my younger brother?}",
+        "answers": [
+          { "text": "Sure, why not.", "points": 15, "isFork": false },
+          { "text": "Not really, no.", "points": 0, "isFork": false }
+        ]
+      }
+    ]
+  },
+  {
+    "level": 2,
+    "pointsToNextLevel": 15,
+    "nextLevelPointsToNextLevel": 15,
+    "previousLevelPointsToNextLevel": 0,
+    "isRomantic": false,
+    "isFork": false,
+    "questions": [
+      {
+        "text": "So? Do you \"get me,\" hm? Who am I? Go on, I wanna hear it come out of your mouth!",
+        "answers": [
+          { "text": "Nozomi Suemitsu", "points": 0, "isFork": false },
+          { "text": "The gourmet king.", "points": 15, "isFork": false }
+        ]
+      }
+    ]
+  },
+  {
+    "level": 3,
+    "pointsToNextLevel": 15,
+    "nextLevelPointsToNextLevel": 22,
+    "previousLevelPointsToNextLevel": 15,
+    "isRomantic": false,
+    "isFork": false,
+    "questions": [
+      {
+        "text": "Whew... That was way too close. If that toilet was just a bit further away... Ohhhh, boy.",
+        "answers": [
+          { "text": "Did you eat too much?", "points": 0, "isFork": false },
+          { "text": "Are you feeling sick?", "points": 15, "isFork": false }
+        ]
+      }
+    ]
+  },
+  {
+    "level": 4,
+    "pointsToNextLevel": 22,
+    "nextLevelPointsToNextLevel": 22,
+    "previousLevelPointsToNextLevel": 15,
+    "isRomantic": false,
+    "isFork": false,
+    "questions": [
+      {
+        "text": "Right, ${mainCharName}-kun?",
+        "answers": [
+          { "text": "That's right.", "points": 15, "isFork": false },
+          { "text": "Sorry, what?", "points": 0, "isFork": false }
+        ]
+      }
+    ]
+  },
+  {
+    "level": 5,
+    "pointsToNextLevel": 22,
+    "nextLevelPointsToNextLevel": 22,
+    "previousLevelPointsToNextLevel": 22,
+    "isRomantic": false,
+    "isFork": false,
+    "questions": [
+      {
+        "text": "I don't get it. I was fine up until a minute ago, then suddenly I felt sick.",
+        "answers": [
+          { "text": "Does this happen a lot?", "points": 5, "isFork": false },
+          { "text": "Did you eat too much?", "points": 0, "isFork": false },
+          { "text": "Are you sick?", "points": 15, "isFork": false }
+        ]
+      }
+    ]
+  },
+  {
+    "level": 6,
+    "pointsToNextLevel": 22,
+    "nextLevelPointsToNextLevel": 22,
+    "previousLevelPointsToNextLevel": 22,
+    "isRomantic": false,
+    "isFork": false,
+    "questions": [
+      {
+        "text": "Well? Did that just blow your mind?}",
+        "answers": [
+          { "text": "Yeah, I'm freaking out.", "points": 0, "isFork": false },
+          { "text": "Not really.", "points": 5, "isFork": false },
+          { "text": "The world is ending?", "points": 15, "isFork": false }
+        ]
+      },
+      {
+        "text": "Not to mention you'll get a discount since I'll be referring you, too. You are one lucky guy!}",
+        "answers": [
+          { "text": "That's insane!", "points": 0, "isFork": false },
+          { "text": "No way I'm paying that.", "points": 0, "isFork": false }
+        ]
+      }
+    ]
+  },
+  {
+    "level": 7,
+    "pointsToNextLevel": 22,
+    "nextLevelPointsToNextLevel": 15,
+    "previousLevelPointsToNextLevel": 22,
+    "isRomantic": false,
+    "isFork": false,
+    "questions": [
+      {
+        "text": "Look at me! I'm paper-thin now!}",
+        "answers": [
+          { "text": "You do look thinner.", "points": 0, "isFork": false },
+          { "text": "No, you're not.", "points": 15, "isFork": false }
+        ]
+      }
+    ]
+  },
+  {
+    "level": 8,
+    "pointsToNextLevel": 15,
+    "nextLevelPointsToNextLevel": 15,
+    "previousLevelPointsToNextLevel": 22,
+    "isRomantic": false,
+    "isFork": false,
+    "questions": [
+      {
+        "text": "Finally, Paradise is smiling back at me! Yes! Yesss!}",
+        "answers": [
+          {
+            "text": "You're gonna scam them, too?",
+            "points": 0,
+            "isFork": false
+          },
+          { "text": "Just knock it off.", "points": 0, "isFork": false }
+        ]
+      }
+    ]
+  },
+  {
+    "level": 9,
+    "pointsToNextLevel": 15,
+    "nextLevelPointsToNextLevel": 0,
+    "previousLevelPointsToNextLevel": 15,
+    "isRomantic": false,
+    "isFork": false,
+    "questions": [
+      {
+        "text": "But I couldn't even cry. I actually felt... relieved. I though, \"Maybe they'll all finally stop laughing at me.\"}",
+        "answers": [
+          { "text": "That's terrible.", "points": 0, "isFork": false },
+          { "text": "That's understandable.", "points": 0, "isFork": false }
+        ]
+      },
+      {
+        "text": "But if I keep this up, I'll never be able to replace my brother, will I?",
+        "answers": [
+          { "text": "Just be yourself.", "points": 15, "isFork": false },
+          { "text": "You're irreplaceable.", "points": 15, "isFork": false }
+        ]
+      }
+    ]
+  },
+  {
+    "level": 10,
+    "pointsToNextLevel": 0,
+    "nextLevelPointsToNextLevel": 0,
+    "previousLevelPointsToNextLevel": 15,
+    "isRomantic": false,
+    "isFork": false,
+    "questions": []
+  }
+]
