@@ -1,0 +1,294 @@
+[
+  {
+    "level": 0,
+    "pointsToNextLevel": 0,
+    "nextLevelPointsToNextLevel": 0,
+    "previousLevelPointsToNextLevel": 0,
+    "isRomantic": false,
+    "isFork": false,
+    "questions": []
+  },
+  {
+    "level": 1,
+    "pointsToNextLevel": 0,
+    "nextLevelPointsToNextLevel": 15,
+    "previousLevelPointsToNextLevel": 0,
+    "isRomantic": false,
+    "isFork": false,
+    "questions": [
+      {
+        "text": "...!",
+        "answers": [
+          { "text": "What's wrong?", "points": 0, "isFork": false },
+          { "text": "Do you need some rest?", "points": 0, "isFork": false }
+        ]
+      },
+      {
+        "text": "Yamagishi-san won't be going anywhere for a while.",
+        "answers": [
+          { "text": "\"Strikes again\"?", "points": 0, "isFork": false },
+          { "text": "Is that a problem?", "points": 0, "isFork": false }
+        ]
+      }
+    ]
+  },
+  {
+    "level": 2,
+    "pointsToNextLevel": 15,
+    "nextLevelPointsToNextLevel": 15,
+    "previousLevelPointsToNextLevel": 0,
+    "isRomantic": false,
+    "isFork": false,
+    "questions": [
+      {
+        "text": "It really helped apply the paint to the canvas, so I'm sure that's the only reason the judges even noticed.",
+        "answers": [
+          { "text": "You've got talent.", "points": 15, "isFork": false },
+          { "text": "You got lucky.", "points": 0, "isFork": false }
+        ]
+      },
+      {
+        "text": "I recommend adding more shellfish to your diet, like oyster and abalone. They're packed with iron and easy to cook.",
+        "answers": [
+          { "text": "Good work, Doc Junior.", "points": 0, "isFork": false },
+          { "text": "Will he be okay?", "points": 0, "isFork": false }
+        ]
+      }
+    ]
+  },
+  {
+    "level": 3,
+    "pointsToNextLevel": 15,
+    "nextLevelPointsToNextLevel": 15,
+    "previousLevelPointsToNextLevel": 15,
+    "isRomantic": false,
+    "isFork": false,
+    "questions": [
+      {
+        "text": "Did you... hear everything?",
+        "answers": [
+          { "text": "You're quitting art club?", "points": 5, "isFork": false },
+          {
+            "text": "You're pulling out of the contest?",
+            "points": 5,
+            "isFork": false
+          }
+        ]
+      },
+      {
+        "text": "I have my own dreams too, you know! Ugh, I can't stand it anymore!",
+        "answers": [
+          {
+            "text": "Complaining to me won't help you.",
+            "points": 15,
+            "isFork": false
+          },
+          {
+            "text": "So you're just gonna take it?",
+            "points": 5,
+            "isFork": false
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "level": 4,
+    "pointsToNextLevel": 15,
+    "nextLevelPointsToNextLevel": 15,
+    "previousLevelPointsToNextLevel": 15,
+    "isRomantic": false,
+    "isFork": false,
+    "questions": [
+      {
+        "text": "Wait. Then... that means...",
+        "answers": [
+          {
+            "text": "You should tell your dad!",
+            "points": 15,
+            "isFork": false
+          },
+          {
+            "text": "Now you don't have to quit.",
+            "points": 15,
+            "isFork": false
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "level": 5,
+    "pointsToNextLevel": 15,
+    "nextLevelPointsToNextLevel": 15,
+    "previousLevelPointsToNextLevel": 15,
+    "isRomantic": false,
+    "isFork": false,
+    "questions": [
+      {
+        "text": "Everyone's working so hard...",
+        "answers": [
+          { "text": "So are you.", "points": 0, "isFork": false },
+          { "text": "What's the matter?", "points": 0, "isFork": false }
+        ]
+      },
+      {
+        "text": "I just don't know what to think.",
+        "answers": [
+          { "text": "Will you study abroad?", "points": 5, "isFork": false },
+          { "text": "It's your choice now.", "points": 15, "isFork": false }
+        ]
+      }
+    ]
+  },
+  {
+    "level": 6,
+    "pointsToNextLevel": 15,
+    "nextLevelPointsToNextLevel": 22,
+    "previousLevelPointsToNextLevel": 15,
+    "isRomantic": false,
+    "isFork": false,
+    "questions": [
+      {
+        "text": "It's like he's suddenly trying to be more understanding. It's weird.",
+        "answers": [
+          {
+            "text": "Do you want to be a doctor?",
+            "points": 15,
+            "isFork": false
+          },
+          { "text": "Don't you like art club?", "points": 0, "isFork": false }
+        ]
+      }
+    ]
+  },
+  {
+    "level": 7,
+    "pointsToNextLevel": 22,
+    "nextLevelPointsToNextLevel": 22,
+    "previousLevelPointsToNextLevel": 15,
+    "isRomantic": false,
+    "isFork": false,
+    "questions": [
+      {
+        "text": "Can you remember your name? It's Keisuke.",
+        "answers": [
+          { "text": "It's okay, I'm fine.", "points": 15, "isFork": false },
+          { "text": "Of course. It's Keisuke.", "points": 0, "isFork": false },
+          { "text": "......", "points": 0, "isFork": false }
+        ]
+      },
+      {
+        "text": "A-Anyway, do you remember what happened?",
+        "answers": [
+          { "text": "I do.", "points": 0, "isFork": false },
+          { "text": "I don't.", "points": 0, "isFork": false }
+        ]
+      },
+      {
+        "text": "I'm not a doctor... You think you want to be one?",
+        "answers": [
+          {
+            "text": "Do you think you want to be one?",
+            "points": 0,
+            "isFork": false
+          },
+          {
+            "text": "Don't beat yourself up about it.",
+            "points": 0,
+            "isFork": false
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "level": 8,
+    "pointsToNextLevel": 22,
+    "nextLevelPointsToNextLevel": 22,
+    "previousLevelPointsToNextLevel": 22,
+    "isRomantic": false,
+    "isFork": false,
+    "questions": [
+      {
+        "text": "Tell the others I said goodbye! You can't go! Good luck!",
+        "answers": [
+          { "text": "You can't go!", "points": 15, "isFork": false },
+          { "text": "Good luck!", "points": 0, "isFork": false }
+        ]
+      },
+      {
+        "text": "Ma'am, are you all right!? That cough... What happened?",
+        "answers": [
+          { "text": "What happened?", "points": 0, "isFork": false },
+          { "text": "...You should just go.", "points": 0, "isFork": false }
+        ]
+      },
+      {
+        "text": "My train's about to leave! Wh-What should I do? Leave this to me! You can't abandon your trip!",
+        "answers": [
+          { "text": "Leave this to me!", "points": 0, "isFork": false },
+          {
+            "text": "You can't abandon your trip!",
+            "points": 0,
+            "isFork": false
+          }
+        ]
+      },
+      {
+        "text": "How should I help him? Better leave him alone. I should talk to him. I'll try patting his upper back.",
+        "answers": [
+          { "text": "Better leave him alone.", "points": 0, "isFork": false },
+          { "text": "I should talk to him.", "points": 0, "isFork": false },
+          {
+            "text": "I'll try patting his upper back.",
+            "points": 0,
+            "isFork": false
+          }
+        ]
+      },
+      {
+        "text": "What should I do next? Better leave him alone. I could rub his back. I'll lay him on his back.",
+        "answers": [
+          { "text": "Better leave him alone.", "points": 0, "isFork": false },
+          { "text": "I could rub his back.", "points": 0, "isFork": false },
+          { "text": "I'll lay him on his back.", "points": 0, "isFork": false }
+        ]
+      }
+    ]
+  },
+  {
+    "level": 9,
+    "pointsToNextLevel": 22,
+    "nextLevelPointsToNextLevel": 0,
+    "previousLevelPointsToNextLevel": 22,
+    "isRomantic": false,
+    "isFork": false,
+    "questions": [
+      {
+        "text": "That's why I want you to have it.",
+        "answers": [
+          { "text": "I understand.", "points": 15, "isFork": false },
+          { "text": "But why?", "points": 5, "isFork": false },
+          { "text": "Stop relying on others.", "points": 5, "isFork": false }
+        ]
+      },
+      {
+        "text": "I-I'm not coming off as arrogant, am I?",
+        "answers": [
+          { "text": "Not at all.", "points": 15, "isFork": false },
+          { "text": "You kinda are.", "points": 5, "isFork": false }
+        ]
+      }
+    ]
+  },
+  {
+    "level": 10,
+    "pointsToNextLevel": 0,
+    "nextLevelPointsToNextLevel": 0,
+    "previousLevelPointsToNextLevel": 22,
+    "isRomantic": false,
+    "isFork": false,
+    "questions": []
+  }
+]
