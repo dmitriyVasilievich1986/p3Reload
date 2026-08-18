@@ -1,0 +1,363 @@
+[
+  {
+    "level": 0,
+    "pointsToNextLevel": 0,
+    "nextLevelPointsToNextLevel": 0,
+    "previousLevelPointsToNextLevel": 0,
+    "isRomantic": false,
+    "isFork": false,
+    "questions": []
+  },
+  {
+    "level": 1,
+    "pointsToNextLevel": 0,
+    "nextLevelPointsToNextLevel": 0,
+    "previousLevelPointsToNextLevel": 0,
+    "isFork": false,
+    "isRomantic": false,
+    "questions": [
+      {
+        "text": "What about you, ${mainCharName}-san? Do you... like it here?",
+        "answers": [
+          { "text": "I like it here.", "points": 15, "isFork": false },
+          { "text": "Not really.", "points": 0, "isFork": false },
+          { "text": "I don't care.", "points": 0, "isFork": false }
+        ]
+      }
+    ]
+  },
+  {
+    "level": 2,
+    "pointsToNextLevel": 0,
+    "nextLevelPointsToNextLevel": 0,
+    "previousLevelPointsToNextLevel": 0,
+    "isFork": false,
+    "isRomantic": false,
+    "questions": [
+      {
+        "text": "How can we make them understand?",
+        "answers": [
+          { "text": "Just try explaining.", "points": 0, "isFork": false },
+          { "text": "I don't think we can.", "points": 0, "isFork": false }
+        ]
+      },
+      {
+        "text": "......",
+        "answers": [
+          { "text": "Maybe so.", "points": 0, "isFork": false },
+          { "text": "That's not true.", "points": 5, "isFork": false }
+        ]
+      }
+    ]
+  },
+  {
+    "level": 3,
+    "pointsToNextLevel": 0,
+    "nextLevelPointsToNextLevel": 0,
+    "previousLevelPointsToNextLevel": 0,
+    "isFork": false,
+    "isRomantic": false,
+    "questions": [
+      {
+        "text": "A white, spotted cat... Did you see one, ${mainCharName}-san?",
+        "answers": [
+          { "text": "I might have...", "points": 0, "isFork": false },
+          { "text": "No, I haven't.", "points": 0, "isFork": false }
+        ]
+      },
+      {
+        "text": "Goodness, really!? Where might this have been?",
+        "answers": [
+          { "text": "Near the station", "points": 0, "isFork": false },
+          { "text": "Near the strip mall.", "points": 0, "isFork": false },
+          { "text": "I don't remember.", "points": 0, "isFork": false }
+        ]
+      },
+      {
+        "text": "Being separated from a loved one can be very distressing after all...",
+        "answers": [
+          { "text": "All right.", "points": 15, "isFork": false },
+          { "text": "What a pain...", "points": 0, "isFork": false }
+        ]
+      },
+      {
+        "text": "And I was the one who insisted we search... I'm sorry.",
+        "answers": [
+          { "text": "Don't let it get to you.", "points": 0, "isFork": false },
+          {
+            "text": "We should head back for today.",
+            "points": 0,
+            "isFork": false
+          },
+          { "text": "Let's keep looking.", "points": 0, "isFork": false }
+        ]
+      }
+    ]
+  },
+  {
+    "level": 4,
+    "pointsToNextLevel": 0,
+    "nextLevelPointsToNextLevel": 0,
+    "previousLevelPointsToNextLevel": 0,
+    "isFork": false,
+    "isRomantic": false,
+    "questions": [
+      {
+        "text": "It seems that living is something that can't be done alone.",
+        "answers": [
+          { "text": "You might be right.", "points": 15, "isFork": false },
+          { "text": "That's not true.", "points": 0, "isFork": false },
+          { "text": "I don't know.", "points": 0, "isFork": false }
+        ]
+      }
+    ]
+  },
+  {
+    "level": 5,
+    "pointsToNextLevel": 0,
+    "nextLevelPointsToNextLevel": 0,
+    "previousLevelPointsToNextLevel": 0,
+    "isFork": false,
+    "isRomantic": false,
+    "questions": [
+      {
+        "text": "Did I do something wrong?",
+        "answers": [
+          { "text": "You didn't call him Joe.", "points": 5, "isFork": false },
+          { "text": "No, you didn't", "points": 15, "isFork": false },
+          {
+            "text": "He thought I was your boyfriend.",
+            "points": 15,
+            "isFork": false
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "level": 6,
+    "pointsToNextLevel": 0,
+    "nextLevelPointsToNextLevel": 0,
+    "previousLevelPointsToNextLevel": 0,
+    "isFork": false,
+    "isRomantic": false,
+    "questions": [
+      {
+        "text": "Was Mii-chan-san happy?",
+        "answers": [
+          { "text": "I think she was happy.", "points": 0, "isFork": false },
+          { "text": "Who knows?", "points": 0, "isFork": false }
+        ]
+      },
+      {
+        "text": "Was Mii-chan-san... grateful to have been born...?",
+        "answers": [
+          { "text": "I'm sure she was.", "points": 0, "isFork": false },
+          { "text": "I'm not sure.", "points": 0, "isFork": false }
+        ]
+      },
+      {
+        "text": "For what purpose... was Mii-chan-san born...?",
+        "answers": [
+          { "text": "No one can say.", "points": 0, "isFork": false },
+          { "text": "I don't know.", "points": 0, "isFork": false }
+        ]
+      }
+    ]
+  },
+  {
+    "level": 7,
+    "pointsToNextLevel": 0,
+    "nextLevelPointsToNextLevel": 0,
+    "previousLevelPointsToNextLevel": 0,
+    "isFork": false,
+    "isRomantic": false,
+    "questions": [
+      {
+        "text": "I was just curious.",
+        "answers": [
+          { "text": "Sometimes.", "points": 5, "isFork": false },
+          { "text": "I'm doing it now.", "points": 15, "isFork": false },
+          { "text": "No.", "points": 0, "isFork": false }
+        ]
+      },
+      {
+        "text": "......",
+        "answers": [
+          {
+            "text": "I don't mind you being here.",
+            "points": 0,
+            "isFork": false
+          },
+          { "text": "What brought this on?", "points": 0, "isFork": false }
+        ]
+      },
+      {
+        "text": "Why are you so important to me, ${mainCharName}-san?",
+        "answers": [
+          { "text": "It's love.", "points": 0, "isFork": false },
+          { "text": "Because we're friends", "points": 0, "isFork": true }
+        ]
+      }
+    ]
+  },
+  {
+    "level": 7,
+    "pointsToNextLevel": 0,
+    "nextLevelPointsToNextLevel": 30,
+    "previousLevelPointsToNextLevel": 0,
+    "isFork": false,
+    "isRomantic": true,
+    "questions": [
+      {
+        "text": "I was just curious.",
+        "answers": [
+          { "text": "Sometimes.", "points": 5, "isFork": false },
+          { "text": "I'm doing it now.", "points": 15, "isFork": false },
+          { "text": "No.", "points": 0, "isFork": false }
+        ]
+      },
+      {
+        "text": "......",
+        "answers": [
+          {
+            "text": "I don't mind you being here.",
+            "points": 0,
+            "isFork": false
+          },
+          { "text": "What brought this on?", "points": 0, "isFork": false }
+        ]
+      },
+      {
+        "text": "Why are you so important to me, ${mainCharName}-san?",
+        "answers": [
+          { "text": "It's love.", "points": 0, "isFork": true },
+          { "text": "Because we're friends", "points": 0, "isFork": false }
+        ]
+      }
+    ]
+  },
+  {
+    "level": 8,
+    "pointsToNextLevel": 30,
+    "nextLevelPointsToNextLevel": 30,
+    "previousLevelPointsToNextLevel": 0,
+    "isFork": false,
+    "isRomantic": false,
+    "questions": [
+      {
+        "text": "January 31st...",
+        "answers": [
+          { "text": "You're right.", "points": 15, "isFork": false },
+          { "text": "I hadn't noticed...", "points": 0, "isFork": false }
+        ]
+      },
+      {
+        "text": "But, even so... my wish is to be your closest friend.",
+        "answers": [
+          {
+            "text": "You're already my best friend.",
+            "points": 0,
+            "isFork": false
+          },
+          { "text": "That's a beautiful wish.", "points": 0, "isFork": false }
+        ]
+      }
+    ]
+  },
+  {
+    "level": 8,
+    "pointsToNextLevel": 30,
+    "nextLevelPointsToNextLevel": 30,
+    "previousLevelPointsToNextLevel": 30,
+    "isFork": false,
+    "isRomantic": true,
+    "questions": [
+      {
+        "text": "January 31st...",
+        "answers": [
+          { "text": "You're right.", "points": 15, "isFork": false },
+          { "text": "I hadn't noticed...", "points": 0, "isFork": false }
+        ]
+      },
+      {
+        "text": "I love you so much... that I feel like I'm going to break down somehow...",
+        "answers": [
+          { "text": "I love you, too.", "points": 0, "isFork": true },
+          { "text": "Sorry, but I can't...", "points": 0, "isFork": false }
+        ]
+      }
+    ]
+  },
+  {
+    "level": 9,
+    "pointsToNextLevel": 30,
+    "nextLevelPointsToNextLevel": 0,
+    "previousLevelPointsToNextLevel": 30,
+    "isFork": false,
+    "isRomantic": false,
+    "questions": [
+      {
+        "text": "Ch-Cheese...!>",
+        "answers": [
+          { "text": "Cheese.", "points": 0, "isFork": false },
+          { "text": "......", "points": 0, "isFork": false }
+        ]
+      },
+      {
+        "text": "Do you like taking photos, ${mainCharName}-san?>",
+        "answers": [
+          { "text": "Yeah, it's fun.", "points": 0, "isFork": false },
+          { "text": "Actually, I don't.", "points": 0, "isFork": false }
+        ]
+      },
+      {
+        "text": "There is one thing only a machine with a human heart can do... That only I can do.",
+        "answers": [
+          { "text": "What's that?", "points": 0, "isFork": false },
+          { "text": "I don't understand.", "points": 0, "isFork": false }
+        ]
+      },
+      {
+        "text": "Hehe. So, what were you and Aigis up to?>",
+        "answers": [
+          { "text": "Taking a picture.", "points": 0, "isFork": false },
+          { "text": "Just chatting.", "points": 0, "isFork": false }
+        ]
+      }
+    ]
+  },
+  {
+    "level": 9,
+    "pointsToNextLevel": 30,
+    "nextLevelPointsToNextLevel": 0,
+    "previousLevelPointsToNextLevel": 30,
+    "isFork": false,
+    "isRomantic": true,
+    "questions": [
+      {
+        "text": "There's something only I can say, because I am unable to die.",
+        "answers": [
+          { "text": "What is it?", "points": 0, "isFork": false },
+          { "text": "I don't really get it.", "points": 0, "isFork": false }
+        ]
+      },
+      {
+        "text": "Aigis is gazing at me intently...",
+        "answers": [
+          { "text": "Nod silently", "points": 0, "isFork": false },
+          { "text": "Gently hold her hand", "points": 0, "isFork": false }
+        ]
+      }
+    ]
+  },
+  {
+    "level": 10,
+    "pointsToNextLevel": 0,
+    "nextLevelPointsToNextLevel": 0,
+    "previousLevelPointsToNextLevel": 30,
+    "isRomantic": false,
+    "isFork": false,
+    "questions": []
+  }
+]

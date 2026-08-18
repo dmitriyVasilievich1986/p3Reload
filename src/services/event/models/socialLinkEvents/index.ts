@@ -1,5 +1,6 @@
 import { Arcanas } from '@constants/arcanas';
 
+import { AeonEvent } from './aeon';
 import { ChariotEvent } from './chariot';
 import { EmperorEvent } from './emperor';
 import { FortuneEvent } from './fortune';
@@ -26,6 +27,7 @@ export {
   StarEvent,
   MoonEvent,
   HermitEvent,
+  AeonEvent,
 };
 
 export const SocialLinkEvents = {
@@ -41,4 +43,5 @@ export const SocialLinkEvents = {
   [Arcanas.Star]: StarEvent,
   [Arcanas.Moon]: MoonEvent,
   [Arcanas.Hermit]: HermitEvent,
+  [Arcanas.Aeon]: AeonEvent,
 } as const;
