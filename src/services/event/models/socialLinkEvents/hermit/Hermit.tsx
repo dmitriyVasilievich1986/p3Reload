@@ -6,7 +6,6 @@ import { Places, Districts } from '@constants/places';
 import { Times } from '@constants/times';
 import {
   type AvailabilityBase,
-  SocialLinkLevelAvailability,
   TimeAvailability,
   IsLevelUpAvailable,
   DayOfWeekAvailability,
@@ -31,10 +30,9 @@ export class HermitEvent extends SocialLinkEventBase {
   static readonly levels = data.map((l) => new SocialLinkLevel(l));
 
   static readonly availabilities: AvailabilityBase[] = [
-    new SocialLinkLevelAvailability({ name: Arcanas.Hermit, operator: 'lt', level: 10 }),
+    new IsLevelUpAvailable({ name: Arcanas.Hermit, isLevelUpAvailable: true }),
     new DateAvailability({ operator: 'ge', value: dayjs('2009-04-29') }),
     new TimeAvailability({ times: [Times.Day] }),
-    new IsLevelUpAvailable({ name: Arcanas.Hermit, isLevelUpAvailable: true }),
     new OrAvailability({
       availabilities: [
         new DayOfWeekAvailability({ daysOfWeek: [DayOfWeek.Sunday] }),

@@ -6,7 +6,6 @@ import { Places, Districts } from '@constants/places';
 import { Times } from '@constants/times';
 import {
   type AvailabilityBase,
-  SocialLinkLevelAvailability,
   TimeAvailability,
   IsLevelUpAvailable,
   ExamAvailability,
@@ -36,17 +35,16 @@ export class EmpressEvent extends SocialLinkEventBase {
   static readonly levels = data.map((l) => new SocialLinkLevel(l));
 
   static readonly availabilities: AvailabilityBase[] = [
-    new SocialLinkLevelAvailability({ name: Arcanas.Empress, operator: 'lt', level: 10 }),
+    new IsLevelUpAvailable({ name: Arcanas.Empress, isLevelUpAvailable: true }),
+    new DateAvailability({ operator: 'ge', value: dayjs('2009-11-21') }),
+    new ExamAvailability({ isAvailableOnAnExamDay: false }),
+    new DayOffAvailability({ isAvailableOnADayOff: false }),
+    new TimeAvailability({ times: [Times.Day] }),
     new CharacterStatsAvailability({
       level: 6,
       name: CharacterStatsNames.Academics,
       operator: 'ge',
     }),
-    new DateAvailability({ operator: 'ge', value: dayjs('2009-11-21') }),
-    new IsLevelUpAvailable({ name: Arcanas.Empress, isLevelUpAvailable: true }),
-    new ExamAvailability({ isAvailableOnAnExamDay: false }),
-    new DayOffAvailability({ isAvailableOnADayOff: false }),
-    new TimeAvailability({ times: [Times.Day] }),
     new OrAvailability({
       availabilities: [
         new DayOfWeekAvailability({

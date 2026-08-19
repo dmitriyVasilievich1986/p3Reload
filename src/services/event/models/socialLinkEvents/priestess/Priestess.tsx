@@ -34,19 +34,18 @@ export class PriestessEvent extends SocialLinkEventBase {
   static readonly levels = data.map((l) => new SocialLinkLevel(l));
 
   static readonly availabilities: AvailabilityBase[] = [
-    new SocialLinkLevelAvailability({ name: Arcanas.Priestess, operator: 'lt', level: 10 }),
     new SocialLinkLevelAvailability({ name: Arcanas.Fortune, operator: 'ge', level: 2 }),
+    new IsLevelUpAvailable({ name: Arcanas.Priestess, isLevelUpAvailable: true }),
+    new DateAvailability({ operator: 'notIn', value: [dayjs('2009-11-06')] }),
+    new DateAvailability({ operator: 'ge', value: dayjs('2009-06-19') }),
+    new ExamAvailability({ isAvailableOnAnExamDay: false }),
+    new DayOffAvailability({ isAvailableOnADayOff: false }),
+    new TimeAvailability({ times: [Times.Day] }),
     new CharacterStatsAvailability({
       level: 6,
       name: CharacterStatsNames.Courage,
       operator: 'ge',
     }),
-    new DateAvailability({ operator: 'ge', value: dayjs('2009-06-19') }),
-    new TimeAvailability({ times: [Times.Day] }),
-    new IsLevelUpAvailable({ name: Arcanas.Priestess, isLevelUpAvailable: true }),
-    new DateAvailability({ operator: 'notIn', value: [dayjs('2009-11-06')] }),
-    new ExamAvailability({ isAvailableOnAnExamDay: false }),
-    new DayOffAvailability({ isAvailableOnADayOff: false }),
     new DayOfWeekAvailability({
       daysOfWeek: [DayOfWeek.Monday, DayOfWeek.Friday, DayOfWeek.Saturday],
     }),

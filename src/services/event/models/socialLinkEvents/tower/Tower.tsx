@@ -28,14 +28,14 @@ export class TowerEvent extends SocialLinkEventBase {
   static readonly levels = data.map((l) => new SocialLinkLevel(l));
 
   static readonly availabilities: AvailabilityBase[] = [
-    new SocialLinkLevelAvailability({ name: Arcanas.Tower, operator: 'lt', level: 10 }),
     new SocialLinkLevelAvailability({ name: Arcanas.Strength, operator: 'ge', level: 4 }),
+    new SocialLinkLevelAvailability({ name: Arcanas.Tower, operator: 'lt', level: 10 }),
+    new TimeAvailability({ times: [Times.Evening] }),
     new CharacterStatsAvailability({
       level: 2,
       name: CharacterStatsNames.Courage,
       operator: 'ge',
     }),
-    new TimeAvailability({ times: [Times.Evening] }),
     new DayOfWeekAvailability({
       daysOfWeek: [DayOfWeek.Thursday, DayOfWeek.Friday, DayOfWeek.Saturday, DayOfWeek.Sunday],
     }),

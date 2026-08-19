@@ -25,9 +25,8 @@ export class MoonEvent extends SocialLinkEventBase {
   static readonly levels = data.map((l) => new SocialLinkLevel(l));
 
   static readonly availabilities: AvailabilityBase[] = [
-    new SocialLinkLevelAvailability({ name: Arcanas.Moon, operator: 'lt', level: 10 }),
-    new TimeAvailability({ times: [Times.Day] }),
     new IsLevelUpAvailable({ name: Arcanas.Moon, isLevelUpAvailable: true }),
+    new TimeAvailability({ times: [Times.Day] }),
     new OrAvailability({
       availabilities: [
         new DayOffAvailability({ isAvailableOnADayOff: false }),

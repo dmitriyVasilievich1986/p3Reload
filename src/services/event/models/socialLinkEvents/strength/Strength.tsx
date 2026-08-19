@@ -35,7 +35,6 @@ export class StrengthEvent extends SocialLinkEventBase {
   static readonly levels = data.map((l) => new SocialLinkLevel(l));
 
   static readonly availabilities: AvailabilityBase[] = [
-    new SocialLinkLevelAvailability({ name: Arcanas.Strength, operator: 'lt', level: 10 }),
     new SocialLinkLevelAvailability({ name: Arcanas.Chariot, operator: 'gt', level: 1 }),
     new IsLevelUpAvailable({ name: Arcanas.Strength, isLevelUpAvailable: true }),
     new ExamAvailability({ isAvailableOnAnExamDay: false }),

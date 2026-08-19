@@ -6,7 +6,6 @@ import { Districts } from '@constants/places';
 import { Times } from '@constants/times';
 import {
   type AvailabilityBase,
-  SocialLinkLevelAvailability,
   TimeAvailability,
   IsLevelUpAvailable,
   DayOfWeekAvailability,
@@ -28,10 +27,9 @@ export class HangedManEvent extends SocialLinkEventBase {
   static readonly levels = data.map((l) => new SocialLinkLevel(l));
 
   static readonly availabilities: AvailabilityBase[] = [
-    new SocialLinkLevelAvailability({ name: Arcanas.HangedMan, operator: 'lt', level: 10 }),
+    new IsLevelUpAvailable({ name: Arcanas.HangedMan, isLevelUpAvailable: true }),
     new DateAvailability({ operator: 'ge', value: dayjs('2009-05-06') }),
     new TimeAvailability({ times: [Times.Day] }),
-    new IsLevelUpAvailable({ name: Arcanas.HangedMan, isLevelUpAvailable: true }),
     new DayOfWeekAvailability({
       daysOfWeek: [DayOfWeek.Monday, DayOfWeek.Wednesday, DayOfWeek.Saturday],
     }),

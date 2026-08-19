@@ -9,7 +9,6 @@ import { Places, Districts } from '@constants/places';
 import { Times } from '@constants/times';
 import {
   type AvailabilityBase,
-  SocialLinkLevelAvailability,
   TimeAvailability,
   IsLevelUpAvailable,
   ExamAvailability,
@@ -37,12 +36,11 @@ export class ChariotEvent extends SocialLinkEventBase {
   static readonly levels = data.map((l) => new SocialLinkLevel(l));
 
   static readonly availabilities: AvailabilityBase[] = [
-    new SocialLinkLevelAvailability({ name: Arcanas.Chariot, operator: 'lt', level: 10 }),
-    new DateAvailability({ operator: 'ge', value: dayjs('2009-04-23') }),
-    new TimeAvailability({ times: [Times.Day] }),
     new IsLevelUpAvailable({ name: Arcanas.Chariot, isLevelUpAvailable: true }),
+    new DateAvailability({ operator: 'ge', value: dayjs('2009-04-23') }),
     new ExamAvailability({ isAvailableOnAnExamDay: false }),
     new DayOffAvailability({ isAvailableOnADayOff: false }),
+    new TimeAvailability({ times: [Times.Day] }),
     new DayOfWeekAvailability({
       daysOfWeek: [DayOfWeek.Monday, DayOfWeek.Tuesday, DayOfWeek.Thursday, DayOfWeek.Friday],
     }),

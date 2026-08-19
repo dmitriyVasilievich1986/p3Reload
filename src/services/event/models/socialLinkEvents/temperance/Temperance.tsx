@@ -32,16 +32,15 @@ export class TemperanceEvent extends SocialLinkEventBase {
   static readonly levels = data.map((l) => new SocialLinkLevel(l));
 
   static readonly availabilities: AvailabilityBase[] = [
-    new SocialLinkLevelAvailability({ name: Arcanas.Temperance, operator: 'lt', level: 10 }),
     new SocialLinkLevelAvailability({ name: Arcanas.Hierophant, operator: 'ge', level: 3 }),
+    new IsLevelUpAvailable({ name: Arcanas.Temperance, isLevelUpAvailable: true }),
+    new DateAvailability({ operator: 'ge', value: dayjs('2009-05-08') }),
+    new TimeAvailability({ times: [Times.Day] }),
     new CharacterStatsAvailability({
       level: 2,
       name: CharacterStatsNames.Academics,
       operator: 'ge',
     }),
-    new DateAvailability({ operator: 'ge', value: dayjs('2009-05-08') }),
-    new TimeAvailability({ times: [Times.Day] }),
-    new IsLevelUpAvailable({ name: Arcanas.Temperance, isLevelUpAvailable: true }),
     new DayOfWeekAvailability({
       daysOfWeek: [DayOfWeek.Tuesday, DayOfWeek.Wednesday, DayOfWeek.Friday],
     }),
