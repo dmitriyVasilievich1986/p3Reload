@@ -2,9 +2,11 @@ import { Arcanas } from '@constants/arcanas';
 
 import { AeonEvent } from './aeon';
 import { ChariotEvent } from './chariot';
-import { DeathEvent } from './death';
+import { DeathEvent } from './Death';
+import { DevilEvent } from './Devil';
 import { EmperorEvent } from './emperor';
 import { EmpressEvent } from './empress';
+import { FoolEvent } from './Fool';
 import { FortuneEvent } from './fortune';
 import { HangedManEvent } from './hangedMan';
 import { HermitEvent } from './hermit';
@@ -16,10 +18,9 @@ import { MoonEvent } from './moon';
 import { PriestessEvent } from './priestess';
 import { StarEvent } from './star';
 import { StrengthEvent } from './strength';
+import { SunEvent } from './Sun';
 import { TemperanceEvent } from './temperance';
 import { TowerEvent } from './tower';
-import { DevilEvent } from './Devil';
-
 export {
   MagicianEvent,
   ChariotEvent,
@@ -40,6 +41,8 @@ export {
   PriestessEvent,
   DeathEvent,
   DevilEvent,
+  FoolEvent,
+  SunEvent,
 };
 
 export const SocialLinkEvents = {
@@ -62,4 +65,6 @@ export const SocialLinkEvents = {
   [Arcanas.Priestess]: PriestessEvent,
   [Arcanas.Death]: DeathEvent,
   [Arcanas.Devil]: DevilEvent,
+  [Arcanas.Fool]: FoolEvent,
+  [Arcanas.Sun]: SunEvent,
 } as const;
