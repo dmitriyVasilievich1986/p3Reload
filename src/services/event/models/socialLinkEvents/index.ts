@@ -18,6 +18,7 @@ import { StarEvent } from './star';
 import { StrengthEvent } from './strength';
 import { TemperanceEvent } from './temperance';
 import { TowerEvent } from './tower';
+import { DevilEvent } from './Devil';
 
 export {
   MagicianEvent,
@@ -38,6 +39,7 @@ export {
   LoversEvent,
   PriestessEvent,
   DeathEvent,
+  DevilEvent,
 };
 
 export const SocialLinkEvents = {
@@ -59,4 +61,5 @@ export const SocialLinkEvents = {
   [Arcanas.Lovers]: LoversEvent,
   [Arcanas.Priestess]: PriestessEvent,
   [Arcanas.Death]: DeathEvent,
+  [Arcanas.Devil]: DevilEvent,
 } as const;
