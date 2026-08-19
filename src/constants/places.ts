@@ -1,4 +1,5 @@
 export const Places = {
+  MainCharacterRoom: 'Main character room',
   FacultyOfficeEntrance: 'Faculty Office Entrance',
   LaptopAtTheProtagonistsRoom: "Laptop at the Protagonist's room",
   ArtClubRoom: 'Art Club Room',
