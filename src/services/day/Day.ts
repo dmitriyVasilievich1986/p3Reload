@@ -2,6 +2,7 @@ import dayjs from 'dayjs';
 import _ from 'lodash';
 
 import { DatesFormat, FullMoonDays, ExamDays, DayOffDays } from '@constants/dates';
+import { DayOfWeek, DayOfWeekPosition } from '@constants/dayOfWeek';
 import { Times, type TimesType } from '@constants/times';
 import { BaseEvent } from '@services/event/base';
 import { eventFactory } from '@services/event/factory';
@@ -316,6 +317,9 @@ export class Day {
   }
 
   isDayOff(this: Day): boolean {
-    return _.some(DayOffDays, (day) => day.isSame(this.date, 'day'));
+    return (
+      this.date.day() === DayOfWeekPosition[DayOfWeek.Sunday] ||
+      _.some(DayOffDays, (day) => day.isSame(this.date, 'day'))
+    );
   }
 }
