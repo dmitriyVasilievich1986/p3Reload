@@ -1,3 +1,5 @@
+import _ from 'lodash';
+
 import { Card } from '@components/card';
 import { QuestionCard, type AnswerPoint } from '@components/questionCard';
 import { LabelRow, TextRow } from '@components/row';
@@ -16,12 +18,20 @@ export abstract class SocialLinkEventBase extends BaseEvent {
 
   static readonly levels: SocialLinkLevel[] = [];
 
-  static getLevel(this: typeof SocialLinkEventBase, level: number): SocialLinkLevel {
-    const payload = this.levels.find((l) => l.level === level);
-    if (!payload) {
+  static getLevel(
+    this: typeof SocialLinkEventBase,
+    level: number,
+    props: IsAvailableProps
+  ): SocialLinkLevel {
+    const isRomantic = props.stats.socialLinkStats[this.name as ArcanasType].isRomantic;
+    const filteredLevels = _.filter(this.levels, (l) => l.level === level);
+    if (filteredLevels.length === 0) {
       throw new Error(`Level ${level} not found`);
     }
-    return new SocialLinkLevel(payload);
+    if (filteredLevels.length === 1) {
+      return filteredLevels[0];
+    }
+    return _.find(filteredLevels, (l) => l.isRomantic === isRomantic) as SocialLinkLevel;
   }
 
   getModifier(this: SocialLinkEventBase): number {
@@ -46,8 +56,8 @@ export abstract class SocialLinkEventBase extends BaseEvent {
     }
 
     const currentStat = this.stats.socialLinkStats[constructor.name as ArcanasType];
-    const currentLevel = constructor.getLevel(currentStat.currentSocialLinkLevel.level);
-    const nextLevel = constructor.getLevel(currentStat.currentSocialLinkLevel.level + 1);
+    const currentLevel = constructor.getLevel(currentStat.currentSocialLinkLevel.level, props);
+    const nextLevel = constructor.getLevel(currentStat.currentSocialLinkLevel.level + 1, props);
     const modifier = this.getModifier();
     const { isCardNeeded, pointsWithoutCard, pointsWithCard } = currentLevel.getIsCardNeeded({
       modifier,
@@ -85,7 +95,7 @@ export abstract class SocialLinkEventBase extends BaseEvent {
       );
     }
 
-    const nextLevel = constructor.getLevel(stats.currentSocialLinkLevel.level + 1);
+    const nextLevel = constructor.getLevel(stats.currentSocialLinkLevel.level + 1, props);
     return (
       <Card
         key={`${constructor.name}-${props.time}`}

@@ -52,8 +52,8 @@ export class ChariotEvent extends SocialLinkEventBase {
     const result = super.calculateStats(props);
     const constructor = this.constructor as typeof SocialLinkEventBase;
     const currentStat = this.stats.socialLinkStats[constructor.name as ArcanasType];
-    const currentLevel = constructor.getLevel(currentStat.currentSocialLinkLevel.level);
-    const strengthNewLevel = StrengthEvent.getLevel(1);
+    const currentLevel = constructor.getLevel(currentStat.currentSocialLinkLevel.level, props);
+    const strengthNewLevel = StrengthEvent.getLevel(1, props);
     if (currentLevel.level === 1) {
       return new Stats({
         ...result,
@@ -75,7 +75,7 @@ export class ChariotEvent extends SocialLinkEventBase {
     const constructor = this.constructor as typeof SocialLinkEventBase;
     const stats = this.stats.socialLinkStats[constructor.name as ArcanasType];
     if (stats.currentSocialLinkLevel.level === 1) {
-      const nextLevel = constructor.getLevel(stats.currentSocialLinkLevel.level + 1);
+      const nextLevel = constructor.getLevel(stats.currentSocialLinkLevel.level + 1, props);
       return (
         <Card
           key={`${constructor.name}-${props.time}`}
