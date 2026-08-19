@@ -80,8 +80,15 @@ export class DeathEvent extends SocialLinkEventBase {
             <LabelRow key="Name" label="Name:" text={constructor.socialLinkName} />
             <LabelRow key="District" label="District:" text={constructor.district} />
             <LabelRow key="Place" label="Place:" text={constructor.place} />
-            {stats.level === 0 && (
+            {stats.level === 0 ? (
               <TextRow textAlign="center" isBold key="text" text="Create a bond with Social Link" />
+            ) : (
+              <TextRow
+                textAlign="center"
+                isBold
+                key="text"
+                text="Increase bond level with Social Link"
+              />
             )}
           </>
         }
