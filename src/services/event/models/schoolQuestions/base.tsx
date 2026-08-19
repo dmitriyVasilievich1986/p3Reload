@@ -20,7 +20,7 @@ export abstract class SchoolQuestionEventBase extends BaseEvent {
   static readonly district: string = Districts.GekkoukanHighSchool;
 
   constructor(props: SchoolQuestionEventProps) {
-    super(props);
+    super({ ...props, skipCheck: true, isChangeable: false });
     this.questions = props.questions;
   }
 

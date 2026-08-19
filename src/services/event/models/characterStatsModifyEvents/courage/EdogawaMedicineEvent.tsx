@@ -15,6 +15,8 @@ import {
 import { CharacterStatsModifyEventBase } from '../base';
 import { type CourageStatModifyNamesType, CourageStatModifyNames } from './types';
 
+import type { EventProps } from '@services/event/types';
+
 /**
  * Drink Mr. Edogawa's medicine.
  */
@@ -41,4 +43,8 @@ export class EdogawaMedicineEvent extends CharacterStatsModifyEventBase {
   static readonly modifiers: CharacterStatsModifierType[] = [
     { name: CharacterStatsNames.Courage, operator: '+', value: 2 },
   ];
+
+  constructor(props: EventProps) {
+    super({ ...props, skipCheck: true, isChangeable: false });
+  }
 }

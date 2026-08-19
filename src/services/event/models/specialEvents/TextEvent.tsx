@@ -22,7 +22,7 @@ export class TextEvent extends BaseEvent {
   readonly header?: string;
 
   constructor(props: TextEventProps) {
-    super(props);
+    super({ ...props, skipCheck: true, isChangeable: false });
     this.rows = props.rows;
     this.isTall = props.isTall;
     this.header = props.header;
