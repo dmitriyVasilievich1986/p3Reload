@@ -6,6 +6,7 @@ import { DayOfWeek, DayOfWeekPosition } from '@constants/dayOfWeek';
 import { Times, type TimesType } from '@constants/times';
 import { BaseEvent } from '@services/event/base';
 import { eventFactory } from '@services/event/factory';
+import { EmptyEvent } from '@services/event/models/specialEvents';
 import { Stats } from '@services/stats';
 
 import type { DayProps, DaySerializedType } from './types';
@@ -244,6 +245,9 @@ export class Day {
         }
         console.warn(
           `Event ${(event.constructor as typeof BaseEvent).name} is not available at this time.`
+        );
+        payload.push(
+          new EmptyEvent({ time: event.time, stats: stats_, skipCheck: false, isChangeable: true })
         );
         return;
       }
