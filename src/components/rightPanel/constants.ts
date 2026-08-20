@@ -8,6 +8,7 @@ import {
   SleepDuringClassCourageEvent,
   CourageStatModifyEvents,
 } from '@services/event/models/characterStatsModifyEvents/courage';
+import { NaganakiShrineEvents } from '@services/event/models/naganakiShrine';
 import { SocialLinkEvents } from '@services/event/models/socialLinkEvents';
 
 import type { RightPanelTab } from './types';
@@ -39,7 +40,7 @@ export const events: Record<string, RightPanelTab[]> = {
     {
       name: 'Social Link',
       color: 'teal',
-      events: Object.values(SocialLinkEvents),
+      events: [...Object.values(SocialLinkEvents), ...Object.values(NaganakiShrineEvents)],
     },
   ],
   [Times.Evening]: [
@@ -61,7 +62,7 @@ export const events: Record<string, RightPanelTab[]> = {
     {
       name: 'Social Link',
       color: 'teal',
-      events: Object.values(SocialLinkEvents),
+      events: [...Object.values(SocialLinkEvents), ...Object.values(NaganakiShrineEvents)],
     },
   ],
 };

@@ -1,0 +1,1 @@
+export { MagicianNaganakiShrineEvent } from './Magician';

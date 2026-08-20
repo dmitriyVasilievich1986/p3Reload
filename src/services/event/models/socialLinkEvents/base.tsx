@@ -66,8 +66,11 @@ export abstract class SocialLinkEventBase extends BaseEvent {
 
     return new Stats({
       ...this.stats,
-      socialLinkStats: this.stats.socialLinkStats
-        .increaseLevel({ arcana: constructor.name, level: nextLevel, currentPoints: points })
+      socialLinkStats: this.stats.socialLinkStats.increaseLevel({
+        arcana: constructor.name,
+        level: nextLevel,
+        currentPoints: points,
+      }),
     });
   }
 

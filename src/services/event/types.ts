@@ -1,6 +1,7 @@
 import { Arcanas } from '@constants/arcanas';
 
 import { CharacterStatsModifyNames } from './models/characterStatsModifyEvents/types';
+import { NaganakiShrineEventsNames } from './models/naganakiShrine/types';
 import { SchoolQuestionEventsNames } from './models/schoolQuestions/types';
 import { SpecialEventsNames } from './models/specialEvents/types';
 
@@ -17,6 +18,7 @@ export type EventProps = {
 export const EventNames = {
   ...CharacterStatsModifyNames,
   ...SchoolQuestionEventsNames,
+  ...NaganakiShrineEventsNames,
   ...SpecialEventsNames,
   ...Arcanas,
 } as const;
