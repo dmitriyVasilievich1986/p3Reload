@@ -1,7 +1,9 @@
 import { Arcanas } from '@constants/arcanas';
+import { Times } from '@constants/times';
 import {
   SocialLinkLevelAvailability,
   IsLevelUpAvailable,
+  TimeAvailability,
   AvailabilityBase,
 } from '@services/availability';
 
@@ -17,5 +19,6 @@ export class AeonNaganakiShrineEvent extends NaganakiShrineEventBase {
   static readonly availabilities: AvailabilityBase[] = [
     new SocialLinkLevelAvailability({ name: Arcanas.Aeon, level: 10, operator: 'lt' }),
     new IsLevelUpAvailable({ name: Arcanas.Aeon, isLevelUpAvailable: false }),
+    new TimeAvailability({ times: [Times.Day] }),
   ];
 }
