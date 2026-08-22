@@ -17,4 +17,5 @@ export {
   DayOfWeekAvailability,
   DayOffAvailability,
   ExamAvailability,
+  FalseAvailability,
 } from './models';
