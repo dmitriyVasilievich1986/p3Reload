@@ -1,7 +1,11 @@
 import classNames from 'classnames';
+import { useSearchParams } from 'react-router';
 
 import { Tooltip, TooltipPositions } from '../tooltip';
 import { AnswerPoints, type AnswerPoint, type QuestionCardProps } from './types';
+
+const DEFAULT_MAIN_CHAR_NAME = 'Protagonist';
+const MAIN_CHAR_NAME_PLACEHOLDER = '${mainCharName}';
 
 const answerPointClasses: Record<AnswerPoint, string> = {
   [AnswerPoints.none]: 'bg-transparent text-slate-700 dark:text-slate-200',
@@ -19,10 +23,23 @@ function isAnswerPoint(points: number): points is AnswerPoint {
   );
 }
 
+function formatMainCharName(text: string, mainCharName: string): string {
+  return text.replaceAll(MAIN_CHAR_NAME_PLACEHOLDER, mainCharName);
+}
+
 /**
  * Card with a question header and a list of point-highlighted answers.
+ *
+ * Any `${mainCharName}` placeholder in the question or answer text is
+ * replaced with the `mainCharName` URL search param, defaulting to
+ * "Protagonist" when it isn't set.
  */
 export function QuestionCard({ question, answers }: QuestionCardProps) {
+  const [searchParams] = useSearchParams();
+  const mainCharName = searchParams.get('mainCharName') ?? DEFAULT_MAIN_CHAR_NAME;
+
+  const formattedQuestion = formatMainCharName(question, mainCharName);
+
   return (
     <article
       className={classNames(
@@ -37,7 +54,7 @@ export function QuestionCard({ question, answers }: QuestionCardProps) {
           'dark:border-slate-700 dark:bg-slate-800 dark:text-slate-50'
         )}
       >
-        <h2 className="text-base font-semibold leading-snug">{question}</h2>
+        <h2 className="text-base font-semibold leading-snug">{formattedQuestion}</h2>
       </header>
 
       <ul className="flex flex-col gap-0.5 p-1.5" role="list">
@@ -47,6 +64,7 @@ export function QuestionCard({ question, answers }: QuestionCardProps) {
             : isAnswerPoint(answer.points)
               ? answer.points
               : AnswerPoints.none;
+          const formattedText = formatMainCharName(answer.text, mainCharName);
 
           return (
             <li
@@ -62,7 +80,7 @@ export function QuestionCard({ question, answers }: QuestionCardProps) {
                 content={`${answer.points} points`}
                 position={TooltipPositions.top}
               >
-                <span className="block w-full">{answer.text}</span>
+                <span className="block w-full">{formattedText}</span>
               </Tooltip>
             </li>
           );
