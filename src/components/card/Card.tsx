@@ -1,11 +1,14 @@
 import classNames from 'classnames';
 import { Children, isValidElement, type KeyboardEvent } from 'react';
 
+import charismaticCharacterIcon from '@assets/charismatic-character.svg';
+import studyIcon from '@assets/study.svg';
+import tarotCardIcon from '@assets/tarot-card.svg';
 import { Times, type TimesType } from '@constants/times';
 
 import { Badge, type BadgeColor } from '../badge';
-
-import type { CardProps } from './types';
+import { Tooltip, TooltipPositions } from '../tooltip';
+import { CardIcons, type CardIconName, type CardProps } from './types';
 
 const timeBadgeColors: Record<TimesType, BadgeColor> = {
   [Times.Morning]: 'gold',
@@ -17,6 +20,12 @@ const timeBadgeColors: Record<TimesType, BadgeColor> = {
   [Times.DarkHour]: 'red',
 };
 
+const iconSources: Record<CardIconName, { src: string; alt: string }> = {
+  [CardIcons.CharismaticCharacter]: { src: charismaticCharacterIcon, alt: 'Charismatic character' },
+  [CardIcons.TarotCard]: { src: tarotCardIcon, alt: 'Tarot card' },
+  [CardIcons.ExamPassed]: { src: studyIcon, alt: 'Exam passed' },
+};
+
 /**
  * Selectable shell for nested content (e.g. QuestionCard), with time and optional badges.
  */
@@ -25,6 +34,7 @@ export function Card({
   body,
   time,
   badge,
+  icons,
   isSelected = false,
   isSelectable = true,
   isTall = false,
@@ -33,6 +43,8 @@ export function Card({
 }: CardProps) {
   const bodyItems = Children.toArray(body);
   const isInteractive = isSelectable && onClick != null;
+  const displayIcons = icons ?? [];
+  const hasIcons = displayIcons.length > 0;
 
   function handleKeyDown(event: KeyboardEvent<HTMLElement>) {
     if (event.key !== 'Enter' && event.key !== ' ') {
@@ -76,7 +88,7 @@ export function Card({
         </div>
       ) : null}
 
-      {header ? (
+      {header || hasIcons ? (
         <header
           className={classNames(
             'rounded-t-xl border-b border-slate-200 px-4 pb-3 pt-5',
@@ -84,11 +96,33 @@ export function Card({
             isSelectable ? 'bg-slate-50 dark:bg-slate-800' : 'bg-slate-200 dark:bg-slate-700'
           )}
         >
-          {typeof header === 'string' || typeof header === 'number' ? (
-            <h2 className="text-base font-semibold leading-snug">{header}</h2>
-          ) : (
-            header
-          )}
+          <div className="flex items-center justify-between gap-2">
+            <div className="min-w-0 flex-1">
+              {typeof header === 'string' || typeof header === 'number' ? (
+                <h2 className="text-base font-semibold leading-snug">{header}</h2>
+              ) : (
+                header
+              )}
+            </div>
+
+            {hasIcons ? (
+              <div className="flex shrink-0 items-center gap-1.5" aria-label="Modifiers">
+                {displayIcons.map(({ icon, tooltip }, index) => {
+                  const { src, alt } = iconSources[icon];
+
+                  return (
+                    <Tooltip
+                      key={`${icon}-${index}`}
+                      content={tooltip}
+                      position={TooltipPositions.bottom}
+                    >
+                      <img src={src} alt={alt} className="size-5 dark:invert" />
+                    </Tooltip>
+                  );
+                })}
+              </div>
+            ) : null}
+          </div>
         </header>
       ) : (
         <div className="h-3" aria-hidden="true" />

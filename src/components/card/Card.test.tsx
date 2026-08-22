@@ -6,6 +6,7 @@ import { Times } from '@constants/times';
 
 import { BadgeColors, BadgeSizes } from '../badge';
 import { Card } from './Card';
+import { CardIcons } from './types';
 
 describe('Card', () => {
   afterEach(() => {
@@ -169,5 +170,78 @@ describe('Card', () => {
     const article = container.querySelector('article');
 
     expect(article).not.toHaveClass('min-h-[300px]');
+  });
+
+  it('does not render modifier icons by default', () => {
+    render(<Card header="Event" body={<span>Content</span>} />);
+
+    expect(screen.queryByLabelText('Modifiers')).not.toBeInTheDocument();
+  });
+
+  it('renders provided modifier icons at the header with their alt text', () => {
+    render(
+      <Card
+        header="Event"
+        body={<span>Content</span>}
+        icons={[
+          { icon: CardIcons.CharismaticCharacter, tooltip: 'Charisma is maxed' },
+          { icon: CardIcons.TarotCard, tooltip: 'Equip the related card' },
+          { icon: CardIcons.ExamPassed, tooltip: 'Exam already passed' },
+        ]}
+      />
+    );
+
+    expect(screen.getByAltText('Charismatic character')).toBeInTheDocument();
+    expect(screen.getByAltText('Tarot card')).toBeInTheDocument();
+    expect(screen.getByAltText('Exam passed')).toBeInTheDocument();
+  });
+
+  it('shows the customized tooltip text for a modifier icon on hover', async () => {
+    const user = userEvent.setup();
+
+    render(
+      <Card
+        header="Event"
+        body={<span>Content</span>}
+        icons={[{ icon: CardIcons.TarotCard, tooltip: 'Equip the Star arcana card' }]}
+      />
+    );
+
+    await user.hover(screen.getByAltText('Tarot card'));
+
+    expect(screen.getByRole('tooltip')).toHaveTextContent('Equip the Star arcana card');
+  });
+
+  it('allows the same icon to be reused with different tooltip text', async () => {
+    const user = userEvent.setup();
+
+    render(
+      <Card
+        header="Event"
+        body={<span>Content</span>}
+        icons={[
+          { icon: CardIcons.TarotCard, tooltip: 'Equip the Star arcana card' },
+          { icon: CardIcons.TarotCard, tooltip: 'Or the Moon arcana card' },
+        ]}
+      />
+    );
+
+    const cards = screen.getAllByAltText('Tarot card');
+    expect(cards).toHaveLength(2);
+
+    await user.hover(cards[1]);
+
+    expect(screen.getByRole('tooltip')).toHaveTextContent('Or the Moon arcana card');
+  });
+
+  it('renders the header row for icons even without header content', () => {
+    render(
+      <Card
+        body={<span>Content</span>}
+        icons={[{ icon: CardIcons.ExamPassed, tooltip: 'Exam already passed' }]}
+      />
+    );
+
+    expect(screen.getByAltText('Exam passed')).toBeInTheDocument();
   });
 });
