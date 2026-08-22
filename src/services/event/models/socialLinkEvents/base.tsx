@@ -1,6 +1,6 @@
 import _ from 'lodash';
 
-import { Card } from '@components/card';
+import { Card, CardIcons, type CardIcon } from '@components/card';
 import { QuestionCard, type AnswerPoint } from '@components/questionCard';
 import { LabelRow, TextRow } from '@components/row';
 import { Times } from '@constants/times';
@@ -40,6 +40,51 @@ export abstract class SocialLinkEventBase extends BaseEvent {
       this.constructor.name as ArcanasType
     );
     return charmModifier * afterExamModifier;
+  }
+
+  /**
+   * Builds the modifier icons (with tooltips) shown at the right end of the
+   * hangout Card header: charm-maxed, the post-exam Social Link bonus, and
+   * whether a Persona card is the better way to reach the next rank.
+   */
+  getModifierIcons(this: SocialLinkEventBase, currentLevel: SocialLinkLevel): CardIcon[] {
+    const constructor = this.constructor as typeof SocialLinkEventBase;
+    const charmModifier = this.stats.characterStats.getCharmModifier();
+    const afterExamModifier = this.stats.additionalStats.getAfterExamModifier(
+      constructor.name as ArcanasType
+    );
+    const modifier = charmModifier * afterExamModifier;
+    const { isCardNeeded } = currentLevel.getIsCardNeeded({ modifier });
+
+    const icons: CardIcon[] = [];
+
+    if (charmModifier === 1.51) {
+      icons.push({
+        icon: CardIcons.CharismaticCharacter,
+        tooltip: 'Charm is maxed, boosting Social Link points.',
+      });
+    }
+
+    if (afterExamModifier === 1.51) {
+      icons.push({
+        icon: CardIcons.ExamPassed,
+        tooltip: 'Top class: the biggest Social Link point boost.',
+      });
+    } else if (afterExamModifier === 1.21) {
+      icons.push({
+        icon: CardIcons.ExamPassed,
+        tooltip: 'Top 10: a solid Social Link point boost.',
+      });
+    }
+
+    if (isCardNeeded) {
+      icons.push({
+        icon: CardIcons.TarotCard,
+        tooltip: 'Equip a matching Persona card to reach the next rank.',
+      });
+    }
+
+    return icons;
   }
 
   calculateStats(this: SocialLinkEventBase, props: IsAvailableProps): Stats {
@@ -98,6 +143,7 @@ export abstract class SocialLinkEventBase extends BaseEvent {
     }
 
     const nextLevel = constructor.getLevel(stats.currentSocialLinkLevel.level + 1, props);
+    const icons = this.getModifierIcons(stats.currentSocialLinkLevel);
     return (
       <Card
         key={`${constructor.name}-${props.time}`}
@@ -108,6 +154,7 @@ export abstract class SocialLinkEventBase extends BaseEvent {
           text: `${stats.level.toString()} → ${nextLevel.level.toString()}`,
         }}
         isSelectable={this.isChangeable}
+        icons={icons}
         body={
           <>
             <LabelRow key="Name" label="Name:" text={constructor.socialLinkName} />
