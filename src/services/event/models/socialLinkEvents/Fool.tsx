@@ -2,7 +2,11 @@ import { Card } from '@components/card';
 import { LabelRow, TextRow } from '@components/row';
 import { Arcanas, type ArcanasType } from '@constants/arcanas';
 import { Places } from '@constants/places';
-import { type IsAvailableProps } from '@services/availability';
+import {
+  type IsAvailableProps,
+  type AvailabilityBase,
+  FalseAvailability,
+} from '@services/availability';
 import { SocialLinkLevel } from '@services/stats';
 
 import { SocialLinkEventBase } from './base';
@@ -18,6 +22,8 @@ export class FoolEvent extends SocialLinkEventBase {
   static readonly place: string = Places.Tartarus;
 
   static readonly levels = [];
+
+  static readonly availabilities: AvailabilityBase[] = [new FalseAvailability()];
 
   constructor(props: EventProps) {
     super({ ...props, skipCheck: true, isChangeable: false });

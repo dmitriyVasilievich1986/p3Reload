@@ -2,7 +2,11 @@ import { Card } from '@components/card';
 import { LabelRow, TextRow } from '@components/row';
 import { Arcanas, type ArcanasType } from '@constants/arcanas';
 import { Places, Districts } from '@constants/places';
-import { type IsAvailableProps } from '@services/availability';
+import {
+  type IsAvailableProps,
+  type AvailabilityBase,
+  FalseAvailability,
+} from '@services/availability';
 import { SocialLinkLevel, Stats } from '@services/stats';
 
 import { SocialLinkEventBase } from './base';
@@ -20,6 +24,8 @@ export class DeathEvent extends SocialLinkEventBase {
   static readonly district: string = Districts.IwatodaiDormitory;
 
   static readonly levels = [];
+
+  static readonly availabilities: AvailabilityBase[] = [new FalseAvailability()];
 
   constructor(props: EventProps) {
     super({ ...props, skipCheck: true, isChangeable: false });
