@@ -1,5 +1,13 @@
 import _ from 'lodash';
-import { cloneElement, isValidElement, useMemo, useState, type ReactElement } from 'react';
+import {
+  cloneElement,
+  isValidElement,
+  useEffect,
+  useMemo,
+  useState,
+  type ReactElement,
+} from 'react';
+import { useSearchParams } from 'react-router';
 
 import { type CardProps } from '@components/card';
 import { BaseEvent } from '@services/event/base';
@@ -15,6 +23,12 @@ export function RightPanel() {
   const { selectedEvent, calendar, currentDay, setCalendar, setCurrentDay, setSelectedEvent } =
     useMainStore();
   const [selected, setSelected] = useState<string | null>(null);
+  const [searchParams] = useSearchParams();
+  const dayParam = searchParams.get('day');
+
+  useEffect(() => {
+    setSelectedEvent(null);
+  }, [dayParam, setSelectedEvent]);
 
   const { isAvailableProps, tabs } = useMemo(() => {
     if (selectedEvent === null || calendar === null || currentDay == null) {
