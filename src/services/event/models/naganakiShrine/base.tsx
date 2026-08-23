@@ -16,7 +16,7 @@ export abstract class NaganakiShrineEventBase extends BaseEvent {
   getModifier(this: NaganakiShrineEventBase): number {
     const charmModifier = this.stats.characterStats.getCharmModifier();
     const afterExamModifier = this.stats.additionalStats.getAfterExamModifier(
-      this.constructor.name as ArcanasType
+      (this.constructor as typeof NaganakiShrineEventBase).arcana
     );
     return charmModifier * afterExamModifier;
   }
