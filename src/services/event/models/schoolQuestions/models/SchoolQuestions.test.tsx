@@ -78,7 +78,11 @@ describe('SchoolQuestionsEvent', () => {
       ],
     });
 
-    render(<MemoryRouter>{event.render(createIsAvailablePropsFixture())}</MemoryRouter>);
+    render(
+      <MemoryRouter initialEntries={['/?showSpoilers=true']}>
+        {event.render(createIsAvailablePropsFixture())}
+      </MemoryRouter>
+    );
 
     expect(screen.getByText('What is the capital of Japan?')).toBeInTheDocument();
     expect(screen.getByText('Tokyo')).toBeInTheDocument();
