@@ -4,10 +4,15 @@ import { MemoryRouter, useSearchParams } from 'react-router';
 import { afterEach, beforeEach, describe, expect, it } from 'vite-plus/test';
 
 import { Times } from '@constants/times';
+import { Calendar } from '@services/calendar';
+import { StayAwakeAcademicsEvent } from '@services/event/models/characterStatsModifyEvents/academic';
 import { EmptyEvent } from '@services/event/models/specialEvents';
+import { createDayFixture } from '@services/fixtures';
 import { useMainStore } from '@store/main';
 
 import { RightPanel } from './RightPanel';
+
+import type { BaseEvent } from '@services/event/base';
 
 function DayParamButton({ day }: { day: string }) {
   const [, setSearchParams] = useSearchParams();
@@ -37,6 +42,14 @@ function OtherParamButton() {
   );
 }
 
+function SelectEventButton({ event }: { event: BaseEvent }) {
+  return (
+    <button type="button" onClick={() => useMainStore.getState().setSelectedEvent(event)}>
+      Select event
+    </button>
+  );
+}
+
 function renderRightPanel(initialEntry: string) {
   return render(
     <MemoryRouter initialEntries={[initialEntry]}>
@@ -44,6 +57,23 @@ function renderRightPanel(initialEntry: string) {
       <DayParamButton day="2009-04-08" />
     </MemoryRouter>
   );
+}
+
+/**
+ * Sets up a calendar with a single Morning slot occupied by `selectedEvent`,
+ * so the "Class" tab lists `SleepDuringClassCourageEvent` as its only other
+ * available option (both events only require `TimeAvailability`).
+ */
+function setUpMorningCalendar() {
+  const selectedEvent = new StayAwakeAcademicsEvent({
+    time: Times.Morning,
+    skipCheck: true,
+    isChangeable: true,
+  });
+  const day = createDayFixture({ events: [selectedEvent] });
+  useMainStore.setState({ calendar: new Calendar({ days: [day] }), currentDay: day });
+
+  return selectedEvent;
 }
 
 describe('RightPanel', () => {
@@ -103,5 +133,120 @@ describe('RightPanel', () => {
     await user.click(screen.getByRole('button', { name: 'Toggle theme' }));
 
     expect(useMainStore.getState().selectedEvent).toBe(event);
+  });
+
+  it('shows a search input once an event is selected', async () => {
+    const user = userEvent.setup();
+    const selectedEvent = setUpMorningCalendar();
+
+    render(
+      <MemoryRouter initialEntries={['/p3Reload/?day=2009-04-07']}>
+        <RightPanel />
+        <SelectEventButton event={selectedEvent} />
+      </MemoryRouter>
+    );
+
+    await user.click(screen.getByRole('button', { name: 'Select event' }));
+
+    const search = screen.getByRole('textbox', { name: 'Search events' });
+    expect(search).toHaveAttribute('placeholder', 'Search events');
+    const icons = screen.getAllByAltText('');
+    expect(icons.some((icon) => icon.getAttribute('src')?.includes('search'))).toBe(true);
+  });
+
+  it('filters tab events that match the search query', async () => {
+    const user = userEvent.setup();
+    const selectedEvent = setUpMorningCalendar();
+
+    render(
+      <MemoryRouter initialEntries={['/p3Reload/?day=2009-04-07']}>
+        <RightPanel />
+        <SelectEventButton event={selectedEvent} />
+      </MemoryRouter>
+    );
+
+    await user.click(screen.getByRole('button', { name: 'Select event' }));
+    expect(screen.getByText('Sleep during class')).toBeInTheDocument();
+
+    await user.type(screen.getByRole('textbox', { name: 'Search events' }), 'sleep');
+    expect(screen.getByText('Sleep during class')).toBeInTheDocument();
+  });
+
+  it('hides tab events that do not match the search query', async () => {
+    const user = userEvent.setup();
+    const selectedEvent = setUpMorningCalendar();
+
+    render(
+      <MemoryRouter initialEntries={['/p3Reload/?day=2009-04-07']}>
+        <RightPanel />
+        <SelectEventButton event={selectedEvent} />
+      </MemoryRouter>
+    );
+
+    await user.click(screen.getByRole('button', { name: 'Select event' }));
+    expect(screen.getByText('Sleep during class')).toBeInTheDocument();
+
+    await user.type(screen.getByRole('textbox', { name: 'Search events' }), 'no such event');
+
+    expect(screen.queryByText('Sleep during class')).not.toBeInTheDocument();
+    expect(screen.queryByRole('tablist')).not.toBeInTheDocument();
+  });
+
+  it('search is case-insensitive', async () => {
+    const user = userEvent.setup();
+    const selectedEvent = setUpMorningCalendar();
+
+    render(
+      <MemoryRouter initialEntries={['/p3Reload/?day=2009-04-07']}>
+        <RightPanel />
+        <SelectEventButton event={selectedEvent} />
+      </MemoryRouter>
+    );
+
+    await user.click(screen.getByRole('button', { name: 'Select event' }));
+    await user.type(screen.getByRole('textbox', { name: 'Search events' }), 'SLEEP');
+
+    expect(screen.getByText('Sleep during class')).toBeInTheDocument();
+  });
+
+  it('shows a clear button with the trash bin icon once an event is selected', async () => {
+    const user = userEvent.setup();
+    const selectedEvent = setUpMorningCalendar();
+
+    render(
+      <MemoryRouter initialEntries={['/p3Reload/?day=2009-04-07']}>
+        <RightPanel />
+        <SelectEventButton event={selectedEvent} />
+      </MemoryRouter>
+    );
+
+    await user.click(screen.getByRole('button', { name: 'Select event' }));
+
+    const clearButton = screen.getByRole('button', { name: 'Clear search' });
+    const icon = clearButton.querySelector('img');
+    expect(icon).toHaveAttribute('src', expect.stringContaining('trash-bin'));
+  });
+
+  it('clears the search query and restores hidden events when clicked', async () => {
+    const user = userEvent.setup();
+    const selectedEvent = setUpMorningCalendar();
+
+    render(
+      <MemoryRouter initialEntries={['/p3Reload/?day=2009-04-07']}>
+        <RightPanel />
+        <SelectEventButton event={selectedEvent} />
+      </MemoryRouter>
+    );
+
+    await user.click(screen.getByRole('button', { name: 'Select event' }));
+
+    const search = screen.getByRole('textbox', { name: 'Search events' });
+    await user.type(search, 'no such event');
+    expect(screen.queryByText('Sleep during class')).not.toBeInTheDocument();
+
+    await user.click(screen.getByRole('button', { name: 'Clear search' }));
+
+    expect(search).toHaveValue('');
+    expect(screen.getByText('Sleep during class')).toBeInTheDocument();
   });
 });
