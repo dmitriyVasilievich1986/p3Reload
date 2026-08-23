@@ -120,7 +120,7 @@ export class TartarusEvent extends BaseEvent {
   override serialize(): { name: SpecialEventsNamesType; props: TextEventProps } {
     const { props } = super.serialize();
     return {
-      name: SpecialEventsNames.Text,
+      name: SpecialEventsNames.Tartarus,
       props: {
         ...props,
         rows: this.rows,
