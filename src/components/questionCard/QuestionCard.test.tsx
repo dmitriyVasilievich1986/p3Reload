@@ -8,6 +8,8 @@ import { AnswerPoints } from './types';
 
 import type { ReactElement } from 'react';
 
+const HIDDEN_ANSWER_TEXT = 'Hidden to avoid spoilers';
+
 function renderQuestionCard(ui: ReactElement, initialEntry = '/') {
   return render(<MemoryRouter initialEntries={[initialEntry]}>{ui}</MemoryRouter>);
 }
@@ -17,7 +19,7 @@ describe('QuestionCard', () => {
     cleanup();
   });
 
-  it('renders the question and answers', () => {
+  it('renders the question, and the answers once spoilers are shown', () => {
     renderQuestionCard(
       <QuestionCard
         question="What is the capital of Japan?"
@@ -25,7 +27,8 @@ describe('QuestionCard', () => {
           { text: 'Osaka', points: AnswerPoints.none },
           { text: 'Tokyo', points: AnswerPoints.high },
         ]}
-      />
+      />,
+      '/?showSpoilers=true'
     );
 
     expect(screen.getByText('What is the capital of Japan?')).toBeInTheDocument();
@@ -33,7 +36,7 @@ describe('QuestionCard', () => {
     expect(screen.getByText('Tokyo')).toBeInTheDocument();
   });
 
-  it('shows answer points in a tooltip on hover', async () => {
+  it('hides answer text by default, without revealing it through the points tooltip', async () => {
     const user = userEvent.setup();
 
     renderQuestionCard(
@@ -43,9 +46,60 @@ describe('QuestionCard', () => {
       />
     );
 
-    await user.hover(screen.getByText('Tokyo'));
+    expect(screen.queryByText('Tokyo')).not.toBeInTheDocument();
+    const hiddenAnswer = screen.getByText(HIDDEN_ANSWER_TEXT);
+
+    await user.hover(hiddenAnswer);
 
     expect(screen.getByRole('tooltip')).toHaveTextContent('15 points');
+    expect(screen.queryByText('Tokyo')).not.toBeInTheDocument();
+  });
+
+  it('shows the same placeholder for every hidden answer, regardless of its length', () => {
+    renderQuestionCard(
+      <QuestionCard
+        question="Pick an answer"
+        answers={[
+          { text: 'Hi', points: AnswerPoints.none },
+          {
+            text: 'A much, much longer answer than the very short first one',
+            points: AnswerPoints.high,
+          },
+        ]}
+      />
+    );
+
+    expect(screen.queryByText('Hi')).not.toBeInTheDocument();
+    expect(
+      screen.queryByText('A much, much longer answer than the very short first one')
+    ).not.toBeInTheDocument();
+    expect(screen.getAllByText(HIDDEN_ANSWER_TEXT)).toHaveLength(2);
+  });
+
+  it('hides answer text when showSpoilers is explicitly false', () => {
+    renderQuestionCard(
+      <QuestionCard
+        question="Pick an answer"
+        answers={[{ text: 'Tokyo', points: AnswerPoints.high }]}
+      />,
+      '/?showSpoilers=false'
+    );
+
+    expect(screen.queryByText('Tokyo')).not.toBeInTheDocument();
+    expect(screen.getByText(HIDDEN_ANSWER_TEXT)).toBeInTheDocument();
+  });
+
+  it('shows answer text when the showSpoilers URL param is true', () => {
+    renderQuestionCard(
+      <QuestionCard
+        question="Pick an answer"
+        answers={[{ text: 'Tokyo', points: AnswerPoints.high }]}
+      />,
+      '/?showSpoilers=true'
+    );
+
+    expect(screen.getByText('Tokyo')).toBeInTheDocument();
+    expect(screen.queryByText(HIDDEN_ANSWER_TEXT)).not.toBeInTheDocument();
   });
 
   it('applies gradual highlight classes by answer points', () => {
@@ -58,7 +112,8 @@ describe('QuestionCard', () => {
           { text: 'Ten', points: AnswerPoints.medium },
           { text: 'Fifteen', points: AnswerPoints.high },
         ]}
-      />
+      />,
+      '/?showSpoilers=true'
     );
 
     expect(screen.getByText('Zero').closest('li')).toHaveClass('bg-transparent');
@@ -72,7 +127,8 @@ describe('QuestionCard', () => {
       <QuestionCard
         question="Fork path?"
         answers={[{ text: 'Fork', points: AnswerPoints.none, isFork: true }]}
-      />
+      />,
+      '/?showSpoilers=true'
     );
 
     expect(screen.getByText('Fork').closest('li')).toHaveClass('bg-amber-200');
@@ -94,7 +150,8 @@ describe('QuestionCard', () => {
       <QuestionCard
         question="Right, ${mainCharName}-kun?"
         answers={[{ text: 'Sure thing, ${mainCharName}.', points: AnswerPoints.none }]}
-      />
+      />,
+      '/?showSpoilers=true'
     );
 
     expect(screen.getByText('Right, Protagonist-kun?')).toBeInTheDocument();
@@ -107,7 +164,7 @@ describe('QuestionCard', () => {
         question="Right, ${mainCharName}-kun?"
         answers={[{ text: 'Sure thing, ${mainCharName}.', points: AnswerPoints.none }]}
       />,
-      '/?mainCharName=Makoto'
+      '/?showSpoilers=true&mainCharName=Makoto'
     );
 
     expect(screen.getByText('Right, Makoto-kun?')).toBeInTheDocument();
@@ -122,7 +179,7 @@ describe('QuestionCard', () => {
         question="${mainCharName}, are you sure, ${mainCharName}?"
         answers={[{ text: 'Yes', points: AnswerPoints.low }]}
       />,
-      '/?mainCharName=Makoto'
+      '/?showSpoilers=true&mainCharName=Makoto'
     );
 
     expect(screen.getByText('Makoto, are you sure, Makoto?')).toBeInTheDocument();

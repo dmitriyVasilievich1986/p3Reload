@@ -1,11 +1,18 @@
 import classNames from 'classnames';
 import { useSearchParams } from 'react-router';
 
+import { DEFAULT_MAIN_CHAR_NAME, SettingsParams } from '@constants/settings';
+
 import { Tooltip, TooltipPositions } from '../tooltip';
 import { AnswerPoints, type AnswerPoint, type QuestionCardProps } from './types';
 
-const DEFAULT_MAIN_CHAR_NAME = 'Protagonist';
 const MAIN_CHAR_NAME_PLACEHOLDER = '${mainCharName}';
+
+/**
+ * Shown in place of an answer's text when spoilers are hidden. Always the
+ * same string regardless of the real answer, so it never hints at length.
+ */
+const HIDDEN_ANSWER_TEXT = 'Hidden to avoid spoilers';
 
 const answerPointClasses: Record<AnswerPoint, string> = {
   [AnswerPoints.none]: 'bg-transparent text-slate-700 dark:text-slate-200',
@@ -33,10 +40,16 @@ function formatMainCharName(text: string, mainCharName: string): string {
  * Any `${mainCharName}` placeholder in the question or answer text is
  * replaced with the `mainCharName` URL search param, defaulting to
  * "Protagonist" when it isn't set.
+ *
+ * Unless the `showSpoilers` URL search param is `"true"`, answer text is
+ * replaced with a fixed placeholder so it can't spoil the outcome — the
+ * placeholder is the same for every answer, so it never reveals how long
+ * the real text is either.
  */
 export function QuestionCard({ question, answers }: QuestionCardProps) {
   const [searchParams] = useSearchParams();
-  const mainCharName = searchParams.get('mainCharName') ?? DEFAULT_MAIN_CHAR_NAME;
+  const mainCharName = searchParams.get(SettingsParams.mainCharName) ?? DEFAULT_MAIN_CHAR_NAME;
+  const showSpoilers = searchParams.get(SettingsParams.showSpoilers) === 'true';
 
   const formattedQuestion = formatMainCharName(question, mainCharName);
 
@@ -64,7 +77,9 @@ export function QuestionCard({ question, answers }: QuestionCardProps) {
             : isAnswerPoint(answer.points)
               ? answer.points
               : AnswerPoints.none;
-          const formattedText = formatMainCharName(answer.text, mainCharName);
+          const formattedText = showSpoilers
+            ? formatMainCharName(answer.text, mainCharName)
+            : HIDDEN_ANSWER_TEXT;
 
           return (
             <li
