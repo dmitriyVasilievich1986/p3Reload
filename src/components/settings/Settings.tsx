@@ -1,28 +1,69 @@
 import classNames from 'classnames';
-import { useEffect, useId, useState, type ChangeEvent } from 'react';
+import dayjs from 'dayjs';
+import { useEffect, useId, useRef, useState, type ChangeEvent } from 'react';
 import { createPortal } from 'react-dom';
 import { useSearchParams } from 'react-router';
 
+import exportIcon from '@assets/export.svg';
 import gearIcon from '@assets/gear.svg';
+import importIcon from '@assets/import.svg';
+import { DatesFormat } from '@constants/dates';
 import { DEFAULT_MAIN_CHAR_NAME, SettingsParams } from '@constants/settings';
+import { Calendar } from '@services/calendar/Calendar';
+import { useMainStore } from '@store/main';
 
 import type { SettingsProps } from './types';
+import type { DaySerializedType } from '@services/day/types';
+
+const ACTION_BUTTON_CLASSNAME = classNames(
+  'inline-flex size-8 shrink-0 items-center justify-center rounded-md',
+  'text-slate-900 dark:text-slate-50',
+  'hover:bg-slate-100 dark:hover:bg-slate-800',
+  'disabled:pointer-events-none disabled:opacity-40',
+  'focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-slate-400 dark:focus-visible:ring-slate-500'
+);
+
+/**
+ * Parses an imported file's contents into serialized calendar days.
+ *
+ * @throws {Error} If the JSON is malformed or isn't an array of days.
+ */
+function parseCalendarFile(text: string): DaySerializedType[] {
+  const data: unknown = JSON.parse(text);
+
+  if (!Array.isArray(data)) {
+    throw new Error('Expected a JSON array of calendar days.');
+  }
+
+  return data as DaySerializedType[];
+}
 
 /**
  * Gear button (for the LeftDrawer) that opens a modal with app-wide settings.
- * Every setting reads from and writes directly to URL search params, so the
- * current configuration is always shareable and bookmarkable.
+ *
+ * The protagonist name and spoiler visibility read from and write directly
+ * to URL search params, so that configuration is always shareable and
+ * bookmarkable. The calendar row is separate: it lets the user download the
+ * current calendar as a JSON file, or load one from disk into the store.
  */
 export function Settings({ className }: SettingsProps) {
   const [isOpen, setIsOpen] = useState(false);
   const [searchParams, setSearchParams] = useSearchParams();
   const titleId = useId();
+  const fileInputRef = useRef<HTMLInputElement>(null);
+  const [importStatus, setImportStatus] = useState<{
+    type: 'error' | 'success';
+    text: string;
+  } | null>(null);
+
+  const { calendar, setCalendar, setCurrentDay, setSelectedEvent } = useMainStore();
 
   const mainCharName = searchParams.get(SettingsParams.mainCharName) ?? '';
   const showSpoilers = searchParams.get(SettingsParams.showSpoilers) === 'true';
 
   useEffect(() => {
     if (!isOpen) {
+      setImportStatus(null);
       return;
     }
 
@@ -67,6 +108,57 @@ export function Settings({ className }: SettingsProps) {
       },
       { replace: true }
     );
+  }
+
+  function handleImportClick() {
+    fileInputRef.current?.click();
+  }
+
+  async function handleImportFileChange(event: ChangeEvent<HTMLInputElement>) {
+    const file = event.target.files?.[0];
+    event.target.value = '';
+
+    if (!file) {
+      return;
+    }
+
+    try {
+      const days = parseCalendarFile(await file.text());
+      const importedCalendar = Calendar.calculateStats(
+        Calendar.deserialize(days),
+        undefined,
+        false,
+        false
+      );
+
+      setCalendar(importedCalendar);
+      setCurrentDay(null);
+      setSelectedEvent(null);
+      setImportStatus({ type: 'success', text: `Calendar imported (${days.length} days).` });
+    } catch {
+      setImportStatus({
+        type: 'error',
+        text: "Couldn't import that file — make sure it's a calendar exported from here.",
+      });
+    }
+  }
+
+  function handleExport() {
+    if (calendar === null) {
+      return;
+    }
+
+    const json = JSON.stringify(calendar.serialize(), null, 2);
+    const blob = new Blob([json], { type: 'application/json' });
+    const url = URL.createObjectURL(blob);
+    const anchor = document.createElement('a');
+
+    anchor.href = url;
+    anchor.download = `p3reload-calendar-${dayjs().format(DatesFormat)}.json`;
+    document.body.appendChild(anchor);
+    anchor.click();
+    document.body.removeChild(anchor);
+    URL.revokeObjectURL(url);
   }
 
   return (
@@ -177,6 +269,68 @@ export function Settings({ className }: SettingsProps) {
                         )}
                       />
                     </button>
+                  </div>
+
+                  <div className="flex flex-col gap-1.5">
+                    <div className="flex items-center justify-between gap-2">
+                      <span className="text-sm font-medium text-slate-800 dark:text-slate-100">
+                        Calendar
+                      </span>
+
+                      <div className="flex items-center gap-1">
+                        <button
+                          type="button"
+                          aria-label="Import calendar"
+                          onClick={handleImportClick}
+                          className={ACTION_BUTTON_CLASSNAME}
+                        >
+                          <img
+                            src={importIcon}
+                            alt=""
+                            aria-hidden="true"
+                            className="size-4 dark:invert"
+                          />
+                        </button>
+
+                        <button
+                          type="button"
+                          aria-label="Export calendar"
+                          onClick={handleExport}
+                          disabled={calendar === null}
+                          className={ACTION_BUTTON_CLASSNAME}
+                        >
+                          <img
+                            src={exportIcon}
+                            alt=""
+                            aria-hidden="true"
+                            className="size-4 dark:invert"
+                          />
+                        </button>
+                      </div>
+                    </div>
+
+                    {importStatus ? (
+                      <p
+                        role="status"
+                        className={classNames(
+                          'text-xs',
+                          importStatus.type === 'error'
+                            ? 'text-rose-600 dark:text-rose-400'
+                            : 'text-emerald-600 dark:text-emerald-400'
+                        )}
+                      >
+                        {importStatus.text}
+                      </p>
+                    ) : null}
+
+                    <input
+                      ref={fileInputRef}
+                      type="file"
+                      accept="application/json,.json"
+                      aria-label="Import calendar file"
+                      onChange={handleImportFileChange}
+                      className="hidden"
+                    />
                   </div>
                 </div>
               </div>

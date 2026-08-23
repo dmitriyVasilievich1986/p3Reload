@@ -1,7 +1,11 @@
 import { cleanup, render, screen } from '@testing-library/react';
 import userEvent from '@testing-library/user-event';
 import { MemoryRouter, useSearchParams } from 'react-router';
-import { afterEach, describe, expect, it } from 'vite-plus/test';
+import { afterEach, describe, expect, it, vi } from 'vite-plus/test';
+
+import { DatesFormat } from '@constants/dates';
+import { Calendar } from '@services/calendar/Calendar';
+import { useMainStore } from '@store/main';
 
 import { Settings } from './Settings';
 
@@ -20,9 +24,14 @@ function renderSettings(initialEntry = '/') {
   );
 }
 
+function createCalendar(days: { date: string; events: [] }[]) {
+  return Calendar.calculateStats(Calendar.deserialize(days), undefined, false, false);
+}
+
 describe('Settings', () => {
   afterEach(() => {
     cleanup();
+    useMainStore.setState({ calendar: null, currentDay: null, selectedEvent: null });
   });
 
   it('renders a closed gear button by default', () => {
@@ -135,5 +144,92 @@ describe('Settings', () => {
     await user.click(backdrop as Element);
 
     expect(screen.queryByRole('dialog')).not.toBeInTheDocument();
+  });
+
+  it('imports a calendar from a selected JSON file, clearing the current day', async () => {
+    const user = userEvent.setup();
+    const initialCalendar = createCalendar([{ date: '2009-04-07', events: [] }]);
+    useMainStore.setState({
+      calendar: initialCalendar,
+      currentDay: initialCalendar.days[0],
+      selectedEvent: null,
+    });
+
+    renderSettings();
+    await user.click(screen.getByRole('button', { name: 'Open settings' }));
+
+    const file = new File(
+      [
+        JSON.stringify([
+          { date: '2009-05-01', events: [] },
+          { date: '2009-05-02', events: [] },
+        ]),
+      ],
+      'calendar.json',
+      { type: 'application/json' }
+    );
+
+    await user.upload(screen.getByLabelText('Import calendar file'), file);
+
+    await screen.findByText('Calendar imported (2 days).');
+
+    const { calendar, currentDay, selectedEvent } = useMainStore.getState();
+    expect(calendar?.days).toHaveLength(2);
+    expect(calendar?.days[0]?.date.format(DatesFormat)).toBe('2009-05-01');
+    expect(currentDay).toBeNull();
+    expect(selectedEvent).toBeNull();
+  });
+
+  it('shows an error and leaves the store untouched when the file is not valid JSON', async () => {
+    const user = userEvent.setup();
+
+    renderSettings();
+    await user.click(screen.getByRole('button', { name: 'Open settings' }));
+
+    const file = new File(['not valid json'], 'calendar.json', { type: 'application/json' });
+    await user.upload(screen.getByLabelText('Import calendar file'), file);
+
+    await screen.findByText(/Couldn't import that file/);
+    expect(useMainStore.getState().calendar).toBeNull();
+  });
+
+  it('disables the export button when there is no calendar', async () => {
+    const user = userEvent.setup();
+
+    renderSettings();
+    await user.click(screen.getByRole('button', { name: 'Open settings' }));
+
+    expect(screen.getByRole('button', { name: 'Export calendar' })).toBeDisabled();
+  });
+
+  it('exports the current calendar as a downloaded JSON file when clicked', async () => {
+    const user = userEvent.setup();
+    useMainStore.setState({ calendar: createCalendar([{ date: '2009-04-07', events: [] }]) });
+
+    const originalCreateObjectURL = URL.createObjectURL;
+    const originalRevokeObjectURL = URL.revokeObjectURL;
+    const createObjectURL = vi.fn(() => 'blob:mock-url');
+    const revokeObjectURL = vi.fn();
+    URL.createObjectURL = createObjectURL as typeof URL.createObjectURL;
+    URL.revokeObjectURL = revokeObjectURL;
+    const clickSpy = vi.spyOn(HTMLAnchorElement.prototype, 'click').mockImplementation(() => {});
+
+    try {
+      renderSettings();
+      await user.click(screen.getByRole('button', { name: 'Open settings' }));
+
+      const exportButton = screen.getByRole('button', { name: 'Export calendar' });
+      expect(exportButton).not.toBeDisabled();
+
+      await user.click(exportButton);
+
+      expect(createObjectURL).toHaveBeenCalledTimes(1);
+      expect(clickSpy).toHaveBeenCalledTimes(1);
+      expect(revokeObjectURL).toHaveBeenCalledWith('blob:mock-url');
+    } finally {
+      clickSpy.mockRestore();
+      URL.createObjectURL = originalCreateObjectURL;
+      URL.revokeObjectURL = originalRevokeObjectURL;
+    }
   });
 });
