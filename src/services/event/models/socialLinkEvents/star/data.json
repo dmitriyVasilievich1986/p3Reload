@@ -1,0 +1,312 @@
+[
+  {
+    "level": 0,
+    "pointsToNextLevel": 0,
+    "nextLevelPointsToNextLevel": 0,
+    "previousLevelPointsToNextLevel": 0,
+    "isRomantic": false,
+    "isFork": false,
+    "questions": []
+  },
+  {
+    "level": 1,
+    "pointsToNextLevel": 0,
+    "nextLevelPointsToNextLevel": 20,
+    "previousLevelPointsToNextLevel": 0,
+    "isRomantic": false,
+    "isFork": false,
+    "questions": [
+      {
+        "text": "That's why I have to make it big-it's for everyone who's been helping me.",
+        "answers": [
+          { "text": "I'm kinda jealous.", "points": 0, "isFork": false },
+          {
+            "text": "Sounds like a lot of pressure.",
+            "points": 5,
+            "isFork": false
+          }
+        ]
+      },
+      {
+        "text": "By the way, who would you say is your biggest rival?",
+        "answers": [
+          { "text": "You.", "points": 5, "isFork": false },
+          { "text": "Myself.", "points": 15, "isFork": false }
+        ]
+      }
+    ]
+  },
+  {
+    "level": 2,
+    "pointsToNextLevel": 20,
+    "nextLevelPointsToNextLevel": 0,
+    "previousLevelPointsToNextLevel": 0,
+    "isRomantic": false,
+    "isFork": false,
+    "questions": [
+      {
+        "text": "Maybe I should get some for them, too...>",
+        "answers": [
+          { "text": "For your teammates?", "points": 5, "isFork": false },
+          { "text": "Who's \"them\"?", "points": 5, "isFork": false }
+        ]
+      },
+      {
+        "text": "Our apartment's pretty small, though, so we're packed like sardines.",
+        "answers": [
+          { "text": "Sounds like fun.", "points": 5, "isFork": false },
+          { "text": "That sounds rough.", "points": 5, "isFork": false }
+        ]
+      }
+    ]
+  },
+  {
+    "level": 3,
+    "pointsToNextLevel": 20,
+    "nextLevelPointsToNextLevel": 20,
+    "previousLevelPointsToNextLevel": 0,
+    "isRomantic": false,
+    "isFork": false,
+    "questions": [
+      {
+        "text": "...All right, just one more!",
+        "answers": [
+          { "text": "What are you doing?", "points": 5, "isFork": false },
+          { "text": "Slow down and savor it.", "points": 5, "isFork": false }
+        ]
+      },
+      {
+        "text": "Know what that means? If I do well enough, I might score a scholarship.",
+        "answers": [
+          { "text": "That would be amazing!", "points": 5, "isFork": false },
+          { "text": "What's the big deal?", "points": 0, "isFork": false }
+        ]
+      },
+      {
+        "text": "And maybe... this'll make my mom's life a little easier.",
+        "answers": [
+          { "text": "Hard to say.", "points": 0, "isFork": false },
+          { "text": "Yeah, I bet it would.", "points": 5, "isFork": false }
+        ]
+      }
+    ]
+  },
+  {
+    "level": 4,
+    "pointsToNextLevel": 20,
+    "nextLevelPointsToNextLevel": 20,
+    "previousLevelPointsToNextLevel": 20,
+    "isRomantic": false,
+    "isFork": false,
+    "questions": [
+      {
+        "text": "*huff* *huff* Sorry I kept you waiting...>",
+        "answers": [
+          { "text": "You're late.", "points": 0, "isFork": false },
+          { "text": "Are you okay?", "points": 5, "isFork": false }
+        ]
+      },
+      {
+        "text": "I used to come here all the time with my teammates, but...>",
+        "answers": [
+          { "text": "But what?", "points": 0, "isFork": false },
+          {
+            "text": "I'll come back here with you.",
+            "points": 5,
+            "isFork": false
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "level": 5,
+    "pointsToNextLevel": 20,
+    "nextLevelPointsToNextLevel": 30,
+    "previousLevelPointsToNextLevel": 20,
+    "isRomantic": false,
+    "isFork": false,
+    "questions": [
+      {
+        "text": "Let's see.",
+        "answers": [
+          { "text": "I'll look around for him.", "points": 0, "isFork": false },
+          { "text": "I'll wait a bit longer.", "points": 0, "isFork": false }
+        ]
+      },
+      {
+        "text": "Hmm...",
+        "answers": [
+          {
+            "text": "Guess I'll kill some time.",
+            "points": 0,
+            "isFork": false
+          },
+          { "text": "Guess I'll keep waiting.", "points": 0, "isFork": false }
+        ]
+      },
+      {
+        "text": "Well...",
+        "answers": [
+          {
+            "text": "I'll wait just a bit longer.",
+            "points": 0,
+            "isFork": false
+          },
+          { "text": "I'm just gonna go home.", "points": 0, "isFork": false }
+        ]
+      },
+      {
+        "text": "Sorry, but I don't think I can make it today.",
+        "answers": [
+          { "text": "Well, what happened?", "points": 0, "isFork": false },
+          { "text": "Don't worry, it's okay.", "points": 15, "isFork": false }
+        ]
+      }
+    ]
+  },
+  {
+    "level": 6,
+    "pointsToNextLevel": 30,
+    "nextLevelPointsToNextLevel": 30,
+    "previousLevelPointsToNextLevel": 20,
+    "isRomantic": false,
+    "isFork": false,
+    "questions": [
+      {
+        "text": "Thanks for coming all the way here for this.",
+        "answers": [
+          { "text": "What did you want?", "points": 0, "isFork": false },
+          { "text": "It's no problem at all.", "points": 5, "isFork": false }
+        ]
+      },
+      {
+        "text": "There's still so much I have to do.",
+        "answers": [
+          { "text": "Sounds pretty rough.", "points": 5, "isFork": false },
+          { "text": "Stop whining and do it! ", "points": 5, "isFork": false }
+        ]
+      },
+      {
+        "text": "Why'd you have to die, Dad!?",
+        "answers": [
+          { "text": "This isn't your fault.", "points": 0, "isFork": false },
+          { "text": "Do something about it!", "points": 0, "isFork": false }
+        ]
+      },
+      {
+        "text": "Is this... really how it ends for me?",
+        "answers": [
+          { "text": "You have to accept it.", "points": 0, "isFork": false },
+          { "text": "Don't give up yet.", "points": 15, "isFork": false }
+        ]
+      }
+    ]
+  },
+  {
+    "level": 7,
+    "pointsToNextLevel": 30,
+    "nextLevelPointsToNextLevel": 30,
+    "previousLevelPointsToNextLevel": 30,
+    "isRomantic": false,
+    "isFork": false,
+    "questions": [
+      {
+        "text": "Hmmm...>",
+        "answers": [
+          { "text": "Do it!", "points": 15, "isFork": false },
+          {
+            "text": "I could spot you some cash.",
+            "points": 0,
+            "isFork": false
+          }
+        ]
+      },
+      {
+        "text": "In the end, maybe it was my fault the team couldn't work together.",
+        "answers": [
+          { "text": "It sure was.", "points": 5, "isFork": false },
+          { "text": "Don't sweat it.", "points": 5, "isFork": false }
+        ]
+      }
+    ]
+  },
+  {
+    "level": 8,
+    "pointsToNextLevel": 30,
+    "nextLevelPointsToNextLevel": 30,
+    "previousLevelPointsToNextLevel": 30,
+    "isRomantic": false,
+    "isFork": false,
+    "questions": [
+      {
+        "text": "So, uh, the big meet for that scholarship was yesterday.",
+        "answers": [
+          { "text": "Did you win?", "points": 5, "isFork": false },
+          { "text": "Did you lose?", "points": 0, "isFork": false }
+        ]
+      },
+      {
+        "text": "I got first place, of course!>",
+        "answers": [
+          { "text": "Wor, really?", "points": 0, "isFork": false },
+          { "text": "Congrats, man!", "points": 5, "isFork": false }
+        ]
+      },
+      {
+        "text": "Kinda makes me feel empty inside.",
+        "answers": [
+          { "text": "What will you do now?", "points": 5, "isFork": false },
+          { "text": "Will you quit running?", "points": 5, "isFork": false }
+        ]
+      },
+      {
+        "text": "Go ahead and order extra noodles. It's on me.",
+        "answers": [
+          { "text": "Thanks!", "points": 5, "isFork": false },
+          { "text": "Don't put yourself out!", "points": 0, "isFork": false }
+        ]
+      }
+    ]
+  },
+  {
+    "level": 9,
+    "pointsToNextLevel": 30,
+    "nextLevelPointsToNextLevel": 0,
+    "previousLevelPointsToNextLevel": 30,
+    "isRomantic": false,
+    "isFork": false,
+    "questions": [
+      {
+        "text": "Glad we could meet up one more time before I take off.",
+        "answers": [
+          { "text": "\"Take off\"?", "points": 0, "isFork": false },
+          { "text": "You're leaving today?", "points": 15, "isFork": false }
+        ]
+      },
+      {
+        "text": "Well then, I better get going...>",
+        "answers": [
+          { "text": "I'll see you off.", "points": 0, "isFork": false },
+          { "text": "Let's chat a bit more.", "points": 0, "isFork": false }
+        ]
+      },
+      {
+        "text": "I want you to hang on to that.",
+        "answers": [
+          { "text": "What's this for?", "points": 0, "isFork": false },
+          { "text": "But I can't drive yet.", "points": 0, "isFork": false }
+        ]
+      }
+    ]
+  },
+  {
+    "level": 10,
+    "pointsToNextLevel": 0,
+    "nextLevelPointsToNextLevel": 0,
+    "previousLevelPointsToNextLevel": 30,
+    "isRomantic": false,
+    "isFork": false,
+    "questions": []
+  }
+]

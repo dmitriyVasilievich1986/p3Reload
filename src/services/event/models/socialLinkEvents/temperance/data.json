@@ -1,0 +1,233 @@
+[
+  {
+    "level": 0,
+    "pointsToNextLevel": 0,
+    "nextLevelPointsToNextLevel": 0,
+    "previousLevelPointsToNextLevel": 0,
+    "isRomantic": false,
+    "isFork": false,
+    "questions": []
+  },
+  {
+    "level": 1,
+    "pointsToNextLevel": 0,
+    "nextLevelPointsToNextLevel": 15,
+    "previousLevelPointsToNextLevel": 0,
+    "isRomantic": false,
+    "isFork": false,
+    "questions": [
+      {
+        "text": "It will be my first time going. Will you maybe, how do you say, show me the ropes?",
+        "answers": [
+          { "text": "Sure, let's go.", "points": 5, "isFork": false },
+          { "text": "You like sweets?", "points": 5, "isFork": false },
+          { "text": "There's nothing to show.", "points": 5, "isFork": false }
+        ]
+      },
+      {
+        "text": "I love the culture of Nihon! Japan is sugoi-amazing!",
+        "answers": [
+          { "text": "I totally agree.", "points": 15, "isFork": false },
+          { "text": "What about your country?", "points": 0, "isFork": false },
+          { "text": "It's not that great.", "points": 0, "isFork": false }
+        ]
+      }
+    ]
+  },
+  {
+    "level": 2,
+    "pointsToNextLevel": 15,
+    "nextLevelPointsToNextLevel": 15,
+    "previousLevelPointsToNextLevel": 0,
+    "isRomantic": false,
+    "isFork": false,
+    "questions": [
+      {
+        "text": "You have gotten much better at this, ${mainCharName}-dono! Subarashii-wonderful!",
+        "answers": [
+          { "text": "I can do better.", "points": 5, "isFork": false },
+          { "text": "Thanks.", "points": 5, "isFork": false }
+        ]
+      },
+      {
+        "text": "I would like to make something Japanese, but what?",
+        "answers": [
+          { "text": "What do you like?", "points": 0, "isFork": false },
+          { "text": "Why not western clothes?", "points": 5, "isFork": false },
+          { "text": "How about a kimono?", "points": 15, "isFork": false }
+        ]
+      }
+    ]
+  },
+  {
+    "level": 3,
+    "pointsToNextLevel": 15,
+    "nextLevelPointsToNextLevel": 15,
+    "previousLevelPointsToNextLevel": 15,
+    "isRomantic": false,
+    "isFork": false,
+    "questions": [
+      {
+        "text": "......",
+        "answers": [
+          {
+            "text": "How come you're not working?",
+            "points": 0,
+            "isFork": false
+          },
+          { "text": "Should we stop for today?", "points": 0, "isFork": false },
+          { "text": "Are you alright?", "points": 15, "isFork": false }
+        ]
+      },
+      {
+        "text": "She was taken by the angels!",
+        "answers": [
+          { "text": "What happened?", "points": 0, "isFork": false },
+          { "text": "Calm down.", "points": 0, "isFork": false },
+          { "text": "That's terrible...", "points": 0, "isFork": false }
+        ]
+      }
+    ]
+  },
+  {
+    "level": 4,
+    "pointsToNextLevel": 15,
+    "nextLevelPointsToNextLevel": 15,
+    "previousLevelPointsToNextLevel": 15,
+    "isRomantic": false,
+    "isFork": false,
+    "questions": [
+      {
+        "text": "Could we go somwhere to eat after this?",
+        "answers": [
+          { "text": "Sure.", "points": 5, "isFork": false },
+          { "text": "Why?", "points": 0, "isFork": false }
+        ]
+      },
+      {
+        "text": "I might never come back to Japan again!",
+        "answers": [
+          { "text": "You have to accept it.", "points": 0, "isFork": false },
+          { "text": "Just stay in Japan!", "points": 5, "isFork": false }
+        ]
+      }
+    ]
+  },
+  {
+    "level": 5,
+    "pointsToNextLevel": 15,
+    "nextLevelPointsToNextLevel": 10,
+    "previousLevelPointsToNextLevel": 15,
+    "isRomantic": false,
+    "isFork": false,
+    "questions": [
+      {
+        "text": "I have barely sewn anything at all.",
+        "answers": [
+          { "text": "What's wrong?", "points": 0, "isFork": false },
+          { "text": "Why not take a break?", "points": 5, "isFork": false }
+        ]
+      },
+      {
+        "text": "Will you go to Azuki Arai with moi?",
+        "answers": [
+          { "text": "Let's do it.", "points": 5, "isFork": false },
+          { "text": "Just one minute...", "points": 5, "isFork": false }
+        ]
+      },
+      {
+        "text": "I want to stay here in Japan even if I have to eat dirt!",
+        "answers": [
+          { "text": "I have your back!", "points": 15, "isFork": false },
+          { "text": "What will you do?", "points": 5, "isFork": false }
+        ]
+      }
+    ]
+  },
+  {
+    "level": 6,
+    "pointsToNextLevel": 10,
+    "nextLevelPointsToNextLevel": 22,
+    "previousLevelPointsToNextLevel": 15,
+    "isRomantic": false,
+    "isFork": false,
+    "questions": [
+      {
+        "text": "I will show him a kimono! When he sees it, he will understand the beauty of Nihon!",
+        "answers": [
+          { "text": "Will that be enough?", "points": 5, "isFork": false },
+          { "text": "That's a great idea.", "points": 15, "isFork": false }
+        ]
+      }
+    ]
+  },
+  {
+    "level": 7,
+    "pointsToNextLevel": 22,
+    "nextLevelPointsToNextLevel": 22,
+    "previousLevelPointsToNextLevel": 10,
+    "isRomantic": false,
+    "isFork": false,
+    "questions": [
+      {
+        "text": "When my uncle sees this, I know he'll agree with me about how great Nihon is!",
+        "answers": [
+          { "text": "When will it be done?", "points": 5, "isFork": false },
+          { "text": "He'll definitely agree!", "points": 15, "isFork": false },
+          { "text": "Less talk, more work.", "points": 0, "isFork": false }
+        ]
+      }
+    ]
+  },
+  {
+    "level": 8,
+    "pointsToNextLevel": 22,
+    "nextLevelPointsToNextLevel": 22,
+    "previousLevelPointsToNextLevel": 22,
+    "isRomantic": false,
+    "isFork": false,
+    "questions": [
+      {
+        "text": "And thanks to all your help, the kimono is almost finished! I feel so blessed!",
+        "answers": [
+          { "text": "Congrats!", "points": 5, "isFork": false },
+          { "text": "Aren't you homesick?", "points": 15, "isFork": false },
+          { "text": "Don't forget, you owe me.", "points": 0, "isFork": false }
+        ]
+      }
+    ]
+  },
+  {
+    "level": 9,
+    "pointsToNextLevel": 22,
+    "nextLevelPointsToNextLevel": 0,
+    "previousLevelPointsToNextLevel": 22,
+    "isRomantic": false,
+    "isFork": false,
+    "questions": [
+      {
+        "text": "At last, it is fini!",
+        "answers": [
+          { "text": "How does it look?", "points": 15, "isFork": false },
+          { "text": "Great work!", "points": 15, "isFork": false }
+        ]
+      },
+      {
+        "text": "They are the times I spend with you, my tomodachi.",
+        "answers": [
+          { "text": "I'll be waiting for you.", "points": 15, "isFork": false },
+          { "text": "Good luck out there.", "points": 15, "isFork": false }
+        ]
+      }
+    ]
+  },
+  {
+    "level": 10,
+    "pointsToNextLevel": 0,
+    "nextLevelPointsToNextLevel": 0,
+    "previousLevelPointsToNextLevel": 22,
+    "isRomantic": false,
+    "isFork": false,
+    "questions": []
+  }
+]

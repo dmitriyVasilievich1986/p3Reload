@@ -76,13 +76,7 @@ export class Calendar {
   replaceEvent(this: Calendar, date: Dayjs, time: TimesType, newEvent: BaseEvent): Calendar {
     const { currentDay } = this.getDay(date);
     currentDay.replaceEvent(time, newEvent);
-    const days = (this.constructor as typeof Calendar).calculateStats(
-      this.days,
-      date,
-      false,
-      false
-    );
-    return new Calendar({ days: days });
+    return (this.constructor as typeof Calendar).calculateStats(this, date, false, false);
   }
 
   /**
@@ -156,69 +150,33 @@ export class Calendar {
    * @param throwAnErrorIfMultipleEvents - Whether to throw an error if an event is scheduled at the same time.
    * @returns A new {@link Calendar} instance.
    */
-  static deserialize(
-    data: DaySerializedType[],
-    throwAnErrorIfNotAvailable?: boolean,
-    throwAnErrorIfMultipleEvents?: boolean
-  ): Calendar {
-    const days = _.map(data, (day) => Day.deserialize(day));
-    const filteredDays: Day[] = [];
-    let stats = new Stats();
-    const event = new EmptyEvent({ time: Times.Day, skipCheck: true, isChangeable: true });
-
-    for (let index = 0; index < days.length; index++) {
-      const isAvailableProps = {
-        time: Times.Day,
-        date: days[index].date,
-        stats: stats,
-        event: event,
-        currentDay: days[index],
-        previousDay:
-          days[index - 1] ?? Calendar.createEmptyDay(days[index].date.subtract(1, 'day')),
-        dayWeekBefore:
-          days[index - 7] ?? Calendar.createEmptyDay(days[index].date.subtract(7, 'day')),
-      };
-      let events = Day.filterEvents(
-        days[index].events,
-        isAvailableProps,
-        throwAnErrorIfNotAvailable,
-        throwAnErrorIfMultipleEvents
-      );
-      events = Day.sortEvents(events);
-      const result = Day.calculateStats(events, isAvailableProps, stats);
-
-      stats = result.endingStats;
-      filteredDays.push(
-        new Day({
-          date: days[index].date,
-          statsAtStartOfDay: result.startingStats,
-          statsAtEndOfDay: result.endingStats,
-          events: result.events,
-        })
-      );
-    }
-    return new Calendar({ days: filteredDays });
+  static deserialize(data: DaySerializedType[]): Calendar {
+    const days = data.map((day) => Day.deserialize(day));
+    return new Calendar({ days });
   }
 
   /**
-   * Filters, sorts, and recalculates stats for each day in order, chaining ending
-   * stats into the next day's starting stats.
+   * Recalculates stats for each day in order, chaining ending stats into the
+   * next day's starting stats.
    *
    * Days strictly before `startFrom` are kept unchanged and only seed the running
    * stats from their {@link Day.statsAtEndOfDay}. Unavailable or duplicate-time
-   * events cause {@link Day.filterEvents} to throw.
+   * events cause {@link Day.calculateStats} to throw.
    *
-   * @param days - Days to process, expected in chronological order.
+   * @param calendar - Calendar whose days to process, expected in chronological order.
    * @param startFrom - Optional date; earlier days are preserved as-is.
-   * @returns New {@link Day} instances with updated start/end stats and events
+   * @param throwAnErrorIfNotAvailable - Whether to throw on unavailable events.
+   * @param throwAnErrorIfMultipleEvents - Whether to throw on duplicate-time events.
+   * @returns A new {@link Calendar} with updated start/end stats and events
    *   (plus any preserved days before `startFrom`).
    */
   static calculateStats(
-    days: Day[],
+    calendar: Calendar,
     startFrom?: Dayjs,
     throwAnErrorIfNotAvailable: boolean = true,
     throwAnErrorIfMultipleEvents: boolean = true
-  ): Day[] {
+  ): Calendar {
+    const days = calendar.days;
     let stats = new Stats();
     const event = new EmptyEvent({ time: Times.Day, skipCheck: true, isChangeable: true });
     const payload: Day[] = [];
@@ -239,33 +197,18 @@ export class Calendar {
         previousDay: days[index - 1] ?? Calendar.createEmptyDay(day.date.subtract(1, 'day')),
         dayWeekBefore: days[index - 7] ?? Calendar.createEmptyDay(day.date.subtract(7, 'day')),
       };
-      let events = day.events;
-      events = Day.filterEvents(
-        events,
-        isAvailableProps,
-        throwAnErrorIfNotAvailable,
-        throwAnErrorIfMultipleEvents
-      );
-      events = Day.sortEvents(events);
       const result = Day.calculateStats(
-        events,
+        day,
         isAvailableProps,
         stats,
         throwAnErrorIfNotAvailable,
         throwAnErrorIfMultipleEvents
       );
-      stats = result.endingStats;
-      payload.push(
-        new Day({
-          date: day.date,
-          statsAtStartOfDay: result.startingStats,
-          statsAtEndOfDay: result.endingStats,
-          events: result.events,
-        })
-      );
+      stats = result.statsAtEndOfDay;
+      payload.push(result);
     }
 
-    return payload;
+    return new Calendar({ days: payload });
   }
 
   /**

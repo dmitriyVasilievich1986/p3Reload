@@ -250,8 +250,9 @@ describe('Calendar', () => {
         date: createDateFixture(dayjs('2009-04-21')),
         events: [createChagallCafeEvent()],
       });
+      const calendar = new Calendar({ days: [day1, day2] });
 
-      const [resultDay1, resultDay2] = Calendar.calculateStats([day1, day2]);
+      const [resultDay1, resultDay2] = Calendar.calculateStats(calendar).days;
 
       expect(resultDay1?.statsAtStartOfDay.characterStats[CharacterStatsNames.Academics]).toBe(0);
       expect(resultDay1?.statsAtEndOfDay.characterStats[CharacterStatsNames.Academics]).toBe(2);
@@ -279,11 +280,9 @@ describe('Calendar', () => {
         date: createDateFixture(dayjs('2009-04-21')),
         events: [createChagallCafeEvent()],
       });
+      const calendar = new Calendar({ days: [preservedDay, recalculatedDay] });
 
-      const [resultDay1, resultDay2] = Calendar.calculateStats(
-        [preservedDay, recalculatedDay],
-        dayjs('2009-04-21')
-      );
+      const [resultDay1, resultDay2] = Calendar.calculateStats(calendar, dayjs('2009-04-21')).days;
 
       expect(resultDay1).toBe(preservedDay);
       expect(resultDay2?.statsAtStartOfDay).toBe(preservedEnd);
@@ -302,25 +301,25 @@ describe('Calendar', () => {
         events: [unavailable],
       });
 
-      expect(() => Calendar.calculateStats([day], undefined, true, true)).toThrow(
-        `Event ${AcademicStatModifyNames.stayAwake} is not available at this time.`
-      );
+      expect(() =>
+        Calendar.calculateStats(new Calendar({ days: [day] }), undefined, true, true)
+      ).toThrow(`Event ${AcademicStatModifyNames.stayAwake} is not available at this time.`);
     });
 
     it('throws when multiple events share the same time', () => {
-      const first = createStayAwakeEvent();
-      const second = createStayAwakeEvent();
+      const first = createStayAwakeEvent({ skipCheck: false });
+      const second = createStayAwakeEvent({ skipCheck: false });
       const day = createDayFixture({
         date: createDateFixture(dayjs('2009-04-20')),
         events: [first, second],
       });
 
-      expect(() => Calendar.calculateStats([day])).toThrow(
+      expect(() => Calendar.calculateStats(new Calendar({ days: [day] }))).toThrow(
         `Multiple events found at time ${Times.Morning}.`
       );
     });
 
-    it('sorts events before calculating stats', () => {
+    it('processes events in the order provided', () => {
       const evening = createChagallCafeEvent();
       const morning = createStayAwakeEvent();
       const day = createDayFixture({
@@ -328,10 +327,10 @@ describe('Calendar', () => {
         events: [evening, morning],
       });
 
-      const [resultDay] = Calendar.calculateStats([day]);
+      const [resultDay] = Calendar.calculateStats(new Calendar({ days: [day] })).days;
 
-      expect(resultDay?.events[0]).toBe(morning);
-      expect(resultDay?.events[1]).toBe(evening);
+      expect(resultDay?.events[0]).toBe(evening);
+      expect(resultDay?.events[1]).toBe(morning);
       expect(resultDay?.statsAtEndOfDay.characterStats[CharacterStatsNames.Academics]).toBe(2);
       expect(resultDay?.statsAtEndOfDay.characterStats[CharacterStatsNames.Charm]).toBe(2);
     });
@@ -426,12 +425,11 @@ describe('Calendar', () => {
     it('calculates stats without errors or warnings', () => {
       const warnSpy = vi.spyOn(console, 'warn').mockImplementation(() => undefined);
       const errorSpy = vi.spyOn(console, 'error').mockImplementation(() => undefined);
-      const days = data.map((day) => Day.deserialize(day));
-      const calendar = new Calendar({ days });
+      const calendar = Calendar.deserialize(data);
 
-      const result = Calendar.calculateStats(calendar.days);
+      const result = Calendar.calculateStats(calendar, undefined, false, false);
 
-      expect(result).toHaveLength(data.length);
+      expect(result.days).toHaveLength(data.length);
       expect(warnSpy).not.toHaveBeenCalled();
       expect(errorSpy).not.toHaveBeenCalled();
     });

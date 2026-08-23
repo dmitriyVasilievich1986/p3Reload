@@ -11,3 +11,5 @@ export { IsEventInHistoryAvailability } from './isEventInHistoryAvailability';
 export { IsLevelUpAvailable } from './isLevelUpAvailable';
 export { DayOfWeekAvailability } from './dayOfWeekAvailability';
 export { DayOffAvailability } from './dayOffAvailability';
+export { ExamAvailability } from './examAvailability';
+export { FalseAvailability } from './falseAvailability';

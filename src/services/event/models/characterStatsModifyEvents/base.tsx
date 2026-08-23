@@ -58,7 +58,10 @@ export abstract class CharacterStatsModifyEventBase extends BaseEvent {
   render(props: IsAvailableProps): React.ReactNode {
     const node = (this.constructor as typeof CharacterStatsModifyEventBase).render(props);
     return isValidElement(node)
-      ? cloneElement(node as ReactElement<CardProps>, { time: props.time })
+      ? cloneElement(node as ReactElement<CardProps>, {
+          time: props.time,
+          isSelectable: this.isChangeable,
+        })
       : node;
   }
 }

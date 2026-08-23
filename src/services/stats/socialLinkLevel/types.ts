@@ -18,3 +18,9 @@ export type QuestionProps = {
   text: string;
   answers: AnswerProps[];
 };
+
+export type GetIsCardNeededResult = {
+  isCardNeeded: boolean;
+  pointsWithoutCard: number;
+  pointsWithCard: number;
+};

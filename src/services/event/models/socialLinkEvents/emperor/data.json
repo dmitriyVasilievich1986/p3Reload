@@ -1,0 +1,221 @@
+[
+  {
+    "level": 0,
+    "pointsToNextLevel": 0,
+    "nextLevelPointsToNextLevel": 0,
+    "previousLevelPointsToNextLevel": 0,
+    "isRomantic": false,
+    "isFork": false,
+    "questions": []
+  },
+  {
+    "level": 1,
+    "pointsToNextLevel": 0,
+    "nextLevelPointsToNextLevel": 0,
+    "previousLevelPointsToNextLevel": 0,
+    "isRomantic": false,
+    "isFork": false,
+    "questions": [
+      {
+        "text": "Some students think the school uniform should be abolished, and they're gathering supporters.",
+        "answers": [
+          { "text": "They've got a point.", "points": 0, "isFork": false },
+          { "text": "Sounds like nonsense.", "points": 15, "isFork": false }
+        ]
+      }
+    ]
+  },
+  {
+    "level": 2,
+    "pointsToNextLevel": 0,
+    "nextLevelPointsToNextLevel": 15,
+    "previousLevelPointsToNextLevel": 0,
+    "isRomantic": false,
+    "isFork": false,
+    "questions": [
+      {
+        "text": "What!? You can't decide something like that without talking to the president first.",
+        "answers": [
+          { "text": "What happened?", "points": 5, "isFork": false },
+          { "text": "No need to fight.", "points": 5, "isFork": false }
+        ]
+      }
+    ]
+  },
+  {
+    "level": 3,
+    "pointsToNextLevel": 15,
+    "nextLevelPointsToNextLevel": 15,
+    "previousLevelPointsToNextLevel": 0,
+    "isRomantic": false,
+    "isFork": false,
+    "questions": [
+      {
+        "text": "This guy looks like he's about to hit Odagiri!",
+        "answers": [
+          { "text": "Knock it off!", "points": 0, "isFork": false },
+          { "text": "...........", "points": 0, "isFork": false }
+        ]
+      },
+      {
+        "text": "What is it? Did you need something from me?",
+        "answers": [
+          {
+            "text": "You went a little overboard.",
+            "points": 0,
+            "isFork": false
+          },
+          {
+            "text": "Looks like you're hard at work.",
+            "points": 15,
+            "isFork": false
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "level": 4,
+    "pointsToNextLevel": 15,
+    "nextLevelPointsToNextLevel": 15,
+    "previousLevelPointsToNextLevel": 15,
+    "isRomantic": false,
+    "isFork": false,
+    "questions": [
+      {
+        "text": "...Bunch of neanderthals",
+        "answers": [
+          { "text": "They're the worst.", "points": 15, "isFork": false },
+          {
+            "text": "You shouldn't accuse everyone.",
+            "points": 0,
+            "isFork": false
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "level": 5,
+    "pointsToNextLevel": 15,
+    "nextLevelPointsToNextLevel": 15,
+    "previousLevelPointsToNextLevel": 15,
+    "isRomantic": false,
+    "isFork": false,
+    "questions": [
+      {
+        "text": "It's nice not having those hyenas around.",
+        "answers": [
+          {
+            "text": "You're not going home yet?",
+            "points": 0,
+            "isFork": false
+          },
+          { "text": "\"It's nice\"?", "points": 0, "isFork": false }
+        ]
+      },
+      {
+        "text": "So as you can see, we can't exactly hold a meeting right now. You can leave if you want.",
+        "answers": [
+          { "text": "But I just got here…", "points": 15, "isFork": false },
+          { "text": "I think I'll stick around.", "points": 5, "isFork": false }
+        ]
+      }
+    ]
+  },
+  {
+    "level": 6,
+    "pointsToNextLevel": 15,
+    "nextLevelPointsToNextLevel": 22,
+    "previousLevelPointsToNextLevel": 15,
+    "isRomantic": false,
+    "isFork": false,
+    "questions": [
+      {
+        "text": "About the smoker's punishment, I mean.",
+        "answers": [
+          { "text": "It seems reasonable.", "points": 0, "isFork": false },
+          { "text": "It seems too harsh.", "points": 15, "isFork": false }
+        ]
+      }
+    ]
+  },
+  {
+    "level": 7,
+    "pointsToNextLevel": 22,
+    "nextLevelPointsToNextLevel": 22,
+    "previousLevelPointsToNextLevel": 15,
+    "isRomantic": false,
+    "isFork": false,
+    "questions": [
+      {
+        "text": "Um, did Odagiri-san do something?",
+        "answers": [
+          { "text": "What do you mean?", "points": 0, "isFork": false },
+          { "text": "Why? Is something wrong?", "points": 0, "isFork": false }
+        ]
+      },
+      {
+        "text": "...So, you heard all that.",
+        "answers": [
+          { "text": "It wasn't me.", "points": 15, "isFork": false },
+          { "text": "You stood up for me?", "points": 5, "isFork": false }
+        ]
+      }
+    ]
+  },
+  {
+    "level": 8,
+    "pointsToNextLevel": 22,
+    "nextLevelPointsToNextLevel": 22,
+    "previousLevelPointsToNextLevel": 22,
+    "isRomantic": false,
+    "isFork": false,
+    "questions": [
+      {
+        "text": "I rambled on about rules and fairness, but all I really proved was that I was desperate for power.",
+        "answers": [
+          { "text": "Don't blame yourself.", "points": 15, "isFork": false },
+          {
+            "text": "What matters is you realized it.",
+            "points": 15,
+            "isFork": false
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "level": 9,
+    "pointsToNextLevel": 22,
+    "nextLevelPointsToNextLevel": 0,
+    "previousLevelPointsToNextLevel": 22,
+    "isRomantic": false,
+    "isFork": false,
+    "questions": [
+      {
+        "text": "So, how did I do? What'd everyone think?",
+        "answers": [
+          { "text": "Not too shabby.", "points": 15, "isFork": false },
+          { "text": "You were great.", "points": 5, "isFork": false }
+        ]
+      },
+      {
+        "text": "That's why you should be the one to have it.",
+        "answers": [
+          { "text": "I'll cherish it.", "points": 15, "isFork": false },
+          { "text": "I guess I'll take it.", "points": 15, "isFork": false }
+        ]
+      }
+    ]
+  },
+  {
+    "level": 10,
+    "pointsToNextLevel": 0,
+    "nextLevelPointsToNextLevel": 0,
+    "previousLevelPointsToNextLevel": 22,
+    "isRomantic": false,
+    "isFork": false,
+    "questions": []
+  }
+]

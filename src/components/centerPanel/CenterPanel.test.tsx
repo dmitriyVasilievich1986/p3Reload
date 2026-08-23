@@ -10,7 +10,7 @@ import studyIcon from '@assets/study.svg';
 import { DEFAULT_DAY } from '@constants/dates';
 import { Times } from '@constants/times';
 import { Calendar } from '@services/calendar';
-import { TextEvent } from '@services/event/models/specialEvents';
+import { EmptyEvent } from '@services/event/models/specialEvents';
 import { createDayFixture } from '@services/fixtures';
 import { useMainStore } from '@store/main';
 
@@ -194,24 +194,15 @@ describe('CenterPanel', () => {
   });
 
   it('renders the day events in a single column', async () => {
-    const morning = new TextEvent({
-      time: Times.Morning,
+    const dayEvent = new EmptyEvent({ time: Times.Day, skipCheck: true, isChangeable: false });
+    const eveningEvent = new EmptyEvent({
+      time: Times.Evening,
       skipCheck: true,
       isChangeable: false,
-      isTall: false,
-      rows: [{ name: 'TextRow', props: { text: 'Morning event', textAlign: 'center' } }],
-    });
-    const dayEvent = new TextEvent({
-      time: Times.Day,
-      skipCheck: true,
-      isChangeable: false,
-      isTall: false,
-      header: 'Day event',
-      rows: [{ name: 'TextRow', props: { text: 'Afternoon', textAlign: 'center' } }],
     });
     const day = createDayFixture({
       date: dayjs(DEFAULT_DAY),
-      events: [morning, dayEvent],
+      events: [dayEvent, eveningEvent],
     });
     useMainStore.getState().setCalendar(new Calendar({ days: [day] }));
 
@@ -223,23 +214,17 @@ describe('CenterPanel', () => {
 
     const list = screen.getByRole('list');
     expect(list).toHaveClass('flex', 'flex-col');
-    expect(screen.getByText('Morning event')).toBeInTheDocument();
-    expect(screen.getByText('Day event')).toBeInTheDocument();
+    expect(screen.getAllByText('Blank event')).toHaveLength(2);
+    expect(screen.getAllByText('Do nothing')).toHaveLength(2);
     expect(list.querySelectorAll(':scope > li')).toHaveLength(2);
   });
 
   it('injects selection props into rendered event cards', async () => {
     const user = userEvent.setup();
-    const morning = new TextEvent({
-      time: Times.Morning,
-      skipCheck: true,
-      isChangeable: true,
-      isTall: false,
-      rows: [{ name: 'TextRow', props: { text: 'Morning event', textAlign: 'center' } }],
-    });
+    const dayEvent = new EmptyEvent({ time: Times.Day, skipCheck: true, isChangeable: true });
     const day = createDayFixture({
       date: dayjs(DEFAULT_DAY),
-      events: [morning],
+      events: [dayEvent],
     });
     useMainStore.getState().setCalendar(new Calendar({ days: [day] }));
 
@@ -254,7 +239,7 @@ describe('CenterPanel', () => {
 
     await user.click(card);
 
-    expect(useMainStore.getState().selectedEvent).toBe(morning);
+    expect(useMainStore.getState().selectedEvent).toBe(dayEvent);
     expect(card).toHaveAttribute('aria-selected', 'true');
 
     await user.click(card);

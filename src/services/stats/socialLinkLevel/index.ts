@@ -6,4 +6,9 @@
 
 export { SocialLinkLevelContainer } from './socialLinkLevelContainer';
 export { SocialLinkLevel } from './socialLinkLevel';
-export type { SocialLinkLevelProps, AnswerProps, QuestionProps } from './types';
+export type {
+  SocialLinkLevelProps,
+  AnswerProps,
+  QuestionProps,
+  GetIsCardNeededResult,
+} from './types';

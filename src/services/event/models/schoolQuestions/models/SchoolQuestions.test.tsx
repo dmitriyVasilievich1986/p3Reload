@@ -1,4 +1,5 @@
 import { render, screen } from '@testing-library/react';
+import { MemoryRouter } from 'react-router';
 import { describe, expect, it } from 'vite-plus/test';
 
 import { Times } from '@constants/times';
@@ -77,7 +78,7 @@ describe('SchoolQuestionsEvent', () => {
       ],
     });
 
-    render(event.render(createIsAvailablePropsFixture()));
+    render(<MemoryRouter>{event.render(createIsAvailablePropsFixture())}</MemoryRouter>);
 
     expect(screen.getByText('What is the capital of Japan?')).toBeInTheDocument();
     expect(screen.getByText('Tokyo')).toBeInTheDocument();

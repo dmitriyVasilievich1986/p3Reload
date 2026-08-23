@@ -1,0 +1,329 @@
+[
+  {
+    "level": 0,
+    "pointsToNextLevel": 0,
+    "nextLevelPointsToNextLevel": 0,
+    "previousLevelPointsToNextLevel": 0,
+    "isRomantic": false,
+    "isFork": false,
+    "questions": []
+  },
+  {
+    "level": 1,
+    "pointsToNextLevel": 0,
+    "nextLevelPointsToNextLevel": 20,
+    "previousLevelPointsToNextLevel": 0,
+    "isRomantic": false,
+    "isFork": false,
+    "questions": [
+      {
+        "text": "What was your name again?",
+        "answers": [
+          { "text": "${mainCharName}", "points": 5, "isFork": false },
+          { "text": "...", "points": 0, "isFork": false }
+        ]
+      },
+      {
+        "text": "Someone gave it to me, but I have more than enough. Go ahead and take it, ${mainCharName}-chan.",
+        "answers": [
+          { "text": "Thank you.", "points": 15, "isFork": false },
+          { "text": "I'm okay, thanks.", "points": 0, "isFork": false }
+        ]
+      },
+      {
+        "text": "We have so many, my wife and I would take forever to finish them all.",
+        "answers": [
+          { "text": "I'd like that.", "points": 0, "isFork": false },
+          { "text": "No, thank you.", "points": 0, "isFork": false }
+        ]
+      },
+      {
+        "text": "He should be here helping customers... Sorry about that, ${mainCharName}-chan.",
+        "answers": [
+          { "text": "Boy?", "points": 0, "isFork": false },
+          { "text": "No need to apologize.", "points": 0, "isFork": false }
+        ]
+      },
+      {
+        "text": "Oh, my dear, he's...",
+        "answers": [
+          { "text": "He's what?", "points": 0, "isFork": false },
+          { "text": "What's this about?", "points": 0, "isFork": false }
+        ]
+      }
+    ]
+  },
+  {
+    "level": 2,
+    "pointsToNextLevel": 20,
+    "nextLevelPointsToNextLevel": 20,
+    "previousLevelPointsToNextLevel": 0,
+    "isRomantic": false,
+    "isFork": false,
+    "questions": [
+      {
+        "text": "I don't see it anywhere... Looking for something?",
+        "answers": [
+          { "text": "Looking for something?", "points": 5, "isFork": false },
+          { "text": "Cleaning the store?", "points": 0, "isFork": false }
+        ]
+      },
+      {
+        "text": "It's not my contact lens I'm looking for, it's my wallet. My wallet! Now, where did I put it?",
+        "answers": [
+          { "text": "Best of luck.", "points": 5, "isFork": false },
+          { "text": "Can I help?", "points": 15, "isFork": false }
+        ]
+      },
+      {
+        "text": "I am one as well! I am a student at Gekkoukan!",
+        "answers": [
+          { "text": "Nice to meet you.", "points": 0, "isFork": false },
+          { "text": "...Who are you?", "points": 0, "isFork": false }
+        ]
+      },
+      {
+        "text": "But you can call me 'Bebe'! It's quite nice to meet you!",
+        "answers": [
+          { "text": "Nice to meet you.", "points": 0, "isFork": false },
+          { "text": "......", "points": 0, "isFork": false }
+        ]
+      },
+      {
+        "text": "Why must you get into a car...? Do you want me to end up all alone!?",
+        "answers": [
+          { "text": "What's this about a car?", "points": 0, "isFork": false },
+          { "text": "All alone?", "points": 0, "isFork": false }
+        ]
+      },
+      {
+        "text": "On his way home from work, he got into an accident... He was hit by a dump truck driver who was drunk on the job...",
+        "answers": [
+          { "text": "I'm sorry to hear that.", "points": 0, "isFork": false },
+          { "text": "That's terrible luck.", "points": 0, "isFork": false }
+        ]
+      }
+    ]
+  },
+  {
+    "level": 3,
+    "pointsToNextLevel": 20,
+    "nextLevelPointsToNextLevel": 20,
+    "previousLevelPointsToNextLevel": 20,
+    "isRomantic": false,
+    "isFork": false,
+    "questions": [
+      {
+        "text": "My wife just headed out to Gekkoukan.",
+        "answers": [
+          { "text": "I should go too.", "points": 15, "isFork": false },
+          { "text": "I'll wait here.", "points": 15, "isFork": false }
+        ]
+      },
+      {
+        "text": "The... The... The tree...",
+        "answers": [
+          { "text": "What happened", "points": 0, "isFork": false },
+          { "text": "Tree?", "points": 0, "isFork": false }
+        ]
+      },
+      {
+        "text": "Do you know anything about this, ${mainCharName}-chan?",
+        "answers": [
+          { "text": "No, I don't.", "points": 0, "isFork": false },
+          { "text": "I'm worried.", "points": 5, "isFork": false }
+        ]
+      }
+    ]
+  },
+  {
+    "level": 4,
+    "pointsToNextLevel": 20,
+    "nextLevelPointsToNextLevel": 20,
+    "previousLevelPointsToNextLevel": 20,
+    "isRomantic": false,
+    "isFork": false,
+    "questions": [
+      {
+        "text": "We've been feeling a bit guilty for troubling you about the persimmon tree...",
+        "answers": [
+          {
+            "text": "I wouldn't worry about it.",
+            "points": 5,
+            "isFork": false
+          },
+          { "text": "What tree?", "points": 0, "isFork": false }
+        ]
+      },
+      {
+        "text": "Why now? Why do they want to cut it down now...?",
+        "answers": [
+          { "text": "Cheer up.", "points": 5, "isFork": false },
+          { "text": "It'll be okay.", "points": 5, "isFork": false }
+        ]
+      }
+    ]
+  },
+  {
+    "level": 5,
+    "pointsToNextLevel": 20,
+    "nextLevelPointsToNextLevel": 20,
+    "previousLevelPointsToNextLevel": 20,
+    "isRomantic": false,
+    "isFork": false,
+    "questions": [
+      {
+        "text": "If we lose that tree... it would be like losing our son all over again...",
+        "answers": [
+          { "text": "You're overthinking it.", "points": 0, "isFork": false },
+          { "text": "Please don't fight.", "points": 15, "isFork": false }
+        ]
+      },
+      {
+        "text": "Unfortunately, that just reminded my dear of the pain we felt the day our son died...",
+        "answers": [
+          { "text": "Cheer up.", "points": 0, "isFork": false },
+          { "text": "I'm sure it'll be okay.", "points": 0, "isFork": false }
+        ]
+      }
+    ]
+  },
+  {
+    "level": 6,
+    "pointsToNextLevel": 20,
+    "nextLevelPointsToNextLevel": 20,
+    "previousLevelPointsToNextLevel": 20,
+    "isRomantic": false,
+    "isFork": false,
+    "questions": [
+      {
+        "text": "Ah...",
+        "answers": [
+          { "text": "What happened?", "points": 5, "isFork": false },
+          { "text": "Are you fighting again?", "points": 0, "isFork": false }
+        ]
+      },
+      {
+        "text": "They say the tree is a memorial to their former teacher... They don't want it to be cut down.",
+        "answers": [
+          { "text": "The tree? A memorial?", "points": 0, "isFork": false },
+          { "text": "That's great.", "points": 5, "isFork": false }
+        ]
+      },
+      {
+        "text": "You must be the one who called on them for this, right, ${mainCharName}-chan?",
+        "answers": [
+          { "text": "No.", "points": 5, "isFork": false },
+          { "text": "That's right.", "points": 5, "isFork": false },
+          {
+            "text": "What are you talking about?",
+            "points": 5,
+            "isFork": false
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "level": 7,
+    "pointsToNextLevel": 20,
+    "nextLevelPointsToNextLevel": 30,
+    "previousLevelPointsToNextLevel": 20,
+    "isRomantic": false,
+    "isFork": false,
+    "questions": [
+      {
+        "text": "Who do you think it was? Here's a hint: 'signature.'",
+        "answers": [
+          { "text": "A petitioner?", "points": 5, "isFork": false },
+          { "text": "A fan of yours?", "points": 5, "isFork": false }
+        ]
+      },
+      {
+        "text": "He's already gathered a number of signatures from students who were in our son's class.",
+        "answers": [
+          { "text": "That's great.", "points": 0, "isFork": false },
+          { "text": "That's amazing.", "points": 0, "isFork": false }
+        ]
+      },
+      {
+        "text": "I have to tell my son the good news!",
+        "answers": [
+          { "text": "Sure, let's go.", "points": 15, "isFork": false },
+          { "text": "Right now?", "points": 15, "isFork": false }
+        ]
+      }
+    ]
+  },
+  {
+    "level": 8,
+    "pointsToNextLevel": 30,
+    "nextLevelPointsToNextLevel": 30,
+    "previousLevelPointsToNextLevel": 20,
+    "isRomantic": false,
+    "isFork": false,
+    "questions": [
+      {
+        "text": "What, is that surprising? I'm actually quite the net surfer, you know!",
+        "answers": [
+          { "text": "What does the letter say?", "points": 5, "isFork": false },
+          { "text": "Why a letter?", "points": 5, "isFork": false }
+        ]
+      },
+      {
+        "text": "Are you curious about the letter? Excited, perhaps? Even exhilerated?",
+        "answers": [
+          { "text": "Excited.", "points": 0, "isFork": false },
+          { "text": "Exhilerated.", "points": 0, "isFork": false }
+        ]
+      }
+    ]
+  },
+  {
+    "level": 9,
+    "pointsToNextLevel": 30,
+    "nextLevelPointsToNextLevel": 0,
+    "previousLevelPointsToNextLevel": 30,
+    "isRomantic": false,
+    "isFork": false,
+    "questions": [
+      {
+        "text": "Bunkichi is sleep talking. Looks like he's taking a nap.",
+        "answers": [
+          { "text": "Take a closer look.", "points": 0, "isFork": false },
+          { "text": "Leave him alone.", "points": 0, "isFork": false }
+        ]
+      },
+      {
+        "text": "It's the middle of the day, but I feel awfully sleepy.",
+        "answers": [
+          { "text": "What matter?", "points": 0, "isFork": false },
+          { "text": "Why are you relieved?", "points": 0, "isFork": false }
+        ]
+      },
+      {
+        "text": "We asked them to go ahead and cut the persimmon tree down.",
+        "answers": [
+          { "text": "But.. why?", "points": 15, "isFork": false },
+          { "text": "Oh well.", "points": 5, "isFork": false }
+        ]
+      },
+      {
+        "text": "He was a teacher after all.",
+        "answers": [
+          { "text": "That's true.", "points": 0, "isFork": false },
+          { "text": "Are you really sure?", "points": 0, "isFork": false }
+        ]
+      }
+    ]
+  },
+  {
+    "level": 10,
+    "pointsToNextLevel": 0,
+    "nextLevelPointsToNextLevel": 0,
+    "previousLevelPointsToNextLevel": 30,
+    "isRomantic": false,
+    "isFork": false,
+    "questions": []
+  }
+]

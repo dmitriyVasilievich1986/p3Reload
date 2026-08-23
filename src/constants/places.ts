@@ -1,4 +1,9 @@
 export const Places = {
+  MainCharacterRoom: 'Main character room',
+  FacultyOfficeEntrance: 'Faculty Office Entrance',
+  LaptopAtTheProtagonistsRoom: "Laptop at the Protagonist's room",
+  ArtClubRoom: 'Art Club Room',
+  StudentCouncilRoom: 'Student Council Room',
   NurseOffice: 'Nurse Office',
   Dorm: 'Dorm',
   GameParade: 'Game Parade',
@@ -7,11 +12,19 @@ export const Places = {
   HagakureRamen: 'Hagakure Ramen',
   Tartarus: 'Tartarus',
   WilduckBurger: 'Wilduck Burger',
+  Classroom2F: 'Classroom 2F',
+  Classroom2FHallway: 'Classroom 2F Hallway',
+  BookwormsUsedBooks: 'Bookworms Used Books',
+  IwatodaiStationStripMall1F: 'Iwatodai Station Strip Mall 1F',
+  ClubEscapade: 'Club Escapade',
 } as const;
 
 export const Districts = {
+  IwatodaiStation: 'Iwatodai Station',
+  NaganakiShrine: 'Naganaki Shrine',
   IwatodaiDormitory: 'Iwatodai Dormitory',
   PaulowniaMall: 'Paulownia Mall',
   GekkoukanHighSchool: 'Gekkoukan High School',
   IwatodaiStripMall: 'Iwatodai Strip Mall',
+  PortIslandStation: 'Port Island Station',
 } as const;

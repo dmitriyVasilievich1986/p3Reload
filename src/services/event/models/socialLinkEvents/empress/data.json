@@ -1,0 +1,414 @@
+[
+  {
+    "level": 0,
+    "pointsToNextLevel": 0,
+    "nextLevelPointsToNextLevel": 0,
+    "previousLevelPointsToNextLevel": 0,
+    "isFork": false,
+    "isRomantic": false,
+    "questions": []
+  },
+  {
+    "level": 1,
+    "pointsToNextLevel": 0,
+    "nextLevelPointsToNextLevel": 22,
+    "previousLevelPointsToNextLevel": 0,
+    "isFork": false,
+    "isRomantic": false,
+    "questions": [
+      {
+        "text": "It's smaller than I expected.",
+        "answers": [
+          { "text": "Is this your first time?", "points": 5, "isFork": false },
+          { "text": "Do you know how to eat it?", "points": 5, "isFork": false }
+        ]
+      }
+    ]
+  },
+  {
+    "level": 2,
+    "pointsToNextLevel": 22,
+    "nextLevelPointsToNextLevel": 22,
+    "previousLevelPointsToNextLevel": 0,
+    "isFork": false,
+    "isRomantic": false,
+    "questions": [
+      {
+        "text": "Sometimes my own ignorance truly astounds me...",
+        "answers": [
+          { "text": "Want me to treat you?", "points": 0, "isFork": false },
+          { "text": "Why not give it a try?", "points": 5, "isFork": false }
+        ]
+      },
+      {
+        "text": "Maybe he's just maturing…",
+        "answers": [
+          { "text": "Are you sad?", "points": 0, "isFork": false },
+          { "text": "Are you happy?", "points": 15, "isFork": false }
+        ]
+      },
+      {
+        "text": "It's the most peculiar feeling",
+        "answers": [
+          { "text": "Maybe you're in love.", "points": 5, "isFork": false },
+          { "text": "Maybe you're anxious.", "points": 5, "isFork": false },
+          { "text": "It must be sadness.", "points": 0, "isFork": false }
+        ]
+      },
+      {
+        "text": "Sorry to subject you to my thoughtless rambling. Just forget I said anything.",
+        "answers": [
+          { "text": "I'm rooting for you.", "points": 0, "isFork": false },
+          { "text": "I heard nothing.", "points": 5, "isFork": false }
+        ]
+      }
+    ]
+  },
+  {
+    "level": 3,
+    "pointsToNextLevel": 22,
+    "nextLevelPointsToNextLevel": 22,
+    "previousLevelPointsToNextLevel": 22,
+    "isFork": false,
+    "isRomantic": false,
+    "questions": [
+      {
+        "text": "In just a short while, we'll be looking back on these days with nostalgia.",
+        "answers": [
+          { "text": "What's next for you?", "points": 0, "isFork": false },
+          { "text": "Did something happen?", "points": 5, "isFork": false }
+        ]
+      },
+      {
+        "text": "What does marriage mean to you?",
+        "answers": [
+          { "text": "It's all for love", "points": 15, "isFork": false },
+          { "text": "It's a social agreement.", "points": 0, "isFork": false },
+          { "text": "It's about compromise.", "points": 0, "isFork": false }
+        ]
+      },
+      {
+        "text": "Am I... wrong about this?",
+        "answers": [
+          { "text": "Do you have a boyfriend?", "points": 0, "isFork": false },
+          { "text": "That's a tough one.", "points": 0, "isFork": false }
+        ]
+      }
+    ]
+  },
+  {
+    "level": 4,
+    "pointsToNextLevel": 22,
+    "nextLevelPointsToNextLevel": 22,
+    "previousLevelPointsToNextLevel": 22,
+    "isFork": false,
+    "isRomantic": false,
+    "questions": [
+      {
+        "text": "It seems a lot of thought goes into the design and construction of a movie theather.",
+        "answers": [
+          { "text": "...Said the rich girl.", "points": 0, "isFork": false },
+          { "text": "Glad you enjoyed it.", "points": 15, "isFork": false }
+        ]
+      },
+      {
+        "text": "She's likely more suited to riding a motorcycle than I am, as well.",
+        "answers": [
+          { "text": "A motorcycle?", "points": 15, "isFork": false },
+          { "text": "You're not suited?", "points": 0, "isFork": false }
+        ]
+      },
+      {
+        "text": "I don't regret it. Even now, I spend my time tuning it whenever I can.",
+        "answers": [
+          { "text": "What a high-class biker.", "points": 0, "isFork": false },
+          { "text": "Let's go for a ride.", "points": 15, "isFork": false }
+        ]
+      }
+    ]
+  },
+  {
+    "level": 5,
+    "pointsToNextLevel": 22,
+    "nextLevelPointsToNextLevel": 22,
+    "previousLevelPointsToNextLevel": 22,
+    "isFork": false,
+    "isRomantic": false,
+    "questions": [
+      {
+        "text": "......",
+        "answers": [
+          {
+            "text": "Looking for something specific?",
+            "points": 5,
+            "isFork": false
+          },
+          { "text": "Need some help?", "points": 5, "isFork": false },
+          { "text": "Borrowing a book?", "points": 0, "isFork": false }
+        ]
+      },
+      {
+        "text": "...Even if I have to make sacrifices to do it.",
+        "answers": [
+          { "text": "Did something happen?", "points": 0, "isFork": false },
+          { "text": "That doesn't sound good.", "points": 0, "isFork": false }
+        ]
+      },
+      {
+        "text": "This is the best solution for everyone involved...",
+        "answers": [
+          { "text": "Is it really?", "points": 0, "isFork": false },
+          { "text": "I didn't know...", "points": 5, "isFork": false }
+        ]
+      },
+      {
+        "text": "So... I won't run from my fate.",
+        "answers": [
+          { "text": "Are you sure about this?", "points": 5, "isFork": false },
+          { "text": "That's admirable.", "points": 0, "isFork": false },
+          {
+            "text": "I'll do something about it.",
+            "points": 15,
+            "isFork": false
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "level": 6,
+    "pointsToNextLevel": 22,
+    "nextLevelPointsToNextLevel": 0,
+    "previousLevelPointsToNextLevel": 0,
+    "isFork": false,
+    "isRomantic": false,
+    "questions": [
+      {
+        "text": "Or... is that too selfish a request?",
+        "answers": [
+          { "text": "I don't mind at all.", "points": 15, "isFork": false },
+          { "text": "Is that all you need?", "points": 0, "isFork": false }
+        ]
+      }
+    ]
+  },
+  {
+    "level": 7,
+    "pointsToNextLevel": 22,
+    "nextLevelPointsToNextLevel": 22,
+    "previousLevelPointsToNextLevel": 22,
+    "isFork": false,
+    "isRomantic": false,
+    "questions": [
+      {
+        "text": "Somewhere far away, where no one knows who you are?",
+        "answers": [
+          { "text": "Yes.", "points": 0, "isFork": false },
+          { "text": "No.", "points": 0, "isFork": false }
+        ]
+      },
+      {
+        "text": "Talking to you has become something of an outlet for me. Heh, I'm sure you're sick of it by now.",
+        "answers": [
+          { "text": "Vent all you want.", "points": 5, "isFork": false },
+          { "text": "This isn't like you.", "points": 5, "isFork": false }
+        ]
+      },
+      {
+        "text": "Ah... Keep in mind, this is a what-if scenario.",
+        "answers": [
+          { "text": "That's up to you.", "points": 0, "isFork": false },
+          { "text": "It's not meant to be.", "points": 0, "isFork": true }
+        ]
+      },
+      {
+        "text": "How dare you say that!?",
+        "answers": [
+          { "text": "Calm down, Mitsuru", "points": 0, "isFork": false },
+          { "text": "Don't insult her father!", "points": 15, "isFork": false }
+        ]
+      },
+      {
+        "text": "Please excuse me.",
+        "answers": [
+          { "text": "Don't give in.", "points": 15, "isFork": false },
+          { "text": "You're sure about this?", "points": 5, "isFork": false }
+        ]
+      },
+      {
+        "text": "But... when he mentioned my father, and you... I couldn't help myself.",
+        "answers": [
+          { "text": "Don't sweat it.", "points": 0, "isFork": false },
+          { "text": "You were awesome.", "points": 15, "isFork": false }
+        ]
+      }
+    ]
+  },
+  {
+    "level": 7,
+    "pointsToNextLevel": 22,
+    "nextLevelPointsToNextLevel": 22,
+    "previousLevelPointsToNextLevel": 22,
+    "isFork": false,
+    "isRomantic": true,
+    "questions": [
+      {
+        "text": "Somewhere far away, where no one knows who you are?",
+        "answers": [
+          { "text": "Yes.", "points": 0, "isFork": false },
+          { "text": "No.", "points": 0, "isFork": false }
+        ]
+      },
+      {
+        "text": "Talking to you has become something of an outlet for me. Heh, I'm sure you're sick of it by now.",
+        "answers": [
+          { "text": "Vent all you want.", "points": 5, "isFork": false },
+          { "text": "This isn't like you.", "points": 5, "isFork": false }
+        ]
+      },
+      {
+        "text": "Ah... Keep in mind, this is a what-if scenario.",
+        "answers": [
+          { "text": "That's up to you.", "points": 0, "isFork": true },
+          { "text": "It's not meant to be.", "points": 0, "isFork": false }
+        ]
+      },
+      {
+        "text": "How dare you say that!?",
+        "answers": [
+          { "text": "Calm down, Mitsuru", "points": 0, "isFork": false },
+          { "text": "Don't insult her father!", "points": 15, "isFork": false }
+        ]
+      },
+      {
+        "text": "Please excuse me.",
+        "answers": [
+          { "text": "Don't give in.", "points": 15, "isFork": false },
+          { "text": "You're sure about this?", "points": 5, "isFork": false }
+        ]
+      },
+      {
+        "text": "But... when he mentioned my father, and you... I couldn't help myself.",
+        "answers": [
+          { "text": "Don't sweat it.", "points": 0, "isFork": false },
+          { "text": "You were awesome.", "points": 15, "isFork": false }
+        ]
+      }
+    ]
+  },
+  {
+    "level": 8,
+    "pointsToNextLevel": 22,
+    "nextLevelPointsToNextLevel": 22,
+    "previousLevelPointsToNextLevel": 22,
+    "isFork": false,
+    "isRomantic": false,
+    "questions": [
+      {
+        "text": "Um... I know what you're thinking.",
+        "answers": [
+          { "text": "This room is... Wow.", "points": 0, "isFork": false },
+          { "text": "No fair.", "points": 0, "isFork": false }
+        ]
+      },
+      {
+        "text": "It's been a much-needed reminder that i'm not alone.",
+        "answers": [
+          { "text": "That's a relief.", "points": 15, "isFork": false },
+          { "text": "Never let go of that.", "points": 0, "isFork": false },
+          { "text": "This is your strength.", "points": 0, "isFork": false }
+        ]
+      }
+    ]
+  },
+  {
+    "level": 8,
+    "pointsToNextLevel": 22,
+    "nextLevelPointsToNextLevel": 22,
+    "previousLevelPointsToNextLevel": 22,
+    "isFork": false,
+    "isRomantic": true,
+    "questions": [
+      {
+        "text": "I am so sorry about what happened last time.",
+        "answers": [
+          { "text": "What happened?", "points": 0, "isFork": false },
+          { "text": "Don't worry about it.", "points": 0, "isFork": false },
+          { "text": "It made me happy.", "points": 15, "isFork": false }
+        ]
+      },
+      {
+        "text": "I just didn't think I'd end up shouting them in public like that.",
+        "answers": [
+          { "text": "Talk about bold.", "points": 0, "isFork": false },
+          { "text": "Your feelings?", "points": 0, "isFork": false }
+        ]
+      },
+      {
+        "text": "...I feel like I'm going to die of embarassment.",
+        "answers": [
+          { "text": "I love you too.", "points": 15, "isFork": false },
+          { "text": "I'm sorry but...", "points": 0, "isFork": false }
+        ]
+      },
+      {
+        "text": "I've been thinking about this for a while now, but the way you address me...",
+        "answers": [
+          { "text": "Mitsuru?", "points": 0, "isFork": false },
+          { "text": "What about it?", "points": 0, "isFork": false }
+        ]
+      }
+    ]
+  },
+  {
+    "level": 9,
+    "pointsToNextLevel": 22,
+    "nextLevelPointsToNextLevel": 0,
+    "previousLevelPointsToNextLevel": 22,
+    "isFork": false,
+    "isRomantic": false,
+    "questions": [
+      {
+        "text": "The battery and tire pressue look good... And I've already changed the oil, so that's fine.",
+        "answers": [
+          { "text": "Impressive.", "points": 5, "isFork": false },
+          { "text": "Looks like fun.", "points": 5, "isFork": false }
+        ]
+      },
+      {
+        "text": "When this is all over, let's take this motorcycle and go on a trip somewhere together.",
+        "answers": [
+          { "text": "Great idea.", "points": 10, "isFork": false },
+          { "text": "If i feel like it.", "points": 0, "isFork": false },
+          { "text": "I don't have a license.", "points": 0, "isFork": false }
+        ]
+      }
+    ]
+  },
+  {
+    "level": 9,
+    "pointsToNextLevel": 22,
+    "nextLevelPointsToNextLevel": 0,
+    "previousLevelPointsToNextLevel": 22,
+    "isFork": false,
+    "isRomantic": true,
+    "questions": [
+      {
+        "text": "The battery and tire pressue look good... And I've already changed the oil, so that's fine.",
+        "answers": [
+          { "text": "Impressive.", "points": 5, "isFork": false },
+          { "text": "Looks like fun.", "points": 5, "isFork": false }
+        ]
+      }
+    ]
+  },
+  {
+    "level": 10,
+    "pointsToNextLevel": 0,
+    "nextLevelPointsToNextLevel": 0,
+    "previousLevelPointsToNextLevel": 22,
+    "isRomantic": false,
+    "isFork": false,
+    "questions": []
+  }
+]

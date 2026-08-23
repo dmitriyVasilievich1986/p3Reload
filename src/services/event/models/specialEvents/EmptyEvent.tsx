@@ -1,3 +1,5 @@
+import { cloneElement, isValidElement, type ReactElement } from 'react';
+
 import { Card, type CardProps } from '@components/card';
 import { TextRow } from '@components/row';
 import { BaseEvent } from '@services/event/base';
@@ -6,7 +8,6 @@ import { SpecialEventsNames, type SpecialEventsNamesType } from './types';
 
 import type { IsAvailableProps } from '@services/availability/types';
 import type { Stats } from '@services/stats';
-import { cloneElement, isValidElement, type ReactElement } from 'react';
 
 export class EmptyEvent extends BaseEvent {
   static readonly name: SpecialEventsNamesType = SpecialEventsNames.Empty;

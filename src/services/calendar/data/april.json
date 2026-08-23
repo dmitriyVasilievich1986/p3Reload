@@ -418,6 +418,361 @@
           "isChangeable": false,
           "skipCheck": false
         }
+      },
+      {
+        "name": "GameParadeCourageEvent",
+        "props": {
+          "time": "Day",
+          "isChangeable": true,
+          "skipCheck": false
+        }
+      },
+      {
+        "name": "GameParadeCourageEvent",
+        "props": {
+          "time": "Evening",
+          "isChangeable": true,
+          "skipCheck": false
+        }
+      }
+    ]
+  },
+  {
+    "date": "2009-04-22",
+    "events": [
+      {
+        "name": "Magician",
+        "props": {
+          "time": "Day",
+          "isChangeable": false,
+          "skipCheck": true
+        }
+      },
+      {
+        "name": "TartarusEvent",
+        "props": {
+          "time": "Evening",
+          "isChangeable": true,
+          "skipCheck": false,
+          "rows": [
+            {
+              "name": "CheckboxRow",
+              "props": { "text": "Have at least ¥27,080" }
+            },
+            {
+              "name": "CheckboxRow",
+              "props": { "text": "Be at least level 8" }
+            },
+            {
+              "name": "CheckboxRow",
+              "props": { "text": "Have Hermit card" }
+            }
+          ]
+        }
+      }
+    ]
+  },
+  {
+    "date": "2009-04-23",
+    "events": [
+      {
+        "name": "EdogawaMedicineEvent",
+        "props": {
+          "time": "Day Free Time",
+          "isChangeable": false,
+          "skipCheck": false
+        }
+      },
+      {
+        "name": "Chariot",
+        "props": {
+          "time": "Day",
+          "isChangeable": true,
+          "skipCheck": false
+        }
+      },
+      {
+        "name": "GameParadeCharmEvent",
+        "props": {
+          "time": "Evening",
+          "isChangeable": true,
+          "skipCheck": false
+        }
+      }
+    ]
+  },
+  {
+    "date": "2009-04-24",
+    "events": [
+      {
+        "name": "Chariot",
+        "props": {
+          "time": "Day",
+          "isChangeable": true,
+          "skipCheck": false
+        }
+      },
+      {
+        "name": "GameParadeCourageEvent",
+        "props": {
+          "time": "Evening",
+          "isChangeable": true,
+          "skipCheck": false
+        }
+      }
+    ]
+  },
+  {
+    "date": "2009-04-25",
+    "events": [
+      {
+        "name": "TextEvent",
+        "props": {
+          "isTall": false,
+          "time": "Day Free Time",
+          "isChangeable": false,
+          "skipCheck": true,
+          "header": "Hierophant[Prerequisite]",
+          "rows": [
+            {
+              "name": "LabelRow",
+              "props": {
+                "label": "Name:",
+                "text": "Bunkichi and Mitsuko"
+              }
+            },
+            {
+              "name": "LabelRow",
+              "props": {
+                "label": "Place:",
+                "text": "Bookworms Used Books"
+              }
+            },
+            {
+              "name": "CheckboxRow",
+              "props": { "text": "Enter Bookworms bookstore to talk to them." }
+            },
+            {
+              "name": "CheckboxRow",
+              "props": {
+                "text": "Retrieve a Persimmon Leaf from Gekkoukan High School, Corridor."
+              }
+            }
+          ]
+        }
+      },
+      {
+        "name": "Strength",
+        "props": {
+          "time": "Day",
+          "isChangeable": true,
+          "skipCheck": false
+        }
+      },
+      {
+        "name": "GameParadeAcademicsEvent",
+        "props": {
+          "time": "Evening",
+          "isChangeable": true,
+          "skipCheck": false
+        }
+      }
+    ]
+  },
+  {
+    "date": "2009-04-26",
+    "events": [
+      {
+        "name": "Hierophant",
+        "props": {
+          "time": "Day",
+          "isChangeable": true,
+          "skipCheck": false
+        }
+      },
+      {
+        "name": "WakatsuKitchenEvent",
+        "props": {
+          "time": "Evening",
+          "isChangeable": true,
+          "skipCheck": false
+        }
+      }
+    ]
+  },
+  {
+    "date": "2009-04-27",
+    "events": [
+      {
+        "name": "SchoolQuestionsEvent",
+        "props": {
+          "isTall": false,
+          "time": "Morning",
+          "isChangeable": false,
+          "skipCheck": true,
+          "questions": [
+            {
+              "text": "Do you know which one's not an algebraic spiral or whatever?",
+              "answers": [
+                { "text": "A.", "points": 15 },
+                { "text": "B.", "points": 0 },
+                { "text": "C.", "points": 0 },
+                { "text": "D.", "points": 0 }
+              ]
+            }
+          ]
+        }
+      },
+      {
+        "name": "Emperor",
+        "props": {
+          "time": "Day",
+          "isChangeable": true,
+          "skipCheck": false
+        }
+      },
+      {
+        "name": "GameParadeCharmEvent",
+        "props": {
+          "time": "Evening",
+          "isChangeable": true,
+          "skipCheck": false
+        }
+      }
+    ]
+  },
+  {
+    "date": "2009-04-28",
+    "events": [
+      {
+        "name": "TextEvent",
+        "props": {
+          "isTall": false,
+          "time": "Day Free Time",
+          "isChangeable": false,
+          "skipCheck": true,
+          "header": "Justice[Prerequisite]",
+          "rows": [
+            {
+              "name": "LabelRow",
+              "props": {
+                "label": "Name:",
+                "text": "Chihiro Fushimi"
+              }
+            },
+            {
+              "name": "LabelRow",
+              "props": {
+                "label": "Place:",
+                "text": "2nd Floor Hallway"
+              }
+            },
+            {
+              "name": "CheckboxRow",
+              "props": { "text": "Talk to Chihiro." }
+            },
+            {
+              "name": "CheckboxRow",
+              "props": { "text": "Choose \"I just wanted to talk...\"" }
+            }
+          ]
+        }
+      },
+      {
+        "name": "Magician",
+        "props": {
+          "time": "Day",
+          "isChangeable": true,
+          "skipCheck": false
+        }
+      },
+      {
+        "name": "GameParadeCourageEvent",
+        "props": {
+          "time": "Evening",
+          "isChangeable": true,
+          "skipCheck": false
+        }
+      }
+    ]
+  },
+  {
+    "date": "2009-04-29",
+    "events": [
+      {
+        "name": "Hermit",
+        "props": {
+          "time": "Day",
+          "isChangeable": true,
+          "skipCheck": false
+        }
+      },
+      {
+        "name": "GameParadeAcademicsEvent",
+        "props": {
+          "time": "Evening",
+          "isChangeable": true,
+          "skipCheck": false
+        }
+      }
+    ]
+  },
+  {
+    "date": "2009-04-30",
+    "events": [
+      {
+        "name": "StayAwakeAcademicsEvent",
+        "props": {
+          "time": "Morning",
+          "isChangeable": true,
+          "skipCheck": false
+        }
+      },
+      {
+        "name": "TextEvent",
+        "props": {
+          "isTall": false,
+          "time": "Day Free Time",
+          "isChangeable": false,
+          "skipCheck": true,
+          "header": "Justice[Prerequisite]",
+          "rows": [
+            {
+              "name": "LabelRow",
+              "props": {
+                "label": "Name:",
+                "text": "Chihiro Fushimi"
+              }
+            },
+            {
+              "name": "LabelRow",
+              "props": {
+                "label": "Place:",
+                "text": "2nd Floor Hallway"
+              }
+            },
+            {
+              "name": "CheckboxRow",
+              "props": { "text": "Talk to Chihiro." }
+            }
+          ]
+        }
+      },
+      {
+        "name": "Magician",
+        "props": {
+          "time": "Day",
+          "isChangeable": true,
+          "skipCheck": false
+        }
+      },
+      {
+        "name": "GameParadeCharmEvent",
+        "props": {
+          "time": "Evening",
+          "isChangeable": true,
+          "skipCheck": false
+        }
       }
     ]
   }

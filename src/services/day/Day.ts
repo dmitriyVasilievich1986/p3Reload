@@ -1,17 +1,18 @@
 import dayjs from 'dayjs';
 import _ from 'lodash';
 
-import { DatesFormat } from '@constants/dates';
+import { DatesFormat, FullMoonDays, ExamDays, DayOffDays } from '@constants/dates';
+import { DayOfWeek, DayOfWeekPosition } from '@constants/dayOfWeek';
 import { Times, type TimesType } from '@constants/times';
 import { BaseEvent } from '@services/event/base';
 import { eventFactory } from '@services/event/factory';
+import { EmptyEvent } from '@services/event/models/specialEvents';
 import { Stats } from '@services/stats';
 
 import type { DayProps, DaySerializedType } from './types';
 import type { IsAvailableProps } from '@services/availability/types';
 import type { EventNamesType } from '@services/event/types';
 import type { Dayjs } from 'dayjs';
-import { FullMoonDays, ExamDays, DayOffDays } from '@constants/dates';
 
 /**
  * A single calendar day of scheduled events and character stats.
@@ -95,16 +96,42 @@ export class Day {
     });
   }
 
-  /**
-   * Rebuilds a {@link Day} from a {@link DaySerializedType} payload.
-   *
-   * Hydrates events through {@link Day.processEvents} and seeds empty
-   * start/end {@link Stats}; callers that need scored stats should run
-   * {@link Day.calculateStats} afterward.
-   *
-   * @param data - Serialized date string and event payloads.
-   * @returns A new {@link Day} for the given date and events.
-   */
+  // static deserialize(props: {data: DaySerializedType, stats?: Stats, isAvailableProps: IsAvailableProps, throwAnErrorIfNotAvailable?: boolean, throwAnErrorIfMultipleEvents?: boolean}): Day {
+  //   let events = this.processEvents(props.data.events);
+  //   events = this.sortEvents(events);
+  //   const startingStats = props.stats || new Stats();
+  //   let stats_ = startingStats;
+  //   const finalEvents: BaseEvent[] = [];
+  //   const seenTimes = new Set<TimesType>();
+
+  //   events.forEach((event) => {
+  //     const isAvailable = event.isAvailable({...props.isAvailableProps, event, time: event.time, stats: stats_});
+  //     if (!event.skipCheck && !isAvailable) {
+  //       if(props.throwAnErrorIfNotAvailable) {
+  //         throw new Error(`Event ${(event.constructor as typeof BaseEvent).name} is not available at this time.`);
+  //       }
+  //       console.warn(`Event ${(event.constructor as typeof BaseEvent).name} is not available at this time.`);
+  //     }
+  //     if (seenTimes.has(event.time)) {
+  //       if(props.throwAnErrorIfMultipleEvents) {
+  //         throw new Error(`Multiple events found at time ${event.time}.`);
+  //       }
+  //       console.warn(`Multiple events found at time ${event.time}.`);
+  //     }
+  //     seenTimes.add(event.time);
+  //     event.stats = stats_;
+  //     stats_ = event.calculateStats({ ...props.isAvailableProps, stats: stats_, event, time: event.time });
+  //     finalEvents.push(event);
+  //   });
+
+  //   return new Day({
+  //     statsAtStartOfDay: startingStats,
+  //     statsAtEndOfDay: stats_,
+  //     date: dayjs(props.data.date),
+  //     events: finalEvents,
+  //   });
+  // }
+
   static deserialize(data: DaySerializedType): Day {
     const events = this.processEvents(data.events);
     return new Day({
@@ -187,27 +214,26 @@ export class Day {
   /**
    * Applies each event's stat changes in order, seeding from `stats` or a fresh {@link Stats}.
    *
-   * Mutates each event's {@link BaseEvent.stats} to the stats in effect when that
-   * event runs, then returns the starting and ending totals.
-   *
-   * @param events - Ordered events whose `calculateStats` methods to chain.
+   * @param day - Day whose events to score; its date carries over to the result.
    * @param props - Context passed through to each event's `calculateStats`.
    * @param stats - Optional starting stats; defaults to a new empty {@link Stats}.
-   * @returns The input events plus starting and ending stats.
+   * @param throwAnErrorIfNotAvailable - When true, throw on unavailable events instead of warning.
+   * @param throwAnErrorIfMultipleEvents - When true, throw on duplicate times instead of warning.
+   * @returns A new {@link Day} with the scored start/end stats and kept events.
    */
   static calculateStats(
-    events: BaseEvent[],
+    day: Day,
     props: IsAvailableProps,
     stats?: Stats,
     throwAnErrorIfNotAvailable: boolean = false,
     throwAnErrorIfMultipleEvents: boolean = false
-  ): { events: BaseEvent[]; startingStats: Stats; endingStats: Stats } {
+  ): Day {
     const startingStats = stats || new Stats();
     let stats_ = startingStats;
     const payload: BaseEvent[] = [];
     const seenTimes = new Set<TimesType>();
 
-    events.forEach((event) => {
+    day.events.forEach((event) => {
       if (
         !event.skipCheck &&
         !event.isAvailable({ ...props, event, time: event.time, stats: stats_ })
@@ -219,6 +245,9 @@ export class Day {
         }
         console.warn(
           `Event ${(event.constructor as typeof BaseEvent).name} is not available at this time.`
+        );
+        payload.push(
+          new EmptyEvent({ time: event.time, stats: stats_, skipCheck: false, isChangeable: true })
         );
         return;
       }
@@ -236,7 +265,12 @@ export class Day {
       payload.push(event);
     });
 
-    return { events: payload, startingStats, endingStats: stats_ };
+    return new Day({
+      statsAtStartOfDay: startingStats,
+      statsAtEndOfDay: stats_,
+      date: day.date,
+      events: payload,
+    });
   }
 
   /**
@@ -273,7 +307,6 @@ export class Day {
     this.events = (this.constructor as typeof Day).replaceEvent(this.events, time, newEvent);
   }
 
-  
   /**
    * Checks if the day is a full moon.
    *
@@ -288,6 +321,9 @@ export class Day {
   }
 
   isDayOff(this: Day): boolean {
-    return _.some(DayOffDays, (day) => day.isSame(this.date, 'day'));
+    return (
+      this.date.day() === DayOfWeekPosition[DayOfWeek.Sunday] ||
+      _.some(DayOffDays, (day) => day.isSame(this.date, 'day'))
+    );
   }
 }

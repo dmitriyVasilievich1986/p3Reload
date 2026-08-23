@@ -31,7 +31,8 @@ export function App() {
 
   useEffect(() => {
     if (calendar === null) {
-      setCalendar(Calendar.deserialize(AprilData as DaySerializedType[], false, false));
+      const calendar = Calendar.deserialize(AprilData as DaySerializedType[]);
+      setCalendar(Calendar.calculateStats(calendar, undefined, false, false));
     }
   }, [calendar, setCalendar]);
 

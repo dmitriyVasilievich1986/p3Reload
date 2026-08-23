@@ -37,7 +37,10 @@ export class IsLevelUpAvailable extends AvailabilityBase {
    * @returns {boolean} True when readiness matches `isLevelUpAvailable`.
    */
   isAvailable(props: IsAvailableProps): boolean {
+    const level =
+      props.stats.socialLinkStats[this.name as ArcanasType].currentSocialLinkLevel.level;
     const payload = props.stats.socialLinkStats.getIsNewLevel({ arcana: this.name });
-    return this.isLevelUpAvailable ? payload : !payload;
+    const isLevelUpAvailable = payload && level < 10;
+    return this.isLevelUpAvailable ? isLevelUpAvailable : !isLevelUpAvailable;
   }
 }

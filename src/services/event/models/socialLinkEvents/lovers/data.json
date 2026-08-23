@@ -1,0 +1,364 @@
+[
+  {
+    "level": 0,
+    "pointsToNextLevel": 0,
+    "nextLevelPointsToNextLevel": 0,
+    "previousLevelPointsToNextLevel": 0,
+    "isFork": false,
+    "isRomantic": false,
+    "questions": []
+  },
+  {
+    "level": 1,
+    "pointsToNextLevel": 0,
+    "nextLevelPointsToNextLevel": 15,
+    "previousLevelPointsToNextLevel": 0,
+    "isFork": false,
+    "isRomantic": false,
+    "questions": [
+      {
+        "text": "I think I'll go with the gerberas. What color do you think should I get?",
+        "answers": [
+          { "text": "Cute pink.", "points": 15, "isFork": false },
+          { "text": "Pure white.", "points": 0, "isFork": false },
+          { "text": "Bright red.", "points": 0, "isFork": false },
+          { "text": "What's a gerbera?", "points": 0, "isFork": false }
+        ]
+      },
+      {
+        "text": "Oh wait, you've never seen my room, have you? Well then, why am I even asking you?",
+        "answers": [
+          { "text": "That's mean.", "points": 5, "isFork": false },
+          { "text": "Invite me over, then.", "points": 0, "isFork": false }
+        ]
+      }
+    ]
+  },
+  {
+    "level": 2,
+    "pointsToNextLevel": 15,
+    "nextLevelPointsToNextLevel": 22,
+    "previousLevelPointsToNextLevel": 0,
+    "isFork": false,
+    "isRomantic": false,
+    "questions": [
+      {
+        "text": "I guess my own mom's no different.",
+        "answers": [
+          { "text": "What makes you say that?", "points": 0, "isFork": false },
+          { "text": "......", "points": 0, "isFork": false }
+        ]
+      }
+    ]
+  },
+  {
+    "level": 3,
+    "pointsToNextLevel": 22,
+    "nextLevelPointsToNextLevel": 0,
+    "previousLevelPointsToNextLevel": 15,
+    "isFork": false,
+    "isRomantic": false,
+    "questions": [
+      {
+        "text": "Sorry.",
+        "answers": [
+          { "text": "Who was that?", "points": 0, "isFork": false },
+          { "text": "What was that about?", "points": 0, "isFork": false },
+          { "text": "Are you okay?", "points": 15, "isFork": false }
+        ]
+      }
+    ]
+  },
+  {
+    "level": 4,
+    "pointsToNextLevel": 0,
+    "nextLevelPointsToNextLevel": 35,
+    "previousLevelPointsToNextLevel": 22,
+    "isFork": false,
+    "isRomantic": false,
+    "questions": [
+      {
+        "text": "What should I do?",
+        "answers": [
+          { "text": "Look around", "points": 0, "isFork": false },
+          { "text": "Wait here", "points": 0, "isFork": false }
+        ]
+      },
+      {
+        "text": "Did something happen...?",
+        "answers": [
+          { "text": "Go look for her", "points": 0, "isFork": false },
+          { "text": "Wait a bit longer", "points": 0, "isFork": false }
+        ]
+      },
+      {
+        "text": "......",
+        "answers": [
+          { "text": "I'll take you on.", "points": 0, "isFork": false },
+          { "text": "I'll call the police.", "points": 0, "isFork": false },
+          { "text": "What's going on?", "points": 0, "isFork": false }
+        ]
+      },
+      {
+        "text": "Huh? Who the hell are you?",
+        "answers": [
+          { "text": "Her boyfriend.", "points": 0, "isFork": false },
+          { "text": "Her friend.", "points": 0, "isFork": true },
+          { "text": "Just a passerby.", "points": 0, "isFork": false }
+        ]
+      },
+      {
+        "text": "I didn't need your help!",
+        "answers": [
+          { "text": "I'm sorry.", "points": 15, "isFork": false },
+          {
+            "text": "It's okay to rely on others.",
+            "points": 0,
+            "isFork": false
+          },
+          { "text": "You're a girl, so...", "points": 0, "isFork": false }
+        ]
+      }
+    ]
+  },
+  {
+    "level": 4,
+    "pointsToNextLevel": 0,
+    "nextLevelPointsToNextLevel": 35,
+    "previousLevelPointsToNextLevel": 22,
+    "isFork": false,
+    "isRomantic": true,
+    "questions": [
+      {
+        "text": "What should I do?",
+        "answers": [
+          { "text": "Look around", "points": 0, "isFork": false },
+          { "text": "Wait here", "points": 0, "isFork": false }
+        ]
+      },
+      {
+        "text": "Did something happen...?",
+        "answers": [
+          { "text": "Go look for her", "points": 0, "isFork": false },
+          { "text": "Wait a bit longer", "points": 0, "isFork": false }
+        ]
+      },
+      {
+        "text": "......",
+        "answers": [
+          { "text": "I'll take you on.", "points": 0, "isFork": false },
+          { "text": "I'll call the police.", "points": 0, "isFork": false },
+          { "text": "What's going on?", "points": 0, "isFork": false }
+        ]
+      },
+      {
+        "text": "Huh? Who the hell are you?",
+        "answers": [
+          { "text": "Her boyfriend.", "points": 0, "isFork": true },
+          { "text": "Her friend.", "points": 0, "isFork": false },
+          { "text": "Just a passerby.", "points": 0, "isFork": false }
+        ]
+      },
+      {
+        "text": "I didn't need your help!",
+        "answers": [
+          { "text": "I'm sorry.", "points": 15, "isFork": false },
+          {
+            "text": "It's okay to rely on others.",
+            "points": 0,
+            "isFork": false
+          },
+          { "text": "You're a girl, so...", "points": 0, "isFork": false }
+        ]
+      }
+    ]
+  },
+  {
+    "level": 5,
+    "pointsToNextLevel": 35,
+    "nextLevelPointsToNextLevel": 35,
+    "previousLevelPointsToNextLevel": 0,
+    "isFork": false,
+    "isRomantic": false,
+    "questions": [
+      {
+        "text": "Thanks for your help back then. I really appreciate it.",
+        "answers": [
+          { "text": "You're quite welcome.", "points": 5, "isFork": false },
+          { "text": "Anytime.", "points": 15, "isFork": false },
+          { "text": "Thank you, too.", "points": 5, "isFork": false }
+        ]
+      },
+      {
+        "text": "Wouldn't that be annoying, ${mainCharName}-kun? Y'know, if people assumed we were dating...>",
+        "answers": [
+          { "text": "I wouldn't mind.", "points": 5, "isFork": false },
+          { "text": "Yeah...", "points": 0, "isFork": false }
+        ]
+      }
+    ]
+  },
+  {
+    "level": 6,
+    "pointsToNextLevel": 35,
+    "nextLevelPointsToNextLevel": 40,
+    "previousLevelPointsToNextLevel": 35,
+    "isFork": false,
+    "isRomantic": false,
+    "questions": [
+      {
+        "text": "We could have lunch outdoors. Maybe we'll even see a deer or something. Whaddya think?>",
+        "answers": [
+          { "text": "Sounds good.", "points": 15, "isFork": false },
+          { "text": "Let's go with everyone.", "points": 5, "isFork": false },
+          {
+            "text": "Let's go just the two of us.",
+            "points": 15,
+            "isFork": false
+          },
+          { "text": "No thanks.", "points": 0, "isFork": false }
+        ]
+      }
+    ]
+  },
+  {
+    "level": 7,
+    "pointsToNextLevel": 40,
+    "nextLevelPointsToNextLevel": 55,
+    "previousLevelPointsToNextLevel": 35,
+    "isFork": false,
+    "isRomantic": false,
+    "questions": [
+      {
+        "text": "I know! Why don't you come help me pick something out, ${mainCharName}-kun?>",
+        "answers": [
+          { "text": "Alright.", "points": 15, "isFork": false },
+          { "text": "Im too lazy.", "points": 0, "isFork": false }
+        ]
+      },
+      {
+        "text": "I told her we could meet up and talk about her remarriage. I'm nervous just thinking about it...>",
+        "answers": [
+          { "text": "Will you let her do it?", "points": 0, "isFork": false },
+          { "text": "Do you want to see her?", "points": 0, "isFork": false }
+        ]
+      }
+    ]
+  },
+  {
+    "level": 8,
+    "pointsToNextLevel": 55,
+    "nextLevelPointsToNextLevel": 55,
+    "previousLevelPointsToNextLevel": 40,
+    "isFork": false,
+    "isRomantic": false,
+    "questions": [
+      {
+        "text": "......",
+        "answers": [
+          { "text": "Hello?", "points": 0, "isFork": false },
+          { "text": "....", "points": 15, "isFork": false },
+          {
+            "text": "If it's nothing, I'm leaving.",
+            "points": 0,
+            "isFork": false
+          }
+        ]
+      },
+      {
+        "text": "What do you really think of me?",
+        "answers": [
+          { "text": "I love you.", "points": 0, "isFork": false },
+          { "text": "You're a precious friend.", "points": 0, "isFork": true }
+        ]
+      }
+    ]
+  },
+  {
+    "level": 8,
+    "pointsToNextLevel": 55,
+    "nextLevelPointsToNextLevel": 55,
+    "previousLevelPointsToNextLevel": 40,
+    "isFork": false,
+    "isRomantic": true,
+    "questions": [
+      {
+        "text": "......",
+        "answers": [
+          { "text": "Hello?", "points": 0, "isFork": false },
+          { "text": "....", "points": 15, "isFork": false },
+          {
+            "text": "If it's nothing, I'm leaving.",
+            "points": 0,
+            "isFork": false
+          }
+        ]
+      },
+      {
+        "text": "What do you really think of me?",
+        "answers": [
+          { "text": "I love you.", "points": 0, "isFork": true },
+          { "text": "You're a precious friend.", "points": 0, "isFork": false }
+        ]
+      }
+    ]
+  },
+  {
+    "level": 9,
+    "pointsToNextLevel": 55,
+    "nextLevelPointsToNextLevel": 0,
+    "previousLevelPointsToNextLevel": 55,
+    "isFork": false,
+    "isRomantic": false,
+    "questions": [
+      {
+        "text": "He was with his mother today, huh...>",
+        "answers": [
+          { "text": "That's a relief.", "points": 5, "isFork": false },
+          { "text": "What's wrong?", "points": 0, "isFork": false }
+        ]
+      },
+      {
+        "text": "Gee, what should I do? If only someone would come with me...>",
+        "answers": [
+          { "text": "I'll go.", "points": 10, "isFork": false },
+          { "text": "Good luck.", "points": 5, "isFork": false },
+          { "text": "What's the magic word?", "points": 5, "isFork": false }
+        ]
+      },
+      {
+        "text": "So I was just thinking, maybe it could help you in some way too.",
+        "answers": [
+          { "text": "Can I really have this?", "points": 0, "isFork": false },
+          { "text": "That's intense.", "points": 0, "isFork": false }
+        ]
+      }
+    ]
+  },
+  {
+    "level": 9,
+    "pointsToNextLevel": 55,
+    "nextLevelPointsToNextLevel": 0,
+    "previousLevelPointsToNextLevel": 55,
+    "isFork": false,
+    "isRomantic": true,
+    "questions": [
+      {
+        "text": "Wait, I didn't mean it like that! Don't get the wrong idea, okay!?",
+        "answers": [
+          { "text": "Too late.", "points": 15, "isFork": false },
+          { "text": "I didn't hear anything.", "points": 5, "isFork": false }
+        ]
+      }
+    ]
+  },
+  {
+    "level": 10,
+    "pointsToNextLevel": 0,
+    "nextLevelPointsToNextLevel": 0,
+    "previousLevelPointsToNextLevel": 55,
+    "isRomantic": false,
+    "isFork": false,
+    "questions": []
+  }
+]

@@ -1,0 +1,1 @@
+export { ExamAvailability } from './ExamAvailability';

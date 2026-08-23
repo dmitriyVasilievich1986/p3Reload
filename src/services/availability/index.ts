@@ -16,4 +16,6 @@ export {
   IsLevelUpAvailable,
   DayOfWeekAvailability,
   DayOffAvailability,
+  ExamAvailability,
+  FalseAvailability,
 } from './models';
