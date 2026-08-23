@@ -7,3 +7,9 @@ export { Times, type TimesType } from './times';
 export { DatesFormat, FullMoonDays, ExamDays, DayOffDays } from './dates';
 export { Arcanas, type ArcanasType } from './arcanas';
 export { Places, Districts } from './places';
+export {
+  SettingsParams,
+  type SettingsParam,
+  DEFAULT_MAIN_CHAR_NAME,
+  DEFAULT_SHOW_SPOILERS,
+} from './settings';

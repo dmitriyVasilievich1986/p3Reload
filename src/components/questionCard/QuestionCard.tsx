@@ -1,10 +1,11 @@
 import classNames from 'classnames';
 import { useSearchParams } from 'react-router';
 
+import { DEFAULT_MAIN_CHAR_NAME, SettingsParams } from '@constants/settings';
+
 import { Tooltip, TooltipPositions } from '../tooltip';
 import { AnswerPoints, type AnswerPoint, type QuestionCardProps } from './types';
 
-const DEFAULT_MAIN_CHAR_NAME = 'Protagonist';
 const MAIN_CHAR_NAME_PLACEHOLDER = '${mainCharName}';
 
 const answerPointClasses: Record<AnswerPoint, string> = {
@@ -36,7 +37,7 @@ function formatMainCharName(text: string, mainCharName: string): string {
  */
 export function QuestionCard({ question, answers }: QuestionCardProps) {
   const [searchParams] = useSearchParams();
-  const mainCharName = searchParams.get('mainCharName') ?? DEFAULT_MAIN_CHAR_NAME;
+  const mainCharName = searchParams.get(SettingsParams.mainCharName) ?? DEFAULT_MAIN_CHAR_NAME;
 
   const formattedQuestion = formatMainCharName(question, mainCharName);
 
