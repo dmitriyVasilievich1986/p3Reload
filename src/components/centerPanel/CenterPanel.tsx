@@ -161,7 +161,9 @@ export function CenterPanel() {
                 ? cloneElement(node as ReactElement<CardProps>, {
                     onClick: () =>
                       setSelectedEvent(selectedEvent?.getName() === event.getName() ? null : event),
-                    isSelected: selectedEvent?.getName() === event.getName(),
+                    isSelected:
+                      selectedEvent?.getName() === event.getName() &&
+                      selectedEvent.time === event.time,
                   })
                 : node;
 
