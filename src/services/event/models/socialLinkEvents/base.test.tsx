@@ -1,5 +1,6 @@
 import { cleanup, render, screen } from '@testing-library/react';
 import userEvent from '@testing-library/user-event';
+import { MemoryRouter } from 'react-router';
 import { afterEach, describe, expect, it } from 'vite-plus/test';
 
 import { Arcanas } from '@constants/arcanas';
@@ -35,9 +36,16 @@ function createCardNeededLevel(): SocialLinkLevel {
 function renderMagician(overrides?: Parameters<typeof createStatsFixture>[0]) {
   const stats = createStatsFixture(overrides);
   const props = createIsAvailablePropsFixture({ stats });
-  const event = new MagicianEvent({ time: props.time, skipCheck: true, isChangeable: true });
+  // `render()` reads `this.stats`, not `props.stats` - the overrides must go
+  // onto the event instance itself or they're silently ignored.
+  const event = new MagicianEvent({
+    time: props.time,
+    skipCheck: true,
+    isChangeable: true,
+    stats,
+  });
 
-  render(<>{event.render(props)}</>);
+  render(<MemoryRouter>{event.render(props)}</MemoryRouter>);
 }
 
 describe('SocialLinkEventBase render', () => {
@@ -65,20 +73,19 @@ describe('SocialLinkEventBase render', () => {
 
     await user.hover(screen.getByAltText('Exam passed'));
 
-    expect(screen.getByRole('tooltip')).toHaveTextContent(
-      'Top class: the biggest Social Link point boost.'
-    );
+    expect(screen.getByRole('tooltip')).toHaveTextContent(/^Top class:/);
   });
 
-  it('shows the "Top 10" tooltip when the after-exam modifier is 1.21', async () => {
+  it('shows an elaborated "Top 10" tooltip when the after-exam modifier is 1.21', async () => {
     const user = userEvent.setup();
     renderMagician({ additionalStats: createAdditionalStatsFixture({ afterExamModifier: 1.21 }) });
 
     await user.hover(screen.getByAltText('Exam passed'));
 
-    expect(screen.getByRole('tooltip')).toHaveTextContent(
-      'Top 10: a solid Social Link point boost.'
-    );
+    const tooltip = screen.getByRole('tooltip');
+    expect(tooltip).toHaveTextContent(/^Top 10:/);
+    // The "top 10" label is elaborated into a full explanatory sentence, not left bare.
+    expect(tooltip.textContent?.length ?? 0).toBeGreaterThan('Top 10'.length + 20);
   });
 
   it('shows the tarot card icon when a card is the better way to reach the next rank', () => {

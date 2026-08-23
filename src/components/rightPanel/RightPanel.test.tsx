@@ -3,6 +3,8 @@ import userEvent from '@testing-library/user-event';
 import { MemoryRouter, useSearchParams } from 'react-router';
 import { afterEach, beforeEach, describe, expect, it } from 'vite-plus/test';
 
+import searchIcon from '@assets/search.svg';
+import trashBinIcon from '@assets/trash-bin.svg';
 import { Times } from '@constants/times';
 import { Calendar } from '@services/calendar';
 import { StayAwakeAcademicsEvent } from '@services/event/models/characterStatsModifyEvents/academic';
@@ -151,7 +153,7 @@ describe('RightPanel', () => {
     const search = screen.getByRole('textbox', { name: 'Search events' });
     expect(search).toHaveAttribute('placeholder', 'Search events');
     const icons = screen.getAllByAltText('');
-    expect(icons.some((icon) => icon.getAttribute('src')?.includes('search'))).toBe(true);
+    expect(icons.some((icon) => icon.getAttribute('src') === searchIcon)).toBe(true);
   });
 
   it('filters tab events that match the search query', async () => {
@@ -224,7 +226,7 @@ describe('RightPanel', () => {
 
     const clearButton = screen.getByRole('button', { name: 'Clear search' });
     const icon = clearButton.querySelector('img');
-    expect(icon).toHaveAttribute('src', expect.stringContaining('trash-bin'));
+    expect(icon).toHaveAttribute('src', trashBinIcon);
   });
 
   it('clears the search query and restores hidden events when clicked', async () => {
