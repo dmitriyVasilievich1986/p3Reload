@@ -11,6 +11,7 @@ import {
   CharacterStatsNames,
   type CharacterStatsProps,
 } from '@services/stats/characterStats';
+import { EpisodesStats, type EpisodesStatsProps } from '@services/stats/episodesStats';
 import { SocialLinkStats } from '@services/stats/socialLinkStats';
 
 import type { IsAvailableProps } from '@services/availability';
@@ -77,6 +78,17 @@ export function createAdditionalStatsFixture(overrides?: AdditionalStatsProps): 
 }
 
 /**
+ * Builds a {@link EpisodesStats} fixture.
+ *
+ * Omitted links keep the {@link EpisodesStats} constructor defaults (level `0`).
+ *
+ * @param overrides - Optional per-link levels.
+ */
+export function createEpisodesStatsFixture(overrides?: EpisodesStatsProps): EpisodesStats {
+  return new EpisodesStats(overrides);
+}
+
+/**
  * Builds a {@link Stats} fixture from the shared stat fixtures.
  *
  * @param overrides - Partial stats merged over the default fixtures.
@@ -86,6 +98,7 @@ export function createStatsFixture(overrides?: StatsProps): Stats {
     characterStats: createCharacterStatsFixture(),
     socialLinkStats: createSocialLinkStatsFixture(),
     additionalStats: createAdditionalStatsFixture(),
+    episodesStats: createEpisodesStatsFixture(),
     ...overrides,
   });
 }
