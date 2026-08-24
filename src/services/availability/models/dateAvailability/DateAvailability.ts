@@ -52,6 +52,13 @@ export class DateAvailability extends AvailabilityBase {
         return props.date.isSame(this.value as Dayjs, 'day');
       case 'neq':
         return !props.date.isSame(this.value as Dayjs, 'day');
+      case 'between': {
+        const [start, end] = this.value as [Dayjs, Dayjs];
+        return (
+          (props.date.isAfter(start, 'day') || props.date.isSame(start, 'day')) &&
+          (props.date.isBefore(end, 'day') || props.date.isSame(end, 'day'))
+        );
+      }
       default:
         throw new Error(`Invalid operator: ${this.operator}`);
     }

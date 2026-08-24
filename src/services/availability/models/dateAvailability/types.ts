@@ -8,6 +8,11 @@ export type DateAvailabilityProps =
   | {
       operator: 'ge' | 'gt' | 'le' | 'lt' | 'eq' | 'neq';
       value: Dayjs;
+    }
+  | {
+      operator: 'between';
+      /** Inclusive `[start, end]` bounds. */
+      value: [Dayjs, Dayjs];
     };
 
 export type Operator = DateAvailabilityProps['operator'];
