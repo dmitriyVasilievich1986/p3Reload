@@ -1,3 +1,5 @@
+import type { CharacterStatsModifierType } from '@services/stats/characterStats/types';
+
 export const TextAligns = {
   left: 'left',
   center: 'center',
@@ -25,4 +27,9 @@ export type TextRowProps = {
   isBold?: boolean;
   /** Horizontal text alignment. Defaults to left. */
   textAlign?: TextAlign;
+};
+
+export type ModifiersRowProps = {
+  /** Stat modifiers to list. Renders nothing when empty. */
+  modifiers: CharacterStatsModifierType[];
 };
