@@ -1,4 +1,5 @@
 import { Arcanas } from '@constants/arcanas';
+import { EpisodeSocialLinkNames } from '@services/stats/episodesStats';
 
 import { CharacterStatsModifyNames } from './models/characterStatsModifyEvents/types';
 import { NaganakiShrineEventsNames } from './models/naganakiShrine/types';
@@ -19,6 +20,7 @@ export const EventNames = {
   ...CharacterStatsModifyNames,
   ...SchoolQuestionEventsNames,
   ...NaganakiShrineEventsNames,
+  ...EpisodeSocialLinkNames,
   ...SpecialEventsNames,
   ...Arcanas,
 } as const;

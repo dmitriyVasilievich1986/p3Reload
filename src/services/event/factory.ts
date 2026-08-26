@@ -1,5 +1,6 @@
 import { BaseEvent } from './base';
 import { CharacterStatsModifyEvents } from './models/characterStatsModifyEvents';
+import { EpisodesEventModels } from './models/episodes';
 import { NaganakiShrineEvents } from './models/naganakiShrine';
 import {
   SchoolQuestionsEvents,
@@ -17,6 +18,7 @@ export const Events = {
   ...SchoolQuestionsEvents,
   ...SocialLinkEvents,
   ...NaganakiShrineEvents,
+  ...EpisodesEventModels,
   [SpecialEventsNames.Tartarus]: TartarusEvent,
   [SpecialEventsNames.Empty]: EmptyEvent,
   [SpecialEventsNames.Text]: TextEvent,
@@ -33,6 +35,9 @@ export function eventFactory(name: EventNamesType, props: Record<string, unknown
   }
   if (name in NaganakiShrineEvents) {
     return new NaganakiShrineEvents[name as keyof typeof NaganakiShrineEvents](props as EventProps);
+  }
+  if (name in EpisodesEventModels) {
+    return new EpisodesEventModels[name as keyof typeof EpisodesEventModels](props as EventProps);
   }
   if (name === SpecialEventsNames.Empty) {
     return new EmptyEvent(props as EventProps);
