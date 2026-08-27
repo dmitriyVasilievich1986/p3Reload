@@ -116,7 +116,7 @@ export function Tabs({
                     'group-focus-visible:max-w-48 group-focus-visible:pr-3 group-focus-visible:opacity-100'
                   )}
                 >
-                  {tab.name.slice(1)}
+                  {tab.name}
                 </span>
               </span>
             </button>
