@@ -8,6 +8,7 @@ import {
   SleepDuringClassCourageEvent,
   CourageStatModifyEvents,
 } from '@services/event/models/characterStatsModifyEvents/courage';
+import { EpisodesEventModels } from '@services/event/models/episodes';
 import { NaganakiShrineEvents } from '@services/event/models/naganakiShrine';
 import { SocialLinkEvents } from '@services/event/models/socialLinkEvents';
 
@@ -40,7 +41,11 @@ export const events: Record<string, RightPanelTab[]> = {
     {
       name: 'Social Link',
       color: 'teal',
-      events: [...Object.values(SocialLinkEvents), ...Object.values(NaganakiShrineEvents)],
+      events: [
+        ...Object.values(SocialLinkEvents),
+        ...Object.values(NaganakiShrineEvents),
+        ...Object.values(EpisodesEventModels),
+      ],
     },
   ],
   [Times.Evening]: [
@@ -62,7 +67,11 @@ export const events: Record<string, RightPanelTab[]> = {
     {
       name: 'Social Link',
       color: 'teal',
-      events: [...Object.values(SocialLinkEvents), ...Object.values(NaganakiShrineEvents)],
+      events: [
+        ...Object.values(SocialLinkEvents),
+        ...Object.values(NaganakiShrineEvents),
+        ...Object.values(EpisodesEventModels),
+      ],
     },
   ],
 };

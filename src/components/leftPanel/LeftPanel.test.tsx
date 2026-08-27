@@ -6,11 +6,13 @@ import { Arcanas } from '@constants/arcanas';
 import {
   createCharacterStatsFixture,
   createDayFixture,
+  createEpisodesStatsFixture,
   createSocialLinkStatsFixture,
   createStatsFixture,
 } from '@services/fixtures';
 import { SocialLinkLevel } from '@services/stats';
 import { CharacterStatsNames } from '@services/stats/characterStats';
+import { EpisodeSocialLinkNames } from '@services/stats/episodesStats';
 import { useMainStore } from '@store/main';
 
 import { LeftPanelTabNames } from './constants';
@@ -287,5 +289,37 @@ describe('LeftPanel', () => {
     await user.hover(within(rowFor('Magician')!).getByText('1'));
 
     expect(within(screen.getByRole('tooltip')).getByText('12 -> 20 pts.')).toBeInTheDocument();
+  });
+
+  it('shows Episodes stats from statsAtEndOfDay with the level in a Badge', async () => {
+    const user = userEvent.setup();
+    const episodesStats = createEpisodesStatsFixture({
+      [EpisodeSocialLinkNames.Iori]: 2,
+      [EpisodeSocialLinkNames.Sanada]: 1,
+    });
+    const day = createDayFixture({
+      statsAtStartOfDay: createStatsFixture({ episodesStats }),
+      statsAtEndOfDay: createStatsFixture({ episodesStats }),
+    });
+    useMainStore.setState({ currentDay: day });
+
+    render(<LeftPanel />);
+
+    await user.click(screen.getByRole('tab', { name: LeftPanelTabNames.Episodes }));
+
+    expect(screen.getByRole('tab', { name: LeftPanelTabNames.Episodes })).toHaveAttribute(
+      'aria-selected',
+      'true'
+    );
+    expect(screen.getByRole('list', { name: 'Episodes stats' })).toBeInTheDocument();
+    expect(screen.queryByRole('list', { name: 'Character stats' })).not.toBeInTheDocument();
+
+    const iori = rowFor(EpisodeSocialLinkNames.Iori);
+    expect(iori).not.toBeNull();
+    expect(within(iori!).getByText('2')).toHaveClass('rounded-full');
+
+    const amada = rowFor(EpisodeSocialLinkNames.Amada);
+    expect(amada).not.toBeNull();
+    expect(within(amada!).getByText('0')).toHaveClass('rounded-full');
   });
 });

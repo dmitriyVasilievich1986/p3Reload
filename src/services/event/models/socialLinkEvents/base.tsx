@@ -192,7 +192,7 @@ export abstract class SocialLinkEventBase extends BaseEvent {
           body={
             <>
               <LabelRow key="Name" label="Name:" text={this.socialLinkName} />
-              <LabelRow key="Distric:" label="District:" text={this.district} />
+              <LabelRow key="District" label="District:" text={this.district} />
               <LabelRow key="Place" label="Place:" text={this.place} />
             </>
           }
@@ -206,7 +206,7 @@ export abstract class SocialLinkEventBase extends BaseEvent {
         body={
           <>
             <LabelRow key="Name" label="Name:" text={this.socialLinkName} />
-            <LabelRow key="Distric:" label="District:" text={this.district} />
+            <LabelRow key="District" label="District:" text={this.district} />
             <LabelRow key="Place" label="Place:" text={this.place} />
           </>
         }

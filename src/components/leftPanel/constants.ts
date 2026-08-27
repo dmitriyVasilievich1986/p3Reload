@@ -6,11 +6,13 @@ import type { TabItem } from '../tabs';
 export const LeftPanelTabNames = {
   Character: 'Character',
   SocialLinks: 'SLinks',
+  Episodes: 'Episodes',
 } as const;
 
 export const LEFT_PANEL_TABS: TabItem[] = [
   { name: LeftPanelTabNames.Character, color: 'green' },
   { name: LeftPanelTabNames.SocialLinks, color: 'gold' },
+  { name: LeftPanelTabNames.Episodes, color: 'blue' },
 ];
 
 export const CHARACTER_STAT_BADGE_COLORS: Record<CharacterStatsNamesType, BadgeColor> = {

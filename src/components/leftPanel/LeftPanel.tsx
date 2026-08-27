@@ -2,6 +2,7 @@ import { useState, type ReactNode } from 'react';
 
 import { Arcanas } from '@constants/arcanas';
 import { CharacterStats, CharacterStatsNames } from '@services/stats/characterStats';
+import { EpisodeSocialLinkNames } from '@services/stats/episodesStats';
 import { useMainStore } from '@store/main';
 
 import { Badge, type BadgeColor } from '../badge';
@@ -51,13 +52,14 @@ export function LeftPanel() {
     return <section aria-label="Left panel" className={sectionClassName} />;
   }
 
-  const { characterStats, socialLinkStats } = currentDay.statsAtEndOfDay;
+  const { characterStats, socialLinkStats, episodesStats } = currentDay.statsAtEndOfDay;
   const { characterStats: previousCharacterStats, socialLinkStats: previousSocialLinkStats } =
     currentDay.statsAtStartOfDay;
   const selectedTab = LEFT_PANEL_TABS.find((tab) => tab.name === selected) ?? LEFT_PANEL_TABS[0];
 
-  const body =
-    selectedTab.name === LeftPanelTabNames.Character ? (
+  let body: ReactNode;
+  if (selectedTab.name === LeftPanelTabNames.Character) {
+    body = (
       <ul className="flex flex-col gap-2" aria-label="Character stats">
         {Object.values(CharacterStatsNames).map((statName) => {
           const currentPoints = characterStats[statName];
@@ -80,7 +82,9 @@ export function LeftPanel() {
           );
         })}
       </ul>
-    ) : (
+    );
+  } else if (selectedTab.name === LeftPanelTabNames.SocialLinks) {
+    body = (
       <ul className="flex flex-col gap-2" aria-label="Social link stats">
         {Object.values(Arcanas).map((arcana) => {
           const { level, currentPoints, currentSocialLinkLevel } = socialLinkStats[arcana];
@@ -103,6 +107,15 @@ export function LeftPanel() {
         })}
       </ul>
     );
+  } else {
+    body = (
+      <ul className="flex flex-col gap-2" aria-label="Episodes stats">
+        {Object.values(EpisodeSocialLinkNames).map((linkName) => (
+          <StatRow key={linkName} level={episodesStats[linkName]} name={linkName} color="blue" />
+        ))}
+      </ul>
+    );
+  }
 
   return (
     <section aria-label="Left panel" className={sectionClassName}>

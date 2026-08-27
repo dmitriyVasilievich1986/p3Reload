@@ -1,7 +1,7 @@
 import { cloneElement, isValidElement, type ReactElement } from 'react';
 
 import { Card, type CardProps } from '@components/card';
-import { LabelRow } from '@components/row';
+import { LabelRow, ModifiersRow } from '@components/row';
 import { BaseEvent } from '@services/event/base';
 import { priceFormatter } from '@utils/priceFormatter';
 
@@ -40,14 +40,7 @@ export abstract class CharacterStatsModifyEventBase extends BaseEvent {
             )}
             <LabelRow key="place" label="Place:" text={this.place} />
             <LabelRow key="district" label="District:" text={this.district} />
-            <LabelRow key="stats" label="Stats:" text={''} />
-            <ul className="list-disc pl-5 text-sm text-slate-800 dark:text-slate-100">
-              {this.modifiers.map((modifier) => (
-                <li key={modifier.name}>
-                  {`${modifier.name} ${modifier.operator}${modifier.value}`}
-                </li>
-              ))}
-            </ul>
+            <ModifiersRow modifiers={this.modifiers} />
           </>
         }
         header={this.header}

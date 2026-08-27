@@ -168,3 +168,43 @@ isAvailableFixtures('should be unavailable with lt on the same day', () => {
   });
   expect(availability.isAvailable(createIsAvailablePropsFixture())).toEqual(false);
 });
+
+isAvailableFixtures('should be available with between on the start day', () => {
+  const availability = new DateAvailability({
+    operator: 'between',
+    value: [createDateFixture(), createDateFixture(dayjs('2009-06-01'))],
+  });
+  expect(availability.isAvailable(createIsAvailablePropsFixture())).toEqual(true);
+});
+
+isAvailableFixtures('should be available with between on the end day', () => {
+  const availability = new DateAvailability({
+    operator: 'between',
+    value: [createDateFixture(dayjs('2009-05-01')), createDateFixture()],
+  });
+  expect(availability.isAvailable(createIsAvailablePropsFixture())).toEqual(true);
+});
+
+isAvailableFixtures('should be available with between strictly inside the range', () => {
+  const availability = new DateAvailability({
+    operator: 'between',
+    value: [createDateFixture(dayjs('2009-05-01')), createDateFixture(dayjs('2009-06-01'))],
+  });
+  expect(availability.isAvailable(createIsAvailablePropsFixture())).toEqual(true);
+});
+
+isAvailableFixtures('should be unavailable with between before the range', () => {
+  const availability = new DateAvailability({
+    operator: 'between',
+    value: [createDateFixture(dayjs('2009-06-01')), createDateFixture(dayjs('2009-07-01'))],
+  });
+  expect(availability.isAvailable(createIsAvailablePropsFixture())).toEqual(false);
+});
+
+isAvailableFixtures('should be unavailable with between after the range', () => {
+  const availability = new DateAvailability({
+    operator: 'between',
+    value: [createDateFixture(dayjs('2009-03-01')), createDateFixture(dayjs('2009-04-01'))],
+  });
+  expect(availability.isAvailable(createIsAvailablePropsFixture())).toEqual(false);
+});
