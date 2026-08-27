@@ -194,6 +194,9 @@ export class AragakiEvent extends EpisodesEventBase {
     return (
       <Card
         key={`${constructor.name}-${props.time}`}
+        time={props.time}
+        badge={{ size: 'sm', color: 'green', text: `${level} → ${level + 1}` }}
+        isSelectable={this.isChangeable}
         body={
           <>
             <LabelRow key="place" label="Place:" text={constructor.place} />

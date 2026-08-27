@@ -22,12 +22,6 @@ import {
 
 import { EpisodesEventBase } from '../base';
 
-/**
- * Episode event for Junpei Iori's story scenes.
- *
- * Availability is driven by the current episode level and unlocks fixed date windows
- * from the school-year arc through January of the next year.
- */
 export class SanadaEvent extends EpisodesEventBase {
   /** Header label shown in the event card. */
   static readonly header: string = EpisodeSocialLinkNames.Sanada;
@@ -40,16 +34,6 @@ export class SanadaEvent extends EpisodesEventBase {
   /** District label shown in the event card. */
   static readonly district: string = Districts.IwatodaiStation;
 
-  /**
-   * Determine whether this episode is available for the current episode level.
-   *
-   * Each level maps to a distinct schedule: level 0 uses recurring Tue/Fri daytime slots
-   * in late spring, while later levels unlock one-off daytime dates in summer, fall,
-   * winter, and early January.
-   *
-   * @param {IsAvailableProps} props - Current game state used for evaluation.
-   * @returns {boolean} True when every rule for the active episode level passes.
-   */
   static override isAvailable(props: IsAvailableProps): boolean {
     const level = props.stats.episodesStats[this.name as EpisodeSocialLinkNamesTypes];
     switch (level) {
@@ -148,6 +132,9 @@ export class SanadaEvent extends EpisodesEventBase {
     return (
       <Card
         key={`${constructor.name}-${props.time}`}
+        time={props.time}
+        badge={{ size: 'sm', color: 'green', text: `${level} → ${level + 1}` }}
+        isSelectable={this.isChangeable}
         body={
           <>
             <LabelRow key="place" label="Place:" text={constructor.place} />
