@@ -10,6 +10,7 @@ import {
 } from '@services/event/models/characterStatsModifyEvents/courage';
 import { EpisodesEventModels } from '@services/event/models/episodes';
 import { NaganakiShrineEvents } from '@services/event/models/naganakiShrine';
+import { PCProgrammEvents } from '@services/event/models/PCProgrammEvents';
 import { SocialLinkEvents } from '@services/event/models/socialLinkEvents';
 
 import type { RightPanelTab } from './types';
@@ -47,6 +48,11 @@ export const events: Record<string, RightPanelTab[]> = {
         ...Object.values(EpisodesEventModels),
       ],
     },
+    {
+      name: 'PC Program',
+      color: 'orange',
+      events: Object.values(PCProgrammEvents),
+    },
   ],
   [Times.Evening]: [
     {
@@ -72,6 +78,11 @@ export const events: Record<string, RightPanelTab[]> = {
         ...Object.values(NaganakiShrineEvents),
         ...Object.values(EpisodesEventModels),
       ],
+    },
+    {
+      name: 'PC Program',
+      color: 'orange',
+      events: Object.values(PCProgrammEvents),
     },
   ],
 };
