@@ -53,7 +53,7 @@ export abstract class EpisodesEventBase extends BaseEvent {
         body={
           <>
             <LabelRow key="Name" label="Name:" text={this.socialLinkName} />
-            <LabelRow key="Distric:" label="District:" text={this.district} />
+            <LabelRow key="District" label="District:" text={this.district} />
             <LabelRow key="Place" label="Place:" text={this.place} />
           </>
         }
