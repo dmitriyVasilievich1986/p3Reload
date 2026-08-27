@@ -3,6 +3,7 @@ import { cloneElement, isValidElement, type ReactElement } from 'react';
 import { Card, type CardProps } from '@components/card';
 import { LabelRow, ModifiersRow } from '@components/row';
 import { BaseEvent } from '@services/event/base';
+import { modifiersFormatter } from '@utils/modifiersFormatter';
 import { priceFormatter } from '@utils/priceFormatter';
 
 import type { CharacterStatsModifyNamesType } from './types';
@@ -40,7 +41,7 @@ export abstract class CharacterStatsModifyEventBase extends BaseEvent {
             )}
             <LabelRow key="place" label="Place:" text={this.place} />
             <LabelRow key="district" label="District:" text={this.district} />
-            <ModifiersRow modifiers={this.modifiers} />
+            <ModifiersRow modifiers={modifiersFormatter(this.modifiers)} />
           </>
         }
         header={this.header}

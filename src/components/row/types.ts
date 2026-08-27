@@ -1,5 +1,3 @@
-import type { CharacterStatsModifierType } from '@services/stats/characterStats/types';
-
 export const TextAligns = {
   left: 'left',
   center: 'center',
@@ -30,6 +28,6 @@ export type TextRowProps = {
 };
 
 export type ModifiersRowProps = {
-  /** Stat modifiers to list. Renders nothing when empty. */
-  modifiers: CharacterStatsModifierType[];
+  /** Stat modifiers text lines to list. Renders nothing when empty. */
+  modifiers: string[];
 };

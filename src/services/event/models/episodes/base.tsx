@@ -1,6 +1,7 @@
 import { Card } from '@components/card';
 import { LabelRow, ModifiersRow, TextRow } from '@components/row';
 import { BaseEvent } from '@services/event/base';
+import { modifiersFormatter } from '@utils/modifiersFormatter';
 
 import type { IsAvailableProps } from '@services/availability/types';
 import type { Stats } from '@services/stats';
@@ -48,7 +49,7 @@ export abstract class EpisodesEventBase extends BaseEvent {
             <LabelRow key="Name" label="Name:" text={constructor.socialLinkName} />
             <LabelRow key="District" label="District:" text={constructor.district} />
             <LabelRow key="Place" label="Place:" text={constructor.place} />
-            <ModifiersRow key="modifiers" modifiers={modifiers} />
+            <ModifiersRow key="modifiers" modifiers={modifiersFormatter(modifiers)} />
             {level === 0 ? (
               <TextRow textAlign="center" isBold key="text" text="Create a bond with Social Link" />
             ) : (

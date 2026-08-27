@@ -1,8 +1,6 @@
 import { render, screen } from '@testing-library/react';
 import { describe, expect, it } from 'vite-plus/test';
 
-import { CharacterStatsNames } from '@services/stats/characterStats';
-
 import { ModifiersRow } from './ModifiersRow';
 
 describe('ModifiersRow', () => {
@@ -13,14 +11,7 @@ describe('ModifiersRow', () => {
   });
 
   it('renders a Stats: label and a bulleted line per modifier', () => {
-    render(
-      <ModifiersRow
-        modifiers={[
-          { name: CharacterStatsNames.Academics, operator: '+', value: 2 },
-          { name: CharacterStatsNames.Courage, operator: '-', value: 1 },
-        ]}
-      />
-    );
+    render(<ModifiersRow modifiers={['Academics +2', 'Courage -1']} />);
 
     expect(screen.getByText('Stats:')).toBeInTheDocument();
     expect(screen.getByText('Academics +2')).toBeInTheDocument();
@@ -28,9 +19,7 @@ describe('ModifiersRow', () => {
   });
 
   it('renders the modifiers inside a bulleted list', () => {
-    render(
-      <ModifiersRow modifiers={[{ name: CharacterStatsNames.Charm, operator: '+', value: 4 }]} />
-    );
+    render(<ModifiersRow modifiers={['Charm +4']} />);
 
     const item = screen.getByText('Charm +4');
     expect(item.tagName).toBe('LI');

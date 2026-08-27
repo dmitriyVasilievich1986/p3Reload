@@ -3,7 +3,7 @@ import { LabelRow } from './LabelRow';
 import type { ModifiersRowProps } from './types';
 
 /**
- * Renders a "Stats:" label followed by a bulleted list of character-stat modifiers.
+ * Renders a "Stats:" label followed by a bulleted line with the character-stat modifiers.
  * Returns null when `modifiers` is empty.
  */
 export function ModifiersRow({ modifiers }: ModifiersRowProps) {
@@ -16,7 +16,7 @@ export function ModifiersRow({ modifiers }: ModifiersRowProps) {
       <LabelRow key="stats" label="Stats:" text={''} />
       <ul className="list-disc pl-5 text-sm text-slate-800 dark:text-slate-100">
         {modifiers.map((modifier) => (
-          <li key={modifier.name}>{`${modifier.name} ${modifier.operator}${modifier.value}`}</li>
+          <li key={modifier}>{modifier}</li>
         ))}
       </ul>
     </>
