@@ -1,7 +1,5 @@
 import dayjs from 'dayjs';
 
-import { Card } from '@components/card';
-import { LabelRow, ModifiersRow, TextRow } from '@components/row';
 import { DayOfWeek } from '@constants/dayOfWeek';
 import { Districts } from '@constants/places';
 import { Times } from '@constants/times';
@@ -13,7 +11,6 @@ import {
   AndAvailability,
   OrAvailability,
 } from '@services/availability';
-import { Stats } from '@services/stats';
 import { CharacterStatsNames } from '@services/stats/characterStats';
 import { type CharacterStatsModifierType } from '@services/stats/characterStats';
 import {
@@ -165,8 +162,7 @@ export class KoromaruEvent extends EpisodesEventBase {
     }
   }
 
-  override calculateStats(_props: IsAvailableProps): Stats {
-    const level = this.getLevel();
+  override getModifiers(this: EpisodesEventBase, level: number): CharacterStatsModifierType[] {
     const modifiers: CharacterStatsModifierType[] = [];
 
     switch (level) {
@@ -179,54 +175,6 @@ export class KoromaruEvent extends EpisodesEventBase {
         break;
     }
 
-    const characterStats = this.stats.characterStats.modify(modifiers);
-    const episodeStats = this.stats.episodesStats.increaseLevel(
-      this.constructor.name as EpisodeSocialLinkNamesTypes
-    );
-    return this.stats.updateEpisodesStats(episodeStats).updateCharacterStats(characterStats);
-  }
-
-  override render(props: IsAvailableProps): React.ReactNode | null {
-    const level = this.getLevel();
-    const modifiers: CharacterStatsModifierType[] = [];
-    const constructor = this.constructor as typeof KoromaruEvent;
-
-    switch (level) {
-      case 0:
-        modifiers.push({ name: CharacterStatsNames.Charm, operator: '+', value: 2 });
-        break;
-      case 1:
-      case 3:
-        modifiers.push({ name: CharacterStatsNames.Courage, operator: '+', value: 2 });
-        break;
-    }
-
-    return (
-      <Card
-        key={`${constructor.name}-${props.time}`}
-        time={props.time}
-        badge={{ size: 'sm', color: 'green', text: `${level} → ${level + 1}` }}
-        isSelectable={this.isChangeable}
-        body={
-          <>
-            <LabelRow key="place" label="Place:" text={constructor.place} />
-            <LabelRow key="name" label="Name:" text={constructor.socialLinkName} />
-            <LabelRow key="district" label="District:" text={constructor.district} />
-            <ModifiersRow key="modifiers" modifiers={modifiers} />
-            {level === 0 ? (
-              <TextRow textAlign="center" isBold key="text" text="Create a bond with Social Link" />
-            ) : (
-              <TextRow
-                textAlign="center"
-                isBold
-                key="text"
-                text="Increase your bond with Social Link"
-              />
-            )}
-          </>
-        }
-        header={constructor.header}
-      />
-    );
+    return modifiers;
   }
 }

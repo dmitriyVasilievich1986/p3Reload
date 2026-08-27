@@ -1,8 +1,10 @@
 import { Card } from '@components/card';
-import { LabelRow, TextRow } from '@components/row';
+import { LabelRow, ModifiersRow, TextRow } from '@components/row';
 import { BaseEvent } from '@services/event/base';
 
 import type { IsAvailableProps } from '@services/availability/types';
+import type { Stats } from '@services/stats';
+import type { CharacterStatsModifierType } from '@services/stats/characterStats';
 import type { EpisodeSocialLinkNamesTypes } from '@services/stats/episodesStats';
 
 export abstract class EpisodesEventBase extends BaseEvent {
@@ -16,24 +18,37 @@ export abstract class EpisodesEventBase extends BaseEvent {
     return this.stats.episodesStats[constructor.name as EpisodeSocialLinkNamesTypes];
   }
 
+  getModifiers(this: EpisodesEventBase, _level: number): CharacterStatsModifierType[] {
+    return [];
+  }
+
+  override calculateStats(_props: IsAvailableProps): Stats {
+    const level = this.getLevel();
+    const modifiers = this.getModifiers(level);
+
+    const characterStats = this.stats.characterStats.modify(modifiers);
+    const episodeStats = this.stats.episodesStats.increaseLevel(
+      this.constructor.name as EpisodeSocialLinkNamesTypes
+    );
+    return this.stats.updateEpisodesStats(episodeStats).updateCharacterStats(characterStats);
+  }
+
   render(this: EpisodesEventBase, props: IsAvailableProps): React.ReactNode {
     const constructor = this.constructor as typeof EpisodesEventBase;
-    const level = props.stats.episodesStats[constructor.name as EpisodeSocialLinkNamesTypes];
+    const level = this.getLevel();
+    const modifiers = this.getModifiers(level);
     return (
       <Card
         key={`${constructor.name}-${props.time}`}
         time={props.time}
-        badge={{
-          size: 'sm',
-          color: 'green',
-          text: `${level} → ${level + 1}`,
-        }}
+        badge={{ size: 'sm', color: 'green', text: `${level} → ${level + 1}` }}
         isSelectable={this.isChangeable}
         body={
           <>
             <LabelRow key="Name" label="Name:" text={constructor.socialLinkName} />
             <LabelRow key="District" label="District:" text={constructor.district} />
             <LabelRow key="Place" label="Place:" text={constructor.place} />
+            <ModifiersRow key="modifiers" modifiers={modifiers} />
             {level === 0 ? (
               <TextRow textAlign="center" isBold key="text" text="Create a bond with Social Link" />
             ) : (
