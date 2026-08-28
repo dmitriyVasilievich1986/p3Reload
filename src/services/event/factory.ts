@@ -2,6 +2,7 @@ import { BaseEvent } from './base';
 import { CharacterStatsModifyEvents } from './models/characterStatsModifyEvents';
 import { EpisodesEventModels } from './models/episodes';
 import { NaganakiShrineEvents } from './models/naganakiShrine';
+import { PCProgramEvents } from './models/PCProgramEvents';
 import {
   SchoolQuestionsEvents,
   type SchoolQuestionEventProps,
@@ -19,6 +20,7 @@ export const Events = {
   ...SocialLinkEvents,
   ...NaganakiShrineEvents,
   ...EpisodesEventModels,
+  ...PCProgramEvents,
   [SpecialEventsNames.Tartarus]: TartarusEvent,
   [SpecialEventsNames.Empty]: EmptyEvent,
   [SpecialEventsNames.Text]: TextEvent,
@@ -38,6 +40,9 @@ export function eventFactory(name: EventNamesType, props: Record<string, unknown
   }
   if (name in EpisodesEventModels) {
     return new EpisodesEventModels[name as keyof typeof EpisodesEventModels](props as EventProps);
+  }
+  if (name in PCProgramEvents) {
+    return new PCProgramEvents[name as keyof typeof PCProgramEvents](props as EventProps);
   }
   if (name === SpecialEventsNames.Empty) {
     return new EmptyEvent(props as EventProps);

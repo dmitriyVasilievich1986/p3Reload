@@ -17,6 +17,7 @@ export const Places = {
   BookwormsUsedBooks: 'Bookworms Used Books',
   IwatodaiStationStripMall1F: 'Iwatodai Station Strip Mall 1F',
   ClubEscapade: 'Club Escapade',
+  LobbyPC: 'Lobby PC',
 } as const;
 
 export const Districts = {

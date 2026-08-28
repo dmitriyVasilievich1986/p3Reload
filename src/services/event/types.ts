@@ -3,6 +3,7 @@ import { EpisodeSocialLinkNames } from '@services/stats/episodesStats';
 
 import { CharacterStatsModifyNames } from './models/characterStatsModifyEvents/types';
 import { NaganakiShrineEventsNames } from './models/naganakiShrine/types';
+import { PCProgramEventsNames } from './models/PCProgramEvents/types';
 import { SchoolQuestionEventsNames } from './models/schoolQuestions/types';
 import { SpecialEventsNames } from './models/specialEvents/types';
 
@@ -21,6 +22,7 @@ export const EventNames = {
   ...SchoolQuestionEventsNames,
   ...NaganakiShrineEventsNames,
   ...EpisodeSocialLinkNames,
+  ...PCProgramEventsNames,
   ...SpecialEventsNames,
   ...Arcanas,
 } as const;
