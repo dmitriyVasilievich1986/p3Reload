@@ -42,7 +42,7 @@
   },
   {
     "level": 2,
-    "pointsToNextLevel": 20,
+    "pointsToNextLevel": 0,
     "nextLevelPointsToNextLevel": 20,
     "previousLevelPointsToNextLevel": 0,
     "isRomantic": false,
@@ -73,7 +73,7 @@
     "level": 3,
     "pointsToNextLevel": 20,
     "nextLevelPointsToNextLevel": 20,
-    "previousLevelPointsToNextLevel": 20,
+    "previousLevelPointsToNextLevel": 0,
     "isRomantic": false,
     "isFork": false,
     "questions": [
@@ -90,7 +90,7 @@
   {
     "level": 4,
     "pointsToNextLevel": 20,
-    "nextLevelPointsToNextLevel": 30,
+    "nextLevelPointsToNextLevel": 20,
     "previousLevelPointsToNextLevel": 20,
     "isRomantic": false,
     "isFork": false,
@@ -113,8 +113,8 @@
   },
   {
     "level": 5,
-    "pointsToNextLevel": 30,
-    "nextLevelPointsToNextLevel": 15,
+    "pointsToNextLevel": 20,
+    "nextLevelPointsToNextLevel": 30,
     "previousLevelPointsToNextLevel": 20,
     "isRomantic": false,
     "isFork": false,
@@ -138,8 +138,8 @@
   },
   {
     "level": 6,
-    "pointsToNextLevel": 15,
-    "nextLevelPointsToNextLevel": 30,
+    "pointsToNextLevel": 30,
+    "nextLevelPointsToNextLevel": 15,
     "previousLevelPointsToNextLevel": 30,
     "isRomantic": false,
     "isFork": false,
@@ -163,7 +163,7 @@
   },
   {
     "level": 7,
-    "pointsToNextLevel": 30,
+    "pointsToNextLevel": 15,
     "nextLevelPointsToNextLevel": 30,
     "previousLevelPointsToNextLevel": 15,
     "isRomantic": false,
@@ -197,7 +197,7 @@
     "level": 8,
     "pointsToNextLevel": 30,
     "nextLevelPointsToNextLevel": 30,
-    "previousLevelPointsToNextLevel": 30,
+    "previousLevelPointsToNextLevel": 15,
     "isRomantic": false,
     "isFork": false,
     "questions": [
