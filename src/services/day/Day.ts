@@ -96,42 +96,6 @@ export class Day {
     });
   }
 
-  // static deserialize(props: {data: DaySerializedType, stats?: Stats, isAvailableProps: IsAvailableProps, throwAnErrorIfNotAvailable?: boolean, throwAnErrorIfMultipleEvents?: boolean}): Day {
-  //   let events = this.processEvents(props.data.events);
-  //   events = this.sortEvents(events);
-  //   const startingStats = props.stats || new Stats();
-  //   let stats_ = startingStats;
-  //   const finalEvents: BaseEvent[] = [];
-  //   const seenTimes = new Set<TimesType>();
-
-  //   events.forEach((event) => {
-  //     const isAvailable = event.isAvailable({...props.isAvailableProps, event, time: event.time, stats: stats_});
-  //     if (!event.skipCheck && !isAvailable) {
-  //       if(props.throwAnErrorIfNotAvailable) {
-  //         throw new Error(`Event ${(event.constructor as typeof BaseEvent).name} is not available at this time.`);
-  //       }
-  //       console.warn(`Event ${(event.constructor as typeof BaseEvent).name} is not available at this time.`);
-  //     }
-  //     if (seenTimes.has(event.time)) {
-  //       if(props.throwAnErrorIfMultipleEvents) {
-  //         throw new Error(`Multiple events found at time ${event.time}.`);
-  //       }
-  //       console.warn(`Multiple events found at time ${event.time}.`);
-  //     }
-  //     seenTimes.add(event.time);
-  //     event.stats = stats_;
-  //     stats_ = event.calculateStats({ ...props.isAvailableProps, stats: stats_, event, time: event.time });
-  //     finalEvents.push(event);
-  //   });
-
-  //   return new Day({
-  //     statsAtStartOfDay: startingStats,
-  //     statsAtEndOfDay: stats_,
-  //     date: dayjs(props.data.date),
-  //     events: finalEvents,
-  //   });
-  // }
-
   static deserialize(data: DaySerializedType): Day {
     const events = this.processEvents(data.events);
     return new Day({
@@ -152,6 +116,7 @@ export class Day {
   static sortEvents(events: BaseEvent[]): BaseEvent[] {
     const timesMapping = {
       [Times.Morning]: 10,
+      [Times.ExamResults]: 15,
       [Times.DayFreeTime]: 20,
       [Times.Day]: 30,
       [Times.EveningFreeTime]: 40,
