@@ -14,9 +14,6 @@ import {
   AvailabilityBase,
 } from '@services/availability';
 import { LobbyPCProgramsJulyNames } from '@services/event/models/PCProgrammEvents/models/july/types';
-/**
- * Animal Othello lobby PC program event at Iwatodai Dormitory.
- */
 import { type CharacterStatsModifierType } from '@services/stats/characterStats/types';
 import { priceFormatter } from '@utils/priceFormatter';
 
@@ -25,18 +22,11 @@ import { LobbyPCProgramsSeptemberNames } from '../types';
 
 import type { IsAvailableProps } from '@services/availability/types';
 
-/**
- * Lobby PC program that plays "Assassin Website Note" at the Iwatodai Dormitory.
- *
- * Grants "Ambush is guaranteed to Distress at least one Shadow (when Distress is possible)". Availability is inherited from {@link LobbyPCProgramsSeptemberBase}.
- */
 export class AssassinWebsiteNotePCEvent extends LobbyPCProgramsBase {
-  /** Discriminator used to identify the event type during serialization. */
   static readonly name = LobbyPCProgramsSeptemberNames.assassinWebsiteNote;
 
   readonly price: number = 8_000;
 
-  /** Rules that must pass before this event can be scheduled or selected. */
   static readonly availabilities: AvailabilityBase[] = [
     new DateAvailability({ operator: 'ge', value: dayjs('2009-09-10') }),
     new IsEventInHistoryAvailability({

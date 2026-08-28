@@ -10,9 +10,6 @@ import {
   DayOffAvailability,
   AvailabilityBase,
 } from '@services/availability';
-/**
- * Digital Cram School lobby PC program event at Iwatodai Dormitory.
- */
 import {
   type CharacterStatsModifierType,
   CharacterStatsNames,
@@ -21,16 +18,9 @@ import {
 import { LobbyPCProgramsBase } from '../../../base';
 import { LobbyPCProgramsAprilNames } from '../types';
 
-/**
- * Lobby PC program that runs "Digital Cram School" at the Iwatodai Dormitory.
- *
- * Grants +4 Academics. Availability is inherited from {@link LobbyPCProgramsAprilBase}.
- */
 export class DigitalCramSchoolPCEvent extends LobbyPCProgramsBase {
-  /** Discriminator used to identify the event type during serialization. */
   static readonly name = LobbyPCProgramsAprilNames.digitalCramSchool;
 
-  /** Rules that must pass before this event can be scheduled or selected. */
   static readonly availabilities: AvailabilityBase[] = [
     new DateAvailability({ operator: 'ge', value: dayjs('2009-04-29') }),
     new IsEventInHistoryAvailability({ name: this.name, isInHistory: false }),
@@ -47,7 +37,6 @@ export class DigitalCramSchoolPCEvent extends LobbyPCProgramsBase {
     }),
   ];
 
-  /** Stat changes applied when this event is completed. */
   static readonly modifiers: CharacterStatsModifierType[] = [
     {
       name: CharacterStatsNames.Academics,

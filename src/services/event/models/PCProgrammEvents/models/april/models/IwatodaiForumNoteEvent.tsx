@@ -24,18 +24,11 @@ import { LobbyPCProgramsAprilNames } from '../types';
 
 import type { IsAvailableProps } from '@services/availability/types';
 
-/**
- * Lobby PC program that runs "Iwatodai Forum Note" at the Iwatodai Dormitory.
- *
- * Grants more drinks in Iwatodai vending machine. Availability is inherited from {@link LobbyPCProgramsAprilBase}.
- */
 export class IwatodaiForumNoteEvent extends LobbyPCProgramsBase {
-  /** Discriminator used to identify the event type during serialization. */
   static readonly name = LobbyPCProgramsAprilNames.iwatodaiForumNote;
 
   readonly price: number = 500;
 
-  /** Rules that must pass before this event can be scheduled or selected. */
   static readonly availabilities: AvailabilityBase[] = [
     new DateAvailability({ operator: 'ge', value: dayjs('2009-04-29') }),
     new IsEventInHistoryAvailability({ name: this.name, isInHistory: false }),
@@ -52,7 +45,6 @@ export class IwatodaiForumNoteEvent extends LobbyPCProgramsBase {
     }),
   ];
 
-  /** Stat changes applied when this event is completed. */
   static readonly modifiers: CharacterStatsModifierType[] = [];
 
   static render(this: typeof LobbyPCProgramsBase, props: IsAvailableProps): React.ReactNode {

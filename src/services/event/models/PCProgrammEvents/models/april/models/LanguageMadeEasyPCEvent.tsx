@@ -10,9 +10,6 @@ import {
   DayOffAvailability,
   AvailabilityBase,
 } from '@services/availability';
-/**
- * Language Made Easy lobby PC program event at Iwatodai Dormitory.
- */
 import {
   type CharacterStatsModifierType,
   CharacterStatsNames,
@@ -21,13 +18,7 @@ import {
 import { LobbyPCProgramsBase } from '../../../base';
 import { LobbyPCProgramsAprilNames } from '../types';
 
-/**
- * Lobby PC program that runs "Language Made Easy" at the Iwatodai Dormitory.
- *
- * Grants +4 Academics. Availability is inherited from {@link LobbyPCProgramsAprilBase}.
- */
 export class LanguageMadeEasyPCEvent extends LobbyPCProgramsBase {
-  /** Discriminator used to identify the event type during serialization. */
   static readonly name = LobbyPCProgramsAprilNames.languageMadeEasy;
 
   /** Rules that must pass before this event can be scheduled or selected. */
@@ -47,7 +38,6 @@ export class LanguageMadeEasyPCEvent extends LobbyPCProgramsBase {
     }),
   ];
 
-  /** Stat changes applied when this event is completed. */
   static readonly modifiers: CharacterStatsModifierType[] = [
     {
       name: CharacterStatsNames.Academics,

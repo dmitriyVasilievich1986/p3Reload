@@ -13,9 +13,6 @@ import {
   DayOffAvailability,
   AvailabilityBase,
 } from '@services/availability';
-/**
- * Security Site Note lobby PC program event at Iwatodai Dormitory.
- */
 import { type CharacterStatsModifierType } from '@services/stats/characterStats/types';
 import { priceFormatter } from '@utils/priceFormatter';
 
@@ -24,18 +21,11 @@ import { LobbyPCProgramsJulyNames } from '../types';
 
 import type { IsAvailableProps } from '@services/availability/types';
 
-/**
- * Lobby PC program that plays "Security Site Note" at the Iwatodai Dormitory.
- *
- * Grants +4 Courage. Availability is inherited from {@link LobbyPCProgramsJulyBase}.
- */
 export class SecuritySiteNotePCEvent extends LobbyPCProgramsBase {
-  /** Discriminator used to identify the event type during serialization. */
   static readonly name = LobbyPCProgramsJulyNames.securitySiteNote;
 
   readonly price: number = 5_000;
 
-  /** Rules that must pass before this event can be scheduled or selected. */
   static readonly availabilities: AvailabilityBase[] = [
     new DateAvailability({ operator: 'ge', value: dayjs('2009-07-09') }),
     new IsEventInHistoryAvailability({
