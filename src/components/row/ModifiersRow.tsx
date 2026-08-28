@@ -15,8 +15,8 @@ export function ModifiersRow({ modifiers }: ModifiersRowProps) {
     <>
       <LabelRow key="stats" label="Stats:" text={''} />
       <ul className="list-disc pl-5 text-sm text-slate-800 dark:text-slate-100">
-        {modifiers.map((modifier) => (
-          <li key={modifier}>{modifier}</li>
+        {modifiers.map((modifier, index) => (
+          <li key={`${modifier}-${index}`}>{modifier}</li>
         ))}
       </ul>
     </>
