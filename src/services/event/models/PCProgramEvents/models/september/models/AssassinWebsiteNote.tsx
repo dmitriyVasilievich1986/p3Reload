@@ -13,7 +13,7 @@ import {
   DayOffAvailability,
   AvailabilityBase,
 } from '@services/availability';
-import { LobbyPCProgramsJulyNames } from '@services/event/models/PCProgrammEvents/models/july/types';
+import { LobbyPCProgramsJulyNames } from '@services/event/models/PCProgramEvents/models/july/types';
 import { type CharacterStatsModifierType } from '@services/stats/characterStats/types';
 import { priceFormatter } from '@utils/priceFormatter';
 

@@ -3,12 +3,12 @@ import { LobbyPCProgramsJulyNames } from './models/july/types';
 import { LobbyPCProgramsJuneNames } from './models/june/types';
 import { LobbyPCProgramsSeptemberNames } from './models/september/types';
 
-export const PCProgrammEventsNames = {
+export const PCProgramEventsNames = {
   ...LobbyPCProgramsAprilNames,
   ...LobbyPCProgramsJulyNames,
   ...LobbyPCProgramsJuneNames,
   ...LobbyPCProgramsSeptemberNames,
 } as const;
 
-export type PCProgrammEventsNamesType =
-  (typeof PCProgrammEventsNames)[keyof typeof PCProgrammEventsNames];
+export type PCProgramEventsNamesType =
+  (typeof PCProgramEventsNames)[keyof typeof PCProgramEventsNames];

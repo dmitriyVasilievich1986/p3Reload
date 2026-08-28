@@ -7,13 +7,13 @@ import { BaseEvent } from '@services/event/base';
 import { modifiersFormatter } from '@utils/modifiersFormatter';
 import { priceFormatter } from '@utils/priceFormatter';
 
-import type { PCProgrammEventsNamesType } from './types';
+import type { PCProgramEventsNamesType } from './types';
 import type { IsAvailableProps } from '@services/availability/types';
 import type { Stats } from '@services/stats';
 import type { CharacterStatsModifierType } from '@services/stats/characterStats/types';
 
 export abstract class LobbyPCProgramsBase extends BaseEvent {
-  static readonly name: PCProgrammEventsNamesType;
+  static readonly name: PCProgramEventsNamesType;
   static readonly modifiers: CharacterStatsModifierType[];
 
   static readonly header?: string;

@@ -16,7 +16,7 @@ export {
   LobbyPCProgramsSeptemberNames,
 };
 
-export const SeptemberPCProgrammEvents = {
+export const SeptemberPCProgramEvents = {
   [LobbyPCProgramsSeptemberNames.veggieFarmerSim]: VeggieFarmerSimPCEvent,
   [LobbyPCProgramsSeptemberNames.historyWebsiteNote]: HistoryWebsiteNotePCEvent,
   [LobbyPCProgramsSeptemberNames.assassinWebsiteNote]: AssassinWebsiteNotePCEvent,

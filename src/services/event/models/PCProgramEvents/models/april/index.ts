@@ -31,7 +31,7 @@ export {
   SchoolXSiteNotePCEvent,
 };
 
-export const AprilPCProgrammEvents = {
+export const AprilPCProgramEvents = {
   [LobbyPCProgramsAprilNames.animalOthello]: AnimalOthelloPCEvent,
   [LobbyPCProgramsAprilNames.typinGhoul]: TypinGhoulPCEvent,
   [LobbyPCProgramsAprilNames.virtualDiet]: VirtualDietPCEvent,
