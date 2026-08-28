@@ -2,10 +2,6 @@ import { LabelRow } from './LabelRow';
 
 import type { ModifiersRowProps } from './types';
 
-/**
- * Renders a "Stats:" label followed by a bulleted line with the character-stat modifiers.
- * Returns null when `modifiers` is empty.
- */
 export function ModifiersRow({ modifiers }: ModifiersRowProps) {
   if (modifiers.length === 0) {
     return null;
