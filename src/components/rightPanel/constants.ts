@@ -12,6 +12,7 @@ import { EpisodesEventModels } from '@services/event/models/episodes';
 import { NaganakiShrineEvents } from '@services/event/models/naganakiShrine';
 import { PCProgramEvents } from '@services/event/models/PCProgramEvents';
 import { SocialLinkEvents } from '@services/event/models/socialLinkEvents';
+import { TartarusEvent, EmptyEvent } from '@services/event/models/specialEvents';
 
 import type { RightPanelTab } from './types';
 
@@ -53,6 +54,11 @@ export const events: Record<string, RightPanelTab[]> = {
       color: 'orange',
       events: Object.values(PCProgramEvents),
     },
+    {
+      name: 'Other',
+      color: 'slate',
+      events: [EmptyEvent],
+    },
   ],
   [Times.Evening]: [
     {
@@ -83,6 +89,11 @@ export const events: Record<string, RightPanelTab[]> = {
       name: 'PC Program',
       color: 'orange',
       events: Object.values(PCProgramEvents),
+    },
+    {
+      name: 'Other',
+      color: 'slate',
+      events: [TartarusEvent, EmptyEvent],
     },
   ],
 };
