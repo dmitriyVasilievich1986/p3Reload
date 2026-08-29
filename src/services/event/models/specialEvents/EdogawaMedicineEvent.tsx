@@ -39,7 +39,7 @@ export class EdogawaMedicineEvent extends BaseEvent {
   ];
 
   constructor(props: EventProps) {
-    super({ ...props, skipCheck: true, isChangeable: false });
+    super({ ...props, skipCheck: false, isChangeable: false });
   }
 
   calculateStats(this: EdogawaMedicineEvent, _props: IsAvailableProps): Stats {
