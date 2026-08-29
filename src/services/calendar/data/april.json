@@ -99,7 +99,7 @@
       {
         "name": "TextEvent",
         "props": {
-          "isTall": false,
+          "isTall": true,
           "time": "Dark Hour",
           "isChangeable": false,
           "skipCheck": true,
