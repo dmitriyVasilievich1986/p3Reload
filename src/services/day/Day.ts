@@ -215,9 +215,16 @@ export class Day {
         console.warn(
           `Event ${(event.constructor as typeof BaseEvent).name} is not available at this time.`
         );
-        payload.push(
-          new EmptyEvent({ time: event.time, stats: stats_, skipCheck: false, isChangeable: true })
-        );
+        if (event.time === Times.Day || event.time === Times.Evening) {
+          payload.push(
+            new EmptyEvent({
+              time: event.time,
+              stats: stats_,
+              skipCheck: false,
+              isChangeable: true,
+            })
+          );
+        }
         return;
       }
       if (seenTimes.has(event.time)) {
