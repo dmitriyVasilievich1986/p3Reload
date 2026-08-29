@@ -78,6 +78,10 @@ export class Day {
     return events[0];
   }
 
+  getEventByName(this: Day, name: EventNamesType): BaseEvent | undefined {
+    return _.find(this.events, (event) => event.getName() === name);
+  }
+
   /**
    * Normalizes a mixed list of event instances and serialized event payloads
    * into {@link BaseEvent} instances via {@link eventFactory}.
