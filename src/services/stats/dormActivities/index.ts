@@ -1,6 +1,6 @@
-export { DormActivitesStats } from './DormActivitiesStats';
+export { DormActivitiesStats } from './DormActivitiesStats';
 export {
-  DormActivitesNames,
-  type DormActivitesNamesTypes,
-  type DormActivitesStatsProps,
+  DormActivitiesNames,
+  type DormActivitiesNamesTypes,
+  type DormActivitiesStatsProps,
 } from './types';

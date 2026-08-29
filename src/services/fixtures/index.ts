@@ -11,7 +11,7 @@ import {
   CharacterStatsNames,
   type CharacterStatsProps,
 } from '@services/stats/characterStats';
-import { DormActivitesStats, type DormActivitesStatsProps } from '@services/stats/dormActivities';
+import { DormActivitiesStats, type DormActivitiesStatsProps } from '@services/stats/dormActivities';
 import { EpisodesStats, type EpisodesStatsProps } from '@services/stats/episodesStats';
 import { SocialLinkStats } from '@services/stats/socialLinkStats';
 
@@ -90,16 +90,16 @@ export function createEpisodesStatsFixture(overrides?: EpisodesStatsProps): Epis
 }
 
 /**
- * Builds a {@link DormActivitesStats} fixture.
+ * Builds a {@link DormActivitiesStats} fixture.
  *
- * Omitted activities keep the {@link DormActivitesStats} constructor defaults (level `0`).
+ * Omitted activities keep the {@link DormActivitiesStats} constructor defaults (level `0`).
  *
  * @param overrides - Optional per-activity levels.
  */
-export function createDormActivitesStatsFixture(
-  overrides?: DormActivitesStatsProps
-): DormActivitesStats {
-  return new DormActivitesStats(overrides);
+export function createDormActivitiesStatsFixture(
+  overrides?: DormActivitiesStatsProps
+): DormActivitiesStats {
+  return new DormActivitiesStats(overrides);
 }
 
 /**
@@ -113,7 +113,7 @@ export function createStatsFixture(overrides?: StatsProps): Stats {
     socialLinkStats: createSocialLinkStatsFixture(),
     additionalStats: createAdditionalStatsFixture(),
     episodesStats: createEpisodesStatsFixture(),
-    dormActivitesStats: createDormActivitesStatsFixture(),
+    DormActivitiesStats: createDormActivitiesStatsFixture(),
     ...overrides,
   });
 }

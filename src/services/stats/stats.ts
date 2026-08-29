@@ -1,6 +1,6 @@
 import { AdditionalStats } from './additionalStats';
 import { CharacterStats } from './characterStats';
-import { DormActivitesStats } from './dormActivities';
+import { DormActivitiesStats } from './dormActivities';
 import { EpisodesStats } from './episodesStats';
 import { SocialLinkStats } from './socialLinkStats';
 
@@ -11,14 +11,14 @@ export class Stats {
   characterStats: CharacterStats;
   socialLinkStats: SocialLinkStats;
   episodesStats: EpisodesStats;
-  dormActivitesStats: DormActivitesStats;
+  DormActivitiesStats: DormActivitiesStats;
 
   constructor(props?: StatsProps) {
     this.additionalStats = props?.additionalStats ?? new AdditionalStats();
     this.characterStats = props?.characterStats ?? new CharacterStats();
     this.socialLinkStats = props?.socialLinkStats ?? new SocialLinkStats();
     this.episodesStats = props?.episodesStats ?? new EpisodesStats();
-    this.dormActivitesStats = props?.dormActivitesStats ?? new DormActivitesStats();
+    this.DormActivitiesStats = props?.DormActivitiesStats ?? new DormActivitiesStats();
   }
 
   updateAdditionalStats(additionalStats: AdditionalStats) {
@@ -49,10 +49,10 @@ export class Stats {
     });
   }
 
-  updateDormActivitesStats(dormActivitesStats: DormActivitesStats) {
+  updateDormActivitiesStats(DormActivitiesStats: DormActivitiesStats) {
     return new Stats({
       ...this,
-      dormActivitesStats,
+      DormActivitiesStats,
     });
   }
 }

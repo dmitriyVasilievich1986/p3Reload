@@ -2,7 +2,7 @@ import { useState, type ReactNode } from 'react';
 
 import { Arcanas } from '@constants/arcanas';
 import { CharacterStats, CharacterStatsNames } from '@services/stats/characterStats';
-import { DormActivitesNames } from '@services/stats/dormActivities';
+import { DormActivitiesNames } from '@services/stats/dormActivities';
 import { EpisodeSocialLinkNames } from '@services/stats/episodesStats';
 import { useMainStore } from '@store/main';
 
@@ -53,7 +53,7 @@ export function LeftPanel() {
     return <section aria-label="Left panel" className={sectionClassName} />;
   }
 
-  const { characterStats, socialLinkStats, episodesStats, dormActivitesStats } =
+  const { characterStats, socialLinkStats, episodesStats, DormActivitiesStats } =
     currentDay.statsAtEndOfDay;
   const { characterStats: previousCharacterStats, socialLinkStats: previousSocialLinkStats } =
     currentDay.statsAtStartOfDay;
@@ -120,10 +120,10 @@ export function LeftPanel() {
   } else {
     body = (
       <ul className="flex flex-col gap-2" aria-label="Dorm activites stats">
-        {Object.values(DormActivitesNames).map((activityName) => (
+        {Object.values(DormActivitiesNames).map((activityName) => (
           <StatRow
             key={activityName}
-            level={dormActivitesStats[activityName]}
+            level={DormActivitiesStats[activityName]}
             name={activityName}
             color="teal"
           />

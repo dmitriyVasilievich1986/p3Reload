@@ -1,53 +1,53 @@
 import {
-  DormActivitesNames,
-  type DormActivitesNamesTypes,
-  type DormActivitesStatsProps,
+  DormActivitiesNames,
+  type DormActivitiesNamesTypes,
+  type DormActivitiesStatsProps,
 } from './types';
 
-export class DormActivitesStats {
-  [DormActivitesNames.IoriGarden]!: number;
-  [DormActivitesNames.IoriBook]!: number;
-  [DormActivitesNames.SanadaKitchen]!: number;
-  [DormActivitesNames.SanadaDVD]!: number;
-  [DormActivitesNames.AmadaKitchen]!: number;
-  [DormActivitesNames.AmadaDVD]!: number;
-  [DormActivitesNames.KoromaruDVD]!: number;
-  [DormActivitesNames.KoromaruBrush]!: number;
-  [DormActivitesNames.AragakiKitchen]!: number;
-  [DormActivitesNames.AragakiGarden]!: number;
-  [DormActivitesNames.MitsuruKitchen]!: number;
-  [DormActivitesNames.MitsuruBook]!: number;
-  [DormActivitesNames.YukariKitchen]!: number;
-  [DormActivitesNames.YukariDVD]!: number;
-  [DormActivitesNames.FuukaGarden]!: number;
-  [DormActivitesNames.FuukaBook]!: number;
-  [DormActivitesNames.AigisGarden]!: number;
-  [DormActivitesNames.AigisBook]!: number;
+export class DormActivitiesStats {
+  [DormActivitiesNames.IoriGarden]!: number;
+  [DormActivitiesNames.IoriBook]!: number;
+  [DormActivitiesNames.SanadaKitchen]!: number;
+  [DormActivitiesNames.SanadaDVD]!: number;
+  [DormActivitiesNames.AmadaKitchen]!: number;
+  [DormActivitiesNames.AmadaDVD]!: number;
+  [DormActivitiesNames.KoromaruDVD]!: number;
+  [DormActivitiesNames.KoromaruBrush]!: number;
+  [DormActivitiesNames.AragakiKitchen]!: number;
+  [DormActivitiesNames.AragakiGarden]!: number;
+  [DormActivitiesNames.MitsuruKitchen]!: number;
+  [DormActivitiesNames.MitsuruBook]!: number;
+  [DormActivitiesNames.YukariKitchen]!: number;
+  [DormActivitiesNames.YukariDVD]!: number;
+  [DormActivitiesNames.FuukaGarden]!: number;
+  [DormActivitiesNames.FuukaBook]!: number;
+  [DormActivitiesNames.AigisGarden]!: number;
+  [DormActivitiesNames.AigisBook]!: number;
 
-  constructor(props?: DormActivitesStatsProps) {
-    this[DormActivitesNames.IoriGarden] = props?.[DormActivitesNames.IoriGarden] ?? 0;
-    this[DormActivitesNames.IoriBook] = props?.[DormActivitesNames.IoriBook] ?? 0;
-    this[DormActivitesNames.SanadaKitchen] = props?.[DormActivitesNames.SanadaKitchen] ?? 0;
-    this[DormActivitesNames.SanadaDVD] = props?.[DormActivitesNames.SanadaDVD] ?? 0;
-    this[DormActivitesNames.AmadaKitchen] = props?.[DormActivitesNames.AmadaKitchen] ?? 0;
-    this[DormActivitesNames.AmadaDVD] = props?.[DormActivitesNames.AmadaDVD] ?? 0;
-    this[DormActivitesNames.KoromaruDVD] = props?.[DormActivitesNames.KoromaruDVD] ?? 0;
-    this[DormActivitesNames.KoromaruBrush] = props?.[DormActivitesNames.KoromaruBrush] ?? 0;
-    this[DormActivitesNames.AragakiKitchen] = props?.[DormActivitesNames.AragakiKitchen] ?? 0;
-    this[DormActivitesNames.AragakiGarden] = props?.[DormActivitesNames.AragakiGarden] ?? 0;
-    this[DormActivitesNames.MitsuruKitchen] = props?.[DormActivitesNames.MitsuruKitchen] ?? 0;
-    this[DormActivitesNames.MitsuruBook] = props?.[DormActivitesNames.MitsuruBook] ?? 0;
-    this[DormActivitesNames.YukariKitchen] = props?.[DormActivitesNames.YukariKitchen] ?? 0;
-    this[DormActivitesNames.YukariDVD] = props?.[DormActivitesNames.YukariDVD] ?? 0;
-    this[DormActivitesNames.FuukaGarden] = props?.[DormActivitesNames.FuukaGarden] ?? 0;
-    this[DormActivitesNames.FuukaBook] = props?.[DormActivitesNames.FuukaBook] ?? 0;
-    this[DormActivitesNames.AigisGarden] = props?.[DormActivitesNames.AigisGarden] ?? 0;
-    this[DormActivitesNames.AigisBook] = props?.[DormActivitesNames.AigisBook] ?? 0;
+  constructor(props?: DormActivitiesStatsProps) {
+    this[DormActivitiesNames.IoriGarden] = props?.[DormActivitiesNames.IoriGarden] ?? 0;
+    this[DormActivitiesNames.IoriBook] = props?.[DormActivitiesNames.IoriBook] ?? 0;
+    this[DormActivitiesNames.SanadaKitchen] = props?.[DormActivitiesNames.SanadaKitchen] ?? 0;
+    this[DormActivitiesNames.SanadaDVD] = props?.[DormActivitiesNames.SanadaDVD] ?? 0;
+    this[DormActivitiesNames.AmadaKitchen] = props?.[DormActivitiesNames.AmadaKitchen] ?? 0;
+    this[DormActivitiesNames.AmadaDVD] = props?.[DormActivitiesNames.AmadaDVD] ?? 0;
+    this[DormActivitiesNames.KoromaruDVD] = props?.[DormActivitiesNames.KoromaruDVD] ?? 0;
+    this[DormActivitiesNames.KoromaruBrush] = props?.[DormActivitiesNames.KoromaruBrush] ?? 0;
+    this[DormActivitiesNames.AragakiKitchen] = props?.[DormActivitiesNames.AragakiKitchen] ?? 0;
+    this[DormActivitiesNames.AragakiGarden] = props?.[DormActivitiesNames.AragakiGarden] ?? 0;
+    this[DormActivitiesNames.MitsuruKitchen] = props?.[DormActivitiesNames.MitsuruKitchen] ?? 0;
+    this[DormActivitiesNames.MitsuruBook] = props?.[DormActivitiesNames.MitsuruBook] ?? 0;
+    this[DormActivitiesNames.YukariKitchen] = props?.[DormActivitiesNames.YukariKitchen] ?? 0;
+    this[DormActivitiesNames.YukariDVD] = props?.[DormActivitiesNames.YukariDVD] ?? 0;
+    this[DormActivitiesNames.FuukaGarden] = props?.[DormActivitiesNames.FuukaGarden] ?? 0;
+    this[DormActivitiesNames.FuukaBook] = props?.[DormActivitiesNames.FuukaBook] ?? 0;
+    this[DormActivitiesNames.AigisGarden] = props?.[DormActivitiesNames.AigisGarden] ?? 0;
+    this[DormActivitiesNames.AigisBook] = props?.[DormActivitiesNames.AigisBook] ?? 0;
   }
 
-  increaseLevel(linkName: DormActivitesNamesTypes, levelsAmount?: number): DormActivitesStats {
+  increaseLevel(linkName: DormActivitiesNamesTypes, levelsAmount?: number): DormActivitiesStats {
     const levelsToIncrease = levelsAmount ?? 1;
-    return new DormActivitesStats({
+    return new DormActivitiesStats({
       ...this,
       [linkName]: this[linkName] + levelsToIncrease,
     });
