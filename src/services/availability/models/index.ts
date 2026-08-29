@@ -13,3 +13,4 @@ export { DayOfWeekAvailability } from './dayOfWeekAvailability';
 export { DayOffAvailability } from './dayOffAvailability';
 export { ExamAvailability } from './examAvailability';
 export { FalseAvailability } from './falseAvailability';
+export { TartarusAvailability } from './tartarusAvailability';

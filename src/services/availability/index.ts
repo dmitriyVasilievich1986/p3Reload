@@ -18,4 +18,5 @@ export {
   DayOffAvailability,
   ExamAvailability,
   FalseAvailability,
+  TartarusAvailability,
 } from './models';
