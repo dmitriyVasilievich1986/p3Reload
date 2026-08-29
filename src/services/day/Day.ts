@@ -213,7 +213,7 @@ export class Day {
           );
         }
         console.warn(
-          `Event ${(event.constructor as typeof BaseEvent).name} is not available at this time.`
+          `[${day.date.format(DatesFormat)}]Event ${(event.constructor as typeof BaseEvent).name} is not available at this time.`
         );
         if (event.time === Times.Day || event.time === Times.Evening) {
           payload.push(
