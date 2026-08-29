@@ -7,12 +7,14 @@ export const LeftPanelTabNames = {
   Character: 'Character',
   SocialLinks: 'SLinks',
   Episodes: 'Episodes',
+  DormActivites: 'Dorm',
 } as const;
 
 export const LEFT_PANEL_TABS: TabItem[] = [
   { name: LeftPanelTabNames.Character, color: 'green' },
   { name: LeftPanelTabNames.SocialLinks, color: 'gold' },
   { name: LeftPanelTabNames.Episodes, color: 'blue' },
+  { name: LeftPanelTabNames.DormActivites, color: 'teal' },
 ];
 
 export const CHARACTER_STAT_BADGE_COLORS: Record<CharacterStatsNamesType, BadgeColor> = {
