@@ -89,12 +89,7 @@ export class TartarusEvent extends BaseEvent {
         isSelectable={this.isChangeable}
         isTall={this.isTall}
         header="Tartarus"
-        body={
-          <>
-            <LabelRow label="Place:" text={Places.Tartarus} />
-            {rows}
-          </>
-        }
+        body={rows}
         time={this.time}
       />
     );
