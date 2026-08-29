@@ -5,6 +5,7 @@ import {
   AvailabilityBase,
   CharacterStatsAvailability,
   DayOffAvailability,
+  TartarusAvailability,
   type IsAvailableProps,
 } from '@services/availability';
 import { BaseEvent } from '@services/event/base';
@@ -29,6 +30,7 @@ export class EdogawaMedicineEvent extends BaseEvent {
   /** Rules that must pass before this event can be scheduled or selected. */
   static readonly availabilities: AvailabilityBase[] = [
     new DayOffAvailability({ isAvailableOnADayOff: false }),
+    new TartarusAvailability(),
     new CharacterStatsAvailability({
       name: CharacterStatsNames.Courage,
       operator: 'lt',
