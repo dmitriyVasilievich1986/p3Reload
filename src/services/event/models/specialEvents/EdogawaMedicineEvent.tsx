@@ -58,6 +58,7 @@ export class EdogawaMedicineEvent extends BaseEvent {
     return (
       <Card
         key={`${constructor.name}-${props.time}`}
+        isSelectable={this.isChangeable}
         time={props.time}
         body={
           <>
