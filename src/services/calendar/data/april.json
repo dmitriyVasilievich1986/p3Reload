@@ -97,7 +97,7 @@
         }
       },
       {
-        "name": "TextEvent",
+        "name": "TartarusEvent",
         "props": {
           "isTall": true,
           "time": "Dark Hour",
@@ -332,13 +332,20 @@
         }
       },
       {
-        "name": "TextEvent",
+        "name": "TartarusEvent",
         "props": {
           "isTall": false,
           "time": "Evening",
           "isChangeable": false,
           "skipCheck": true,
           "rows": [
+            {
+              "name": "LabelRow",
+              "props": {
+                "label": "Place:",
+                "text": "Tartarus"
+              }
+            },
             {
               "name": "TextRow",
               "props": {
@@ -380,7 +387,7 @@
     "date": "2009-04-20",
     "events": [
       {
-        "name": "TextEvent",
+        "name": "TartarusEvent",
         "props": {
           "isTall": true,
           "time": "Day",
