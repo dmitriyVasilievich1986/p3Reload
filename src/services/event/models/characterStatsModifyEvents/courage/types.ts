@@ -1,7 +1,6 @@
 export const CourageStatModifyNames = {
   sleepDuringClass: 'SleepDuringClassCourageEvent',
   gameParadeCourage: 'GameParadeCourageEvent',
-  edogawaMedicine: 'EdogawaMedicineEvent',
   wilduckBigEaterChallenge: 'WilduckBigEaterChallengeEvent',
   wilduckBurgerWeekendWilduckSet: 'WilduckBurgerWeekendWilduckSetEvent',
 } as const;
