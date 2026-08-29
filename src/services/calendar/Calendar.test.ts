@@ -1,5 +1,5 @@
 import dayjs from 'dayjs';
-import { beforeEach, describe, expect, it, vi } from 'vite-plus/test';
+import { describe, expect, it, vi } from 'vite-plus/test';
 
 import { DatesFormat } from '@constants/dates';
 import { Times } from '@constants/times';
@@ -14,11 +14,13 @@ import { CharacterStatsNames } from '@services/stats/characterStats/types';
 
 import { Calendar } from './Calendar';
 import aprilData from './data/april.json';
+import mayData from './data/may.json';
 
 import type { DaySerializedType } from '@services/day/types';
 
-const calendarMonthData: { name: string; data: DaySerializedType[] }[] = [
-  { name: 'april', data: aprilData as DaySerializedType[] },
+const calendarMonthData: DaySerializedType[] = [
+  ...(aprilData as DaySerializedType[]),
+  ...(mayData as DaySerializedType[]),
 ];
 
 const baseEventProps = {
@@ -417,21 +419,15 @@ describe('Calendar', () => {
     });
   });
 
-  describe.each(calendarMonthData)('$name data', ({ data }) => {
-    beforeEach(() => {
-      vi.restoreAllMocks();
-    });
+  it('calculates stats without errors or warnings', () => {
+    const warnSpy = vi.spyOn(console, 'warn').mockImplementation(() => undefined);
+    const errorSpy = vi.spyOn(console, 'error').mockImplementation(() => undefined);
+    const calendar = Calendar.deserialize(calendarMonthData);
 
-    it('calculates stats without errors or warnings', () => {
-      const warnSpy = vi.spyOn(console, 'warn').mockImplementation(() => undefined);
-      const errorSpy = vi.spyOn(console, 'error').mockImplementation(() => undefined);
-      const calendar = Calendar.deserialize(data);
+    const result = Calendar.calculateStats(calendar, undefined, false, false);
 
-      const result = Calendar.calculateStats(calendar, undefined, false, false);
-
-      expect(result.days).toHaveLength(data.length);
-      expect(warnSpy).not.toHaveBeenCalled();
-      expect(errorSpy).not.toHaveBeenCalled();
-    });
+    expect(result.days).toHaveLength(calendarMonthData.length);
+    expect(warnSpy).not.toHaveBeenCalled();
+    expect(errorSpy).not.toHaveBeenCalled();
   });
 });

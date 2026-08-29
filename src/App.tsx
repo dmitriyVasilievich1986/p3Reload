@@ -13,6 +13,7 @@ import { useSearchParams } from 'react-router';
 
 import { Calendar } from '@services/calendar/Calendar';
 import AprilData from '@services/calendar/data/april.json';
+import MayData from '@services/calendar/data/may.json';
 import { useMainStore } from '@store/main';
 
 import type { DaySerializedType } from '@services/day/types';
@@ -32,7 +33,10 @@ export function App() {
 
   useEffect(() => {
     if (calendar === null) {
-      const calendar = Calendar.deserialize(AprilData as DaySerializedType[]);
+      const calendar = Calendar.deserialize([
+        ...(AprilData as DaySerializedType[]),
+        ...(MayData as DaySerializedType[]),
+      ]);
       setCalendar(Calendar.calculateStats(calendar, undefined, false, false));
     }
   }, [calendar, setCalendar]);
