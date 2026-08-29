@@ -1,5 +1,6 @@
 import { AdditionalStats } from './additionalStats';
 import { CharacterStats } from './characterStats';
+import { DormActivitesStats } from './dormActivities';
 import { EpisodesStats } from './episodesStats';
 import { SocialLinkStats } from './socialLinkStats';
 
@@ -10,12 +11,14 @@ export class Stats {
   characterStats: CharacterStats;
   socialLinkStats: SocialLinkStats;
   episodesStats: EpisodesStats;
+  dormActivitesStats: DormActivitesStats;
 
   constructor(props?: StatsProps) {
     this.additionalStats = props?.additionalStats ?? new AdditionalStats();
     this.characterStats = props?.characterStats ?? new CharacterStats();
     this.socialLinkStats = props?.socialLinkStats ?? new SocialLinkStats();
     this.episodesStats = props?.episodesStats ?? new EpisodesStats();
+    this.dormActivitesStats = props?.dormActivitesStats ?? new DormActivitesStats();
   }
 
   updateAdditionalStats(additionalStats: AdditionalStats) {
@@ -43,6 +46,13 @@ export class Stats {
     return new Stats({
       ...this,
       episodesStats,
+    });
+  }
+
+  updateDormActivitesStats(dormActivitesStats: DormActivitesStats) {
+    return new Stats({
+      ...this,
+      dormActivitesStats,
     });
   }
 }

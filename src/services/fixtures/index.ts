@@ -113,6 +113,7 @@ export function createStatsFixture(overrides?: StatsProps): Stats {
     socialLinkStats: createSocialLinkStatsFixture(),
     additionalStats: createAdditionalStatsFixture(),
     episodesStats: createEpisodesStatsFixture(),
+    dormActivitesStats: createDormActivitesStatsFixture(),
     ...overrides,
   });
 }

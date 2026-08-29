@@ -1,5 +1,6 @@
 import type { AdditionalStats } from './additionalStats';
 import type { CharacterStats } from './characterStats';
+import type { DormActivitesStats } from './dormActivities';
 import type { EpisodesStats } from './episodesStats';
 import type { SocialLinkStats } from './socialLinkStats';
 
@@ -8,4 +9,5 @@ export type StatsProps = {
   characterStats?: CharacterStats;
   socialLinkStats?: SocialLinkStats;
   episodesStats?: EpisodesStats;
+  dormActivitesStats?: DormActivitesStats;
 };
