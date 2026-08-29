@@ -125,16 +125,11 @@ export class ExamResultsEvent extends BaseEvent {
   }
 
   calculateStats(this: ExamResultsEvent, props: IsAvailableProps): Stats {
-    console.log('ExamResultsEvent.calculateStats', props);
     const result = this.getModifiers(props);
     const characterStats = this.stats.characterStats.modify(result.characterStatsModifier);
     const additionalStats = this.stats.additionalStats.updateAfterExamModifier(
       result.examResultsModifier
     );
-    const p = this.stats
-      .updateAdditionalStats(additionalStats)
-      .updateCharacterStats(characterStats);
-    console.log('ExamResultsEvent.calculateStats', result, additionalStats, p);
-    return p;
+    return this.stats.updateAdditionalStats(additionalStats).updateCharacterStats(characterStats);
   }
 }
