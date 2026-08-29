@@ -1,0 +1,712 @@
+[
+  {
+    "date": "2009-06-01",
+    "events": [
+      {
+        "name": "Emperor",
+        "props": {
+          "isChangeable": true,
+          "skipCheck": false,
+          "time": "Day"
+        }
+      },
+      {
+        "name": "Sanada",
+        "props": {
+          "isChangeable": true,
+          "skipCheck": false,
+          "time": "Evening"
+        }
+      }
+    ]
+  },
+  {
+    "date": "2009-06-02",
+    "events": [
+      {
+        "name": "StayAwakeAcademicsEvent",
+        "props": {
+          "isChangeable": true,
+          "skipCheck": false,
+          "time": "Morning"
+        }
+      },
+      {
+        "name": "Temperance",
+        "props": {
+          "isChangeable": true,
+          "skipCheck": false,
+          "time": "Day"
+        }
+      },
+      {
+        "name": "GameParadeCourageEvent",
+        "props": {
+          "isChangeable": true,
+          "skipCheck": false,
+          "time": "Evening"
+        }
+      }
+    ]
+  },
+  {
+    "date": "2009-06-03",
+    "events": [
+      {
+        "name": "Temperance",
+        "props": {
+          "isChangeable": true,
+          "skipCheck": false,
+          "time": "Day"
+        }
+      },
+      {
+        "name": "HagakureRamenSpecialEvent",
+        "props": {
+          "isChangeable": true,
+          "skipCheck": false,
+          "time": "Evening"
+        }
+      }
+    ]
+  },
+  {
+    "date": "2009-06-04",
+    "events": [
+      {
+        "name": "Chariot",
+        "props": {
+          "isChangeable": true,
+          "skipCheck": false,
+          "time": "Day"
+        }
+      },
+      {
+        "name": "WakatsuKitchenSpecialEvent",
+        "props": {
+          "isChangeable": true,
+          "skipCheck": false,
+          "time": "Evening"
+        }
+      }
+    ]
+  },
+  {
+    "date": "2009-06-05",
+    "events": [
+      {
+        "name": "Emperor",
+        "props": {
+          "isChangeable": true,
+          "skipCheck": false,
+          "time": "Day"
+        }
+      },
+      {
+        "name": "GameParadeCourageEvent",
+        "props": {
+          "isChangeable": true,
+          "skipCheck": false,
+          "time": "Evening"
+        }
+      }
+    ]
+  },
+  {
+    "date": "2009-06-06",
+    "events": [
+      {
+        "name": "Justice",
+        "props": {
+          "isChangeable": true,
+          "skipCheck": false,
+          "time": "Day"
+        }
+      },
+      {
+        "name": "WilduckBigEaterChallengeEvent",
+        "props": {
+          "isChangeable": true,
+          "skipCheck": false,
+          "time": "Evening"
+        }
+      }
+    ]
+  },
+  {
+    "date": "2009-06-07",
+    "events": [
+      {
+        "name": "Moon",
+        "props": {
+          "isChangeable": true,
+          "skipCheck": false,
+          "time": "Day"
+        }
+      },
+      {
+        "name": "WilduckBurgerWeekendWilduckSetEvent",
+        "props": {
+          "isChangeable": true,
+          "skipCheck": false,
+          "time": "Evening"
+        }
+      }
+    ]
+  },
+  {
+    "date": "2009-06-08",
+    "events": [
+      {
+        "name": "TartarusEvent",
+        "props": {
+          "isChangeable": false,
+          "isTall": true,
+          "rows": [
+            {
+              "name": "TextRow",
+              "props": {
+                "isBold": true,
+                "text": "Empress And Emperror Boss Fight",
+                "textAlign": "center"
+              }
+            }
+          ],
+          "skipCheck": true,
+          "time": "Dark Hour"
+        }
+      }
+    ]
+  },
+  {
+    "date": "2009-06-09",
+    "events": [
+      {
+        "name": "EdogawaMedicineEvent",
+        "props": {
+          "isChangeable": false,
+          "skipCheck": false,
+          "time": "Day Free Time"
+        }
+      },
+      {
+        "name": "Temperance",
+        "props": {
+          "isChangeable": true,
+          "skipCheck": false,
+          "time": "Day"
+        }
+      },
+      {
+        "name": "HagakureRamenSpecialEvent",
+        "props": {
+          "isChangeable": true,
+          "skipCheck": false,
+          "time": "Evening"
+        }
+      }
+    ]
+  },
+  {
+    "date": "2009-06-10",
+    "events": [
+      {
+        "name": "StayAwakeAcademicsEvent",
+        "props": {
+          "isChangeable": true,
+          "skipCheck": false,
+          "time": "Morning"
+        }
+      },
+      {
+        "name": "Emperor",
+        "props": {
+          "isChangeable": true,
+          "skipCheck": false,
+          "time": "Day"
+        }
+      },
+      {
+        "name": "HagakureRamenSpecialEvent",
+        "props": {
+          "isChangeable": true,
+          "skipCheck": false,
+          "time": "Evening"
+        }
+      }
+    ]
+  },
+  {
+    "date": "2009-06-11",
+    "events": [
+      {
+        "name": "Chariot",
+        "props": {
+          "isChangeable": true,
+          "skipCheck": false,
+          "time": "Day"
+        }
+      },
+      {
+        "name": "WakatsuKitchenSpecialEvent",
+        "props": {
+          "isChangeable": true,
+          "skipCheck": false,
+          "time": "Evening"
+        }
+      }
+    ]
+  },
+  {
+    "date": "2009-06-12",
+    "events": [
+      {
+        "name": "Magician",
+        "props": {
+          "isChangeable": true,
+          "skipCheck": false,
+          "time": "Day"
+        }
+      },
+      {
+        "name": "HagakureRamenSpecialEvent",
+        "props": {
+          "isChangeable": true,
+          "skipCheck": false,
+          "time": "Evening"
+        }
+      },
+      {
+        "name": "Death",
+        "props": {
+          "isChangeable": false,
+          "skipCheck": true,
+          "time": "Night"
+        }
+      }
+    ]
+  },
+  {
+    "date": "2009-06-13",
+    "events": [
+      {
+        "name": "Justice",
+        "props": {
+          "isChangeable": true,
+          "skipCheck": false,
+          "time": "Day"
+        }
+      },
+      {
+        "name": "TartarusEvent",
+        "props": {
+          "isChangeable": false,
+          "isTall": false,
+          "rows": [
+            {
+              "name": "LabelRow",
+              "props": {
+                "label": "Place:",
+                "text": "Tartarus"
+              }
+            },
+            {
+              "name": "TextRow",
+              "props": {
+                "isBold": true,
+                "text": "Theurgy Tutorial",
+                "textAlign": "center"
+              }
+            }
+          ],
+          "skipCheck": true,
+          "time": "Evening"
+        }
+      }
+    ]
+  },
+  {
+    "date": "2009-06-14",
+    "events": [
+      {
+        "name": "Moon",
+        "props": {
+          "isChangeable": true,
+          "skipCheck": false,
+          "time": "Day"
+        }
+      },
+      {
+        "name": "WilduckBurgerWeekendWilduckSetEvent",
+        "props": {
+          "isChangeable": true,
+          "skipCheck": false,
+          "time": "Evening"
+        }
+      }
+    ]
+  },
+  {
+    "date": "2009-06-15",
+    "events": [
+      {
+        "name": "SchoolQuestionsEvent",
+        "props": {
+          "isChangeable": false,
+          "questions": [
+            {
+              "answers": [
+                {
+                  "points": 15,
+                  "text": "Keen eye."
+                },
+                {
+                  "points": 0,
+                  "text": "Mean eye."
+                },
+                {
+                  "points": 0,
+                  "text": "Bright eyes."
+                }
+              ],
+              "text": "Which phrase means, \"able to see things for what they really are\"?"
+            }
+          ],
+          "skipCheck": false,
+          "time": "Morning"
+        }
+      },
+      {
+        "name": "Emperor",
+        "props": {
+          "isChangeable": true,
+          "skipCheck": false,
+          "time": "Day"
+        }
+      },
+      {
+        "name": "WakatsuKitchenSpecialEvent",
+        "props": {
+          "isChangeable": true,
+          "skipCheck": false,
+          "time": "Evening"
+        }
+      }
+    ]
+  },
+  {
+    "date": "2009-06-16",
+    "events": [
+      {
+        "name": "Temperance",
+        "props": {
+          "isChangeable": true,
+          "skipCheck": false,
+          "time": "Day"
+        }
+      },
+      {
+        "name": "EmptyEvent",
+        "props": {
+          "isChangeable": true,
+          "skipCheck": false,
+          "time": "Evening"
+        }
+      }
+    ]
+  },
+  {
+    "date": "2009-06-17",
+    "events": [
+      {
+        "name": "EmptyEvent",
+        "props": {
+          "isChangeable": true,
+          "skipCheck": false,
+          "time": "Day"
+        }
+      },
+      {
+        "name": "EmptyEvent",
+        "props": {
+          "isChangeable": true,
+          "skipCheck": false,
+          "time": "Evening"
+        }
+      }
+    ]
+  },
+  {
+    "date": "2009-06-18",
+    "events": [
+      {
+        "name": "EmptyEvent",
+        "props": {
+          "isChangeable": true,
+          "skipCheck": false,
+          "time": "Day"
+        }
+      },
+      {
+        "name": "EmptyEvent",
+        "props": {
+          "isChangeable": true,
+          "skipCheck": false,
+          "time": "Evening"
+        }
+      }
+    ]
+  },
+  {
+    "date": "2009-06-19",
+    "events": [
+      {
+        "name": "EmptyEvent",
+        "props": {
+          "isChangeable": true,
+          "skipCheck": false,
+          "time": "Day"
+        }
+      },
+      {
+        "name": "EmptyEvent",
+        "props": {
+          "isChangeable": true,
+          "skipCheck": false,
+          "time": "Evening"
+        }
+      }
+    ]
+  },
+  {
+    "date": "2009-06-20",
+    "events": [
+      {
+        "name": "EmptyEvent",
+        "props": {
+          "isChangeable": true,
+          "skipCheck": false,
+          "time": "Day"
+        }
+      },
+      {
+        "name": "EmptyEvent",
+        "props": {
+          "isChangeable": true,
+          "skipCheck": false,
+          "time": "Evening"
+        }
+      }
+    ]
+  },
+  {
+    "date": "2009-06-21",
+    "events": [
+      {
+        "name": "EmptyEvent",
+        "props": {
+          "isChangeable": true,
+          "skipCheck": false,
+          "time": "Day"
+        }
+      },
+      {
+        "name": "EmptyEvent",
+        "props": {
+          "isChangeable": true,
+          "skipCheck": false,
+          "time": "Evening"
+        }
+      }
+    ]
+  },
+  {
+    "date": "2009-06-22",
+    "events": [
+      {
+        "name": "EmptyEvent",
+        "props": {
+          "isChangeable": true,
+          "skipCheck": false,
+          "time": "Day"
+        }
+      },
+      {
+        "name": "EmptyEvent",
+        "props": {
+          "isChangeable": true,
+          "skipCheck": false,
+          "time": "Evening"
+        }
+      }
+    ]
+  },
+  {
+    "date": "2009-06-23",
+    "events": [
+      {
+        "name": "EmptyEvent",
+        "props": {
+          "isChangeable": true,
+          "skipCheck": false,
+          "time": "Day"
+        }
+      },
+      {
+        "name": "EmptyEvent",
+        "props": {
+          "isChangeable": true,
+          "skipCheck": false,
+          "time": "Evening"
+        }
+      }
+    ]
+  },
+  {
+    "date": "2009-06-24",
+    "events": [
+      {
+        "name": "EmptyEvent",
+        "props": {
+          "isChangeable": true,
+          "skipCheck": false,
+          "time": "Day"
+        }
+      },
+      {
+        "name": "EmptyEvent",
+        "props": {
+          "isChangeable": true,
+          "skipCheck": false,
+          "time": "Evening"
+        }
+      }
+    ]
+  },
+  {
+    "date": "2009-06-25",
+    "events": [
+      {
+        "name": "EmptyEvent",
+        "props": {
+          "isChangeable": true,
+          "skipCheck": false,
+          "time": "Day"
+        }
+      },
+      {
+        "name": "EmptyEvent",
+        "props": {
+          "isChangeable": true,
+          "skipCheck": false,
+          "time": "Evening"
+        }
+      }
+    ]
+  },
+  {
+    "date": "2009-06-26",
+    "events": [
+      {
+        "name": "EmptyEvent",
+        "props": {
+          "isChangeable": true,
+          "skipCheck": false,
+          "time": "Day"
+        }
+      },
+      {
+        "name": "EmptyEvent",
+        "props": {
+          "isChangeable": true,
+          "skipCheck": false,
+          "time": "Evening"
+        }
+      }
+    ]
+  },
+  {
+    "date": "2009-06-27",
+    "events": [
+      {
+        "name": "EmptyEvent",
+        "props": {
+          "isChangeable": true,
+          "skipCheck": false,
+          "time": "Day"
+        }
+      },
+      {
+        "name": "EmptyEvent",
+        "props": {
+          "isChangeable": true,
+          "skipCheck": false,
+          "time": "Evening"
+        }
+      }
+    ]
+  },
+  {
+    "date": "2009-06-28",
+    "events": [
+      {
+        "name": "EmptyEvent",
+        "props": {
+          "isChangeable": true,
+          "skipCheck": false,
+          "time": "Day"
+        }
+      },
+      {
+        "name": "EmptyEvent",
+        "props": {
+          "isChangeable": true,
+          "skipCheck": false,
+          "time": "Evening"
+        }
+      }
+    ]
+  },
+  {
+    "date": "2009-06-29",
+    "events": [
+      {
+        "name": "EmptyEvent",
+        "props": {
+          "isChangeable": true,
+          "skipCheck": false,
+          "time": "Day"
+        }
+      },
+      {
+        "name": "EmptyEvent",
+        "props": {
+          "isChangeable": true,
+          "skipCheck": false,
+          "time": "Evening"
+        }
+      }
+    ]
+  },
+  {
+    "date": "2009-06-30",
+    "events": [
+      {
+        "name": "EmptyEvent",
+        "props": {
+          "isChangeable": true,
+          "skipCheck": false,
+          "time": "Day"
+        }
+      },
+      {
+        "name": "EmptyEvent",
+        "props": {
+          "isChangeable": true,
+          "skipCheck": false,
+          "time": "Evening"
+        }
+      }
+    ]
+  }
+]
