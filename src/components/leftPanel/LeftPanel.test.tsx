@@ -6,12 +6,14 @@ import { Arcanas } from '@constants/arcanas';
 import {
   createCharacterStatsFixture,
   createDayFixture,
+  createDormActivitiesStatsFixture,
   createEpisodesStatsFixture,
   createSocialLinkStatsFixture,
   createStatsFixture,
 } from '@services/fixtures';
 import { SocialLinkLevel } from '@services/stats';
 import { CharacterStatsNames } from '@services/stats/characterStats';
+import { DormActivitiesNames } from '@services/stats/dormActivities';
 import { EpisodeSocialLinkNames } from '@services/stats/episodesStats';
 import { useMainStore } from '@store/main';
 
@@ -321,5 +323,37 @@ describe('LeftPanel', () => {
     const amada = rowFor(EpisodeSocialLinkNames.Amada);
     expect(amada).not.toBeNull();
     expect(within(amada!).getByText('0')).toHaveClass('rounded-full');
+  });
+
+  it('shows Dorm activites stats from statsAtEndOfDay with the level in a Badge', async () => {
+    const user = userEvent.setup();
+    const DormActivitiesStats = createDormActivitiesStatsFixture({
+      [DormActivitiesNames.IoriGarden]: 2,
+      [DormActivitiesNames.AragakiKitchen]: 1,
+    });
+    const day = createDayFixture({
+      statsAtStartOfDay: createStatsFixture({ DormActivitiesStats }),
+      statsAtEndOfDay: createStatsFixture({ DormActivitiesStats }),
+    });
+    useMainStore.setState({ currentDay: day });
+
+    render(<LeftPanel />);
+
+    await user.click(screen.getByRole('tab', { name: LeftPanelTabNames.DormActivities }));
+
+    expect(screen.getByRole('tab', { name: LeftPanelTabNames.DormActivities })).toHaveAttribute(
+      'aria-selected',
+      'true'
+    );
+    expect(screen.getByRole('list', { name: 'Dorm activites stats' })).toBeInTheDocument();
+    expect(screen.queryByRole('list', { name: 'Character stats' })).not.toBeInTheDocument();
+
+    const ioriGarden = rowFor(DormActivitiesNames.IoriGarden);
+    expect(ioriGarden).not.toBeNull();
+    expect(within(ioriGarden!).getByText('2')).toHaveClass('rounded-full');
+
+    const koromaruDvd = rowFor(DormActivitiesNames.KoromaruDVD);
+    expect(koromaruDvd).not.toBeNull();
+    expect(within(koromaruDvd!).getByText('0')).toHaveClass('rounded-full');
   });
 });
