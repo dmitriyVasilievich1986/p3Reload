@@ -15,6 +15,14 @@ export class DormActivitesStats {
   [DormActivitesNames.KoromaruBrush]!: number;
   [DormActivitesNames.AragakiKitchen]!: number;
   [DormActivitesNames.AragakiGarden]!: number;
+  [DormActivitesNames.MitsuruKitchen]!: number;
+  [DormActivitesNames.MitsuruBook]!: number;
+  [DormActivitesNames.YukariKitchen]!: number;
+  [DormActivitesNames.YukariDVD]!: number;
+  [DormActivitesNames.FuukaGarden]!: number;
+  [DormActivitesNames.FuukaBook]!: number;
+  [DormActivitesNames.AigisGarden]!: number;
+  [DormActivitesNames.AigisBook]!: number;
 
   constructor(props?: DormActivitesStatsProps) {
     this[DormActivitesNames.IoriGarden] = props?.[DormActivitesNames.IoriGarden] ?? 0;
@@ -27,6 +35,14 @@ export class DormActivitesStats {
     this[DormActivitesNames.KoromaruBrush] = props?.[DormActivitesNames.KoromaruBrush] ?? 0;
     this[DormActivitesNames.AragakiKitchen] = props?.[DormActivitesNames.AragakiKitchen] ?? 0;
     this[DormActivitesNames.AragakiGarden] = props?.[DormActivitesNames.AragakiGarden] ?? 0;
+    this[DormActivitesNames.MitsuruKitchen] = props?.[DormActivitesNames.MitsuruKitchen] ?? 0;
+    this[DormActivitesNames.MitsuruBook] = props?.[DormActivitesNames.MitsuruBook] ?? 0;
+    this[DormActivitesNames.YukariKitchen] = props?.[DormActivitesNames.YukariKitchen] ?? 0;
+    this[DormActivitesNames.YukariDVD] = props?.[DormActivitesNames.YukariDVD] ?? 0;
+    this[DormActivitesNames.FuukaGarden] = props?.[DormActivitesNames.FuukaGarden] ?? 0;
+    this[DormActivitesNames.FuukaBook] = props?.[DormActivitesNames.FuukaBook] ?? 0;
+    this[DormActivitesNames.AigisGarden] = props?.[DormActivitesNames.AigisGarden] ?? 0;
+    this[DormActivitesNames.AigisBook] = props?.[DormActivitesNames.AigisBook] ?? 0;
   }
 
   increaseLevel(linkName: DormActivitesNamesTypes, levelsAmount?: number): DormActivitesStats {

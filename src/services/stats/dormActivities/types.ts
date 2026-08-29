@@ -1,14 +1,22 @@
 export const DormActivitesNames = {
-  IoriGarden: 'IoriGarden',
-  IoriBook: 'IoriBook',
-  SanadaKitchen: 'SanadaKitchen',
-  SanadaDVD: 'SanadaDVD',
-  AmadaKitchen: 'AmadaKitchen',
-  AmadaDVD: 'AmadaDVD',
-  KoromaruDVD: 'KoromaruDVD',
-  KoromaruBrush: 'KoromaruBrush',
-  AragakiKitchen: 'AragakiKitchen',
-  AragakiGarden: 'AragakiGarden',
+  IoriGarden: 'Iori [Garden]',
+  IoriBook: 'Iori [Book]',
+  SanadaKitchen: 'Sanada [Kitchen]',
+  SanadaDVD: 'Sanada [DVD]',
+  AmadaKitchen: 'Amada [Kitchen]',
+  AmadaDVD: 'Amada [DVD]',
+  KoromaruDVD: 'Koromaru [DVD]',
+  KoromaruBrush: 'Koromaru [Brush]',
+  AragakiKitchen: 'Aragaki [Kitchen]',
+  AragakiGarden: 'Aragaki [Garden]',
+  MitsuruKitchen: 'Mitsuru [Kitchen]',
+  MitsuruBook: 'Mitsuru [Book]',
+  YukariKitchen: 'Yukari [Kitchen]',
+  YukariDVD: 'Yukari [DVD]',
+  FuukaGarden: 'Fuuka [Garden]',
+  FuukaBook: 'Fuuka [Book]',
+  AigisGarden: 'Aigis [Garden]',
+  AigisBook: 'Aigis [Book]',
 } as const;
 
 export type DormActivitesNamesTypes = (typeof DormActivitesNames)[keyof typeof DormActivitesNames];
@@ -24,4 +32,12 @@ export type DormActivitesStatsProps = {
   [DormActivitesNames.AragakiGarden]?: number;
   [DormActivitesNames.KoromaruDVD]?: number;
   [DormActivitesNames.KoromaruBrush]?: number;
+  [DormActivitesNames.MitsuruKitchen]?: number;
+  [DormActivitesNames.MitsuruBook]?: number;
+  [DormActivitesNames.YukariKitchen]?: number;
+  [DormActivitesNames.YukariDVD]?: number;
+  [DormActivitesNames.FuukaGarden]?: number;
+  [DormActivitesNames.FuukaBook]?: number;
+  [DormActivitesNames.AigisGarden]?: number;
+  [DormActivitesNames.AigisBook]?: number;
 };
