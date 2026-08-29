@@ -9,7 +9,13 @@ import {
   type SchoolQuestionEventsNamesType,
 } from './models/schoolQuestions';
 import { SocialLinkEvents } from './models/socialLinkEvents';
-import { SpecialEventsNames, TextEvent, EmptyEvent, TartarusEvent } from './models/specialEvents';
+import {
+  SpecialEventsNames,
+  TextEvent,
+  EmptyEvent,
+  TartarusEvent,
+  ExamResultsEvent,
+} from './models/specialEvents';
 
 import type { TextEventProps } from './models/specialEvents/types';
 import type { EventNamesType, EventProps } from './types';
@@ -21,6 +27,7 @@ export const Events = {
   ...NaganakiShrineEvents,
   ...EpisodesEventModels,
   ...PCProgramEvents,
+  [SpecialEventsNames.ExamResults]: ExamResultsEvent,
   [SpecialEventsNames.Tartarus]: TartarusEvent,
   [SpecialEventsNames.Empty]: EmptyEvent,
   [SpecialEventsNames.Text]: TextEvent,
@@ -52,6 +59,9 @@ export function eventFactory(name: EventNamesType, props: Record<string, unknown
   }
   if (name === SpecialEventsNames.Tartarus) {
     return new TartarusEvent(props as TextEventProps);
+  }
+  if (name === SpecialEventsNames.ExamResults) {
+    return new ExamResultsEvent(props as EventProps);
   }
   if (name in SchoolQuestionsEvents) {
     return new SchoolQuestionsEvents[name as SchoolQuestionEventsNamesType](
