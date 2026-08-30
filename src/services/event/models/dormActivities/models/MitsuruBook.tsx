@@ -1,7 +1,12 @@
 import dayjs from 'dayjs';
 
 import { socialLinkFullNames } from '@constants/socialLinkNames';
-import { AvailabilityBase, TimeAvailability, DateAvailability } from '@services/availability';
+import {
+  AvailabilityBase,
+  TimeAvailability,
+  DateAvailability,
+  isDormActivitiesLevelUpAvailable,
+} from '@services/availability';
 import {
   type CharacterStatsModifierType,
   CharacterStatsNames,
@@ -18,6 +23,10 @@ export class MitsuruBook extends DormActivitiesEventBase {
   ];
 
   static readonly availabilities: AvailabilityBase[] = [
+    new isDormActivitiesLevelUpAvailable({
+      name: DormActivitiesNames.MitsuruBook,
+      isLevelUpAvailable: true,
+    }),
     new TimeAvailability({ times: ['Evening'] }),
     new DateAvailability({
       operator: 'in',

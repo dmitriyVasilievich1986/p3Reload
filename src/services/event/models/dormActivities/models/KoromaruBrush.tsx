@@ -1,7 +1,12 @@
 import dayjs from 'dayjs';
 
 import { socialLinkFullNames } from '@constants/socialLinkNames';
-import { AvailabilityBase, TimeAvailability, DateAvailability } from '@services/availability';
+import {
+  AvailabilityBase,
+  TimeAvailability,
+  DateAvailability,
+  isDormActivitiesLevelUpAvailable,
+} from '@services/availability';
 import { DormActivitiesNames } from '@services/stats/dormActivities/types';
 
 import { DormActivitiesEventBase } from '../base';
@@ -14,6 +19,10 @@ export class KoromaruBrush extends DormActivitiesEventBase {
   static readonly modifiers: CharacterStatsModifierType[] = [];
 
   static readonly availabilities: AvailabilityBase[] = [
+    new isDormActivitiesLevelUpAvailable({
+      name: DormActivitiesNames.KoromaruBrush,
+      isLevelUpAvailable: true,
+    }),
     new TimeAvailability({ times: ['Evening'] }),
     new DateAvailability({
       operator: 'in',
