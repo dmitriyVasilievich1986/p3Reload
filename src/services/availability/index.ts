@@ -18,4 +18,6 @@ export {
   DayOffAvailability,
   ExamAvailability,
   FalseAvailability,
+  TartarusAvailability,
+  isDormActivitiesLevelUpAvailable,
 } from './models';

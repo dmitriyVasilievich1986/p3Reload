@@ -194,8 +194,8 @@ export class Calendar {
         stats,
         event, // not important
         currentDay: day,
-        previousDay: days[index - 1] ?? Calendar.createEmptyDay(day.date.subtract(1, 'day')),
-        dayWeekBefore: days[index - 7] ?? Calendar.createEmptyDay(day.date.subtract(7, 'day')),
+        previousDay: payload[index - 1] ?? Calendar.createEmptyDay(day.date.subtract(1, 'day')),
+        dayWeekBefore: payload[index - 7] ?? Calendar.createEmptyDay(day.date.subtract(7, 'day')),
       };
       const result = Day.calculateStats(
         day,

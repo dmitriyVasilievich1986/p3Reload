@@ -3,6 +3,7 @@ import dayjs from 'dayjs';
 import { Arcanas, type ArcanasType } from '@constants/arcanas';
 import { DayOfWeek } from '@constants/dayOfWeek';
 import { Places, Districts } from '@constants/places';
+import { socialLinkFullNames } from '@constants/socialLinkNames';
 import { Times } from '@constants/times';
 import {
   type AvailabilityBase,
@@ -24,7 +25,7 @@ export class LoversEvent extends SocialLinkEventBase {
   /** Arcana identifier for this social link. */
   static readonly name: ArcanasType = Arcanas.Lovers;
   /** Display name shown in the event card. */
-  static readonly socialLinkName: string = 'Yukari Takeba';
+  static readonly socialLinkName: string = socialLinkFullNames.Lovers;
   /** Location label shown in the event card. */
   static readonly place: string = Places.Classroom2F;
   /** District label shown in the event card. */

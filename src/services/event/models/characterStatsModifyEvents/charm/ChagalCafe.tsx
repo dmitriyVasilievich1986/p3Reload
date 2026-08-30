@@ -10,6 +10,7 @@ import {
   DayOfWeekAvailability,
   OrAvailability,
   AndAvailability,
+  CharacterStatsAvailability,
 } from '@services/availability';
 import {
   type CharacterStatsModifierType,
@@ -38,6 +39,7 @@ export class ChagalCafeCharmEvent extends CharacterStatsModifyEventBase {
 
   /** Rules that must pass before this event can be scheduled or selected. */
   static readonly availabilities: AvailabilityBase[] = [
+    new CharacterStatsAvailability({ name: CharacterStatsNames.Charm, operator: 'lt', level: 6 }),
     new OrAvailability({
       availabilities: [
         new TimeAvailability({ times: [Times.Evening] }),

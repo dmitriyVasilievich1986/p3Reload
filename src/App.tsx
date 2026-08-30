@@ -13,6 +13,15 @@ import { useSearchParams } from 'react-router';
 
 import { Calendar } from '@services/calendar/Calendar';
 import AprilData from '@services/calendar/data/april.json';
+import AugustData from '@services/calendar/data/august.json';
+import DecemberData from '@services/calendar/data/december.json';
+import JanuaryData from '@services/calendar/data/january.json';
+import JulyData from '@services/calendar/data/july.json';
+import JuneData from '@services/calendar/data/june.json';
+import MayData from '@services/calendar/data/may.json';
+import NovemberData from '@services/calendar/data/november.json';
+import OctoberData from '@services/calendar/data/october.json';
+import SeptemberData from '@services/calendar/data/september.json';
 import { useMainStore } from '@store/main';
 
 import type { DaySerializedType } from '@services/day/types';
@@ -32,7 +41,18 @@ export function App() {
 
   useEffect(() => {
     if (calendar === null) {
-      const calendar = Calendar.deserialize(AprilData as DaySerializedType[]);
+      const calendar = Calendar.deserialize([
+        ...(AprilData as DaySerializedType[]),
+        ...(MayData as DaySerializedType[]),
+        ...(JuneData as DaySerializedType[]),
+        ...(JulyData as DaySerializedType[]),
+        ...(AugustData as DaySerializedType[]),
+        ...(SeptemberData as DaySerializedType[]),
+        ...(OctoberData as DaySerializedType[]),
+        ...(NovemberData as DaySerializedType[]),
+        ...(DecemberData as DaySerializedType[]),
+        ...(JanuaryData as DaySerializedType[]),
+      ]);
       setCalendar(Calendar.calculateStats(calendar, undefined, false, false));
     }
   }, [calendar, setCalendar]);

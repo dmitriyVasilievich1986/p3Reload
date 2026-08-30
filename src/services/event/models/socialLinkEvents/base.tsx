@@ -54,7 +54,10 @@ export abstract class SocialLinkEventBase extends BaseEvent {
       constructor.name as ArcanasType
     );
     const modifier = charmModifier * afterExamModifier;
-    const { isCardNeeded } = currentLevel.getIsCardNeeded({ modifier });
+    const { isCardNeeded } = currentLevel.getIsCardNeeded({
+      modifier,
+      pointsToNextLevel: currentLevel.nextLevelPointsToNextLevel,
+    });
 
     const icons: CardIcon[] = [];
 
@@ -106,6 +109,7 @@ export abstract class SocialLinkEventBase extends BaseEvent {
     const modifier = this.getModifier();
     const { isCardNeeded, pointsWithoutCard, pointsWithCard } = currentLevel.getIsCardNeeded({
       modifier,
+      pointsToNextLevel: currentLevel.nextLevelPointsToNextLevel,
     });
     const points = isCardNeeded ? pointsWithCard : pointsWithoutCard;
 

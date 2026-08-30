@@ -3,6 +3,7 @@ import dayjs from 'dayjs';
 import { Arcanas, type ArcanasType } from '@constants/arcanas';
 import { DayOfWeek } from '@constants/dayOfWeek';
 import { Places, Districts } from '@constants/places';
+import { socialLinkFullNames } from '@constants/socialLinkNames';
 import { Times } from '@constants/times';
 import {
   type AvailabilityBase,
@@ -25,7 +26,7 @@ export class PriestessEvent extends SocialLinkEventBase {
   /** Arcana identifier for this social link. */
   static readonly name: ArcanasType = Arcanas.Priestess;
   /** Display name shown in the event card. */
-  static readonly socialLinkName: string = 'Fuuka Yamagishi';
+  static readonly socialLinkName: string = socialLinkFullNames.Priestess;
   /** Location label shown in the event card. */
   static readonly place: string = Places.Classroom2FHallway;
   /** District label shown in the event card. */

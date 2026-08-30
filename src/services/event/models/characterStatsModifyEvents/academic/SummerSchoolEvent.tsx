@@ -1,7 +1,7 @@
+import dayjs from 'dayjs';
+
 import { Districts } from '@constants/places';
-/**
- * Summer School academics event at Gekkoukan High School.
- */
+import { AvailabilityBase, DateAvailability } from '@services/availability';
 import {
   type CharacterStatsModifierType,
   CharacterStatsNames,
@@ -10,11 +10,6 @@ import {
 import { CharacterStatsModifyEventBase } from '../base';
 import { type AcademicStatModifyNamesType, AcademicStatModifyNames } from './types';
 
-/**
- * Academics activity at Summer School in Gekkoukan High School.
- *
- * Grants +3 Academics.
- */
 export class SummerSchoolEvent extends CharacterStatsModifyEventBase {
   static readonly name: AcademicStatModifyNamesType = AcademicStatModifyNames.summerSchool;
 
@@ -26,5 +21,19 @@ export class SummerSchoolEvent extends CharacterStatsModifyEventBase {
 
   static readonly modifiers: CharacterStatsModifierType[] = [
     { name: CharacterStatsNames.Academics, operator: '+', value: 3 },
+  ];
+
+  static readonly availabilities: AvailabilityBase[] = [
+    new DateAvailability({
+      operator: 'in',
+      value: [
+        dayjs('2009-08-10'),
+        dayjs('2009-08-11'),
+        dayjs('2009-08-12'),
+        dayjs('2009-08-13'),
+        dayjs('2009-08-14'),
+        dayjs('2009-08-15'),
+      ],
+    }),
   ];
 }

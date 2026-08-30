@@ -1,5 +1,6 @@
 export const Times = {
   Morning: 'Morning',
+  ExamResults: 'Exam Results',
   DayFreeTime: 'Day Free Time',
   Day: 'Day',
   EveningFreeTime: 'Evening Free Time',

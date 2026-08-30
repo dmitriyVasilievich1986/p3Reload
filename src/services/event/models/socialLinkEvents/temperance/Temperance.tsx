@@ -3,15 +3,18 @@ import dayjs from 'dayjs';
 import { Arcanas, type ArcanasType } from '@constants/arcanas';
 import { DayOfWeek } from '@constants/dayOfWeek';
 import { Places, Districts } from '@constants/places';
+import { socialLinkFullNames } from '@constants/socialLinkNames';
 import { Times } from '@constants/times';
 import {
   type AvailabilityBase,
   SocialLinkLevelAvailability,
   TimeAvailability,
   IsLevelUpAvailable,
-  DayOfWeekAvailability,
   DateAvailability,
   CharacterStatsAvailability,
+  DayOfWeekAvailability,
+  ExamAvailability,
+  DayOffAvailability,
 } from '@services/availability';
 import { SocialLinkLevel } from '@services/stats';
 import { CharacterStatsNames } from '@services/stats/characterStats';
@@ -23,7 +26,7 @@ export class TemperanceEvent extends SocialLinkEventBase {
   /** Arcana identifier for this social link. */
   static readonly name: ArcanasType = Arcanas.Temperance;
   /** Display name shown in the event card. */
-  static readonly socialLinkName: string = 'André Laurent Jean "Bebe" Geraux';
+  static readonly socialLinkName: string = socialLinkFullNames.Temperance;
   /** Location label shown in the event card. */
   static readonly place: string = Places.Classroom2FHallway;
   /** District label shown in the event card. */
@@ -36,6 +39,8 @@ export class TemperanceEvent extends SocialLinkEventBase {
     new IsLevelUpAvailable({ name: Arcanas.Temperance, isLevelUpAvailable: true }),
     new DateAvailability({ operator: 'ge', value: dayjs('2009-05-08') }),
     new TimeAvailability({ times: [Times.Day] }),
+    new ExamAvailability({ isAvailableOnAnExamDay: false }),
+    new DayOffAvailability({ isAvailableOnADayOff: false }),
     new CharacterStatsAvailability({
       level: 2,
       name: CharacterStatsNames.Academics,

@@ -5,6 +5,7 @@ import { LabelRow, TextRow } from '@components/row';
 import { Arcanas, type ArcanasType } from '@constants/arcanas';
 import { DayOfWeek } from '@constants/dayOfWeek';
 import { Districts } from '@constants/places';
+import { socialLinkFullNames } from '@constants/socialLinkNames';
 import { Times } from '@constants/times';
 import {
   type AvailabilityBase,
@@ -26,7 +27,7 @@ export class SunEvent extends SocialLinkEventBase {
   /** Arcana identifier for this social link. */
   static readonly name: ArcanasType = Arcanas.Sun;
   /** Display name shown in the event card. */
-  static readonly socialLinkName: string = 'Akinari Kamiki';
+  static readonly socialLinkName: string = socialLinkFullNames.Sun;
   /** Location label shown in the event card. */
   static readonly district: string = Districts.NaganakiShrine;
 
@@ -46,7 +47,7 @@ export class SunEvent extends SocialLinkEventBase {
   static readonly levels = [];
 
   constructor(props: EventProps) {
-    super({ ...props, skipCheck: true, isChangeable: false });
+    super({ ...props, skipCheck: true, isChangeable: true });
   }
 
   static getLevel(

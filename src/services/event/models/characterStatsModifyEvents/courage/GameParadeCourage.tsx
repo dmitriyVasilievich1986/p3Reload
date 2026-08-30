@@ -4,7 +4,12 @@
 import { DayOfWeek } from '@constants/dayOfWeek';
 import { Places, Districts } from '@constants/places';
 import { Times } from '@constants/times';
-import { AvailabilityBase, TimeAvailability, DayOfWeekAvailability } from '@services/availability';
+import {
+  AvailabilityBase,
+  TimeAvailability,
+  DayOfWeekAvailability,
+  CharacterStatsAvailability,
+} from '@services/availability';
 import {
   type CharacterStatsModifierType,
   CharacterStatsNames,
@@ -33,6 +38,7 @@ export class GameParadeCourageEvent extends CharacterStatsModifyEventBase {
 
   /** Rules that must pass before this event can be scheduled or selected. */
   static readonly availabilities: AvailabilityBase[] = [
+    new CharacterStatsAvailability({ name: CharacterStatsNames.Courage, operator: 'lt', level: 6 }),
     new TimeAvailability({ times: [Times.Day, Times.Evening] }),
     new DayOfWeekAvailability({ daysOfWeek: [DayOfWeek.Tuesday, DayOfWeek.Friday] }),
   ];

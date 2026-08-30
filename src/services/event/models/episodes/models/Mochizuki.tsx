@@ -7,7 +7,6 @@ import {
   DateAvailability,
   AndAvailability,
 } from '@services/availability';
-import { Stats } from '@services/stats';
 import {
   type EpisodeSocialLinkNamesTypes,
   EpisodeSocialLinkNames,
@@ -92,9 +91,5 @@ export class MochizukiEvent extends EpisodesEventBase {
       default:
         return false;
     }
-  }
-
-  override calculateStats(_props: IsAvailableProps): Stats {
-    return this.stats;
   }
 }

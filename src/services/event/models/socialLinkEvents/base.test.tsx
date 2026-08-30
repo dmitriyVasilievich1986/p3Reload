@@ -20,7 +20,7 @@ function createCardNeededLevel(): SocialLinkLevel {
   return new SocialLinkLevel({
     level: 0,
     pointsToNextLevel: 4,
-    nextLevelPointsToNextLevel: 0,
+    nextLevelPointsToNextLevel: 4,
     previousLevelPointsToNextLevel: 0,
     isRomantic: false,
     isFork: false,

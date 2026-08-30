@@ -2,6 +2,7 @@ import { Card } from '@components/card';
 import { LabelRow, TextRow } from '@components/row';
 import { Arcanas, type ArcanasType } from '@constants/arcanas';
 import { Places, Districts } from '@constants/places';
+import { socialLinkFullNames } from '@constants/socialLinkNames';
 import {
   type IsAvailableProps,
   type AvailabilityBase,
@@ -17,7 +18,7 @@ export class DeathEvent extends SocialLinkEventBase {
   /** Arcana identifier for this social link. */
   static readonly name: ArcanasType = Arcanas.Death;
   /** Display name shown in the event card. */
-  static readonly socialLinkName: string = 'Pharos';
+  static readonly socialLinkName: string = socialLinkFullNames.Death;
   /** Location label shown in the event card. */
   static readonly place: string = Places.MainCharacterRoom;
   /** District label shown in the event card. */
@@ -50,27 +51,20 @@ export class DeathEvent extends SocialLinkEventBase {
   calculateStats(this: SocialLinkEventBase, props: IsAvailableProps): Stats {
     const constructor = this.constructor as typeof DeathEvent;
     const currentStat = this.stats.socialLinkStats[constructor.name as ArcanasType];
-    const result = super.calculateStats(props);
-    const level = constructor.getLevel(0, props);
     const amountOfLevels = [1, 3, 6, 8].includes(currentStat.level) ? 2 : 1;
-    return new Stats({
-      ...result,
-      socialLinkStats: result.socialLinkStats.increaseLevel({
-        arcana: constructor.name,
-        level: level,
-        amountOfLevels,
-      }),
+    const level = constructor.getLevel(currentStat.level + amountOfLevels, props);
+    const socilLinkStats = this.stats.socialLinkStats.increaseLevel({
+      arcana: constructor.name,
+      level: level,
+      amountOfLevels,
     });
+    return this.stats.updateSocialLinkStats(socilLinkStats);
   }
 
   render(this: SocialLinkEventBase, props: IsAvailableProps): React.ReactNode {
     const constructor = this.constructor as typeof SocialLinkEventBase;
     const stats = this.stats.socialLinkStats[constructor.name as ArcanasType];
     const amountOfLevels = [1, 3, 6, 8].includes(stats.level) ? 2 : 1;
-    const nextLevel = constructor.getLevel(
-      stats.currentSocialLinkLevel.level + amountOfLevels,
-      props
-    );
     return (
       <Card
         key={`${constructor.name}-${props.time}`}
@@ -78,7 +72,7 @@ export class DeathEvent extends SocialLinkEventBase {
         badge={{
           size: 'sm',
           color: 'green',
-          text: `${stats.level.toString()} → ${nextLevel.level.toString()}`,
+          text: `${stats.level.toString()} → ${stats.level + amountOfLevels}`,
         }}
         isSelectable={this.isChangeable}
         body={

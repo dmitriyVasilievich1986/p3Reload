@@ -1,5 +1,6 @@
 import { Arcanas, type ArcanasType } from '@constants/arcanas';
 import { Districts } from '@constants/places';
+import { socialLinkFullNames } from '@constants/socialLinkNames';
 import { Times } from '@constants/times';
 import {
   type AvailabilityBase,
@@ -18,7 +19,7 @@ export class MoonEvent extends SocialLinkEventBase {
   /** Arcana identifier for this social link. */
   static readonly name: ArcanasType = Arcanas.Moon;
   /** Display name shown in the event card. */
-  static readonly socialLinkName: string = 'Nozomi Suemitsu';
+  static readonly socialLinkName: string = socialLinkFullNames.Moon;
   /** District label shown in the event card. */
   static readonly district: string = Districts.PaulowniaMall;
 

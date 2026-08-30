@@ -41,6 +41,7 @@ export class HagakureRamenSpecialEvent extends CharacterStatsModifyEventBase {
 
   /** Rules that must pass before this event can be scheduled or selected. */
   static readonly availabilities: AvailabilityBase[] = [
+    new CharacterStatsAvailability({ name: CharacterStatsNames.Charm, operator: 'lt', level: 6 }),
     new TimeAvailability({ times: [Times.Evening] }),
     new IsEventInHistoryAvailability({
       name: CharmStatModifyNames.hagakureRamen,

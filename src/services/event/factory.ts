@@ -1,5 +1,6 @@
 import { BaseEvent } from './base';
 import { CharacterStatsModifyEvents } from './models/characterStatsModifyEvents';
+import { DormActivitiesModels } from './models/dormActivities';
 import { EpisodesEventModels } from './models/episodes';
 import { NaganakiShrineEvents } from './models/naganakiShrine';
 import { PCProgramEvents } from './models/PCProgramEvents';
@@ -9,18 +10,30 @@ import {
   type SchoolQuestionEventsNamesType,
 } from './models/schoolQuestions';
 import { SocialLinkEvents } from './models/socialLinkEvents';
-import { SpecialEventsNames, TextEvent, EmptyEvent, TartarusEvent } from './models/specialEvents';
+import {
+  SpecialEventsNames,
+  TextEvent,
+  EmptyEvent,
+  TartarusEvent,
+  ExamResultsEvent,
+  EdogawaMedicineEvent,
+  ElizabethRequest75Event,
+} from './models/specialEvents';
 
-import type { TextEventProps } from './models/specialEvents/types';
+import type { TextEventProps, TartarusEventProps } from './models/specialEvents/types';
 import type { EventNamesType, EventProps } from './types';
 
 export const Events = {
   ...CharacterStatsModifyEvents,
   ...SchoolQuestionsEvents,
   ...SocialLinkEvents,
+  ...DormActivitiesModels,
   ...NaganakiShrineEvents,
   ...EpisodesEventModels,
   ...PCProgramEvents,
+  [SpecialEventsNames.ElizabethRequest75]: ElizabethRequest75Event,
+  [SpecialEventsNames.EdogawaMedicine]: EdogawaMedicineEvent,
+  [SpecialEventsNames.ExamResults]: ExamResultsEvent,
   [SpecialEventsNames.Tartarus]: TartarusEvent,
   [SpecialEventsNames.Empty]: EmptyEvent,
   [SpecialEventsNames.Text]: TextEvent,
@@ -44,6 +57,9 @@ export function eventFactory(name: EventNamesType, props: Record<string, unknown
   if (name in PCProgramEvents) {
     return new PCProgramEvents[name as keyof typeof PCProgramEvents](props as EventProps);
   }
+  if (name in DormActivitiesModels) {
+    return new DormActivitiesModels[name as keyof typeof DormActivitiesModels](props as EventProps);
+  }
   if (name === SpecialEventsNames.Empty) {
     return new EmptyEvent(props as EventProps);
   }
@@ -51,7 +67,16 @@ export function eventFactory(name: EventNamesType, props: Record<string, unknown
     return new TextEvent(props as TextEventProps);
   }
   if (name === SpecialEventsNames.Tartarus) {
-    return new TartarusEvent(props as TextEventProps);
+    return new TartarusEvent(props as TartarusEventProps);
+  }
+  if (name === SpecialEventsNames.ExamResults) {
+    return new ExamResultsEvent(props as EventProps);
+  }
+  if (name === SpecialEventsNames.EdogawaMedicine) {
+    return new EdogawaMedicineEvent(props as EventProps);
+  }
+  if (name === SpecialEventsNames.ElizabethRequest75) {
+    return new ElizabethRequest75Event(props as EventProps);
   }
   if (name in SchoolQuestionsEvents) {
     return new SchoolQuestionsEvents[name as SchoolQuestionEventsNamesType](

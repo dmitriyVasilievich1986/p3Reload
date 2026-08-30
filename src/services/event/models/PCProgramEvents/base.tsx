@@ -23,7 +23,10 @@ export abstract class LobbyPCProgramsBase extends BaseEvent {
     const characterStats = this.stats.characterStats.modify(
       (this.constructor as typeof LobbyPCProgramsBase).modifiers
     );
-    return this.stats.updateCharacterStats(characterStats);
+    const additionalStats = this.stats.additionalStats.addEvent(
+      (this.constructor as typeof LobbyPCProgramsBase).name
+    );
+    return this.stats.updateCharacterStats(characterStats).updateAdditionalStats(additionalStats);
   }
 
   static render(this: typeof LobbyPCProgramsBase, props: IsAvailableProps): React.ReactNode {

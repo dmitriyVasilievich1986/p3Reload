@@ -1,4 +1,5 @@
 import { Arcanas } from '@constants/arcanas';
+import { DormActivitiesNames } from '@services/stats/dormActivities/types';
 import { EpisodeSocialLinkNames } from '@services/stats/episodesStats';
 
 import { CharacterStatsModifyNames } from './models/characterStatsModifyEvents/types';
@@ -23,6 +24,7 @@ export const EventNames = {
   ...NaganakiShrineEventsNames,
   ...EpisodeSocialLinkNames,
   ...PCProgramEventsNames,
+  ...DormActivitiesNames,
   ...SpecialEventsNames,
   ...Arcanas,
 } as const;

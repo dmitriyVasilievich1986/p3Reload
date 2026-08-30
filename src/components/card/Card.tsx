@@ -12,6 +12,7 @@ import { CardIcons, type CardIconName, type CardProps } from './types';
 
 const timeBadgeColors: Record<TimesType, BadgeColor> = {
   [Times.Morning]: 'gold',
+  [Times.ExamResults]: 'gold',
   [Times.DayFreeTime]: 'orange',
   [Times.Day]: 'orange',
   [Times.EveningFreeTime]: 'violet',

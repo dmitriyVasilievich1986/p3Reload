@@ -1,6 +1,9 @@
 import type { EventProps } from '../../types';
 
 export const SpecialEventsNames = {
+  ElizabethRequest75: 'ElizabethRequest75Event',
+  EdogawaMedicine: 'EdogawaMedicineEvent',
+  ExamResults: 'ExamResultsEvent',
   Tartarus: 'TartarusEvent',
   Empty: 'EmptyEvent',
   Text: 'TextEvent',
@@ -15,6 +18,11 @@ export type SpecialEventRow = {
 
 export type TextEventProps = EventProps & {
   isTall: boolean;
-  header?: string;
+  header: string | undefined | null;
+  rows: SpecialEventRow[];
+};
+
+export type TartarusEventProps = EventProps & {
+  isTall: boolean;
   rows: SpecialEventRow[];
 };

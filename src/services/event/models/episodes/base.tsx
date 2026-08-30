@@ -57,7 +57,7 @@ export abstract class EpisodesEventBase extends BaseEvent {
             )}
           </>
         }
-        header={constructor.name}
+        header={`${constructor.name} [Episode]`}
       />
     );
   }
@@ -73,7 +73,7 @@ export abstract class EpisodesEventBase extends BaseEvent {
             <LabelRow key="Place" label="Place:" text={this.place} />
           </>
         }
-        header={this.name}
+        header={`${this.name} [Episode]`}
       />
     );
   }

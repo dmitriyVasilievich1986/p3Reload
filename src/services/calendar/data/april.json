@@ -97,9 +97,9 @@
         }
       },
       {
-        "name": "TextEvent",
+        "name": "TartarusEvent",
         "props": {
-          "isTall": false,
+          "isTall": true,
           "time": "Dark Hour",
           "isChangeable": false,
           "skipCheck": true,
@@ -332,13 +332,20 @@
         }
       },
       {
-        "name": "TextEvent",
+        "name": "TartarusEvent",
         "props": {
           "isTall": false,
           "time": "Evening",
           "isChangeable": false,
           "skipCheck": true,
           "rows": [
+            {
+              "name": "LabelRow",
+              "props": {
+                "label": "Place:",
+                "text": "Tartarus"
+              }
+            },
             {
               "name": "TextRow",
               "props": {
@@ -348,6 +355,14 @@
               }
             }
           ]
+        }
+      },
+      {
+        "name": "Fool",
+        "props": {
+          "isChangeable": false,
+          "skipCheck": true,
+          "time": "Dark Hour"
         }
       }
     ]
@@ -380,7 +395,7 @@
     "date": "2009-04-20",
     "events": [
       {
-        "name": "TextEvent",
+        "name": "TartarusEvent",
         "props": {
           "isTall": true,
           "time": "Day",
@@ -396,6 +411,14 @@
               }
             }
           ]
+        }
+      },
+      {
+        "name": "Fool",
+        "props": {
+          "isChangeable": false,
+          "skipCheck": true,
+          "time": "Dark Hour"
         }
       }
     ]

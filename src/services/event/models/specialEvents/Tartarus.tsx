@@ -18,7 +18,7 @@ import {
   SpecialEventsNames,
   type SpecialEventRow,
   type SpecialEventsNamesType,
-  type TextEventProps,
+  type TartarusEventProps,
 } from './types';
 
 import type { Stats } from '@services/stats';
@@ -76,7 +76,7 @@ export class TartarusEvent extends BaseEvent {
     }),
   ];
 
-  constructor(props: TextEventProps) {
+  constructor(props: TartarusEventProps) {
     super(props);
     this.rows = props.rows;
     this.isTall = props.isTall;
@@ -89,12 +89,7 @@ export class TartarusEvent extends BaseEvent {
         isSelectable={this.isChangeable}
         isTall={this.isTall}
         header="Tartarus"
-        body={
-          <>
-            <LabelRow label="Place:" text={Places.Tartarus} />
-            {rows}
-          </>
-        }
+        body={rows}
         time={this.time}
       />
     );
@@ -117,7 +112,7 @@ export class TartarusEvent extends BaseEvent {
     return this.stats;
   }
 
-  override serialize(): { name: SpecialEventsNamesType; props: TextEventProps } {
+  override serialize(): { name: SpecialEventsNamesType; props: TartarusEventProps } {
     const { props } = super.serialize();
     return {
       name: SpecialEventsNames.Tartarus,

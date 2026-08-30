@@ -5,6 +5,7 @@ import { LabelRow, TextRow } from '@components/row';
 import { Arcanas, type ArcanasType } from '@constants/arcanas';
 import { DayOfWeek } from '@constants/dayOfWeek';
 import { Districts } from '@constants/places';
+import { socialLinkFullNames } from '@constants/socialLinkNames';
 import { Times } from '@constants/times';
 import {
   type AvailabilityBase,
@@ -26,7 +27,7 @@ export class DevilEvent extends SocialLinkEventBase {
   /** Arcana identifier for this social link. */
   static readonly name: ArcanasType = Arcanas.Devil;
   /** Display name shown in the event card. */
-  static readonly socialLinkName: string = 'President Tanaka';
+  static readonly socialLinkName: string = socialLinkFullNames.Devil;
   /** District label shown in the event card. */
   static readonly district: string = Districts.PaulowniaMall;
 

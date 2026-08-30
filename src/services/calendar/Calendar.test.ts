@@ -1,5 +1,5 @@
 import dayjs from 'dayjs';
-import { beforeEach, describe, expect, it, vi } from 'vite-plus/test';
+import { describe, expect, it, vi } from 'vite-plus/test';
 
 import { DatesFormat } from '@constants/dates';
 import { Times } from '@constants/times';
@@ -14,11 +14,29 @@ import { CharacterStatsNames } from '@services/stats/characterStats/types';
 
 import { Calendar } from './Calendar';
 import aprilData from './data/april.json';
+import augustData from './data/august.json';
+import decemberData from './data/december.json';
+import januaryData from './data/january.json';
+import julyData from './data/july.json';
+import juneData from './data/june.json';
+import mayData from './data/may.json';
+import novemberData from './data/november.json';
+import octoberData from './data/october.json';
+import septemberData from './data/september.json';
 
 import type { DaySerializedType } from '@services/day/types';
 
-const calendarMonthData: { name: string; data: DaySerializedType[] }[] = [
-  { name: 'april', data: aprilData as DaySerializedType[] },
+const calendarMonthData: DaySerializedType[] = [
+  ...(aprilData as DaySerializedType[]),
+  ...(mayData as DaySerializedType[]),
+  ...(juneData as DaySerializedType[]),
+  ...(julyData as DaySerializedType[]),
+  ...(augustData as DaySerializedType[]),
+  ...(septemberData as DaySerializedType[]),
+  ...(octoberData as DaySerializedType[]),
+  ...(novemberData as DaySerializedType[]),
+  ...(decemberData as DaySerializedType[]),
+  ...(januaryData as DaySerializedType[]),
 ];
 
 const baseEventProps = {
@@ -417,21 +435,15 @@ describe('Calendar', () => {
     });
   });
 
-  describe.each(calendarMonthData)('$name data', ({ data }) => {
-    beforeEach(() => {
-      vi.restoreAllMocks();
-    });
+  it('calculates stats without errors or warnings', () => {
+    const warnSpy = vi.spyOn(console, 'warn').mockImplementation(() => undefined);
+    const errorSpy = vi.spyOn(console, 'error').mockImplementation(() => undefined);
+    const calendar = Calendar.deserialize(calendarMonthData);
 
-    it('calculates stats without errors or warnings', () => {
-      const warnSpy = vi.spyOn(console, 'warn').mockImplementation(() => undefined);
-      const errorSpy = vi.spyOn(console, 'error').mockImplementation(() => undefined);
-      const calendar = Calendar.deserialize(data);
+    const result = Calendar.calculateStats(calendar, undefined, false, false);
 
-      const result = Calendar.calculateStats(calendar, undefined, false, false);
-
-      expect(result.days).toHaveLength(data.length);
-      expect(warnSpy).not.toHaveBeenCalled();
-      expect(errorSpy).not.toHaveBeenCalled();
-    });
+    expect(result.days).toHaveLength(calendarMonthData.length);
+    expect(warnSpy).not.toHaveBeenCalled();
+    expect(errorSpy).not.toHaveBeenCalled();
   });
 });

@@ -25,7 +25,7 @@ export class TextEvent extends BaseEvent {
     super({ ...props, skipCheck: true, isChangeable: false });
     this.rows = props.rows;
     this.isTall = props.isTall;
-    this.header = props.header;
+    this.header = props.header ?? undefined;
   }
 
   render(this: TextEvent, _props: IsAvailableProps): React.ReactNode {
@@ -53,6 +53,7 @@ export class TextEvent extends BaseEvent {
         ...props,
         rows: this.rows,
         isTall: this.isTall,
+        header: this.header ?? null,
       },
     };
   }

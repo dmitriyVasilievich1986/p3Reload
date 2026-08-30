@@ -5,7 +5,12 @@ import { Places, Districts } from '@constants/places';
  * Dorm exam studying (Group) event at Iwatodai Dormitory.
  */
 import { Times } from '@constants/times';
-import { AvailabilityBase, TimeAvailability, DateAvailability } from '@services/availability';
+import {
+  AvailabilityBase,
+  TimeAvailability,
+  DateAvailability,
+  CharacterStatsAvailability,
+} from '@services/availability';
 import {
   type CharacterStatsModifierType,
   CharacterStatsNames,
@@ -33,6 +38,11 @@ export class DormExamStudyingTeamEvent extends CharacterStatsModifyEventBase {
 
   /** Rules that must pass before this event can be scheduled or selected. */
   static readonly availabilities: AvailabilityBase[] = [
+    new CharacterStatsAvailability({
+      name: CharacterStatsNames.Academics,
+      operator: 'lt',
+      level: 6,
+    }),
     new TimeAvailability({ times: [Times.Evening] }),
     new DateAvailability({
       operator: 'in',

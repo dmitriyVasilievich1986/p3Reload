@@ -1,4 +1,5 @@
 import { Arcanas } from '@constants/arcanas';
+import { socialLinkFullNames } from '@constants/socialLinkNames';
 import { Times } from '@constants/times';
 import {
   SocialLinkLevelAvailability,
@@ -14,7 +15,7 @@ export class PriestessNaganakiShrineEvent extends NaganakiShrineEventBase {
   static readonly name: NaganakiShrineEventsNamesType =
     NaganakiShrineEventsNames.PriestessNaganakiShrineEvent;
   static readonly arcana = Arcanas.Priestess;
-  static readonly socialLinkName = 'Fuuka Yamagishi';
+  static readonly socialLinkName = socialLinkFullNames.Priestess;
 
   static readonly availabilities: AvailabilityBase[] = [
     new SocialLinkLevelAvailability({ name: Arcanas.Priestess, level: 10, operator: 'lt' }),

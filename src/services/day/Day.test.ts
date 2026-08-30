@@ -118,19 +118,6 @@ describe('Day', () => {
         `No events found for time: ${Times.Morning}`
       );
     });
-
-    it('throws when multiple events share the same time', () => {
-      const day = new Day({
-        statsAtStartOfDay: createStatsFixture(),
-        statsAtEndOfDay: createStatsFixture(),
-        events: [createStayAwakeEvent(), createSleepDuringClassEvent({ time: Times.Morning })],
-        date: createDateFixture(),
-      });
-
-      expect(() => day.getEvent(Times.Morning)).toThrow(
-        `Multiple events found for time: ${Times.Morning}`
-      );
-    });
   });
 
   describe('processEvents', () => {

@@ -1,0 +1,938 @@
+[
+  {
+    "date": "2009-05-01",
+    "events": [
+      {
+        "name": "TextEvent",
+        "props": {
+          "isChangeable": false,
+          "isTall": true,
+          "rows": [
+            {
+              "name": "TextRow",
+              "props": {
+                "isBold": true,
+                "text": "Akihiko's check up",
+                "textAlign": "center"
+              }
+            }
+          ],
+          "skipCheck": true,
+          "time": "Day"
+        }
+      },
+      {
+        "name": "Lessons in Etiquette",
+        "props": {
+          "isChangeable": true,
+          "skipCheck": false,
+          "time": "Evening"
+        }
+      }
+    ]
+  },
+  {
+    "date": "2009-05-02",
+    "events": [
+      {
+        "name": "Hierophant",
+        "props": {
+          "isChangeable": true,
+          "skipCheck": false,
+          "time": "Day"
+        }
+      },
+      {
+        "name": "GameParadeAcademicsEvent",
+        "props": {
+          "isChangeable": true,
+          "skipCheck": false,
+          "time": "Evening"
+        }
+      }
+    ]
+  },
+  {
+    "date": "2009-05-03",
+    "events": [
+      {
+        "name": "Hermit",
+        "props": {
+          "isChangeable": true,
+          "skipCheck": false,
+          "time": "Day"
+        }
+      },
+      {
+        "name": "Virtual Diet",
+        "props": {
+          "isChangeable": true,
+          "skipCheck": false,
+          "time": "Evening"
+        }
+      }
+    ]
+  },
+  {
+    "date": "2009-05-04",
+    "events": [
+      {
+        "name": "Hermit",
+        "props": {
+          "isChangeable": true,
+          "skipCheck": false,
+          "time": "Day"
+        }
+      },
+      {
+        "name": "GameParadeCharmEvent",
+        "props": {
+          "isChangeable": true,
+          "skipCheck": false,
+          "time": "Evening"
+        }
+      }
+    ]
+  },
+  {
+    "date": "2009-05-05",
+    "events": [
+      {
+        "name": "Hermit",
+        "props": {
+          "isChangeable": true,
+          "skipCheck": false,
+          "time": "Day"
+        }
+      },
+      {
+        "name": "Digital Cram School",
+        "props": {
+          "isChangeable": true,
+          "skipCheck": false,
+          "time": "Evening"
+        }
+      }
+    ]
+  },
+  {
+    "date": "2009-05-06",
+    "events": [
+      {
+        "name": "SchoolQuestionsEvent",
+        "props": {
+          "isChangeable": false,
+          "questions": [
+            {
+              "answers": [
+                {
+                  "points": 15,
+                  "text": "A pantograph."
+                },
+                {
+                  "points": 0,
+                  "text": "A piston."
+                },
+                {
+                  "points": 0,
+                  "text": "A master controller."
+                }
+              ],
+              "text": "What do you call the device that helps generate electric power for the train?"
+            }
+          ],
+          "skipCheck": false,
+          "time": "Morning"
+        }
+      },
+      {
+        "name": "Emperor",
+        "props": {
+          "isChangeable": true,
+          "skipCheck": false,
+          "time": "Day"
+        }
+      },
+      {
+        "name": "Language Made Easy",
+        "props": {
+          "isChangeable": true,
+          "skipCheck": false,
+          "time": "Evening"
+        }
+      }
+    ]
+  },
+  {
+    "date": "2009-05-07",
+    "events": [
+      {
+        "name": "Justice",
+        "props": {
+          "isChangeable": true,
+          "skipCheck": false,
+          "time": "Day"
+        }
+      },
+      {
+        "name": "WakatsuKitchenSpecialEvent",
+        "props": {
+          "isChangeable": true,
+          "skipCheck": false,
+          "time": "Evening"
+        }
+      }
+    ]
+  },
+  {
+    "date": "2009-05-08",
+    "events": [
+      {
+        "name": "Magician",
+        "props": {
+          "isChangeable": true,
+          "skipCheck": false,
+          "time": "Day"
+        }
+      },
+      {
+        "name": "WakatsuKitchenSpecialEvent",
+        "props": {
+          "isChangeable": true,
+          "skipCheck": false,
+          "time": "Evening"
+        }
+      }
+    ]
+  },
+  {
+    "date": "2009-05-09",
+    "events": [
+      {
+        "name": "TartarusEvent",
+        "props": {
+          "isChangeable": false,
+          "isTall": true,
+          "rows": [
+            {
+              "name": "TextRow",
+              "props": {
+                "isBold": true,
+                "text": "Priestess Boss Fight",
+                "textAlign": "center"
+              }
+            }
+          ],
+          "skipCheck": true,
+          "time": "Evening"
+        }
+      },
+      {
+        "name": "Fool",
+        "props": {
+          "isChangeable": false,
+          "skipCheck": true,
+          "time": "Dark Hour"
+        }
+      }
+    ]
+  },
+  {
+    "date": "2009-05-10",
+    "events": [
+      {
+        "name": "Hierophant",
+        "props": {
+          "isChangeable": true,
+          "skipCheck": false,
+          "time": "Day"
+        }
+      },
+      {
+        "name": "TartarusEvent",
+        "props": {
+          "isChangeable": true,
+          "rows": [
+            {
+              "name": "CheckboxRow",
+              "props": {
+                "text": "Have at least ¥41,750"
+              }
+            },
+            {
+              "name": "CheckboxRow",
+              "props": {
+                "text": "Be at least level 12"
+              }
+            },
+            {
+              "name": "CheckboxRow",
+              "props": {
+                "text": "Have \"Hanged Man\" card"
+              }
+            },
+            {
+              "name": "CheckboxRow",
+              "props": {
+                "text": "Have \"Chariot\" card"
+              }
+            },
+            {
+              "name": "CheckboxRow",
+              "props": {
+                "text": "Have \"Justice\" card"
+              }
+            },
+            {
+              "name": "CheckboxRow",
+              "props": {
+                "text": "Have \"Temperance\" card"
+              }
+            },
+            {
+              "name": "CheckboxRow",
+              "props": {
+                "text": "Have \"Strength\" card"
+              }
+            }
+          ],
+          "skipCheck": false,
+          "time": "Evening"
+        }
+      }
+    ]
+  },
+  {
+    "date": "2009-05-11",
+    "events": [
+      {
+        "name": "StayAwakeAcademicsEvent",
+        "props": {
+          "isChangeable": true,
+          "skipCheck": false,
+          "time": "Morning"
+        }
+      },
+      {
+        "name": "EdogawaMedicineEvent",
+        "props": {
+          "isChangeable": false,
+          "skipCheck": false,
+          "time": "Day Free Time"
+        }
+      },
+      {
+        "name": "Hanged Man",
+        "props": {
+          "isChangeable": true,
+          "skipCheck": false,
+          "time": "Day"
+        }
+      },
+      {
+        "name": "WakatsuKitchenSpecialEvent",
+        "props": {
+          "isChangeable": true,
+          "skipCheck": false,
+          "time": "Evening"
+        }
+      }
+    ]
+  },
+  {
+    "date": "2009-05-12",
+    "events": [
+      {
+        "name": "Iori",
+        "props": {
+          "isChangeable": true,
+          "skipCheck": false,
+          "time": "Day"
+        }
+      },
+      {
+        "name": "Animal Othello",
+        "props": {
+          "isChangeable": true,
+          "skipCheck": false,
+          "time": "Evening"
+        }
+      }
+    ]
+  },
+  {
+    "date": "2009-05-13",
+    "events": [
+      {
+        "name": "SchoolQuestionsEvent",
+        "props": {
+          "isChangeable": false,
+          "questions": [
+            {
+              "answers": [
+                {
+                  "points": 0,
+                  "text": "The hourglass."
+                },
+                {
+                  "points": 15,
+                  "text": "The pendulum."
+                },
+                {
+                  "points": 0,
+                  "text": "The planisphere."
+                }
+              ],
+              "text": "Which tool did he use in his experiments?"
+            }
+          ],
+          "skipCheck": false,
+          "time": "Morning"
+        }
+      },
+      {
+        "name": "Hanged Man",
+        "props": {
+          "isChangeable": true,
+          "skipCheck": false,
+          "time": "Day"
+        }
+      },
+      {
+        "name": "Typin Ghoul",
+        "props": {
+          "isChangeable": true,
+          "skipCheck": false,
+          "time": "Evening"
+        }
+      }
+    ]
+  },
+  {
+    "date": "2009-05-14",
+    "events": [
+      {
+        "name": "Hierophant",
+        "props": {
+          "isChangeable": true,
+          "skipCheck": false,
+          "time": "Day"
+        }
+      },
+      {
+        "name": "WakatsuKitchenSpecialEvent",
+        "props": {
+          "isChangeable": true,
+          "skipCheck": false,
+          "time": "Evening"
+        }
+      }
+    ]
+  },
+  {
+    "date": "2009-05-15",
+    "events": [
+      {
+        "name": "SchoolQuestionsEvent",
+        "props": {
+          "isChangeable": false,
+          "questions": [
+            {
+              "answers": [
+                {
+                  "points": 0,
+                  "text": "May days."
+                },
+                {
+                  "points": 15,
+                  "text": "May blues."
+                },
+                {
+                  "points": 0,
+                  "text": "Moody blues."
+                }
+              ],
+              "text": "What's the other name for \"May Sickness\"-the more casual one?"
+            }
+          ],
+          "skipCheck": false,
+          "time": "Morning"
+        }
+      },
+      {
+        "name": "Moon",
+        "props": {
+          "isChangeable": true,
+          "skipCheck": false,
+          "time": "Day"
+        }
+      },
+      {
+        "name": "DormExamStudyingGroupEvent",
+        "props": {
+          "isChangeable": true,
+          "skipCheck": false,
+          "time": "Evening"
+        }
+      }
+    ]
+  },
+  {
+    "date": "2009-05-16",
+    "events": [
+      {
+        "name": "StayAwakeAcademicsEvent",
+        "props": {
+          "isChangeable": true,
+          "skipCheck": false,
+          "time": "Morning"
+        }
+      },
+      {
+        "name": "Hanged Man",
+        "props": {
+          "isChangeable": true,
+          "skipCheck": false,
+          "time": "Day"
+        }
+      },
+      {
+        "name": "DormExamStudyingGroupEvent",
+        "props": {
+          "isChangeable": true,
+          "skipCheck": false,
+          "time": "Evening"
+        }
+      }
+    ]
+  },
+  {
+    "date": "2009-05-17",
+    "events": [
+      {
+        "name": "Moon",
+        "props": {
+          "isChangeable": true,
+          "skipCheck": false,
+          "time": "Day"
+        }
+      },
+      {
+        "name": "DormExamStudyingTeamEvent",
+        "props": {
+          "isChangeable": true,
+          "skipCheck": false,
+          "time": "Evening"
+        }
+      }
+    ]
+  },
+  {
+    "date": "2009-05-18",
+    "events": [
+      {
+        "name": "TextEvent",
+        "props": {
+          "isChangeable": false,
+          "isTall": true,
+          "rows": [
+            {
+              "name": "TextRow",
+              "props": {
+                "isBold": true,
+                "text": "Exams",
+                "textAlign": "center"
+              }
+            }
+          ],
+          "skipCheck": true,
+          "time": "Day"
+        }
+      }
+    ]
+  },
+  {
+    "date": "2009-05-19",
+    "events": [
+      {
+        "name": "ExamQuestionsEvent",
+        "props": {
+          "isChangeable": false,
+          "questions": [
+            {
+              "answers": [
+                {
+                  "points": 15,
+                  "text": "May blues"
+                },
+                {
+                  "points": 0,
+                  "text": "Moody blues"
+                },
+                {
+                  "points": 0,
+                  "text": "May days"
+                },
+                {
+                  "points": 0,
+                  "text": "Dropsy"
+                }
+              ],
+              "text": "What is the other common expression used to describe \"May Sickness\"?"
+            }
+          ],
+          "skipCheck": false,
+          "time": "Day"
+        }
+      }
+    ]
+  },
+  {
+    "date": "2009-05-20",
+    "events": [
+      {
+        "name": "ExamQuestionsEvent",
+        "props": {
+          "isChangeable": false,
+          "questions": [
+            {
+              "answers": [
+                {
+                  "points": 0,
+                  "text": "A magnet"
+                },
+                {
+                  "points": 0,
+                  "text": "A tuning fork"
+                },
+                {
+                  "points": 15,
+                  "text": "A pendulum"
+                },
+                {
+                  "points": 0,
+                  "text": "A vacuum tube"
+                }
+              ],
+              "text": "Which of the following did Léon Foucault use in his experiment on the rotation of the Earth?"
+            }
+          ],
+          "skipCheck": false,
+          "time": "Day"
+        }
+      }
+    ]
+  },
+  {
+    "date": "2009-05-21",
+    "events": [
+      {
+        "name": "ExamQuestionsEvent",
+        "props": {
+          "isChangeable": false,
+          "questions": [
+            {
+              "answers": [
+                {
+                  "points": 0,
+                  "text": "Frictional heat"
+                },
+                {
+                  "points": 15,
+                  "text": "Electricity"
+                },
+                {
+                  "points": 0,
+                  "text": "Magnetism"
+                },
+                {
+                  "points": 0,
+                  "text": "Cold air"
+                }
+              ],
+              "text": "Which of the following is generated by a pantograph?"
+            }
+          ],
+          "skipCheck": false,
+          "time": "Day"
+        }
+      }
+    ]
+  },
+  {
+    "date": "2009-05-22",
+    "events": [
+      {
+        "name": "ExamQuestionsEvent",
+        "props": {
+          "isChangeable": false,
+          "questions": [
+            {
+              "answers": [
+                {
+                  "points": 15,
+                  "text": "Jomon"
+                },
+                {
+                  "points": 0,
+                  "text": "Yayoi"
+                },
+                {
+                  "points": 0,
+                  "text": "Kofun"
+                },
+                {
+                  "points": 0,
+                  "text": "Asuka"
+                }
+              ],
+              "text": "During which historical period were middens most commonly used?"
+            }
+          ],
+          "skipCheck": false,
+          "time": "Day"
+        }
+      }
+    ]
+  },
+  {
+    "date": "2009-05-23",
+    "events": [
+      {
+        "name": "TextEvent",
+        "props": {
+          "isChangeable": false,
+          "isTall": false,
+          "rows": [
+            {
+              "name": "TextRow",
+              "props": {
+                "isBold": true,
+                "text": "Exams",
+                "textAlign": "center"
+              }
+            }
+          ],
+          "skipCheck": true,
+          "time": "Morning"
+        }
+      },
+      {
+        "name": "Justice",
+        "props": {
+          "isChangeable": true,
+          "skipCheck": false,
+          "time": "Day"
+        }
+      },
+      {
+        "name": "Iwatodai Forum Note",
+        "props": {
+          "isChangeable": true,
+          "skipCheck": false,
+          "time": "Evening"
+        }
+      }
+    ]
+  },
+  {
+    "date": "2009-05-24",
+    "events": [
+      {
+        "name": "Moon",
+        "props": {
+          "isChangeable": true,
+          "skipCheck": false,
+          "time": "Day"
+        }
+      },
+      {
+        "name": "School X Site Note",
+        "props": {
+          "isChangeable": true,
+          "skipCheck": false,
+          "time": "Evening"
+        }
+      }
+    ]
+  },
+  {
+    "date": "2009-05-25",
+    "events": [
+      {
+        "name": "StayAwakeAcademicsEvent",
+        "props": {
+          "isChangeable": true,
+          "skipCheck": false,
+          "time": "Morning"
+        }
+      },
+      {
+        "name": "ExamResultsEvent",
+        "props": {
+          "isChangeable": false,
+          "skipCheck": false,
+          "time": "Exam Results"
+        }
+      },
+      {
+        "name": "Emperor",
+        "props": {
+          "isChangeable": true,
+          "skipCheck": false,
+          "time": "Day"
+        }
+      },
+      {
+        "name": "Umiushi Fan Book",
+        "props": {
+          "isChangeable": true,
+          "skipCheck": false,
+          "time": "Evening"
+        }
+      }
+    ]
+  },
+  {
+    "date": "2009-05-26",
+    "events": [
+      {
+        "name": "Chariot",
+        "props": {
+          "isChangeable": true,
+          "skipCheck": false,
+          "time": "Day"
+        }
+      },
+      {
+        "name": "GameParadeCourageEvent",
+        "props": {
+          "isChangeable": true,
+          "skipCheck": false,
+          "time": "Evening"
+        }
+      }
+    ]
+  },
+  {
+    "date": "2009-05-27",
+    "events": [
+      {
+        "name": "Temperance",
+        "props": {
+          "isChangeable": true,
+          "skipCheck": false,
+          "time": "Day"
+        }
+      },
+      {
+        "name": "HagakureRamenEvent",
+        "props": {
+          "isChangeable": true,
+          "skipCheck": false,
+          "time": "Evening"
+        }
+      }
+    ]
+  },
+  {
+    "date": "2009-05-28",
+    "events": [
+      {
+        "name": "StayAwakeAcademicsEvent",
+        "props": {
+          "isChangeable": true,
+          "skipCheck": false,
+          "time": "Morning"
+        }
+      },
+      {
+        "name": "Chariot",
+        "props": {
+          "isChangeable": true,
+          "skipCheck": false,
+          "time": "Day"
+        }
+      },
+      {
+        "name": "Mindful Boot Camp",
+        "props": {
+          "isChangeable": true,
+          "skipCheck": false,
+          "time": "Evening"
+        }
+      }
+    ]
+  },
+  {
+    "date": "2009-05-29",
+    "events": [
+      {
+        "name": "StayAwakeAcademicsEvent",
+        "props": {
+          "isChangeable": true,
+          "skipCheck": false,
+          "time": "Morning"
+        }
+      },
+      {
+        "name": "Temperance",
+        "props": {
+          "isChangeable": true,
+          "skipCheck": false,
+          "time": "Day"
+        }
+      },
+      {
+        "name": "GameParadeCourageEvent",
+        "props": {
+          "isChangeable": true,
+          "skipCheck": false,
+          "time": "Evening"
+        }
+      }
+    ]
+  },
+  {
+    "date": "2009-05-30",
+    "events": [
+      {
+        "name": "Justice",
+        "props": {
+          "isChangeable": true,
+          "skipCheck": false,
+          "time": "Day"
+        }
+      },
+      {
+        "name": "Muscle Boot Camp",
+        "props": {
+          "isChangeable": true,
+          "skipCheck": false,
+          "time": "Evening"
+        }
+      }
+    ]
+  },
+  {
+    "date": "2009-05-31",
+    "events": [
+      {
+        "name": "Moon",
+        "props": {
+          "isChangeable": true,
+          "skipCheck": false,
+          "time": "Day"
+        }
+      },
+      {
+        "name": "WakatsuKitchenSpecialEvent",
+        "props": {
+          "isChangeable": true,
+          "skipCheck": false,
+          "time": "Evening"
+        }
+      }
+    ]
+  }
+]
