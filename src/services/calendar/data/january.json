@@ -1,0 +1,798 @@
+[
+  {
+    "date": "2010-01-01",
+    "events": [
+      {
+        "name": "TextEvent",
+        "props": {
+          "header": null,
+          "isChangeable": false,
+          "isTall": false,
+          "rows": [
+            {
+              "name": "TextRow",
+              "props": {
+                "isBold": true,
+                "text": "New Year Shrine visit",
+                "textAlign": "center"
+              }
+            }
+          ],
+          "skipCheck": true,
+          "time": "Day"
+        }
+      },
+      {
+        "name": "EmptyEvent",
+        "props": {
+          "isChangeable": true,
+          "skipCheck": false,
+          "time": "Evening"
+        }
+      }
+    ]
+  },
+  {
+    "date": "2010-01-02",
+    "events": [
+      {
+        "name": "EmptyEvent",
+        "props": {
+          "isChangeable": true,
+          "skipCheck": false,
+          "time": "Day"
+        }
+      },
+      {
+        "name": "EmptyEvent",
+        "props": {
+          "isChangeable": true,
+          "skipCheck": false,
+          "time": "Evening"
+        }
+      }
+    ]
+  },
+  {
+    "date": "2010-01-03",
+    "events": [
+      {
+        "name": "EmptyEvent",
+        "props": {
+          "isChangeable": true,
+          "skipCheck": false,
+          "time": "Day"
+        }
+      },
+      {
+        "name": "EmptyEvent",
+        "props": {
+          "isChangeable": true,
+          "skipCheck": false,
+          "time": "Evening"
+        }
+      }
+    ]
+  },
+  {
+    "date": "2010-01-04",
+    "events": [
+      {
+        "name": "EmptyEvent",
+        "props": {
+          "isChangeable": true,
+          "skipCheck": false,
+          "time": "Day"
+        }
+      },
+      {
+        "name": "Sanada",
+        "props": {
+          "isChangeable": true,
+          "skipCheck": false,
+          "time": "Evening"
+        }
+      }
+    ]
+  },
+  {
+    "date": "2010-01-05",
+    "events": [
+      {
+        "name": "Koromaru",
+        "props": {
+          "isChangeable": true,
+          "skipCheck": false,
+          "time": "Day"
+        }
+      },
+      {
+        "name": "EmptyEvent",
+        "props": {
+          "isChangeable": true,
+          "skipCheck": false,
+          "time": "Evening"
+        }
+      }
+    ]
+  },
+  {
+    "date": "2010-01-06",
+    "events": [
+      {
+        "name": "EmptyEvent",
+        "props": {
+          "isChangeable": true,
+          "skipCheck": false,
+          "time": "Day"
+        }
+      },
+      {
+        "name": "EmptyEvent",
+        "props": {
+          "isChangeable": true,
+          "skipCheck": false,
+          "time": "Evening"
+        }
+      }
+    ]
+  },
+  {
+    "date": "2010-01-07",
+    "events": [
+      {
+        "name": "EmptyEvent",
+        "props": {
+          "isChangeable": true,
+          "skipCheck": false,
+          "time": "Day"
+        }
+      },
+      {
+        "name": "EmptyEvent",
+        "props": {
+          "isChangeable": true,
+          "skipCheck": false,
+          "time": "Evening"
+        }
+      }
+    ]
+  },
+  {
+    "date": "2010-01-08",
+    "events": [
+      {
+        "name": "SchoolQuestionsEvent",
+        "props": {
+          "isChangeable": false,
+          "questions": [
+            {
+              "answers": [
+                {
+                  "points": 0,
+                  "text": "One's hometown."
+                },
+                {
+                  "points": 0,
+                  "text": "One's second life."
+                },
+                {
+                  "points": 15,
+                  "text": "The underworld."
+                }
+              ],
+              "text": "\"The new year is the index of a journey to a certain place.\" Where is this \"certain place\" he's referring to?"
+            }
+          ],
+          "skipCheck": false,
+          "time": "Morning"
+        }
+      },
+      {
+        "name": "Aeon",
+        "props": {
+          "isChangeable": true,
+          "skipCheck": false,
+          "time": "Day"
+        }
+      },
+      {
+        "name": "EmptyEvent",
+        "props": {
+          "isChangeable": true,
+          "skipCheck": false,
+          "time": "Evening"
+        }
+      }
+    ]
+  },
+  {
+    "date": "2010-01-09",
+    "events": [
+      {
+        "name": "EmptyEvent",
+        "props": {
+          "isChangeable": true,
+          "skipCheck": false,
+          "time": "Day"
+        }
+      },
+      {
+        "name": "EmptyEvent",
+        "props": {
+          "isChangeable": true,
+          "skipCheck": false,
+          "time": "Evening"
+        }
+      }
+    ]
+  },
+  {
+    "date": "2010-01-10",
+    "events": [
+      {
+        "name": "EmptyEvent",
+        "props": {
+          "isChangeable": true,
+          "skipCheck": false,
+          "time": "Day"
+        }
+      },
+      {
+        "name": "EmptyEvent",
+        "props": {
+          "isChangeable": true,
+          "skipCheck": false,
+          "time": "Evening"
+        }
+      }
+    ]
+  },
+  {
+    "date": "2010-01-11",
+    "events": [
+      {
+        "name": "EmptyEvent",
+        "props": {
+          "isChangeable": true,
+          "skipCheck": false,
+          "time": "Day"
+        }
+      },
+      {
+        "name": "EmptyEvent",
+        "props": {
+          "isChangeable": true,
+          "skipCheck": false,
+          "time": "Evening"
+        }
+      }
+    ]
+  },
+  {
+    "date": "2010-01-12",
+    "events": [
+      {
+        "name": "StayAwakeAcademicsEvent",
+        "props": {
+          "isChangeable": true,
+          "skipCheck": false,
+          "time": "Morning"
+        }
+      },
+      {
+        "name": "Aeon",
+        "props": {
+          "isChangeable": true,
+          "skipCheck": false,
+          "time": "Day"
+        }
+      },
+      {
+        "name": "EmptyEvent",
+        "props": {
+          "isChangeable": true,
+          "skipCheck": false,
+          "time": "Evening"
+        }
+      }
+    ]
+  },
+  {
+    "date": "2010-01-13",
+    "events": [
+      {
+        "name": "Aeon",
+        "props": {
+          "isChangeable": true,
+          "skipCheck": false,
+          "time": "Day"
+        }
+      },
+      {
+        "name": "EmptyEvent",
+        "props": {
+          "isChangeable": true,
+          "skipCheck": false,
+          "time": "Evening"
+        }
+      }
+    ]
+  },
+  {
+    "date": "2010-01-14",
+    "events": [
+      {
+        "name": "Aeon",
+        "props": {
+          "isChangeable": true,
+          "skipCheck": false,
+          "time": "Day"
+        }
+      },
+      {
+        "name": "EmptyEvent",
+        "props": {
+          "isChangeable": true,
+          "skipCheck": false,
+          "time": "Evening"
+        }
+      }
+    ]
+  },
+  {
+    "date": "2010-01-15",
+    "events": [
+      {
+        "name": "StayAwakeAcademicsEvent",
+        "props": {
+          "isChangeable": true,
+          "skipCheck": false,
+          "time": "Morning"
+        }
+      },
+      {
+        "name": "Iori",
+        "props": {
+          "isChangeable": true,
+          "skipCheck": false,
+          "time": "Day"
+        }
+      },
+      {
+        "name": "EmptyEvent",
+        "props": {
+          "isChangeable": true,
+          "skipCheck": false,
+          "time": "Evening"
+        }
+      }
+    ]
+  },
+  {
+    "date": "2010-01-16",
+    "events": [
+      {
+        "name": "Aeon",
+        "props": {
+          "isChangeable": true,
+          "skipCheck": false,
+          "time": "Day"
+        }
+      },
+      {
+        "name": "EmptyEvent",
+        "props": {
+          "isChangeable": true,
+          "skipCheck": false,
+          "time": "Evening"
+        }
+      }
+    ]
+  },
+  {
+    "date": "2010-01-17",
+    "events": [
+      {
+        "name": "EmptyEvent",
+        "props": {
+          "isChangeable": true,
+          "skipCheck": false,
+          "time": "Day"
+        }
+      },
+      {
+        "name": "EmptyEvent",
+        "props": {
+          "isChangeable": true,
+          "skipCheck": false,
+          "time": "Evening"
+        }
+      }
+    ]
+  },
+  {
+    "date": "2010-01-18",
+    "events": [
+      {
+        "name": "SchoolQuestionsEvent",
+        "props": {
+          "isChangeable": false,
+          "questions": [
+            {
+              "answers": [
+                {
+                  "points": 0,
+                  "text": "Poleis."
+                },
+                {
+                  "points": 15,
+                  "text": "Circe."
+                },
+                {
+                  "points": 0,
+                  "text": "Hecate."
+                }
+              ],
+              "text": "I've mentioned two Greek sorceresses. One was Medea. Who was the other?"
+            }
+          ],
+          "skipCheck": false,
+          "time": "Morning"
+        }
+      },
+      {
+        "name": "Aeon",
+        "props": {
+          "isChangeable": true,
+          "skipCheck": false,
+          "time": "Day"
+        }
+      },
+      {
+        "name": "EmptyEvent",
+        "props": {
+          "isChangeable": true,
+          "skipCheck": false,
+          "time": "Evening"
+        }
+      }
+    ]
+  },
+  {
+    "date": "2010-01-19",
+    "events": [
+      {
+        "name": "Aeon",
+        "props": {
+          "isChangeable": true,
+          "skipCheck": false,
+          "time": "Day"
+        }
+      },
+      {
+        "name": "Amada",
+        "props": {
+          "isChangeable": true,
+          "skipCheck": false,
+          "time": "Evening"
+        }
+      }
+    ]
+  },
+  {
+    "date": "2010-01-20",
+    "events": [
+      {
+        "name": "Aeon",
+        "props": {
+          "isChangeable": true,
+          "skipCheck": false,
+          "time": "Day"
+        }
+      },
+      {
+        "name": "EmptyEvent",
+        "props": {
+          "isChangeable": true,
+          "skipCheck": false,
+          "time": "Evening"
+        }
+      }
+    ]
+  },
+  {
+    "date": "2010-01-21",
+    "events": [
+      {
+        "name": "TextEvent",
+        "props": {
+          "header": null,
+          "isChangeable": false,
+          "isTall": false,
+          "rows": [
+            {
+              "name": "TextRow",
+              "props": {
+                "isBold": true,
+                "text": "Hospital visit",
+                "textAlign": "center"
+              }
+            }
+          ],
+          "skipCheck": true,
+          "time": "Day"
+        }
+      },
+      {
+        "name": "EmptyEvent",
+        "props": {
+          "isChangeable": true,
+          "skipCheck": false,
+          "time": "Evening"
+        }
+      }
+    ]
+  },
+  {
+    "date": "2010-01-22",
+    "events": [
+      {
+        "name": "StayAwakeAcademicsEvent",
+        "props": {
+          "isChangeable": true,
+          "skipCheck": false,
+          "time": "Morning"
+        }
+      },
+      {
+        "name": "Aeon",
+        "props": {
+          "isChangeable": true,
+          "skipCheck": false,
+          "time": "Day"
+        }
+      },
+      {
+        "name": "EmptyEvent",
+        "props": {
+          "isChangeable": true,
+          "skipCheck": false,
+          "time": "Evening"
+        }
+      }
+    ]
+  },
+  {
+    "date": "2010-01-23",
+    "events": [
+      {
+        "name": "Aeon",
+        "props": {
+          "isChangeable": true,
+          "skipCheck": false,
+          "time": "Day"
+        }
+      },
+      {
+        "name": "EmptyEvent",
+        "props": {
+          "isChangeable": true,
+          "skipCheck": false,
+          "time": "Evening"
+        }
+      }
+    ]
+  },
+  {
+    "date": "2010-01-24",
+    "events": [
+      {
+        "name": "EmptyEvent",
+        "props": {
+          "isChangeable": true,
+          "skipCheck": false,
+          "time": "Day"
+        }
+      },
+      {
+        "name": "EmptyEvent",
+        "props": {
+          "isChangeable": true,
+          "skipCheck": false,
+          "time": "Evening"
+        }
+      }
+    ]
+  },
+  {
+    "date": "2010-01-25",
+    "events": [
+      {
+        "name": "StayAwakeAcademicsEvent",
+        "props": {
+          "isChangeable": true,
+          "skipCheck": false,
+          "time": "Morning"
+        }
+      },
+      {
+        "name": "Empress",
+        "props": {
+          "isChangeable": true,
+          "skipCheck": false,
+          "time": "Day"
+        }
+      },
+      {
+        "name": "EmptyEvent",
+        "props": {
+          "isChangeable": true,
+          "skipCheck": false,
+          "time": "Evening"
+        }
+      }
+    ]
+  },
+  {
+    "date": "2010-01-26",
+    "events": [
+      {
+        "name": "Empress",
+        "props": {
+          "isChangeable": true,
+          "skipCheck": false,
+          "time": "Day"
+        }
+      },
+      {
+        "name": "EmptyEvent",
+        "props": {
+          "isChangeable": true,
+          "skipCheck": false,
+          "time": "Evening"
+        }
+      }
+    ]
+  },
+  {
+    "date": "2010-01-27",
+    "events": [
+      {
+        "name": "EmptyEvent",
+        "props": {
+          "isChangeable": true,
+          "skipCheck": false,
+          "time": "Day"
+        }
+      },
+      {
+        "name": "EmptyEvent",
+        "props": {
+          "isChangeable": true,
+          "skipCheck": false,
+          "time": "Evening"
+        }
+      }
+    ]
+  },
+  {
+    "date": "2010-01-28",
+    "events": [
+      {
+        "name": "StayAwakeAcademicsEvent",
+        "props": {
+          "isChangeable": true,
+          "skipCheck": false,
+          "time": "Morning"
+        }
+      },
+      {
+        "name": "EmptyEvent",
+        "props": {
+          "isChangeable": true,
+          "skipCheck": false,
+          "time": "Day"
+        }
+      },
+      {
+        "name": "EmptyEvent",
+        "props": {
+          "isChangeable": true,
+          "skipCheck": false,
+          "time": "Evening"
+        }
+      }
+    ]
+  },
+  {
+    "date": "2010-01-29",
+    "events": [
+      {
+        "name": "EmptyEvent",
+        "props": {
+          "isChangeable": true,
+          "skipCheck": false,
+          "time": "Day"
+        }
+      },
+      {
+        "name": "EmptyEvent",
+        "props": {
+          "isChangeable": true,
+          "skipCheck": false,
+          "time": "Evening"
+        }
+      }
+    ]
+  },
+  {
+    "date": "2010-01-30",
+    "events": [
+      {
+        "name": "EmptyEvent",
+        "props": {
+          "isChangeable": true,
+          "skipCheck": false,
+          "time": "Day"
+        }
+      },
+      {
+        "name": "EmptyEvent",
+        "props": {
+          "isChangeable": true,
+          "skipCheck": false,
+          "time": "Evening"
+        }
+      }
+    ]
+  },
+  {
+    "date": "2010-01-31",
+    "events": [
+      {
+        "name": "TartarusEvent",
+        "props": {
+          "isChangeable": false,
+          "isTall": true,
+          "rows": [
+            {
+              "name": "TextRow",
+              "props": {
+                "isBold": true,
+                "text": "Nyx Boss Fight",
+                "textAlign": "center"
+              }
+            }
+          ],
+          "skipCheck": true,
+          "time": "Evening"
+        }
+      }
+    ]
+  },
+  {
+    "date": "2010-03-04",
+    "events": [
+      {
+        "name": "TartarusEvent",
+        "props": {
+          "isChangeable": false,
+          "isTall": true,
+          "rows": [
+            {
+              "name": "TextRow",
+              "props": {
+                "isBold": true,
+                "text": "Special Event",
+                "textAlign": "center"
+              }
+            }
+          ],
+          "skipCheck": true,
+          "time": "Evening"
+        }
+      }
+    ]
+  }
+]

@@ -15,6 +15,7 @@ import { Calendar } from '@services/calendar/Calendar';
 import AprilData from '@services/calendar/data/april.json';
 import AugustData from '@services/calendar/data/august.json';
 import DecemberData from '@services/calendar/data/december.json';
+import JanuaryData from '@services/calendar/data/january.json';
 import JulyData from '@services/calendar/data/july.json';
 import JuneData from '@services/calendar/data/june.json';
 import MayData from '@services/calendar/data/may.json';
@@ -50,6 +51,7 @@ export function App() {
         ...(OctoberData as DaySerializedType[]),
         ...(NovemberData as DaySerializedType[]),
         ...(DecemberData as DaySerializedType[]),
+        ...(JanuaryData as DaySerializedType[]),
       ]);
       setCalendar(Calendar.calculateStats(calendar, undefined, false, false));
     }
