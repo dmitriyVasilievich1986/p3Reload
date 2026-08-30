@@ -1,6 +1,7 @@
 import type { EventProps } from '../../types';
 
 export const SpecialEventsNames = {
+  ElizabethRequest75: 'ElizabethRequest75Event',
   EdogawaMedicine: 'EdogawaMedicineEvent',
   ExamResults: 'ExamResultsEvent',
   Tartarus: 'TartarusEvent',
