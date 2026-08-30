@@ -18,6 +18,7 @@ import augustData from './data/august.json';
 import julyData from './data/july.json';
 import juneData from './data/june.json';
 import mayData from './data/may.json';
+import octoberData from './data/october.json';
 import septemberData from './data/september.json';
 
 import type { DaySerializedType } from '@services/day/types';
@@ -29,6 +30,7 @@ const calendarMonthData: DaySerializedType[] = [
   ...(julyData as DaySerializedType[]),
   ...(augustData as DaySerializedType[]),
   ...(septemberData as DaySerializedType[]),
+  ...(octoberData as DaySerializedType[]),
 ];
 
 const baseEventProps = {

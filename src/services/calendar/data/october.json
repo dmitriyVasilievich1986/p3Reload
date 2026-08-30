@@ -1,0 +1,1052 @@
+[
+  {
+    "date": "2009-10-01",
+    "events": [
+      {
+        "name": "StayAwakeAcademicsEvent",
+        "props": {
+          "isChangeable": true,
+          "skipCheck": false,
+          "time": "Morning"
+        }
+      },
+      {
+        "name": "Magician",
+        "props": {
+          "isChangeable": true,
+          "skipCheck": false,
+          "time": "Day"
+        }
+      },
+      {
+        "name": "Koromaru [Brush]",
+        "props": {
+          "isChangeable": true,
+          "skipCheck": false,
+          "time": "Evening"
+        }
+      }
+    ]
+  },
+  {
+    "date": "2009-10-02",
+    "events": [
+      {
+        "name": "Priestess",
+        "props": {
+          "isChangeable": true,
+          "skipCheck": false,
+          "time": "Day"
+        }
+      },
+      {
+        "name": "Tower",
+        "props": {
+          "isChangeable": true,
+          "skipCheck": false,
+          "time": "Evening"
+        }
+      }
+    ]
+  },
+  {
+    "date": "2009-10-03",
+    "events": [
+      {
+        "name": "StayAwakeAcademicsEvent",
+        "props": {
+          "isChangeable": true,
+          "skipCheck": false,
+          "time": "Morning"
+        }
+      },
+      {
+        "name": "Priestess",
+        "props": {
+          "isChangeable": true,
+          "skipCheck": false,
+          "time": "Day"
+        }
+      },
+      {
+        "name": "Iori [Garden]",
+        "props": {
+          "isChangeable": true,
+          "skipCheck": false,
+          "time": "Evening"
+        }
+      }
+    ]
+  },
+  {
+    "date": "2009-10-04",
+    "events": [
+      {
+        "name": "TartarusEvent",
+        "props": {
+          "isChangeable": false,
+          "isTall": true,
+          "rows": [
+            {
+              "name": "TextRow",
+              "props": {
+                "isBold": true,
+                "text": "Strength and Fortune Boss Fight",
+                "textAlign": "center"
+              }
+            }
+          ],
+          "skipCheck": true,
+          "time": "Dark Hour"
+        }
+      }
+    ]
+  },
+  {
+    "date": "2009-10-05",
+    "events": [
+      {
+        "name": "TextEvent",
+        "props": {
+          "header": null,
+          "isChangeable": false,
+          "isTall": false,
+          "rows": [
+            {
+              "name": "TextRow",
+              "props": {
+                "isBold": true,
+                "text": "Aragaki's funeral",
+                "textAlign": "center"
+              }
+            }
+          ],
+          "skipCheck": true,
+          "time": "Day"
+        }
+      },
+      {
+        "name": "WakatsuKitchenSpecialEvent",
+        "props": {
+          "isChangeable": true,
+          "skipCheck": false,
+          "time": "Evening"
+        }
+      }
+    ]
+  },
+  {
+    "date": "2009-10-06",
+    "events": [
+      {
+        "name": "ElizabethRequest75Event",
+        "props": {
+          "isChangeable": false,
+          "skipCheck": true,
+          "time": "Day Free Time"
+        }
+      },
+      {
+        "name": "Aragaki",
+        "props": {
+          "isChangeable": false,
+          "skipCheck": true,
+          "time": "Day Free Time"
+        }
+      },
+      {
+        "name": "EmptyEvent",
+        "props": {
+          "isChangeable": true,
+          "skipCheck": false,
+          "time": "Day"
+        }
+      },
+      {
+        "name": "Mental Instructor",
+        "props": {
+          "isChangeable": true,
+          "skipCheck": false,
+          "time": "Evening"
+        }
+      },
+      {
+        "name": "Death",
+        "props": {
+          "isChangeable": false,
+          "skipCheck": true,
+          "time": "Dark Hour"
+        }
+      }
+    ]
+  },
+  {
+    "date": "2009-10-07",
+    "events": [
+      {
+        "name": "SchoolQuestionsEvent",
+        "props": {
+          "isChangeable": false,
+          "questions": [
+            {
+              "answers": [
+                {
+                  "points": 0,
+                  "text": "Melatonin."
+                },
+                {
+                  "points": 15,
+                  "text": "Dopamine."
+                },
+                {
+                  "points": 0,
+                  "text": "Histamine."
+                }
+              ],
+              "text": "Which hormone is the one in your brain that provides a sense of achievement?"
+            }
+          ],
+          "skipCheck": false,
+          "time": "Morning"
+        }
+      },
+      {
+        "name": "ElizabethRequest75Event",
+        "props": {
+          "isChangeable": false,
+          "skipCheck": true,
+          "time": "Day Free Time"
+        }
+      },
+      {
+        "name": "Star",
+        "props": {
+          "isChangeable": true,
+          "skipCheck": false,
+          "time": "Day"
+        }
+      },
+      {
+        "name": "GameParadeAcademicsEvent",
+        "props": {
+          "isChangeable": true,
+          "skipCheck": false,
+          "time": "Evening"
+        }
+      }
+    ]
+  },
+  {
+    "date": "2009-10-08",
+    "events": [
+      {
+        "name": "ElizabethRequest75Event",
+        "props": {
+          "isChangeable": false,
+          "skipCheck": true,
+          "time": "Day Free Time"
+        }
+      },
+      {
+        "name": "ChariotNaganakiShrineEvent",
+        "props": {
+          "isChangeable": true,
+          "skipCheck": false,
+          "time": "Day"
+        }
+      },
+      {
+        "name": "DormExamStudyingGroupEvent",
+        "props": {
+          "isChangeable": true,
+          "skipCheck": false,
+          "time": "Evening"
+        }
+      }
+    ]
+  },
+  {
+    "date": "2009-10-09",
+    "events": [
+      {
+        "name": "StayAwakeAcademicsEvent",
+        "props": {
+          "isChangeable": true,
+          "skipCheck": false,
+          "time": "Morning"
+        }
+      },
+      {
+        "name": "ElizabethRequest75Event",
+        "props": {
+          "isChangeable": false,
+          "skipCheck": true,
+          "time": "Day Free Time"
+        }
+      },
+      {
+        "name": "Star",
+        "props": {
+          "isChangeable": true,
+          "skipCheck": false,
+          "time": "Day"
+        }
+      },
+      {
+        "name": "DormExamStudyingGroupEvent",
+        "props": {
+          "isChangeable": true,
+          "skipCheck": false,
+          "time": "Evening"
+        }
+      }
+    ]
+  },
+  {
+    "date": "2009-10-10",
+    "events": [
+      {
+        "name": "SchoolQuestionsEvent",
+        "props": {
+          "isChangeable": false,
+          "questions": [
+            {
+              "answers": [
+                {
+                  "points": 0,
+                  "text": "Éliphas Lévi."
+                },
+                {
+                  "points": 15,
+                  "text": "Helena Blavatsky."
+                },
+                {
+                  "points": 0,
+                  "text": "Aleister Crowley."
+                }
+              ],
+              "text": "Who was the founder of Theosophy, a group that gave rise to many other magical societies?"
+            }
+          ],
+          "skipCheck": false,
+          "time": "Morning"
+        }
+      },
+      {
+        "name": "ElizabethRequest75Event",
+        "props": {
+          "isChangeable": false,
+          "skipCheck": true,
+          "time": "Day Free Time"
+        }
+      },
+      {
+        "name": "JusticeNaganakiShrineEvent",
+        "props": {
+          "isChangeable": true,
+          "skipCheck": false,
+          "time": "Day"
+        }
+      },
+      {
+        "name": "GameParadeAcademicsEvent",
+        "props": {
+          "isChangeable": true,
+          "skipCheck": false,
+          "time": "Evening"
+        }
+      }
+    ]
+  },
+  {
+    "date": "2009-10-11",
+    "events": [
+      {
+        "name": "Sun",
+        "props": {
+          "isChangeable": true,
+          "skipCheck": true,
+          "time": "Day"
+        }
+      },
+      {
+        "name": "DormExamStudyingGroupEvent",
+        "props": {
+          "isChangeable": true,
+          "skipCheck": false,
+          "time": "Evening"
+        }
+      }
+    ]
+  },
+  {
+    "date": "2009-10-12",
+    "events": [
+      {
+        "name": "LoversNaganakiShrineEvent",
+        "props": {
+          "isChangeable": true,
+          "skipCheck": false,
+          "time": "Day"
+        }
+      },
+      {
+        "name": "EmptyEvent",
+        "props": {
+          "isChangeable": true,
+          "skipCheck": false,
+          "time": "Evening"
+        }
+      }
+    ]
+  },
+  {
+    "date": "2009-10-13",
+    "events": [
+      {
+        "name": "ExamQuestionsEvent",
+        "props": {
+          "isChangeable": false,
+          "questions": [
+            {
+              "answers": [
+                {
+                  "points": 0,
+                  "text": "Excesive ego"
+                },
+                {
+                  "points": 0,
+                  "text": "Self-glorification"
+                },
+                {
+                  "points": 15,
+                  "text": "Addiction"
+                },
+                {
+                  "points": 0,
+                  "text": "Apathy Syndrome"
+                }
+              ],
+              "text": "The hormone dopamine is related to our sense of accomplishment. Name a symptom of its overproduction."
+            }
+          ],
+          "skipCheck": false,
+          "time": "Day"
+        }
+      }
+    ]
+  },
+  {
+    "date": "2009-10-14",
+    "events": [
+      {
+        "name": "ExamQuestionsEvent",
+        "props": {
+          "isChangeable": false,
+          "questions": [
+            {
+              "answers": [
+                {
+                  "points": 15,
+                  "text": "Pythagoras"
+                },
+                {
+                  "points": 0,
+                  "text": "Euclid"
+                },
+                {
+                  "points": 0,
+                  "text": "Hypatia"
+                },
+                {
+                  "points": 0,
+                  "text": "Turing"
+                }
+              ],
+              "text": "Who is considered by many to be the first numerologist, whose name lives on today in a mathematical theorem?"
+            }
+          ],
+          "skipCheck": false,
+          "time": "Day"
+        }
+      }
+    ]
+  },
+  {
+    "date": "2009-10-15",
+    "events": [
+      {
+        "name": "ExamQuestionsEvent",
+        "props": {
+          "isChangeable": false,
+          "questions": [
+            {
+              "answers": [
+                {
+                  "points": 0,
+                  "text": "Superelectricity"
+                },
+                {
+                  "points": 0,
+                  "text": "Superelasticity"
+                },
+                {
+                  "points": 15,
+                  "text": "Superconductivity"
+                },
+                {
+                  "points": 0,
+                  "text": "Supertransformativity"
+                }
+              ],
+              "text": "What happens when electrical resistance reaches zero? Hint: It was the word I used to confess my love to someone..."
+            }
+          ],
+          "skipCheck": false,
+          "time": "Day"
+        }
+      }
+    ]
+  },
+  {
+    "date": "2009-10-16",
+    "events": [
+      {
+        "name": "ExamQuestionsEvent",
+        "props": {
+          "isChangeable": false,
+          "questions": [
+            {
+              "answers": [
+                {
+                  "points": 0,
+                  "text": "To be noisy"
+                },
+                {
+                  "points": 0,
+                  "text": "To break into smile"
+                },
+                {
+                  "points": 15,
+                  "text": "To reveal a secret"
+                },
+                {
+                  "points": 0,
+                  "text": "To clarify your point"
+                }
+              ],
+              "text": "What is the meaning of the phrase \"to spill the beans\"?"
+            }
+          ],
+          "skipCheck": false,
+          "time": "Day"
+        }
+      }
+    ]
+  },
+  {
+    "date": "2009-10-17",
+    "events": [
+      {
+        "name": "TextEvent",
+        "props": {
+          "header": null,
+          "isChangeable": false,
+          "isTall": false,
+          "rows": [
+            {
+              "name": "TextRow",
+              "props": {
+                "isBold": true,
+                "text": "Exams",
+                "textAlign": "center"
+              }
+            }
+          ],
+          "skipCheck": true,
+          "time": "Morning"
+        }
+      },
+      {
+        "name": "ElizabethRequest75Event",
+        "props": {
+          "isChangeable": false,
+          "skipCheck": true,
+          "time": "Day Free Time"
+        }
+      },
+      {
+        "name": "Priestess",
+        "props": {
+          "isChangeable": true,
+          "skipCheck": false,
+          "time": "Day"
+        }
+      },
+      {
+        "name": "Iori [Garden]",
+        "props": {
+          "isChangeable": true,
+          "skipCheck": false,
+          "time": "Evening"
+        }
+      }
+    ]
+  },
+  {
+    "date": "2009-10-18",
+    "events": [
+      {
+        "name": "Sun",
+        "props": {
+          "isChangeable": true,
+          "skipCheck": true,
+          "time": "Day"
+        }
+      },
+      {
+        "name": "Amada [Kitchen]",
+        "props": {
+          "isChangeable": true,
+          "skipCheck": false,
+          "time": "Evening"
+        }
+      }
+    ]
+  },
+  {
+    "date": "2009-10-19",
+    "events": [
+      {
+        "name": "SchoolQuestionsEvent",
+        "props": {
+          "isChangeable": false,
+          "questions": [
+            {
+              "answers": [
+                {
+                  "points": 0,
+                  "text": "Egypt."
+                },
+                {
+                  "points": 15,
+                  "text": "India."
+                },
+                {
+                  "points": 0,
+                  "text": "Rome."
+                }
+              ],
+              "text": "We used the number \"zero\" a lot. Do you know where it originally came from, though?"
+            }
+          ],
+          "skipCheck": false,
+          "time": "Morning"
+        }
+      },
+      {
+        "name": "ExamResultsEvent",
+        "props": {
+          "isChangeable": false,
+          "skipCheck": false,
+          "time": "Exam Results"
+        }
+      },
+      {
+        "name": "ElizabethRequest75Event",
+        "props": {
+          "isChangeable": false,
+          "skipCheck": true,
+          "time": "Day Free Time"
+        }
+      },
+      {
+        "name": "Lovers",
+        "props": {
+          "isChangeable": true,
+          "skipCheck": false,
+          "time": "Day"
+        }
+      },
+      {
+        "name": "Sanada",
+        "props": {
+          "isChangeable": true,
+          "skipCheck": false,
+          "time": "Evening"
+        }
+      }
+    ]
+  },
+  {
+    "date": "2009-10-20",
+    "events": [
+      {
+        "name": "ElizabethRequest75Event",
+        "props": {
+          "isChangeable": false,
+          "skipCheck": true,
+          "time": "Day Free Time"
+        }
+      },
+      {
+        "name": "Justice",
+        "props": {
+          "isChangeable": true,
+          "skipCheck": false,
+          "time": "Day"
+        }
+      },
+      {
+        "name": "Aigis [Garden]",
+        "props": {
+          "isChangeable": true,
+          "skipCheck": false,
+          "time": "Evening"
+        }
+      }
+    ]
+  },
+  {
+    "date": "2009-10-21",
+    "events": [
+      {
+        "name": "Lovers",
+        "props": {
+          "isChangeable": true,
+          "skipCheck": false,
+          "time": "Day"
+        }
+      },
+      {
+        "name": "Aigis [Book]",
+        "props": {
+          "isChangeable": true,
+          "skipCheck": false,
+          "time": "Evening"
+        }
+      }
+    ]
+  },
+  {
+    "date": "2009-10-22",
+    "events": [
+      {
+        "name": "SchoolQuestionsEvent",
+        "props": {
+          "isChangeable": false,
+          "questions": [
+            {
+              "answers": [
+                {
+                  "points": 0,
+                  "text": "Diana."
+                },
+                {
+                  "points": 0,
+                  "text": "Minerva."
+                },
+                {
+                  "points": 15,
+                  "text": "Venus."
+                }
+              ],
+              "text": "Which Roman goddess has been theorized as the namesake for the month of April?"
+            }
+          ],
+          "skipCheck": false,
+          "time": "Morning"
+        }
+      },
+      {
+        "name": "Lovers",
+        "props": {
+          "isChangeable": true,
+          "skipCheck": false,
+          "time": "Day"
+        }
+      },
+      {
+        "name": "Koromaru [Brush]",
+        "props": {
+          "isChangeable": true,
+          "skipCheck": false,
+          "time": "Evening"
+        }
+      }
+    ]
+  },
+  {
+    "date": "2009-10-23",
+    "events": [
+      {
+        "name": "StayAwakeAcademicsEvent",
+        "props": {
+          "isChangeable": true,
+          "skipCheck": false,
+          "time": "Morning"
+        }
+      },
+      {
+        "name": "Chariot",
+        "props": {
+          "isChangeable": true,
+          "skipCheck": false,
+          "time": "Day"
+        }
+      },
+      {
+        "name": "Amada [DVD]",
+        "props": {
+          "isChangeable": true,
+          "skipCheck": false,
+          "time": "Evening"
+        }
+      }
+    ]
+  },
+  {
+    "date": "2009-10-24",
+    "events": [
+      {
+        "name": "Lovers",
+        "props": {
+          "isChangeable": true,
+          "skipCheck": false,
+          "time": "Day"
+        }
+      },
+      {
+        "name": "Aigis [Book]",
+        "props": {
+          "isChangeable": true,
+          "skipCheck": false,
+          "time": "Evening"
+        }
+      }
+    ]
+  },
+  {
+    "date": "2009-10-25",
+    "events": [
+      {
+        "name": "Sun",
+        "props": {
+          "isChangeable": true,
+          "skipCheck": true,
+          "time": "Day"
+        }
+      },
+      {
+        "name": "Aigis [Garden]",
+        "props": {
+          "isChangeable": true,
+          "skipCheck": false,
+          "time": "Evening"
+        }
+      }
+    ]
+  },
+  {
+    "date": "2009-10-26",
+    "events": [
+      {
+        "name": "SchoolQuestionsEvent",
+        "props": {
+          "isChangeable": false,
+          "questions": [
+            {
+              "answers": [
+                {
+                  "points": 0,
+                  "text": "Dotonbori."
+                },
+                {
+                  "points": 15,
+                  "text": "Izumo."
+                },
+                {
+                  "points": 0,
+                  "text": "Ise."
+                }
+              ],
+              "text": "But there's one region that instead calls it \"the month with gods,\" because that's where they all go! Do you know which one it is?"
+            }
+          ],
+          "skipCheck": false,
+          "time": "Morning"
+        }
+      },
+      {
+        "name": "Lovers",
+        "props": {
+          "isChangeable": true,
+          "skipCheck": false,
+          "time": "Day"
+        }
+      },
+      {
+        "name": "Mitsuru [Kitchen]",
+        "props": {
+          "isChangeable": true,
+          "skipCheck": false,
+          "time": "Evening"
+        }
+      }
+    ]
+  },
+  {
+    "date": "2009-10-27",
+    "events": [
+      {
+        "name": "EmptyEvent",
+        "props": {
+          "isChangeable": true,
+          "skipCheck": false,
+          "time": "Day"
+        }
+      },
+      {
+        "name": "EmptyEvent",
+        "props": {
+          "isChangeable": true,
+          "skipCheck": false,
+          "time": "Evening"
+        }
+      }
+    ]
+  },
+  {
+    "date": "2009-10-28",
+    "events": [
+      {
+        "name": "Lovers",
+        "props": {
+          "isChangeable": true,
+          "skipCheck": false,
+          "time": "Day"
+        }
+      },
+      {
+        "name": "Image Muscle Trainer",
+        "props": {
+          "isChangeable": true,
+          "skipCheck": false,
+          "time": "Evening"
+        }
+      }
+    ]
+  },
+  {
+    "date": "2009-10-29",
+    "events": [
+      {
+        "name": "StayAwakeAcademicsEvent",
+        "props": {
+          "isChangeable": true,
+          "skipCheck": false,
+          "time": "Morning"
+        }
+      },
+      {
+        "name": "Fortune",
+        "props": {
+          "isChangeable": true,
+          "skipCheck": false,
+          "time": "Day"
+        }
+      },
+      {
+        "name": "TartarusEvent",
+        "props": {
+          "isChangeable": true,
+          "rows": [
+            {
+              "name": "CheckboxRow",
+              "props": {
+                "text": "Have \"Star\" card"
+              }
+            },
+            {
+              "name": "CheckboxRow",
+              "props": {
+                "text": "Have \"Strength\" card"
+              }
+            }
+          ],
+          "skipCheck": false,
+          "time": "Evening"
+        }
+      }
+    ]
+  },
+  {
+    "date": "2009-10-30",
+    "events": [
+      {
+        "name": "SchoolQuestionsEvent",
+        "props": {
+          "isChangeable": false,
+          "questions": [
+            {
+              "answers": [
+                {
+                  "points": 15,
+                  "text": "Beta-amylase."
+                },
+                {
+                  "points": 0,
+                  "text": "Lactase."
+                },
+                {
+                  "points": 0,
+                  "text": "Glucose."
+                }
+              ],
+              "text": "A certain enzyme brings out the sweetness in them when they're baked. Do you happen to know what it is?"
+            }
+          ],
+          "skipCheck": false,
+          "time": "Morning"
+        }
+      },
+      {
+        "name": "Temperance",
+        "props": {
+          "isChangeable": true,
+          "skipCheck": false,
+          "time": "Day"
+        }
+      },
+      {
+        "name": "Amada [DVD]",
+        "props": {
+          "isChangeable": true,
+          "skipCheck": false,
+          "time": "Evening"
+        }
+      }
+    ]
+  },
+  {
+    "date": "2009-10-31",
+    "events": [
+      {
+        "name": "Justice",
+        "props": {
+          "isChangeable": true,
+          "skipCheck": false,
+          "time": "Day"
+        }
+      },
+      {
+        "name": "EmptyEvent",
+        "props": {
+          "isChangeable": true,
+          "skipCheck": false,
+          "time": "Evening"
+        }
+      }
+    ]
+  }
+]
