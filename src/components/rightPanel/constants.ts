@@ -8,6 +8,7 @@ import {
   SleepDuringClassCourageEvent,
   CourageStatModifyEvents,
 } from '@services/event/models/characterStatsModifyEvents/courage';
+import { DormActivitiesModels } from '@services/event/models/dormActivities';
 import { EpisodesEventModels } from '@services/event/models/episodes';
 import { NaganakiShrineEvents } from '@services/event/models/naganakiShrine';
 import { PCProgramEvents } from '@services/event/models/PCProgramEvents';
@@ -81,8 +82,8 @@ export const events: Record<string, RightPanelTab[]> = {
       color: 'teal',
       events: [
         ...Object.values(SocialLinkEvents),
-        ...Object.values(NaganakiShrineEvents),
         ...Object.values(EpisodesEventModels),
+        ...Object.values(DormActivitiesModels),
       ],
     },
     {
