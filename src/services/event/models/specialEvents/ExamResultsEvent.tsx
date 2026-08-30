@@ -82,7 +82,11 @@ export class ExamResultsEvent extends BaseEvent {
         }),
       },
     };
-    const currentEvaluation = evaluations[props.currentDay.date.format(DatesFormat)];
+    const examDate = props.currentDay.date.format(DatesFormat);
+    const currentEvaluation = evaluations[examDate];
+    if (!currentEvaluation) {
+      throw new Error(`ExamResultsEvent: unsupported exam date ${examDate}`);
+    }
     if (
       currentEvaluation.max.isAvailable({ ...props, stats: props.dayWeekBefore.statsAtEndOfDay })
     ) {
