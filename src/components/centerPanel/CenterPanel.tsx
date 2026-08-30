@@ -153,7 +153,7 @@ export function CenterPanel() {
 
       {calendar !== null ? (
         <ul className="flex flex-col gap-4">
-          {currentDay.events.map((event) => {
+          {currentDay.events.map((event, index) => {
             const props = calendar.getIsAvailableProps(currentDay.date, event.time);
             const node = event.render(props);
             const content =
@@ -172,7 +172,7 @@ export function CenterPanel() {
                   })
                 : node;
 
-            return <li key={event.time}>{content}</li>;
+            return <li key={`${event.time}-${index}`}>{content}</li>;
           })}
         </ul>
       ) : null}
