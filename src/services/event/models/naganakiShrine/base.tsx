@@ -27,8 +27,8 @@ export abstract class NaganakiShrineEventBase extends BaseEvent {
     const modifier = this.getModifier();
     const { isCardNeeded, pointsWithCard, pointsWithoutCard } = currentLevel.getIsCardNeeded({
       modifier,
-      pointsWithCard: 10 * modifier * 1.51,
-      pointsWithoutCard: 10 * modifier,
+      pointsWithCard: Math.floor(10 * modifier * 1.51),
+      pointsWithoutCard: Math.floor(10 * modifier),
     });
     const points = isCardNeeded ? pointsWithCard : pointsWithoutCard;
 
