@@ -10,9 +10,11 @@ import {
   SocialLinkLevelAvailability,
   TimeAvailability,
   IsLevelUpAvailable,
-  DayOfWeekAvailability,
   DateAvailability,
   CharacterStatsAvailability,
+  DayOfWeekAvailability,
+  ExamAvailability,
+  DayOffAvailability,
 } from '@services/availability';
 import { SocialLinkLevel } from '@services/stats';
 import { CharacterStatsNames } from '@services/stats/characterStats';
@@ -37,6 +39,8 @@ export class TemperanceEvent extends SocialLinkEventBase {
     new IsLevelUpAvailable({ name: Arcanas.Temperance, isLevelUpAvailable: true }),
     new DateAvailability({ operator: 'ge', value: dayjs('2009-05-08') }),
     new TimeAvailability({ times: [Times.Day] }),
+    new ExamAvailability({ isAvailableOnAnExamDay: false }),
+    new DayOffAvailability({ isAvailableOnADayOff: false }),
     new CharacterStatsAvailability({
       level: 2,
       name: CharacterStatsNames.Academics,
