@@ -136,8 +136,6 @@ export class AragakiEvent extends EpisodesEventBase {
             }),
           ],
         }).isAvailable(props);
-      case 4:
-        return true;
       default:
         return false;
     }
