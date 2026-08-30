@@ -1,0 +1,1158 @@
+[
+  {
+    "date": "2009-07-01",
+    "events": [
+      {
+        "name": "Temperance",
+        "props": {
+          "isChangeable": true,
+          "skipCheck": false,
+          "time": "Day"
+        }
+      },
+      {
+        "name": "HagakureRamenSpecialEvent",
+        "props": {
+          "isChangeable": true,
+          "skipCheck": false,
+          "time": "Evening"
+        }
+      }
+    ]
+  },
+  {
+    "date": "2009-07-02",
+    "events": [
+      {
+        "name": "Fortune",
+        "props": {
+          "isChangeable": true,
+          "skipCheck": false,
+          "time": "Day"
+        }
+      },
+      {
+        "name": "WakatsuKitchenSpecialEvent",
+        "props": {
+          "isChangeable": true,
+          "skipCheck": false,
+          "time": "Evening"
+        }
+      }
+    ]
+  },
+  {
+    "date": "2009-07-03",
+    "events": [
+      {
+        "name": "SchoolQuestionsEvent",
+        "props": {
+          "isChangeable": false,
+          "questions": [
+            {
+              "answers": [
+                {
+                  "points": 0,
+                  "text": "About a peaceful world."
+                },
+                {
+                  "points": 0,
+                  "text": "About public opinion."
+                },
+                {
+                  "points": 15,
+                  "text": "About romance."
+                }
+              ],
+              "text": "H-Hey, lend me a hand here, Protagonist. What kinda tale is he talkin' about?"
+            }
+          ],
+          "skipCheck": false,
+          "time": "Morning"
+        }
+      },
+      {
+        "name": "Emperor",
+        "props": {
+          "isChangeable": true,
+          "skipCheck": false,
+          "time": "Day"
+        }
+      },
+      {
+        "name": "Yukari [Kitchen]",
+        "props": {
+          "isChangeable": true,
+          "skipCheck": false,
+          "time": "Evening"
+        }
+      }
+    ]
+  },
+  {
+    "date": "2009-07-04",
+    "events": [
+      {
+        "name": "Strength",
+        "props": {
+          "isChangeable": true,
+          "skipCheck": false,
+          "time": "Day"
+        }
+      },
+      {
+        "name": "TextEvent",
+        "props": {
+          "header": "Devil [Prerequisite]",
+          "isChangeable": false,
+          "isTall": false,
+          "rows": [
+            {
+              "name": "LabelRow",
+              "props": {
+                "label": "Name:",
+                "text": "President Tanaka"
+              }
+            },
+            {
+              "name": "LabelRow",
+              "props": {
+                "label": "District:",
+                "text": "Paulownia Mall"
+              }
+            },
+            {
+              "name": "CheckboxRow",
+              "props": {
+                "text": "Give President Tanaka ¥20,000."
+              }
+            }
+          ],
+          "skipCheck": true,
+          "time": "Evening Free Time"
+        }
+      },
+      {
+        "name": "Sanada [DVD]",
+        "props": {
+          "isChangeable": true,
+          "skipCheck": false,
+          "time": "Evening"
+        }
+      }
+    ]
+  },
+  {
+    "date": "2009-07-05",
+    "events": [
+      {
+        "name": "Moon",
+        "props": {
+          "isChangeable": true,
+          "skipCheck": false,
+          "time": "Day"
+        }
+      },
+      {
+        "name": "Mitsuru [Book]",
+        "props": {
+          "isChangeable": true,
+          "skipCheck": false,
+          "time": "Evening"
+        }
+      }
+    ]
+  },
+  {
+    "date": "2009-07-06",
+    "events": [
+      {
+        "name": "Chariot",
+        "props": {
+          "isChangeable": true,
+          "skipCheck": false,
+          "time": "Day"
+        }
+      },
+      {
+        "name": "Mitsuru [Kitchen]",
+        "props": {
+          "isChangeable": true,
+          "skipCheck": false,
+          "time": "Evening"
+        }
+      }
+    ]
+  },
+  {
+    "date": "2009-07-07",
+    "events": [
+      {
+        "name": "TartarusEvent",
+        "props": {
+          "isChangeable": false,
+          "isTall": true,
+          "rows": [
+            {
+              "name": "TextRow",
+              "props": {
+                "isBold": true,
+                "text": "Magician Boss Fight",
+                "textAlign": "center"
+              }
+            }
+          ],
+          "skipCheck": true,
+          "time": "Evening"
+        }
+      },
+      {
+        "name": "Fool",
+        "props": {
+          "isChangeable": false,
+          "skipCheck": true,
+          "time": "Dark Hour"
+        }
+      }
+    ]
+  },
+  {
+    "date": "2009-07-08",
+    "events": [
+      {
+        "name": "SchoolQuestionsEvent",
+        "props": {
+          "isChangeable": false,
+          "questions": [
+            {
+              "answers": [
+                {
+                  "points": 0,
+                  "text": "Between \"now\" and \"we.\""
+                },
+                {
+                  "points": 15,
+                  "text": "Between \"time\" and \"it's.\""
+                },
+                {
+                  "points": 0,
+                  "text": "Between \"started\" and \"to.\""
+                }
+              ],
+              "text": "\"Because it is 10:30 right now, we will not reach the theater in time, it's already started, to my dismay.\""
+            }
+          ],
+          "skipCheck": false,
+          "time": "Morning"
+        }
+      },
+      {
+        "name": "EdogawaMedicineEvent",
+        "props": {
+          "isChangeable": false,
+          "skipCheck": false,
+          "time": "Day Free Time"
+        }
+      },
+      {
+        "name": "Hanged Man",
+        "props": {
+          "isChangeable": true,
+          "skipCheck": false,
+          "time": "Day"
+        }
+      },
+      {
+        "name": "GameParadeAcademicsEvent",
+        "props": {
+          "isChangeable": true,
+          "skipCheck": false,
+          "time": "Evening"
+        }
+      }
+    ]
+  },
+  {
+    "date": "2009-07-09",
+    "events": [
+      {
+        "name": "SchoolQuestionsEvent",
+        "props": {
+          "isChangeable": false,
+          "questions": [
+            {
+              "answers": [
+                {
+                  "points": 0,
+                  "text": "Land invasion."
+                },
+                {
+                  "points": 0,
+                  "text": "Environmental destruction."
+                },
+                {
+                  "points": 15,
+                  "text": "Social Disparity."
+                }
+              ],
+              "text": "At the same time, a serious problem arose for the farmers. Do you remember what that was?"
+            }
+          ],
+          "skipCheck": false,
+          "time": "Morning"
+        }
+      },
+      {
+        "name": "Hierophant",
+        "props": {
+          "isChangeable": true,
+          "skipCheck": false,
+          "time": "Day"
+        }
+      },
+      {
+        "name": "DormExamStudyingGroupEvent",
+        "props": {
+          "isChangeable": true,
+          "skipCheck": false,
+          "time": "Evening"
+        }
+      }
+    ]
+  },
+  {
+    "date": "2009-07-10",
+    "events": [
+      {
+        "name": "SchoolQuestionsEvent",
+        "props": {
+          "isChangeable": false,
+          "questions": [
+            {
+              "answers": [
+                {
+                  "points": 0,
+                  "text": "Lemegeton."
+                },
+                {
+                  "points": 0,
+                  "text": "Gnosticism."
+                },
+                {
+                  "points": 15,
+                  "text": "Kabbalah."
+                }
+              ],
+              "text": "What is the esoteric study of Jewish texts called?"
+            }
+          ],
+          "skipCheck": false,
+          "time": "Morning"
+        }
+      },
+      {
+        "name": "Hierophant",
+        "props": {
+          "isChangeable": true,
+          "skipCheck": false,
+          "time": "Day"
+        }
+      },
+      {
+        "name": "DormExamStudyingGroupEvent",
+        "props": {
+          "isChangeable": true,
+          "skipCheck": false,
+          "time": "Evening"
+        }
+      }
+    ]
+  },
+  {
+    "date": "2009-07-11",
+    "events": [
+      {
+        "name": "SchoolQuestionsEvent",
+        "props": {
+          "isChangeable": false,
+          "questions": [
+            {
+              "answers": [
+                {
+                  "points": 15,
+                  "text": "The katana."
+                },
+                {
+                  "points": 0,
+                  "text": "Armor."
+                },
+                {
+                  "points": 0,
+                  "text": "The rifle."
+                }
+              ],
+              "text": "Now, what do you think that item was? It's something every samurai needs"
+            }
+          ],
+          "skipCheck": false,
+          "time": "Morning"
+        }
+      },
+      {
+        "name": "Hierophant",
+        "props": {
+          "isChangeable": true,
+          "skipCheck": false,
+          "time": "Day"
+        }
+      },
+      {
+        "name": "TextEvent",
+        "props": {
+          "header": "Devil [Prerequisite]",
+          "isChangeable": false,
+          "isTall": false,
+          "rows": [
+            {
+              "name": "LabelRow",
+              "props": {
+                "label": "Name:",
+                "text": "President Tanaka"
+              }
+            },
+            {
+              "name": "LabelRow",
+              "props": {
+                "label": "District:",
+                "text": "Paulownia Mall"
+              }
+            },
+            {
+              "name": "CheckboxRow",
+              "props": {
+                "text": "Give President Tanaka ¥20,000."
+              }
+            }
+          ],
+          "skipCheck": true,
+          "time": "Evening Free Time"
+        }
+      },
+      {
+        "name": "Revenge Site Note",
+        "props": {
+          "isChangeable": true,
+          "skipCheck": false,
+          "time": "Evening"
+        }
+      }
+    ]
+  },
+  {
+    "date": "2009-07-12",
+    "events": [
+      {
+        "name": "Hermit",
+        "props": {
+          "isChangeable": true,
+          "skipCheck": false,
+          "time": "Day"
+        }
+      },
+      {
+        "name": "Security Site Note",
+        "props": {
+          "isChangeable": true,
+          "skipCheck": false,
+          "time": "Evening"
+        }
+      },
+      {
+        "name": "Death",
+        "props": {
+          "isChangeable": false,
+          "skipCheck": true,
+          "time": "Dark Hour"
+        }
+      }
+    ]
+  },
+  {
+    "date": "2009-07-13",
+    "events": [
+      {
+        "name": "StayAwakeAcademicsEvent",
+        "props": {
+          "isChangeable": true,
+          "skipCheck": false,
+          "time": "Morning"
+        }
+      },
+      {
+        "name": "Hanged Man",
+        "props": {
+          "isChangeable": true,
+          "skipCheck": false,
+          "time": "Day"
+        }
+      },
+      {
+        "name": "DormExamStudyingTeamEvent",
+        "props": {
+          "isChangeable": true,
+          "skipCheck": false,
+          "time": "Evening"
+        }
+      }
+    ]
+  },
+  {
+    "date": "2009-07-14",
+    "events": [
+      {
+        "name": "ExamQuestionsEvent",
+        "props": {
+          "isChangeable": false,
+          "questions": [
+            {
+              "answers": [
+                {
+                  "points": 0,
+                  "text": "Scrying"
+                },
+                {
+                  "points": 15,
+                  "text": "Dowsing"
+                },
+                {
+                  "points": 0,
+                  "text": "Channeling"
+                },
+                {
+                  "points": 0,
+                  "text": "Summoning"
+                }
+              ],
+              "text": "Which form of magic is used to find water sources?"
+            }
+          ],
+          "skipCheck": false,
+          "time": "Day"
+        }
+      }
+    ]
+  },
+  {
+    "date": "2009-07-15",
+    "events": [
+      {
+        "name": "ExamQuestionsEvent",
+        "props": {
+          "isChangeable": false,
+          "questions": [
+            {
+              "answers": [
+                {
+                  "points": 0,
+                  "text": "The shape is bewitching"
+                },
+                {
+                  "points": 0,
+                  "text": "Its enchanting formula"
+                },
+                {
+                  "points": 15,
+                  "text": "DowsiAn error in translationng"
+                },
+                {
+                  "points": 0,
+                  "text": "A witch invented it"
+                }
+              ],
+              "text": "How did the Witch of Agnesi gain the first half of its name?"
+            }
+          ],
+          "skipCheck": false,
+          "time": "Day"
+        }
+      }
+    ]
+  },
+  {
+    "date": "2009-07-16",
+    "events": [
+      {
+        "name": "ExamQuestionsEvent",
+        "props": {
+          "isChangeable": false,
+          "questions": [
+            {
+              "answers": [
+                {
+                  "points": 15,
+                  "text": "Taira no Masakado"
+                },
+                {
+                  "points": 0,
+                  "text": "Yoshinobu Tokugava"
+                },
+                {
+                  "points": 0,
+                  "text": "Prince Shotoku"
+                },
+                {
+                  "points": 0,
+                  "text": "Tokimune Hojo"
+                }
+              ],
+              "text": "Who designed the prototype for the katana?"
+            }
+          ],
+          "skipCheck": false,
+          "time": "Day"
+        }
+      }
+    ]
+  },
+  {
+    "date": "2009-07-17",
+    "events": [
+      {
+        "name": "ExamQuestionsEvent",
+        "props": {
+          "isChangeable": false,
+          "questions": [
+            {
+              "answers": [
+                {
+                  "points": 0,
+                  "text": "Incorrect apostrophe"
+                },
+                {
+                  "points": 15,
+                  "text": "Comma splice"
+                },
+                {
+                  "points": 0,
+                  "text": "Missing subject"
+                },
+                {
+                  "points": 0,
+                  "text": "Misspelling"
+                }
+              ],
+              "text": "There's an error in this sentence, what kind is it?"
+            }
+          ],
+          "skipCheck": false,
+          "time": "Day"
+        }
+      }
+    ]
+  },
+  {
+    "date": "2009-07-18",
+    "events": [
+      {
+        "name": "TextEvent",
+        "props": {
+          "header": null,
+          "isChangeable": false,
+          "isTall": false,
+          "rows": [
+            {
+              "name": "TextRow",
+              "props": {
+                "isBold": true,
+                "text": "Exams",
+                "textAlign": "center"
+              }
+            }
+          ],
+          "skipCheck": true,
+          "time": "Morning"
+        }
+      },
+      {
+        "name": "TextEvent",
+        "props": {
+          "header": null,
+          "isChangeable": false,
+          "isTall": false,
+          "rows": [
+            {
+              "name": "TextRow",
+              "props": {
+                "isBold": true,
+                "text": "Introduction to Ken",
+                "textAlign": "center"
+              }
+            }
+          ],
+          "skipCheck": true,
+          "time": "Day"
+        }
+      },
+      {
+        "name": "TextEvent",
+        "props": {
+          "header": "Devil [Prerequisite]",
+          "isChangeable": false,
+          "isTall": false,
+          "rows": [
+            {
+              "name": "LabelRow",
+              "props": {
+                "label": "Name:",
+                "text": "President Tanaka"
+              }
+            },
+            {
+              "name": "LabelRow",
+              "props": {
+                "label": "District:",
+                "text": "Paulownia Mall"
+              }
+            },
+            {
+              "name": "CheckboxRow",
+              "props": {
+                "text": "Give President Tanaka ¥10,000."
+              }
+            }
+          ],
+          "skipCheck": true,
+          "time": "Evening Free Time"
+        }
+      },
+      {
+        "name": "Devil",
+        "props": {
+          "isChangeable": false,
+          "skipCheck": true,
+          "time": "Evening"
+        }
+      }
+    ]
+  },
+  {
+    "date": "2009-07-19",
+    "events": [
+      {
+        "name": "Hermit",
+        "props": {
+          "isChangeable": true,
+          "skipCheck": false,
+          "time": "Day"
+        }
+      },
+      {
+        "name": "WakatsuKitchenSpecialEvent",
+        "props": {
+          "isChangeable": true,
+          "skipCheck": false,
+          "time": "Evening"
+        }
+      }
+    ]
+  },
+  {
+    "date": "2009-07-20",
+    "events": [
+      {
+        "name": "TextEvent",
+        "props": {
+          "header": null,
+          "isChangeable": false,
+          "isTall": true,
+          "rows": [
+            {
+              "name": "TextRow",
+              "props": {
+                "isBold": true,
+                "text": "School Trip",
+                "textAlign": "center"
+              }
+            }
+          ],
+          "skipCheck": true,
+          "time": "Day"
+        }
+      }
+    ]
+  },
+  {
+    "date": "2009-07-21",
+    "events": [
+      {
+        "name": "TextEvent",
+        "props": {
+          "header": null,
+          "isChangeable": false,
+          "isTall": true,
+          "rows": [
+            {
+              "name": "TextRow",
+              "props": {
+                "isBold": true,
+                "text": "School Trip",
+                "textAlign": "center"
+              }
+            }
+          ],
+          "skipCheck": true,
+          "time": "Day"
+        }
+      }
+    ]
+  },
+  {
+    "date": "2009-07-22",
+    "events": [
+      {
+        "name": "TextEvent",
+        "props": {
+          "header": null,
+          "isChangeable": false,
+          "isTall": true,
+          "rows": [
+            {
+              "name": "TextRow",
+              "props": {
+                "isBold": true,
+                "text": "School Trip",
+                "textAlign": "center"
+              }
+            }
+          ],
+          "skipCheck": true,
+          "time": "Day"
+        }
+      },
+      {
+        "name": "Fool",
+        "props": {
+          "isChangeable": false,
+          "skipCheck": true,
+          "time": "Dark Hour"
+        }
+      }
+    ]
+  },
+  {
+    "date": "2009-07-23",
+    "events": [
+      {
+        "name": "TextEvent",
+        "props": {
+          "header": null,
+          "isChangeable": false,
+          "isTall": false,
+          "rows": [
+            {
+              "name": "TextRow",
+              "props": {
+                "isBold": true,
+                "text": "Special Event",
+                "textAlign": "center"
+              }
+            }
+          ],
+          "skipCheck": true,
+          "time": "Day"
+        }
+      },
+      {
+        "name": "WakatsuKitchenSpecialEvent",
+        "props": {
+          "isChangeable": true,
+          "skipCheck": false,
+          "time": "Evening"
+        }
+      }
+    ]
+  },
+  {
+    "date": "2009-07-24",
+    "events": [
+      {
+        "name": "ExamResultsEvent",
+        "props": {
+          "isChangeable": false,
+          "skipCheck": false,
+          "time": "Exam Results"
+        }
+      },
+      {
+        "name": "Priestess",
+        "props": {
+          "isChangeable": true,
+          "skipCheck": false,
+          "time": "Day"
+        }
+      },
+      {
+        "name": "Sanada",
+        "props": {
+          "isChangeable": true,
+          "skipCheck": false,
+          "time": "Evening"
+        }
+      }
+    ]
+  },
+  {
+    "date": "2009-07-25",
+    "events": [
+      {
+        "name": "StayAwakeAcademicsEvent",
+        "props": {
+          "isChangeable": true,
+          "skipCheck": false,
+          "time": "Morning"
+        }
+      },
+      {
+        "name": "TextEvent",
+        "props": {
+          "header": "Tower [Prerequisite]",
+          "isChangeable": false,
+          "isTall": false,
+          "rows": [
+            {
+              "name": "LabelRow",
+              "props": {
+                "label": "Name:",
+                "text": "Yuko Nishiwaki"
+              }
+            },
+            {
+              "name": "LabelRow",
+              "props": {
+                "label": "Place:",
+                "text": "2F Classroom Hallway"
+              }
+            },
+            {
+              "name": "LabelRow",
+              "props": {
+                "label": "District:",
+                "text": "Gekkoukan High School"
+              }
+            },
+            {
+              "name": "CheckboxRow",
+              "props": {
+                "text": "Talk to Yuko Nishiwaki to gain an inforamtion about \"Unconventional Monk\""
+              }
+            }
+          ],
+          "skipCheck": true,
+          "time": "Day Free Time"
+        }
+      },
+      {
+        "name": "Strength",
+        "props": {
+          "isChangeable": true,
+          "skipCheck": false,
+          "time": "Day"
+        }
+      },
+      {
+        "name": "Tower",
+        "props": {
+          "isChangeable": true,
+          "skipCheck": false,
+          "time": "Evening"
+        }
+      }
+    ]
+  },
+  {
+    "date": "2009-07-26",
+    "events": [
+      {
+        "name": "Hermit",
+        "props": {
+          "isChangeable": true,
+          "skipCheck": false,
+          "time": "Day"
+        }
+      },
+      {
+        "name": "Mitsuru [Book]",
+        "props": {
+          "isChangeable": true,
+          "skipCheck": false,
+          "time": "Evening"
+        }
+      }
+    ]
+  },
+  {
+    "date": "2009-07-27",
+    "events": [
+      {
+        "name": "TextEvent",
+        "props": {
+          "header": null,
+          "isChangeable": false,
+          "isTall": false,
+          "rows": [
+            {
+              "name": "TextRow",
+              "props": {
+                "isBold": true,
+                "text": "Training for running competitions",
+                "textAlign": "center"
+              }
+            }
+          ],
+          "skipCheck": true,
+          "time": "Day"
+        }
+      },
+      {
+        "name": "Mitsuru [Kitchen]",
+        "props": {
+          "isChangeable": true,
+          "skipCheck": false,
+          "time": "Evening"
+        }
+      }
+    ]
+  },
+  {
+    "date": "2009-07-28",
+    "events": [
+      {
+        "name": "TextEvent",
+        "props": {
+          "header": null,
+          "isChangeable": false,
+          "isTall": false,
+          "rows": [
+            {
+              "name": "TextRow",
+              "props": {
+                "isBold": true,
+                "text": "Training for running competitions",
+                "textAlign": "center"
+              }
+            }
+          ],
+          "skipCheck": true,
+          "time": "Day"
+        }
+      },
+      {
+        "name": "Devil",
+        "props": {
+          "isChangeable": false,
+          "skipCheck": true,
+          "time": "Evening"
+        }
+      }
+    ]
+  },
+  {
+    "date": "2009-07-29",
+    "events": [
+      {
+        "name": "TextEvent",
+        "props": {
+          "header": null,
+          "isChangeable": false,
+          "isTall": false,
+          "rows": [
+            {
+              "name": "TextRow",
+              "props": {
+                "isBold": true,
+                "text": "Training for running competitions",
+                "textAlign": "center"
+              }
+            }
+          ],
+          "skipCheck": true,
+          "time": "Day"
+        }
+      },
+      {
+        "name": "GameParadeAcademicsEvent",
+        "props": {
+          "isChangeable": true,
+          "skipCheck": false,
+          "time": "Evening"
+        }
+      }
+    ]
+  },
+  {
+    "date": "2009-07-30",
+    "events": [
+      {
+        "name": "TextEvent",
+        "props": {
+          "header": null,
+          "isChangeable": false,
+          "isTall": false,
+          "rows": [
+            {
+              "name": "TextRow",
+              "props": {
+                "isBold": true,
+                "text": "Training for running competitions",
+                "textAlign": "center"
+              }
+            }
+          ],
+          "skipCheck": true,
+          "time": "Day"
+        }
+      },
+      {
+        "name": "Tower",
+        "props": {
+          "isChangeable": true,
+          "skipCheck": false,
+          "time": "Evening"
+        }
+      }
+    ]
+  },
+  {
+    "date": "2009-07-31",
+    "events": [
+      {
+        "name": "TextEvent",
+        "props": {
+          "header": null,
+          "isChangeable": false,
+          "isTall": false,
+          "rows": [
+            {
+              "name": "TextRow",
+              "props": {
+                "isBold": true,
+                "text": "Training for running competitions",
+                "textAlign": "center"
+              }
+            }
+          ],
+          "skipCheck": true,
+          "time": "Day"
+        }
+      },
+      {
+        "name": "WakatsuKitchenSpecialEvent",
+        "props": {
+          "isChangeable": true,
+          "skipCheck": false,
+          "time": "Evening"
+        }
+      }
+    ]
+  }
+]

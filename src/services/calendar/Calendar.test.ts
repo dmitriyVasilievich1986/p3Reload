@@ -14,6 +14,7 @@ import { CharacterStatsNames } from '@services/stats/characterStats/types';
 
 import { Calendar } from './Calendar';
 import aprilData from './data/april.json';
+import julyData from './data/july.json';
 import juneData from './data/june.json';
 import mayData from './data/may.json';
 
@@ -23,6 +24,7 @@ const calendarMonthData: DaySerializedType[] = [
   ...(aprilData as DaySerializedType[]),
   ...(mayData as DaySerializedType[]),
   ...(juneData as DaySerializedType[]),
+  ...(julyData as DaySerializedType[]),
 ];
 
 const baseEventProps = {

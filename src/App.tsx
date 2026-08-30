@@ -13,6 +13,7 @@ import { useSearchParams } from 'react-router';
 
 import { Calendar } from '@services/calendar/Calendar';
 import AprilData from '@services/calendar/data/april.json';
+import JulyData from '@services/calendar/data/july.json';
 import JuneData from '@services/calendar/data/june.json';
 import MayData from '@services/calendar/data/may.json';
 import { useMainStore } from '@store/main';
@@ -38,6 +39,7 @@ export function App() {
         ...(AprilData as DaySerializedType[]),
         ...(MayData as DaySerializedType[]),
         ...(JuneData as DaySerializedType[]),
+        ...(JulyData as DaySerializedType[]),
       ]);
       setCalendar(Calendar.calculateStats(calendar, undefined, false, false));
     }
