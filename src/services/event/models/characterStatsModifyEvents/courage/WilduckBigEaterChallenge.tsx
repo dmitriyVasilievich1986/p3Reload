@@ -50,6 +50,7 @@ export class WilduckBigEaterChallengeEvent extends CharacterStatsModifyEventBase
 
   /** Rules that must pass before this event can be scheduled or selected. */
   static readonly availabilities: AvailabilityBase[] = [
+    new CharacterStatsAvailability({ name: CharacterStatsNames.Courage, operator: 'lt', level: 6 }),
     new TimeAvailability({ times: [Times.Evening] }),
     new DateAvailability({ operator: 'ge', value: dayjs('2009-05-10') }),
     new IsEventInHistoryAvailability({

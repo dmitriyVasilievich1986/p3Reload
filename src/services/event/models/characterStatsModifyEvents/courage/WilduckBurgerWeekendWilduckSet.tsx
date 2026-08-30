@@ -9,6 +9,7 @@ import {
   TimeAvailability,
   DayOfWeekAvailability,
   IsEventInHistoryAvailability,
+  CharacterStatsAvailability,
 } from '@services/availability';
 import {
   type CharacterStatsModifierType,
@@ -39,6 +40,7 @@ export class WilduckBurgerWeekendWilduckSetEvent extends CharacterStatsModifyEve
 
   /** Rules that must pass before this event can be scheduled or selected. */
   static readonly availabilities: AvailabilityBase[] = [
+    new CharacterStatsAvailability({ name: CharacterStatsNames.Courage, operator: 'lt', level: 6 }),
     new TimeAvailability({ times: [Times.Day, Times.Evening] }),
     new IsEventInHistoryAvailability({
       name: CourageStatModifyNames.wilduckBigEaterChallenge,

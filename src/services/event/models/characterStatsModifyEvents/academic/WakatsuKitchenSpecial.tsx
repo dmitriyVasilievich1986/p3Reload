@@ -39,6 +39,11 @@ export class WakatsuKitchenSpecialEvent extends CharacterStatsModifyEventBase {
 
   /** Rules that must pass before this event can be scheduled or selected. */
   static readonly availabilities: AvailabilityBase[] = [
+    new CharacterStatsAvailability({
+      name: CharacterStatsNames.Academics,
+      operator: 'lt',
+      level: 6,
+    }),
     new TimeAvailability({ times: [Times.Evening] }),
     new DayOfWeekAvailability({
       daysOfWeek: [DayOfWeek.Monday, DayOfWeek.Thursday, DayOfWeek.Friday, DayOfWeek.Sunday],

@@ -2,7 +2,12 @@ import dayjs from 'dayjs';
 
 import { Places, Districts } from '@constants/places';
 import { Times } from '@constants/times';
-import { AvailabilityBase, TimeAvailability, DateAvailability } from '@services/availability';
+import {
+  AvailabilityBase,
+  TimeAvailability,
+  DateAvailability,
+  CharacterStatsAvailability,
+} from '@services/availability';
 /**
  * Dorm exam studying (Group) event at Iwatodai Dormitory.
  */
@@ -32,6 +37,11 @@ export class DormExamStudyingGroupEvent extends CharacterStatsModifyEventBase {
 
   /** Rules that must pass before this event can be scheduled or selected. */
   static readonly availabilities: AvailabilityBase[] = [
+    new CharacterStatsAvailability({
+      name: CharacterStatsNames.Academics,
+      operator: 'lt',
+      level: 6,
+    }),
     new TimeAvailability({ times: [Times.Evening] }),
     new DateAvailability({
       operator: 'in',
