@@ -406,7 +406,7 @@
         }
       },
       {
-        "name": "EmptyEvent",
+        "name": "Yukari [DVD]",
         "props": {
           "isChangeable": true,
           "skipCheck": false,
@@ -419,7 +419,34 @@
     "date": "2009-06-17",
     "events": [
       {
-        "name": "EmptyEvent",
+        "name": "SchoolQuestionsEvent",
+        "props": {
+          "isChangeable": false,
+          "questions": [
+            {
+              "answers": [
+                {
+                  "points": 0,
+                  "text": "Totemism."
+                },
+                {
+                  "points": 0,
+                  "text": "Animism."
+                },
+                {
+                  "points": 15,
+                  "text": "Shamanism."
+                }
+              ],
+              "text": "What early religious practice was the origin of magic?"
+            }
+          ],
+          "skipCheck": false,
+          "time": "Morning"
+        }
+      },
+      {
+        "name": "Fortune",
         "props": {
           "isChangeable": true,
           "skipCheck": false,
@@ -427,7 +454,7 @@
         }
       },
       {
-        "name": "EmptyEvent",
+        "name": "HagakureRamenSpecialEvent",
         "props": {
           "isChangeable": true,
           "skipCheck": false,
@@ -440,7 +467,7 @@
     "date": "2009-06-18",
     "events": [
       {
-        "name": "EmptyEvent",
+        "name": "Fortune",
         "props": {
           "isChangeable": true,
           "skipCheck": false,
@@ -448,7 +475,7 @@
         }
       },
       {
-        "name": "EmptyEvent",
+        "name": "Fuuka [Book]",
         "props": {
           "isChangeable": true,
           "skipCheck": false,
@@ -461,7 +488,7 @@
     "date": "2009-06-19",
     "events": [
       {
-        "name": "EmptyEvent",
+        "name": "Temperance",
         "props": {
           "isChangeable": true,
           "skipCheck": false,
@@ -469,7 +496,7 @@
         }
       },
       {
-        "name": "EmptyEvent",
+        "name": "HagakureRamenSpecialEvent",
         "props": {
           "isChangeable": true,
           "skipCheck": false,
@@ -482,15 +509,26 @@
     "date": "2009-06-20",
     "events": [
       {
-        "name": "EmptyEvent",
+        "name": "TextEvent",
         "props": {
-          "isChangeable": true,
-          "skipCheck": false,
+          "isChangeable": false,
+          "isTall": false,
+          "rows": [
+            {
+              "name": "TextRow",
+              "props": {
+                "isBold": true,
+                "text": "Introduction to Koromaru",
+                "textAlign": "center"
+              }
+            }
+          ],
+          "skipCheck": true,
           "time": "Day"
         }
       },
       {
-        "name": "EmptyEvent",
+        "name": "Sanada [DVD]",
         "props": {
           "isChangeable": true,
           "skipCheck": false,
@@ -503,7 +541,7 @@
     "date": "2009-06-21",
     "events": [
       {
-        "name": "EmptyEvent",
+        "name": "Moon",
         "props": {
           "isChangeable": true,
           "skipCheck": false,
@@ -511,7 +549,7 @@
         }
       },
       {
-        "name": "EmptyEvent",
+        "name": "WilduckBurgerWeekendWilduckSetEvent",
         "props": {
           "isChangeable": true,
           "skipCheck": false,
@@ -524,7 +562,34 @@
     "date": "2009-06-22",
     "events": [
       {
-        "name": "EmptyEvent",
+        "name": "SchoolQuestionsEvent",
+        "props": {
+          "isChangeable": false,
+          "questions": [
+            {
+              "answers": [
+                {
+                  "points": 0,
+                  "text": "Orthogonal curves."
+                },
+                {
+                  "points": 0,
+                  "text": "Fermat's spiral."
+                },
+                {
+                  "points": 15,
+                  "text": "Witch of Agnesi."
+                }
+              ],
+              "text": "What else do people call this curve?"
+            }
+          ],
+          "skipCheck": false,
+          "time": "Morning"
+        }
+      },
+      {
+        "name": "Emperor",
         "props": {
           "isChangeable": true,
           "skipCheck": false,
@@ -532,7 +597,7 @@
         }
       },
       {
-        "name": "EmptyEvent",
+        "name": "Iori [Book]",
         "props": {
           "isChangeable": true,
           "skipCheck": false,
@@ -545,7 +610,7 @@
     "date": "2009-06-23",
     "events": [
       {
-        "name": "EmptyEvent",
+        "name": "Fortune",
         "props": {
           "isChangeable": true,
           "skipCheck": false,
@@ -553,7 +618,7 @@
         }
       },
       {
-        "name": "EmptyEvent",
+        "name": "Yukari [DVD]",
         "props": {
           "isChangeable": true,
           "skipCheck": false,
@@ -566,7 +631,7 @@
     "date": "2009-06-24",
     "events": [
       {
-        "name": "EmptyEvent",
+        "name": "Strength",
         "props": {
           "isChangeable": true,
           "skipCheck": false,
@@ -574,7 +639,7 @@
         }
       },
       {
-        "name": "EmptyEvent",
+        "name": "HagakureRamenSpecialEvent",
         "props": {
           "isChangeable": true,
           "skipCheck": false,
@@ -587,7 +652,34 @@
     "date": "2009-06-25",
     "events": [
       {
-        "name": "EmptyEvent",
+        "name": "SchoolQuestionsEvent",
+        "props": {
+          "isChangeable": false,
+          "questions": [
+            {
+              "answers": [
+                {
+                  "points": 0,
+                  "text": "The anchor effect."
+                },
+                {
+                  "points": 15,
+                  "text": "The flutter effect"
+                },
+                {
+                  "points": 0,
+                  "text": "The bubble jet phenomenon."
+                }
+              ],
+              "text": "What's it called when the air bubbles in a whirlpool bath hit you and make you vibrate?"
+            }
+          ],
+          "skipCheck": false,
+          "time": "Morning"
+        }
+      },
+      {
+        "name": "Chariot",
         "props": {
           "isChangeable": true,
           "skipCheck": false,
@@ -595,7 +687,7 @@
         }
       },
       {
-        "name": "EmptyEvent",
+        "name": "Fuuka [Book]",
         "props": {
           "isChangeable": true,
           "skipCheck": false,
@@ -608,7 +700,7 @@
     "date": "2009-06-26",
     "events": [
       {
-        "name": "EmptyEvent",
+        "name": "Magician",
         "props": {
           "isChangeable": true,
           "skipCheck": false,
@@ -616,7 +708,7 @@
         }
       },
       {
-        "name": "EmptyEvent",
+        "name": "HagakureRamenSpecialEvent",
         "props": {
           "isChangeable": true,
           "skipCheck": false,
@@ -629,7 +721,7 @@
     "date": "2009-06-27",
     "events": [
       {
-        "name": "EmptyEvent",
+        "name": "Justice",
         "props": {
           "isChangeable": true,
           "skipCheck": false,
@@ -637,7 +729,7 @@
         }
       },
       {
-        "name": "EmptyEvent",
+        "name": "Sanada [DVD]",
         "props": {
           "isChangeable": true,
           "skipCheck": false,
@@ -650,7 +742,7 @@
     "date": "2009-06-28",
     "events": [
       {
-        "name": "EmptyEvent",
+        "name": "Moon",
         "props": {
           "isChangeable": true,
           "skipCheck": false,
@@ -658,7 +750,7 @@
         }
       },
       {
-        "name": "EmptyEvent",
+        "name": "WakatsuKitchenSpecialEvent",
         "props": {
           "isChangeable": true,
           "skipCheck": false,
@@ -671,7 +763,34 @@
     "date": "2009-06-29",
     "events": [
       {
-        "name": "EmptyEvent",
+        "name": "SchoolQuestionsEvent",
+        "props": {
+          "isChangeable": false,
+          "questions": [
+            {
+              "answers": [
+                {
+                  "points": 15,
+                  "text": "Dowsing."
+                },
+                {
+                  "points": 0,
+                  "text": "Divining."
+                },
+                {
+                  "points": 0,
+                  "text": "Channeling."
+                }
+              ],
+              "text": "What form of natural magic is used to find water sources?"
+            }
+          ],
+          "skipCheck": false,
+          "time": "Morning"
+        }
+      },
+      {
+        "name": "Emperor",
         "props": {
           "isChangeable": true,
           "skipCheck": false,
@@ -679,9 +798,41 @@
         }
       },
       {
-        "name": "EmptyEvent",
+        "name": "TartarusEvent",
         "props": {
           "isChangeable": true,
+          "rows": [
+            {
+              "name": "CheckboxRow",
+              "props": {
+                "text": "Have at least ¥16,600 + ¥40,000(mr. Tanaka)"
+              }
+            },
+            {
+              "name": "CheckboxRow",
+              "props": {
+                "text": "Have \"Strength\" card"
+              }
+            },
+            {
+              "name": "CheckboxRow",
+              "props": {
+                "text": "Have \"Hierophant\" card"
+              }
+            },
+            {
+              "name": "CheckboxRow",
+              "props": {
+                "text": "Have \"Hanged Man\" card"
+              }
+            },
+            {
+              "name": "CheckboxRow",
+              "props": {
+                "text": "Have \"Hermit\" card"
+              }
+            }
+          ],
           "skipCheck": false,
           "time": "Evening"
         }
@@ -692,7 +843,15 @@
     "date": "2009-06-30",
     "events": [
       {
-        "name": "EmptyEvent",
+        "name": "EdogawaMedicineEvent",
+        "props": {
+          "time": "Day Free Time",
+          "isChangeable": false,
+          "skipCheck": false
+        }
+      },
+      {
+        "name": "Fortune",
         "props": {
           "isChangeable": true,
           "skipCheck": false,
@@ -700,7 +859,7 @@
         }
       },
       {
-        "name": "EmptyEvent",
+        "name": "Yukari [DVD]",
         "props": {
           "isChangeable": true,
           "skipCheck": false,
