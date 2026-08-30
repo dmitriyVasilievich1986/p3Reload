@@ -2,6 +2,7 @@ import { Card } from '@components/card';
 import { LabelRow, TextRow } from '@components/row';
 import { Arcanas, type ArcanasType } from '@constants/arcanas';
 import { Places, Districts } from '@constants/places';
+import { socialLinkFullNames } from '@constants/socialLinkNames';
 import {
   type IsAvailableProps,
   type AvailabilityBase,
@@ -17,7 +18,7 @@ export class DeathEvent extends SocialLinkEventBase {
   /** Arcana identifier for this social link. */
   static readonly name: ArcanasType = Arcanas.Death;
   /** Display name shown in the event card. */
-  static readonly socialLinkName: string = 'Pharos';
+  static readonly socialLinkName: string = socialLinkFullNames.Death;
   /** Location label shown in the event card. */
   static readonly place: string = Places.MainCharacterRoom;
   /** District label shown in the event card. */

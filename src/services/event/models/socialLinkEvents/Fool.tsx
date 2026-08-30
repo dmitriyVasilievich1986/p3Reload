@@ -2,6 +2,7 @@ import { Card } from '@components/card';
 import { LabelRow, TextRow } from '@components/row';
 import { Arcanas, type ArcanasType } from '@constants/arcanas';
 import { Places } from '@constants/places';
+import { socialLinkFullNames } from '@constants/socialLinkNames';
 import {
   type IsAvailableProps,
   type AvailabilityBase,
@@ -17,7 +18,7 @@ export class FoolEvent extends SocialLinkEventBase {
   /** Arcana identifier for this social link. */
   static readonly name: ArcanasType = Arcanas.Fool;
   /** Display name shown in the event card. */
-  static readonly socialLinkName: string = 'S.E.E.S.';
+  static readonly socialLinkName: string = socialLinkFullNames.Fool;
   /** Location label shown in the event card. */
   static readonly place: string = Places.Tartarus;
 

@@ -3,6 +3,7 @@ import dayjs from 'dayjs';
 import { Arcanas, type ArcanasType } from '@constants/arcanas';
 import { DayOfWeek } from '@constants/dayOfWeek';
 import { Places, Districts } from '@constants/places';
+import { socialLinkFullNames } from '@constants/socialLinkNames';
 import { Times } from '@constants/times';
 import {
   type AvailabilityBase,
@@ -21,7 +22,7 @@ export class HermitEvent extends SocialLinkEventBase {
   /** Arcana identifier for this social link. */
   static readonly name: ArcanasType = Arcanas.Hermit;
   /** Display name shown in the event card. */
-  static readonly socialLinkName: string = 'Maya';
+  static readonly socialLinkName: string = socialLinkFullNames.Hermit;
   /** Location label shown in the event card. */
   static readonly place: string = Places.LaptopAtTheProtagonistsRoom;
   /** District label shown in the event card. */

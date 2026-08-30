@@ -1,6 +1,7 @@
 import { Arcanas, type ArcanasType } from '@constants/arcanas';
 import { DayOfWeek } from '@constants/dayOfWeek';
 import { Places, Districts } from '@constants/places';
+import { socialLinkFullNames } from '@constants/socialLinkNames';
 import { Times } from '@constants/times';
 import {
   type AvailabilityBase,
@@ -17,7 +18,7 @@ import data from './data.json';
 
 export class MagicianEvent extends SocialLinkEventBase {
   static readonly name: ArcanasType = Arcanas.Magician;
-  static readonly socialLinkName: string = 'Kenji Tomochika';
+  static readonly socialLinkName: string = socialLinkFullNames.Magician;
   static readonly district: string = Districts.GekkoukanHighSchool;
   static readonly place: string = Places.Classroom2F;
 
