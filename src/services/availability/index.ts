@@ -19,4 +19,5 @@ export {
   ExamAvailability,
   FalseAvailability,
   TartarusAvailability,
+  isDormActivitiesLevelUpAvailable,
 } from './models';
