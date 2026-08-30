@@ -8,7 +8,7 @@ import {
   type AvailabilityBase,
   FalseAvailability,
 } from '@services/availability';
-import { SocialLinkLevel } from '@services/stats';
+import { SocialLinkLevel, Stats } from '@services/stats';
 
 import { SocialLinkEventBase } from './base';
 
@@ -46,10 +46,27 @@ export class FoolEvent extends SocialLinkEventBase {
     });
   }
 
+  calculateStats(this: SocialLinkEventBase, props: IsAvailableProps): Stats {
+    const constructor = this.constructor as typeof FoolEvent;
+    const currentStat = this.stats.socialLinkStats[constructor.name as ArcanasType];
+    const amountOfLevels = currentStat.level === 7 ? 2 : 1;
+    const level = constructor.getLevel(currentStat.level + amountOfLevels, props);
+    const socilLinkStats = this.stats.socialLinkStats.increaseLevel({
+      arcana: constructor.name,
+      level: level,
+      amountOfLevels,
+    });
+    return this.stats.updateSocialLinkStats(socilLinkStats);
+  }
+
   render(this: SocialLinkEventBase, props: IsAvailableProps): React.ReactNode {
     const constructor = this.constructor as typeof SocialLinkEventBase;
     const stats = this.stats.socialLinkStats[constructor.name as ArcanasType];
-    const nextLevel = constructor.getLevel(stats.currentSocialLinkLevel.level + 1, props);
+    const amountOfLevels = stats.currentSocialLinkLevel.level === 7 ? 2 : 1;
+    const nextLevel = constructor.getLevel(
+      stats.currentSocialLinkLevel.level + amountOfLevels,
+      props
+    );
     return (
       <Card
         key={`${constructor.name}-${props.time}`}
