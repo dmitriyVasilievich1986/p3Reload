@@ -11,7 +11,7 @@
         }
       },
       {
-        "name": "EmptyEvent",
+        "name": "Fuuka [Garden]",
         "props": {
           "isChangeable": true,
           "skipCheck": false,
@@ -32,7 +32,7 @@
         }
       },
       {
-        "name": "EmptyEvent",
+        "name": "TV Eggie Blog Note",
         "props": {
           "isChangeable": true,
           "skipCheck": false,
@@ -78,7 +78,7 @@
     "date": "2009-12-04",
     "events": [
       {
-        "name": "EmptyEvent",
+        "name": "Temperance",
         "props": {
           "isChangeable": true,
           "skipCheck": false,
@@ -796,10 +796,10 @@
     "date": "2009-12-27",
     "events": [
       {
-        "name": "EmptyEvent",
+        "name": "Sun",
         "props": {
           "isChangeable": true,
-          "skipCheck": false,
+          "skipCheck": true,
           "time": "Day"
         }
       },
