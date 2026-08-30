@@ -70,9 +70,7 @@ export class Day {
    */
   getEvent(this: Day, time: TimesType): BaseEvent {
     const events = _.filter(this.events, (event) => event.time === time);
-    if (events.length > 1) {
-      throw new Error(`Multiple events found for time: ${time}`);
-    } else if (events.length === 0) {
+    if (events.length === 0) {
       throw new Error(`No events found for time: ${time}`);
     }
     return events[0];
