@@ -209,7 +209,7 @@
     "date": "2009-05-09",
     "events": [
       {
-        "name": "TextEvent",
+        "name": "TartarusEvent",
         "props": {
           "isChangeable": false,
           "isTall": true,
@@ -223,6 +223,14 @@
               }
             }
           ],
+          "skipCheck": true,
+          "time": "Evening"
+        }
+      },
+      {
+        "name": "Fool",
+        "props": {
+          "isChangeable": false,
           "skipCheck": true,
           "time": "Dark Hour"
         }

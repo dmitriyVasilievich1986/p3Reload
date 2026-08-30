@@ -356,6 +356,14 @@
             }
           ]
         }
+      },
+      {
+        "name": "Fool",
+        "props": {
+          "isChangeable": false,
+          "skipCheck": true,
+          "time": "Dark Hour"
+        }
       }
     ]
   },
@@ -403,6 +411,14 @@
               }
             }
           ]
+        }
+      },
+      {
+        "name": "Fool",
+        "props": {
+          "isChangeable": false,
+          "skipCheck": true,
+          "time": "Dark Hour"
         }
       }
     ]
