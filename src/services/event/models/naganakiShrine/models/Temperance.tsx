@@ -1,4 +1,5 @@
 import { Arcanas } from '@constants/arcanas';
+import { socialLinkFullNames } from '@constants/socialLinkNames';
 import { Times } from '@constants/times';
 import {
   SocialLinkLevelAvailability,
@@ -14,7 +15,7 @@ export class TemperanceNaganakiShrineEvent extends NaganakiShrineEventBase {
   static readonly name: NaganakiShrineEventsNamesType =
     NaganakiShrineEventsNames.TemperanceNaganakiShrineEvent;
   static readonly arcana = Arcanas.Temperance;
-  static readonly socialLinkName = 'André Laurent Jean "Bebe" Geraux';
+  static readonly socialLinkName = socialLinkFullNames.Temperance;
 
   static readonly availabilities: AvailabilityBase[] = [
     new SocialLinkLevelAvailability({ name: Arcanas.Temperance, level: 10, operator: 'lt' }),
