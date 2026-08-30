@@ -62,8 +62,12 @@ export class SocialLinkLevel {
     } else {
       const pointsForCalculation = props.pointsForCalculation ?? 10;
       isCardNeeded =
-        (pointsToNextLevel - pointsWithoutCard) / (pointsForCalculation * props.modifier) >
-        (pointsToNextLevel - pointsWithCard) / (pointsForCalculation * props.modifier * 1.51);
+        Math.floor(
+          (pointsToNextLevel - pointsWithoutCard) / (pointsForCalculation * props.modifier)
+        ) >
+        Math.floor(
+          (pointsToNextLevel - pointsWithCard) / (pointsForCalculation * props.modifier * 1.51)
+        );
     }
 
     return {
