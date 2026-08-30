@@ -14,6 +14,7 @@ import { useSearchParams } from 'react-router';
 import { Calendar } from '@services/calendar/Calendar';
 import AprilData from '@services/calendar/data/april.json';
 import AugustData from '@services/calendar/data/august.json';
+import DecemberData from '@services/calendar/data/december.json';
 import JulyData from '@services/calendar/data/july.json';
 import JuneData from '@services/calendar/data/june.json';
 import MayData from '@services/calendar/data/may.json';
@@ -48,6 +49,7 @@ export function App() {
         ...(SeptemberData as DaySerializedType[]),
         ...(OctoberData as DaySerializedType[]),
         ...(NovemberData as DaySerializedType[]),
+        ...(DecemberData as DaySerializedType[]),
       ]);
       setCalendar(Calendar.calculateStats(calendar, undefined, false, false));
     }
