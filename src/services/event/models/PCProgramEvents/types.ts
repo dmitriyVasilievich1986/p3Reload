@@ -1,6 +1,7 @@
 import { LobbyPCProgramsAprilNames } from './models/april/types';
 import { LobbyPCProgramsJulyNames } from './models/july/types';
 import { LobbyPCProgramsJuneNames } from './models/june/types';
+import { LobbyPCProgramsOctoberNames } from './models/october/types';
 import { LobbyPCProgramsSeptemberNames } from './models/september/types';
 
 export const PCProgramEventsNames = {
@@ -8,6 +9,7 @@ export const PCProgramEventsNames = {
   ...LobbyPCProgramsJulyNames,
   ...LobbyPCProgramsJuneNames,
   ...LobbyPCProgramsSeptemberNames,
+  ...LobbyPCProgramsOctoberNames,
 } as const;
 
 export type PCProgramEventsNamesType =
