@@ -1,0 +1,850 @@
+[
+  {
+    "date": "2009-11-01",
+    "events": [
+      {
+        "name": "Sun",
+        "props": {
+          "isChangeable": true,
+          "skipCheck": true,
+          "time": "Day"
+        }
+      },
+      {
+        "name": "Amada [Kitchen]",
+        "props": {
+          "isChangeable": true,
+          "skipCheck": false,
+          "time": "Evening"
+        }
+      }
+    ]
+  },
+  {
+    "date": "2009-11-02",
+    "events": [
+      {
+        "name": "Fool",
+        "props": {
+          "isChangeable": false,
+          "skipCheck": true,
+          "time": "Day Free Time"
+        }
+      },
+      {
+        "name": "Chariot",
+        "props": {
+          "isChangeable": true,
+          "skipCheck": false,
+          "time": "Day"
+        }
+      },
+      {
+        "name": "EmptyEvent",
+        "props": {
+          "isChangeable": true,
+          "skipCheck": false,
+          "time": "Evening"
+        }
+      }
+    ]
+  },
+  {
+    "date": "2009-11-03",
+    "events": [
+      {
+        "name": "TartarusEvent",
+        "props": {
+          "isChangeable": false,
+          "isTall": true,
+          "rows": [
+            {
+              "name": "TextRow",
+              "props": {
+                "isBold": true,
+                "text": "Strega and Hanged Man Boss Fight",
+                "textAlign": "center"
+              }
+            }
+          ],
+          "skipCheck": true,
+          "time": "Dark Hour"
+        }
+      }
+    ]
+  },
+  {
+    "date": "2009-11-04",
+    "events": [
+      {
+        "name": "Death",
+        "props": {
+          "isChangeable": false,
+          "skipCheck": true,
+          "time": "Day"
+        }
+      },
+      {
+        "name": "Fool",
+        "props": {
+          "isChangeable": false,
+          "skipCheck": true,
+          "time": "Evening"
+        }
+      }
+    ]
+  },
+  {
+    "date": "2009-11-05",
+    "events": [
+      {
+        "name": "TextEvent",
+        "props": {
+          "header": null,
+          "isChangeable": false,
+          "isTall": false,
+          "rows": [
+            {
+              "name": "TextRow",
+              "props": {
+                "isBold": true,
+                "text": "The Fall discussion",
+                "textAlign": "center"
+              }
+            }
+          ],
+          "skipCheck": true,
+          "time": "Day"
+        }
+      },
+      {
+        "name": "Ninja Fansite Note",
+        "props": {
+          "isChangeable": true,
+          "skipCheck": false,
+          "time": "Evening"
+        }
+      }
+    ]
+  },
+  {
+    "date": "2009-11-06",
+    "events": [
+      {
+        "name": "Magician",
+        "props": {
+          "isChangeable": true,
+          "skipCheck": false,
+          "time": "Day"
+        }
+      },
+      {
+        "name": "EmptyEvent",
+        "props": {
+          "isChangeable": true,
+          "skipCheck": false,
+          "time": "Evening"
+        }
+      }
+    ]
+  },
+  {
+    "date": "2009-11-07",
+    "events": [
+      {
+        "name": "SchoolQuestionsEvent",
+        "props": {
+          "isChangeable": false,
+          "questions": [
+            {
+              "answers": [
+                {
+                  "points": 15,
+                  "text": "The Upanishads."
+                },
+                {
+                  "points": 0,
+                  "text": "The Mahabharata."
+                },
+                {
+                  "points": 0,
+                  "text": "The Ramayana."
+                }
+              ],
+              "text": "What is the ancient Indian magical text I mentioned today?"
+            }
+          ],
+          "skipCheck": false,
+          "time": "Morning"
+        }
+      },
+      {
+        "name": "Iori",
+        "props": {
+          "isChangeable": true,
+          "skipCheck": false,
+          "time": "Day"
+        }
+      },
+      {
+        "name": "EmptyEvent",
+        "props": {
+          "isChangeable": true,
+          "skipCheck": false,
+          "time": "Evening"
+        }
+      }
+    ]
+  },
+  {
+    "date": "2009-11-08",
+    "events": [
+      {
+        "name": "EmptyEvent",
+        "props": {
+          "isChangeable": true,
+          "skipCheck": false,
+          "time": "Day"
+        }
+      },
+      {
+        "name": "EmptyEvent",
+        "props": {
+          "isChangeable": true,
+          "skipCheck": false,
+          "time": "Evening"
+        }
+      }
+    ]
+  },
+  {
+    "date": "2009-11-09",
+    "events": [
+      {
+        "name": "StayAwakeAcademicsEvent",
+        "props": {
+          "isChangeable": true,
+          "skipCheck": false,
+          "time": "Morning"
+        }
+      },
+      {
+        "name": "Mochizuki",
+        "props": {
+          "isChangeable": false,
+          "skipCheck": true,
+          "time": "Day"
+        }
+      },
+      {
+        "name": "EmptyEvent",
+        "props": {
+          "isChangeable": true,
+          "skipCheck": false,
+          "time": "Evening"
+        }
+      }
+    ]
+  },
+  {
+    "date": "2009-11-10",
+    "events": [
+      {
+        "name": "Magician",
+        "props": {
+          "isChangeable": true,
+          "skipCheck": false,
+          "time": "Day"
+        }
+      },
+      {
+        "name": "Fuuka [Garden]",
+        "props": {
+          "isChangeable": true,
+          "skipCheck": false,
+          "time": "Evening"
+        }
+      }
+    ]
+  },
+  {
+    "date": "2009-11-11",
+    "events": [
+      {
+        "name": "Star",
+        "props": {
+          "isChangeable": true,
+          "skipCheck": false,
+          "time": "Day"
+        }
+      },
+      {
+        "name": "Amada",
+        "props": {
+          "isChangeable": true,
+          "skipCheck": false,
+          "time": "Evening"
+        }
+      }
+    ]
+  },
+  {
+    "date": "2009-11-12",
+    "events": [
+      {
+        "name": "SchoolQuestionsEvent",
+        "props": {
+          "isChangeable": false,
+          "questions": [
+            {
+              "answers": [
+                {
+                  "points": 15,
+                  "text": "Her favorite time in winter."
+                },
+                {
+                  "points": 0,
+                  "text": "The setting of the plot."
+                },
+                {
+                  "points": 0,
+                  "text": "Instructions for the reader."
+                }
+              ],
+              "text": "What was she describing with such a sparse line?"
+            }
+          ],
+          "skipCheck": false,
+          "time": "Morning"
+        }
+      },
+      {
+        "name": "Mochizuki",
+        "props": {
+          "isChangeable": true,
+          "skipCheck": false,
+          "time": "Day"
+        }
+      },
+      {
+        "name": "EmptyEvent",
+        "props": {
+          "isChangeable": true,
+          "skipCheck": false,
+          "time": "Evening"
+        }
+      }
+    ]
+  },
+  {
+    "date": "2009-11-13",
+    "events": [
+      {
+        "name": "Magician",
+        "props": {
+          "isChangeable": true,
+          "skipCheck": false,
+          "time": "Day"
+        }
+      },
+      {
+        "name": "Yukari [Kitchen]",
+        "props": {
+          "isChangeable": true,
+          "skipCheck": false,
+          "time": "Evening"
+        }
+      }
+    ]
+  },
+  {
+    "date": "2009-11-14",
+    "events": [
+      {
+        "name": "StayAwakeAcademicsEvent",
+        "props": {
+          "isChangeable": true,
+          "skipCheck": false,
+          "time": "Morning"
+        }
+      },
+      {
+        "name": "PriestessNaganakiShrineEvent",
+        "props": {
+          "isChangeable": true,
+          "skipCheck": false,
+          "time": "Day"
+        }
+      },
+      {
+        "name": "EmptyEvent",
+        "props": {
+          "isChangeable": true,
+          "skipCheck": false,
+          "time": "Evening"
+        }
+      }
+    ]
+  },
+  {
+    "date": "2009-11-15",
+    "events": [
+      {
+        "name": "LoversNaganakiShrineEvent",
+        "props": {
+          "isChangeable": true,
+          "skipCheck": false,
+          "time": "Day"
+        }
+      },
+      {
+        "name": "Aigis [Garden]",
+        "props": {
+          "isChangeable": true,
+          "skipCheck": false,
+          "time": "Evening"
+        }
+      }
+    ]
+  },
+  {
+    "date": "2009-11-16",
+    "events": [
+      {
+        "name": "StayAwakeAcademicsEvent",
+        "props": {
+          "isChangeable": true,
+          "skipCheck": false,
+          "time": "Morning"
+        }
+      },
+      {
+        "name": "Lovers",
+        "props": {
+          "isChangeable": true,
+          "skipCheck": false,
+          "time": "Day"
+        }
+      },
+      {
+        "name": "EmptyEvent",
+        "props": {
+          "isChangeable": true,
+          "skipCheck": false,
+          "time": "Evening"
+        }
+      }
+    ]
+  },
+  {
+    "date": "2009-11-17",
+    "events": [
+      {
+        "name": "TextEvent",
+        "props": {
+          "header": null,
+          "isChangeable": false,
+          "isTall": true,
+          "rows": [
+            {
+              "name": "TextRow",
+              "props": {
+                "isBold": true,
+                "text": "Kyoto School Trip",
+                "textAlign": "center"
+              }
+            }
+          ],
+          "skipCheck": true,
+          "time": "Day"
+        }
+      }
+    ]
+  },
+  {
+    "date": "2009-11-18",
+    "events": [
+      {
+        "name": "TextEvent",
+        "props": {
+          "header": null,
+          "isChangeable": false,
+          "isTall": true,
+          "rows": [
+            {
+              "name": "TextRow",
+              "props": {
+                "isBold": true,
+                "text": "Kyoto School Trip",
+                "textAlign": "center"
+              }
+            }
+          ],
+          "skipCheck": true,
+          "time": "Day"
+        }
+      },
+      {
+        "name": "Mochizuki",
+        "props": {
+          "isChangeable": false,
+          "skipCheck": true,
+          "time": "Evening"
+        }
+      }
+    ]
+  },
+  {
+    "date": "2009-11-19",
+    "events": [
+      {
+        "name": "TextEvent",
+        "props": {
+          "header": null,
+          "isChangeable": false,
+          "isTall": true,
+          "rows": [
+            {
+              "name": "TextRow",
+              "props": {
+                "isBold": true,
+                "text": "Kyoto School Trip",
+                "textAlign": "center"
+              }
+            }
+          ],
+          "skipCheck": true,
+          "time": "Day"
+        }
+      }
+    ]
+  },
+  {
+    "date": "2009-11-20",
+    "events": [
+      {
+        "name": "TextEvent",
+        "props": {
+          "header": null,
+          "isChangeable": false,
+          "isTall": false,
+          "rows": [
+            {
+              "name": "TextRow",
+              "props": {
+                "isBold": true,
+                "text": "Kyoto School Trip",
+                "textAlign": "center"
+              }
+            }
+          ],
+          "skipCheck": true,
+          "time": "Day"
+        }
+      },
+      {
+        "name": "EmptyEvent",
+        "props": {
+          "isChangeable": true,
+          "skipCheck": false,
+          "time": "Evening"
+        }
+      }
+    ]
+  },
+  {
+    "date": "2009-11-21",
+    "events": [
+      {
+        "name": "StayAwakeAcademicsEvent",
+        "props": {
+          "isChangeable": true,
+          "skipCheck": false,
+          "time": "Morning"
+        }
+      },
+      {
+        "name": "Empress",
+        "props": {
+          "isChangeable": true,
+          "skipCheck": false,
+          "time": "Day"
+        }
+      },
+      {
+        "name": "EmptyEvent",
+        "props": {
+          "isChangeable": true,
+          "skipCheck": false,
+          "time": "Evening"
+        }
+      }
+    ]
+  },
+  {
+    "date": "2009-11-22",
+    "events": [
+      {
+        "name": "Sun",
+        "props": {
+          "isChangeable": true,
+          "skipCheck": true,
+          "time": "Day"
+        }
+      },
+      {
+        "name": "EmptyEvent",
+        "props": {
+          "isChangeable": true,
+          "skipCheck": false,
+          "time": "Evening"
+        }
+      },
+      {
+        "name": "TartarusEvent",
+        "props": {
+          "isChangeable": false,
+          "rows": [
+            {
+              "name": "TextRow",
+              "props": {
+                "isBold": true,
+                "text": "Chidori Boss Fight",
+                "textAlign": "center"
+              }
+            }
+          ],
+          "skipCheck": true,
+          "time": "Dark Hour"
+        }
+      }
+    ]
+  },
+  {
+    "date": "2009-11-23",
+    "events": [
+      {
+        "name": "StrengthNaganakiShrineEvent",
+        "props": {
+          "isChangeable": true,
+          "skipCheck": false,
+          "time": "Day"
+        }
+      },
+      {
+        "name": "EmptyEvent",
+        "props": {
+          "isChangeable": true,
+          "skipCheck": false,
+          "time": "Evening"
+        }
+      }
+    ]
+  },
+  {
+    "date": "2009-11-24",
+    "events": [
+      {
+        "name": "TextEvent",
+        "props": {
+          "header": null,
+          "isChangeable": false,
+          "isTall": true,
+          "rows": [
+            {
+              "name": "TextRow",
+              "props": {
+                "isBold": true,
+                "text": "Wildduck internship",
+                "textAlign": "center"
+              }
+            }
+          ],
+          "skipCheck": true,
+          "time": "Day"
+        }
+      }
+    ]
+  },
+  {
+    "date": "2009-11-25",
+    "events": [
+      {
+        "name": "TextEvent",
+        "props": {
+          "header": null,
+          "isChangeable": false,
+          "isTall": true,
+          "rows": [
+            {
+              "name": "TextRow",
+              "props": {
+                "isBold": true,
+                "text": "Wildduck internship",
+                "textAlign": "center"
+              }
+            }
+          ],
+          "skipCheck": true,
+          "time": "Day"
+        }
+      }
+    ]
+  },
+  {
+    "date": "2009-11-26",
+    "events": [
+      {
+        "name": "TextEvent",
+        "props": {
+          "header": null,
+          "isChangeable": false,
+          "isTall": true,
+          "rows": [
+            {
+              "name": "TextRow",
+              "props": {
+                "isBold": true,
+                "text": "Wildduck internship",
+                "textAlign": "center"
+              }
+            }
+          ],
+          "skipCheck": true,
+          "time": "Day"
+        }
+      }
+    ]
+  },
+  {
+    "date": "2009-11-27",
+    "events": [
+      {
+        "name": "TextEvent",
+        "props": {
+          "header": null,
+          "isChangeable": false,
+          "isTall": false,
+          "rows": [
+            {
+              "name": "TextRow",
+              "props": {
+                "isBold": true,
+                "text": "Wildduck internship",
+                "textAlign": "center"
+              }
+            }
+          ],
+          "skipCheck": true,
+          "time": "Day"
+        }
+      },
+      {
+        "name": "EmptyEvent",
+        "props": {
+          "isChangeable": true,
+          "skipCheck": false,
+          "time": "Evening"
+        }
+      }
+    ]
+  },
+  {
+    "date": "2009-11-28",
+    "events": [
+      {
+        "name": "Priestess",
+        "props": {
+          "isChangeable": true,
+          "skipCheck": false,
+          "time": "Day"
+        }
+      },
+      {
+        "name": "TartarusEvent",
+        "props": {
+          "isChangeable": true,
+          "rows": [
+            {
+              "name": "CheckboxRow",
+              "props": {
+                "text": "Have \"Hanged Man\" card"
+              }
+            }
+          ],
+          "skipCheck": false,
+          "time": "Evening"
+        }
+      },
+      {
+        "name": "Fool",
+        "props": {
+          "isChangeable": false,
+          "skipCheck": true,
+          "time": "Dark Hour"
+        }
+      }
+    ]
+  },
+  {
+    "date": "2009-11-29",
+    "events": [
+      {
+        "name": "PriestessNaganakiShrineEvent",
+        "props": {
+          "isChangeable": true,
+          "skipCheck": false,
+          "time": "Day"
+        }
+      },
+      {
+        "name": "EmptyEvent",
+        "props": {
+          "isChangeable": true,
+          "skipCheck": false,
+          "time": "Evening"
+        }
+      }
+    ]
+  },
+  {
+    "date": "2009-11-30",
+    "events": [
+      {
+        "name": "SchoolQuestionsEvent",
+        "props": {
+          "isTall": false,
+          "time": "Morning",
+          "isChangeable": false,
+          "skipCheck": true,
+          "questions": [
+            {
+              "text": "In the poem that Genji, the protagonist, sends to her, what did he compare her to?",
+              "answers": [
+                { "text": "The cherry blossom.", "points": 15 },
+                { "text": "A cat.", "points": 0 },
+                { "text": "The hydrangea.", "points": 0 }
+              ]
+            }
+          ]
+        }
+      },
+      {
+        "name": "Priestess",
+        "props": {
+          "isChangeable": true,
+          "skipCheck": false,
+          "time": "Day"
+        }
+      },
+      {
+        "name": "EmptyEvent",
+        "props": {
+          "isChangeable": true,
+          "skipCheck": false,
+          "time": "Evening"
+        }
+      }
+    ]
+  }
+]
