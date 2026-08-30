@@ -20,3 +20,8 @@ export type TextEventProps = EventProps & {
   header: string | undefined | null;
   rows: SpecialEventRow[];
 };
+
+export type TartarusEventProps = EventProps & {
+  isTall: boolean;
+  rows: SpecialEventRow[];
+};

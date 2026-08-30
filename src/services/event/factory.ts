@@ -19,7 +19,7 @@ import {
   EdogawaMedicineEvent,
 } from './models/specialEvents';
 
-import type { TextEventProps } from './models/specialEvents/types';
+import type { TextEventProps, TartarusEventProps } from './models/specialEvents/types';
 import type { EventNamesType, EventProps } from './types';
 
 export const Events = {
@@ -64,7 +64,7 @@ export function eventFactory(name: EventNamesType, props: Record<string, unknown
     return new TextEvent(props as TextEventProps);
   }
   if (name === SpecialEventsNames.Tartarus) {
-    return new TartarusEvent(props as TextEventProps);
+    return new TartarusEvent(props as TartarusEventProps);
   }
   if (name === SpecialEventsNames.ExamResults) {
     return new ExamResultsEvent(props as EventProps);
