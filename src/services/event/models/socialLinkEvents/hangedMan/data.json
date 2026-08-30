@@ -140,7 +140,7 @@
     "level": 6,
     "pointsToNextLevel": 30,
     "nextLevelPointsToNextLevel": 15,
-    "previousLevelPointsToNextLevel": 30,
+    "previousLevelPointsToNextLevel": 20,
     "isRomantic": false,
     "isFork": false,
     "questions": [
@@ -165,7 +165,7 @@
     "level": 7,
     "pointsToNextLevel": 15,
     "nextLevelPointsToNextLevel": 30,
-    "previousLevelPointsToNextLevel": 15,
+    "previousLevelPointsToNextLevel": 30,
     "isRomantic": false,
     "isFork": false,
     "questions": [
