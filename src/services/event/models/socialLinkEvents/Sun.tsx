@@ -47,7 +47,7 @@ export class SunEvent extends SocialLinkEventBase {
   static readonly levels = [];
 
   constructor(props: EventProps) {
-    super({ ...props, skipCheck: true, isChangeable: false });
+    super({ ...props, skipCheck: true, isChangeable: true });
   }
 
   static getLevel(
