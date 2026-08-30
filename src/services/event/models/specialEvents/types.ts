@@ -17,6 +17,6 @@ export type SpecialEventRow = {
 
 export type TextEventProps = EventProps & {
   isTall: boolean;
-  header?: string;
+  header: string | undefined | null;
   rows: SpecialEventRow[];
 };
