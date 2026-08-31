@@ -8,6 +8,9 @@ import {
   type LeftDrawerProps,
 } from './types';
 
+const APP_VERSION = import.meta.env.VITE_APP_VERSION;
+const GAME_VERSION = import.meta.env.VITE_GAME_VERSION;
+
 /**
  * Fixed left rail that sits above the app. Collapsed to icon width; expands on hover/focus.
  */
@@ -51,6 +54,17 @@ export function LeftDrawer({
       <LeftDrawerContext.Provider value={{ isExpanded }}>
         <div className="flex h-full flex-col" style={{ width: LEFT_DRAWER_EXPANDED_WIDTH_PX }}>
           {children}
+
+          <footer className="mt-auto whitespace-nowrap border-t px-2 py-3 text-xs border-slate-200 text-slate-500 dark:border-slate-700 dark:text-slate-400">
+            <div className="flex items-center justify-between gap-3">
+              <span className="font-mono">{APP_VERSION}</span>
+              <span>App version</span>
+            </div>
+            <div className="mt-1 flex items-center justify-between gap-3">
+              <span className="font-mono">{GAME_VERSION}</span>
+              <span>Game version</span>
+            </div>
+          </footer>
         </div>
       </LeftDrawerContext.Provider>
     </aside>

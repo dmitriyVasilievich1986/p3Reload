@@ -80,6 +80,19 @@ describe('LeftDrawer', () => {
     expect(drawer).toHaveClass('dark:border-slate-700');
   });
 
+  it('renders a footer with the app and game versions', () => {
+    render(
+      <LeftDrawer>
+        <span>Item</span>
+      </LeftDrawer>
+    );
+
+    expect(screen.getByText('App version')).toBeInTheDocument();
+    expect(screen.getByText('Game version')).toBeInTheDocument();
+    expect(screen.getByText(import.meta.env.VITE_APP_VERSION)).toBeInTheDocument();
+    expect(screen.getByText(import.meta.env.VITE_GAME_VERSION)).toBeInTheDocument();
+  });
+
   it('accepts a custom aria-label and className', () => {
     render(
       <LeftDrawer aria-label="Main menu" className="custom-drawer">
