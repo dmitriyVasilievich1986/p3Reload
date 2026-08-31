@@ -98,7 +98,7 @@ export function MonthContainer({ dates, className }: MonthContainerProps) {
           >
             <Badge size="sm" color="slate" text={monthName.charAt(0)} />
           </span>
-          {isDrawerExpanded ? <span className="pr-3">{monthName.slice(1)}</span> : null}
+          {isDrawerExpanded ? <span className="pr-3">{monthName}</span> : null}
         </h2>
       </header>
 
