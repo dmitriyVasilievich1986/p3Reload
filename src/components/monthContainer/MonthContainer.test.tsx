@@ -63,7 +63,8 @@ describe('MonthContainer', () => {
 
     await user.hover(screen.getByRole('navigation'));
 
-    expect(screen.getByRole('heading', { name: 'April' })).toHaveTextContent(/^April$/);
+    // Badge shows the first letter, the expanded span shows the whole month name.
+    expect(screen.getByRole('heading', { name: 'April' })).toHaveTextContent(/^AApril$/);
     expect(screen.queryByRole('list', { name: 'April dates' })).not.toBeInTheDocument();
   });
 
