@@ -26,7 +26,7 @@ export function Badge({ size, color, text }: BadgeProps) {
   return (
     <span
       className={classNames(
-        'inline-flex items-center justify-center rounded-full font-medium whitespace-nowrap',
+        'inline-flex items-center justify-center rounded-full font-medium whitespace-nowrap cursor-default',
         sizeClasses[size],
         colorClasses[color]
       )}
