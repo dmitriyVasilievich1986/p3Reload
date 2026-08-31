@@ -1,21 +1,25 @@
 import { cleanup, render, screen } from '@testing-library/react';
 import userEvent from '@testing-library/user-event';
+import { MemoryRouter } from 'react-router';
 import { afterEach, describe, expect, it } from 'vite-plus/test';
+
+import { useMainStore } from '@store/main';
 
 import { LeftDrawer } from './LeftDrawer';
 import { LEFT_DRAWER_COLLAPSED_WIDTH_PX, LEFT_DRAWER_EXPANDED_WIDTH_PX } from './types';
 
+function renderLeftDrawer(ui = <LeftDrawer />) {
+  return render(<MemoryRouter initialEntries={['/']}>{ui}</MemoryRouter>);
+}
+
 describe('LeftDrawer', () => {
   afterEach(() => {
     cleanup();
+    useMainStore.setState({ calendar: null });
   });
 
   it('renders above the app as a collapsed navigation rail', () => {
-    render(
-      <LeftDrawer>
-        <button type="button">Home</button>
-      </LeftDrawer>
-    );
+    renderLeftDrawer();
 
     const drawer = screen.getByRole('navigation', { name: 'Navigation' });
 
@@ -29,11 +33,7 @@ describe('LeftDrawer', () => {
   it('fully expands on hover and collapses on leave', async () => {
     const user = userEvent.setup();
 
-    render(
-      <LeftDrawer>
-        <button type="button">Home</button>
-      </LeftDrawer>
-    );
+    renderLeftDrawer();
 
     const drawer = screen.getByRole('navigation', { name: 'Navigation' });
 
@@ -51,27 +51,19 @@ describe('LeftDrawer', () => {
   it('expands when focus moves inside', async () => {
     const user = userEvent.setup();
 
-    render(
-      <LeftDrawer>
-        <button type="button">Home</button>
-      </LeftDrawer>
-    );
+    renderLeftDrawer();
 
     const drawer = screen.getByRole('navigation', { name: 'Navigation' });
 
     await user.tab();
 
-    expect(screen.getByRole('button', { name: 'Home' })).toHaveFocus();
+    expect(screen.getByRole('button', { name: 'Switch to dark theme' })).toHaveFocus();
     expect(drawer).toHaveAttribute('aria-expanded', 'true');
     expect(drawer).toHaveStyle({ width: `${LEFT_DRAWER_EXPANDED_WIDTH_PX}px` });
   });
 
   it('includes dark-mode classes', () => {
-    render(
-      <LeftDrawer>
-        <span>Item</span>
-      </LeftDrawer>
-    );
+    renderLeftDrawer();
 
     const drawer = screen.getByRole('navigation', { name: 'Navigation' });
 
@@ -80,12 +72,27 @@ describe('LeftDrawer', () => {
     expect(drawer).toHaveClass('dark:border-slate-700');
   });
 
+  it('renders the theme and settings controls', () => {
+    renderLeftDrawer();
+
+    expect(screen.getByRole('button', { name: 'Switch to dark theme' })).toBeInTheDocument();
+    expect(screen.getByRole('button', { name: 'Open settings' })).toBeInTheDocument();
+  });
+
+  it('renders the day-filter input and keeps what the user types', async () => {
+    const user = userEvent.setup();
+
+    renderLeftDrawer();
+
+    const input = screen.getByRole('searchbox', { name: 'Filter days by event' });
+
+    await user.type(input, 'exam');
+
+    expect(input).toHaveValue('exam');
+  });
+
   it('renders a footer with the app and game versions', () => {
-    render(
-      <LeftDrawer>
-        <span>Item</span>
-      </LeftDrawer>
-    );
+    renderLeftDrawer();
 
     expect(screen.getByText('App version')).toBeInTheDocument();
     expect(screen.getByText('Game version')).toBeInTheDocument();
@@ -94,11 +101,7 @@ describe('LeftDrawer', () => {
   });
 
   it('accepts a custom aria-label and className', () => {
-    render(
-      <LeftDrawer aria-label="Main menu" className="custom-drawer">
-        <span>Item</span>
-      </LeftDrawer>
-    );
+    renderLeftDrawer(<LeftDrawer aria-label="Main menu" className="custom-drawer" />);
 
     const drawer = screen.getByRole('navigation', { name: 'Main menu' });
 

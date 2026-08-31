@@ -1,12 +1,9 @@
 import {
   CenterPanel,
-  DarkThemeSwitch,
   LEFT_DRAWER_COLLAPSED_WIDTH_PX,
   LeftDrawer,
   LeftPanel,
-  MonthContainer,
   RightPanel,
-  Settings,
 } from '@components';
 import { useEffect } from 'react';
 import { useSearchParams } from 'react-router';
@@ -80,24 +77,7 @@ export function App() {
 
   return (
     <div className="flex h-screen bg-slate-100 text-slate-900 dark:bg-slate-950 dark:text-slate-50">
-      <LeftDrawer>
-        <div
-          className="flex flex-col items-start gap-2 pt-3"
-          style={{ marginLeft: (LEFT_DRAWER_COLLAPSED_WIDTH_PX - 30) / 2 }}
-        >
-          <DarkThemeSwitch />
-          <Settings />
-        </div>
-        <div className="mt-3 flex min-h-0 flex-1 flex-col overflow-y-auto">
-          {(calendar?.getDatesByMonth() ?? []).map((dates) => {
-            const firstDate = dates[0];
-
-            return firstDate === undefined ? null : (
-              <MonthContainer key={firstDate.format('YYYY-MM')} dates={dates} />
-            );
-          })}
-        </div>
-      </LeftDrawer>
+      <LeftDrawer />
 
       <main
         className="flex min-h-0 min-w-0 flex-1"
