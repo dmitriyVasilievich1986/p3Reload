@@ -234,6 +234,40 @@ describe('Card', () => {
     expect(screen.getByRole('tooltip')).toHaveTextContent('Or the Moon arcana card');
   });
 
+  it('does not render a clear button when onClear is omitted', () => {
+    render(<Card header="Event" body={<span>Content</span>} />);
+
+    expect(screen.queryByRole('button', { name: 'Clear' })).not.toBeInTheDocument();
+  });
+
+  it('renders a clear button and calls onClear when it is clicked', async () => {
+    const user = userEvent.setup();
+    const onClear = vi.fn();
+
+    const { container } = render(
+      <Card header="Event" body={<span>Content</span>} onClear={onClear} />
+    );
+
+    expect(container.querySelector('article')).toHaveClass('group');
+
+    await user.click(screen.getByRole('button', { name: 'Clear' }));
+
+    expect(onClear).toHaveBeenCalledOnce();
+  });
+
+  it('does not trigger the card onClick when the clear button is clicked', async () => {
+    const user = userEvent.setup();
+    const onClick = vi.fn();
+    const onClear = vi.fn();
+
+    render(<Card header="Event" body={<span>Content</span>} onClick={onClick} onClear={onClear} />);
+
+    await user.click(screen.getByRole('button', { name: 'Clear' }));
+
+    expect(onClear).toHaveBeenCalledOnce();
+    expect(onClick).not.toHaveBeenCalled();
+  });
+
   it('renders the header row for icons even without header content', () => {
     render(
       <Card

@@ -35,5 +35,10 @@ export type CardProps = {
   /** When true, applies a default min-height (300px) to the card. */
   isTall?: boolean;
   onClick?: () => void;
+  /**
+   * When provided, a red bin button slides in on the right edge on hover/focus
+   * (WhatsApp/Telegram style). Clicking it calls this instead of {@link onClick}.
+   */
+  onClear?: () => void;
   className?: string;
 };

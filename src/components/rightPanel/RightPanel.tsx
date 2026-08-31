@@ -170,7 +170,7 @@ export function RightPanel() {
           onChange={setSelected}
           body={
             <div className="flex flex-col gap-2">
-              {selectedTab.events.map((event) => {
+              {selectedTab.events.map((event, index) => {
                 const node = event.render(isAvailableProps);
                 if (!isValidElement(node)) {
                   return node;
@@ -178,6 +178,7 @@ export function RightPanel() {
 
                 return cloneElement(node as ReactElement<CardProps>, {
                   onClick: () => onClick(event),
+                  key: `${event.name}-${index}`,
                 });
               })}
             </div>

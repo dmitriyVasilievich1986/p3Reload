@@ -1,9 +1,10 @@
 import classNames from 'classnames';
-import { Children, isValidElement, type KeyboardEvent } from 'react';
+import { Children, isValidElement, type KeyboardEvent, type MouseEvent } from 'react';
 
 import charismaticCharacterIcon from '@assets/charismatic-character.svg';
 import studyIcon from '@assets/study.svg';
 import tarotCardIcon from '@assets/tarot-card.svg';
+import trashBinIcon from '@assets/trash-bin.svg';
 import { Times, type TimesType } from '@constants/times';
 
 import { Badge, type BadgeColor } from '../badge';
@@ -40,6 +41,7 @@ export function Card({
   isSelectable = true,
   isTall = false,
   onClick,
+  onClear,
   className,
 }: CardProps) {
   const bodyItems = Children.toArray(body);
@@ -54,6 +56,11 @@ export function Card({
 
     event.preventDefault();
     onClick?.();
+  }
+
+  function handleClear(event: MouseEvent<HTMLButtonElement>) {
+    event.stopPropagation();
+    onClear?.();
   }
 
   return (
@@ -74,6 +81,7 @@ export function Card({
         isSelected &&
           'border-sky-400 ring-2 ring-sky-400/70 dark:border-sky-500 dark:ring-sky-500/60',
         isTall && 'min-h-[300px]',
+        onClear != null && 'group',
         className
       )}
     >
@@ -87,6 +95,27 @@ export function Card({
         <div className="absolute right-3 top-0 z-10 -translate-y-1/2">
           <Badge {...badge} />
         </div>
+      ) : null}
+
+      {onClear != null ? (
+        <button
+          type="button"
+          aria-label="Clear"
+          onClick={handleClear}
+          onKeyDown={(event) => event.stopPropagation()}
+          className={classNames(
+            'absolute bottom-3 right-3 z-20 flex size-9 items-center justify-center',
+            'rounded-full bg-red-600 text-white shadow-lg',
+            'scale-90 opacity-0 pointer-events-none',
+            'transition-[transform,opacity] duration-150 ease-out',
+            'hover:bg-red-700',
+            'group-hover:scale-100 group-hover:opacity-100 group-hover:pointer-events-auto',
+            'focus-visible:scale-100 focus-visible:opacity-100 focus-visible:pointer-events-auto',
+            'focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-red-400 focus-visible:ring-offset-2 dark:focus-visible:ring-offset-slate-900'
+          )}
+        >
+          <img src={trashBinIcon} alt="" aria-hidden="true" className="size-4 invert" />
+        </button>
       ) : null}
 
       {header || hasIcons ? (
