@@ -107,7 +107,7 @@ describe('Calendar', () => {
       expect(calendar.getDatesByMonth()).toEqual([]);
     });
 
-    it('groups dates by year-month in first-seen order', () => {
+    it('groups days by year-month in first-seen order', () => {
       const aprilSeventh = createDayFixture({ date: createDateFixture(dayjs('2009-04-07')) });
       const aprilEighth = createDayFixture({ date: createDateFixture(dayjs('2009-04-08')) });
       const mayFirst = createDayFixture({ date: createDateFixture(dayjs('2009-05-01')) });
@@ -116,11 +116,13 @@ describe('Calendar', () => {
       const groups = calendar.getDatesByMonth();
 
       expect(groups).toHaveLength(2);
-      expect(groups[0]?.map((date) => date.format(DatesFormat))).toEqual([
+      expect(groups[0]).toEqual([aprilSeventh, aprilEighth]);
+      expect(groups[1]).toEqual([mayFirst]);
+      expect(groups[0]?.map((day) => day.date.format(DatesFormat))).toEqual([
         '2009-04-07',
         '2009-04-08',
       ]);
-      expect(groups[1]?.map((date) => date.format(DatesFormat))).toEqual(['2009-05-01']);
+      expect(groups[1]?.map((day) => day.date.format(DatesFormat))).toEqual(['2009-05-01']);
     });
   });
 

@@ -91,13 +91,13 @@ export function LeftDrawer({ className, 'aria-label': ariaLabel = 'Navigation' }
           </div>
 
           <div className="mt-3 flex min-h-0 flex-1 flex-col overflow-y-auto">
-            {(calendar?.getDatesByMonth() ?? []).map((dates) => {
-              const firstDate = dates[0];
+            {(calendar?.getDatesByMonth() ?? []).map((days) => {
+              const firstDay = days[0];
 
-              return firstDate === undefined ? null : (
+              return firstDay === undefined ? null : (
                 <MonthContainer
-                  key={firstDate.format('YYYY-MM')}
-                  dates={dates}
+                  key={firstDay.date.format('YYYY-MM')}
+                  days={days}
                   filterName={dayFilter}
                 />
               );

@@ -3,28 +3,26 @@ import { useEffect, useRef, useState, type FocusEvent } from 'react';
 import { useSearchParams } from 'react-router';
 
 import { DatesFormat } from '@constants/dates';
-import { useMainStore } from '@store/main';
 
 import { Badge } from '../badge';
 import { useLeftDrawer } from '../leftDrawer/context';
 import { LEFT_DRAWER_COLLAPSED_WIDTH_PX } from '../leftDrawer/types';
 
 import type { MonthContainerProps } from './types';
+import type { Dayjs } from 'dayjs';
 
 const DATES_COLLAPSE_DELAY_MS = 100;
 
 /**
  * Month header and hover-expanding list of dates. Updates the `day` URL search param on click.
  */
-export function MonthContainer({ dates, filterName, className }: MonthContainerProps) {
+export function MonthContainer({ days, filterName, className }: MonthContainerProps) {
   const { isExpanded: isDrawerExpanded } = useLeftDrawer();
-  const { calendar } = useMainStore();
   const [searchParams, setSearchParams] = useSearchParams();
   const [isDatesExpanded, setIsDatesExpanded] = useState(false);
   const collapseTimeoutRef = useRef<ReturnType<typeof setTimeout> | null>(null);
 
-  const sortedDates = [...dates].sort((left, right) => left.valueOf() - right.valueOf());
-  const monthDate = sortedDates[0];
+  const monthDate = days[0]?.date;
 
   useEffect(() => {
     return () => {
@@ -42,16 +40,8 @@ export function MonthContainer({ dates, filterName, className }: MonthContainerP
   const selectedDay = searchParams.get('day');
 
   const trimmedFilter = filterName?.trim() ?? '';
-  const visibleDates =
-    trimmedFilter === '' || calendar === null
-      ? sortedDates
-      : sortedDates.filter((date) => {
-          try {
-            return calendar.getDay(date).currentDay.eventSearch(trimmedFilter);
-          } catch {
-            return false;
-          }
-        });
+  const visibleDays =
+    trimmedFilter === '' ? days : days.filter((day) => day.eventSearch(trimmedFilter));
 
   function openDates() {
     if (collapseTimeoutRef.current !== null) {
@@ -83,7 +73,7 @@ export function MonthContainer({ dates, filterName, className }: MonthContainerP
     closeDates();
   }
 
-  function handleDateClick(date: (typeof sortedDates)[number]) {
+  function handleDateClick(date: Dayjs) {
     setSearchParams(
       (prev) => {
         prev.set('day', date.format(DatesFormat));
@@ -93,7 +83,7 @@ export function MonthContainer({ dates, filterName, className }: MonthContainerP
     );
   }
 
-  if (visibleDates.length === 0) {
+  if (visibleDays.length === 0) {
     return null;
   }
 
@@ -134,7 +124,8 @@ export function MonthContainer({ dates, filterName, className }: MonthContainerP
             inert={!isDatesExpanded}
             className="flex max-h-[300px] flex-col gap-0.5 overflow-y-auto px-2 pb-2"
           >
-            {visibleDates.map((date) => {
+            {visibleDays.map((day) => {
+              const date = day.date;
               const dayParam = date.format(DatesFormat);
               const label = date.format('D, dddd');
               const isSelected = selectedDay === dayParam;

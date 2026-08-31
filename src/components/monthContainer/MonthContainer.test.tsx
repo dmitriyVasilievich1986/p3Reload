@@ -4,13 +4,13 @@ import dayjs from 'dayjs';
 import { MemoryRouter, useSearchParams } from 'react-router';
 import { afterEach, describe, expect, it } from 'vite-plus/test';
 
-import { Calendar } from '@services/calendar';
 import { createDayFixture, createEventFixture } from '@services/fixtures';
-import { useMainStore } from '@store/main';
 
 import { LEFT_DRAWER_COLLAPSED_WIDTH_PX } from '../leftDrawer';
 import { LeftDrawerContext } from '../leftDrawer/context';
 import { MonthContainer } from './MonthContainer';
+
+import type { Day } from '@services/day';
 
 function SearchParamsProbe() {
   const [searchParams] = useSearchParams();
@@ -18,10 +18,23 @@ function SearchParamsProbe() {
   return <div data-testid="search">{searchParams.toString()}</div>;
 }
 
-const aprilDates = [dayjs('2009-04-08'), dayjs('2009-04-07'), dayjs('2009-04-20')];
+const aprilDays = [
+  createDayFixture({ date: dayjs('2009-04-08') }),
+  createDayFixture({ date: dayjs('2009-04-07') }),
+  createDayFixture({ date: dayjs('2009-04-20') }),
+];
+
+/** April days where only 2009-04-07 has an event whose name contains "stayawake". */
+function aprilDaysWithStayAwakeOnTheSeventh(): Day[] {
+  return [
+    createDayFixture({ date: dayjs('2009-04-08'), events: [] }),
+    createDayFixture({ date: dayjs('2009-04-07'), events: [createEventFixture()] }),
+    createDayFixture({ date: dayjs('2009-04-20'), events: [] }),
+  ];
+}
 
 function renderMonthContainer(
-  dates = aprilDates,
+  days: Day[] = aprilDays,
   initialEntry = '/?day=2009-04-07',
   drawerExpanded = false,
   filterName?: string
@@ -29,33 +42,19 @@ function renderMonthContainer(
   return render(
     <MemoryRouter initialEntries={[initialEntry]}>
       <LeftDrawerContext.Provider value={{ isExpanded: drawerExpanded }}>
-        <MonthContainer dates={dates} filterName={filterName} />
+        <MonthContainer days={days} filterName={filterName} />
       </LeftDrawerContext.Provider>
       <SearchParamsProbe />
     </MemoryRouter>
   );
 }
 
-/** Calendar where only 2009-04-07 has an event whose name contains "stayawake". */
-function seedCalendarWithStayAwakeOnTheSeventh() {
-  const calendar = new Calendar({
-    days: [
-      createDayFixture({ date: dayjs('2009-04-07'), events: [createEventFixture()] }),
-      createDayFixture({ date: dayjs('2009-04-08'), events: [] }),
-      createDayFixture({ date: dayjs('2009-04-20'), events: [] }),
-    ],
-  });
-
-  useMainStore.setState({ calendar });
-}
-
 describe('MonthContainer', () => {
   afterEach(() => {
     cleanup();
-    useMainStore.setState({ calendar: null });
   });
 
-  it('renders nothing when there are no dates', () => {
+  it('renders nothing when there are no days', () => {
     const { container } = renderMonthContainer([]);
 
     expect(container.querySelector('section')).not.toBeInTheDocument();
@@ -63,7 +62,7 @@ describe('MonthContainer', () => {
   });
 
   it('shows the first letter of the month when the drawer is collapsed', () => {
-    renderMonthContainer(aprilDates, '/?day=2009-04-07', false);
+    renderMonthContainer(aprilDays, '/?day=2009-04-07', false);
 
     const heading = screen.getByRole('heading', { name: 'April' });
 
@@ -77,7 +76,7 @@ describe('MonthContainer', () => {
   });
 
   it('shows the full month name when the drawer is expanded', () => {
-    renderMonthContainer(aprilDates, '/?day=2009-04-07', true);
+    renderMonthContainer(aprilDays, '/?day=2009-04-07', true);
 
     // Badge shows the first letter, the expanded span shows the whole month name.
     expect(screen.getByRole('heading', { name: 'April' })).toHaveTextContent(/^AApril$/);
@@ -132,7 +131,7 @@ describe('MonthContainer', () => {
   it('marks the date that matches the day URL param as current', async () => {
     const user = userEvent.setup();
 
-    renderMonthContainer(aprilDates, '/?day=2009-04-08');
+    renderMonthContainer(aprilDays, '/?day=2009-04-08');
 
     await user.hover(screen.getByRole('heading', { name: 'April' }));
 
@@ -154,11 +153,15 @@ describe('MonthContainer', () => {
     );
   });
 
-  it('keeps only the dates whose events match filterName', async () => {
+  it('keeps only the days whose events match filterName', async () => {
     const user = userEvent.setup();
-    seedCalendarWithStayAwakeOnTheSeventh();
 
-    renderMonthContainer(aprilDates, '/?day=2009-04-07', false, 'stayawake');
+    renderMonthContainer(
+      aprilDaysWithStayAwakeOnTheSeventh(),
+      '/?day=2009-04-07',
+      false,
+      'stayawake'
+    );
 
     await user.hover(screen.getByRole('heading', { name: 'April' }));
 
@@ -167,19 +170,21 @@ describe('MonthContainer', () => {
     expect(screen.queryByRole('button', { name: '20, Monday' })).not.toBeInTheDocument();
   });
 
-  it('renders nothing when no date in the month matches filterName', () => {
-    seedCalendarWithStayAwakeOnTheSeventh();
-
-    renderMonthContainer(aprilDates, '/?day=2009-04-07', false, 'karaoke');
+  it('renders nothing when no day in the month matches filterName', () => {
+    renderMonthContainer(
+      aprilDaysWithStayAwakeOnTheSeventh(),
+      '/?day=2009-04-07',
+      false,
+      'karaoke'
+    );
 
     expect(screen.queryByRole('region', { name: 'April' })).not.toBeInTheDocument();
   });
 
   it('shows every date when filterName is blank', async () => {
     const user = userEvent.setup();
-    seedCalendarWithStayAwakeOnTheSeventh();
 
-    renderMonthContainer(aprilDates, '/?day=2009-04-07', false, '   ');
+    renderMonthContainer(aprilDaysWithStayAwakeOnTheSeventh(), '/?day=2009-04-07', false, '   ');
 
     await user.hover(screen.getByRole('heading', { name: 'April' }));
 
