@@ -81,10 +81,10 @@ export class Day {
   }
 
   eventSearch(this: Day, nameFilter: string): boolean {
+    const filterToLowerCase = nameFilter.toLowerCase();
     return _.some(
       this.events,
-      (event) =>
-        nameFilter === '' || event.getName().toLowerCase().includes(nameFilter.toLowerCase())
+      (event) => nameFilter === '' || event.getName().toLowerCase().includes(filterToLowerCase)
     );
   }
 
