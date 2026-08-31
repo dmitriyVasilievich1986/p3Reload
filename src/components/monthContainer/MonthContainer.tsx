@@ -102,39 +102,48 @@ export function MonthContainer({ dates, className }: MonthContainerProps) {
         </h2>
       </header>
 
-      {isDatesExpanded ? (
-        <ul
-          aria-label={`${monthName} dates`}
-          className="flex max-h-[300px] flex-col gap-0.5 overflow-y-auto px-2 pb-2"
-        >
-          {sortedDates.map((date) => {
-            const dayParam = date.format(DatesFormat);
-            const label = date.format('D, dddd');
-            const isSelected = selectedDay === dayParam;
+      <div
+        className={classNames(
+          'grid transition-[grid-template-rows] duration-500 ease-out',
+          isDatesExpanded ? 'grid-rows-[1fr]' : 'grid-rows-[0fr]'
+        )}
+      >
+        <div className="overflow-hidden">
+          <ul
+            aria-label={`${monthName} dates`}
+            aria-hidden={!isDatesExpanded}
+            inert={!isDatesExpanded}
+            className="flex max-h-[300px] flex-col gap-0.5 overflow-y-auto px-2 pb-2"
+          >
+            {sortedDates.map((date) => {
+              const dayParam = date.format(DatesFormat);
+              const label = date.format('D, dddd');
+              const isSelected = selectedDay === dayParam;
 
-            return (
-              <li key={dayParam}>
-                <button
-                  type="button"
-                  aria-label={label}
-                  aria-current={isSelected ? 'date' : undefined}
-                  onClick={() => handleDateClick(date)}
-                  className={classNames(
-                    'w-full rounded-md px-2 py-1 text-left text-sm',
-                    'text-slate-900 dark:text-slate-50',
-                    'hover:bg-slate-100 dark:hover:bg-slate-800',
-                    'focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-slate-400 dark:focus-visible:ring-slate-500',
-                    isSelected &&
-                      'bg-sky-100 ring-2 ring-sky-400/70 dark:bg-sky-950 dark:ring-sky-500/60'
-                  )}
-                >
-                  {label}
-                </button>
-              </li>
-            );
-          })}
-        </ul>
-      ) : null}
+              return (
+                <li key={dayParam}>
+                  <button
+                    type="button"
+                    aria-label={label}
+                    aria-current={isSelected ? 'date' : undefined}
+                    onClick={() => handleDateClick(date)}
+                    className={classNames(
+                      'w-full rounded-md px-2 py-1 text-left text-sm',
+                      'text-slate-900 dark:text-slate-50',
+                      'hover:bg-slate-100 dark:hover:bg-slate-800',
+                      'focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-slate-400 dark:focus-visible:ring-slate-500',
+                      isSelected &&
+                        'bg-sky-100 ring-2 ring-sky-400/70 dark:bg-sky-950 dark:ring-sky-500/60'
+                    )}
+                  >
+                    {label}
+                  </button>
+                </li>
+              );
+            })}
+          </ul>
+        </div>
+      </div>
     </section>
   );
 }
