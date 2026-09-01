@@ -80,6 +80,14 @@ export class Day {
     return _.find(this.events, (event) => event.getName() === name);
   }
 
+  eventSearch(this: Day, nameFilter: string): boolean {
+    const filterToLowerCase = nameFilter.toLowerCase();
+    return _.some(
+      this.events,
+      (event) => nameFilter === '' || event.getName().toLowerCase().includes(filterToLowerCase)
+    );
+  }
+
   /**
    * Normalizes a mixed list of event instances and serialized event payloads
    * into {@link BaseEvent} instances via {@link eventFactory}.

@@ -9,6 +9,8 @@ import { type CardProps } from '@components/card';
 import { DateStepButton, DateStepDirections } from '@components/dateStepButton';
 import { Tooltip, TooltipPositions } from '@components/tooltip';
 import { DEFAULT_DAY } from '@constants/dates';
+import { eventFactory, BaseEvent } from '@services/event';
+import { SpecialEventsNames } from '@services/event/models/specialEvents/types';
 import { useMainStore } from '@store/main';
 
 import type { Day } from '@services/day';
@@ -62,7 +64,8 @@ function SpecialDayIcons({ day }: { day: Day }) {
  */
 export function CenterPanel() {
   const [searchParams, setSearchParams] = useSearchParams();
-  const { currentDay, calendar, selectedEvent, setCurrentDay, setSelectedEvent } = useMainStore();
+  const { currentDay, calendar, selectedEvent, setCurrentDay, setSelectedEvent, setCalendar } =
+    useMainStore();
 
   useEffect(() => {
     if (calendar === null) {
@@ -130,6 +133,19 @@ export function CenterPanel() {
     }
   }
 
+  const onClearHandler = (event: BaseEvent) => {
+    const newEvent = eventFactory(SpecialEventsNames.Empty, {
+      time: event.time,
+      skipCheck: false,
+      isChangeable: true,
+    });
+    const nextCalendar = calendar!.replaceEvent(currentDay.date, event.time, newEvent);
+    const { currentDay: nextDay } = nextCalendar.getDay(currentDay.date);
+    setCalendar(nextCalendar);
+    setCurrentDay(nextDay);
+    setSelectedEvent(null);
+  };
+
   return (
     <section
       aria-label="Center panel"
@@ -169,6 +185,7 @@ export function CenterPanel() {
                     isSelected:
                       selectedEvent?.getName() === event.getName() &&
                       selectedEvent.time === event.time,
+                    onClear: () => onClearHandler(event),
                   })
                 : node;
 

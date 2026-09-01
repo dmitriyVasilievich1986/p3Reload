@@ -2,11 +2,16 @@ import react from '@vitejs/plugin-react';
 import { resolve } from 'path';
 import { defineConfig, loadEnv, lazyPlugins } from 'vite-plus';
 
+import { version as appVersion } from './package.json';
+
 // https://vitejs.dev/config/
 export default defineConfig(({ mode }) => {
   const env = loadEnv(mode, process.cwd(), '');
 
   return {
+    define: {
+      'import.meta.env.VITE_APP_VERSION': JSON.stringify(appVersion),
+    },
     staged: {
       '*': 'vp check --fix',
     },

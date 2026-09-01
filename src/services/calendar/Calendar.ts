@@ -44,21 +44,21 @@ export class Calendar {
   }
 
   /**
-   * Groups the dates of {@link Calendar.days} by year-month, in first-seen order.
+   * Groups {@link Calendar.days} by year-month, in first-seen order.
    *
-   * @returns Arrays of dates, one per month present in this calendar.
+   * @returns Arrays of days, one per month present in this calendar.
    */
-  getDatesByMonth(this: Calendar): Dayjs[][] {
-    const groups = new Map<string, Dayjs[]>();
+  getDatesByMonth(this: Calendar): Day[][] {
+    const groups = new Map<string, Day[]>();
 
     for (const day of this.days) {
       const key = day.date.format('YYYY-MM');
       const group = groups.get(key);
 
       if (group === undefined) {
-        groups.set(key, [day.date]);
+        groups.set(key, [day]);
       } else {
-        group.push(day.date);
+        group.push(day);
       }
     }
 

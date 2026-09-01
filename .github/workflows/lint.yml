@@ -37,3 +37,5 @@ jobs:
 
       - name: Build
         run: vp run build
+        env:
+          VITE_GAME_VERSION: ${{ vars.VITE_GAME_VERSION }}
