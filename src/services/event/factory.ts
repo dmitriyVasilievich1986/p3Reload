@@ -16,6 +16,7 @@ import {
   EmptyEvent,
   TartarusEvent,
   MoonFlagEvent,
+  TowerFlagEvent,
   ExamResultsEvent,
   EdogawaMedicineEvent,
   ElizabethRequest75Event,
@@ -81,6 +82,9 @@ export function eventFactory(name: EventNamesType, props: Record<string, unknown
   }
   if (name === SpecialEventsNames.MoonFlag) {
     return new MoonFlagEvent(props as EventProps);
+  }
+  if (name === SpecialEventsNames.TowerFlag) {
+    return new TowerFlagEvent(props as EventProps);
   }
   if (name in SchoolQuestionsEvents) {
     return new SchoolQuestionsEvents[name as SchoolQuestionEventsNamesType](

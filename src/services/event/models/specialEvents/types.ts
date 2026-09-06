@@ -4,6 +4,7 @@ export const SpecialEventsNames = {
   ElizabethRequest75: 'ElizabethRequest75Event',
   EdogawaMedicine: 'EdogawaMedicineEvent',
   ExamResults: 'ExamResultsEvent',
+  TowerFlag: 'TowerFlagEvent',
   MoonFlag: 'MoonFlagEvent',
   Tartarus: 'TartarusEvent',
   Empty: 'EmptyEvent',

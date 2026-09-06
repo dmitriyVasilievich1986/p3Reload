@@ -5,4 +5,5 @@ export { EdogawaMedicineEvent } from './EdogawaMedicineEvent';
 export { ExamResultsEvent } from './ExamResultsEvent';
 export { ElizabethRequest75Event } from './ElizabethRequest75Event';
 export { MoonFlagEvent } from './MoonFlagEvent';
+export { TowerFlagEvent } from './TowerFlagEvent';
 export { SpecialEventsNames, type SpecialEventsNamesType, type TartarusEventProps } from './types';
