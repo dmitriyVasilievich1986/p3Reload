@@ -24,7 +24,7 @@
         ]
       },
       {
-        "text": "hmmm... what kinda people r we, playing inside on such a beautiful day?",
+        "text": "hmm... what kinda people r we, playing inside on such a beautiful day?",
         "answers": [
           {
             "text": "Don't you like video games?",
@@ -46,14 +46,14 @@
     "isFork": false,
     "questions": [
       {
-        "text": "so ummmmm…… i'm drunk! xD",
+        "text": "so ummmmmm... im drunk! xD",
         "answers": [
           { "text": "Oh really? o_O", "points": 5, "isFork": false },
           { "text": "Are you an adult?", "points": 0, "isFork": false }
         ]
       },
       {
-        "text": "but lately i cant get motivated to get work done @ work. =/",
+        "text": "but lately i cant get motviated to get work done @ work. =/",
         "answers": [
           { "text": "You don't like your job?", "points": 15, "isFork": false },
           { "text": "Are you burned out?", "points": 0, "isFork": false }
@@ -70,7 +70,7 @@
     "isFork": false,
     "questions": [
       {
-        "text": "Its like all she cares about is marrying me off to some dude >=/ whys it her problem?",
+        "text": "its like all she cares about is marrying me off to some dude >=/ whys it her problem?",
         "answers": [
           { "text": "Don't wanna get married?", "points": 0, "isFork": false },
           {
