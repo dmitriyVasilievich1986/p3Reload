@@ -399,6 +399,14 @@
         }
       },
       {
+        "name": "TowerFlagEvent",
+        "props": {
+          "isChangeable": false,
+          "skipCheck": false,
+          "time": "Day Free Time"
+        }
+      },
+      {
         "name": "Hierophant",
         "props": {
           "isChangeable": true,

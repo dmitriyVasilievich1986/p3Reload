@@ -222,6 +222,14 @@
     "date": "2009-05-08",
     "events": [
       {
+        "name": "MoonFlagEvent",
+        "props": {
+          "isChangeable": false,
+          "skipCheck": false,
+          "time": "Day Free Time"
+        }
+      },
+      {
         "name": "Magician",
         "props": {
           "isChangeable": true,
