@@ -1,5 +1,6 @@
 import { Arcanas, type ArcanasType } from '@constants/arcanas';
 import { DayOfWeek } from '@constants/dayOfWeek';
+import { Flags } from '@constants/flags';
 import { Places, Districts } from '@constants/places';
 import { socialLinkFullNames } from '@constants/socialLinkNames';
 import { Times } from '@constants/times';
@@ -9,6 +10,7 @@ import {
   TimeAvailability,
   CharacterStatsAvailability,
   DayOfWeekAvailability,
+  IsEventInHistoryAvailability,
 } from '@services/availability';
 import { SocialLinkLevel } from '@services/stats';
 import { CharacterStatsNames } from '@services/stats/characterStats';
@@ -29,6 +31,7 @@ export class TowerEvent extends SocialLinkEventBase {
   static readonly levels = data.map((l) => new SocialLinkLevel(l));
 
   static readonly availabilities: AvailabilityBase[] = [
+    new IsEventInHistoryAvailability({ name: Flags.TowerFlag, isInHistory: true }),
     new SocialLinkLevelAvailability({ name: Arcanas.Strength, operator: 'ge', level: 4 }),
     new SocialLinkLevelAvailability({ name: Arcanas.Tower, operator: 'lt', level: 10 }),
     new TimeAvailability({ times: [Times.Evening] }),

@@ -212,6 +212,19 @@ export class Day {
       const moonFlagPushed = stats.additionalStats.addEvent(Flags.MoonFlag);
       stats = stats.updateAdditionalStats(moonFlagPushed);
     }
+
+    const towerFlagAvailabilities = [
+      new IsEventInHistoryAvailability({ name: Flags.TowerFlag, isInHistory: false }),
+      new SocialLinkLevelAvailability({ name: Arcanas.Strength, operator: 'ge', level: 4 }),
+      new DayOfWeekAvailability({ daysOfWeek: [DayOfWeek.Wednesday, DayOfWeek.Saturday] }),
+      new ExamAvailability({ isAvailableOnAnExamDay: false }),
+      new DayOffAvailability({ isAvailableOnADayOff: false }),
+      new TimeAvailability({ times: [Times.Day] }),
+    ];
+    if (_.every(towerFlagAvailabilities, (availability) => availability.isAvailable(props))) {
+      const towerFlagPushed = stats.additionalStats.addEvent(Flags.TowerFlag);
+      stats = stats.updateAdditionalStats(towerFlagPushed);
+    }
     return stats;
   }
 
