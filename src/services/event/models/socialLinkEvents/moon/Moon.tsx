@@ -1,4 +1,5 @@
 import { Arcanas, type ArcanasType } from '@constants/arcanas';
+import { Flags } from '@constants/flags';
 import { Districts } from '@constants/places';
 import { socialLinkFullNames } from '@constants/socialLinkNames';
 import { Times } from '@constants/times';
@@ -9,8 +10,11 @@ import {
   IsLevelUpAvailable,
   DayOffAvailability,
   OrAvailability,
+  IsEventInHistoryAvailability,
+  CharacterStatsAvailability,
 } from '@services/availability';
 import { SocialLinkLevel } from '@services/stats';
+import { CharacterStatsNames } from '@services/stats/characterStats';
 
 import { SocialLinkEventBase } from '../base';
 import data from './data.json';
@@ -26,6 +30,8 @@ export class MoonEvent extends SocialLinkEventBase {
   static readonly levels = data.map((l) => new SocialLinkLevel(l));
 
   static readonly availabilities: AvailabilityBase[] = [
+    new CharacterStatsAvailability({ name: CharacterStatsNames.Charm, operator: 'ge', level: 2 }),
+    new IsEventInHistoryAvailability({ name: Flags.MoonFlag, isInHistory: true }),
     new IsLevelUpAvailable({ name: Arcanas.Moon, isLevelUpAvailable: true }),
     new TimeAvailability({ times: [Times.Day] }),
     new OrAvailability({

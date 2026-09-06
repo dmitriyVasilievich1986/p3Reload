@@ -8,6 +8,7 @@ export { DatesFormat, FullMoonDays, ExamDays, DayOffDays } from './dates';
 export { Arcanas, type ArcanasType } from './arcanas';
 export { Places, Districts } from './places';
 export { socialLinkFullNames } from './socialLinkNames';
+export { Flags } from './flags';
 export {
   SettingsParams,
   type SettingsParam,
