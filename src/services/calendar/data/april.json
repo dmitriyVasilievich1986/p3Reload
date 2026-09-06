@@ -321,18 +321,18 @@
           "skipCheck": true,
           "questions": [
             {
-              "text": "The places where people dumped their waste in the Jomon Period - What are they called nowadays?",
+              "text": "The places where people dumped their waste in the Jomon Period - what are they called nowadays?",
               "answers": [
-                { "text": "Boneyards", "points": 0 },
-                { "text": "Middens", "points": 15 },
-                { "text": "Hovels", "points": 0 }
+                { "text": "Boneyards.", "points": 0 },
+                { "text": "Middens.", "points": 15 },
+                { "text": "Hovels.", "points": 0 }
               ]
             }
           ]
         }
       },
       {
-        "name": "TartarusEvent",
+        "name": "TextEvent",
         "props": {
           "isTall": false,
           "time": "Evening",
@@ -343,7 +343,7 @@
               "name": "LabelRow",
               "props": {
                 "label": "Place:",
-                "text": "Tartarus"
+                "text": "Iwatodai Dormitory"
               }
             },
             {
@@ -398,7 +398,7 @@
         "name": "TartarusEvent",
         "props": {
           "isTall": true,
-          "time": "Day",
+          "time": "Evening",
           "isChangeable": false,
           "skipCheck": true,
           "rows": [
