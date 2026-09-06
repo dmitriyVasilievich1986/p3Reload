@@ -23,7 +23,7 @@ import type { IsAvailableProps } from '@services/availability/types';
 
 export class UmiushiFanBookPCEvent extends LobbyPCProgramsBase {
   static readonly name = LobbyPCProgramsAprilNames.umiushiFanBook;
-  readonly price: number = 450;
+  static readonly price = 450;
 
   static readonly availabilities: AvailabilityBase[] = [
     new DateAvailability({ operator: 'ge', value: dayjs('2009-04-29') }),

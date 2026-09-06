@@ -23,7 +23,7 @@ import type { IsAvailableProps } from '@services/availability/types';
 
 export class MuscleBootCampPCEvent extends LobbyPCProgramsBase {
   static readonly name = LobbyPCProgramsAprilNames.muscleBootCamp;
-  readonly price: number = 2_000;
+  static readonly price = 2_000;
 
   static readonly availabilities: AvailabilityBase[] = [
     new DateAvailability({ operator: 'ge', value: dayjs('2009-04-29') }),
@@ -49,9 +49,7 @@ export class MuscleBootCampPCEvent extends LobbyPCProgramsBase {
         key={`${this.name}-${props.time}`}
         body={
           <>
-            {this.price && (
-              <LabelRow key="price" label="Price:" text={priceFormatter(this.price)} />
-            )}
+            <LabelRow key="price" label="Price:" text={priceFormatter(this.price)} />
             <LabelRow key="place" label="Place:" text={Places.LobbyPC} />
             <LabelRow key="district" label="District:" text={Districts.IwatodaiDormitory} />
             <ModifiersRow modifiers={['Max HP Boost']} />
