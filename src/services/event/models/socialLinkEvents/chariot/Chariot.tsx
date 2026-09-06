@@ -2,7 +2,7 @@ import dayjs from 'dayjs';
 
 import { Card } from '@components/card';
 import { QuestionCard, type AnswerPoint } from '@components/questionCard';
-import { LabelRow, TextRow } from '@components/row';
+import { LabelRow } from '@components/row';
 import { Arcanas, type ArcanasType } from '@constants/arcanas';
 import { DayOfWeek } from '@constants/dayOfWeek';
 import { Places, Districts } from '@constants/places';
@@ -73,8 +73,9 @@ export class ChariotEvent extends SocialLinkEventBase {
   override render(props: IsAvailableProps): React.ReactNode | null {
     const constructor = this.constructor as typeof SocialLinkEventBase;
     const stats = this.stats.socialLinkStats[constructor.name as ArcanasType];
-    if (stats.currentSocialLinkLevel.level === 1) {
-      const nextLevel = constructor.getLevel(stats.currentSocialLinkLevel.level + 1, props);
+    if (stats.level === 0) {
+      const currentSocialLinkLevel = constructor.getLevel(stats.level, props);
+      const nextLevel = constructor.getLevel(stats.level + 1, props);
       return (
         <Card
           key={`${constructor.name}-${props.time}`}
@@ -89,15 +90,7 @@ export class ChariotEvent extends SocialLinkEventBase {
               <LabelRow key="Name" label="Name:" text={constructor.socialLinkName} />
               <LabelRow key="District" label="District:" text={constructor.district} />
               <LabelRow key="Place" label="Place:" text={constructor.place} />
-              {stats.level === 0 && (
-                <TextRow
-                  textAlign="center"
-                  isBold
-                  key="text"
-                  text="Create a bond with Social Link"
-                />
-              )}
-              {stats.currentSocialLinkLevel.questions.map((q, index) => {
+              {currentSocialLinkLevel.questions.map((q, index) => {
                 return (
                   <QuestionCard
                     key={`${constructor.name}-${props.time}-${index}`}
