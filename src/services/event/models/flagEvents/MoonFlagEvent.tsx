@@ -14,24 +14,24 @@ import {
 } from '@services/availability';
 import { BaseEvent } from '@services/event/base';
 
-import { SpecialEventsNames, type SpecialEventsNamesType } from './types';
+import { FlagEventsNames, type FlagEventsNamesType } from './types';
 
 import type { AvailabilityBase, IsAvailableProps } from '@services/availability';
 import type { EventProps } from '@services/event/types';
 import type { Stats } from '@services/stats/stats';
 
-export class TowerFlagEvent extends BaseEvent {
-  static readonly name: SpecialEventsNamesType = SpecialEventsNames.TowerFlag;
+export class MoonFlagEvent extends BaseEvent {
+  static readonly name: FlagEventsNamesType = FlagEventsNames.MoonFlag;
 
-  static readonly header: string = 'Tower [Prerequisites]';
+  static readonly header: string = 'Moon [Prerequisites]';
 
   static readonly availabilities: AvailabilityBase[] = [
-    new IsEventInHistoryAvailability({ name: Flags.TowerFlag, isInHistory: false }),
-    new SocialLinkLevelAvailability({ name: Arcanas.Strength, operator: 'ge', level: 4 }),
+    new IsEventInHistoryAvailability({ name: Flags.MoonFlag, isInHistory: false }),
+    new SocialLinkLevelAvailability({ name: Arcanas.Magician, operator: 'ge', level: 3 }),
     new ExamAvailability({ isAvailableOnAnExamDay: false }),
     new DayOffAvailability({ isAvailableOnADayOff: false }),
     new DayOfWeekAvailability({
-      daysOfWeek: [DayOfWeek.Wednesday, DayOfWeek.Saturday],
+      daysOfWeek: [DayOfWeek.Tuesday, DayOfWeek.Thursday, DayOfWeek.Friday],
     }),
   ];
 
@@ -39,13 +39,13 @@ export class TowerFlagEvent extends BaseEvent {
     super({ ...props, skipCheck: false, isChangeable: false });
   }
 
-  calculateStats(this: TowerFlagEvent, _props: IsAvailableProps): Stats {
-    const additionalStats = this.stats.additionalStats.addEvent(Flags.TowerFlag);
+  calculateStats(this: MoonFlagEvent, _props: IsAvailableProps): Stats {
+    const additionalStats = this.stats.additionalStats.addEvent(Flags.MoonFlag);
     return this.stats.updateAdditionalStats(additionalStats);
   }
 
-  render(this: TowerFlagEvent, props: IsAvailableProps): React.ReactNode {
-    const constructor = this.constructor as typeof TowerFlagEvent;
+  render(this: MoonFlagEvent, props: IsAvailableProps): React.ReactNode {
+    const constructor = this.constructor as typeof MoonFlagEvent;
     return (
       <Card
         key={`${constructor.name}-${props.time}`}
@@ -54,10 +54,10 @@ export class TowerFlagEvent extends BaseEvent {
         body={
           <>
             <LabelRow key="district" label="District:" text={Districts.GekkoukanHighSchool} />
-            <LabelRow key="place" label="Place:" text={Places.Classroom2FHallway} />
+            <LabelRow key="place" label="Place:" text={Places.Classroom2F} />
             <CheckboxRow
-              key="towerFlag"
-              text={`Talk to "${socialLinkFullNames.Strength}" about Strange Monk`}
+              key="moonFlag"
+              text={`Talk to "${socialLinkFullNames.Magician}" about Gourmet King`}
             />
           </>
         }
