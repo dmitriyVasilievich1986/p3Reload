@@ -1,19 +1,9 @@
 import dayjs from 'dayjs';
 import _ from 'lodash';
 
-import { Arcanas } from '@constants/arcanas';
 import { DatesFormat, FullMoonDays, ExamDays, DayOffDays } from '@constants/dates';
 import { DayOfWeek, DayOfWeekPosition } from '@constants/dayOfWeek';
-import { Flags } from '@constants/flags';
 import { Times, type TimesType } from '@constants/times';
-import {
-  DayOfWeekAvailability,
-  SocialLinkLevelAvailability,
-  IsEventInHistoryAvailability,
-  ExamAvailability,
-  DayOffAvailability,
-  TimeAvailability,
-} from '@services/availability';
 import { BaseEvent } from '@services/event/base';
 import { eventFactory } from '@services/event/factory';
 import { EmptyEvent } from '@services/event/models/specialEvents';
@@ -196,38 +186,6 @@ export class Day {
     });
   }
 
-  private pushEvent(this: Day, props: IsAvailableProps): Stats {
-    let stats = props.stats;
-    const moonFlagAvailabilities = [
-      new IsEventInHistoryAvailability({ name: Flags.MoonFlag, isInHistory: false }),
-      new SocialLinkLevelAvailability({ name: Arcanas.Magician, operator: 'ge', level: 3 }),
-      new ExamAvailability({ isAvailableOnAnExamDay: false }),
-      new DayOffAvailability({ isAvailableOnADayOff: false }),
-      new TimeAvailability({ times: [Times.Day] }),
-      new DayOfWeekAvailability({
-        daysOfWeek: [DayOfWeek.Tuesday, DayOfWeek.Thursday, DayOfWeek.Friday],
-      }),
-    ];
-    if (_.every(moonFlagAvailabilities, (availability) => availability.isAvailable(props))) {
-      const moonFlagPushed = stats.additionalStats.addEvent(Flags.MoonFlag);
-      stats = stats.updateAdditionalStats(moonFlagPushed);
-    }
-
-    const towerFlagAvailabilities = [
-      new IsEventInHistoryAvailability({ name: Flags.TowerFlag, isInHistory: false }),
-      new SocialLinkLevelAvailability({ name: Arcanas.Strength, operator: 'ge', level: 4 }),
-      new DayOfWeekAvailability({ daysOfWeek: [DayOfWeek.Wednesday, DayOfWeek.Saturday] }),
-      new ExamAvailability({ isAvailableOnAnExamDay: false }),
-      new DayOffAvailability({ isAvailableOnADayOff: false }),
-      new TimeAvailability({ times: [Times.Day] }),
-    ];
-    if (_.every(towerFlagAvailabilities, (availability) => availability.isAvailable(props))) {
-      const towerFlagPushed = stats.additionalStats.addEvent(Flags.TowerFlag);
-      stats = stats.updateAdditionalStats(towerFlagPushed);
-    }
-    return stats;
-  }
-
   /**
    * Applies each event's stat changes in order, seeding from `stats` or a fresh {@link Stats}.
    *
@@ -251,7 +209,6 @@ export class Day {
     const seenTimes = new Set<TimesType>();
 
     day.events.forEach((event) => {
-      stats_ = day.pushEvent({ ...props, stats: stats_, event, time: event.time });
       if (
         !event.skipCheck &&
         !event.isAvailable({ ...props, event, time: event.time, stats: stats_ })
