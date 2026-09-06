@@ -35,37 +35,11 @@
     "date": "2009-05-02",
     "events": [
       {
-        "name": "TextEvent",
+        "name": "JusticeFlag3Event",
         "props": {
-          "isTall": false,
-          "time": "Day Free Time",
+          "time": "Day free time",
           "isChangeable": false,
-          "skipCheck": true,
-          "header": "Justice[Prerequisite]",
-          "rows": [
-            {
-              "name": "LabelRow",
-              "props": {
-                "label": "Name:",
-                "text": "Chihiro Fushimi"
-              }
-            },
-            {
-              "name": "LabelRow",
-              "props": {
-                "label": "Place:",
-                "text": "2nd Floor Hallway"
-              }
-            },
-            {
-              "name": "CheckboxRow",
-              "props": { "text": "Talk to Chihiro." }
-            },
-            {
-              "name": "CheckboxRow",
-              "props": { "text": "Choose \"Let's hang out.\"" }
-            }
-          ]
+          "skipCheck": false
         }
       },
       {

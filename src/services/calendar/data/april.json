@@ -677,37 +677,11 @@
     "date": "2009-04-28",
     "events": [
       {
-        "name": "TextEvent",
+        "name": "JusticeFlag1Event",
         "props": {
-          "isTall": false,
-          "time": "Day Free Time",
+          "time": "Day free time",
           "isChangeable": false,
-          "skipCheck": true,
-          "header": "Justice[Prerequisite]",
-          "rows": [
-            {
-              "name": "LabelRow",
-              "props": {
-                "label": "Name:",
-                "text": "Chihiro Fushimi"
-              }
-            },
-            {
-              "name": "LabelRow",
-              "props": {
-                "label": "Place:",
-                "text": "2nd Floor Hallway"
-              }
-            },
-            {
-              "name": "CheckboxRow",
-              "props": { "text": "Talk to Chihiro." }
-            },
-            {
-              "name": "CheckboxRow",
-              "props": { "text": "Choose \"I just wanted to talk...\"" }
-            }
-          ]
+          "skipCheck": false
         }
       },
       {
@@ -761,33 +735,11 @@
         }
       },
       {
-        "name": "TextEvent",
+        "name": "JusticeFlag2Event",
         "props": {
-          "isTall": false,
-          "time": "Day Free Time",
+          "time": "Day free time",
           "isChangeable": false,
-          "skipCheck": true,
-          "header": "Justice[Prerequisite]",
-          "rows": [
-            {
-              "name": "LabelRow",
-              "props": {
-                "label": "Name:",
-                "text": "Chihiro Fushimi"
-              }
-            },
-            {
-              "name": "LabelRow",
-              "props": {
-                "label": "Place:",
-                "text": "2nd Floor Hallway"
-              }
-            },
-            {
-              "name": "CheckboxRow",
-              "props": { "text": "Talk to Chihiro." }
-            }
-          ]
+          "skipCheck": false
         }
       },
       {
