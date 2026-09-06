@@ -12,11 +12,15 @@ import {
   OrAvailability,
   DayOffAvailability,
   AvailabilityBase,
+  CharacterStatsAvailability,
 } from '@services/availability';
 /**
  * Virtual Diet lobby PC program event at Iwatodai Dormitory.
  */
-import { type CharacterStatsModifierType } from '@services/stats/characterStats/types';
+import {
+  CharacterStatsNames,
+  type CharacterStatsModifierType,
+} from '@services/stats/characterStats/types';
 import { priceFormatter } from '@utils/priceFormatter';
 
 import { LobbyPCProgramsBase } from '../../../base';
@@ -31,6 +35,7 @@ export class IwatodaiForumNoteEvent extends LobbyPCProgramsBase {
   static readonly availabilities: AvailabilityBase[] = [
     new DateAvailability({ operator: 'ge', value: dayjs('2009-04-29') }),
     new IsEventInHistoryAvailability({ name: this.name, isInHistory: false }),
+    new CharacterStatsAvailability({ name: CharacterStatsNames.Courage, operator: 'ge', level: 2 }),
     new OrAvailability({
       availabilities: [
         new TimeAvailability({ times: [Times.Evening] }),
