@@ -19,7 +19,7 @@
       {
         "text": "What was your name again?",
         "answers": [
-          { "text": "${mainCharName}", "points": 5, "isFork": false },
+          { "text": "${mainCharName} ${mainCharSurname}", "points": 5, "isFork": false },
           { "text": "...", "points": 0, "isFork": false }
         ]
       },
@@ -62,14 +62,14 @@
     "isFork": false,
     "questions": [
       {
-        "text": "I don't see it anywhere... Looking for something?",
+        "text": "I don't see it anywhere...",
         "answers": [
           { "text": "Looking for something?", "points": 5, "isFork": false },
           { "text": "Cleaning the store?", "points": 0, "isFork": false }
         ]
       },
       {
-        "text": "It's not my contact lens I'm looking for, it's my wallet. My wallet! Now, where did I put it?",
+        "text": "II'm looking for my glasses- Er, not my glasses, my wallet! I can't seem to find it...",
         "answers": [
           { "text": "Best of luck.", "points": 5, "isFork": false },
           { "text": "Can I help?", "points": 15, "isFork": false }
