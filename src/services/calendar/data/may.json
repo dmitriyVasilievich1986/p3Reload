@@ -284,6 +284,12 @@
             {
               "name": "CheckboxRow",
               "props": {
+                "text": "Have \"Odd morsel\""
+              }
+            },
+            {
+              "name": "CheckboxRow",
+              "props": {
                 "text": "Have \"Chariot\" card"
               }
             },
