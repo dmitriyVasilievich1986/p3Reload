@@ -1,3 +1,5 @@
+import { Card } from '@components/card';
+import { LabelRow, ModifiersRow, TextRow } from '@components/row';
 import { DayOfWeek } from '@constants/dayOfWeek';
 import { Places, Districts } from '@constants/places';
 import { Times } from '@constants/times';
@@ -11,6 +13,8 @@ import {
   CharacterStatsNames,
   type CharacterStatsModifierType,
 } from '@services/stats/characterStats/types';
+import { modifiersFormatter } from '@utils/modifiersFormatter';
+import { priceFormatter } from '@utils/priceFormatter';
 
 import { CharacterStatsModifyEventBase } from '../base';
 import { type CharmStatModifyNamesType, CharmStatModifyNames } from './types';
@@ -67,5 +71,34 @@ export class HagakureRamenEvent extends CharacterStatsModifyEventBase {
           result.additionalStats.addEvent(CharmStatModifyNames.hagakureRamen)
         )
       : result;
+  }
+
+  override render(props: IsAvailableProps): React.ReactNode {
+    const constructor = this.constructor as typeof HagakureRamenEvent;
+    const isFirstTime =
+      !props.stats.additionalStats.isEventHappened(CharmStatModifyNames.hagakureRamen) &&
+      props.time === Times.Evening;
+    return (
+      <Card
+        key={`${constructor.name}-${props.time}`}
+        body={
+          <>
+            <LabelRow key="price" label="Price:" text={priceFormatter(constructor.price)} />
+            <LabelRow key="place" label="Place:" text={constructor.place} />
+            <LabelRow key="district" label="District:" text={constructor.district} />
+            <ModifiersRow modifiers={modifiersFormatter(constructor.modifiers)} />
+            {isFirstTime && (
+              <TextRow
+                isBold={true}
+                textAlign="center"
+                key="firstTime"
+                text="Now Hagakure Ramen Special is available."
+              />
+            )}
+          </>
+        }
+        header={constructor.header}
+      />
+    );
   }
 }
