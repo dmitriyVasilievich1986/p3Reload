@@ -13,5 +13,6 @@ export {
   SettingsParams,
   type SettingsParam,
   DEFAULT_MAIN_CHAR_NAME,
+  DEFAULT_MAIN_CHAR_SURNAME,
   DEFAULT_SHOW_SPOILERS,
 } from './settings';
