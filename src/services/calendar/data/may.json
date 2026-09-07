@@ -265,6 +265,14 @@
     "date": "2009-05-10",
     "events": [
       {
+        "name": "EdogawaMedicineEvent",
+        "props": {
+          "isChangeable": false,
+          "skipCheck": false,
+          "time": "Day Free Time"
+        }
+      },
+      {
         "name": "Hierophant",
         "props": {
           "isChangeable": true,
