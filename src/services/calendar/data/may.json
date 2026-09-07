@@ -154,6 +154,14 @@
         }
       },
       {
+        "name": "HangedManFlagEvent",
+        "props": {
+          "time": "Day free time",
+          "isChangeable": false,
+          "skipCheck": false
+        }
+      },
+      {
         "name": "Emperor",
         "props": {
           "isChangeable": true,
