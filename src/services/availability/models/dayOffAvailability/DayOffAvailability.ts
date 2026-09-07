@@ -1,6 +1,7 @@
 import _ from 'lodash';
 
 import { DayOffDays } from '@constants/dates';
+import { DayOfWeek, DayOfWeekPosition } from '@constants/dayOfWeek';
 
 import { AvailabilityBase } from '../../base';
 
@@ -27,7 +28,9 @@ export class DayOffAvailability extends AvailabilityBase {
    * @returns {boolean} True when the date matches the day-off preference.
    */
   isAvailable(props: IsAvailableProps): boolean {
-    const isDayOff = _.some(DayOffDays, (day) => day.isSame(props.date, 'day'));
+    const isDayOff =
+      props.date.day() === DayOfWeekPosition[DayOfWeek.Sunday] ||
+      _.some(DayOffDays, (day) => day.isSame(props.date, 'day'));
     return this.isAvailableOnADayOff === isDayOff;
   }
 }
