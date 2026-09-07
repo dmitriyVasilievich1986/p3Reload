@@ -34,7 +34,11 @@ export class JusticeEvent extends SocialLinkEventBase {
   static readonly levels = data.map((l) => new SocialLinkLevel(l));
 
   static readonly availabilities: AvailabilityBase[] = [
-    new IsEventInHistoryAvailability({ name: Flags.JusticeFlag3, isInHistory: true }),
+    new IsEventInHistoryAvailability({
+      name: Flags.JusticeFlag3,
+      isInHistory: true,
+      previousDay: true,
+    }),
     new IsLevelUpAvailable({ name: Arcanas.Justice, isLevelUpAvailable: true }),
     new ExamAvailability({ isAvailableOnAnExamDay: false }),
     new DayOffAvailability({ isAvailableOnADayOff: false }),
