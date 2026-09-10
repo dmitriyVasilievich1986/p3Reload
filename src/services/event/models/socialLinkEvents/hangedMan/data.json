@@ -11,7 +11,7 @@
   {
     "level": 1,
     "pointsToNextLevel": 0,
-    "nextLevelPointsToNextLevel": 20,
+    "nextLevelPointsToNextLevel": 0,
     "previousLevelPointsToNextLevel": 0,
     "isRomantic": false,
     "isFork": false,
