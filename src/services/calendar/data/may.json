@@ -265,14 +265,6 @@
     "date": "2009-05-10",
     "events": [
       {
-        "name": "EdogawaMedicineEvent",
-        "props": {
-          "isChangeable": false,
-          "skipCheck": false,
-          "time": "Day Free Time"
-        }
-      },
-      {
         "name": "Hierophant",
         "props": {
           "isChangeable": true,
@@ -598,7 +590,7 @@
                   "text": "Dropsy"
                 }
               ],
-              "text": "What is the other common expression used to describe \"May Sickness\"?"
+              "text": "What is the other common expression used to describe \"May sickness\"?"
             }
           ],
           "skipCheck": false,
@@ -832,19 +824,13 @@
             {
               "name": "CheckboxRow",
               "props": {
-                "text": "Have at least ¥41,750"
+                "text": "Have at least ¥24,400"
               }
             },
             {
               "name": "CheckboxRow",
               "props": {
                 "text": "Be at least level 12"
-              }
-            },
-            {
-              "name": "CheckboxRow",
-              "props": {
-                "text": "Have \"Hanged Man\" card"
               }
             },
             {
@@ -863,12 +849,6 @@
               "name": "CheckboxRow",
               "props": {
                 "text": "Have \"Temperance\" card"
-              }
-            },
-            {
-              "name": "CheckboxRow",
-              "props": {
-                "text": "Have \"Strength\" card"
               }
             }
           ],
