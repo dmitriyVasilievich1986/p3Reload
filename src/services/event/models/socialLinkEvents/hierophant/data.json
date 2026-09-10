@@ -123,7 +123,7 @@
       {
         "text": "The... The... The tree...",
         "answers": [
-          { "text": "What happened", "points": 0, "isFork": false },
+          { "text": "What happened?", "points": 0, "isFork": false },
           { "text": "Tree?", "points": 0, "isFork": false }
         ]
       },

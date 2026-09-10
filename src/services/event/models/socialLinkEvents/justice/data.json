@@ -24,7 +24,7 @@
         ]
       },
       {
-        "text": "...Um, do you read much, ${mainCharName}-san?",
+        "text": "...Um, do you read much, ${mainCharSurname}-san?",
         "answers": [
           { "text": "I read the classics.", "points": 5, "isFork": false },
           { "text": "I read manga.", "points": 5, "isFork": false },
@@ -72,7 +72,7 @@
         "text": "...Do they not know where they are!?",
         "answers": [
           { "text": "They have no shame.", "points": 5, "isFork": false },
-          { "text": "They're gonna...kiss?", "points": 0, "isFork": false },
+          { "text": "They're gonna kiss...?", "points": 0, "isFork": false },
           { "text": "Where did they go?", "points": 0, "isFork": false }
         ]
       },
@@ -95,7 +95,7 @@
     "isFork": false,
     "questions": [
       {
-        "text": "${mainCharName}-san!",
+        "text": "${mainCharSurname}-san!",
         "answers": [
           { "text": "Get lost.", "points": 0, "isFork": false },
           { "text": "...Hey.", "points": 0, "isFork": false }
