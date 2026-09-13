@@ -21,8 +21,6 @@ import { CharacterStatsNames } from '@services/stats/characterStats/types';
 
 import { SocialLinkEventBase } from './base';
 
-import type { EventProps } from '../../types';
-
 export class DevilEvent extends SocialLinkEventBase {
   /** Arcana identifier for this social link. */
   static readonly name: ArcanasType = Arcanas.Devil;
@@ -43,10 +41,6 @@ export class DevilEvent extends SocialLinkEventBase {
   ];
 
   static readonly levels = [];
-
-  constructor(props: EventProps) {
-    super({ ...props, skipCheck: true, isChangeable: false });
-  }
 
   static getLevel(
     this: typeof SocialLinkEventBase,
