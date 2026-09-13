@@ -219,9 +219,9 @@
       {
         "text": "Otherwise, I won't be able to keep my promise to my nephew!",
         "answers": [
-          { "text": "You need to get tougher.", "points": 15, "isFork": false },
+          { "text": "You need to get tougher!", "points": 15, "isFork": false },
           { "text": "You can't win like this.", "points": 5, "isFork": false },
-          { "text": "You need to take a break.", "points": 0, "isFork": false }
+          { "text": "You need to take a break...", "points": 0, "isFork": false }
         ]
       }
     ]

@@ -117,7 +117,7 @@
     "isFork": false,
     "questions": [
       {
-        "text": "${mainCharName}-kun, what do you think I should do?",
+        "text": "${mainCharSurname}-kun, what do you think I should do?",
         "answers": [
           { "text": "Why not give it a go?", "points": 0, "isFork": false },
           { "text": "That's for you to decide.", "points": 0, "isFork": false }
@@ -165,7 +165,7 @@
     "isFork": false,
     "questions": [
       {
-        "text": "Elementary school kids really learn fast don't you think?",
+        "text": "Elementary school kids really learn fast, don't you think?",
         "answers": [
           {
             "text": "You're right. It's impressive.",

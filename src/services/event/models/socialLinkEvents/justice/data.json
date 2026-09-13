@@ -129,7 +129,7 @@
       {
         "text": "Is she in love right now!?",
         "answers": [
-          { "text": "Yeah, she's in love.", "points": 15, "isFork": false },
+          { "text": "Yeah, she's in love.", "points": 0, "isFork": false },
           {
             "text": "You're jumping to conclusions.",
             "points": 5,
@@ -167,7 +167,7 @@
           { "text": "Yeah, she's in love.", "points": 15, "isFork": true },
           {
             "text": "You're jumping to conclusions.",
-            "points": 5,
+            "points": 0,
             "isFork": false
           }
         ]
