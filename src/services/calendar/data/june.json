@@ -344,31 +344,13 @@
             {
               "name": "CheckboxRow",
               "props": {
-                "text": "Have at least ¥5,650"
+                "text": "Have \"Strength\" card"
               }
             },
             {
               "name": "CheckboxRow",
               "props": {
-                "text": "Be at least level 10"
-              }
-            },
-            {
-              "name": "CheckboxRow",
-              "props": {
-                "text": "Have \"Odd morsel\""
-              }
-            },
-            {
-              "name": "CheckboxRow",
-              "props": {
-                "text": "Have \"Chariot\" card"
-              }
-            },
-            {
-              "name": "CheckboxRow",
-              "props": {
-                "text": "Have \"Hanged Man\" card"
+                "text": "Have \"Justice\" card"
               }
             }
           ],
@@ -711,7 +693,7 @@
                   "text": "The bubble jet phenomenon."
                 }
               ],
-              "text": "What's it called when the air bubbles in a whirlpool bath hit you and make you vibrate?"
+              "text": "What's it called when the air bubbles in a whirlpool bath hit you and make your body vibrate?"
             }
           ],
           "skipCheck": false,
