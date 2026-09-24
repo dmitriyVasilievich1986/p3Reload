@@ -7,6 +7,7 @@ import { EmptyEvent } from '@services/event/models/specialEvents';
 import { Stats } from '@services/stats';
 
 import type { GetDayResult } from './types';
+import type { ArcanasType } from '@constants/arcanas';
 import type { TimesType } from '@constants/times';
 import type { IsAvailableProps } from '@services/availability/types';
 import type { DaySerializedType } from '@services/day/types';
@@ -224,5 +225,16 @@ export class Calendar {
       statsAtEndOfDay: new Stats(),
       events: [],
     });
+  }
+
+  updateSocialLinkIsRomantic(this: Calendar, name: ArcanasType, isRomantic: boolean): Calendar {
+    const days = this.days.map((day) => {
+      return day.updateSocialLinkIsRomantic(
+        name,
+        isRomantic,
+        this.getIsAvailableProps(day.date, day.events[0].time)
+      );
+    });
+    return new Calendar({ days });
   }
 }

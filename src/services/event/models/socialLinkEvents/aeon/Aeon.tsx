@@ -28,6 +28,7 @@ export class AeonEvent extends SocialLinkEventBase {
   static readonly place: string = Places.Classroom2F;
   /** District label shown in the event card. */
   static readonly district: string = Districts.GekkoukanHighSchool;
+  static readonly isRomanticAvailable: boolean = true;
 
   static readonly levels = data.map((l) => new SocialLinkLevel(l));
 

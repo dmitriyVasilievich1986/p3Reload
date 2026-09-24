@@ -7,6 +7,7 @@ import { Times } from '@constants/times';
 import { BaseEvent } from '@services/event/base';
 import { SocialLinkLevel, Stats } from '@services/stats';
 
+import type { SocialLinkEventProps } from './types';
 import type { ArcanasType } from '@constants/arcanas';
 import type { IsAvailableProps } from '@services/availability/types';
 
@@ -17,13 +18,33 @@ export abstract class SocialLinkEventBase extends BaseEvent {
   static readonly place: string;
 
   static readonly levels: SocialLinkLevel[] = [];
+  static readonly isRomanticAvailable: boolean = false;
+
+  isRomantic: boolean;
+
+  constructor(props: SocialLinkEventProps) {
+    super(props);
+    this.isRomantic = !!props.isRomantic;
+  }
+
+  override serialize(): { name: ArcanasType; props: SocialLinkEventProps } {
+    return {
+      name: (this.constructor as typeof SocialLinkEventBase).name,
+      props: {
+        time: this.time,
+        skipCheck: this.skipCheck,
+        isChangeable: this.isChangeable,
+        isRomantic: this.isRomantic,
+      },
+    };
+  }
 
   static getLevel(
     this: typeof SocialLinkEventBase,
     level: number,
     props: IsAvailableProps
   ): SocialLinkLevel {
-    const isRomantic = props.stats.socialLinkStats[this.name as ArcanasType].isRomantic;
+    const isRomantic = (props.event as SocialLinkEventBase).isRomantic;
     const filteredLevels = _.filter(this.levels, (l) => l.level === level);
     if (filteredLevels.length === 0) {
       throw new Error(`Level ${level} not found`);
@@ -32,6 +53,26 @@ export abstract class SocialLinkEventBase extends BaseEvent {
       return filteredLevels[0];
     }
     return _.find(filteredLevels, (l) => l.isRomantic === isRomantic) as SocialLinkLevel;
+  }
+
+  updateIsRomantic(this: SocialLinkEventBase, isRomantic: boolean, props: IsAvailableProps): Stats {
+    const constructor = this.constructor as typeof SocialLinkEventBase;
+    this.isRomantic = isRomantic;
+    const currentStat = this.stats.socialLinkStats[constructor.name as ArcanasType];
+    const currentLevel = constructor.getLevel(currentStat.currentSocialLinkLevel.level, {
+      ...props,
+      event: this,
+    });
+    const socialLinkStats = this.stats.socialLinkStats.updateCurrentLevel({
+      arcana: constructor.name,
+      level: currentLevel,
+    });
+    const payload = new Stats({
+      ...this.stats,
+      socialLinkStats,
+    });
+    this.stats = payload;
+    return payload;
   }
 
   getModifier(this: SocialLinkEventBase): number {
