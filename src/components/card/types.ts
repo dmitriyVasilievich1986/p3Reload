@@ -28,6 +28,12 @@ export type CardProps = {
   badge?: BadgeProps;
   /** Optional modifier icons shown at the right end of the header, each with its own tooltip. */
   icons?: CardIcon[];
+  /**
+   * When not undefined, renders a clickable heart icon right after the header
+   * (filled when true, outlined when false). Clicking it calls {@link isRomanticAction}.
+   */
+  isRomantic?: boolean;
+  isRomanticAction?: () => void;
   /** Highlights the card as the current selection. */
   isSelected?: boolean;
   /** When false, the card is disabled and non-interactive. Defaults to true. */

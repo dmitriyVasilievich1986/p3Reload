@@ -32,6 +32,7 @@ export class EmpressEvent extends SocialLinkEventBase {
   static readonly place: string = Places.FacultyOfficeEntrance;
   /** District label shown in the event card. */
   static readonly district: string = Districts.GekkoukanHighSchool;
+  static readonly isRomanticAvailable: boolean = true;
 
   static readonly levels = data.map((l) => new SocialLinkLevel(l));
 

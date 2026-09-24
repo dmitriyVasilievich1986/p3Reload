@@ -6,10 +6,12 @@ import { DayOfWeek, DayOfWeekPosition } from '@constants/dayOfWeek';
 import { Times, type TimesType } from '@constants/times';
 import { BaseEvent } from '@services/event/base';
 import { eventFactory } from '@services/event/factory';
+import { SocialLinkEventBase } from '@services/event/models/socialLinkEvents/base';
 import { EmptyEvent } from '@services/event/models/specialEvents';
 import { Stats } from '@services/stats';
 
 import type { DayProps, DaySerializedType } from './types';
+import type { ArcanasType } from '@constants/arcanas';
 import type { IsAvailableProps } from '@services/availability/types';
 import type { EventNamesType } from '@services/event/types';
 import type { Dayjs } from 'dayjs';
@@ -307,5 +309,23 @@ export class Day {
       this.date.day() === DayOfWeekPosition[DayOfWeek.Sunday] ||
       _.some(DayOffDays, (day) => day.isSame(this.date, 'day'))
     );
+  }
+
+  updateSocialLinkIsRomantic(
+    this: Day,
+    name: ArcanasType,
+    isRomantic: boolean,
+    props: IsAvailableProps
+  ): Day {
+    const events = this.events.map((event) => {
+      if (event instanceof SocialLinkEventBase && event.getName() === name) {
+        event.updateIsRomantic(isRomantic, {...props, event, time: event.time, stats: event.stats});
+      }
+      return event;
+    });
+    return new Day({
+      ...this,
+      events,
+    });
   }
 }

@@ -145,4 +145,18 @@ export class SocialLinkStats {
       this[props.arcana].currentSocialLinkLevel.pointsToNextLevel
     );
   }
+
+  updateCurrentLevel(
+    this: SocialLinkStats,
+    props: { arcana: ArcanasType; level: SocialLinkLevel }
+  ) {
+    const newLevel = {
+      ...this[props.arcana],
+      currentSocialLinkLevel: props.level,
+    };
+    return new SocialLinkStats({
+      ...this,
+      [props.arcana]: newLevel,
+    });
+  }
 }

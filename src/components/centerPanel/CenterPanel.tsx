@@ -10,6 +10,7 @@ import { DateStepButton, DateStepDirections } from '@components/dateStepButton';
 import { Tooltip, TooltipPositions } from '@components/tooltip';
 import { DEFAULT_DAY } from '@constants/dates';
 import { eventFactory, BaseEvent } from '@services/event';
+import { SocialLinkEventBase } from '@services/event/models/socialLinkEvents/base';
 import { SpecialEventsNames } from '@services/event/models/specialEvents/types';
 import { useMainStore } from '@store/main';
 
@@ -146,6 +147,14 @@ export function CenterPanel() {
     setSelectedEvent(null);
   };
 
+  const onRomanticHandler = (event: SocialLinkEventBase) => {
+    const constructor = event.constructor as typeof SocialLinkEventBase;
+    const nextCalendar = calendar!.updateSocialLinkIsRomantic(constructor.name, !event.isRomantic);
+    const { currentDay: nextDay } = nextCalendar.getDay(currentDay.date);
+    setCalendar(nextCalendar);
+    setCurrentDay(nextDay);
+  };
+
   return (
     <section
       aria-label="Center panel"
@@ -172,6 +181,9 @@ export function CenterPanel() {
           {currentDay.events.map((event, index) => {
             const props = calendar.getIsAvailableProps(currentDay.date, event.time);
             const node = event.render(props);
+            const isRomanticAvailable =
+              event instanceof SocialLinkEventBase &&
+              (event.constructor as typeof SocialLinkEventBase).isRomanticAvailable;
             const content =
               event.isChangeable && isValidElement(node)
                 ? cloneElement(node as ReactElement<CardProps>, {
@@ -186,6 +198,12 @@ export function CenterPanel() {
                       selectedEvent?.getName() === event.getName() &&
                       selectedEvent.time === event.time,
                     onClear: () => onClearHandler(event),
+                    ...(isRomanticAvailable
+                      ? {
+                          isRomantic: (event as SocialLinkEventBase).isRomantic,
+                          isRomanticAction: () => onRomanticHandler(event as SocialLinkEventBase),
+                        }
+                      : {}),
                   })
                 : node;
 
