@@ -2,6 +2,8 @@ import classNames from 'classnames';
 import { Children, isValidElement, type KeyboardEvent, type MouseEvent } from 'react';
 
 import charismaticCharacterIcon from '@assets/charismatic-character.svg';
+import heartFilledIcon from '@assets/heart-filled.svg';
+import heartOutlinedIcon from '@assets/heart-outlined.svg';
 import studyIcon from '@assets/study.svg';
 import tarotCardIcon from '@assets/tarot-card.svg';
 import trashBinIcon from '@assets/trash-bin.svg';
@@ -28,6 +30,17 @@ const iconSources: Record<CardIconName, { src: string; alt: string }> = {
   [CardIcons.ExamPassed]: { src: studyIcon, alt: 'Exam passed' },
 };
 
+function HeartIcon({ filled }: { filled: boolean }) {
+  return (
+    <img
+      src={filled ? heartFilledIcon : heartOutlinedIcon}
+      alt=""
+      aria-hidden="true"
+      className={classNames('size-5', !filled && 'dark:invert')}
+    />
+  );
+}
+
 /**
  * Selectable shell for nested content (e.g. QuestionCard), with time and optional badges.
  */
@@ -37,6 +50,8 @@ export function Card({
   time,
   badge,
   icons,
+  isRomantic,
+  isRomanticAction,
   isSelected = false,
   isSelectable = true,
   isTall = false,
@@ -48,6 +63,7 @@ export function Card({
   const isInteractive = isSelectable && onClick != null;
   const displayIcons = icons ?? [];
   const hasIcons = displayIcons.length > 0;
+  const hasRomanticToggle = isRomantic !== undefined;
 
   function handleKeyDown(event: KeyboardEvent<HTMLElement>) {
     if (event.key !== 'Enter' && event.key !== ' ') {
@@ -61,6 +77,11 @@ export function Card({
   function handleClear(event: MouseEvent<HTMLButtonElement>) {
     event.stopPropagation();
     onClear?.();
+  }
+
+  function handleRomanticClick(event: MouseEvent<HTMLButtonElement>) {
+    event.stopPropagation();
+    isRomanticAction?.();
   }
 
   return (
@@ -118,7 +139,7 @@ export function Card({
         </button>
       ) : null}
 
-      {header || hasIcons ? (
+      {header || hasIcons || hasRomanticToggle ? (
         <header
           className={classNames(
             'rounded-t-xl border-b border-slate-200 px-4 pb-3 pt-5',
@@ -127,12 +148,30 @@ export function Card({
           )}
         >
           <div className="flex items-center justify-between gap-2">
-            <div className="min-w-0 flex-1">
+            <div className="flex min-w-0 flex-1 items-center gap-1.5">
               {typeof header === 'string' || typeof header === 'number' ? (
                 <h2 className="text-base font-semibold leading-snug">{header}</h2>
               ) : (
                 header
               )}
+
+              {hasRomanticToggle ? (
+                <button
+                  type="button"
+                  aria-label={isRomantic ? 'Unmark as romantic' : 'Mark as romantic'}
+                  aria-pressed={isRomantic}
+                  onClick={handleRomanticClick}
+                  onKeyDown={(event) => event.stopPropagation()}
+                  className={classNames(
+                    'flex shrink-0 items-center justify-center rounded-full p-0.5 text-slate-400',
+                    'transition-colors hover:text-rose-500 dark:text-slate-500 dark:hover:text-rose-500',
+                    'focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-rose-400',
+                    isRomantic && 'text-rose-500 dark:text-rose-500'
+                  )}
+                >
+                  <HeartIcon filled={isRomantic} />
+                </button>
+              ) : null}
             </div>
 
             {hasIcons ? (
