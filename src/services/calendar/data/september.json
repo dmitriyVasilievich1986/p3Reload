@@ -40,8 +40,8 @@
       {
         "name": "Devil",
         "props": {
-          "isChangeable": false,
-          "skipCheck": true,
+          "isChangeable": true,
+          "skipCheck": false,
           "time": "Evening"
         }
       }
@@ -267,7 +267,7 @@
                   "text": "To reveal a secret."
                 }
               ],
-              "text": "H-Hey, Protagonist, do you know what it means to \"spill the beans\"?"
+              "text": "H-Hey, ${mainCharName}, do you know what it means to \"spill the beans\"?"
             }
           ],
           "skipCheck": false,

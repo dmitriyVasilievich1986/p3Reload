@@ -1018,8 +1018,8 @@
       {
         "name": "Devil",
         "props": {
-          "isChangeable": false,
-          "skipCheck": true,
+          "isChangeable": true,
+          "skipCheck": false,
           "time": "Evening"
         }
       }
