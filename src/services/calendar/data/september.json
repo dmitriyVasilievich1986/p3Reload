@@ -626,30 +626,6 @@
               "props": {
                 "text": "Have \"Strength\" card"
               }
-            },
-            {
-              "name": "CheckboxRow",
-              "props": {
-                "text": "Have \"Star\" card"
-              }
-            },
-            {
-              "name": "CheckboxRow",
-              "props": {
-                "text": "Have \"Justice\" card"
-              }
-            },
-            {
-              "name": "CheckboxRow",
-              "props": {
-                "text": "Have \"Priestess\" card"
-              }
-            },
-            {
-              "name": "CheckboxRow",
-              "props": {
-                "text": "Have \"Lovers\" card"
-              }
             }
           ],
           "skipCheck": false,
@@ -789,9 +765,29 @@
         }
       },
       {
-        "name": "Tower",
+        "name": "TartarusEvent",
         "props": {
           "isChangeable": true,
+          "rows": [
+            {
+              "name": "CheckboxRow",
+              "props": {
+                "text": "Have \"Star\" card"
+              }
+            },
+            {
+              "name": "CheckboxRow",
+              "props": {
+                "text": "Have \"Justice\" card"
+              }
+            },
+            {
+              "name": "CheckboxRow",
+              "props": {
+                "text": "Have \"Priestess\" card"
+              }
+            }
+          ],
           "skipCheck": false,
           "time": "Evening"
         }

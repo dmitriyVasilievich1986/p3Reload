@@ -40,7 +40,7 @@
         }
       },
       {
-        "name": "Tower",
+        "name": "Aigis [Book]",
         "props": {
           "isChangeable": true,
           "skipCheck": false,
@@ -719,9 +719,17 @@
         }
       },
       {
-        "name": "Aigis [Book]",
+        "name": "TartarusEvent",
         "props": {
           "isChangeable": true,
+          "rows": [
+            {
+              "name": "CheckboxRow",
+              "props": {
+                "text": "Have \"Lovers\" card"
+              }
+            }
+          ],
           "skipCheck": false,
           "time": "Evening"
         }
@@ -907,7 +915,7 @@
         }
       },
       {
-        "name": "EmptyEvent",
+        "name": "Fuuka [Garden]",
         "props": {
           "isChangeable": true,
           "skipCheck": false,
@@ -1040,7 +1048,7 @@
         }
       },
       {
-        "name": "EmptyEvent",
+        "name": "TV Eggie Blog Note",
         "props": {
           "isChangeable": true,
           "skipCheck": false,
