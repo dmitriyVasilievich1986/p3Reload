@@ -249,7 +249,7 @@
     "isFork": false,
     "questions": [
       {
-        "text": "...Oh, ${mainCharName}-kun, why don't you give them some advice too?",
+        "text": "...Oh, ${mainCharSurname}-kun, why don't you give them some advice too?",
         "answers": [
           { "text": "You guys got this.", "points": 5, "isFork": false },
           { "text": "Show some guts!", "points": 5, "isFork": false }
@@ -277,7 +277,7 @@
     "isFork": false,
     "questions": [
       {
-        "text": "...Oh, ${mainCharName}-kun, why don't you give them some advice too?",
+        "text": "...Oh, ${mainCharSurname}-kun, why don't you give them some advice too?",
         "answers": [
           { "text": "You guys got this.", "points": 5, "isFork": false },
           { "text": "Show some guts!", "points": 5, "isFork": false }
@@ -369,7 +369,7 @@
     "isFork": false,
     "questions": [
       {
-        "text": "Which one sounds better to you, ${mainCharName}-kun?",
+        "text": "Which one sounds better to you, ${mainCharSurname}-kun?",
         "answers": [
           { "text": "The cute one.", "points": 5, "isFork": false },
           { "text": "The reasonable one.", "points": 5, "isFork": false },

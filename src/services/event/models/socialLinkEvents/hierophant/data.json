@@ -288,14 +288,14 @@
     "isFork": false,
     "questions": [
       {
-        "text": "Bunkichi is sleep talking. Looks like he's taking a nap.",
+        "text": "Bunkichi-san is sleep talking. Looks like he's taking a nap.",
         "answers": [
           { "text": "Take a closer look.", "points": 0, "isFork": false },
-          { "text": "Leave him alone.", "points": 0, "isFork": false }
+          { "text": "Leave him be.", "points": 0, "isFork": false }
         ]
       },
       {
-        "text": "It's the middle of the day, but I feel awfully sleepy.",
+        "text": "It's the middle of the day, but I feel awfully sleepy...",
         "answers": [
           { "text": "What matter?", "points": 0, "isFork": false },
           { "text": "Why are you relieved?", "points": 0, "isFork": false }
@@ -304,12 +304,12 @@
       {
         "text": "We asked them to go ahead and cut the persimmon tree down.",
         "answers": [
-          { "text": "But.. why?", "points": 15, "isFork": false },
+          { "text": "But... why?", "points": 15, "isFork": false },
           { "text": "Oh well.", "points": 5, "isFork": false }
         ]
       },
       {
-        "text": "He was a teacher after all.",
+        "text": "He was a teacher, after all.",
         "answers": [
           { "text": "That's true.", "points": 0, "isFork": false },
           { "text": "Are you really sure?", "points": 0, "isFork": false }

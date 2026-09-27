@@ -107,14 +107,14 @@
     "isFork": false,
     "questions": [
       {
-        "text": "Ugh... I'm in bad shape... You should go home.",
+        "text": "Ugh... I'm in bad shape...",
         "answers": [
           { "text": "Are you okay?", "points": 0, "isFork": false },
           { "text": "You should go home.", "points": 15, "isFork": false }
         ]
       },
       {
-        "text": "It's always in times like these... ah... when it's hardest to be alone... You live by yourself?",
+        "text": "It's always in times like these... ah... when it's hardest to be alone...",
         "answers": [
           { "text": "You live by yourself?", "points": 0, "isFork": false },
           { "text": "Do you have any coworkers?", "points": 5, "isFork": false }
@@ -186,7 +186,7 @@
   {
     "level": 8,
     "pointsToNextLevel": 45,
-    "nextLevelPointsToNextLevel": 45,
+    "nextLevelPointsToNextLevel": 30,
     "previousLevelPointsToNextLevel": 30,
     "isRomantic": false,
     "isFork": false,
@@ -216,7 +216,7 @@
   },
   {
     "level": 9,
-    "pointsToNextLevel": 45,
+    "pointsToNextLevel": 30,
     "nextLevelPointsToNextLevel": 0,
     "previousLevelPointsToNextLevel": 45,
     "isRomantic": false,

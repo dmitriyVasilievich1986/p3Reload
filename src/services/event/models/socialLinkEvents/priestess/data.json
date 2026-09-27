@@ -17,7 +17,7 @@
     "isRomantic": false,
     "questions": [
       {
-        "text": "Maybe I should give him some food. What do you think, ${mainCharName}-kun?",
+        "text": "Maybe I should give him some food. What do you think, ${mainCharSurname}-kun?",
         "answers": [
           { "text": "Sure.", "points": 15, "isFork": false },
           { "text": "Don't do it.", "points": 0, "isFork": false }
@@ -52,7 +52,7 @@
     "isRomantic": false,
     "questions": [
       {
-        "text": "I still don't have a feel for how much salt to add. How do you do it, ${mainCharName}-kun?",
+        "text": "I still don't have a feel for how much salt to add. How do you do it, ${mainCharSurname}-kun?",
         "answers": [
           { "text": "Just a dash or two.", "points": 15, "isFork": false },
           { "text": "I don't add salt.", "points": 0, "isFork": false },

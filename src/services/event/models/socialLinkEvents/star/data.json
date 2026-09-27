@@ -45,7 +45,7 @@
     "isFork": false,
     "questions": [
       {
-        "text": "Maybe I should get some for them, too...>",
+        "text": "Maybe I should get some for them, too...",
         "answers": [
           { "text": "For your teammates?", "points": 5, "isFork": false },
           { "text": "Who's \"them\"?", "points": 5, "isFork": false }
@@ -100,14 +100,14 @@
     "isFork": false,
     "questions": [
       {
-        "text": "*huff* *huff* Sorry I kept you waiting...>",
+        "text": "*huff* *huff* Sorry I kept you waiting...",
         "answers": [
           { "text": "You're late.", "points": 0, "isFork": false },
           { "text": "Are you okay?", "points": 5, "isFork": false }
         ]
       },
       {
-        "text": "I used to come here all the time with my teammates, but...>",
+        "text": "I used to come here all the time with my teammates, but...",
         "answers": [
           { "text": "But what?", "points": 0, "isFork": false },
           {
