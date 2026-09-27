@@ -20,7 +20,7 @@ import { LobbyPCProgramsAprilNames } from '../types';
 
 export class AnimalOthelloPCEvent extends LobbyPCProgramsBase {
   static readonly name = LobbyPCProgramsAprilNames.animalOthello;
-  static readonly price = 1_200;
+  static readonly price: number = 1_200;
 
   static readonly availabilities: AvailabilityBase[] = [
     new DateAvailability({ operator: 'ge', value: dayjs('2009-04-29') }),

@@ -20,7 +20,7 @@ import { LobbyPCProgramsAprilNames } from '../types';
 
 export class LanguageMadeEasyPCEvent extends LobbyPCProgramsBase {
   static readonly name = LobbyPCProgramsAprilNames.languageMadeEasy;
-  static readonly price = 1_200;
+  static readonly price: number = 1_200;
 
   /** Rules that must pass before this event can be scheduled or selected. */
   static readonly availabilities: AvailabilityBase[] = [

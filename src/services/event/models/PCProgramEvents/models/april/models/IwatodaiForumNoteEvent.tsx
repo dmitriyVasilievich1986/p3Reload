@@ -30,7 +30,7 @@ import type { IsAvailableProps } from '@services/availability/types';
 
 export class IwatodaiForumNoteEvent extends LobbyPCProgramsBase {
   static readonly name = LobbyPCProgramsAprilNames.iwatodaiForumNote;
-  static readonly price = 500;
+  static readonly price: number = 500;
 
   static readonly availabilities: AvailabilityBase[] = [
     new DateAvailability({ operator: 'ge', value: dayjs('2009-04-29') }),
