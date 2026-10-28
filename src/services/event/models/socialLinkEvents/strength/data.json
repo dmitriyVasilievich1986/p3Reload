@@ -553,7 +553,7 @@
         ]
       },
       {
-        "text": "It's from those kids. They told me to 'make sure I give it to my boyfriend.'",
+        "text": "It's from those kids. They told me to \"make sure I give it to my boyfriend.\"",
         "answers": [
           { "text": "Boyfriend...", "points": 0, "isFork": false },
           { "text": "Where's yours?", "points": 5, "isFork": false },
