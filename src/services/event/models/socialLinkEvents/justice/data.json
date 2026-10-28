@@ -305,7 +305,7 @@
         ]
       },
       {
-        "text": "Give me a hand, will you, ${mainCharName}?",
+        "text": "Give me a hand, will you, ${mainCharSurname}?",
         "answers": [
           { "text": "Why me?", "points": 0, "isFork": false },
           { "text": "All right.", "points": 0, "isFork": false }
@@ -351,7 +351,7 @@
         ]
       },
       {
-        "text": "Give me a hand, will you, ${mainCharName}?",
+        "text": "Give me a hand, will you, ${mainCharSurname}?",
         "answers": [
           { "text": "Why me?", "points": 0, "isFork": false },
           { "text": "All right.", "points": 0, "isFork": false }

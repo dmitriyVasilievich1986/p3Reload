@@ -221,7 +221,7 @@
         ]
       },
       {
-        "text": "She even threatened to show my parents...>",
+        "text": "She even threatened to show my parents...",
         "answers": [
           { "text": "You did nothing wrong.", "points": 0, "isFork": false },
           { "text": "......", "points": 0, "isFork": false },
@@ -260,7 +260,7 @@
         ]
       },
       {
-        "text": "She even threatened to show my parents...>",
+        "text": "She even threatened to show my parents...",
         "answers": [
           { "text": "You did nothing wrong.", "points": 0, "isFork": false },
           { "text": "......", "points": 0, "isFork": false },
@@ -443,7 +443,7 @@
         ]
       },
       {
-        "text": "You just seem more at ease now. Or maybe it's more confidence? Don't you think so, ${mainCharName}-kun?",
+        "text": "You just seem more at ease now. Or maybe it's more confidence? Don't you think so, ${mainCharSurname}-kun?",
         "answers": [
           { "text": "I agree.", "points": 0, "isFork": false },
           {

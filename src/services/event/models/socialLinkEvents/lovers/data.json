@@ -190,7 +190,7 @@
         ]
       },
       {
-        "text": "Wouldn't that be annoying, ${mainCharName}-kun? Y'know, if people assumed we were dating...>",
+        "text": "Wouldn't that be annoying, ${mainCharSurname}-kun? Y'know, if people assumed we were dating...",
         "answers": [
           { "text": "I wouldn't mind.", "points": 5, "isFork": false },
           { "text": "Yeah...", "points": 0, "isFork": false }
@@ -207,7 +207,7 @@
     "isRomantic": false,
     "questions": [
       {
-        "text": "We could have lunch outdoors. Maybe we'll even see a deer or something. Whaddya think?>",
+        "text": "We could have lunch outdoors. Maybe we'll even see a deer or something. What do you think?",
         "answers": [
           { "text": "Sounds good.", "points": 15, "isFork": false },
           { "text": "Let's go with everyone.", "points": 5, "isFork": false },
@@ -230,14 +230,14 @@
     "isRomantic": false,
     "questions": [
       {
-        "text": "I know! Why don't you come help me pick something out, ${mainCharName}-kun?>",
+        "text": "I know! Why don't you come help me pick something out, ${mainCharSurname}-kun?",
         "answers": [
           { "text": "Alright.", "points": 15, "isFork": false },
           { "text": "Im too lazy.", "points": 0, "isFork": false }
         ]
       },
       {
-        "text": "I told her we could meet up and talk about her remarriage. I'm nervous just thinking about it...>",
+        "text": "I told her we could meet up and talk about her remarriage. I'm nervous just thinking about it...",
         "answers": [
           { "text": "Will you let her do it?", "points": 0, "isFork": false },
           { "text": "Do you want to see her?", "points": 0, "isFork": false }
@@ -312,14 +312,14 @@
     "isRomantic": false,
     "questions": [
       {
-        "text": "He was with his mother today, huh...>",
+        "text": "He was with his mother today, huh...",
         "answers": [
           { "text": "That's a relief.", "points": 5, "isFork": false },
           { "text": "What's wrong?", "points": 0, "isFork": false }
         ]
       },
       {
-        "text": "Gee, what should I do? If only someone would come with me...>",
+        "text": "Gee, what should I do? If only someone would come with me...",
         "answers": [
           { "text": "I'll go.", "points": 10, "isFork": false },
           { "text": "Good luck.", "points": 5, "isFork": false },

@@ -298,14 +298,14 @@
     "isRomantic": false,
     "questions": [
       {
-        "text": "Ch-Cheese...!>",
+        "text": "Ch-Cheese...!",
         "answers": [
           { "text": "Cheese.", "points": 0, "isFork": false },
           { "text": "......", "points": 0, "isFork": false }
         ]
       },
       {
-        "text": "Do you like taking photos, ${mainCharName}-san?>",
+        "text": "Do you like taking photos, ${mainCharName}-san?",
         "answers": [
           { "text": "Yeah, it's fun.", "points": 0, "isFork": false },
           { "text": "Actually, I don't.", "points": 0, "isFork": false }
@@ -319,7 +319,7 @@
         ]
       },
       {
-        "text": "Hehe. So, what were you and Aigis up to?>",
+        "text": "Hehe. So, what were you and Aigis up to?",
         "answers": [
           { "text": "Taking a picture.", "points": 0, "isFork": false },
           { "text": "Just chatting.", "points": 0, "isFork": false }

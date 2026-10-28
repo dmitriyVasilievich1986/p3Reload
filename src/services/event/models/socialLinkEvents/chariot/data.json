@@ -288,7 +288,7 @@
         ]
       },
       {
-        "text": "I'm not gonna worry about winning races. I'm gonna focus on winning back my health instead.",
+        "text": "I'm not gonna worry about winning races. I'm gonna focus on winning back my health instead!",
         "answers": [
           { "text": "You've got this!", "points": 5, "isFork": false },
           { "text": "You've really grown up.", "points": 5, "isFork": false }

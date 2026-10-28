@@ -212,7 +212,7 @@
     "isFork": false,
     "questions": [
       {
-        "text": "Hmmm...>",
+        "text": "Hmm...",
         "answers": [
           { "text": "Do it!", "points": 15, "isFork": false },
           {
@@ -247,9 +247,9 @@
         ]
       },
       {
-        "text": "I got first place, of course!>",
+        "text": "I got first place, of course!",
         "answers": [
-          { "text": "Wor, really?", "points": 0, "isFork": false },
+          { "text": "Wow, really?", "points": 0, "isFork": false },
           { "text": "Congrats, man!", "points": 5, "isFork": false }
         ]
       },
@@ -285,7 +285,7 @@
         ]
       },
       {
-        "text": "Well then, I better get going...>",
+        "text": "Well then, I better get going...",
         "answers": [
           { "text": "I'll see you off.", "points": 0, "isFork": false },
           { "text": "Let's chat a bit more.", "points": 0, "isFork": false }
