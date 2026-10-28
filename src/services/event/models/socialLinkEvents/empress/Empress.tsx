@@ -13,7 +13,6 @@ import {
   DayOffAvailability,
   DayOfWeekAvailability,
   DateAvailability,
-  AndAvailability,
   CharacterStatsAvailability,
   OrAvailability,
 } from '@services/availability';
@@ -38,6 +37,7 @@ export class EmpressEvent extends SocialLinkEventBase {
   static readonly availabilities: AvailabilityBase[] = [
     new IsLevelUpAvailable({ name: Arcanas.Empress, isLevelUpAvailable: true }),
     new DateAvailability({ operator: 'ge', value: dayjs('2009-11-21') }),
+    new DateAvailability({ operator: 'notIn', value: [dayjs('2009-12-24'), dayjs('2009-12-25')] }),
     new ExamAvailability({ isAvailableOnAnExamDay: false }),
     new DayOffAvailability({ isAvailableOnADayOff: false }),
     new TimeAvailability({ times: [Times.Day] }),
@@ -50,25 +50,12 @@ export class EmpressEvent extends SocialLinkEventBase {
       availabilities: [
         new DayOfWeekAvailability({
           daysOfWeek: [
+            DayOfWeek.Monday,
             DayOfWeek.Tuesday,
             DayOfWeek.Wednesday,
             DayOfWeek.Thursday,
+            DayOfWeek.Friday,
             DayOfWeek.Saturday,
-          ],
-        }),
-        new AndAvailability({
-          availabilities: [
-            new DateAvailability({ operator: 'ge', value: dayjs('2009-12-24') }),
-            new DayOfWeekAvailability({
-              daysOfWeek: [
-                DayOfWeek.Monday,
-                DayOfWeek.Tuesday,
-                DayOfWeek.Wednesday,
-                DayOfWeek.Thursday,
-                DayOfWeek.Friday,
-                DayOfWeek.Saturday,
-              ],
-            }),
           ],
         }),
       ],
