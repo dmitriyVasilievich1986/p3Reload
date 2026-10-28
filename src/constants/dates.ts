@@ -73,6 +73,8 @@ export const DayOffDays: Dayjs[] = [
   dayjs('2009-08-28'),
   dayjs('2009-08-29'),
   dayjs('2009-08-31'),
+  dayjs('2009-11-23'),
+  dayjs('2009-12-23'),
   dayjs('2009-12-28'),
   dayjs('2009-12-29'),
   dayjs('2009-12-30'),
