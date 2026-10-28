@@ -11,7 +11,7 @@
   {
     "level": 1,
     "pointsToNextLevel": 0,
-    "nextLevelPointsToNextLevel": 20,
+    "nextLevelPointsToNextLevel": 0,
     "previousLevelPointsToNextLevel": 0,
     "isRomantic": false,
     "isFork": false,
@@ -96,7 +96,7 @@
     "isFork": false,
     "questions": [
       {
-        "text": "He's so mean. It's not fair!",
+        "text": "He's so mean! It's not fair!",
         "answers": [
           { "text": "That's awful.", "points": 15, "isFork": false },
           { "text": "Why would he do that?", "points": 0, "isFork": false }

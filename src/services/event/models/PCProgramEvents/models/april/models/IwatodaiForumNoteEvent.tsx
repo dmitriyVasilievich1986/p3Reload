@@ -12,11 +12,15 @@ import {
   OrAvailability,
   DayOffAvailability,
   AvailabilityBase,
+  CharacterStatsAvailability,
 } from '@services/availability';
 /**
  * Virtual Diet lobby PC program event at Iwatodai Dormitory.
  */
-import { type CharacterStatsModifierType } from '@services/stats/characterStats/types';
+import {
+  CharacterStatsNames,
+  type CharacterStatsModifierType,
+} from '@services/stats/characterStats/types';
 import { priceFormatter } from '@utils/priceFormatter';
 
 import { LobbyPCProgramsBase } from '../../../base';
@@ -26,12 +30,12 @@ import type { IsAvailableProps } from '@services/availability/types';
 
 export class IwatodaiForumNoteEvent extends LobbyPCProgramsBase {
   static readonly name = LobbyPCProgramsAprilNames.iwatodaiForumNote;
-
-  readonly price: number = 500;
+  static readonly price: number = 500;
 
   static readonly availabilities: AvailabilityBase[] = [
     new DateAvailability({ operator: 'ge', value: dayjs('2009-04-29') }),
     new IsEventInHistoryAvailability({ name: this.name, isInHistory: false }),
+    new CharacterStatsAvailability({ name: CharacterStatsNames.Courage, operator: 'ge', level: 2 }),
     new OrAvailability({
       availabilities: [
         new TimeAvailability({ times: [Times.Evening] }),
@@ -53,9 +57,7 @@ export class IwatodaiForumNoteEvent extends LobbyPCProgramsBase {
         key={`${this.name}-${props.time}`}
         body={
           <>
-            {this.price && (
-              <LabelRow key="price" label="Price:" text={priceFormatter(this.price)} />
-            )}
+            <LabelRow key="price" label="Price:" text={priceFormatter(this.price)} />
             <LabelRow key="place" label="Place:" text={Places.LobbyPC} />
             <LabelRow key="district" label="District:" text={Districts.IwatodaiDormitory} />
             <ModifiersRow modifiers={['More drinks in Iwatodai vending machine']} />

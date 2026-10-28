@@ -2,6 +2,7 @@ import dayjs from 'dayjs';
 
 import { Arcanas, type ArcanasType } from '@constants/arcanas';
 import { DayOfWeek } from '@constants/dayOfWeek';
+import { Flags } from '@constants/flags';
 import { Districts } from '@constants/places';
 import { socialLinkFullNames } from '@constants/socialLinkNames';
 import { Times } from '@constants/times';
@@ -11,6 +12,7 @@ import {
   IsLevelUpAvailable,
   DayOfWeekAvailability,
   DateAvailability,
+  IsEventInHistoryAvailability,
 } from '@services/availability';
 import { SocialLinkLevel } from '@services/stats';
 
@@ -28,6 +30,11 @@ export class HangedManEvent extends SocialLinkEventBase {
   static readonly levels = data.map((l) => new SocialLinkLevel(l));
 
   static readonly availabilities: AvailabilityBase[] = [
+    new IsEventInHistoryAvailability({
+      name: Flags.HangedManFlag,
+      isInHistory: true,
+      previousDay: true,
+    }),
     new IsLevelUpAvailable({ name: Arcanas.HangedMan, isLevelUpAvailable: true }),
     new DateAvailability({ operator: 'ge', value: dayjs('2009-05-06') }),
     new TimeAvailability({ times: [Times.Day] }),

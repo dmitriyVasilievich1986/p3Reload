@@ -8,7 +8,11 @@ import exportIcon from '@assets/export.svg';
 import gearIcon from '@assets/gear.svg';
 import importIcon from '@assets/import.svg';
 import { DatesFormat } from '@constants/dates';
-import { DEFAULT_MAIN_CHAR_NAME, SettingsParams } from '@constants/settings';
+import {
+  DEFAULT_MAIN_CHAR_NAME,
+  DEFAULT_MAIN_CHAR_SURNAME,
+  SettingsParams,
+} from '@constants/settings';
 import { Calendar } from '@services/calendar/Calendar';
 import { useMainStore } from '@store/main';
 
@@ -59,6 +63,7 @@ export function Settings({ className }: SettingsProps) {
   const { calendar, setCalendar, setCurrentDay, setSelectedEvent } = useMainStore();
 
   const mainCharName = searchParams.get(SettingsParams.mainCharName) ?? '';
+  const mainCharSurname = searchParams.get(SettingsParams.mainCharSurname) ?? '';
   const showSpoilers = searchParams.get(SettingsParams.showSpoilers) === 'true';
 
   useEffect(() => {
@@ -92,6 +97,23 @@ export function Settings({ className }: SettingsProps) {
           prev.delete(SettingsParams.mainCharName);
         } else {
           prev.set(SettingsParams.mainCharName, value);
+        }
+
+        return prev;
+      },
+      { replace: true }
+    );
+  }
+
+  function handleMainCharSurnameChange(event: ChangeEvent<HTMLInputElement>) {
+    const value = event.target.value;
+
+    setSearchParams(
+      (prev) => {
+        if (value === '') {
+          prev.delete(SettingsParams.mainCharSurname);
+        } else {
+          prev.set(SettingsParams.mainCharSurname, value);
         }
 
         return prev;
@@ -232,6 +254,24 @@ export function Settings({ className }: SettingsProps) {
                       value={mainCharName}
                       onChange={handleMainCharNameChange}
                       placeholder={DEFAULT_MAIN_CHAR_NAME}
+                      className={classNames(
+                        'w-full rounded-md border px-2 py-1.5 text-sm',
+                        'border-slate-200 bg-white text-slate-900 placeholder:text-slate-400',
+                        'focus:outline-none focus:ring-2 focus:ring-sky-400',
+                        'dark:border-slate-700 dark:bg-slate-950 dark:text-slate-50 dark:placeholder:text-slate-500'
+                      )}
+                    />
+                  </label>
+
+                  <label className="flex flex-col gap-1 text-sm">
+                    <span className="font-medium text-slate-800 dark:text-slate-100">
+                      Protagonist surname
+                    </span>
+                    <input
+                      type="text"
+                      value={mainCharSurname}
+                      onChange={handleMainCharSurnameChange}
+                      placeholder={DEFAULT_MAIN_CHAR_SURNAME}
                       className={classNames(
                         'w-full rounded-md border px-2 py-1.5 text-sm',
                         'border-slate-200 bg-white text-slate-900 placeholder:text-slate-400',

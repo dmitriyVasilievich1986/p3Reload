@@ -8,10 +8,31 @@
     "isFork": false,
     "questions": [
       {
-        "text": "Something something",
+        "text": "...So, starting today, he's an official member of the team.",
         "answers": [
-          { "text": "Invite Yuko", "points": 0, "isFork": true },
-          { "text": "Ignore her", "points": 0, "isFork": false }
+          { "text": "I'm ${mainCharName}", "points": 0, "isFork": false },
+          { "text": "Nice to meet you.", "points": 0, "isFork": false }
+        ]
+      },
+      {
+        "text": "I'm Kazushi Miyamoto. You've seen me around, right?",
+        "answers": [
+          { "text": "Yeah.", "points": 0, "isFork": false },
+          { "text": "Nope.", "points": 0, "isFork": false }
+        ]
+      },
+      {
+        "text": "Should I say hello?",
+        "answers": [
+          { "text": "I think I will.", "points": 0, "isFork": true },
+          { "text": "Maybe not.", "points": 0, "isFork": false }
+        ]
+      },
+      {
+        "text": "Oh, ${mainCharName}-kun. What's up...?",
+        "answers": [
+          { "text": "Wanna walk home together?", "points": 0, "isFork": true },
+          { "text": "Nothing, see you tomorrow.", "points": 0, "isFork": false }
         ]
       }
     ]
@@ -43,6 +64,27 @@
         "answers": [
           { "text": "What's wrong?", "points": 0, "isFork": false },
           { "text": "Come on, hurry up.", "points": 0, "isFork": false }
+        ]
+      },
+      {
+        "text": "Should I say hello?",
+        "answers": [
+          { "text": "I think I will.", "points": 0, "isFork": true },
+          { "text": "Maybe not.", "points": 0, "isFork": false }
+        ]
+      },
+      {
+        "text": "Oh, ${mainCharName}-kun. What's up...?",
+        "answers": [
+          { "text": "Wanna walk home together?", "points": 0, "isFork": true },
+          { "text": "Nothing, see you tomorrow.", "points": 0, "isFork": false }
+        ]
+      },
+      {
+        "text": "...How about you, ${mainCharName}-kun? Are you enjoying track and field?",
+        "answers": [
+          { "text": "It's fun.", "points": 0, "isFork": false },
+          { "text": "I'm not sure yet.", "points": 0, "isFork": false }
         ]
       }
     ]
@@ -177,9 +219,9 @@
       {
         "text": "Otherwise, I won't be able to keep my promise to my nephew!",
         "answers": [
-          { "text": "You need to get tougher.", "points": 15, "isFork": false },
+          { "text": "You need to get tougher!", "points": 15, "isFork": false },
           { "text": "You can't win like this.", "points": 5, "isFork": false },
-          { "text": "You need to take a break.", "points": 0, "isFork": false }
+          { "text": "You need to take a break...", "points": 0, "isFork": false }
         ]
       }
     ]
@@ -246,7 +288,7 @@
         ]
       },
       {
-        "text": "I'm not gonna worry about winning races. I'm gonna focus on winning back my health instead.",
+        "text": "I'm not gonna worry about winning races. I'm gonna focus on winning back my health instead!",
         "answers": [
           { "text": "You've got this!", "points": 5, "isFork": false },
           { "text": "You've really grown up.", "points": 5, "isFork": false }

@@ -1,12 +1,17 @@
 import classNames from 'classnames';
 import { useSearchParams } from 'react-router';
 
-import { DEFAULT_MAIN_CHAR_NAME, SettingsParams } from '@constants/settings';
+import {
+  DEFAULT_MAIN_CHAR_NAME,
+  DEFAULT_MAIN_CHAR_SURNAME,
+  SettingsParams,
+} from '@constants/settings';
 
 import { Tooltip, TooltipPositions } from '../tooltip';
 import { AnswerPoints, type AnswerPoint, type QuestionCardProps } from './types';
 
 const MAIN_CHAR_NAME_PLACEHOLDER = '${mainCharName}';
+const MAIN_CHAR_SURNAME_PLACEHOLDER = '${mainCharSurname}';
 
 /**
  * Shown in place of an answer's text when spoilers are hidden. Always the
@@ -30,16 +35,19 @@ function isAnswerPoint(points: number): points is AnswerPoint {
   );
 }
 
-function formatMainCharName(text: string, mainCharName: string): string {
-  return text.replaceAll(MAIN_CHAR_NAME_PLACEHOLDER, mainCharName);
+function formatMainCharName(text: string, mainCharName: string, mainCharSurname: string): string {
+  return text
+    .replaceAll(MAIN_CHAR_NAME_PLACEHOLDER, mainCharName)
+    .replaceAll(MAIN_CHAR_SURNAME_PLACEHOLDER, mainCharSurname);
 }
 
 /**
  * Card with a question header and a list of point-highlighted answers.
  *
- * Any `${mainCharName}` placeholder in the question or answer text is
- * replaced with the `mainCharName` URL search param, defaulting to
- * "Protagonist" when it isn't set.
+ * Any `${mainCharName}` or `${mainCharSurname}` placeholder in the question
+ * or answer text is replaced with the `mainCharName` / `mainCharSurname` URL
+ * search params, defaulting to "Protagonist" and an empty string respectively
+ * when they aren't set.
  *
  * Unless the `showSpoilers` URL search param is `"true"`, answer text is
  * replaced with a fixed placeholder so it can't spoil the outcome — the
@@ -49,9 +57,11 @@ function formatMainCharName(text: string, mainCharName: string): string {
 export function QuestionCard({ question, answers }: QuestionCardProps) {
   const [searchParams] = useSearchParams();
   const mainCharName = searchParams.get(SettingsParams.mainCharName) ?? DEFAULT_MAIN_CHAR_NAME;
+  const mainCharSurname =
+    searchParams.get(SettingsParams.mainCharSurname) ?? DEFAULT_MAIN_CHAR_SURNAME;
   const showSpoilers = searchParams.get(SettingsParams.showSpoilers) === 'true';
 
-  const formattedQuestion = formatMainCharName(question, mainCharName);
+  const formattedQuestion = formatMainCharName(question, mainCharName, mainCharSurname);
 
   return (
     <article
@@ -78,7 +88,7 @@ export function QuestionCard({ question, answers }: QuestionCardProps) {
               ? answer.points
               : AnswerPoints.none;
           const formattedText = showSpoilers
-            ? formatMainCharName(answer.text, mainCharName)
+            ? formatMainCharName(answer.text, mainCharName, mainCharSurname)
             : HIDDEN_ANSWER_TEXT;
 
           return (

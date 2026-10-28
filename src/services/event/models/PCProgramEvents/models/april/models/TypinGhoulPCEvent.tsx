@@ -20,6 +20,7 @@ import { LobbyPCProgramsAprilNames } from '../types';
 
 export class TypinGhoulPCEvent extends LobbyPCProgramsBase {
   static readonly name = LobbyPCProgramsAprilNames.typinGhoul;
+  static readonly price: number = 1_200;
 
   static readonly availabilities: AvailabilityBase[] = [
     new DateAvailability({ operator: 'ge', value: dayjs('2009-04-29') }),

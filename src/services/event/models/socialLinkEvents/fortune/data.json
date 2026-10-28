@@ -171,7 +171,7 @@
     "isFork": false,
     "questions": [
       {
-        "text": "Can you remember your name? It's Keisuke.",
+        "text": "Can you remember your name?",
         "answers": [
           { "text": "It's okay, I'm fine.", "points": 15, "isFork": false },
           { "text": "Of course. It's Keisuke.", "points": 0, "isFork": false },
@@ -186,7 +186,7 @@
         ]
       },
       {
-        "text": "I'm not a doctor... You think you want to be one?",
+        "text": "I'm not a doctor...",
         "answers": [
           {
             "text": "Do you think you want to be one?",
@@ -211,21 +211,21 @@
     "isFork": false,
     "questions": [
       {
-        "text": "Tell the others I said goodbye! You can't go! Good luck!",
+        "text": "Tell the others I said goodbye!",
         "answers": [
           { "text": "You can't go!", "points": 15, "isFork": false },
           { "text": "Good luck!", "points": 0, "isFork": false }
         ]
       },
       {
-        "text": "Ma'am, are you all right!? That cough... What happened?",
+        "text": "Ma'am, are you all right!? That cough...",
         "answers": [
           { "text": "What happened?", "points": 0, "isFork": false },
           { "text": "...You should just go.", "points": 0, "isFork": false }
         ]
       },
       {
-        "text": "My train's about to leave! Wh-What should I do? Leave this to me! You can't abandon your trip!",
+        "text": "My train's about to leave! Wh-What should I do?",
         "answers": [
           { "text": "Leave this to me!", "points": 0, "isFork": false },
           {
@@ -236,7 +236,7 @@
         ]
       },
       {
-        "text": "How should I help him? Better leave him alone. I should talk to him. I'll try patting his upper back.",
+        "text": "How should I help him?",
         "answers": [
           { "text": "Better leave him alone.", "points": 0, "isFork": false },
           { "text": "I should talk to him.", "points": 0, "isFork": false },
@@ -248,7 +248,7 @@
         ]
       },
       {
-        "text": "What should I do next? Better leave him alone. I could rub his back. I'll lay him on his back.",
+        "text": "What should I do next?",
         "answers": [
           { "text": "Better leave him alone.", "points": 0, "isFork": false },
           { "text": "I could rub his back.", "points": 0, "isFork": false },

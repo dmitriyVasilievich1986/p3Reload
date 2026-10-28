@@ -12,6 +12,7 @@ import { AvailabilityBase, type IsAvailableProps } from '@services/availability'
 export class IsEventInHistoryAvailability extends AvailabilityBase {
   readonly name: string;
   readonly isInHistory: boolean;
+  readonly previousDay: boolean;
 
   /**
    * Create a new event-history availability rule.
@@ -21,10 +22,11 @@ export class IsEventInHistoryAvailability extends AvailabilityBase {
    * @param props.isInHistory - When `true`, require the event to have happened;
    *   when `false` or omitted, require that it has not happened yet.
    */
-  constructor(props: { name: string; isInHistory?: boolean }) {
+  constructor(props: { name: string; isInHistory?: boolean; previousDay?: boolean }) {
     super();
     this.name = props.name;
     this.isInHistory = props.isInHistory ?? false;
+    this.previousDay = props.previousDay ?? false;
   }
 
   /**
@@ -34,7 +36,8 @@ export class IsEventInHistoryAvailability extends AvailabilityBase {
    * @returns {boolean} True when history presence matches `isInHistory`.
    */
   isAvailable(props: IsAvailableProps): boolean {
-    const payload = props.stats.additionalStats.isEventHappened(this.name);
+    const stats = this.previousDay ? props.previousDay.statsAtEndOfDay : props.stats;
+    const payload = stats.additionalStats.isEventHappened(this.name);
     return this.isInHistory ? payload : !payload;
   }
 }

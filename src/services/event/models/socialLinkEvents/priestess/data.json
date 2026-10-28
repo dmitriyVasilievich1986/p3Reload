@@ -17,7 +17,7 @@
     "isRomantic": false,
     "questions": [
       {
-        "text": "Maybe I should give him some food. What do you think, ${mainCharName}-kun?",
+        "text": "Maybe I should give him some food. What do you think, ${mainCharSurname}-kun?",
         "answers": [
           { "text": "Sure.", "points": 15, "isFork": false },
           { "text": "Don't do it.", "points": 0, "isFork": false }
@@ -52,7 +52,7 @@
     "isRomantic": false,
     "questions": [
       {
-        "text": "I still don't have a feel for how much salt to add. How do you do it, ${mainCharName}-kun?",
+        "text": "I still don't have a feel for how much salt to add. How do you do it, ${mainCharSurname}-kun?",
         "answers": [
           { "text": "Just a dash or two.", "points": 15, "isFork": false },
           { "text": "I don't add salt.", "points": 0, "isFork": false },
@@ -93,7 +93,7 @@
     "isRomantic": false,
     "questions": [
       {
-        "text": "But I couldn't really decide, and I wasn't sure how to use whatever I'd buy...?",
+        "text": "But I couldn't really decide, and I wasn't sure how to use whatever I'd buy...",
         "answers": [
           { "text": "Do you really need one?", "points": 0, "isFork": false },
           {
@@ -221,7 +221,7 @@
         ]
       },
       {
-        "text": "She even threatened to show my parents...>",
+        "text": "She even threatened to show my parents...",
         "answers": [
           { "text": "You did nothing wrong.", "points": 0, "isFork": false },
           { "text": "......", "points": 0, "isFork": false },
@@ -260,7 +260,7 @@
         ]
       },
       {
-        "text": "She even threatened to show my parents...>",
+        "text": "She even threatened to show my parents...",
         "answers": [
           { "text": "You did nothing wrong.", "points": 0, "isFork": false },
           { "text": "......", "points": 0, "isFork": false },
@@ -443,7 +443,7 @@
         ]
       },
       {
-        "text": "You just seem more at ease now. Or maybe it's more confidence? Don't you think so, ${mainCharName}-kun?",
+        "text": "You just seem more at ease now. Or maybe it's more confidence? Don't you think so, ${mainCharSurname}-kun?",
         "answers": [
           { "text": "I agree.", "points": 0, "isFork": false },
           {

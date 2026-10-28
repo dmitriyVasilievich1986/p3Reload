@@ -337,9 +337,23 @@
         }
       },
       {
-        "name": "WilduckBurgerWeekendWilduckSetEvent",
+        "name": "TartarusEvent",
         "props": {
           "isChangeable": true,
+          "rows": [
+            {
+              "name": "CheckboxRow",
+              "props": {
+                "text": "Have \"Strength\" card"
+              }
+            },
+            {
+              "name": "CheckboxRow",
+              "props": {
+                "text": "Have \"Justice\" card"
+              }
+            }
+          ],
           "skipCheck": false,
           "time": "Evening"
         }
@@ -374,6 +388,14 @@
           ],
           "skipCheck": false,
           "time": "Morning"
+        }
+      },
+      {
+        "name": "EdogawaMedicineEvent",
+        "props": {
+          "isChangeable": false,
+          "skipCheck": false,
+          "time": "Day Free Time"
         }
       },
       {
@@ -671,7 +693,7 @@
                   "text": "The bubble jet phenomenon."
                 }
               ],
-              "text": "What's it called when the air bubbles in a whirlpool bath hit you and make you vibrate?"
+              "text": "What's it called when the air bubbles in a whirlpool bath hit you and make your body vibrate?"
             }
           ],
           "skipCheck": false,
@@ -750,7 +772,7 @@
         }
       },
       {
-        "name": "WakatsuKitchenSpecialEvent",
+        "name": "WilduckBurgerWeekendWilduckSetEvent",
         "props": {
           "isChangeable": true,
           "skipCheck": false,

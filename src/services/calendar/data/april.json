@@ -35,11 +35,11 @@
           "skipCheck": true,
           "questions": [
             {
-              "text": "Among these phrases, \"a rain of flower\", \"mystical mirage\" and \"vivid carp streamers\" which one symbolizes summer?",
+              "text": "What phrase symbolizes summer!?",
               "answers": [
-                { "text": "a rain of flower", "points": 0 },
-                { "text": "mystical mirage", "points": 0 },
-                { "text": "vivid carp streamers", "points": 15 }
+                { "text": "A rain of flowers.", "points": 0 },
+                { "text": "Mystical mirage.", "points": 0 },
+                { "text": "Vivid carp streamers.", "points": 15 }
               ]
             }
           ]
@@ -97,7 +97,7 @@
         }
       },
       {
-        "name": "TartarusEvent",
+        "name": "TextEvent",
         "props": {
           "isTall": true,
           "time": "Dark Hour",
@@ -321,18 +321,18 @@
           "skipCheck": true,
           "questions": [
             {
-              "text": "The places where people dumped their waste in the Jomon Period - What are they called nowadays?",
+              "text": "The places where people dumped their waste in the Jomon Period - what are they called nowadays?",
               "answers": [
-                { "text": "Boneyards", "points": 0 },
-                { "text": "Middens", "points": 15 },
-                { "text": "Hovels", "points": 0 }
+                { "text": "Boneyards.", "points": 0 },
+                { "text": "Middens.", "points": 15 },
+                { "text": "Hovels.", "points": 0 }
               ]
             }
           ]
         }
       },
       {
-        "name": "TartarusEvent",
+        "name": "TextEvent",
         "props": {
           "isTall": false,
           "time": "Evening",
@@ -343,7 +343,7 @@
               "name": "LabelRow",
               "props": {
                 "label": "Place:",
-                "text": "Tartarus"
+                "text": "Iwatodai Dormitory"
               }
             },
             {
@@ -398,7 +398,7 @@
         "name": "TartarusEvent",
         "props": {
           "isTall": true,
-          "time": "Day",
+          "time": "Evening",
           "isChangeable": false,
           "skipCheck": true,
           "rows": [
@@ -477,20 +477,7 @@
           "time": "Evening",
           "isChangeable": true,
           "skipCheck": false,
-          "rows": [
-            {
-              "name": "CheckboxRow",
-              "props": { "text": "Have at least ¥27,080" }
-            },
-            {
-              "name": "CheckboxRow",
-              "props": { "text": "Be at least level 8" }
-            },
-            {
-              "name": "CheckboxRow",
-              "props": { "text": "Have Hermit card" }
-            }
-          ]
+          "rows": []
         }
       }
     ]
@@ -536,11 +523,25 @@
         }
       },
       {
-        "name": "GameParadeCourageEvent",
+        "name": "TartarusEvent",
         "props": {
           "time": "Evening",
           "isChangeable": true,
-          "skipCheck": false
+          "skipCheck": false,
+          "rows": [
+            {
+              "name": "CheckboxRow",
+              "props": { "text": "Have at least ¥25,580" }
+            },
+            {
+              "name": "CheckboxRow",
+              "props": { "text": "Be at least level 8" }
+            },
+            {
+              "name": "CheckboxRow",
+              "props": { "text": "Have Hermit card" }
+            }
+          ]
         }
       }
     ]
@@ -582,6 +583,14 @@
               }
             }
           ]
+        }
+      },
+      {
+        "name": "EdogawaMedicineEvent",
+        "props": {
+          "time": "Day Free Time",
+          "isChangeable": false,
+          "skipCheck": false
         }
       },
       {
@@ -668,37 +677,11 @@
     "date": "2009-04-28",
     "events": [
       {
-        "name": "TextEvent",
+        "name": "JusticeFlag1Event",
         "props": {
-          "isTall": false,
-          "time": "Day Free Time",
+          "time": "Day free time",
           "isChangeable": false,
-          "skipCheck": true,
-          "header": "Justice[Prerequisite]",
-          "rows": [
-            {
-              "name": "LabelRow",
-              "props": {
-                "label": "Name:",
-                "text": "Chihiro Fushimi"
-              }
-            },
-            {
-              "name": "LabelRow",
-              "props": {
-                "label": "Place:",
-                "text": "2nd Floor Hallway"
-              }
-            },
-            {
-              "name": "CheckboxRow",
-              "props": { "text": "Talk to Chihiro." }
-            },
-            {
-              "name": "CheckboxRow",
-              "props": { "text": "Choose \"I just wanted to talk...\"" }
-            }
-          ]
+          "skipCheck": false
         }
       },
       {
@@ -752,33 +735,11 @@
         }
       },
       {
-        "name": "TextEvent",
+        "name": "JusticeFlag2Event",
         "props": {
-          "isTall": false,
-          "time": "Day Free Time",
+          "time": "Day free time",
           "isChangeable": false,
-          "skipCheck": true,
-          "header": "Justice[Prerequisite]",
-          "rows": [
-            {
-              "name": "LabelRow",
-              "props": {
-                "label": "Name:",
-                "text": "Chihiro Fushimi"
-              }
-            },
-            {
-              "name": "LabelRow",
-              "props": {
-                "label": "Place:",
-                "text": "2nd Floor Hallway"
-              }
-            },
-            {
-              "name": "CheckboxRow",
-              "props": { "text": "Talk to Chihiro." }
-            }
-          ]
+          "skipCheck": false
         }
       },
       {

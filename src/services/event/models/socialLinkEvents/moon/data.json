@@ -37,7 +37,7 @@
         "text": "So? Do you \"get me,\" hm? Who am I? Go on, I wanna hear it come out of your mouth!",
         "answers": [
           { "text": "Nozomi Suemitsu", "points": 0, "isFork": false },
-          { "text": "The gourmet king.", "points": 15, "isFork": false }
+          { "text": "The Gourmet King.", "points": 15, "isFork": false }
         ]
       }
     ]
@@ -103,7 +103,7 @@
     "isFork": false,
     "questions": [
       {
-        "text": "Well? Did that just blow your mind?}",
+        "text": "Well? Did that just blow your mind?",
         "answers": [
           { "text": "Yeah, I'm freaking out.", "points": 0, "isFork": false },
           { "text": "Not really.", "points": 5, "isFork": false },
@@ -111,7 +111,7 @@
         ]
       },
       {
-        "text": "Not to mention you'll get a discount since I'll be referring you, too. You are one lucky guy!}",
+        "text": "Not to mention you'll get a discount since I'll be referring you, too. You are one lucky guy!",
         "answers": [
           { "text": "That's insane!", "points": 0, "isFork": false },
           { "text": "No way I'm paying that.", "points": 0, "isFork": false }
@@ -128,7 +128,7 @@
     "isFork": false,
     "questions": [
       {
-        "text": "Look at me! I'm paper-thin now!}",
+        "text": "Look at me! I'm paper-thin now!",
         "answers": [
           { "text": "You do look thinner.", "points": 0, "isFork": false },
           { "text": "No, you're not.", "points": 15, "isFork": false }
@@ -145,7 +145,7 @@
     "isFork": false,
     "questions": [
       {
-        "text": "Finally, Paradise is smiling back at me! Yes! Yesss!}",
+        "text": "Finally, Paradise is smiling back at me! Yes! Yesss!",
         "answers": [
           {
             "text": "You're gonna scam them, too?",
@@ -166,7 +166,7 @@
     "isFork": false,
     "questions": [
       {
-        "text": "But I couldn't even cry. I actually felt... relieved. I though, \"Maybe they'll all finally stop laughing at me.\"}",
+        "text": "But I couldn't even cry. I actually felt... relieved. I though, \"Maybe they'll all finally stop laughing at me.\"",
         "answers": [
           { "text": "That's terrible.", "points": 0, "isFork": false },
           { "text": "That's understandable.", "points": 0, "isFork": false }

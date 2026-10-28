@@ -31,6 +31,16 @@ export const ExamDays: Dayjs[] = [
   dayjs('2009-05-20'),
   dayjs('2009-05-21'),
   dayjs('2009-05-22'),
+  dayjs('2009-07-08'),
+  dayjs('2009-07-09'),
+  dayjs('2009-07-10'),
+  dayjs('2009-07-11'),
+  dayjs('2009-07-12'),
+  dayjs('2009-07-13'),
+  dayjs('2009-07-14'),
+  dayjs('2009-07-15'),
+  dayjs('2009-07-16'),
+  dayjs('2009-07-17'),
 ];
 
 /** Calendar dates designated as school holidays in the game year (2009). */
@@ -63,6 +73,8 @@ export const DayOffDays: Dayjs[] = [
   dayjs('2009-08-28'),
   dayjs('2009-08-29'),
   dayjs('2009-08-31'),
+  dayjs('2009-11-23'),
+  dayjs('2009-12-23'),
   dayjs('2009-12-28'),
   dayjs('2009-12-29'),
   dayjs('2009-12-30'),

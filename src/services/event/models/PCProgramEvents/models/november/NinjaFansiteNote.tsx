@@ -25,7 +25,7 @@ import type { IsAvailableProps } from '@services/availability/types';
 export class NinjaFansiteNoteEvent extends LobbyPCProgramsBase {
   static readonly name = LobbyPCProgramsNovemberNames.ninjaFansiteNote;
 
-  readonly price: number = 12_000;
+  static readonly price: number = 12_000;
 
   static readonly availabilities: AvailabilityBase[] = [
     new DateAvailability({ operator: 'ge', value: dayjs('2009-11-05') }),

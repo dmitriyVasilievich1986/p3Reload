@@ -35,6 +35,14 @@
     "date": "2009-05-02",
     "events": [
       {
+        "name": "JusticeFlag3Event",
+        "props": {
+          "time": "Day free time",
+          "isChangeable": false,
+          "skipCheck": false
+        }
+      },
+      {
         "name": "Hierophant",
         "props": {
           "isChangeable": true,
@@ -85,7 +93,7 @@
         }
       },
       {
-        "name": "GameParadeCharmEvent",
+        "name": "Digital Cram School",
         "props": {
           "isChangeable": true,
           "skipCheck": false,
@@ -106,11 +114,11 @@
         }
       },
       {
-        "name": "Digital Cram School",
+        "name": "GameParadeCourageEvent",
         "props": {
+          "time": "Evening",
           "isChangeable": true,
-          "skipCheck": false,
-          "time": "Evening"
+          "skipCheck": false
         }
       }
     ]
@@ -146,6 +154,14 @@
         }
       },
       {
+        "name": "HangedManFlagEvent",
+        "props": {
+          "time": "Day free time",
+          "isChangeable": false,
+          "skipCheck": false
+        }
+      },
+      {
         "name": "Emperor",
         "props": {
           "isChangeable": true,
@@ -175,7 +191,7 @@
         }
       },
       {
-        "name": "WakatsuKitchenSpecialEvent",
+        "name": "GameParadeCharmEvent",
         "props": {
           "isChangeable": true,
           "skipCheck": false,
@@ -187,6 +203,14 @@
   {
     "date": "2009-05-08",
     "events": [
+      {
+        "name": "MoonFlagEvent",
+        "props": {
+          "isChangeable": false,
+          "skipCheck": false,
+          "time": "Day Free Time"
+        }
+      },
       {
         "name": "Magician",
         "props": {
@@ -256,19 +280,19 @@
             {
               "name": "CheckboxRow",
               "props": {
-                "text": "Have at least ¥41,750"
+                "text": "Have at least ¥5,650"
               }
             },
             {
               "name": "CheckboxRow",
               "props": {
-                "text": "Be at least level 12"
+                "text": "Be at least level 10"
               }
             },
             {
               "name": "CheckboxRow",
               "props": {
-                "text": "Have \"Hanged Man\" card"
+                "text": "Have \"Odd morsel\""
               }
             },
             {
@@ -280,19 +304,7 @@
             {
               "name": "CheckboxRow",
               "props": {
-                "text": "Have \"Justice\" card"
-              }
-            },
-            {
-              "name": "CheckboxRow",
-              "props": {
-                "text": "Have \"Temperance\" card"
-              }
-            },
-            {
-              "name": "CheckboxRow",
-              "props": {
-                "text": "Have \"Strength\" card"
+                "text": "Have \"Hanged Man\" card"
               }
             }
           ],
@@ -578,7 +590,7 @@
                   "text": "Dropsy"
                 }
               ],
-              "text": "What is the other common expression used to describe \"May Sickness\"?"
+              "text": "What is the other common expression used to describe \"May sickness\"?"
             }
           ],
           "skipCheck": false,
@@ -805,9 +817,41 @@
         }
       },
       {
-        "name": "GameParadeCourageEvent",
+        "name": "TartarusEvent",
         "props": {
           "isChangeable": true,
+          "rows": [
+            {
+              "name": "CheckboxRow",
+              "props": {
+                "text": "Have at least ¥24,400"
+              }
+            },
+            {
+              "name": "CheckboxRow",
+              "props": {
+                "text": "Be at least level 12"
+              }
+            },
+            {
+              "name": "CheckboxRow",
+              "props": {
+                "text": "Have \"Chariot\" card"
+              }
+            },
+            {
+              "name": "CheckboxRow",
+              "props": {
+                "text": "Have \"Justice\" card"
+              }
+            },
+            {
+              "name": "CheckboxRow",
+              "props": {
+                "text": "Have \"Temperance\" card"
+              }
+            }
+          ],
           "skipCheck": false,
           "time": "Evening"
         }
@@ -817,6 +861,14 @@
   {
     "date": "2009-05-27",
     "events": [
+      {
+        "name": "EdogawaMedicineEvent",
+        "props": {
+          "time": "Day Free Time",
+          "isChangeable": false,
+          "skipCheck": false
+        }
+      },
       {
         "name": "Temperance",
         "props": {

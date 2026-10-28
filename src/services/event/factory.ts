@@ -2,6 +2,7 @@ import { BaseEvent } from './base';
 import { CharacterStatsModifyEvents } from './models/characterStatsModifyEvents';
 import { DormActivitiesModels } from './models/dormActivities';
 import { EpisodesEventModels } from './models/episodes';
+import { FlagEvents } from './models/flagEvents';
 import { NaganakiShrineEvents } from './models/naganakiShrine';
 import { PCProgramEvents } from './models/PCProgramEvents';
 import {
@@ -31,6 +32,7 @@ export const Events = {
   ...NaganakiShrineEvents,
   ...EpisodesEventModels,
   ...PCProgramEvents,
+  ...FlagEvents,
   [SpecialEventsNames.ElizabethRequest75]: ElizabethRequest75Event,
   [SpecialEventsNames.EdogawaMedicine]: EdogawaMedicineEvent,
   [SpecialEventsNames.ExamResults]: ExamResultsEvent,
@@ -56,6 +58,9 @@ export function eventFactory(name: EventNamesType, props: Record<string, unknown
   }
   if (name in PCProgramEvents) {
     return new PCProgramEvents[name as keyof typeof PCProgramEvents](props as EventProps);
+  }
+  if (name in FlagEvents) {
+    return new FlagEvents[name as keyof typeof FlagEvents](props as EventProps);
   }
   if (name in DormActivitiesModels) {
     return new DormActivitiesModels[name as keyof typeof DormActivitiesModels](props as EventProps);

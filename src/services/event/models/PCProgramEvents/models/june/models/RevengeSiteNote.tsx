@@ -21,7 +21,7 @@ import { LobbyPCProgramsJuneNames } from '../types';
 export class RevengeSiteNotePCEvent extends LobbyPCProgramsBase {
   static readonly name = LobbyPCProgramsJuneNames.revengeSiteNote;
 
-  readonly price: number = 500;
+  static readonly price: number = 500;
 
   static readonly availabilities: AvailabilityBase[] = [
     new DateAvailability({ operator: 'ge', value: dayjs('2009-06-23') }),

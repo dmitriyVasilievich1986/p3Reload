@@ -24,7 +24,7 @@
         ]
       },
       {
-        "text": "...Um, do you read much, ${mainCharName}-san?",
+        "text": "...Um, do you read much, ${mainCharSurname}-san?",
         "answers": [
           { "text": "I read the classics.", "points": 5, "isFork": false },
           { "text": "I read manga.", "points": 5, "isFork": false },
@@ -72,7 +72,7 @@
         "text": "...Do they not know where they are!?",
         "answers": [
           { "text": "They have no shame.", "points": 5, "isFork": false },
-          { "text": "They're gonna...kiss?", "points": 0, "isFork": false },
+          { "text": "They're gonna kiss...?", "points": 0, "isFork": false },
           { "text": "Where did they go?", "points": 0, "isFork": false }
         ]
       },
@@ -95,7 +95,7 @@
     "isFork": false,
     "questions": [
       {
-        "text": "${mainCharName}-san!",
+        "text": "${mainCharSurname}-san!",
         "answers": [
           { "text": "Get lost.", "points": 0, "isFork": false },
           { "text": "...Hey.", "points": 0, "isFork": false }
@@ -129,7 +129,7 @@
       {
         "text": "Is she in love right now!?",
         "answers": [
-          { "text": "Yeah, she's in love.", "points": 15, "isFork": false },
+          { "text": "Yeah, she's in love.", "points": 0, "isFork": false },
           {
             "text": "You're jumping to conclusions.",
             "points": 5,
@@ -167,7 +167,7 @@
           { "text": "Yeah, she's in love.", "points": 15, "isFork": true },
           {
             "text": "You're jumping to conclusions.",
-            "points": 5,
+            "points": 0,
             "isFork": false
           }
         ]
@@ -222,7 +222,7 @@
     "isRomantic": false,
     "questions": [
       {
-        "text": "${mainCharName}-san...",
+        "text": "${mainCharSurname}-san...",
         "answers": [
           { "text": "Try to remember.", "points": 0, "isFork": false },
           {
@@ -305,7 +305,7 @@
         ]
       },
       {
-        "text": "Give me a hand, will you, ${mainCharName}?",
+        "text": "Give me a hand, will you, ${mainCharSurname}?",
         "answers": [
           { "text": "Why me?", "points": 0, "isFork": false },
           { "text": "All right.", "points": 0, "isFork": false }
@@ -351,7 +351,7 @@
         ]
       },
       {
-        "text": "Give me a hand, will you, ${mainCharName}?",
+        "text": "Give me a hand, will you, ${mainCharSurname}?",
         "answers": [
           { "text": "Why me?", "points": 0, "isFork": false },
           { "text": "All right.", "points": 0, "isFork": false }

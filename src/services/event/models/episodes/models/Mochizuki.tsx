@@ -85,7 +85,7 @@ export class MochizukiEvent extends EpisodesEventBase {
               operator: 'eq',
               value: dayjs('2009-12-31'),
             }),
-            new TimeAvailability({ times: [Times.Day] }),
+            new TimeAvailability({ times: [Times.Evening] }),
           ],
         }).isAvailable(props);
       default:

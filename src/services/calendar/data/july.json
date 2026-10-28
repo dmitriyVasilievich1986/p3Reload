@@ -64,7 +64,7 @@
                   "text": "About romance."
                 }
               ],
-              "text": "H-Hey, lend me a hand here, Protagonist. What kinda tale is he talkin' about?"
+              "text": "H-Hey, lend me a hand here, ${mainCharName}. What kinda tale is he talkin' about?"
             }
           ],
           "skipCheck": false,
@@ -391,7 +391,7 @@
                   "text": "The rifle."
                 }
               ],
-              "text": "Now, what do you think that item was? It's something every samurai needs"
+              "text": "Now, what do you think that item was? It's something every samurai needs!"
             }
           ],
           "skipCheck": false,
@@ -430,7 +430,7 @@
             {
               "name": "CheckboxRow",
               "props": {
-                "text": "Give President Tanaka ¥20,000."
+                "text": "Give President Tanaka ¥10,000."
               }
             }
           ],
@@ -728,8 +728,8 @@
       {
         "name": "Devil",
         "props": {
-          "isChangeable": false,
-          "skipCheck": true,
+          "isChangeable": true,
+          "skipCheck": false,
           "time": "Evening"
         }
       }
@@ -913,41 +913,10 @@
         }
       },
       {
-        "name": "TextEvent",
+        "name": "TowerFlagEvent",
         "props": {
-          "header": "Tower [Prerequisite]",
           "isChangeable": false,
-          "isTall": false,
-          "rows": [
-            {
-              "name": "LabelRow",
-              "props": {
-                "label": "Name:",
-                "text": "Yuko Nishiwaki"
-              }
-            },
-            {
-              "name": "LabelRow",
-              "props": {
-                "label": "Place:",
-                "text": "2F Classroom Hallway"
-              }
-            },
-            {
-              "name": "LabelRow",
-              "props": {
-                "label": "District:",
-                "text": "Gekkoukan High School"
-              }
-            },
-            {
-              "name": "CheckboxRow",
-              "props": {
-                "text": "Talk to Yuko Nishiwaki to gain an inforamtion about \"Unconventional Monk\""
-              }
-            }
-          ],
-          "skipCheck": true,
+          "skipCheck": false,
           "time": "Day Free Time"
         }
       },
@@ -1049,8 +1018,8 @@
       {
         "name": "Devil",
         "props": {
-          "isChangeable": false,
-          "skipCheck": true,
+          "isChangeable": true,
+          "skipCheck": false,
           "time": "Evening"
         }
       }

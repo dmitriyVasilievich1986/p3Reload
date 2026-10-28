@@ -40,7 +40,7 @@
         }
       },
       {
-        "name": "Tower",
+        "name": "Aigis [Book]",
         "props": {
           "isChangeable": true,
           "skipCheck": false,
@@ -147,19 +147,19 @@
         }
       },
       {
-        "name": "Aragaki",
-        "props": {
-          "isChangeable": false,
-          "skipCheck": true,
-          "time": "Day Free Time"
-        }
-      },
-      {
-        "name": "EmptyEvent",
+        "name": "JusticeNaganakiShrineEvent",
         "props": {
           "isChangeable": true,
           "skipCheck": false,
           "time": "Day"
+        }
+      },
+      {
+        "name": "Aragaki",
+        "props": {
+          "isChangeable": false,
+          "skipCheck": true,
+          "time": "Evening Free Time"
         }
       },
       {
@@ -341,7 +341,7 @@
         }
       },
       {
-        "name": "JusticeNaganakiShrineEvent",
+        "name": "Hanged Man",
         "props": {
           "isChangeable": true,
           "skipCheck": false,
@@ -391,7 +391,7 @@
         }
       },
       {
-        "name": "EmptyEvent",
+        "name": "DormExamStudyingTeamEvent",
         "props": {
           "isChangeable": true,
           "skipCheck": false,
@@ -719,9 +719,17 @@
         }
       },
       {
-        "name": "Aigis [Book]",
+        "name": "TartarusEvent",
         "props": {
           "isChangeable": true,
+          "rows": [
+            {
+              "name": "CheckboxRow",
+              "props": {
+                "text": "Have \"Lovers\" card"
+              }
+            }
+          ],
           "skipCheck": false,
           "time": "Evening"
         }
@@ -899,7 +907,7 @@
     "date": "2009-10-27",
     "events": [
       {
-        "name": "EmptyEvent",
+        "name": "Temperance",
         "props": {
           "isChangeable": true,
           "skipCheck": false,
@@ -907,7 +915,7 @@
         }
       },
       {
-        "name": "EmptyEvent",
+        "name": "Fuuka [Garden]",
         "props": {
           "isChangeable": true,
           "skipCheck": false,
@@ -960,20 +968,7 @@
         "name": "TartarusEvent",
         "props": {
           "isChangeable": true,
-          "rows": [
-            {
-              "name": "CheckboxRow",
-              "props": {
-                "text": "Have \"Star\" card"
-              }
-            },
-            {
-              "name": "CheckboxRow",
-              "props": {
-                "text": "Have \"Strength\" card"
-              }
-            }
-          ],
+          "rows": [],
           "skipCheck": false,
           "time": "Evening"
         }
@@ -1040,7 +1035,7 @@
         }
       },
       {
-        "name": "EmptyEvent",
+        "name": "TV Eggie Blog Note",
         "props": {
           "isChangeable": true,
           "skipCheck": false,

@@ -51,13 +51,13 @@
         "answers": [
           { "text": "What, of ramen?", "points": 0, "isFork": false },
           { "text": "What, of school?", "points": 0, "isFork": false },
-          { "text": "What, life?", "points": 15, "isFork": false }
+          { "text": "What, of life?", "points": 15, "isFork": false }
         ]
       },
       {
         "text": "Okay, that settles it, ${mainCharName}. I'm gonna get myself a girlfriend! Right now!",
         "answers": [
-          { "text": "Sounds Impossible.", "points": 0, "isFork": false },
+          { "text": "Sounds impossible.", "points": 0, "isFork": false },
           { "text": "Good luck!", "points": 5, "isFork": false }
         ]
       }

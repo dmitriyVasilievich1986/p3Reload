@@ -3,6 +3,7 @@ import { DormActivitiesNames } from '@services/stats/dormActivities/types';
 import { EpisodeSocialLinkNames } from '@services/stats/episodesStats';
 
 import { CharacterStatsModifyNames } from './models/characterStatsModifyEvents/types';
+import { FlagEventsNames } from './models/flagEvents/types';
 import { NaganakiShrineEventsNames } from './models/naganakiShrine/types';
 import { PCProgramEventsNames } from './models/PCProgramEvents/types';
 import { SchoolQuestionEventsNames } from './models/schoolQuestions/types';
@@ -26,6 +27,7 @@ export const EventNames = {
   ...PCProgramEventsNames,
   ...DormActivitiesNames,
   ...SpecialEventsNames,
+  ...FlagEventsNames,
   ...Arcanas,
 } as const;
 

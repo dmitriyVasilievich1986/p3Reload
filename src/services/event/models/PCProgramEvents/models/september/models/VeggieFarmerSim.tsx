@@ -24,7 +24,7 @@ import type { IsAvailableProps } from '@services/availability/types';
 export class VeggieFarmerSimPCEvent extends LobbyPCProgramsBase {
   static readonly name = LobbyPCProgramsSeptemberNames.veggieFarmerSim;
 
-  readonly price: number = 4_500;
+  static readonly price: number = 4_500;
 
   static readonly availabilities: AvailabilityBase[] = [
     new DateAvailability({ operator: 'ge', value: dayjs('2009-09-01') }),
@@ -53,9 +53,7 @@ export class VeggieFarmerSimPCEvent extends LobbyPCProgramsBase {
         key={`${this.name}-${props.time}`}
         body={
           <>
-            {this.price && (
-              <LabelRow key="price" label="Price:" text={priceFormatter(this.price)} />
-            )}
+            <LabelRow key="price" label="Price:" text={priceFormatter(this.price)} />
             <LabelRow key="place" label="Place:" text={Places.LobbyPC} />
             <LabelRow key="district" label="District:" text={Districts.IwatodaiDormitory} />
             <ModifiersRow modifiers={['More vegetables when harvesting rooftop planters']} />

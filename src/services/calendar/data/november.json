@@ -24,14 +24,6 @@
     "date": "2009-11-02",
     "events": [
       {
-        "name": "Fool",
-        "props": {
-          "isChangeable": false,
-          "skipCheck": true,
-          "time": "Day Free Time"
-        }
-      },
-      {
         "name": "Chariot",
         "props": {
           "isChangeable": true,
@@ -40,9 +32,31 @@
         }
       },
       {
-        "name": "EmptyEvent",
+        "name": "Fool",
+        "props": {
+          "isChangeable": false,
+          "skipCheck": true,
+          "time": "Evening Free Time"
+        }
+      },
+      {
+        "name": "TartarusEvent",
         "props": {
           "isChangeable": true,
+          "rows": [
+            {
+              "name": "CheckboxRow",
+              "props": {
+                "text": "Have \"Star\" card"
+              }
+            },
+            {
+              "name": "CheckboxRow",
+              "props": {
+                "text": "Have \"Strength\" card"
+              }
+            }
+          ],
           "skipCheck": false,
           "time": "Evening"
         }
@@ -200,7 +214,7 @@
     "date": "2009-11-08",
     "events": [
       {
-        "name": "EmptyEvent",
+        "name": "PriestessNaganakiShrineEvent",
         "props": {
           "isChangeable": true,
           "skipCheck": false,
@@ -340,7 +354,7 @@
     "date": "2009-11-13",
     "events": [
       {
-        "name": "Magician",
+        "name": "Priestess",
         "props": {
           "isChangeable": true,
           "skipCheck": false,
@@ -585,7 +599,7 @@
     "date": "2009-11-22",
     "events": [
       {
-        "name": "Sun",
+        "name": "StrengthNaganakiShrineEvent",
         "props": {
           "isChangeable": true,
           "skipCheck": true,
@@ -624,7 +638,7 @@
     "date": "2009-11-23",
     "events": [
       {
-        "name": "StrengthNaganakiShrineEvent",
+        "name": "Hanged Man",
         "props": {
           "isChangeable": true,
           "skipCheck": false,
@@ -753,7 +767,7 @@
     "date": "2009-11-28",
     "events": [
       {
-        "name": "Priestess",
+        "name": "Strength",
         "props": {
           "isChangeable": true,
           "skipCheck": false,
@@ -790,7 +804,7 @@
     "date": "2009-11-29",
     "events": [
       {
-        "name": "PriestessNaganakiShrineEvent",
+        "name": "Star",
         "props": {
           "isChangeable": true,
           "skipCheck": false,

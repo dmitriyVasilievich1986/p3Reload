@@ -117,7 +117,7 @@
     "isFork": false,
     "questions": [
       {
-        "text": "${mainCharName}-kun, what do you think I should do?",
+        "text": "${mainCharSurname}-kun, what do you think I should do?",
         "answers": [
           { "text": "Why not give it a go?", "points": 0, "isFork": false },
           { "text": "That's for you to decide.", "points": 0, "isFork": false }
@@ -165,7 +165,7 @@
     "isFork": false,
     "questions": [
       {
-        "text": "Elementary school kids really learn fast don't you think?",
+        "text": "Elementary school kids really learn fast, don't you think?",
         "answers": [
           {
             "text": "You're right. It's impressive.",
@@ -249,7 +249,7 @@
     "isFork": false,
     "questions": [
       {
-        "text": "...Oh, ${mainCharName}-kun, why don't you give them some advice too?",
+        "text": "...Oh, ${mainCharSurname}-kun, why don't you give them some advice too?",
         "answers": [
           { "text": "You guys got this.", "points": 5, "isFork": false },
           { "text": "Show some guts!", "points": 5, "isFork": false }
@@ -277,7 +277,7 @@
     "isFork": false,
     "questions": [
       {
-        "text": "...Oh, ${mainCharName}-kun, why don't you give them some advice too?",
+        "text": "...Oh, ${mainCharSurname}-kun, why don't you give them some advice too?",
         "answers": [
           { "text": "You guys got this.", "points": 5, "isFork": false },
           { "text": "Show some guts!", "points": 5, "isFork": false }
@@ -369,7 +369,7 @@
     "isFork": false,
     "questions": [
       {
-        "text": "Which one sounds better to you, ${mainCharName}-kun?",
+        "text": "Which one sounds better to you, ${mainCharSurname}-kun?",
         "answers": [
           { "text": "The cute one.", "points": 5, "isFork": false },
           { "text": "The reasonable one.", "points": 5, "isFork": false },
@@ -553,7 +553,7 @@
         ]
       },
       {
-        "text": "It's from those kids. They told me to 'make sure I give it to my boyfriend.'",
+        "text": "It's from those kids. They told me to \"make sure I give it to my boyfriend.\"",
         "answers": [
           { "text": "Boyfriend...", "points": 0, "isFork": false },
           { "text": "Where's yours?", "points": 5, "isFork": false },

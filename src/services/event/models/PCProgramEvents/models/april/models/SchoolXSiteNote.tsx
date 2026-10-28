@@ -12,8 +12,12 @@ import {
   OrAvailability,
   DayOffAvailability,
   AvailabilityBase,
+  CharacterStatsAvailability,
 } from '@services/availability';
-import { type CharacterStatsModifierType } from '@services/stats/characterStats/types';
+import {
+  CharacterStatsNames,
+  type CharacterStatsModifierType,
+} from '@services/stats/characterStats/types';
 import { priceFormatter } from '@utils/priceFormatter';
 
 import { LobbyPCProgramsBase } from '../../../base';
@@ -23,11 +27,12 @@ import type { IsAvailableProps } from '@services/availability/types';
 
 export class SchoolXSiteNotePCEvent extends LobbyPCProgramsBase {
   static readonly name = LobbyPCProgramsAprilNames.schoolXSiteNote;
-  readonly price: number = 500;
+  static readonly price: number = 500;
 
   static readonly availabilities: AvailabilityBase[] = [
     new DateAvailability({ operator: 'ge', value: dayjs('2009-04-29') }),
     new IsEventInHistoryAvailability({ name: this.name, isInHistory: false }),
+    new CharacterStatsAvailability({ name: CharacterStatsNames.Courage, operator: 'ge', level: 2 }),
     new OrAvailability({
       availabilities: [
         new TimeAvailability({ times: [Times.Evening] }),

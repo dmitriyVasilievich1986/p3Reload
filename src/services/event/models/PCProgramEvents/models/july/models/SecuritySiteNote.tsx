@@ -24,7 +24,7 @@ import type { IsAvailableProps } from '@services/availability/types';
 export class SecuritySiteNotePCEvent extends LobbyPCProgramsBase {
   static readonly name = LobbyPCProgramsJulyNames.securitySiteNote;
 
-  readonly price: number = 5_000;
+  static readonly price: number = 5_000;
 
   static readonly availabilities: AvailabilityBase[] = [
     new DateAvailability({ operator: 'ge', value: dayjs('2009-07-09') }),
